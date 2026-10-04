@@ -22,7 +22,7 @@
 // The loop refuses to re-draw the same unsharpened atom; a run that exhausts
 // its attempts is a gate_unmet finding, never a fabricated pass.
 
-import { execFile } from "node:child_process";
+import { execFile, execFileSync } from "node:child_process";
 import { promisify } from "node:util";
 import { writeFile, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -77,6 +77,18 @@ export function reasonLint({ goals = [], pass = null } = {}) {
 export async function runGateScript(gatePath, candidatePath) {
   try {
     const { stdout } = await execFileP(process.execPath, [gatePath, candidatePath], { timeout: 60_000 });
+    return { ok: true, why: (stdout ?? "").trim() || "exit 0" };
+  } catch (e) {
+    return { ok: false, why: String(e?.stderr || e?.stdout || e?.message || e).slice(0, 500) };
+  }
+}
+
+/** The synchronous form — the engine's probeUnit/testUnits contract is sync
+ *  (the code adapter's are execSync), so a gate that must ride the spiral is
+ *  run with execFileSync, never a Promise leaking into the EOT. */
+export function runGateScriptSync(gatePath, candidatePath) {
+  try {
+    const stdout = execFileSync(process.execPath, [gatePath, candidatePath], { timeout: 60_000, encoding: "utf8", stdio: "pipe" });
     return { ok: true, why: (stdout ?? "").trim() || "exit 0" };
   } catch (e) {
     return { ok: false, why: String(e?.stderr || e?.stdout || e?.message || e).slice(0, 500) };
