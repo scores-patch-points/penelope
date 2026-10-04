@@ -48,6 +48,7 @@ async function loadBuiltins() {
     toDocument: (v, ctx) => ctx.overviewAdapter.toDocument(v, ctx),
   });
   if (!adapters.has("code")) registerGenerationAdapter("code", (await import("./adapters/code.mjs")).default);
+  if (!adapters.has("code-fix")) registerGenerationAdapter("code-fix", (await import("./adapters/code-fix.mjs")).default);
   if (!adapters.has("text")) registerGenerationAdapter("text", (await import("./adapters/prose.mjs")).default);
   // "prose" remains an internal compatibility alias; the public artifact kind is text.
   if (!adapters.has("prose")) registerGenerationAdapter("prose", generationAdapter("text"));
