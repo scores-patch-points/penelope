@@ -1,0 +1,2183 @@
+{
+ "schema": "NoModelBoundary@1",
+ "measured": "2026-10-01",
+ "intent": "Write a {words}-word essay about the Battle of Borodino.",
+ "targets": [
+  1000,
+  2000,
+  4000,
+  8000,
+  12000
+ ],
+ "how": "node gym/weave-nomodel.mjs --intent \"Write a {words}-word essay about the Battle of Borodino.\" --field <eoreader7>/native/eval/the-fold/fixtures/wikipedia-battle-of-borodino.html --hunt shim|shipped|off [--topic \"Battle of Borodino\" --topic-pages 8]; node gym/nomodel-summary.mjs report.json",
+ "environment": {
+  "model": "none (noModel:true; no Ollama in this environment)",
+  "hunt_transport": "gym/nomodel-prose.mjs startSearchShim = Wikipedia search API behind the SAME {query}->{results:[{url,title}]} contract the adapter hunt posts to; production endpoint (the-fold explore-server :8812) cannot boot here (legacy eoreader submodule absent)",
+  "page_fetches": "real, cached on disk after first fetch",
+  "eoreader7": "/home/user/eoreader7 via ER7_HOME"
+ },
+ "conditions": {
+  "A": {
+   "label": "warm field (1 retained Wikipedia page) + hunt via search shim",
+   "hunt": "shim",
+   "field": [
+    "wikipedia-battle-of-borodino.html"
+   ],
+   "modelDoorCalls": 0,
+   "anySwatchGrowth": false,
+   "rowsIdenticalAcrossTargets": true,
+   "rows": [
+    {
+     "target": 1000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 42,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 2000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 29,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 4000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 27,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 8000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 30,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 12000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 33,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    }
+   ],
+   "perUnit": [
+    {
+     "unit": "NUL·Ground",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": true,
+     "markup": false,
+     "probe": "cell's question not answered: marked, everything, adjacent, space, essay (coverage 29%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: absent, found, essay, about, exist (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Figure",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: Which, names, referent, being, meant (coverage 25%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, bring, being, about, portrait (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Pattern",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: established, account, essay, instantiate, technical (coverage 15%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SEG·Ground",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: extent, essay, cover, units, range (coverage 18%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SYN·Pattern",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, parts, about, compose, relations (coverage 15%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: interpretive, frame, essay, declared, chronicle (coverage 17%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: answers, essay, thesis, several, DECLARED (coverage 22%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "EVA·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: claim, about, grounded, retained, material (coverage 18%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, about, concede, frame, arrival (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: would, essay, about, specific, claim (coverage 22%)",
+     "huntPageBest": null,
+     "verified": false
+    }
+   ],
+   "unitEvidence": [
+    {
+     "unit": "NUL·Ground",
+     "bestCoverage": 29,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SIG·Ground",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "SIG·Figure",
+     "bestCoverage": 38,
+     "clears": true,
+     "bestSnip": "Yu. (2020). \"Invincible Napoleon – the memory of the participant in the battle of Borodino"
+    },
+    {
+     "unit": "INS·Figure",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "INS·Pattern",
+     "bestCoverage": 15,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SEG·Ground",
+     "bestCoverage": 18,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SYN·Pattern",
+     "bestCoverage": 23,
+     "clears": false,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "DEF·Ground",
+     "bestCoverage": 17,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "DEF·Figure",
+     "bestCoverage": 22,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "EVA·Figure",
+     "bestCoverage": 27,
+     "clears": false,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "REC·Ground",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "REC·Figure",
+     "bestCoverage": 33,
+     "clears": true,
+     "bestSnip": "According to Riehn, so long as the Russian Army existed the French continued to lose. This"
+    }
+   ],
+   "unitsWithAnyClearingEvidence": 5,
+   "provenance": {
+    "schema": "Provenance@2",
+    "events": 30,
+    "sources": 16,
+    "sourceKinds": {
+     "intent": 1,
+     "prior": 1,
+     "unit": 12,
+     "corpus": 1,
+     "verification": 1
+    },
+    "jsonBytes": 19380,
+    "dangling": {
+     "count": 0,
+     "byField": {}
+    },
+    "byteRanges": {
+     "ranged": 12,
+     "misaligned": 0,
+     "outOfBounds": 0,
+     "emptySlices": 0
+    },
+    "lineage": {
+     "intent->prior": true,
+     "prior->read": true,
+     "read->unit": {
+      "linked": 0,
+      "of": 12
+     },
+     "unit->contribution": {
+      "linked": 12,
+      "of": 12
+     },
+     "contributions->fold": false,
+     "fold->verify": false,
+     "verify->materialize": false,
+     "verification source in table": true
+    },
+    "duplicateSourceIdentities": 0,
+    "sourcesReusedByMultipleContributions": 1,
+    "contributionSources": 1,
+    "contributionSourcesWithSubPageAnchor": 0
+   },
+   "ceiling": {
+    "field": {
+     "sources": 1,
+     "groundWords": 13763,
+     "snips": 188,
+     "snipWords": 3234,
+     "snipChars": 19782,
+     "citationMarked": 45,
+     "beats": 173,
+     "refused": 16,
+     "refusedByReason": {
+      "hollow_actor": 1,
+      "repeated_claim": 3,
+      "no_new_matter": 12
+     },
+     "residual": 2,
+     "distinctPlaced": 177,
+     "admittedDistinct": 179,
+     "admittedWords": 3080,
+     "ok": false,
+     "basis": "179 distinct claim(s) folded into 173 beat(s); 16 repeated/thin lost with giver kept; 2 placed in no beat (named, never hidden)"
+    },
+    "huntedPages": 3,
+    "huntedRelevant": [],
+    "huntedDropped": [
+     {
+      "url": "https://en.wikipedia.org/wiki/History_of_Europe",
+      "why": "off-topic (relevantSources)",
+      "words": 39908
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Paris_Commune",
+      "why": "off-topic (relevantSources)",
+      "words": 28936
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
+      "why": "off-topic (relevantSources)",
+      "words": 32251
+     }
+    ],
+    "structure": {
+     "autofillMaxSnips": 2,
+     "autofillMaxChars": 220,
+     "huntKeepChars": 400,
+     "perUnitMaxChars": 441,
+     "unitCount": 12,
+     "fieldMaxChars": 5292,
+     "charsPerWord": 6.12,
+     "fieldMaxWords": 865,
+     "huntMaxChars": 4800
+    },
+    "topicHunt": {
+     "query": "Battle of Borodino",
+     "pages": [
+      {
+       "url": "https://en.wikipedia.org/wiki/Battle_of_Borodino",
+       "title": "Battle of Borodino",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 13755,
+       "snips": 188,
+       "snipWords": 3234,
+       "snipChars": 19782,
+       "citationMarked": 45,
+       "beats": 172,
+       "refused": 16,
+       "refusedByReason": {
+        "hollow_actor": 1,
+        "repeated_claim": 3,
+        "no_new_matter": 12
+       },
+       "residual": 2,
+       "distinctPlaced": 177,
+       "admittedDistinct": 179,
+       "admittedWords": 3080,
+       "ok": false,
+       "basis": "179 distinct claim(s) folded into 172 beat(s); 16 repeated/thin lost with giver kept; 2 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Borodino_(village)%2C_Mozhaysky_District%2C_Moscow_Oblast",
+       "title": "Borodino (village), Mozhaysky District, Moscow Oblast",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 949,
+       "snips": 25,
+       "snipWords": 507,
+       "snipChars": 2933,
+       "citationMarked": 7,
+       "beats": 18,
+       "refused": 3,
+       "refusedByReason": {
+        "hollow_actor": 2,
+        "no_new_matter": 1
+       },
+       "residual": 0,
+       "distinctPlaced": 22,
+       "admittedDistinct": 22,
+       "admittedWords": 411,
+       "ok": false,
+       "basis": "22 distinct claim(s) folded into 18 beat(s); 3 repeated/thin lost with giver kept; 0 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Borodino_(poem)",
+       "title": "Borodino (poem)",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 363,
+       "snips": 1,
+       "snipWords": 34,
+       "snipChars": 195,
+       "citationMarked": 0,
+       "beats": 6,
+       "refused": 0,
+       "refusedByReason": {},
+       "residual": 0,
+       "distinctPlaced": 1,
+       "admittedDistinct": 1,
+       "admittedWords": 34,
+       "ok": false,
+       "basis": "1 distinct claim(s) folded into 6 beat(s); 0 repeated/thin lost with giver kept; 0 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Battle_at_Borodino_Field",
+       "title": "Battle at Borodino Field",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 768,
+       "snips": 9,
+       "snipWords": 127,
+       "snipChars": 743,
+       "citationMarked": 2,
+       "beats": 11,
+       "refused": 0,
+       "refusedByReason": {},
+       "residual": 0,
+       "distinctPlaced": 10,
+       "admittedDistinct": 10,
+       "admittedWords": 127,
+       "ok": false,
+       "basis": "10 distinct claim(s) folded into 11 beat(s); 0 repeated/thin lost with giver kept; 0 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Days_of_Military_Honour",
+       "title": "Days of Military Honour",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 960,
+       "snips": 4,
+       "snipWords": 83,
+       "snipChars": 479,
+       "citationMarked": 2,
+       "beats": 33,
+       "refused": 1,
+       "refusedByReason": {
+        "no_new_matter": 1
+       },
+       "residual": 0,
+       "distinctPlaced": 3,
+       "admittedDistinct": 3,
+       "admittedWords": 76,
+       "ok": false,
+       "basis": "3 distinct claim(s) folded into 33 beat(s); 1 repeated/thin lost with giver kept; 0 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/The_Battle_of_Borodino_(painting)",
+       "title": "The Battle of Borodino (painting)",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 477,
+       "snips": 4,
+       "snipWords": 86,
+       "snipChars": 464,
+       "citationMarked": 0,
+       "beats": 9,
+       "refused": 0,
+       "refusedByReason": {},
+       "residual": 0,
+       "distinctPlaced": 4,
+       "admittedDistinct": 4,
+       "admittedWords": 86,
+       "ok": false,
+       "basis": "4 distinct claim(s) folded into 9 beat(s); 0 repeated/thin lost with giver kept; 0 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Franz_Roubaud",
+       "title": "Franz Roubaud",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 1237,
+       "snips": 32,
+       "snipWords": 589,
+       "snipChars": 3548,
+       "citationMarked": 8,
+       "beats": 19,
+       "refused": 1,
+       "refusedByReason": {
+        "hollow_actor": 1
+       },
+       "residual": 2,
+       "distinctPlaced": 31,
+       "admittedDistinct": 33,
+       "admittedWords": 576,
+       "ok": false,
+       "basis": "33 distinct claim(s) folded into 19 beat(s); 1 repeated/thin lost with giver kept; 2 placed in no beat (named, never hidden)"
+      },
+      {
+       "url": "https://en.wikipedia.org/wiki/Pyotr_Bagration",
+       "title": "Pyotr Bagration",
+       "relevant": true,
+       "sources": 1,
+       "groundWords": 10367,
+       "snips": 236,
+       "snipWords": 4910,
+       "snipChars": 30029,
+       "citationMarked": 2,
+       "beats": 98,
+       "refused": 7,
+       "refusedByReason": {
+        "hollow_actor": 5,
+        "fold_invented_referent": 1,
+        "no_new_matter": 1
+       },
+       "residual": 4,
+       "distinctPlaced": 227,
+       "admittedDistinct": 231,
+       "admittedWords": 4753,
+       "ok": false,
+       "basis": "231 distinct claim(s) folded into 98 beat(s); 7 repeated/thin lost with giver kept; 4 placed in no beat (named, never hidden)"
+      }
+     ],
+     "relevantPages": 8,
+     "sumAdmittedWordsUpperBound": 9143,
+     "sumSnips": 499
+    }
+   },
+   "network": {
+    "calls": 0,
+    "cached": 0
+   }
+  },
+  "B": {
+   "label": "cold field + hunt via search shim",
+   "hunt": "shim",
+   "field": [],
+   "modelDoorCalls": 0,
+   "anySwatchGrowth": false,
+   "rowsIdenticalAcrossTargets": true,
+   "rows": [
+    {
+     "target": 1000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 4,
+      "mouth": 0,
+      "modelRequired": 8,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 52,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:1"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 15755,
+     "outcomeVector": "fdc423ba8004",
+     "artifactHash": "8d3acb1eadc0"
+    },
+    {
+     "target": 2000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 4,
+      "mouth": 0,
+      "modelRequired": 8,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 52,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:1"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 152,
+     "outcomeVector": "fdc423ba8004",
+     "artifactHash": "8d3acb1eadc0"
+    },
+    {
+     "target": 4000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 4,
+      "mouth": 0,
+      "modelRequired": 8,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 52,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:1"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 150,
+     "outcomeVector": "fdc423ba8004",
+     "artifactHash": "8d3acb1eadc0"
+    },
+    {
+     "target": 8000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 4,
+      "mouth": 0,
+      "modelRequired": 8,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 52,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:1"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 149,
+     "outcomeVector": "fdc423ba8004",
+     "artifactHash": "8d3acb1eadc0"
+    },
+    {
+     "target": 12000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 4,
+      "mouth": 0,
+      "modelRequired": 8,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 52,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:1"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 1,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 153,
+     "outcomeVector": "fdc423ba8004",
+     "artifactHash": "8d3acb1eadc0"
+    }
+   ],
+   "perUnit": [
+    {
+     "unit": "NUL·Ground",
+     "kind": "content",
+     "stage": "hunt",
+     "words": 13,
+     "distinct": true,
+     "markup": true,
+     "probe": "cell's question not answered: Battle, Borodino, marked, everything, adjacent (coverage 0%)",
+     "huntPageBest": {
+      "url": "https://en.wikipedia.org/wiki/History_of_Europe",
+      "pageWords": 39908,
+      "bestCoverage": 14,
+      "clears": false
+     },
+     "verified": false
+    },
+    {
+     "unit": "SIG·Ground",
+     "kind": "shape",
+     "stage": "hunt",
+     "words": 13,
+     "distinct": false,
+     "markup": true,
+     "probe": "cell's question not answered: absent, found, essay, about, Battle (coverage 0%)",
+     "huntPageBest": {
+      "url": "https://en.wikipedia.org/wiki/Paris_Commune",
+      "pageWords": 28936,
+      "bestCoverage": 10,
+      "clears": false
+     },
+     "verified": false
+    },
+    {
+     "unit": "SIG·Figure",
+     "kind": "content",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Pattern",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SEG·Ground",
+     "kind": "content",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SYN·Pattern",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Ground",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "EVA·Figure",
+     "kind": "shape",
+     "stage": "hunt",
+     "words": 13,
+     "distinct": false,
+     "markup": true,
+     "probe": "cell's question not answered: claim, about, Battle, Borodino, grounded (coverage 0%)",
+     "huntPageBest": {
+      "url": "https://en.wikipedia.org/wiki/History_of_Europe",
+      "pageWords": 39908,
+      "bestCoverage": 9,
+      "clears": false
+     },
+     "verified": false
+    },
+    {
+     "unit": "REC·Ground",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Figure",
+     "kind": "shape",
+     "stage": "hunt",
+     "words": 13,
+     "distinct": false,
+     "markup": true,
+     "probe": "cell's question not answered: would, essay, about, Battle, Borodino (coverage 0%)",
+     "huntPageBest": {
+      "url": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
+      "pageWords": 32251,
+      "bestCoverage": 22,
+      "clears": false
+     },
+     "verified": false
+    }
+   ],
+   "unitEvidence": [
+    {
+     "unit": "NUL·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SIG·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SIG·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "INS·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "INS·Pattern",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SEG·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SYN·Pattern",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "DEF·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "DEF·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "EVA·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "REC·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "REC·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    }
+   ],
+   "unitsWithAnyClearingEvidence": 0,
+   "provenance": {
+    "schema": "Provenance@2",
+    "events": 30,
+    "sources": 18,
+    "sourceKinds": {
+     "intent": 1,
+     "prior": 1,
+     "unit": 12,
+     "hunt": 3,
+     "verification": 1
+    },
+    "jsonBytes": 14627,
+    "dangling": {
+     "count": 0,
+     "byField": {}
+    },
+    "byteRanges": {
+     "ranged": 4,
+     "misaligned": 0,
+     "outOfBounds": 0,
+     "emptySlices": 0
+    },
+    "lineage": {
+     "intent->prior": true,
+     "prior->read": true,
+     "read->unit": {
+      "linked": 0,
+      "of": 12
+     },
+     "unit->contribution": {
+      "linked": 4,
+      "of": 4
+     },
+     "contributions->fold": false,
+     "fold->verify": false,
+     "verify->materialize": false,
+     "verification source in table": true
+    },
+    "duplicateSourceIdentities": 0,
+    "sourcesReusedByMultipleContributions": 1,
+    "contributionSources": 3,
+    "contributionSourcesWithSubPageAnchor": 0
+   },
+   "ceiling": {
+    "field": {
+     "sources": 0,
+     "groundWords": 0,
+     "snips": 0,
+     "snipWords": 0,
+     "admittedDistinct": 0,
+     "admittedWords": 0,
+     "refusedByReason": {},
+     "basis": "empty field"
+    },
+    "huntedPages": 3,
+    "huntedRelevant": [],
+    "huntedDropped": [
+     {
+      "url": "https://en.wikipedia.org/wiki/History_of_Europe",
+      "why": "off-topic (relevantSources)",
+      "words": 39908
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Paris_Commune",
+      "why": "off-topic (relevantSources)",
+      "words": 28936
+     },
+     {
+      "url": "https://en.wikipedia.org/wiki/Charles_de_Gaulle",
+      "why": "off-topic (relevantSources)",
+      "words": 32251
+     }
+    ],
+    "structure": {
+     "autofillMaxSnips": 2,
+     "autofillMaxChars": 220,
+     "huntKeepChars": 400,
+     "perUnitMaxChars": 441,
+     "unitCount": 12,
+     "fieldMaxChars": 5292,
+     "charsPerWord": null,
+     "fieldMaxWords": null,
+     "huntMaxChars": 4800
+    }
+   },
+   "network": {
+    "calls": 115,
+    "cached": 37
+   }
+  },
+  "C": {
+   "label": "cold field + hunt as shipped (endpoint localhost:8812 unreachable)",
+   "hunt": "shipped",
+   "field": [],
+   "modelDoorCalls": 0,
+   "anySwatchGrowth": false,
+   "rowsIdenticalAcrossTargets": true,
+   "rows": [
+    {
+     "target": 1000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 12,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 0,
+     "distinctContributions": 0,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 39,
+     "outcomeVector": "f283fa8479ab",
+     "artifactHash": "adc83b19e793"
+    },
+    {
+     "target": 2000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 12,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 0,
+     "distinctContributions": 0,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 10,
+     "outcomeVector": "f283fa8479ab",
+     "artifactHash": "adc83b19e793"
+    },
+    {
+     "target": 4000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 12,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 0,
+     "distinctContributions": 0,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 9,
+     "outcomeVector": "f283fa8479ab",
+     "artifactHash": "adc83b19e793"
+    },
+    {
+     "target": 8000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 12,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 0,
+     "distinctContributions": 0,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 9,
+     "outcomeVector": "f283fa8479ab",
+     "artifactHash": "adc83b19e793"
+    },
+    {
+     "target": 12000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 0,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 12,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 0,
+     "distinctContributions": 0,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:0 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {}
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "gaps": 12,
+      "beats": 12,
+      "refusedByReason": {}
+     },
+     "elapsedMs": 10,
+     "outcomeVector": "f283fa8479ab",
+     "artifactHash": "adc83b19e793"
+    }
+   ],
+   "perUnit": [
+    {
+     "unit": "NUL·Ground",
+     "kind": "content",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Ground",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Figure",
+     "kind": "content",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Pattern",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SEG·Ground",
+     "kind": "content",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SYN·Pattern",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Ground",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "EVA·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Ground",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Figure",
+     "kind": "shape",
+     "stage": "model-required",
+     "words": 0,
+     "distinct": false,
+     "markup": false,
+     "probe": null,
+     "huntPageBest": null,
+     "verified": false
+    }
+   ],
+   "unitEvidence": [
+    {
+     "unit": "NUL·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SIG·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SIG·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "INS·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "INS·Pattern",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SEG·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "SYN·Pattern",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "DEF·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "DEF·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "EVA·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "REC·Ground",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    },
+    {
+     "unit": "REC·Figure",
+     "bestCoverage": 0,
+     "clears": false,
+     "bestSnip": null
+    }
+   ],
+   "unitsWithAnyClearingEvidence": 0,
+   "provenance": {
+    "schema": "Provenance@2",
+    "events": 30,
+    "sources": 15,
+    "sourceKinds": {
+     "intent": 1,
+     "prior": 1,
+     "unit": 12,
+     "verification": 1
+    },
+    "jsonBytes": 12733,
+    "dangling": {
+     "count": 0,
+     "byField": {}
+    },
+    "byteRanges": {
+     "ranged": 0,
+     "misaligned": 0,
+     "outOfBounds": 0,
+     "emptySlices": 0
+    },
+    "lineage": {
+     "intent->prior": true,
+     "prior->read": true,
+     "read->unit": {
+      "linked": 0,
+      "of": 12
+     },
+     "unit->contribution": {
+      "linked": 0,
+      "of": 0
+     },
+     "contributions->fold": false,
+     "fold->verify": false,
+     "verify->materialize": false,
+     "verification source in table": true
+    },
+    "duplicateSourceIdentities": 0,
+    "sourcesReusedByMultipleContributions": 0,
+    "contributionSources": 0,
+    "contributionSourcesWithSubPageAnchor": 0
+   },
+   "ceiling": {
+    "field": {
+     "sources": 0,
+     "groundWords": 0,
+     "snips": 0,
+     "snipWords": 0,
+     "admittedDistinct": 0,
+     "admittedWords": 0,
+     "refusedByReason": {},
+     "basis": "empty field"
+    },
+    "structure": {
+     "autofillMaxSnips": 2,
+     "autofillMaxChars": 220,
+     "huntKeepChars": 400,
+     "perUnitMaxChars": 441,
+     "unitCount": 12,
+     "fieldMaxChars": 5292,
+     "charsPerWord": null,
+     "fieldMaxWords": null,
+     "huntMaxChars": 4800
+    }
+   },
+   "network": {
+    "calls": 60,
+    "cached": 0
+   }
+  },
+  "D": {
+   "label": "warm field + hunt off",
+   "hunt": "off",
+   "field": [
+    "wikipedia-battle-of-borodino.html"
+   ],
+   "modelDoorCalls": 0,
+   "anySwatchGrowth": false,
+   "rowsIdenticalAcrossTargets": true,
+   "rows": [
+    {
+     "target": 1000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 41,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 2000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 27,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 4000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 34,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 8000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 27,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    },
+    {
+     "target": 12000,
+     "status": "unverified",
+     "units": 12,
+     "engineClaimed": {
+      "field": 12,
+      "hunt": 0,
+      "mouth": 0,
+      "modelRequired": 0,
+      "unsatisfied": 0
+     },
+     "verifiedUnits": 0,
+     "materializedWords": 312,
+     "distinctContributions": 1,
+     "shippedVerdict": {
+      "ok": false,
+      "reason": "folded-with-dissent",
+      "detail": "beats:5 gaps:The subject,The beginnings,The evidence,The tension,The return refused:24 residual:0"
+     },
+     "foldShipped": {
+      "ok": false,
+      "admittedDistinct": 0,
+      "refusedByReason": {
+       "fold_invented_referent": 24
+      }
+     },
+     "foldContract": {
+      "ok": false,
+      "admittedDistinct": 2,
+      "gaps": 10,
+      "beats": 12,
+      "refusedByReason": {
+       "repeated_claim": 22
+      }
+     },
+     "elapsedMs": 26,
+     "outcomeVector": "dc18da1bc929",
+     "artifactHash": "8ee39387443b"
+    }
+   ],
+   "perUnit": [
+    {
+     "unit": "NUL·Ground",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": true,
+     "markup": false,
+     "probe": "cell's question not answered: marked, everything, adjacent, space, essay (coverage 29%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: absent, found, essay, about, exist (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SIG·Figure",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: Which, names, referent, being, meant (coverage 25%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, bring, being, about, portrait (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "INS·Pattern",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: established, account, essay, instantiate, technical (coverage 15%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SEG·Ground",
+     "kind": "content",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: extent, essay, cover, units, range (coverage 18%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "SYN·Pattern",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, parts, about, compose, relations (coverage 15%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: interpretive, frame, essay, declared, chronicle (coverage 17%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "DEF·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: answers, essay, thesis, several, DECLARED (coverage 22%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "EVA·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: claim, about, grounded, retained, material (coverage 18%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Ground",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: essay, about, concede, frame, arrival (coverage 20%)",
+     "huntPageBest": null,
+     "verified": false
+    },
+    {
+     "unit": "REC·Figure",
+     "kind": "shape",
+     "stage": "field",
+     "words": 26,
+     "distinct": false,
+     "markup": false,
+     "probe": "cell's question not answered: would, essay, about, specific, claim (coverage 22%)",
+     "huntPageBest": null,
+     "verified": false
+    }
+   ],
+   "unitEvidence": [
+    {
+     "unit": "NUL·Ground",
+     "bestCoverage": 29,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SIG·Ground",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "SIG·Figure",
+     "bestCoverage": 38,
+     "clears": true,
+     "bestSnip": "Yu. (2020). \"Invincible Napoleon – the memory of the participant in the battle of Borodino"
+    },
+    {
+     "unit": "INS·Figure",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "INS·Pattern",
+     "bestCoverage": 15,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SEG·Ground",
+     "bestCoverage": 18,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "SYN·Pattern",
+     "bestCoverage": 23,
+     "clears": false,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "DEF·Ground",
+     "bestCoverage": 17,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "DEF·Figure",
+     "bestCoverage": 22,
+     "clears": false,
+     "bestSnip": "Jump to content From Wikipedia, the free encyclopedia 1812 battle of the French invasion o"
+    },
+    {
+     "unit": "EVA·Figure",
+     "bestCoverage": 27,
+     "clears": false,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "REC·Ground",
+     "bestCoverage": 30,
+     "clears": true,
+     "bestSnip": "American Poetry about the Battle of Borodino: Sumner Lincoln Fairfield's Poem, 1821."
+    },
+    {
+     "unit": "REC·Figure",
+     "bestCoverage": 33,
+     "clears": true,
+     "bestSnip": "According to Riehn, so long as the Russian Army existed the French continued to lose. This"
+    }
+   ],
+   "unitsWithAnyClearingEvidence": 5,
+   "provenance": {
+    "schema": "Provenance@2",
+    "events": 30,
+    "sources": 16,
+    "sourceKinds": {
+     "intent": 1,
+     "prior": 1,
+     "unit": 12,
+     "corpus": 1,
+     "verification": 1
+    },
+    "jsonBytes": 19378,
+    "dangling": {
+     "count": 0,
+     "byField": {}
+    },
+    "byteRanges": {
+     "ranged": 12,
+     "misaligned": 0,
+     "outOfBounds": 0,
+     "emptySlices": 0
+    },
+    "lineage": {
+     "intent->prior": true,
+     "prior->read": true,
+     "read->unit": {
+      "linked": 0,
+      "of": 12
+     },
+     "unit->contribution": {
+      "linked": 12,
+      "of": 12
+     },
+     "contributions->fold": false,
+     "fold->verify": false,
+     "verify->materialize": false,
+     "verification source in table": true
+    },
+    "duplicateSourceIdentities": 0,
+    "sourcesReusedByMultipleContributions": 1,
+    "contributionSources": 1,
+    "contributionSourcesWithSubPageAnchor": 0
+   },
+   "ceiling": {
+    "field": {
+     "sources": 1,
+     "groundWords": 13763,
+     "snips": 188,
+     "snipWords": 3234,
+     "snipChars": 19782,
+     "citationMarked": 45,
+     "beats": 173,
+     "refused": 16,
+     "refusedByReason": {
+      "hollow_actor": 1,
+      "repeated_claim": 3,
+      "no_new_matter": 12
+     },
+     "residual": 2,
+     "distinctPlaced": 177,
+     "admittedDistinct": 179,
+     "admittedWords": 3080,
+     "ok": false,
+     "basis": "179 distinct claim(s) folded into 173 beat(s); 16 repeated/thin lost with giver kept; 2 placed in no beat (named, never hidden)"
+    },
+    "structure": {
+     "autofillMaxSnips": 2,
+     "autofillMaxChars": 220,
+     "huntKeepChars": 400,
+     "perUnitMaxChars": 441,
+     "unitCount": 12,
+     "fieldMaxChars": 5292,
+     "charsPerWord": 6.12,
+     "fieldMaxWords": 865,
+     "huntMaxChars": 4800
+    }
+   },
+   "network": {
+    "calls": 0,
+    "cached": 0
+   }
+  }
+ }
+}

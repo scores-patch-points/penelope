@@ -1,0 +1,20 @@
+T-0d 01h 30m 59s|Crew-13|SpaceX|Space Launch Complex 40|Cape Canaveral SFS, FL, USA
+T-0d 04h 38m 53s|Transporter 18 (Dedicated SSO Rideshare)|SpaceX|Space Launch Complex 4E|Vandenberg SFB, CA, USA
+T-0d 14h 13m 53s|NROL-97|SpaceX|Launch Complex 39A|Kennedy Space Center, FL, USA
+T-3d 18h 36m 53s|SDA Tranche 1 Transport Layer A|SpaceX|Space Launch Complex 4E|Vandenberg SFB, CA, USA
+T-5d 13h 43m 53s|NeonSat-2 to 6|Korea Aerospace Research Institute|LC-2|Naro Space Center, South Korea
+T-8d 05h 45m 53s|Unknown Payload|China Aerospace Science and Technology Corporation|Commercial LC-2|Wenchang Space Launch Site, People's Republic of China
+T-9d 09h 20m 53s|Starlink Group 15-25|SpaceX|Space Launch Complex 4E|Vandenberg SFB, CA, USA
+T-12d 03h 20m 53s|IRNSS-1L (NVS-03)|Indian Space Research Organization|Satish Dhawan Space Centre Second Launch Pad|Satish Dhawan Space Centre, India
+T-18d 06h 01m 56s|Martian Moon eXplorer (MMX)|Mitsubishi Heavy Industries|Yoshinobu Launch Complex LP-2|Tanegashima Space Center, Japan
+T-29d 10h 20m 53s|Amazon Leo (LE-04)|Arianespace|Ariane Launch Area 4|Guiana Space Centre, French Guiana
+T-29d 10h 20m 53s|Bandwagon 5 (Dedicated Mid-Inclination Rideshare)|SpaceX|Space Launch Complex 40|Cape Canaveral SFS, FL, USA
+T-29d 10h 20m 53s|Dragon CRS-2 SpX-35|SpaceX|Space Launch Complex 40|Cape Canaveral SFS, FL, USA
+T-29d 10h 20m 53s|Flight 2|China Aerospace Science and Technology Corporation|Long March 12 series Pad|Jiuquan Satellite Launch Center, People's Republic of China
+T-29d 10h 20m 53s|AayulSAT-1A & others|Indian Space Research Organization|Satish Dhawan Space Centre First Launch Pad|Satish Dhawan Space Centre, India
+T-29d 10h 20m 53s|Amazon Leo (LV-01)|United Launch Alliance|Space Launch Complex 41|Cape Canaveral SFS, FL, USA
+T-53d 15h 23m 53s|Progress MS-36 (97P)|Russian Federal Space Agency (ROSCOSMOS)|31/6|Baikonur Cosmodrome, Republic of Kazakhstan
+T-59d 10h 20m 53s|Metop-SG B1|Arianespace|Ariane Launch Area 4|Guiana Space Centre, French Guiana
+T-59d 10h 20m 53s|Griffin Mission One|SpaceX|Launch Complex 39A|Kennedy Space Center, FL, USA
+T-59d 10h 20m 53s|InnoSat-0|Innospace|HANBIT Pad|Alcântara Space Center, Federative Republic of Brazil
+T-59d 10h 20m 53s|Gaganyaan-1|Indian Space Research Organization|Satish Dhawan Space Centre Second Launch Pad|Satish Dhawan Space Centre, India

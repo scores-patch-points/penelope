@@ -1,0 +1,992 @@
+{
+ "schema": "TapestrySpec@1",
+ "woven": "2026-10-02",
+ "title": "PENELOPE",
+ "prefixes": {
+  "o/": "organs/",
+  "g/": "gym/",
+  "l/": "ladder/",
+  "a/": "apps/",
+  "E7/": "../khora/native/",
+  "SP/": "../khora-screenshot-pipeline/native/",
+  "ER7/": "../khora/",
+  "LP/": "../ethos/",
+  "FOLD/": "../the-fold/"
+ },
+ "spine": "VDF › RDU › STL › ( FLD ∨ HNT ∨ MTH ) › SNP › PRB ↺ SPR › TST › SEL › EOT",
+ "threads": [
+  {
+   "id": "VDF",
+   "name": "void",
+   "st": "■",
+   "lvl": 1,
+   "op": "SIG",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "o/generation/engine.mjs",
+    "E7/organs/void-holarchy.js",
+    "GL-EN-10",
+    "GL-EN-16"
+   ]
+  },
+  {
+   "id": "RDU",
+   "name": "read",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-10"
+   ]
+  },
+  {
+   "id": "STL",
+   "name": "settle",
+   "st": "■",
+   "lvl": 1,
+   "op": "DEF",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/generation/adapters/code.mjs",
+    "GL-EN-08"
+   ]
+  },
+  {
+   "id": "FLD",
+   "name": "field",
+   "st": "■",
+   "lvl": 1,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-02",
+    "GL-EN-03"
+   ]
+  },
+  {
+   "id": "HNT",
+   "name": "hunt",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Ground",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-04"
+   ]
+  },
+  {
+   "id": "MTH",
+   "name": "mouth",
+   "st": "■",
+   "lvl": 0,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-05",
+    "GL-LD-05"
+   ]
+  },
+  {
+   "id": "SNP",
+   "name": "snip",
+   "st": "■",
+   "lvl": 1,
+   "op": "SEG",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/adapters/code.mjs",
+    "GL-EN-09",
+    "GL-RT-02"
+   ]
+  },
+  {
+   "id": "PRB",
+   "name": "probe",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-07",
+    "GL-CD-11"
+   ]
+  },
+  {
+   "id": "SPR",
+   "name": "spiral",
+   "st": "■",
+   "lvl": 0,
+   "op": "REC",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-06",
+    "GL-EN-12"
+   ]
+  },
+  {
+   "id": "GAP",
+   "name": "gap",
+   "st": "■",
+   "lvl": 1,
+   "op": "NUL",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "GL-BD-02",
+    "GL-OG-04"
+   ]
+  },
+  {
+   "id": "TST",
+   "name": "test",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-BD-01",
+    "GL-CD-06"
+   ]
+  },
+  {
+   "id": "SEL",
+   "name": "seal",
+   "st": "■",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "a/launch-facing.html",
+    "a/record.json",
+    "GL-BD-01",
+    "GL-BD-04"
+   ]
+  },
+  {
+   "id": "EOT",
+   "name": "record",
+   "st": "■",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-00",
+    "GL-BD-07"
+   ]
+  },
+  {
+   "id": "CGT",
+   "name": "gate",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/consensus-gate.mjs",
+    "GL-OG-02",
+    "GL-OG-03",
+    "GL-BD-05"
+   ]
+  },
+  {
+   "id": "NLB",
+   "name": "null",
+   "st": "■",
+   "lvl": 4,
+   "op": "NUL",
+   "grain": "Ground",
+   "typing": "§",
+   "refs": [
+    "o/consensus-gate.mjs",
+    "E7/organs/measure.js",
+    "GL-01",
+    "GL-OG-02"
+   ]
+  },
+  {
+   "id": "DTF",
+   "name": "detail",
+   "st": "■",
+   "lvl": 2,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/detail-fetch.mjs",
+    "GL-OG-04"
+   ]
+  },
+  {
+   "id": "BHC",
+   "name": "behave",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/behavior-check.mjs",
+    "GL-OG-05",
+    "GL-BD-06"
+   ]
+  },
+  {
+   "id": "FRS",
+   "name": "fresh",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "o/freshness.mjs",
+    "GL-OG-06"
+   ]
+  },
+  {
+   "id": "CUB",
+   "name": "cube",
+   "st": "■",
+   "lvl": 4,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/cube.mjs",
+    "E7/kernel/cube.js",
+    "GL-CB-01"
+   ]
+  },
+  {
+   "id": "LDR",
+   "name": "ladder",
+   "st": "■",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "l/r1-r8.json",
+    "l/r9-r13.json",
+    "l/r9-r13-record.json",
+    "GL-LD-01",
+    "GL-LD-03"
+   ]
+  },
+  {
+   "id": "BOX",
+   "name": "box",
+   "st": "■",
+   "lvl": 4,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "l/mouth-last.json",
+    "l/nomouth-rows.txt",
+    "GL-LD-02",
+    "GL-LD-06",
+    "GL-LD-07"
+   ]
+  },
+  {
+   "id": "CHT",
+   "name": "chat",
+   "st": "■",
+   "lvl": 3,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "g/server.mjs",
+    "g/chat.html",
+    "GL-CH-01",
+    "GL-CH-02"
+   ]
+  },
+  {
+   "id": "BLD",
+   "name": "build",
+   "st": "■",
+   "lvl": 3,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "LOOMS.md",
+    "GL-BD-03",
+    "g/weave-build.mjs",
+    "/api/weave",
+    "GL-WV-07",
+    "GL-WV-12",
+    "o/generation/api.mjs",
+    "o/generation/provenance.mjs",
+    "g/weave-nomodel.mjs",
+    "g/nomodel-prose.mjs",
+    "g/nomodel-summary.mjs",
+    "l/NOMODEL-BOUNDARY.md",
+    "l/nomodel-borodino.json",
+    "GL-WV-15",
+    "GL-WV-16",
+    "GL-WV-17"
+   ]
+  },
+  {
+   "id": "NBK",
+   "name": "book",
+   "st": "■",
+   "lvl": 3,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "g/to-notebook.mjs",
+    "penelope-notebook.ipynb",
+    "GL-NB-01"
+   ]
+  },
+  {
+   "id": "DOR",
+   "name": "door",
+   "st": "■",
+   "lvl": 3,
+   "op": "SEG",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "g/server.mjs",
+    "organs/generation-door.mjs",
+    "GL-RT-01",
+    "GL-RT-04",
+    "/api/chat-stream",
+    "/api/rung",
+    "/api/score",
+    "/api/asks",
+    "/api/ask",
+    "/api/answer",
+    "/chat",
+    "/api/chat",
+    "/api/generate"
+   ]
+  },
+  {
+   "id": "ASK",
+   "name": "ask-back",
+   "st": "■",
+   "lvl": 3,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "g/server.mjs",
+    "g/asks.jsonl",
+    "g/chat.html",
+    "GL-BD-08"
+   ]
+  },
+  {
+   "id": "ADM",
+   "name": "admit",
+   "st": "■",
+   "lvl": 3,
+   "op": "CON",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "g/server.mjs",
+    "ER7/heimdall.mjs",
+    "organs/generation-door.mjs",
+    "GL-CH-03",
+    "GL-RT-03"
+   ]
+  },
+  {
+   "id": "ADC",
+   "name": "code",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/adapters/code.mjs",
+    "GL-EN-01"
+   ]
+  },
+  {
+   "id": "ADP",
+   "name": "prose",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/adapters/prose.mjs",
+    "GL-EN-11",
+    "GL-EN-13",
+    "GL-EN-14"
+   ]
+  },
+  {
+   "id": "LAW",
+   "name": "law",
+   "st": "■",
+   "lvl": 4,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "README.md",
+    "GL-00",
+    "GL-01",
+    "GL-EN-02"
+   ]
+  },
+  {
+   "id": "GLA",
+   "name": "owl",
+   "st": "■",
+   "lvl": 4,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "GLAUCA-EOT.md",
+    "GL-TP-01"
+   ]
+  },
+  {
+   "id": "TAP",
+   "name": "loom",
+   "st": "■",
+   "lvl": 4,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "TAPESTRY.md",
+    "g/tapestry.spec.json",
+    "g/tapestry.legend.json",
+    "g/weave.mjs",
+    "g/unweave.mjs",
+    "g/check-tapestry.mjs",
+    "GL-TP-02"
+   ]
+  },
+  {
+   "id": "LIB",
+   "name": "library",
+   "st": "■",
+   "lvl": 4,
+   "op": "SYN",
+   "grain": "Ground",
+   "typing": "§",
+   "refs": [
+    "LP/derived-priors",
+    "o/GENERATION-INVENTORY.md",
+    "GL-01"
+   ]
+  },
+  {
+   "id": "CDB",
+   "name": "fan",
+   "st": "□",
+   "lvl": 2,
+   "op": "INS",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/code-build.js",
+    "GL-CD-07"
+   ]
+  },
+  {
+   "id": "TKB",
+   "name": "talk",
+   "st": "□",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "E7/organs/talk-build.js",
+    "GL-PS-01"
+   ]
+  },
+  {
+   "id": "BPG",
+   "name": "render",
+   "st": "□",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/adapters/build/belief-page.js",
+    "E7/adapters/build/music-medium.js"
+   ]
+  },
+  {
+   "id": "LOK",
+   "name": "look",
+   "st": "□",
+   "lvl": 1,
+   "op": "SIG",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/look.js",
+    "GL-IM-01"
+   ]
+  },
+  {
+   "id": "HOR",
+   "name": "set-down",
+   "st": "·",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/hora.js",
+    "ER7/CODING-LESSONS.md",
+    "GL-EN-14"
+   ],
+   "ctl": "⊨u ≡ ⊨W"
+  },
+  {
+   "id": "RSM",
+   "name": "resume",
+   "st": "·",
+   "lvl": 2,
+   "op": "REC",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "E7/kernel/artifact.js",
+    "E7/docs/THE-LOG-IS-THE-MEMORY.md",
+    "GL-EN-14"
+   ],
+   "ctl": "resume ≠ run ∨ Δd ≥ 0"
+  },
+  {
+   "id": "KOE",
+   "name": "pointer",
+   "st": "·",
+   "lvl": 1,
+   "op": "SIG",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/output-holograph.js",
+    "GL-EN-14"
+   ],
+   "ctl": "●u ≠ self ∨ ◆u ∉ addr"
+  },
+  {
+   "id": "GAT",
+   "name": "gates",
+   "st": "·",
+   "lvl": 2,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/the-fold/spiral-contract.js",
+    "GL-EN-15"
+   ],
+   "ctl": "↓✗ ∧ ¬revise ∨ ∞revise"
+  },
+  {
+   "id": "RUT",
+   "name": "show",
+   "st": "·",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/build-check.js",
+    "ER7/ONE-PIPELINE.md"
+   ],
+   "ctl": "send∅key ⊨ ok ∨ always ok"
+  },
+  {
+   "id": "PAG",
+   "name": "create",
+   "st": "·",
+   "lvl": 3,
+   "op": "INS",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/hora.js",
+    "LOOMS.md",
+    "GL-BD-03"
+   ],
+   "ctl": "bare(size↑) flat"
+  },
+  {
+   "id": "DEM",
+   "name": "policy",
+   "st": "·",
+   "lvl": 4,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/coding-policy.js",
+    "E7/organs/coding-policy-trial.js"
+   ],
+   "ctl": "twin ≡ held"
+  },
+  {
+   "id": "LFL",
+   "name": "ledger",
+   "st": "·",
+   "lvl": 3,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/long-form.js",
+    "GL-PS-08"
+   ],
+   "ctl": "window ≤ ledger"
+  },
+  {
+   "id": "TER",
+   "name": "tree",
+   "st": "·",
+   "lvl": 3,
+   "op": "SEG",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-PS-09",
+    "GL-OV-02"
+   ],
+   "ctl": "¬gain>0 ∧ homogeneous ¬split"
+  },
+  {
+   "id": "GAR",
+   "name": "fact",
+   "st": "·",
+   "lvl": 0,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/gary.js",
+    "GL-CD-05"
+   ],
+   "ctl": "fact-rewrite pass↓"
+  },
+  {
+   "id": "MAR",
+   "name": "copy",
+   "st": "·",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/martial.js"
+   ],
+   "ctl": "distinct ∉ finding ∨ generic ∈ finding"
+  },
+  {
+   "id": "VIS",
+   "name": "eye",
+   "st": "·",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "SP/organs/visual-pathos.js",
+    "SP/organs/visual-hierarchy.js"
+   ],
+   "ctl": "textless ∈ contrast ∨ flat ∈ pass"
+  },
+  {
+   "id": "SCR",
+   "name": "pixel",
+   "st": "·",
+   "lvl": 1,
+   "op": "SIG",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "SP/docs/SCREENSHOT-PIPELINE.md",
+    "GL-IM-03"
+   ],
+   "ctl": "1 witness applied"
+  },
+  {
+   "id": "APO",
+   "name": "pulse",
+   "st": "·",
+   "lvl": 3,
+   "op": "EVA",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "E7/organs/apollo.js",
+    "E7/organs/thea.js"
+   ],
+   "ctl": "steady alarm ∨ hang ¬alarm"
+  },
+  {
+   "id": "ANS",
+   "name": "answer",
+   "st": "·",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "ER7/CODING-LESSONS.md",
+    "GL-PS-06"
+   ],
+   "ctl": "linked ∧ ¬answers ∧ sealed"
+  },
+  {
+   "id": "POL",
+   "name": "polar",
+   "st": "·",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "ER7/CODING-LESSONS.md",
+    "GL-PS-05"
+   ],
+   "ctl": "negation ∨ swap ∨ numword links"
+  },
+  {
+   "id": "CRV",
+   "name": "curve",
+   "st": "·",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "SP/organs/visual-pathos.js"
+   ],
+   "ctl": "¬measured ∧ verdict"
+  },
+  {
+   "id": "SWT",
+   "name": "swatch",
+   "st": "·",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/generation/engine.mjs"
+   ],
+   "ctl": "∑swatch ≠ ∑{≡ ↻ ●}"
+  },
+  {
+   "id": "KIN",
+   "name": "kind",
+   "st": "·",
+   "lvl": 1,
+   "op": "SIG",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/kernel/kind-induction.js"
+   ],
+   "ctl": "induced ¬beat null"
+  },
+  {
+   "id": "KNL",
+   "name": "null",
+   "st": "·",
+   "lvl": 4,
+   "op": "NUL",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "E7/kernel/entity-kind-induction.js",
+    "GL-LD-07"
+   ],
+   "ctl": "promote(count) ≡ promote(null)"
+  },
+  {
+   "id": "NET",
+   "name": "weave",
+   "st": "·",
+   "lvl": 1,
+   "op": "CON",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "FOLD/network.js"
+   ],
+   "ctl": "arrangement recurs ∧ ¬bound"
+  },
+  {
+   "id": "WND",
+   "name": "window",
+   "st": "■",
+   "lvl": 2,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/window.mjs",
+    "GL-WV-02",
+    "GL-LD-06"
+   ]
+  },
+  {
+   "id": "AGD",
+   "name": "agenda",
+   "st": "■",
+   "lvl": 2,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/agenda-shape.mjs",
+    "GL-WV-03",
+    "GL-OG-04"
+   ]
+  },
+  {
+   "id": "CCL",
+   "name": "council",
+   "st": "■",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "a/council.html",
+    "a/council-control.html",
+    "a/council-facing.html",
+    "a/council-record.json",
+    "g/probe-council.mjs",
+    "GL-WV-01",
+    "/api/council/events",
+    "/api/council/events/"
+   ]
+  },
+  {
+   "id": "STM",
+   "name": "steersman",
+   "st": "·",
+   "lvl": 4,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "LP/derived-priors/concern-priors/concern-fields",
+    "GL-WV-11",
+    "GL-WV-13",
+    "GL-OV-02"
+   ],
+   "ctl": "aporia ∅ ∧ shadow-topics ¬activate ⇒✗"
+  },
+  {
+   "id": "WSN",
+   "name": "html-snip",
+   "st": "■",
+   "lvl": 2,
+   "op": "SEG",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/html-snip.mjs",
+    "GL-RS-01",
+    "GL-EN-09"
+   ]
+  },
+  {
+   "id": "RSR",
+   "name": "resolver",
+   "st": "■",
+   "lvl": 2,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/resolver.mjs",
+    "GL-RS-01",
+    "GL-OG-08"
+   ]
+  },
+  {
+   "id": "STR",
+   "name": "steersman",
+   "st": "·",
+   "lvl": 2,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "GL-WV-13",
+    "GL-OV-02"
+   ],
+   "ctl": "Restored organ fails its recorded controls."
+  },
+  {
+   "id": "VOC",
+   "name": "voice",
+   "st": "·",
+   "lvl": 2,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "GL-WV-13",
+    "GL-OV-02"
+   ],
+   "ctl": "Restored organ fails its recorded controls."
+  },
+  {
+   "id": "OVW",
+   "name": "overview",
+   "st": "■",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/overview.mjs",
+    "o/generation/adapters/overview.mjs",
+    "g/overview.test.mjs",
+    "GL-OV-01"
+   ]
+  }
+ ]
+}

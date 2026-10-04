@@ -1,0 +1,356 @@
+{
+  "schema": "TapestryLegend@1",
+  "note": "Every non-ASCII symbol the tapestry prints is defined here, and every symbol defined here is printed there (gym/check-tapestry.mjs, both directions). The tapestry carries symbols; this file carries the words. One cell each: measured 2026-10-01 in the GitHub code font (gym/glyph-ink.json). Operator glyphs follow organs/cube.mjs: the canon is ∅ ○ ● ｜ ⋈ △ ⊢ ⊨ ↬; ｜ ⋈ ⊢ measure 1.66 / 1.28 / 1.25 cells and would break a framed column, so they print as | → = (the EOT surface marks for cut, bond, define).",
+  "operator": {
+    "∅": {
+      "is": "NUL",
+      "means": "hold the void: declare absence, draw the null, name the gap",
+      "eo": "∅"
+    },
+    "○": {
+      "is": "SIG",
+      "means": "attend: register a difference, sign an origin",
+      "eo": "○"
+    },
+    "●": {
+      "is": "INS",
+      "means": "birth: make an enduring instance",
+      "eo": "●"
+    },
+    "|": {
+      "is": "SEG",
+      "means": "cut: draw or dissolve a boundary",
+      "eo": "｜"
+    },
+    "→": {
+      "is": "CON",
+      "means": "bond: join across a boundary",
+      "eo": "⋈"
+    },
+    "△": {
+      "is": "SYN",
+      "means": "compose: an emergent whole from parts",
+      "eo": "△"
+    },
+    "=": {
+      "is": "DEF",
+      "means": "define: what holds within a frame",
+      "eo": "⊢"
+    },
+    "⊨": {
+      "is": "EVA",
+      "means": "judge: test against the definition",
+      "eo": "⊨"
+    },
+    "↬": {
+      "is": "REC",
+      "means": "restructure the frame when judgment breaks it",
+      "eo": "↬"
+    }
+  },
+  "grain": {
+    "∘": {
+      "is": "Ground",
+      "means": "Void · the hub · 0 · the ambient a figure is read against"
+    },
+    "◆": {
+      "is": "Figure",
+      "means": "Beings · the spokes · n · one difference from its ground"
+    },
+    "◈": {
+      "is": "Pattern",
+      "means": "Fold · the rim · 1 · the difference a figure made to the next ground"
+    }
+  },
+  "mode": {
+    "∩": {
+      "is": "Differentiate",
+      "means": "cut something apart from something"
+    },
+    "≈": {
+      "is": "Relate",
+      "means": "put something beside something"
+    },
+    "∪": {
+      "is": "Generate",
+      "means": "bring something into being"
+    }
+  },
+  "domain": {
+    "∃": {
+      "is": "Existence",
+      "means": "what exists: NUL SIG INS"
+    },
+    "⊞": {
+      "is": "Structure",
+      "means": "how things hang together: SEG CON SYN"
+    },
+    "∀": {
+      "is": "Interpretation",
+      "means": "what the reader holds: DEF EVA REC"
+    }
+  },
+  "face": {
+    "◀": {
+      "is": "ACT",
+      "means": "WHAT is done: mode × domain = the operator"
+    },
+    "▲": {
+      "is": "SITE",
+      "means": "WHERE it lands: domain × grain = the terrain"
+    },
+    "▶": {
+      "is": "STANCE",
+      "means": "HOW it is done: mode × grain = the stance"
+    }
+  },
+  "status": {
+    "■": {
+      "is": "woven",
+      "means": "resident in Penelope, checked against the repo"
+    },
+    "□": {
+      "is": "referenced",
+      "means": "lives in the house, read at home, never forked"
+    },
+    "·": {
+      "is": "unwoven",
+      "means": "a named void: nothing is claimed, only a gap and the control that would falsify it"
+    }
+  },
+  "typing": {
+    "§": {
+      "is": "registered",
+      "means": "the cell typing is in the house's own documents (THE-27-CELLS.md)"
+    },
+    "‡": {
+      "is": "nominated",
+      "means": "this tapestry's own typing of the act; a pointing, never a proof"
+    }
+  },
+  "flow": {
+    "›": {
+      "is": "then",
+      "means": "next in the pipeline"
+    },
+    "∨": {
+      "is": "or",
+      "means": "alternatives; in the pipeline, in order, the first that answers wins"
+    },
+    "↺": {
+      "is": "spiral",
+      "means": "name why, sharpen, re-draw; bounded by a budget"
+    },
+    "↑": {
+      "is": "possibility",
+      "means": "LOW gate: the level below sets what the level above may be"
+    },
+    "↓": {
+      "is": "probability",
+      "means": "HIGH gate: the level above sets how likely the level below is"
+    }
+  },
+  "provenance": {
+    "≡": {
+      "is": "field",
+      "means": "matched in the corpus, by frame, snipped with an address"
+    },
+    "↻": {
+      "is": "hunt",
+      "means": "fetched, extracted, frame-checked, cited"
+    },
+    "✗": {
+      "is": "refused",
+      "means": "typed refusal, shipped as dissent"
+    }
+  },
+  "logic": {
+    "⇒✗": {
+      "is": "falsified-if",
+      "means": "the condition written before it, once observed, kills the thread"
+    },
+    "∧": {
+      "is": "and",
+      "means": "both"
+    },
+    "¬": {
+      "is": "not",
+      "means": "absent"
+    },
+    "≠": {
+      "is": "differs",
+      "means": "not equal"
+    },
+    "≥": {
+      "is": "at-least",
+      "means": "greater or equal"
+    },
+    "≤": {
+      "is": "at-most",
+      "means": "less or equal"
+    },
+    "∈": {
+      "is": "in",
+      "means": "member of"
+    },
+    "∉": {
+      "is": "not-in",
+      "means": "not a member of"
+    },
+    "Δ": {
+      "is": "change",
+      "means": "difference between two runs"
+    },
+    "∞": {
+      "is": "unbounded",
+      "means": "no budget"
+    },
+    "⇒": {
+      "is": "implies",
+      "means": "if then"
+    },
+    "∑": {
+      "is": "count",
+      "means": "how many"
+    }
+  },
+  "frame": {
+    "╔": {
+      "is": "frame",
+      "means": "corner"
+    },
+    "╗": {
+      "is": "frame",
+      "means": "corner"
+    },
+    "╚": {
+      "is": "frame",
+      "means": "corner"
+    },
+    "╝": {
+      "is": "frame",
+      "means": "corner"
+    },
+    "═": {
+      "is": "frame",
+      "means": "edge"
+    },
+    "║": {
+      "is": "frame",
+      "means": "edge"
+    },
+    "╠": {
+      "is": "zone",
+      "means": "zone rule"
+    },
+    "╣": {
+      "is": "zone",
+      "means": "zone rule"
+    },
+    "┌": {
+      "is": "panel",
+      "means": "corner"
+    },
+    "┐": {
+      "is": "panel",
+      "means": "corner"
+    },
+    "└": {
+      "is": "panel",
+      "means": "corner"
+    },
+    "┘": {
+      "is": "panel",
+      "means": "corner"
+    },
+    "├": {
+      "is": "panel",
+      "means": "tee"
+    },
+    "┤": {
+      "is": "panel",
+      "means": "tee"
+    },
+    "┬": {
+      "is": "panel",
+      "means": "tee"
+    },
+    "┴": {
+      "is": "panel",
+      "means": "tee"
+    },
+    "─": {
+      "is": "panel",
+      "means": "rule"
+    },
+    "│": {
+      "is": "panel",
+      "means": "rule"
+    },
+    "┼": {
+      "is": "panel",
+      "means": "cross"
+    },
+    "░": {
+      "is": "selvedge",
+      "means": "the woven edge: light"
+    },
+    "▒": {
+      "is": "selvedge",
+      "means": "the woven edge: mid"
+    },
+    "▓": {
+      "is": "selvedge",
+      "means": "the woven edge: dense"
+    },
+    "╱": {
+      "is": "braid",
+      "means": "strand"
+    },
+    "╲": {
+      "is": "braid",
+      "means": "strand"
+    },
+    "╳": {
+      "is": "braid",
+      "means": "crossing: the operator sits here"
+    },
+    "◇": {
+      "is": "gem",
+      "means": "the hub jewel; Indra's net: every thread is mirrored on the faces, the holons, the helix and the ring"
+    },
+    "▫": {
+      "is": "void",
+      "means": "an empty cell: declared, not yet filled"
+    },
+    "⟨": {
+      "is": "key",
+      "means": "opens the key panel"
+    },
+    "⟩": {
+      "is": "key",
+      "means": "closes the key panel"
+    },
+    "◦": {
+      "is": "ring",
+      "means": "the path of one turn of the wheel: Ground (hub), Figure (spokes), Pattern (rim)"
+    }
+  },
+  "terms": {
+    "key": "every thread, addressed: <status><code> <level> <op><grain> <typing> <name>, then refs, then a condition ⇒✗ for an unwoven thread",
+    "level": {
+      "0": "atom: one framed fragment",
+      "1": "unit: one named part, its own void cell",
+      "2": "artifact: the sealed whole",
+      "3": "loom: chat, build, notebook",
+      "4": "house: ladder, standing rules, the record"
+    },
+    "prefix": "o/ organs/ · g/ gym/ · l/ ladder/ · a/ apps/ · E7/ ../khora/native/ · SP/ ../khora-screenshot-pipeline/native/ · ER7/ ../khora/ · LP/ ../ethos/ · FOLD/ ../the-fold/"
+  },
+  "measure": {
+    "≣": {
+      "is": "order test",
+      "means": "the spine's Kendall t against the helix; p over n seeded shuffles of the same stages (a budget, disclosed)"
+    }
+  }
+}

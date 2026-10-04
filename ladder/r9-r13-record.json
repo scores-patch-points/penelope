@@ -1,0 +1,52 @@
+{
+ "date": "2026-10-01",
+ "organs": [
+  "detail-fetch 4/4",
+  "behavior-check 3/3",
+  "freshness 4/4"
+ ],
+ "rungs": [
+  {
+   "accept": "desc + webcast URL traced from live detail bytes",
+   "result": "box-traced (mouth 0/2: bracket syntax, boolean-leaf) \u2014 path-naming evidence filed, standing at next recurrence",
+   "task": "R9 single detail"
+  },
+  {
+   "accept": "8 rows, planted bad URL gapped at [3], 7 descs traced",
+   "result": "pass",
+   "task": "R10 fanout"
+  },
+  {
+   "accept": "factors pure + cases green through organ",
+   "result": "split: resolveDetail mouth-green (draw 2); filterLaunches mouth 0/3 -> BOX-OWNED standing (same 3-strike rule as fmtAgo)",
+   "task": "R11 factors"
+  },
+  {
+   "accept": "fresh->stale(rows kept,last-good)->expired(rows->gap)",
+   "result": "pass",
+   "task": "R12 refresh/stale"
+  },
+  {
+   "accept": "list + hero detail + search + tick + refresh + stale/expired gap; all rungs re-run vs ship",
+   "result": "pass \u2014 R4/R9/R11(5/5)/R12 green on extracted factors block; R5 gate CALLABLE; syntax both blocks; mouth calls in artifact: 0",
+   "task": "R13 app with teeth"
+  }
+ ],
+ "ship": "launch-exp/launch-r13.html (factors+wiring split \u2014 organ loads factors alone)",
+ "standingAdded": [
+  "filterLaunches shape box-owned (3 mouth strikes)",
+  "apps factor pure logic in a loadable block (organ-driven structure)"
+ ],
+ "fishing-build": {
+  "task": "man-fishing animation, local-only",
+  "date": "2026-10-01",
+  "askBack": "operator answered style (emoji + CSS) via gym /api/ask+answer \u2014 GL-BD-08, first live use",
+  "decomposition": "per-behavior gates scene/man/fish/motion (GL-CD-01); loop addressed app.html correctly once decomposed",
+  "mouth": {
+   "gemma2:2b": "9 rounds \u2014 black-div scene, duplicated <body>, no water, drift to solution.py; walled",
+   "deepseek-r1:8b": "empty draw (700 tok, 0 response)"
+  },
+  "verdict": "RED RUNG \u2192 GL-LD-08: CSS-scene composition is library/box-owned, not a mouth draw",
+  "falsifier": "one 2b/8b draw composing a recognizable scene reopens the shape"
+ }
+}

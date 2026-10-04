@@ -1,0 +1,54 @@
+{
+ "date": "2026-10-01",
+ "mouthLastOrdering": [
+  "1 library (live_priors: layout-priors + priors) — remembered",
+  "2 box compute (trace/sort/format/render/gate) — derived",
+  "3 hunt (fetch feed + comps) — gotten",
+  "4 mouth — LAST resort: budgeted, golden-pair probed; repeated failure promotes the shape to box-computed permanently (fmtAgo precedent: 3 failed draws -> box owns it)"
+ ],
+ "mechanicalInventory": {
+  "compLabel": [
+   "row-order extraction from repeating subtrees (mechanizable; hand labels today, interim)"
+  ],
+  "countdown": [
+   "box duration math + tick (mouth failed; box owns)"
+  ],
+  "feedTrace": [
+   "path + first-of-N + sort key (box)"
+  ],
+  "gap": [
+   "fetch-fail/empty -> named gap (box)"
+  ],
+  "gate": [
+   "ConsensusGate@1 frequency+growth+Hoeffding (box)"
+  ],
+  "render": [
+   "rows from library spec + provenance check (box)"
+  ],
+  "sort": [
+   "comparator on traced key (box; mouth drew wrong key)"
+  ],
+  "timeFormat": [
+   "threshold ladder (mouth failed 3x; box owns)"
+  ],
+  "window": [
+   "next-N dated records + countdown (box; Window@1 selftest 12/12) — generalizes the launch loom box-owned countdown to every dated feed (meetings, court dates, evictions)"
+  ],
+  "agenda": [
+   "ordered action list by the item own declared sequence, declared actions, per-item gaps (box; AgendaShape@1 selftest 4/4)"
+  ],
+  "htmlSnip": [
+   "tag-aware, byte-addressed HTML fragment cut — reuse existing markup, never regenerate (box; HtmlSnip@1 selftest 7/7)"
+  ],
+  "resolver": [
+   "the closed 27-cell taxonomy — every task routed to measure/box/engine/mouth or a named void (box; Resolver@1 selftest 34/34)"
+  ],
+  "codeUnits": "a priori code units the box computes, never the mouth (GL-BD-12, 2026-10-01): clamp lerp toCamelCase toSnakeCase toKebabCase toTitleCase slugify countWords capitalize pluralize formatBytes padStart padEnd fmtDuration — an unowned name is the open residue, drawn"
+ },
+ "mouthResidue": {
+  "feedListApps": "EMPTY — proven by zero-mouth run (20/20 rows, same order/shape/fields, 0 model calls). Falsifier: any feed->list render that cannot be built without a model call.",
+  "mouthKeeps": "only what no file/feed/comp/box-rule says: genuinely new paraphrase, novel names, judgments under uncertainty — each use budgeted + probed, never structural",
+  "councilAgenda": "EMPTY — zero-mouth weave (GL-WV-01): meetings windowed, agendas shaped, 0 model calls; falsifier: any council-class render that cannot be built without a model call"
+ },
+ "proof": "ladder/nomouth-rows.txt (20 rows, 0 model calls) behavior-matches launch-consensus.html"
+}

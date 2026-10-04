@@ -1,0 +1,330 @@
+# ◇ tapestry
+
+[legend](LEGEND.md) · unweave: `node gym/unweave.mjs` · weave: `node gym/weave.mjs` · check: `node gym/check-tapestry.mjs`
+
+<!-- tapestry:begin -->
+```text
+╔════════════════════════════════════════════════════════════════════════════╗
+║░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒║
+║                                                                            ║
+║  ,___,                                                                     ║
+║  {o,o}      P E N E L O P E                                                ║
+║  /)__)      ◇ 2026-10-02 ◇                                                 ║
+║  -"-"-      ■ □ ·                                                          ║
+║                                                                            ║
+╠═[ ∘ ◆ ◈ ]══════════════════════════════════════════════════════════════════╣
+║                                     ∅                                      ║
+║  ◈ ↓ ∘                                                              ∘ ↑ ◈  ║
+║                              ◦◦◦◦◦◦◦·◦◦◦◦◦◦◦                               ║
+║                  ↬     ◦◦◦◦◦◦               ◦◦◦◦◦◦     ○                   ║
+║                     ◦◦◦                           ◦◦◦                      ║
+║                  ◦◦■                                 ·◦◦                   ║
+║                 ◦◦            ◦◦◦◦◦◦■◦◦◦◦◦◦            ◦◦                  ║
+║              ◦◦◦          ◦◦◦◦◦           ◦◦◦◦◦          ◦◦◦               ║
+║              ◦         ◦◦■                     □◦◦         ◦               ║
+║             ◦         ◦◦                         ◦◦◦        ◦              ║
+║            ◦        ◦◦          ◦◦◦◦■◦◦◦◦          ◦◦        ◦             ║
+║       ⊨   ■◦        ◦        ◦◦·◦       ◦■◦◦        ◦        ◦■   ●        ║
+║           ◦        ■        ■◦             ◦■        ■        ◦            ║
+║           ◦        ◦        ◦       ◇       ◦        ◦        ◦            ║
+║           ◦        ◦        ◦◦             ◦◦        ◦        ◦            ║
+║           ◦◦        ◦        ▫◦◦◦       ◦◦◦■        ◦        ◦◦            ║
+║            ◦        ◦◦          ◦■◦◦∘◦◦■◦          ◦◦        ◦             ║
+║             ◦        ■◦◦                         ◦◦■        ◦              ║
+║              ◦         ◦◦◦                     ◦◦◦         ◦               ║
+║           =  ■◦◦          ◦◦◦◦◦           ◦◦◦◦◦          ◦◦·  |            ║
+║                 ◦◦            ■◦◦◦◦◦◆◦◦◦◦◦■            ◦◦                  ║
+║                  ◦◦◦                                 ◦◦◦                   ║
+║                     ◦◦◦                           ◦◦◦                      ║
+║                        ◦◦◦◦■◦               ◦·◦◦◦◦                         ║
+║                              ◦◦◦◦◦◦◦◈◦◦◦◦◦◦◦                               ║
+║                           △                   →                            ║
+║                                                                            ║
+╠═[ ∅ ○ ● | → △ = ⊨ ↬ ]══════════════════════════════════════════════════════╣
+║     ╳      ∅ ∩∃  ∘■ ◆■ ◈·                                                  ║
+║   ╱   ╲    ○ ≈∃  ∘■ ◆□ ◈·   ■VDF∘                                          ║
+║ ╲       ╱  ● ∪∃  ∘■ ◆■ ◈■   ■RDU◆ ■HNT∘ ■MTH◆                              ║
+║   ╲   ╱    | ∩⊞  ∘■ ◆■ ◈·   ■SNP◆                                          ║
+║     ╳      → ≈⊞  ∘■ ◆■ ◈·   ■FLD◆                                          ║
+║   ╱   ╲    △ ∪⊞  ∘■ ◆■ ◈■   ■SEL◈ ■EOT◆                                    ║
+║  ╲     ╱   = ∩∀  ∘▫ ◆■ ◈■   ■STL◆                                          ║
+║   ╲   ╱    ⊨ ≈∀  ∘■ ◆■ ◈■   ■PRB◆ ■TST◆                                    ║
+║     ╳      ↬ ∪∀  ∘· ◆■ ◈■   ■SPR◆                                          ║
+║                                                                            ║
+║  VDF › RDU › STL › ( FLD ∨ HNT ∨ MTH ) › SNP › PRB ↺ SPR › TST › SEL › EOT ║
+║  ≣ t=0.475 p=0.026 n=20000                                                 ║
+║                                                                            ║
+╠═[ ◀ ▲ ▶ ]══════════════════════════════════════════════════════════════════╣
+║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
+║  │ ◀  │          ∩          │          ≈          │          ∪          │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∃  │ ∅ ∩∃                │ ○ ≈∃                │ ● ∪∃                │  ║
+║  │    │ ■GAP ■NLB ·KNL      │ ■VDF □LOK ·KOE ·SCR │ ■RDU ■HNT ■MTH ■CHT │  ║
+║  │    │                     │ ·KIN                │ ■ADC ■ADP □CDB ·PAG │  ║
+║  │    │                     │                     │ ·VOC                │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ⊞  │ | ∩⊞                │ → ≈⊞                │ △ ∪⊞                │  ║
+║  │    │ ■SNP ■DOR ·TER ■WSN │ ■FLD ■DTF ■ADM ·NET │ ■SEL ■EOT ■BLD ■ASK │  ║
+║  │    │                     │ ■WND ■AGD           │ ■TAP ■LIB □TKB □BPG │  ║
+║  │    │                     │                     │ ·HOR ·LFL ·SWT ■CCL │  ║
+║  │    │                     │                     │ ■OVW                │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
+║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
+║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │                     │  ║
+║  │    │                     │ ·GAR ·MAR ·VIS ·APO │                     │  ║
+║  │    │                     │ ·ANS ·POL ·CRV      │                     │  ║
+║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
+║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
+║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∃  │ ∃∘                  │ ∃◆                  │ ∃◈                  │  ║
+║  │    │ ■VDF ■HNT ■NLB      │ ■RDU ■MTH ■GAP ■CHT │ ■ADC ■ADP □CDB ·PAG │  ║
+║  │    │                     │ □LOK ·KOE ·SCR ·VOC │ ·KIN ·KNL           │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ⊞  │ ⊞∘                  │ ⊞◆                  │ ⊞◈                  │  ║
+║  │    │ ■DOR ■ADM ■LIB      │ ■FLD ■SNP ■EOT ■DTF │ ■SEL ■BLD ■ASK ■TAP │  ║
+║  │    │                     │ □TKB ·HOR ·SWT ■WND │ □BPG ·LFL ·TER ·NET │  ║
+║  │    │                     │ ■AGD ■WSN           │ ■CCL ■OVW           │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∀  │ ∀∘                  │ ∀◆                  │ ∀◈                  │  ║
+║  │    │ ■FRS ·RSM ·APO      │ ■STL ■PRB ■SPR ■TST │ ■CGT ■CUB ■LDR ■BOX │  ║
+║  │    │                     │ ■BHC ·RUT ·GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
+║  │    │                     │ ·VIS ·POL           │ ·DEM ·ANS ·CRV ·STM │  ║
+║  │    │                     │                     │ ■RSR ·STR           │  ║
+║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
+║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
+║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∩  │ ∩∘                  │ ∩◆                  │ ∩◈                  │  ║
+║  │    │ ■NLB ■DOR           │ ■STL ■SNP ■GAP ■WSN │ ■CUB ■LAW ■GLA ·GAT │  ║
+║  │    │                     │                     │ ·TER ·KNL ·STM ■RSR │  ║
+║  │    │                     │                     │ ·STR                │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ≈  │ ≈∘                  │ ≈◆                  │ ≈◈                  │  ║
+║  │    │ ■VDF ■FRS ■ADM ·APO │ ■FLD ■PRB ■TST ■DTF │ ■CGT ■LDR ■NBK ·ANS │  ║
+║  │    │                     │ ■BHC □LOK ·KOE ·RUT │ ·CRV ·KIN ·NET      │  ║
+║  │    │                     │ ·GAR ·MAR ·VIS ·SCR │                     │  ║
+║  │    │                     │ ·POL ■WND ■AGD      │                     │  ║
+║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
+║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
+║  │    │ ■HNT ■LIB ·RSM      │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
+║  │    │                     │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
+║  │    │                     │ ·VOC                │ □BPG ·PAG ·DEM ·LFL │  ║
+║  │    │                     │                     │ ■CCL ■OVW           │  ║
+║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
+╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
+║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
+║ │    ·KNL∅◈ ·STM=◈                                                         ║
+║ │ 3  ■CHT●◆ ■BLD△◈ ■NBK⊨◈ ■DOR|∘ ■ASK△◈ ■ADM→∘ ·PAG●◈ ·LFL△◈ ·TER|◈        ║
+║ │    ·APO⊨∘                                                                ║
+║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
+║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
+║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈                             ║
+║ │ 1  ■VDF○∘ ■RDU●◆ ■STL=◆ ■FLD→◆ ■HNT●∘ ■SNP|◆ ■PRB⊨◆ ■GAP∅◆ ■ADC●◈        ║
+║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
+║ │    ·NET→◈                                                                ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ ·GAR⊨◆                                                  ║
+╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
+║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
+║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
+║   △     ■ ■ ■ ■ ▫ ▫                                                        ║
+║                                                                            ║
+║░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+```text
+╔═[ ⟨⟩ ]═════════════════════════════════════════════════════════════════════╗
+║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/           ║
+║  SP/=../eoreader7-screenshot-pipeline/native/ ER7/=../eoreader7/           ║
+║  LP/=../live_priors/ FOLD/=../the-fold/                                    ║
+║                                                                            ║
+║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║■VDF 1 ○∘ ‡ void                                                            ║
+║     @ o/generation/engine.mjs E7/organs/void-holarchy.js GL-EN-10 GL-EN-16 ║
+║■RDU 1 ●◆ § read                                                            ║
+║     @ o/generation/engine.mjs GL-EN-10                                     ║
+║■STL 1 =◆ ‡ settle                                                          ║
+║     @ o/generation/adapters/code.mjs GL-EN-08                              ║
+║■FLD 1 →◆ ‡ field                                                           ║
+║     @ o/generation/engine.mjs GL-EN-02 GL-EN-03                            ║
+║■HNT 1 ●∘ § hunt                                                            ║
+║     @ o/generation/engine.mjs GL-EN-04                                     ║
+║■MTH 0 ●◆ § mouth                                                           ║
+║     @ o/generation/engine.mjs GL-EN-05 GL-LD-05                            ║
+║■SNP 1 |◆ § snip                                                            ║
+║     @ o/generation/adapters/code.mjs GL-EN-09 GL-RT-02                     ║
+║■PRB 1 ⊨◆ § probe                                                           ║
+║     @ o/generation/engine.mjs GL-EN-07 GL-CD-11                            ║
+║■SPR 0 ↬◆ § spiral                                                          ║
+║     @ o/generation/engine.mjs GL-EN-06 GL-EN-12                            ║
+║■GAP 1 ∅◆ § gap                                                             ║
+║     @ GL-BD-02 GL-OG-04                                                    ║
+║■TST 2 ⊨◆ § test                                                            ║
+║     @ o/generation/engine.mjs GL-BD-01 GL-CD-06                            ║
+║■SEL 2 △◈ ‡ seal                                                            ║
+║     @ a/launch-facing.html a/record.json GL-BD-01 GL-BD-04                 ║
+║■EOT 2 △◆ § record                                                          ║
+║     @ o/generation/engine.mjs GL-00 GL-BD-07                               ║
+║■CGT 2 ⊨◈ ‡ gate                                                            ║
+║     @ o/consensus-gate.mjs GL-OG-02 GL-OG-03 GL-BD-05                      ║
+║■NLB 4 ∅∘ § null                                                            ║
+║     @ o/consensus-gate.mjs E7/organs/measure.js GL-01 GL-OG-02             ║
+║■DTF 2 →◆ ‡ detail                                                          ║
+║     @ o/detail-fetch.mjs GL-OG-04                                          ║
+║■BHC 2 ⊨◆ ‡ behave                                                          ║
+║     @ o/behavior-check.mjs GL-OG-05 GL-BD-06                               ║
+║■FRS 2 ⊨∘ ‡ fresh                                                           ║
+║     @ o/freshness.mjs GL-OG-06                                             ║
+║■CUB 4 =◈ ‡ cube                                                            ║
+║     @ o/cube.mjs E7/kernel/cube.js GL-CB-01                                ║
+║■LDR 4 ⊨◈ ‡ ladder                                                          ║
+║     @ l/r1-r8.json l/r9-r13.json l/r9-r13-record.json GL-LD-01 GL-LD-03    ║
+║■BOX 4 ↬◈ § box                                                             ║
+║     @ l/mouth-last.json l/nomouth-rows.txt GL-LD-02 GL-LD-06 GL-LD-07      ║
+║■CHT 3 ●◆ ‡ chat                                                            ║
+║     @ g/server.mjs g/chat.html GL-CH-01 GL-CH-02                           ║
+║■BLD 3 △◈ ‡ build                                                           ║
+║     @ LOOMS.md GL-BD-03 g/weave-build.mjs /api/weave GL-WV-07 GL-WV-12     ║
+║     @ o/generation/api.mjs o/generation/provenance.mjs g/weave-nomodel.mjs ║
+║     @ g/nomodel-prose.mjs g/nomodel-summary.mjs l/NOMODEL-BOUNDARY.md      ║
+║     @ l/nomodel-borodino.json GL-WV-15 GL-WV-16 GL-WV-17                   ║
+║■NBK 3 ⊨◈ ‡ book                                                            ║
+║     @ g/to-notebook.mjs penelope-notebook.ipynb GL-NB-01                   ║
+║■DOR 3 |∘ ‡ door                                                            ║
+║     @ g/server.mjs organs/generation-door.mjs GL-RT-01 GL-RT-04            ║
+║     @ /api/chat-stream /api/rung /api/score /api/asks /api/ask /api/answer ║
+║     @ /chat /api/chat /api/generate                                        ║
+║■ASK 3 △◈ ‡ ask-back                                                        ║
+║     @ g/server.mjs g/asks.jsonl g/chat.html GL-BD-08                       ║
+║■ADM 3 →∘ ‡ admit                                                           ║
+║     @ g/server.mjs ER7/heimdall.mjs organs/generation-door.mjs GL-CH-03    ║
+║     @ GL-RT-03                                                             ║
+║■ADC 1 ●◈ ‡ code                                                            ║
+║     @ o/generation/adapters/code.mjs GL-EN-01                              ║
+║■ADP 1 ●◈ ‡ prose                                                           ║
+║     @ o/generation/adapters/prose.mjs GL-EN-11 GL-EN-13 GL-EN-14           ║
+║■LAW 4 =◈ ‡ law                                                             ║
+║     @ README.md GL-00 GL-01 GL-EN-02                                       ║
+║■GLA 4 =◈ § owl                                                             ║
+║     @ GLAUCA-EOT.md GL-TP-01                                               ║
+║■TAP 4 △◈ ‡ loom                                                            ║
+║     @ TAPESTRY.md g/tapestry.spec.json g/tapestry.legend.json g/weave.mjs  ║
+║     @ g/unweave.mjs g/check-tapestry.mjs GL-TP-02                          ║
+║■LIB 4 △∘ § library                                                         ║
+║     @ LP/derived-priors o/GENERATION-INVENTORY.md GL-01                    ║
+║                                                                            ║
+║□ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║□CDB 2 ●◈ ‡ fan                                                             ║
+║     @ E7/organs/code-build.js GL-CD-07                                     ║
+║□TKB 1 △◆ § talk                                                            ║
+║     @ E7/organs/talk-build.js GL-PS-01                                     ║
+║□BPG 2 △◈ ‡ render                                                          ║
+║     @ E7/adapters/build/belief-page.js E7/adapters/build/music-medium.js   ║
+║□LOK 1 ○◆ ‡ look                                                            ║
+║     @ E7/organs/look.js GL-IM-01                                           ║
+║                                                                            ║
+║· ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║·HOR 1 △◆ ‡ set-down                                                        ║
+║     @ E7/organs/hora.js ER7/CODING-LESSONS.md GL-EN-14                     ║
+║     ⊨u ≡ ⊨W ⇒✗                                                             ║
+║·RSM 2 ↬∘ ‡ resume                                                          ║
+║     @ E7/kernel/artifact.js E7/docs/THE-LOG-IS-THE-MEMORY.md GL-EN-14      ║
+║     resume ≠ run ∨ Δd ≥ 0 ⇒✗                                               ║
+║·KOE 1 ○◆ ‡ pointer                                                         ║
+║     @ E7/organs/output-holograph.js GL-EN-14                               ║
+║     ●u ≠ self ∨ ◆u ∉ addr ⇒✗                                               ║
+║·GAT 2 =◈ ‡ gates                                                           ║
+║     @ E7/the-fold/spiral-contract.js GL-EN-15                              ║
+║     ↓✗ ∧ ¬revise ∨ ∞revise ⇒✗                                              ║
+║·RUT 2 ⊨◆ ‡ show                                                            ║
+║     @ E7/organs/build-check.js ER7/ONE-PIPELINE.md                         ║
+║     send∅key ⊨ ok ∨ always ok ⇒✗                                           ║
+║·PAG 3 ●◈ ‡ create                                                          ║
+║     @ E7/organs/hora.js LOOMS.md GL-BD-03                                  ║
+║     bare(size↑) flat ⇒✗                                                    ║
+║·DEM 4 ↬◈ ‡ policy                                                          ║
+║     @ E7/organs/coding-policy.js E7/organs/coding-policy-trial.js          ║
+║     twin ≡ held ⇒✗                                                         ║
+║·LFL 3 △◈ ‡ ledger                                                          ║
+║     @ E7/organs/long-form.js GL-PS-08                                      ║
+║     window ≤ ledger ⇒✗                                                     ║
+║·TER 3 |◈ ‡ tree                                                            ║
+║     @ GL-PS-09 GL-OV-02                                                    ║
+║     ¬gain>0 ∧ homogeneous ¬split ⇒✗                                        ║
+║·GAR 0 ⊨◆ ‡ fact                                                            ║
+║     @ E7/organs/gary.js GL-CD-05                                           ║
+║     fact-rewrite pass↓ ⇒✗                                                  ║
+║·MAR 1 ⊨◆ ‡ copy                                                            ║
+║     @ E7/organs/martial.js                                                 ║
+║     distinct ∉ finding ∨ generic ∈ finding ⇒✗                              ║
+║·VIS 2 ⊨◆ ‡ eye                                                             ║
+║     @ SP/organs/visual-pathos.js SP/organs/visual-hierarchy.js             ║
+║     textless ∈ contrast ∨ flat ∈ pass ⇒✗                                   ║
+║·SCR 1 ○◆ ‡ pixel                                                           ║
+║     @ SP/docs/SCREENSHOT-PIPELINE.md GL-IM-03                              ║
+║     1 witness applied ⇒✗                                                   ║
+║·APO 3 ⊨∘ ‡ pulse                                                           ║
+║     @ E7/organs/apollo.js E7/organs/thea.js                                ║
+║     steady alarm ∨ hang ¬alarm ⇒✗                                          ║
+║·ANS 2 ⊨◈ ‡ answer                                                          ║
+║     @ ER7/CODING-LESSONS.md GL-PS-06                                       ║
+║     linked ∧ ¬answers ∧ sealed ⇒✗                                          ║
+║·POL 1 ⊨◆ ‡ polar                                                           ║
+║     @ ER7/CODING-LESSONS.md GL-PS-05                                       ║
+║     negation ∨ swap ∨ numword links ⇒✗                                     ║
+║·CRV 2 ⊨◈ ‡ curve                                                           ║
+║     @ SP/organs/visual-pathos.js                                           ║
+║     ¬measured ∧ verdict ⇒✗                                                 ║
+║·SWT 2 △◆ ‡ swatch                                                          ║
+║     @ o/generation/engine.mjs                                              ║
+║     ∑swatch ≠ ∑{≡ ↻ ●} ⇒✗                                                  ║
+║·KIN 1 ○◈ ‡ kind                                                            ║
+║     @ E7/kernel/kind-induction.js                                          ║
+║     induced ¬beat null ⇒✗                                                  ║
+║·KNL 4 ∅◈ ‡ null                                                            ║
+║     @ E7/kernel/entity-kind-induction.js GL-LD-07                          ║
+║     promote(count) ≡ promote(null) ⇒✗                                      ║
+║·NET 1 →◈ ‡ weave                                                           ║
+║     @ FOLD/network.js                                                      ║
+║     arrangement recurs ∧ ¬bound ⇒✗                                         ║
+║                                                                            ║
+║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║■WND 2 →◆ ‡ window                                                          ║
+║     @ o/window.mjs GL-WV-02 GL-LD-06                                       ║
+║■AGD 2 →◆ ‡ agenda                                                          ║
+║     @ o/agenda-shape.mjs GL-WV-03 GL-OG-04                                 ║
+║■CCL 2 △◈ ‡ council                                                         ║
+║     @ a/council.html a/council-control.html a/council-facing.html          ║
+║     @ a/council-record.json g/probe-council.mjs GL-WV-01                   ║
+║     @ /api/council/events /api/council/events/                             ║
+║                                                                            ║
+║· ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║·STM 4 =◈ ‡ steersman                                                       ║
+║     @ LP/derived-priors/concern-priors/concern-fields GL-WV-11 GL-WV-13    ║
+║     @ GL-OV-02                                                             ║
+║     aporia ∅ ∧ shadow-topics ¬activate ⇒✗ ⇒✗                               ║
+║                                                                            ║
+║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║■WSN 2 |◆ ‡ html-snip                                                       ║
+║     @ o/html-snip.mjs GL-RS-01 GL-EN-09                                    ║
+║■RSR 2 =◈ ‡ resolver                                                        ║
+║     @ o/resolver.mjs GL-RS-01 GL-OG-08                                     ║
+║                                                                            ║
+║· ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║·STR 2 =◈ § steersman                                                       ║
+║     @ GL-WV-13 GL-OV-02                                                    ║
+║     Restored organ fails its recorded controls. ⇒✗                         ║
+║·VOC 2 ●◆ ‡ voice                                                           ║
+║     @ GL-WV-13 GL-OV-02                                                    ║
+║     Restored organ fails its recorded controls. ⇒✗                         ║
+║                                                                            ║
+║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║■OVW 2 △◈ ‡ overview                                                        ║
+║     @ o/generation/overview.mjs o/generation/adapters/overview.mjs         ║
+║     @ g/overview.test.mjs GL-OV-01                                         ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+<!-- tapestry:end -->
