@@ -21,10 +21,10 @@ import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = "/Users/mlacy/Documents/3.0";
-const SCAN = [path.join(ROOT, "eoreader7/native"), path.join(ROOT, "the-fold")];
+const SCAN = [path.join(ROOT, "khora/native"), path.join(ROOT, "holodeck")];
 const MANIFEST = path.join(ROOT, "eo-teachings/manifest");
-const CENSUS = path.join(ROOT, "eoreader7/native/docs/THE-MODULE-CENSUS.md");
-const { cellOf, GRAINS } = await import(`${ROOT}/eoreader7/native/kernel/cube.js`);
+const CENSUS = path.join(ROOT, "khora/native/docs/THE-MODULE-CENSUS.md");
+const { cellOf, GRAINS } = await import(`${ROOT}/khora/native/kernel/cube.js`);
 const OPS = ["NUL", "SIG", "INS", "SEG", "CON", "SYN", "DEF", "EVA", "REC"];
 
 const SKIP = /node_modules|\/worktrees\/|\/tests?\/|\/eval\/|\.test\.|legacy-eoreader6\.1/;
@@ -101,7 +101,7 @@ export function computeSelf({ readDate = null } = {}) {
 
   // an organ's tests are its FALSIFIABLE behaviour (FOLD II.10) — attached so the
   // self-model knows not just what each archon teaches but what it is proven to do.
-  const TEST_DIRS = [path.join(ROOT, "eoreader7/native/tests"), path.join(ROOT, "eoreader7/native/conformance"), path.join(ROOT, "the-fold")];
+  const TEST_DIRS = [path.join(ROOT, "khora/native/tests"), path.join(ROOT, "khora/native/conformance"), path.join(ROOT, "holodeck")];
   const allTests = TEST_DIRS.flatMap((d) => fs.existsSync(d) ? fs.readdirSync(d).filter((f) => /\.test\.m?js$/.test(f)).map((f) => ({ base: f, path: rel(path.join(d, f)) })) : []);
   const testsFor = (organFile) => {
     const stem = path.basename(organFile).replace(/\.m?js$/, "");

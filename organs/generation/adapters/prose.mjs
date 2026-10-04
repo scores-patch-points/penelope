@@ -24,7 +24,7 @@ import { draw } from "../engine.mjs";
 
 const require = createRequire(import.meta.url);
 // eoreader7 is a sibling checkout (../eoreader7); ER7_HOME overrides it.
-const ER7 = process.env.ER7_HOME ?? decodeURIComponent(new URL("../../../../eoreader7", import.meta.url).pathname);
+const ER7 = process.env.ER7_HOME ?? decodeURIComponent(new URL("../../../../khora", import.meta.url).pathname);
 let organs = null;
 let composedReader = null;
 try {
@@ -248,6 +248,55 @@ export async function readUnits(task) {
   return units;
 }
 
+// ── THE VOID, READ WITH A HUNT (GL-CD-10, prose): when the first reading draws
+// no cells, the subject's own record is hunted and the void is BORN FROM WHAT
+// WAS FOUND — the reading + referents of the hunted material feed voidCellsFor
+// again, so a prose void is either resolved by evidence or returned well-defined
+// (a named gap with what would satisfy it and the hunt disclosed). A failed hunt
+// names the void; it never fabricates. Mirrors the code adapter's readVoid. ──
+export async function readVoid(task, ctx = {}) {
+  const reason = "the first reading drew no cells — the subject's record yielded nothing to enumerate";
+  const satisfy = "void cells {op,grain,question} that the subject's own material supports";
+  let url = null, text = null;
+  try {
+    if (!web) web = (await import("../../../../khora/native/the-fold/surf.js")).liveWeb();
+    const s = await web.search(task);
+    for (const hit of (s.results ?? []).slice(0, 3)) {
+      const f = await web.fetch(hit.url);
+      const t = String(f?.text ?? "").replace(/\s+/g, " ").trim();
+      // THE HUNT KEEPS CLEAN PROSE, NEVER BINARY OR A MACHINE PAGE: a fetched
+      // PDF/PS body or a control-byte run would seed the shadow with garbage
+      // the autofill would then snip as "ground" (measured 2026-10-04). A
+      // void-born material must read like prose a relation reader can reduce.
+      const looksBinary = /[\x00-\x08\x0e-\x1f]/.test(t) || /^%PDF|^%!PS/i.test(t.trim()) || t.includes("\ufffd");
+      const words = (t.match(/[A-Za-z]{3,}/g) || []).length;
+      if (!looksBinary && t.length >= 240 && words >= 40) { url = hit.url; text = t.slice(0, 8000); break; }
+    }
+  } catch { /* hunt is best-effort; a failed hunt is a disclosed gap */ }
+  if (!text) return { units: [], gap: { kind: "reading-void", reason, satisfy, hunted: url ?? null } };
+  ctx.shadow = ctx.shadow ?? new Map();
+  ctx.shadow.set(url, text);
+  // THE VOID BORN FROM THE HUNT: the reading and referents are the hunted
+  // material's own, and voidCellsFor re-derives the cells against them — the
+  // void is born from what was found, never a fixed count (document-ledger's
+  // own born gate).
+  const { topicPhrase } = organs;
+  const subject = topicPhrase(task);
+  let reading = null, shadowReferents = [];
+  if (composedReader) {
+    try {
+      const read = composedReader.composedRelations(text, {});
+      reading = { relations: (read?.relations ?? []).slice(0, 60), basis: read?.basis ?? "composed relation reader" };
+      const refs = composedReader.buildReferents ? composedReader.buildReferents(text) : null;
+      shadowReferents = refs ? (refs.index?.referents ?? []).slice(0, 8).map((r) => refs.represent(r)).filter((x) => x && String(x).length >= 3) : [];
+    } catch { /* reading best-effort — cells fall back to the canonical set */ }
+  }
+  const { cells } = organs.voidCellsFor({ topic: subject, question: task, shadowReferents, reading });
+  const units = (cells ?? []).filter((c) => c.question && c.relevant).map((c) => ({ name: `${c.op}·${c.grain}`, spec: c.question, settle: null, cell: c }));
+  if (units.length) return { units, reason, satisfy, source: url, material: text.length };
+  return { units: [], gap: { kind: "reading-void", reason, satisfy, hunted: url } };
+}
+
 // ── THE FIELD (autofill): a unit the field already holds is snipped from the
 // retained sources (the shadow), by frame (relevance), never by name ──
 export function autofill(unit, ctx) {
@@ -273,14 +322,24 @@ export async function hunt(unit, ctx) {
     const s = await web.search(unit.spec);
     const results = (s.results ?? []).slice(0, 3);
     if (!results.length) return null;
-    const url = results[0].url;
-    const fetched = await web.fetch(url);
-    const text = fetched?.text ?? "";
-    const code = String(text ?? "").replace(/\s+/g, " ").slice(0, 400);
-    if (code.length < 40) return null;
-    ctx.shadow = ctx.shadow ?? new Map();
-    ctx.shadow.set(url, code);
-    return { code, url };
+    for (const hit of results) {
+      const url = hit.url;
+      const fetched = await web.fetch(url);
+      const text = fetched?.text ?? "";
+      const code = String(text ?? "").replace(/\s+/g, " ").slice(0, 400);
+      // THE HUNT KEEPS CLEAN PROSE (the readVoid discipline): a PDF/PS body or
+      // a control-byte run would seed the shadow with garbage the autofill
+      // would then snip as "ground" — a hunt landing is material the fold can
+      // re-admit, never bytes that only look like it.
+      const looksBinary = /[\x00-\x08\x0e-\x1f]/.test(code) || /^%PDF|^%!PS/i.test(code.trim()) || code.includes("\ufffd");
+      const words = (code.match(/[A-Za-z]{3,}/g) || []).length;
+      if (code.length >= 40 && !looksBinary && words >= 6) {
+        ctx.shadow = ctx.shadow ?? new Map();
+        ctx.shadow.set(url, code);
+        return { code, url };
+      }
+    }
+    return null;
   } catch (e) {
     return null;
   }
@@ -400,6 +459,7 @@ export default {
   kind: "prose",
   ext: "html",
   readUnits,
+  readVoid,
   autofill,
   hunt,
   mouthFragment,

@@ -156,7 +156,7 @@ export function groundOutput(text, sources, { minWords = 8 } = {}) {
 
 export function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
-  const REP = "/Users/mlacy/Documents/3.0/live_priors/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = "/Users/mlacy/Documents/3.0/ethos/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
   // a real byte address: the waxen-tablet sentence's own bytes
   const src = fs.readFileSync(REP, "utf8");
   const start = src.indexOf("The waxen tablet of the memory");
