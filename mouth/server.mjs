@@ -14,6 +14,11 @@
 //   POST /api/embed        — bridge wire (kind=embed, embeddings)
 //   POST /v1/chat/completions, /v1/embeddings — wire aliases (default-deny body)
 //   GET  /v1/mouth/status  — schema, house rules, lane availability
+//   POST /api/weave        — THE GENERATION DOOR (2026-10-04): the fold's
+//                            generate lane reaches penelope's generation here.
+//                            The mouth decides draws; the weave orchestrates
+//                            generation (read units → field/hunt → mouth →
+//                            test → EOT). Both are penelope's — one server.
 // Everything else: 404, never a silent pass.
 //
 // Identity rides headers (x-er7-user / x-er7-caller), the house rule; a
@@ -195,6 +200,28 @@ export function startMouth({ port = MOUTH_PORT } = {}) {
         const admission = admit(identityFor(req), { log: drawLog.get(identityFor(req)) ?? [], now: Date.now(), hop: hopOf(req) });
         if (!admission.ok) return json(res, admission.status, { error: admission.reason, retryAfterMs: admission.retryAfterMs }, { "retry-after": Math.ceil(admission.retryAfterMs / 1000) });
         return json(res, 200, { ok: true, mouth: MOUTH_SCHEMA });
+      }
+      // THE GENERATION DOOR: penelope's weave() over HTTP — the fold surfaces'
+      // generate lane. The mouth's admission does not gate an ORCHESTRATION
+      // (the weave owns its own retries and draws through the door below);
+      // the weave's internal draws each enter the mouth as usual.
+      if (req.method === "POST" && path === "/api/weave") {
+        let raw;
+        try { raw = await readBody(req); } catch { return json(res, 400, { error: "bad request" }); }
+        let j = {};
+        try { j = JSON.parse(raw.toString() || "{}"); } catch { return json(res, 400, { error: "bad json" }); }
+        const { weave } = await import("../organs/generation/api.mjs");
+        const result = await weave({
+          intent: j.intent,
+          artifact: j.artifact,
+          constraints: j.constraints,
+          context: j.context,
+          verification: j.verification,
+          model: j.model,
+          noModel: j.noModel === true,
+          output: j.output ?? null,
+        }).catch((e) => ({ schema: "Weaving@1", ok: false, status: "error", error: String(e?.message ?? e).slice(0, 500) }));
+        return json(res, result.ok ? 200 : 422, result);
       }
       if (req.method !== "POST") return json(res, 404, { error: "default-deny" });
       if (path === "/v1/draw") return await handleDraw(req, res);

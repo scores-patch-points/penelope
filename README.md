@@ -177,9 +177,9 @@ append-only, always revisable).
 
 ```text
 ╔═[ ⟨⟩ ]═════════════════════════════════════════════════════════════════════╗
-║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/           ║
-║  SP/=../eoreader7-screenshot-pipeline/native/ ER7/=../eoreader7/           ║
-║  LP/=../live_priors/ FOLD/=../the-fold/                                    ║
+║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/               ║
+║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/ LP/=../ethos/     ║
+║  FOLD/=../the-fold/                                                        ║
 ║                                                                            ║
 ║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║■VDF 1 ○∘ ‡ void                                                            ║
