@@ -187,7 +187,7 @@ async function fillUnits(units, adapter, ctx = {}) {
 
 // ── THE PIPELINE ────────────────────────────────────────────────────────────
 export async function arrange({ task, args = {}, adapter, context = {} }) {
-  const outDir = path.resolve(args.out || path.join(HERE, "..", "arrangement-out"));
+  const outDir = path.resolve(args.out || process.env.PENELOPE_ARRANGEMENT_DIR || path.join(HERE, "..", "arrangement-out"));
   fs.mkdirSync(outDir, { recursive: true });
 
   console.log(`

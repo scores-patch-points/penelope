@@ -22,11 +22,28 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const SWATCH = path.join(HERE, "..", "gym", "swatch.jsonl");
+// THE RECORD PATH (2026-10-05): repo-relative by default; PENELOPE_RECORD_FILE
+// relocates it (a mounted Fold keeps state outside the checkout). Resolved per
+// append, so a host that sets it after import is still honoured.
+const DEFAULT_SWATCH = path.join(HERE, "..", "gym", "swatch.jsonl");
+const recordFile = () => (process.env.PENELOPE_RECORD_FILE ? path.resolve(process.env.PENELOPE_RECORD_FILE) : DEFAULT_SWATCH);
+const SWATCH = recordFile();
 // The mouth (PENELOPE_MOUTH_URL) is THE draw entry: the door checks the box,
 // then draws the residue THROUGH THE MOUTH, which admits and forwards to
 // Heimdall's channel (the bridge). The door never draws past her.
 const MOUTH = String(process.env.PENELOPE_MOUTH_URL ?? "http://127.0.0.1:11439").replace(/\/+$/, "");
+// THE MOUTH TRANSPORT SEAM (2026-10-05): the door reaches the mouth through ONE
+// function, (request) -> fetch-style Response. Default: HTTP to PENELOPE_MOUTH_URL.
+// A host that mounts penelope in-process (the Fold) installs the mouth's own
+// transport, so the draw skips the self-HTTP hop but runs the same admit +
+// route + bridge. setMouthTransport(fn) returns a restore function; null resets.
+const httpTransport = ({ path: p, headers, body, signal }) => fetch(`${MOUTH}${p}`, { method: "POST", headers, body: JSON.stringify(body), signal });
+let mouthTransport = httpTransport;
+export function setMouthTransport(fn) {
+  const prev = mouthTransport;
+  mouthTransport = typeof fn === "function" ? fn : httpTransport;
+  return () => { mouthTransport = prev; };
+}
 const KINDS = new Set(["chat", "probe", "stream", "build", "swarm", "vision", "other"]);
 const ID = { "x-er7-user": "penelope", "x-er7-caller": "penelope-gym" };
 const MAX_DEFER = 6;
@@ -37,7 +54,7 @@ const bare = (m) => String(m ?? "").replace(/^er7:/, "");
 // the economy stays measured without the record being able to stop the loom.
 const swatch = (row) => {
   try {
-    fs.appendFileSync(SWATCH, JSON.stringify({ schema: "Swatch@1", ts: new Date().toISOString(), ...row }) + "\n");
+    fs.appendFileSync(recordFile(), JSON.stringify({ schema: "Swatch@1", ts: new Date().toISOString(), ...row }) + "\n");
   } catch (e) {
     console.error(`[generation-door] swatch append failed: ${e.message}`);
   }
@@ -75,7 +92,7 @@ async function boxStance({ text = "", holon = null, level = "whole" } = {}) {
  *  direct draws do (per-request floor, aligned with the server's keep_alive).
  *  `shape` ("stance") asks the box for a mechanical read instead of a model
  *  draw; `text`/`holon`/`level` are the stance shape's own inputs. */
-export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole" } = {}) {
+export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole", transport = null } = {}) {
   const ask = String(prompt ?? "").trim();
   if (!ask && shape !== "stance") return { ok: false, error: "a prompt is required — an empty draw is a named gap, never a draw" };
   const k = KINDS.has(String(kind ?? "").toLowerCase()) ? String(kind).toLowerCase() : "chat";
@@ -136,8 +153,8 @@ export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, ma
     }
   }
   for (let a = 0; a < MAX_DEFER; a += 1) {
-    const r = await fetch(`${MOUTH}/api/generate`, {
-      method: "POST",
+    const r = await (transport ?? mouthTransport)({
+      path: "/api/generate",
       headers: {
         "content-type": "application/json",
         ...ID,
@@ -145,7 +162,7 @@ export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, ma
         "x-er7-kind": k,
         ...(Number.isFinite(Number(hop)) && Number(hop) >= 1 ? { "x-heimdall-hop": String(hop) } : {}),
       },
-      body: JSON.stringify({ model: m, prompt: ask, stream: false, options: { num_predict: Math.max(1, Number(maxTokens) || 260), temperature: Number(temperature) || 0 }, ...(Number(keepAliveS) > 0 ? { keep_alive: `${Math.round(keepAliveS)}s` } : {}) }),
+      body: { model: m, prompt: ask, stream: false, options: { num_predict: Math.max(1, Number(maxTokens) || 260), temperature: Number(temperature) || 0 }, ...(Number(keepAliveS) > 0 ? { keep_alive: `${Math.round(keepAliveS)}s` } : {}) },
       signal: AbortSignal.timeout(240000),
     });
     if (r.status === 429 || r.status === 503) {
