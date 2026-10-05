@@ -185,8 +185,26 @@ async function handleWire(req, res, path) {
   return json(res, 200, out.raw);
 }
 
+// Heimdall, embedded (heimdall/docs/EMBED.md): this server carries its own heimdall — a floor of its own, peers optional. NEVER
+// fatal: if heimdall is absent or fails to mount, the mouth runs exactly as before. HEIMDALL_EMBED overrides the module path,
+// HEIMDALL_PEERS is a comma list of peer /heimdall/peers URLs (empty = no peers, the floor alone).
+async function loadHeimdall(port) {
+  try {
+    const href = process.env.HEIMDALL_EMBED ?? new URL("../../heimdall/src/embed.js", import.meta.url).href;
+    const { mountHeimdall } = await import(href);
+    const peerUrls = String(process.env.HEIMDALL_PEERS ?? "").split(",").map((u) => u.trim()).filter(Boolean);
+    return mountHeimdall({ name: "penelope-mouth", selfUrl: `http://127.0.0.1:${port}/heimdall/peers`, peerUrls });
+  } catch (err) {
+    console.warn(`mouth: heimdall not embedded (${err.message}) — running without it`);
+    return null;
+  }
+}
+
 export function startMouth({ port = MOUTH_PORT } = {}) {
+  let hm = { handle: async () => false, close() {} };
+  loadHeimdall(port).then((m) => { if (m) hm = m; });
   const server = http.createServer(async (req, res) => {
+    if (await hm.handle(req, res)) return; // /heimdall/* — before the default-deny below
     const path = (req.url ?? "/").split("?")[0];
     try {
       if (req.method === "GET" && path === "/v1/mouth/status") {
@@ -231,6 +249,7 @@ export function startMouth({ port = MOUTH_PORT } = {}) {
       return json(res, err.status ?? 502, { error: err.code ?? err.message });
     }
   });
+  server.on("close", () => hm.close());
   server.listen(port, () => console.log(`mouth: ${MOUTH_SCHEMA} on :${port}, bridge=${CHANNEL}`));
   return server;
 }

@@ -81,6 +81,19 @@ export async function weave({
   const task = String(intent ?? "").trim();
   if (!task) return { schema: "Weaving@1", ok: false, status: "gap", error: "generation intent is required" };
 
+  // THE ROBUST CODING PIPELINE (organs/code-pipeline.mjs, 2026-10-04): the
+  // code-agent artifact composes the code spine as sub-agents — swarm the
+  // task, field → hunt → mouth in parallel, escalate to a frontier mouth at
+  // the wall (sealed-external), gate with the real test + janus lint. It
+  // returns its own CodePipeline@1 record; the weave door is the entry.
+  if (String(artifact ?? "") === "code-agent") {
+    const { composeCodePipeline } = await import("../code-pipeline.mjs");
+    const r = await composeCodePipeline({ intent: task, model, constraints, verification, context, output }).catch((e) => ({
+      schema: "CodePipeline@1", ok: false, status: "error", error: String(e?.message ?? e).slice(0, 500), intent: task,
+    }));
+    return r;
+  }
+
   await loadBuiltins();
   const kind = typeof artifact === "string" ? artifact : artifact?.kind;
   const adapter = typeof artifact === "object" && artifact?.readUnits ? artifact : generationAdapter(kind);

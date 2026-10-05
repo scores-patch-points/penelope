@@ -155,7 +155,12 @@ export async function fixCode({
     const pass = passClaimFromGate(finalGate, brief, target);
     const r = lint({ goals, pass });
     const clauses = r.clauses.length ? r.clauses : r.findings.map((f) => f.detail).slice(0, 2);
-    gateHints.push(...clauses);
+    // Escalation must always move: when the lint produces no atom, the gate's
+    // own finding IS the atom — a re-draw of the identical prompt is the one
+    // thing this loop refuses (escalation is a sharper atom, never a louder
+    // prompt, and an unchanged prompt is the loudest).
+    const why = String(finalGate?.why ?? finalGate?.detail ?? "gate failed").slice(0, 200);
+    gateHints.push(...(clauses.length ? clauses : [why]));
   }
 
   return { ok: false, reason: finalGate?.reason ?? "gate_unmet", why: finalGate?.why ?? finalGate?.detail ?? null, attempts, gate: finalGate, scars: gateHints };

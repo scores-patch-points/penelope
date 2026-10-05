@@ -47,7 +47,7 @@ export function parseUnits(raw) {
 export async function readUnits(task, ctx = {}) {
   const { draw } = await import("../engine.mjs");
   const raw = await draw(
-    `Return a JSON array of objects, each {name, spec} for one function this task asks to write. Only JSON. Task: ${task}`,
+    `Return a JSON array of objects, each {name, spec} for one JAVASCRIPT function this task asks to write. Only JSON, JavaScript functions only. Task: ${task}`,
     { maxTokens: 500, model: ctx.model ?? null, kind: "build", priority: "batch" },
   );
   return parseUnits(raw);
@@ -261,10 +261,16 @@ export function probeUnit(code, u) {
     const body = code;
     const present = keyWords.filter((w) => body.toLowerCase().includes(w.toLowerCase()));
     const coverage = keyWords.length ? present.length / keyWords.length : 1;
-    if (keyWords.length && present.length === 0) {
-      return { ok: false, detail: `spec words missing: ${keyWords.filter((w) => !body.toLowerCase().includes(w.toLowerCase())).slice(0, 5).join(", ")} (coverage ${Math.round(coverage * 100)}%)` };
-    }
-    return { ok: true, detail: `callable (${u.name})` };
+    // SPEC WORDS ARE A SOFT NOTE, NEVER A HARD REFUSAL (2026-10-04, measured
+    // live): a frontier mouth draws correct idiomatic code that does NOT echo
+    // the spec's distinctive words — `function reverse(arr){…}` carries none
+    // of "array / elements / reversed / mutating / input", yet it IS the
+    // reverse unit, structurally valid. The floor is the structural check
+    // above (loads, declares the unit, callable, no `this`); the artifact is
+    // what matters, never the words a small model was taught to parrot. The
+    // coverage stays in the detail so measurements (gym/nomodel-prose.mjs)
+    // still read it; a real testCommand decides behavior, never this note.
+    return { ok: true, detail: `callable (${u.name})${coverage < 1 ? ` · spec-words coverage ${Math.round(coverage * 100)}%` : ""}` };
   } catch (e) {
     return { ok: false, detail: `throws: ${String(e.stderr ?? "").slice(0, 160)}` };
   }
