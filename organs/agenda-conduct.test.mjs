@@ -10,6 +10,9 @@ test("intentOf takes the void's about and measured detail, never invents", () =>
   assert.equal(intentOf({ id: "v", detail: "d" }), "d");
   assert.equal(intentOf({ id: "v" }), "v");
   assert.equal(intentOf({ about: "a — b", detail: "b" }), "a — b");
+  const withAtom = intentOf({ about: "the lock file", detail: "empty", atom: "the gate refused: export missing" });
+  assert.match(withAtom, /the lock file/);
+  assert.match(withAtom, /held for: the gate refused: export missing/);
 });
 
 test("artifactOf routes prose by kind/cell, code otherwise", () => {

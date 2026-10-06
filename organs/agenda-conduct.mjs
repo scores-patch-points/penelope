@@ -29,12 +29,16 @@ import { dirname } from "node:path";
 
 export const CONDUCT_SCHEMA = "AgendaConduct@1";
 
-/** The intent of a void: its about, then its measured detail — never invented. */
+/** The intent of a void: its about, then its measured detail — never invented.
+ *  On a retry, the sharper atom rides in: a later attempt must draw against the
+ *  failure that held the last one (code-fix.mjs: "the finding's atom IS the
+ *  sharpened instruction for the next pass"). */
 export function intentOf(purpose = {}) {
   const about = String(purpose.about ?? "").trim();
   const detail = String(purpose.detail ?? "").trim();
-  if (about && detail && !about.includes(detail)) return `${about} — ${detail}`;
-  return about || detail || String(purpose.id ?? "");
+  const base = about && detail && !about.includes(detail) ? `${about} — ${detail}` : (about || detail || String(purpose.id ?? ""));
+  if (purpose.atom) return `${base}\nThe last attempt was held for: ${String(purpose.atom).trim()}. Change only what that finding names; keep every working export.`;
+  return base;
 }
 
 export function artifactOf(purpose = {}) {
