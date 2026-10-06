@@ -42,10 +42,10 @@
       "means": "judge: test against the definition",
       "eo": "⊨"
     },
-    "↬": {
+    "◉": {
       "is": "REC",
-      "means": "restructure the frame when judgment breaks it",
-      "eo": "↬"
+      "means": "restructure the frame when judgment breaks it: the retraced run is kept inside a new open frame",
+      "eo": "◉"
     }
   },
   "grain": {

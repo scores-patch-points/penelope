@@ -16,7 +16,7 @@ export const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.dirname(HERE);
 export const W = 78, I = 76;
 export const BEGIN = "<!-- tapestry:begin -->", END = "<!-- tapestry:end -->";
-export const ZONES = { wheel: "∘ ◆ ◈", helix: "∅ ○ ● | → △ = ⊨ ↬", faces: "◀ ▲ ▶", holons: "↑ ↓", voids: "▫ ■", key: "⟨⟩" };
+export const ZONES = { wheel: "∘ ◆ ◈", helix: "∅ ○ ● | → △ = ⊨ ◉", faces: "◀ ▲ ▶", holons: "↑ ↓", voids: "▫ ■", key: "⟨⟩" };
 
 export const marksOf = (legend) => {
   const inv = (g) => Object.fromEntries(Object.entries(legend[g]).map(([k, v]) => [v.is, k]));

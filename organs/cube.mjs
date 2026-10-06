@@ -53,14 +53,17 @@ export const STANCE_BY_MODE = Object.freeze({
 // The wheel's names for the three grains, and its arithmetic 0 / n / 1.
 export const WHEEL = Object.freeze({ Ground: Object.freeze({ name: "Void", at: "hub", n: "0" }), Figure: Object.freeze({ name: "Beings", at: "spokes", n: "n" }), Pattern: Object.freeze({ name: "Fold", at: "rim", n: "1" }) });
 
-// Marks. The EO glyph for each operator is the canon (∅ ○ ● ｜ ⋈ △ ⊢ ⊨ ↬); the
+// Marks. The EO glyph for each operator is the canon (∅ ○ ● ｜ ⋈ △ ⊢ ⊨ ◉); the
 // MARK is what a tapestry prints. Measured 2026-10-01 in the GitHub code font
 // (gym/glyph-ink.json): ∅ ○ ● △ ↬ are exactly one cell, ⊨ is 1.036, but ⋈ is
 // 1.283, ⊢ 1.247 and ｜ 1.661 cells — they would break a framed column — so SEG,
 // CON and DEF print as one-cell stand-ins (| → =), the EOT surface marks for
 // the same acts (`->` bonds, `.x =` defines). The table keeps both, honestly.
-export const GLYPH = Object.freeze({ NUL: "∅", SIG: "○", INS: "●", SEG: "｜", CON: "⋈", SYN: "△", DEF: "⊢", EVA: "⊨", REC: "↬" });
-export const MARK = Object.freeze({ NUL: "∅", SIG: "○", INS: "●", SEG: "|", CON: "→", SYN: "△", DEF: "=", EVA: "⊨", REC: "↬" });
+// REC is ◉ (a ring around a filled circle: the retraced run kept as record, ●,
+// inside a new open frame, ○), one cell like ○ and ●. It was ↬ until 2026-10-06;
+// the wiki's mark before that was ⊛. Read an older cloth's ↬ as REC.
+export const GLYPH = Object.freeze({ NUL: "∅", SIG: "○", INS: "●", SEG: "｜", CON: "⋈", SYN: "△", DEF: "⊢", EVA: "⊨", REC: "◉" });
+export const MARK = Object.freeze({ NUL: "∅", SIG: "○", INS: "●", SEG: "|", CON: "→", SYN: "△", DEF: "=", EVA: "⊨", REC: "◉" });
 
 export const GRAIN3 = Object.freeze({ Ground: "Gnd", Figure: "Fig", Pattern: "Pat" });
 export const GRAIN_OF3 = Object.freeze({ Gnd: "Ground", Fig: "Figure", Pat: "Pattern" });
