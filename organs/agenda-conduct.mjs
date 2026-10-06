@@ -42,23 +42,33 @@ export function artifactOf(purpose = {}) {
   return purpose.kind === "prose" || purpose.op === "SYN" && purpose.grain === "Pattern" ? "prose" : "code";
 }
 
-/** The pipeline's result, folded to the ladder's conduct contract. */
+/** The pipeline's result, folded to the ladder's conduct contract.
+ *  Stage 12 live: when the gate reports its row count and zero rows ran, a pass
+ *  is UNMEASURED — a distinct state from measured, never rendered alike. The
+ *  ladder still re-probes (the world is the closer), but the record says shown,
+ *  not measured. Legacy verdicts that report no row count keep today's reading. */
 export function normalizeOutcome(result = {}) {
   const ok = result.ok === true;
   const value = typeof result.artifact === "string" ? result.artifact : result.artifact?.value ?? null;
   const bytes = typeof value === "string" ? Buffer.byteLength(value) : null;
   const verdict = result.evidence?.verdict ?? result.verification?.verdict ?? null;
+  const rows = verdict?.rows;
+  const unmeasured = ok && (verdict?.unmeasured === true || (Number.isFinite(rows) && rows <= 0));
   const evidence = [
     `${result.schema ?? "result"}: ${result.status ?? (ok ? "ok" : "not-ok")}`,
     bytes != null ? `${bytes}B` : null,
     verdict?.reason ? `gate=${verdict.reason}` : null,
+    unmeasured ? `gate unmeasured (${rows ?? 0} rows)` : null,
     result.frontier?.attempted ? `escalated=${result.frontier.model ?? "frontier"}` : null,
   ].filter(Boolean).join(" · ");
   return {
     ok,
+    unmeasured: unmeasured || null,
     detail: ok ? null : (result.error ?? verdict?.detail ?? result.status ?? "the generation did not pass its gate"),
     evidence,
-    rule: verdict?.reason ? `the gate decided: ${verdict.reason}` : "the generation gate decided, not the draft",
+    rule: unmeasured
+      ? "the gate ran no row — this is shown, not measured; the re-probe is the closer"
+      : (verdict?.reason ? `the gate decided: ${verdict.reason}` : "the generation gate decided, not the draft"),
     pathos: Array.isArray(result.pathos) ? result.pathos : [],
   };
 }

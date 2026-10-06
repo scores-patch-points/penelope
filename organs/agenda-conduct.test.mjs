@@ -19,6 +19,19 @@ test("artifactOf routes prose by kind/cell, code otherwise", () => {
   assert.equal(artifactOf({ op: "SYN", grain: "Pattern" }), "prose");
 });
 
+test("STAGE 12: a pass over zero rows is unmeasured — shown, never measured; a measured pass stays measured", () => {
+  const zero = normalizeOutcome({ ok: true, status: "verified", evidence: { verdict: { ok: true, reason: "spec-conformant", rows: 0 } } });
+  assert.equal(zero.ok, true);
+  assert.equal(zero.unmeasured, true);
+  assert.match(zero.evidence, /gate unmeasured \(0 rows\)/);
+  assert.match(zero.rule, /shown, not measured/);
+  const measured = normalizeOutcome({ ok: true, status: "verified", evidence: { verdict: { ok: true, reason: "spec-conformant", rows: 3 } } });
+  assert.equal(measured.unmeasured, null);
+  assert.doesNotMatch(measured.evidence, /unmeasured/);
+  const legacy = normalizeOutcome({ ok: true, status: "verified", evidence: { verdict: { ok: true, reason: "spec-conformant" } } });
+  assert.equal(legacy.unmeasured, null); // no row count reported = today's reading
+});
+
 test("normalizeOutcome: a pass reads the gate's own reason, not the draft's word", () => {
   const out = normalizeOutcome({ schema: "CodePipeline@1", ok: true, status: "verified", artifact: { kind: "code", value: "export const x = 1;\n" }, evidence: { verdict: { ok: true, reason: "export-surface" } } });
   assert.equal(out.ok, true);

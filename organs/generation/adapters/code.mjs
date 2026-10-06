@@ -303,7 +303,13 @@ export function testUnits(code, units) {
     if (!r.ok) failures.push(`${u.name}: ${r.detail}`);
   }
   if (failures.length) return { ok: false, reason: "spec-conformance", detail: failures.join("; ") };
-  return { ok: true, reason: "spec-conformant" };
+  // THE ROW DISCIPLINE (stage 12): a pass over ZERO units is a distinct state
+  // from a pass. The gate that probed nothing has measured nothing — it says
+  // "spec-conformant" of no row, which is shown, not measured. The caller can
+  // tell them apart (rows: 0 + unmeasured), never render them alike.
+  const rows = (units ?? []).length;
+  if (rows === 0) return { ok: true, reason: "spec-conformant", rows: 0, unmeasured: true };
+  return { ok: true, reason: "spec-conformant", rows, unmeasured: false };
 }
 
 // ── THE ASSEMBLY (GL-CD-11): the artifact must be a MODULE an importer can
