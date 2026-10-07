@@ -23,23 +23,24 @@ const DEMOS = {
   ...(fs.existsSync(MINIJS) ? { minijs: { label: "A 1.5B writes a JavaScript evaluator (V8 is the judge)", args: ["gym/mini-js-ast.mjs", MINIJS] } } : {}),
 };
 
+const CORS = { "access-control-allow-origin": "*", "access-control-allow-headers": "content-type" };
 const server = http.createServer((req, res) => {
   const u = new URL(req.url, "http://x");
   if (u.pathname === "/") {
-    res.writeHead(200, { "content-type": "text/html" });
+    res.writeHead(200, { "content-type": "text/html", ...CORS });
     res.end(fs.readFileSync(path.join(HERE, "agentic.html")));
     return;
   }
   if (u.pathname === "/api/demos") {
-    res.writeHead(200, { "content-type": "application/json" });
+    res.writeHead(200, { "content-type": "application/json", ...CORS });
     res.end(JSON.stringify(DEMOS));
     return;
   }
   if (u.pathname === "/api/run") {
     const key = u.searchParams.get("demo");
     const demo = DEMOS[key];
-    if (!demo) { res.writeHead(404); res.end("no such demo"); return; }
-    res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "transfer-encoding": "chunked" });
+    if (!demo) { res.writeHead(404, CORS); res.end("no such demo"); return; }
+    res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "transfer-encoding": "chunked", ...CORS });
     const child = spawn(process.execPath, demo.args, { cwd: ROOT });
     child.stdout.on("data", (d) => res.write(d));
     child.stderr.on("data", (d) => res.write(d));
@@ -47,6 +48,6 @@ const server = http.createServer((req, res) => {
     req.on("close", () => child.kill());
     return;
   }
-  res.writeHead(404); res.end("not found");
+  res.writeHead(404, CORS); res.end("not found");
 });
 server.listen(port, "127.0.0.1", () => console.log(`agentic mode on http://127.0.0.1:${port}/`));
