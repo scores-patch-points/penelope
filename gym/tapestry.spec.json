@@ -95,7 +95,8 @@
     "o/generation/engine.mjs",
     "GL-EN-05",
     "GL-LD-05",
-    "GL-CH-05"
+    "GL-CH-05",
+    "o/mouth.mjs"
    ]
   },
   {
@@ -109,7 +110,8 @@
    "refs": [
     "o/generation/adapters/code.mjs",
     "GL-EN-09",
-    "GL-RT-02"
+    "GL-RT-02",
+    "o/snip-cite.mjs"
    ]
   },
   {
@@ -176,8 +178,6 @@
    "grain": "Pattern",
    "typing": "‡",
    "refs": [
-    "a/launch-facing.html",
-    "a/record.json",
     "GL-BD-01",
     "GL-BD-04"
    ]
@@ -291,9 +291,9 @@
    "refs": [
     "l/r1-r8.json",
     "l/r9-r13.json",
-    "l/r9-r13-record.json",
     "GL-LD-01",
-    "GL-LD-03"
+    "GL-LD-03",
+    "l/r9-r13-record.json"
    ]
   },
   {
@@ -885,9 +885,7 @@
    "op": "CON",
    "grain": "Pattern",
    "typing": "‡",
-   "refs": [
-    "FOLD/network.js"
-   ],
+   "refs": [],
    "ctl": "arrangement recurs ∧ ¬bound"
   },
   {
@@ -927,10 +925,6 @@
    "grain": "Pattern",
    "typing": "‡",
    "refs": [
-    "a/council.html",
-    "a/council-control.html",
-    "a/council-facing.html",
-    "a/council-record.json",
     "g/probe-council.mjs",
     "GL-WV-01",
     "/api/council/events",
@@ -991,7 +985,8 @@
    "typing": "§",
    "refs": [
     "GL-WV-13",
-    "GL-OV-02"
+    "GL-OV-02",
+    "o/steersman.mjs"
    ],
    "ctl": "Restored organ fails its recorded controls."
   },
@@ -1005,7 +1000,8 @@
    "typing": "‡",
    "refs": [
     "GL-WV-13",
-    "GL-OV-02"
+    "GL-OV-02",
+    "o/voice.mjs"
    ],
    "ctl": "Restored organ fails its recorded controls."
   },
@@ -1020,8 +1016,242 @@
    "refs": [
     "o/generation/overview.mjs",
     "o/generation/adapters/overview.mjs",
-    "g/overview.test.mjs",
     "GL-OV-01"
+   ]
+  },
+  {
+   "id": "AGC",
+   "name": "agenda-conduct",
+   "st": "■",
+   "lvl": 1,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/agenda-conduct.mjs",
+    "o/agenda-conduct.test.mjs",
+    "GL-AG-01"
+   ]
+  },
+  {
+   "id": "CFX",
+   "name": "code-fix",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/code-fix.mjs",
+    "o/code-fix.test.mjs",
+    "o/generation/adapters/code-fix.mjs",
+    "o/generation/adapters/code-fix.test.mjs"
+   ]
+  },
+  {
+   "id": "CPL",
+   "name": "code-pipeline",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/code-pipeline.mjs",
+    "o/code-pipeline.test.mjs",
+    "GL-CD-13"
+   ]
+  },
+  {
+   "id": "EVO",
+   "name": "essay-void",
+   "st": "■",
+   "lvl": 1,
+   "op": "NUL",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/essay-void.mjs",
+    "g/essay-void-build.mjs"
+   ]
+  },
+  {
+   "id": "FAP",
+   "name": "fold-at-point",
+   "st": "■",
+   "lvl": 1,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/fold-at-point.mjs"
+   ]
+  },
+  {
+   "id": "GDC",
+   "name": "grounded-composition",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/grounded-composition.mjs",
+    "g/essay-composed.mjs"
+   ]
+  },
+  {
+   "id": "GDR",
+   "name": "generation-door",
+   "st": "■",
+   "lvl": 1,
+   "op": "CON",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation-door.mjs",
+    "GL-WV-05"
+   ]
+  },
+  {
+   "id": "PYT",
+   "name": "pythia",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/pythia.mjs"
+   ]
+  },
+  {
+   "id": "SLF",
+   "name": "self",
+   "st": "■",
+   "lvl": 1,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/self.mjs",
+    "o/stack-digest.mjs"
+   ]
+  },
+  {
+   "id": "STG",
+   "name": "stigmergy",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/stigmergy.mjs"
+   ]
+  },
+  {
+   "id": "VRF",
+   "name": "void-refine",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/void-refine.mjs"
+   ]
+  },
+  {
+   "id": "SIX",
+   "name": "source-index",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Ground",
+   "typing": "§",
+   "refs": [
+    "o/source-index.mjs"
+   ]
+  },
+  {
+   "id": "HMA",
+   "name": "handmaidens",
+   "st": "■",
+   "lvl": 1,
+   "op": "DEF",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "g/handmaidens.mjs"
+   ]
+  },
+  {
+   "id": "ESS",
+   "name": "essay-drivers",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "g/essay-write.mjs",
+    "g/essay-grounded.mjs",
+    "g/essay-dolphins.mjs"
+   ]
+  },
+  {
+   "id": "POD",
+   "name": "podcast",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "g/build-podcast.mjs"
+   ]
+  },
+  {
+   "id": "ESC",
+   "name": "escalate-live",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "g/escalate-live.mjs"
+   ]
+  },
+  {
+   "id": "WNB",
+   "name": "winnow",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/winnow.mjs",
+    "o/generation/winnow.test.mjs",
+    "g/winnow-experiment.mjs",
+    "GL-EN-18",
+    "GL-EN-15",
+    "GL-OG-02"
+   ]
+  },
+  {
+   "id": "FCL",
+   "name": "fold-claims",
+   "st": "■",
+   "lvl": 2,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/fold-claims.mjs",
+    "o/fold-claims.test.mjs"
    ]
   }
  ]

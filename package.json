@@ -3,7 +3,7 @@
   "name": "penelope",
   "private": true,
   "scripts": {
-    "test": "node --test organs/generation/provenance.test.mjs organs/integration/retention.test.mjs organs/integration/retention-durable.test.mjs && node --input-type=module -e \"const mods=['./organs/consensus-gate.mjs','./organs/detail-fetch.mjs','./organs/behavior-check.mjs','./organs/freshness.mjs','./organs/cube.mjs','./organs/window.mjs','./organs/agenda-shape.mjs','./organs/html-snip.mjs','./organs/resolver.mjs','./organs/generation/api.mjs','./gym/weave-nomodel.mjs']; let f=0; for(const m of mods){ await import(m).then(x=>x.selftest()).then(r=>{if(r?.ok===false) throw new Error('selftest returned false');}).catch(e=>{console.error('LOAD-FAIL',m,e.message);process.exitCode=1;f++;}); }\"",
+    "test": "node --test organs/generation/provenance.test.mjs organs/generation/winnow.test.mjs organs/integration/retention.test.mjs organs/integration/retention-durable.test.mjs && node --input-type=module -e \"const mods=['./organs/consensus-gate.mjs','./organs/detail-fetch.mjs','./organs/behavior-check.mjs','./organs/freshness.mjs','./organs/cube.mjs','./organs/window.mjs','./organs/agenda-shape.mjs','./organs/html-snip.mjs','./organs/resolver.mjs','./organs/generation/api.mjs','./organs/generation/winnow.mjs','./gym/weave-nomodel.mjs']; let f=0; for(const m of mods){ await import(m).then(x=>x.selftest()).then(r=>{if(r?.ok===false) throw new Error('selftest returned false');}).catch(e=>{console.error('LOAD-FAIL',m,e.message);process.exitCode=1;f++;}); }\"",
     "tapestry": "node gym/check-tapestry.mjs",
     "tapestry:stamp": "node gym/check-tapestry.mjs --stamp",
     "handmaidens": "node gym/handmaidens.mjs",
