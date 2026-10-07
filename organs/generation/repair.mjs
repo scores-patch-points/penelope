@@ -78,7 +78,7 @@ const latestFile = (claims, rel) => { const p = (claims ?? []).filter((c) => c.p
  *  program: a `hunt` reaching the fields (mechanical, zero draws), and an
  *  `invent` that frames the draw with Gary and snips the atom. Returns
  *  { hunt, invent, report } to hand to program.heal. */
-export function wired({ dir, rel, name, draw, huntFns = [] }) {
+export function wired({ dir, rel, name, draw, huntFns = [], specFacts = [] }) {
   const report = { lanes: [], gary: [] };
   const hunt = async ({ claims }) => {
     const code = latestFile(claims, rel);
@@ -96,16 +96,21 @@ export function wired({ dir, rel, name, draw, huntFns = [] }) {
     return null;
   };
   const invent = async ({ claims, failure }) => {
-    const find = snipFunction(latestFile(claims, rel), name);
+    const fileText = latestFile(claims, rel);
+    const find = snipFunction(fileText, name);
     if (!find) return null;
-    const line = String(failure ?? "").split("\n").find((l) => new RegExp(name).test(l) || /assert|expected|Error/.test(l));
-    const facts = [`The real test fails: ${(line ?? "the assertion did not hold").trim().slice(0, 140)}`];
-    const bag = garyPrompt({ file: rel, name, find, facts });
+    // RE-ASK FRESH FROM THE SPEC (lesson 25/#4): the anchor is the SIGNATURE
+    // line AS IT READS IN THE FILE (so `export ` survives — snip strips it),
+    // never the stub (handing a small mouth its own `throw` primes it to echo).
+    const sig = fileText.split("\n").find((l) => new RegExp(`function\\s+${name}\\s*\\(`).test(l)) ?? String(find).split("\n")[0];
+    const line = String(failure ?? "").split("\n").find((l) => new RegExp(name).test(l) || /DIFF|assert|expected|Error/.test(l));
+    const facts = [`The real test fails: ${(line ?? "the assertion did not hold").trim().slice(0, 180)}`, ...specFacts];
+    const bag = garyPrompt({ file: rel, name, find: sig, facts });
     report.gary.push({ findings: bag.findings.map((f) => f.rule), refused: bag.refused.map((f) => f.rule), facts });
     if (bag.refused.length) return null;
     const text = await draw(bag.messages.map((m) => `${m.role}: ${m.content}`).join("\n"));
     const add = snipFunction(text, name);
-    return add ? { path: rel, find, add, model: "qwen2.5-coder:1.5b", reason: "invented (Gary-framed, snipped)" } : null;
+    return add ? { path: rel, find, add, model: "qwen2.5-coder:1.5b", reason: "invented (Gary-framed from the signature, snipped)" } : null;
   };
   return { hunt, invent, report };
 }

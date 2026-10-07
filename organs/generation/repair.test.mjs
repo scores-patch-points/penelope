@@ -15,6 +15,16 @@ test("snipFunction takes the EXACT atom (no rewrite) so it matches its source", 
   assert.ok(src.includes(atom), "the atom is a verbatim substring of its source");
 });
 
+test("snip survives a default-parameter object literal (the no-op wall)", () => {
+  // `env = {}` in the params once truncated every snip to `function f(node, env = {}`,
+  // making a drawn fix byte-identical to the stub — a permanent no-op. Found live
+  // 2026-10-07 building the JavaScript evaluator.
+  const src = "export function evaluate(node, env = {}) {\n  return node;\n}";
+  const atom = snipFunction(src, "evaluate");
+  assert.ok(atom.includes("return node;"), "the body was not truncated at `env = {}`");
+  assert.ok(atom.trim().endsWith("}"), "the atom keeps its closing brace");
+});
+
 test("garyPrompt is Gary-clean: facts, no prohibition, the ask last", async () => {
   const bag = garyPrompt({ file: "a.js", name: "f", find: "function f(){return 1;}", facts: ["The real test fails: expected 2"] });
   assert.equal(bag.messages.at(-1).role, "user");

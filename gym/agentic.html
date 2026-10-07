@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The fold · agentic mode</title>
+<style>
+:root{--bg:#f6f1e7;--fg:#2b2118;--dim:#7a6b58;--line:#d8ccb6;--good:#2f7d4f;--bad:#a83b2f;--acc:#8a5a2b;--code:#100d09}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1712;--fg:#e8dcc6;--dim:#9c8b72;--line:#3a3026;--good:#63c58a;--bad:#e07a6c;--acc:#d2a24e;--code:#0d0a07}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace}
+main{max-width:960px;margin:0 auto;padding:28px 20px 70px}
+h1{font-size:21px;margin:0 0 4px}p{color:var(--dim);margin:.4em 0}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--dim);margin:0 6px 6px 0}
+.runs{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+button{background:transparent;border:1px solid var(--line);border-radius:8px;color:var(--fg);font:inherit;padding:8px 12px;cursor:pointer;text-align:left}
+button:hover{border-color:var(--acc)}button[disabled]{opacity:.4;cursor:default}
+button b{display:block;color:var(--acc);font-weight:600}
+pre{background:var(--code);color:#e8dcc6;border:1px solid var(--line);border-radius:8px;padding:14px;overflow:auto;font-size:12.5px;line-height:1.45;min-height:260px;white-space:pre-wrap}
+.hint{color:var(--dim);font-size:13px}
+</style></head><body><main>
+<p><span class="chip">the fold</span><span class="chip">agentic mode</span><span class="chip">simplified</span></p>
+<h1>Agentic mode, running for real</h1>
+<p class="hint">Pick a run. It streams the actual loop — the reason-gate's intent, the hunt of the field, the mouth's draw (framed by Gary, taken by the snip), the append-only log, the projection, and the real test. Nothing here is a mock; each run builds/repairs real code and reports its own verdict.</p>
+<div class="runs" id="runs">loading…</div>
+<pre id="out">▮ choose a run above</pre>
+<p class="hint" id="status"></p>
+<script>
+const runs = document.getElementById("runs"), out = document.getElementById("out"), status = document.getElementById("status");
+let demos = {};
+async function load() {
+  demos = await (await fetch("/api/demos")).json();
+  runs.innerHTML = "";
+  for (const [key, d] of Object.entries(demos)) {
+    const b = document.createElement("button");
+    b.innerHTML = "<b>" + key + "</b>" + d.label;
+    b.onclick = () => run(key, b);
+    runs.appendChild(b);
+  }
+}
+async function run(key, btn) {
+  for (const b of runs.querySelectorAll("button")) b.disabled = true;
+  out.textContent = "";
+  status.textContent = "running " + key + " …";
+  const t0 = performance.now();
+  try {
+    const r = await fetch("/api/run?demo=" + encodeURIComponent(key));
+    const reader = r.body.getReader(); const dec = new TextDecoder();
+    for (;;) { const { done, value } = await reader.read(); if (done) break; out.textContent += dec.decode(value, { stream: true }); out.scrollTop = out.scrollHeight; }
+  } catch (e) { out.textContent += "\n[error] " + e.message; }
+  status.textContent = key + " done in " + ((performance.now() - t0) / 1000).toFixed(1) + "s";
+  for (const b of runs.querySelectorAll("button")) b.disabled = false;
+}
+load();
+</script>
+</main></body></html>

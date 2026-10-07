@@ -194,6 +194,33 @@ function walkBraceBlockEnd(src, from) {
   return i;
 }
 
+// matchParen(src, open) — the index of the `)` that closes the `(` at `open`,
+// string/comment-aware, or -1. Used so a default-parameter object literal
+// (`env = {}`) is never mistaken for the function body's opening brace.
+function matchParen(src, open) {
+  let depth = 0, i = open, mode = "code";
+  const n = src.length;
+  while (i < n) {
+    const ch = src[i], next = src[i + 1];
+    if (mode === "line") { if (ch === "\n") mode = "code"; i++; continue; }
+    if (mode === "block") { if (ch === "*" && next === "/") { mode = "code"; i += 2; continue; } i++; continue; }
+    if (mode === "squote" || mode === "dquote" || mode === "template") {
+      if (ch === "\\") { i += 2; continue; }
+      if ((mode === "squote" && ch === "'") || (mode === "dquote" && ch === '"') || (mode === "template" && ch === "`")) mode = "code";
+      i++; continue;
+    }
+    if (ch === "/" && next === "/") { mode = "line"; i += 2; continue; }
+    if (ch === "/" && next === "*") { mode = "block"; i += 2; continue; }
+    if (ch === "'") { mode = "squote"; i++; continue; }
+    if (ch === '"') { mode = "dquote"; i++; continue; }
+    if (ch === "`") { mode = "template"; i++; continue; }
+    if (ch === "(") { depth++; i++; continue; }
+    if (ch === ")") { depth--; i++; if (depth === 0) return i - 1; continue; }
+    i++;
+  }
+  return -1;
+}
+
 export function snip(code, name) {
   const t = String(code ?? "").replace(/```[a-z]*/gi, "");
   const fnMark = `function ${name}(`;
@@ -201,7 +228,12 @@ export function snip(code, name) {
   let start = t.indexOf(fnMark);
   if (start === -1) start = t.indexOf(constMark);
   if (start === -1) return "";
-  const end = walkBraceBlockEnd(t, start);
+  // Skip the parameter list before seeking the body brace: a default-param
+  // object literal (`env = {}`) would otherwise close the "body" immediately.
+  let bodyFrom = start;
+  const par = t.indexOf("(", start);
+  if (par !== -1) { const close = matchParen(t, par); if (close !== -1) bodyFrom = close + 1; }
+  const end = walkBraceBlockEnd(t, bodyFrom);
   let cut = t.slice(start, end).trim();
   let opens = (cut.match(/\{/g) || []).length;
   let closes = (cut.match(/\}/g) || []).length;
