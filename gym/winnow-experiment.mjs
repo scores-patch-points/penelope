@@ -19,7 +19,8 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { execSync } from "node:child_process";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { probeUnit, testUnits } from "../organs/generation/adapters/code.mjs";
 import { runWinnow } from "../organs/generation/winnow.mjs";
 
@@ -156,13 +157,7 @@ function repairStrategy(g) {
 }
 
 // ── RUN ─────────────────────────────────────────────────────────────────────
-function main() {
-  const args = {};
-  for (let i = 2; i < process.argv.length; i += 1) if (process.argv[i].startsWith("--")) args[process.argv[i].slice(2)] = process.argv[i + 1] && !process.argv[i + 1].startsWith("--") ? process.argv[i + 1] : true;
-  const gens = Number(args.gens ?? 3);
-  const outDir = path.resolve(args.out ?? path.join(os.tmpdir(), "winnow-" + Date.now()));
-  fs.mkdirSync(outDir, { recursive: true });
-
+export function runExperiment({ gens = 3 } = {}) {
   const seed = { id: "seed-FIELD-blind", mask: FIELD };
   const common = { space, legal, deps, idOf: (g) => g.id, measure: (g) => score(g.mask), seed, run: (g) => score(g.mask), baseline: null, keyOf: (g) => String(g.mask) };
   // TWO WAYS THROUGH THE SAME SUCCESS DEFINITION: error-correct the best
@@ -187,44 +182,6 @@ function main() {
   const advAssembled = units.map((u) => fillUnit(noVerify, u)).filter(Boolean).join("\n") + "\n";
   const advGate = testUnits(advAssembled, units);
 
-  const lines = [];
-  const P = (s = "") => lines.push(s);
-  P("=== THE MATERIAL (hunted, then winnowed by the real gate) ===");
-  P(`  ${mat.offered} candidate implementations offered by field/hunt/mouth`);
-  P(`  kept by the gate: ${mat.passed}/${mat.offered} (${(100 * mat.passed / mat.offered).toFixed(0)}%)   killed: ${mat.killed}`);
-  for (const r of mat.rows) P(`    ${r.unit.padEnd(10)} offered ${r.offered}, held ${r.held}`);
-  P("");
-  P("=== THE SUCCESS DEFINITION (measured, never set) ===");
-  P(`  seed = ${seed.id}; rerun floor = ${byCorrect.success.floor}; bar = ${byCorrect.success.bar} (= epsilon: the measure is deterministic)`);
-  P(`  baseline (the seed's own score) = ${byCorrect.success.baseline.toFixed(3)}`);
-  P("");
-  P("=== THE WAYS TO GET THERE (the landscape) ===");
-  for (const g of landscape) P(`  ${g.way.padEnd(34)} ${(g.score * units.length).toFixed(0)}/${units.length}  (${g.score.toFixed(3)})`);
-  P("");
-  P("=== WINNOW (most killed) ===");
-  P(`  hunted ${byCorrect.winnow.hunted}, survived ${byCorrect.winnow.survived}, winnowed ${byCorrect.winnow.winnowed}`);
-  for (const k of byCorrect.winnow.killed) P(`    KILLED ${k.id} (${k.reason}${k.delta !== undefined ? `, Δ${k.delta}` : ""})`);
-  P("");
-  P("=== ERROR-CORRECT (against the named failure) ===");
-  if (byCorrect.correct) {
-    P(`  best survivor ${byCorrect.winnow.best.candidate.id} (${nameOf(byCorrect.winnow.best.candidate.mask)}): ${byCorrect.correct.before.toFixed(3)} -> ${byCorrect.correct.score.toFixed(3)} (${nameOf(byCorrect.correct.candidate.mask)})`);
-    for (const k of byCorrect.correct.kept) P(`    KEPT step ${k.step}: score ${k.score.toFixed(3)}`);
-    for (const r of byCorrect.correct.refused) P(`    REFUSED step ${r.step} (${r.reason})`);
-  } else P("  (no repair)");
-  P("");
-  P("=== BREED (crossover + mutation, admitted by bar + born mass) ===");
-  P(`  generations ${byBreed.breed.generations}; kept ${byBreed.breed.kept.length}; elenchus ${byBreed.breed.elenchus.length}`);
-  for (const k of byBreed.breed.kept) P(`    KEPT gen ${k.gen} ${k.id}: ${k.score.toFixed(3)} (+${k.improvement.toFixed(3)}) from ${k.from.join(" × ")}`);
-  for (const e of byBreed.breed.elenchus) P(`    REFUSED gen ${e.gen} ${e.id}: ${e.reason} (Δ${(e.improvement ?? 0).toFixed(3)})`);
-  P("");
-  P("=== CHAMPION ===");
-  P(`  ${nameOf(champ)} (mask ${champ}) — score ${(Math.max(scoreOf(byCorrect), scoreOf(byBreed))).toFixed(3)} (${Math.round(Math.max(scoreOf(byCorrect), scoreOf(byBreed)) * units.length)}/${units.length}) — reached by ${winner}`);
-  P("");
-  P("=== FALSIFY (double-check and adversarial control) ===");
-  P(`  whole-module gate (testUnits) on the champion: ${wholeGate.ok ? "PASS (" + wholeGate.rows + " rows)" : "FAIL — " + wholeGate.detail}`);
-  P(`  adversarial control (all doors, no VERIFY): ${advGate.ok ? "PASS — the verify gate is not load-bearing!" : `FAIL as it must (${advGate.reason})`}`);
-
-  console.log(lines.join("\n"));
   const out = {
     schema: "WinnowExperiment@1", at: new Date().toISOString(), units: units.length,
     material: { offered: mat.offered, passed: mat.passed, killed: mat.killed, rows: mat.rows },
@@ -235,8 +192,132 @@ function main() {
     champion: { way: nameOf(champ), mask: champ, score: Math.max(scoreOf(byCorrect), scoreOf(byBreed)), reachedBy: winner },
     falsify: { wholeModuleGate: wholeGate.ok, wholeModuleRows: wholeGate.rows ?? null, adversarialNoVerify: advGate.ok === true ? "UNEXPECTED-PASS" : advGate.reason },
   };
-  fs.writeFileSync(path.join(outDir, "winnow-experiment.json"), JSON.stringify(out, null, 2));
-  console.log(`\nreport: ${path.join(outDir, "winnow-experiment.json")}`);
+  return { out, assembled };
 }
 
-main();
+// ── THE BROWSER PAGE: the process, then the champion's code RUNNING ──────────
+const DEMO = [
+  ["double", [3], 6], ["square", [4], 16], ["isEven", [7], false], ["sumTo", [5], 15],
+  ["firstWord", ["a b c"], "a"], ["clamp", [9, 0, 5], 5], ["factorial", [4], 24], ["reverse", ["abc"], "cba"],
+];
+export function renderHtml(exp) {
+  const { material: mat, success_definition: sd, landscape, winnow, correct, breed, champion, falsify, units: n } = exp;
+  const srcJson = JSON.stringify(exp.assembled ?? "");
+  const pct = (v) => Math.max(0, Math.min(100, v * 100)).toFixed(1);
+  const hbar = (v, cls = "") => `<span class="bar ${cls}" style="width:${pct(v)}%"></span>`;
+  const rowsMat = mat.rows.map((r) => `<tr><td>${r.unit}</td><td class="num">${r.offered}</td><td class="num">${r.held}</td><td><span class="bar" style="width:${pct(r.held / n)}%"></span></td></tr>`).join("");
+  const rowsLand = landscape.map((g) => `<tr><td class="mono">${g.way}</td><td class="num">${g.score * n}/${n}</td><td class="score"><span class="bar" style="width:${pct(g.score)}%"></span></td></tr>`).join("");
+  const rowsKill = winnow.killed.map((k) => `<li><b>${k.id}</b> — ${k.reason}${k.delta !== undefined ? ` (Δ${k.delta})` : ""}</li>`).join("");
+  const rowsKept = (breed.kept || []).map((k) => `<li><b>gen ${k.gen}</b> ${k.id} → ${k.score * n}/${n} (+${k.improvement.toFixed(3)}) from ${k.from.join(" × ")}</li>`).join("") || "<li>(none)</li>";
+  const rowsElen = (breed.elenchus || []).map((e) => `<li>gen ${e.gen} ${e.id} — ${e.reason}</li>`).join("") || "<li>(none)</li>";
+  const demoJson = JSON.stringify(DEMO);
+  return `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Penelope · winnow — the coding ability</title>
+<style>
+:root{--bg:#f6f1e7;--fg:#2b2118;--dim:#7a6b58;--line:#d8ccb6;--good:#2f7d4f;--bad:#a83b2f;--acc:#8a5a2b}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1712;--fg:#e8dcc6;--dim:#9c8b72;--line:#3a3026;--good:#63c58a;--bad:#e07a6c;--acc:#d2a24e}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace}
+main{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+h1{font-size:22px;margin:0 0 4px}h2{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:34px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+p{color:var(--dim);margin:.4em 0}.lead{color:var(--fg)}
+table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:4px 8px;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--dim);font-weight:400}.num{text-align:right;font-variant-numeric:tabular-nums}
+.mono{font-size:12.5px}.score{width:45%}
+.bar{display:inline-block;height:10px;border-radius:3px;background:linear-gradient(90deg,var(--acc),var(--good));min-width:2px}
+.kpis{display:flex;gap:18px;flex-wrap:wrap;margin:8px 0}.kpi{background:color-mix(in srgb,var(--fg) 6%,transparent);border:1px solid var(--line);border-radius:8px;padding:10px 14px;min-width:120px}
+.kpi b{display:block;font-size:24px}.kpi span{color:var(--dim);font-size:12px}
+ul{margin:.3em 0;padding-left:1.2em;color:var(--dim)}li b{color:var(--fg)}
+pre{background:color-mix(in srgb,var(--fg) 6%,transparent);border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;font-size:12.5px}
+.pass{color:var(--good);font-weight:bold}.fail{color:var(--bad);font-weight:bold}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--dim);margin-right:6px}
+.live td:first-child{color:var(--fg)}.live .got{font-weight:bold}
+</style></head><body><main>
+<p class="chip">Penelope</p><p class="chip">hunt → winnow → correct → breed</p>
+<h1>Our coding ability, on the record</h1>
+<p class="lead">Hunt material, winnow it away, define success first, error-correct against it, and let the survivors breed. The success definition is the <b>real code gate</b> (<code>probeUnit</code> + <code>testUnits</code>); the material bank is a disclosed deterministic stand-in. Generated by <code>gym/winnow-experiment.mjs</code>.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>${mat.offered}</b><span>implementations hunted</span></div>
+  <div class="kpi"><b>${mat.passed}</b><span>held by the gate</span></div>
+  <div class="kpi"><b>${winnow.hunted}</b><span>strategies hunted</span></div>
+  <div class="kpi"><b>${winnow.winnowed}</b><span>winnowed away</span></div>
+  <div class="kpi"><b>${champion.score * n}/${n}</b><span>champion (${champion.reachedBy})</span></div>
+</div>
+
+<h2>1 · The material, winnowed by the real gate</h2>
+<p>${mat.offered} candidate implementations offered by three doors; <b>${mat.passed} held</b>, ${mat.killed} killed — the gate is the definition of winning.</p>
+<table><thead><tr><th>unit</th><th class="num">offered</th><th class="num">held</th><th></th></tr></thead><tbody>${rowsMat}</tbody></table>
+
+<h2>2 · The success definition (measured, never set)</h2>
+<p>seed <code>${sd.baseline !== undefined ? "FIELD-blind" : ""}</code> → rerun floor <b>${sd.floor}</b>, bar <b>${sd.bar}</b> (= epsilon: the measure is deterministic); baseline <b>${sd.baseline.toFixed(3)}</b>, budget <b>${sd.budget}</b>.</p>
+
+<h2>3 · The ways to get there (the landscape)</h2>
+<table><thead><tr><th>strategy genome</th><th class="num">score</th><th></th></tr></thead><tbody>${rowsLand}</tbody></table>
+
+<h2>4 · Winnow — most are killed</h2>
+<p>hunted <b>${winnow.hunted}</b>, survived <b>${winnow.survived}</b>, winnowed <b>${winnow.killed.length}</b>.</p>
+<ul>${rowsKill}</ul>
+
+<h2>5 · Error-correct, against the named failure</h2>
+${correct ? `<p>best survivor <code>${correct.candidate?.id ?? ""}</code>: <b>${correct.before.toFixed(3)} → ${correct.score.toFixed(3)}</b> — the missing door turned on.</p>` : "<p>(no repair)</p>"}
+
+<h2>6 · Breed — the cross is a candidate; the definition selects</h2>
+<p>generations <b>${breed.generations}</b>, kept <b>${breed.kept.length}</b>, elenchus <b>${breed.elenchus.length}</b>.</p>
+<ul>${rowsKept}</ul>
+<p style="color:var(--dim)">refused:</p><ul>${rowsElen}</ul>
+
+<h2>7 · Champion</h2>
+<p><b>${champion.way}</b> (mask ${champion.mask}) — <b>${champion.score * n}/${n}</b>, reached by <b>${champion.reachedBy}</b>. Falsify: whole-module gate <span class="${falsify.wholeModuleGate ? "pass" : "fail"}">${falsify.wholeModuleGate ? "PASS (" + falsify.wholeModuleRows + " rows)" : "FAIL"}</span> · adversarial no-VERIFY control <span class="fail">${falsify.adversarialNoVerify}</span>.</p>
+
+<h2>8 · The champion's code, running in this page</h2>
+<p>the assembled module is imported below and each unit called with a fixture — a green row is the code actually executing.</p>
+<table class="live"><thead><tr><th>call</th><th>expected</th><th>got</th><th></th></tr></thead><tbody id="live"></tbody></table>
+<details><summary style="color:var(--dim);cursor:pointer;margin-top:8px">the assembled module</summary><pre>${(exp.assembled ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]))}</pre></details>
+
+<script type="module">
+const DEMO = ${demoJson};
+const SRC = ${srcJson};
+const body = document.getElementById("live");
+try {
+  const mod = await import(URL.createObjectURL(new Blob([SRC], { type: "text/javascript" })));
+  for (const [name, args, expected] of DEMO) {
+    const tr = document.createElement("tr");
+    let got, ok = false;
+    try { got = mod[name](...args); ok = JSON.stringify(got) === JSON.stringify(expected); }
+    catch (e) { got = "threw: " + e.message; }
+    tr.innerHTML = "<td>" + name + "(" + args.map((a) => JSON.stringify(a)).join(", ") + ")</td>" +
+      "<td>" + JSON.stringify(expected) + "</td>" +
+      "<td class='got'>" + JSON.stringify(got) + "</td>" +
+      "<td class='" + (ok ? "pass" : "fail") + "'>" + (ok ? "PASS" : "FAIL") + "</td>";
+    body.appendChild(tr);
+  }
+} catch (e) {
+  body.innerHTML = "<tr><td colspan='4' class='fail'>live import failed: " + e.message + " — open over http (node gym/server.mjs) if the browser blocks blob modules on file://</td></tr>";
+}
+</script>
+<p style="margin-top:40px;color:var(--dim);font-size:12px">at ${exp.at} · ${n} units · generated from gym/tapestry.spec.json's WNB thread (GL-EN-18)</p>
+</main></body></html>`;
+}
+
+// ── CLI ─────────────────────────────────────────────────────────────────────
+function main() {
+  const args = {};
+  for (let i = 2; i < process.argv.length; i += 1) if (process.argv[i].startsWith("--")) args[process.argv[i].slice(2)] = process.argv[i + 1] && !process.argv[i + 1].startsWith("--") ? process.argv[i + 1] : true;
+  const gens = Number(args.gens ?? 3);
+  const outDir = path.resolve(args.out ?? path.join(os.tmpdir(), "winnow-" + Date.now()));
+  fs.mkdirSync(outDir, { recursive: true });
+  const { out, assembled } = runExperiment({ gens });
+  const jsonPath = path.join(outDir, "winnow-experiment.json");
+  const htmlPath = path.join(outDir, "winnow-experiment.html");
+  fs.writeFileSync(jsonPath, JSON.stringify(out, null, 2));
+  fs.writeFileSync(htmlPath, renderHtml({ ...out, assembled }));
+  const n = out.units;
+  console.log(`material: ${out.material.passed}/${out.material.offered} held · strategies: ${out.winnow.hunted} hunted, ${out.winnow.killed.length} winnowed · champion ${out.champion.way} ${out.champion.score * n}/${n} (${out.champion.reachedBy})`);
+  console.log(`gate: ${out.falsify.wholeModuleGate ? "PASS" : "FAIL"} · adversarial no-VERIFY: ${out.falsify.adversarialNoVerify}`);
+  console.log(`json: ${jsonPath}`);
+  console.log(`page: ${htmlPath}`);
+  if (args.open) { try { execSync(`open ${JSON.stringify(htmlPath)}`); console.log("opened in the browser"); } catch { console.log("(could not auto-open — open the page path above)"); } }
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) main();

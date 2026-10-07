@@ -107,14 +107,15 @@ append-only, always revisable).
 ║  │    │                     │ ■WND ■AGD ■AGC ■GDR │ ■TAP ■LIB □TKB □BPG │  ║
 ║  │    │                     │                     │ ·HOR ·LFL ·SWT ■CCL │  ║
 ║  │    │                     │                     │ ■OVW ■CPL ■GDC ■STG │  ║
-║  │    │                     │                     │ ■ESS ■POD           │  ║
+║  │    │                     │                     │ ■ESS ■POD ■WPG      │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
-║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL           │  ║
+║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL      │  ║
 ║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │                     │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
+║  │    │                     │ ■WRP                │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -128,7 +129,7 @@ append-only, always revisable).
 ║  │    │ ■DOR ■ADM ■LIB      │ ■FLD ■SNP ■EOT ■DTF │ ■SEL ■BLD ■ASK ■TAP │  ║
 ║  │    │                     │ □TKB ·HOR ·SWT ■WND │ □BPG ·LFL ·TER ·NET │  ║
 ║  │    │                     │ ■AGD ■WSN ■AGC ■GDR │ ■CCL ■OVW ■CPL ■GDC │  ║
-║  │    │                     │ ■STG ■ESS ■POD      │                     │  ║
+║  │    │                     │ ■STG ■ESS ■POD      │ ■WPG                │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∀  │ ∀∘                  │ ∀◆                  │ ∀◈                  │  ║
 ║  │    │ ■FRS ·RSM ·APO      │ ■STL ■PRB ■SPR ■TST │ ■CGT ■CUB ■LDR ■BOX │  ║
@@ -136,6 +137,7 @@ append-only, always revisable).
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC                │ ·STM ■RSR ·STR ■FAP │  ║
 ║  │    │                     │                     │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │                     │ ■WBL ■WRP           │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -148,7 +150,7 @@ append-only, always revisable).
 ║  │ ≈  │ ≈∘                  │ ≈◆                  │ ≈◈                  │  ║
 ║  │    │ ■VDF ■FRS ■ADM ·APO │ ■FLD ■PRB ■TST ■DTF │ ■CGT ■LDR ■NBK □PTH │  ║
 ║  │    │                     │ ■BHC □LOK ·KOE ·RUT │ ·ANS ·CRV ·KIN ·NET │  ║
-║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB                │  ║
+║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
 ║  │    │                     │ ■ESC                │                     │  ║
@@ -158,7 +160,7 @@ append-only, always revisable).
 ║  │    │                     │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
 ║  │    │                     │ ■POD                │ ■CCL ■OVW ■CPL ■GDC │  ║
-║  │    │                     │                     │ ■SLF ■FCL           │  ║
+║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
 ║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
@@ -167,7 +169,8 @@ append-only, always revisable).
 ║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘                                                  ║
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
-║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈               ║
+║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
+║ │    ■WPG△◈ ■WRP⊨◈                                                         ║
 ║ │ 1  ■VDF○∘ ■RDU●◆ ■STL=◆ ■FLD→◆ ■HNT●∘ ■SNP|◆ ■PRB⊨◆ ■GAP∅◆ ■ADC●◈        ║
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
@@ -418,6 +421,15 @@ append-only, always revisable).
 ║     @ g/winnow-experiment.mjs GL-EN-18 GL-EN-15 GL-OG-02                   ║
 ║■FCL 2 ↬◈ § fold-claims                                                     ║
 ║     @ o/fold-claims.mjs o/fold-claims.test.mjs                             ║
+║■WBL 2 ↬◈ § build-log                                                       ║
+║     @ o/generation/build-log.mjs o/generation/build-log.test.mjs           ║
+║     @ g/build-log-demo.mjs g/build-calc-demo.mjs GL-EN-19 GL-EN-14         ║
+║■WPG 2 △◈ ‡ program                                                         ║
+║     @ o/generation/program.mjs o/generation/program.test.mjs               ║
+║     @ g/program-demo.mjs GL-EN-20 GL-EN-19                                 ║
+║■WRP 2 ⊨◈ ‡ repair                                                          ║
+║     @ o/generation/repair.mjs o/generation/repair.test.mjs                 ║
+║     @ g/program-wired-demo.mjs GL-EN-21 GL-EN-20                           ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

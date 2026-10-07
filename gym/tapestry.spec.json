@@ -1253,6 +1253,55 @@
     "o/fold-claims.mjs",
     "o/fold-claims.test.mjs"
    ]
+  },
+  {
+   "id": "WBL",
+   "name": "build-log",
+   "st": "■",
+   "lvl": 2,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/generation/build-log.mjs",
+    "o/generation/build-log.test.mjs",
+    "g/build-log-demo.mjs",
+    "g/build-calc-demo.mjs",
+    "GL-EN-19",
+    "GL-EN-14"
+   ]
+  },
+  {
+   "id": "WPG",
+   "name": "program",
+   "st": "■",
+   "lvl": 2,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/program.mjs",
+    "o/generation/program.test.mjs",
+    "g/program-demo.mjs",
+    "GL-EN-20",
+    "GL-EN-19"
+   ]
+  },
+  {
+   "id": "WRP",
+   "name": "repair",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/generation/repair.mjs",
+    "o/generation/repair.test.mjs",
+    "g/program-wired-demo.mjs",
+    "GL-EN-21",
+    "GL-EN-20"
+   ]
   }
  ]
 }
