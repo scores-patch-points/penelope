@@ -56,7 +56,12 @@ export function materialize(claims) {
       const f = files.get(c.path);
       if (!f) { refused.push({ path: c.path, reason: "no base file", by: c.kind }); continue; }
       if (typeof c.find !== "string" || !f.code.includes(c.find)) { refused.push({ path: c.path, reason: "find bytes absent in the projection", by: c.kind }); continue; }
-      f.code = f.code.replace(c.find, c.add);
+      const replaced = f.code.replace(c.find, c.add);
+      // A NO-OP IS NOT AN ACT (2026-10-07): a mouth that echoes the completion
+      // anchor (add === find) changes nothing — it must never enter the
+      // projection or the provenance as if it had healed the program.
+      if (replaced === f.code) { refused.push({ path: c.path, reason: "no-op (add equals find)", by: c.kind }); continue; }
+      f.code = replaced;
       f.provenance.push({ act: c.kind, source: c.source ?? null, address: c.address ?? null, model: c.model ?? null, reason: c.reason ?? null });
     }
   }
@@ -116,6 +121,9 @@ export async function heal({ logPath, dir, testCommand, hunt = null, invent = nu
       A({ kind: "refusal", path: fix.path, reason: "find bytes absent in the projection", by });
       continue;
     }
+    // A no-op draw (the mouth echoed the anchor) is a refusal, never a heal —
+    // the model must change the bytes; a reroll is not an act.
+    if (fix.add === fix.find) { A({ kind: "refusal", path: fix.path, reason: "no-op (add equals find)", by }); round += 1; continue; }
     A({ kind: by, path: fix.path, find: fix.find, add: fix.add, source: fix.source ?? null, address: fix.address ?? null, model: fix.model ?? null, reason: fix.reason ?? null });
   }
   const claims = readLog(logPath);

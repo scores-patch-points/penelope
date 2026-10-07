@@ -32,6 +32,13 @@ test("a find whose bytes are absent is a REFUSAL, never applied", () => {
   assert.equal(p.refusals, 1);
 });
 
+test("a NO-OP (add === find) is a REFUSAL — a mouth echoing the anchor is not a heal", () => {
+  const p = materialize(log([{ kind: "file", path: "a.js", code: "x" }, { kind: "invent", path: "a.js", find: "x", add: "x", model: "m" }]));
+  assert.equal(p.files["a.js"], "x");
+  assert.equal(p.refusals, 1);
+  assert.equal(p.provenance[0].provenance.length, 1); // no invented act recorded
+});
+
 test("iterate is APPEND — the last act wins, prior projections are stable prefixes", () => {
   const dir = tmp(), logPath = path.join(dir, "p.jsonl");
   fs.writeFileSync(logPath, "");
