@@ -190,7 +190,7 @@ append-only, always revisable).
 ```text
 ╔═[ ⟨⟩ ]═════════════════════════════════════════════════════════════════════╗
 ║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/               ║
-║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/ LP/=../ethos/     ║
+║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/ LP/=../Zenodotus/     ║
 ║  FOLD/=../the-fold/                                                        ║
 ║                                                                            ║
 ║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║

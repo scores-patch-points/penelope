@@ -87,7 +87,7 @@ export function foldAtPoint({ forWhom = "", indices = {}, sections = [], per = 2
 export async function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
   const { indexSource } = await import("./source-index.mjs");
-  const REP = "/Users/mlacy/Documents/3.0/ethos/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = "/Users/mlacy/Documents/3.0/Zenodotus/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
   const WM = "/tmp/wm-research.txt";
   const indices = { republic: indexSource(REP), research: indexSource(WM) };
   const holder = foldAtPoint({ forWhom: "the one who keeps a memory in a box and must learn to let it go", indices, sections: [{ name: "the classical image", aspect: "how the wax hardens and crowds with a long life" }] });

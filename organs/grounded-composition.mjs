@@ -49,7 +49,7 @@ export function composeGrounded({ title = null, sections = [], indices = {} } = 
 export async function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
   const { indexSource } = await import("./source-index.mjs");
-  const REP = "/Users/mlacy/Documents/3.0/ethos/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = "/Users/mlacy/Documents/3.0/Zenodotus/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
   const idx = indexSource(REP);
   const r = composeGrounded({
     title: "T", sections: [

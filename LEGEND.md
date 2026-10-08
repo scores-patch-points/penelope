@@ -145,4 +145,4 @@ The tapestry carries symbols; this file carries the words. Generated from [`gym/
 
 - **key row**: every thread, addressed: <status><code> <level> <op><grain> <typing> <name>, then refs, then a condition ⇒✗ for an unwoven thread
 - **levels**: `0` atom: one framed fragment · `1` unit: one named part, its own void cell · `2` artifact: the sealed whole · `3` loom: chat, build, notebook · `4` house: ladder, standing rules, the record
-- **prefixes**: o/ organs/ · g/ gym/ · l/ ladder/ · a/ apps/ · E7/ ../khora/native/ · SP/ ../khora-screenshot-pipeline/native/ · ER7/ ../khora/ · LP/ ../ethos/ · FOLD/ ../the-fold/
+- **prefixes**: o/ organs/ · g/ gym/ · l/ ladder/ · a/ apps/ · E7/ ../khora/native/ · SP/ ../khora-screenshot-pipeline/native/ · ER7/ ../khora/ · LP/ ../Zenodotus/ · FOLD/ ../the-fold/
