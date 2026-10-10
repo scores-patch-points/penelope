@@ -48,8 +48,12 @@ function filesUnder(rel) {
 // does this source write a swatch row, OR route through the door (which
 // swatches)? A draw through runDrawDoor / the door URL is recorded there.
 const swatches = (src) => /swatch\(/.test(src) || /swatch\.jsonl/.test(src) || /appendFileSync.*swatch/.test(src) || /runDrawDoor/.test(src) || /8137\/api\/generate/.test(src) || /generation-door/.test(src);
-// does this source reach a model door?
-const reachesDoor = (src) => DOORS.some((re) => re.test(src));
+// does this source reach a model door? SHARPENED 2026-10-10: the door pattern
+// must sit on a line that actually CALLS (fetch/fetchImpl/runDrawDoor/draw) —
+// a comment or a test string that merely names a door is not a draw, and
+// flagging it made mouth.mjs, resolver.mjs, build-podcast.mjs and
+// check-tapestry.mjs cry wolf at their own comments.
+const reachesDoor = (src) => src.split("\n").some((l) => DOORS.some((re) => re.test(l)) && /fetch(Impl)?\s*\(|runDrawDoor|\bdraw\s*\(/.test(l));
 
 export function audit() {
   const files = [...filesUnder("organs"), ...filesUnder("gym")].filter((f) => !f.includes("handmaidens") && !f.includes("node_modules"));

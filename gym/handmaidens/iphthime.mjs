@@ -35,8 +35,11 @@ const declared = new Set([...EOT.matchAll(/^### (GL-[A-Z]+-\d+)\b/gm)].map((m) =
 const cited = new Set(SPEC.threads.flatMap((t) => t.refs.filter((r) => /^GL-/.test(r))));
 
 // a thread NAME the EOT asserts (a "thread" mention in a law entry) that the
-// spec's threads do not carry
-const specThreadNames = new Set(SPEC.threads.map((t) => t.name));
+// spec's threads do not carry. SHARPENED 2026-10-10: an assertion is honoured
+// when it names the thread's id OR its (lower-case) name — "the GAT thread"
+// IS "gates", "the SWT thread" IS "swatch" — so a grown thread is never
+// reported ghost because the author wrote its ID rather than its name.
+const specThreadNames = new Set(SPEC.threads.flatMap((t) => [t.id, t.name]).map((n) => n.toLowerCase()));
 const assertedThreads = [...EOT.matchAll(/\b(?:the )?([A-Z]{2,4}) thread\b/g)].map((m) => m[1]).filter((n) => n !== "EOT");
 
 export function audit() {
@@ -44,7 +47,7 @@ export function audit() {
   //    seat on the cloth (the reverse of check-tapestry's REF, which is one-way)
   const uncited = [...declared].filter((id) => !cited.has(id)).sort();
   // 2. a thread the laws assert that the spec never grew
-  const ghostThreads = [...new Set(assertedThreads)].filter((n) => !specThreadNames.has(n));
+  const ghostThreads = [...new Set(assertedThreads)].filter((n) => !specThreadNames.has(n.toLowerCase())).sort();
   // 3. a law whose claim has no evidence path (a hallucination marker)
   const noPath = [...EOT.matchAll(/^### (GL-[A-Z]+-\d+)[^\n]*\n- pipeline: [^\n]*\n- status: [^\n]*\n- evidence: ([^\n]*)/gm)]
     .filter((m) => !/\.mjs|\.js|\.json|\.md|measured|:\d+/.test(m[2]))

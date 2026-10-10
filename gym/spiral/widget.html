@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>widget</title></head>
+<body>
+<section class="widget">
+    <h2>Bill splitter</h2>
+    <label>Bill<input id="in_total" type="number" value="100"></label>
+    <label>Tip %<input id="in_tip" type="number" value="20"></label>
+    <label>People<input id="in_people" type="number" value="4"></label>
+    <button onclick="var r=perPerson(Number(document.getElementById("in_total").value), Number(document.getElementById("in_tip").value), Number(document.getElementById("in_people").value)); document.getElementById('out').textContent = formatValue(r, "money");">Compute</button>
+    <output id="out"></output>
+  </section>
+<script>
+function perPerson(total, tip, people) { return Math.round((total*1.05*(1+tip/100)/people) * 100) / 100; }
+function formatValue(x, format, { currency = "£", unit = "" } = {}) {
+  if (typeof x !== "number" || !isFinite(x)) return "—";
+  const n = (d) => x.toLocaleString("en-GB", { maximumFractionDigits: d, minimumFractionDigits: 0 });
+  if (format === "money") return currency + x.toLocaleString("en-GB", { maximumFractionDigits: Math.abs(x) < 100 ? 2 : 0, minimumFractionDigits: Math.abs(x) < 100 ? 2 : 0 });
+  if (format === "percent") return n(1) + "%";
+  return n(2) + (unit ? " " + unit : "");
+}
+</script>
+</body></html>

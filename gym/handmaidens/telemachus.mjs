@@ -37,6 +37,7 @@ const SANCTIONED = [
   "voice.e2e.mjs", "weave-nomodel.mjs", "nomodel-prose.mjs", "nomodel-summary.mjs",
   "voice.mjs", // the voice's own drawRouted goes direct (disclosed GL-WV-12); the door wraps it
   "box-vs-model-casual.mjs", "box-vs-model-experiment.mjs", "box-settle-vs-model.mjs", "box-settle-live-hunt.mjs", // wired through the door 2026-10-04 (box-draw.mjs)
+  "pythia.mjs", // streams the archon's testimony directly, DISCLOSED (organs/pythia.mjs:21-40); the door is non-streaming, and askOllama writes its own Swatch@1 row so the economy still measures it
 ];
 const DIRECT = [/fetch\([^)]*1143[456]/, /fetch\([^)]*11435/, /askOllama/];
 

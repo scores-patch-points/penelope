@@ -59,12 +59,19 @@ export function huntCommitted({ dir, rel, name }) {
 }
 
 /** huntWorkspace({ name, roots }) — the workspace field: rg for a real
- *  implementation and snip it. Zero model. */
+ *  implementation and snip it. Zero model. rg when present; a grep fallback so
+ *  a machine without rg does not SILENTLY miss every hunt (a real field that
+ *  reports a miss it never searched is worse than a wall). */
 export function huntWorkspace({ name, roots = [] }) {
   for (const root of roots) {
     if (!fs.existsSync(root)) continue;
     let hit = "";
-    try { hit = execFileSync("sh", ["-c", `rg -l --no-messages "function ${name}\\(" ${JSON.stringify(root)} | head -1`], { encoding: "utf8" }).trim(); } catch { hit = ""; }
+    const rg = `rg -l --no-messages "function ${name}\\(" ${JSON.stringify(root)} 2>/dev/null | head -1`;
+    const grep = `grep -rlE --include='*.js' --include='*.mjs' "function[[:space:]]+${name}\\(|function[[:space:]]+${name}[[:space:]]*\\(" ${JSON.stringify(root)} 2>/dev/null | head -1`;
+    for (const cmd of [rg, grep]) {
+      try { hit = execFileSync("sh", ["-c", cmd], { encoding: "utf8" }).trim(); } catch { hit = ""; }
+      if (hit) break;
+    }
     if (!hit) continue;
     const add = snipFunction(fs.readFileSync(hit, "utf8"), name);
     if (add) return { add, source: "workspace", address: `${hit}#${name}` };

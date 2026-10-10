@@ -27,6 +27,17 @@ import { fileURLToPath } from "node:url";
 import { stackDigest } from "./stack-digest.mjs";
 import { verifyQuotes } from "../../khora/native/organs/quotes.js";
 
+// THE DRAW DISCLOSURE (2026-10-10, the house round — Telemachus + Autonoe):
+// askOllama streams the archon's testimony directly to the caller, which the
+// generation door cannot carry (the door is non-streaming), so this draw goes
+// to the local ollama door (PYTHIA_OLLAMA_URL) DIRECTLY, DISCLOSED — and it
+// writes its own Swatch@1 row so the economy still measures it. Named in
+// gym/handmaidens/telemachus.mjs SANCTIONED; a draw here with no swatch row,
+// or a future "routed through runDrawDoor" claim this line contradicts, breaks
+// this disclosure.
+const SWATCH = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "gym", "swatch.jsonl");
+const swatch = (row) => { try { fs.appendFileSync(SWATCH, JSON.stringify({ schema: "Swatch@1", ts: new Date().toISOString(), weave: "draw:pythia", class: "draw", engine: "pythia → local ollama (direct, disclosed, streaming)", model: row.model, mouthCalls: 1, mouthBytes: row.bytes, corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: row.verdict, evidence: "2026-10-10 house round — pythia disclosure" }) + "\n"); } catch { /* the record is best-effort; a failure here is itself recorded by the audit */ } };
+
 const ROOT = "/Users/mlacy/Documents/3.0";
 const MANIFEST_DIR = path.join(ROOT, "eo-teachings/manifest");
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -156,6 +167,8 @@ async function askOllama(messages, onToken) {
       if (tok) { onToken?.(tok); out += tok; }
     }
   }
+  // THE RECORD (the disclosure above): every draw lands on the swatch.
+  swatch({ model: MODEL, bytes: Buffer.byteLength(out), verdict: out.length ? "mouth" : "empty" });
   return out;
 }
 

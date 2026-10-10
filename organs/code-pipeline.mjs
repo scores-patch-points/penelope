@@ -169,6 +169,9 @@ export async function drawFrontier(prompt, model, { channel = HEIMDALL_CHANNEL, 
   const j = await r.json().catch(() => null);
   const text = j?.choices?.[0]?.message?.content ?? j?.content ?? null;
   if (typeof text !== "string" || !text.trim()) throw new Error("frontier returned no text");
+  // THE RECORD (2026-10-10 house round — Autonoe): the sealed-external draw
+  // lands on the swatch like any other; the economy measures what left.
+  try { fs.appendFileSync(path.join(HERE, "..", "gym", "swatch.jsonl"), JSON.stringify({ schema: "Swatch@1", ts: new Date().toISOString(), weave: "draw:frontier", class: "draw", engine: "code-pipeline drawFrontier → sealed-external frontier", model, mouthCalls: 1, mouthBytes: Buffer.byteLength(text), corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: "mouth", evidence: "2026-10-10 house round — drawFrontier swatch" }) + "\n"); } catch { /* best-effort; the audit names the failure otherwise */ }
   return { text: reidentify(text, scrubbed.map), deidentified: scrubbed.map };
 }
 

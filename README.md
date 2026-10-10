@@ -60,7 +60,7 @@ append-only, always revisable).
 ║                  ◦◦■                                 ·◦◦                   ║
 ║                 ◦◦            ◦◦◦◦◦◦■◦◦◦◦◦◦            ◦◦                  ║
 ║              ◦◦◦          ◦◦◦◦◦           ◦◦◦◦◦          ◦◦◦               ║
-║              ◦         ◦◦■                     □◦◦         ◦               ║
+║              ◦         ◦◦■                     ■◦◦         ◦               ║
 ║             ◦         ◦◦                         ◦◦◦        ◦              ║
 ║            ◦        ◦◦          ◦◦◦◦■◦◦◦◦          ◦◦        ◦             ║
 ║       ⊨   ■◦        ◦        ◦◦·◦       ◦■◦◦        ◦        ◦■   ●        ║
@@ -81,7 +81,7 @@ append-only, always revisable).
 ║                                                                            ║
 ╠═[ ∅ ○ ● | → △ = ⊨ ↬ ]══════════════════════════════════════════════════════╣
 ║     ╳      ∅ ∩∃  ∘■ ◆■ ◈·                                                  ║
-║   ╱   ╲    ○ ≈∃  ∘■ ◆□ ◈·   ■VDF∘                                          ║
+║   ╱   ╲    ○ ≈∃  ∘■ ◆■ ◈·   ■VDF∘                                          ║
 ║ ╲       ╱  ● ∪∃  ∘■ ◆■ ◈■   ■RDU◆ ■HNT∘ ■MTH◆                              ║
 ║   ╲   ╱    | ∩⊞  ∘■ ◆■ ◈·   ■SNP◆                                          ║
 ║     ╳      → ≈⊞  ∘■ ◆■ ◈·   ■FLD◆                                          ║
@@ -99,7 +99,7 @@ append-only, always revisable).
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∃  │ ∅ ∩∃                │ ○ ≈∃                │ ● ∪∃                │  ║
 ║  │    │ ■GAP ■NLB ·KNL ■EVO │ ■VDF □LOK ·KOE □TGR │ ■RDU ■HNT ■MTH ■FRM │  ║
-║  │    │                     │ ·SCR ·KIN           │ ■CHT ■ADC ■ADP □CDB │  ║
+║  │    │                     │ ·SCR ·KIN ■WPH      │ ■CHT ■ADC ■ADP □CDB │  ║
 ║  │    │                     │                     │ ·PAG ·VOC ■PYT ■SIX │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ | ∩⊞                │ → ≈⊞                │ △ ∪⊞                │  ║
@@ -123,7 +123,7 @@ append-only, always revisable).
 ║  │ ∃  │ ∃∘                  │ ∃◆                  │ ∃◈                  │  ║
 ║  │    │ ■VDF ■HNT ■NLB ■SIX │ ■RDU ■MTH ■GAP ■CHT │ ■FRM ■ADC ■ADP □CDB │  ║
 ║  │    │                     │ □LOK ·KOE □TGR ·SCR │ ·PAG ·KIN ·KNL      │  ║
-║  │    │                     │ ·VOC ■EVO ■PYT      │                     │  ║
+║  │    │                     │ ·VOC ■EVO ■PYT ■WPH │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ ⊞∘                  │ ⊞◆                  │ ⊞◈                  │  ║
 ║  │    │ ■DOR ■ADM ■LIB      │ ■FLD ■SNP ■EOT ■DTF │ ■SEL ■BLD ■ASK ■TAP │  ║
@@ -153,7 +153,7 @@ append-only, always revisable).
 ║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
-║  │    │                     │ ■ESC ■MJS           │                     │  ║
+║  │    │                     │ ■ESC ■MJS ■WPH      │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■FRM ■SEL ■BOX ■BLD │  ║
@@ -167,7 +167,7 @@ append-only, always revisable).
 ║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
 ║ │    ·KNL∅◈ ·STM=◈                                                         ║
 ║ │ 3  ■CHT●◆ ■BLD△◈ ■NBK⊨◈ ■DOR|∘ ■ASK△◈ ■ADM→∘ ·PAG●◈ ·LFL△◈ ·TER|◈        ║
-║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘                                                  ║
+║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■WPH○◆                                           ║
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
@@ -222,8 +222,14 @@ append-only, always revisable).
 ║     @ o/generation/ground.mjs o/generation/ground.test.mjs                 ║
 ║     @ o/generation/adapters/markdown.mjs o/generation/adapters/page.mjs    ║
 ║     @ o/generation/adapters/data.mjs o/generation/adapters/talk.mjs        ║
+║     @ o/generation/adapters/widget.mjs g/widget-build-demo.mjs             ║
 ║     @ o/generation/forms.test.mjs o/generation/door-exec.test.mjs          ║
 ║     @ FOLD/fold-mouth-webllm.mjs FOLD/fold-mouth-webllm.test.mjs GL-EN-23  ║
+║     @ GL-EN-25 g/widget-merge-github-demo.mjs g/merges/tip-temp-merged.html║
+║     @ g/merges/check-merged.test.mjs g/merges/merge-github.log.jsonl       ║
+║     @ GL-EN-26 o/generation/multitask.mjs g/multitask-draw.mjs             ║
+║     @ g/multitask-hard.mjs GL-EN-28 g/spiral-door.mjs                      ║
+║     @ o/generation/pass-aesthetics.mjs                                     ║
 ║■GAP 1 ∅◆ § gap                                                             ║
 ║     @ GL-BD-02 GL-OG-04                                                    ║
 ║■TST 2 ⊨◆ § test                                                            ║
@@ -239,7 +245,10 @@ append-only, always revisable).
 ║■DTF 2 →◆ ‡ detail                                                          ║
 ║     @ o/detail-fetch.mjs GL-OG-04                                          ║
 ║■BHC 2 ⊨◆ ‡ behave                                                          ║
-║     @ o/behavior-check.mjs GL-OG-05 GL-BD-06                               ║
+║     @ o/behavior-check.mjs o/behavior-check.test.mjs g/behavior-demo.mjs   ║
+║     @ GL-OG-05 GL-BD-06 GL-EN-24 g/spiral-proof.mjs GL-EN-27               ║
+║     @ o/read-code-by-priors.mjs o/generation/multitask.mjs                 ║
+║     @ g/multitask-draw.mjs g/multitask-hard.mjs g/widget-build-demo.mjs    ║
 ║■FRS 2 ⊨∘ ‡ fresh                                                           ║
 ║     @ o/freshness.mjs GL-OG-06                                             ║
 ║■CUB 4 =◈ ‡ cube                                                            ║
@@ -446,6 +455,9 @@ append-only, always revisable).
 ║     @ g/agentic-server.mjs g/agentic.html                                  ║
 ║■MJS 1 ⊨◆ § mini-js                                                         ║
 ║     @ g/mini-js-ast.mjs g/mini-js-demo.mjs g/mini-js-diff.mjs              ║
+║■WPH 3 ○◆ ‡ white-paper                                                     ║
+║     @ o/generation/adapters/prose.mjs GL-WP-03 GL-WP-05                    ║
+║     definition received, never re-extracted ⇒✗                             ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

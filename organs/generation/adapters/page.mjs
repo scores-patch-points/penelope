@@ -8,6 +8,14 @@
 // Ground already holds; the mouth writes only the swept prose around it).
 import { groundFromRead } from "../ground.mjs";
 import { tokens, span } from "../../html-snip.mjs";
+// THE BEHAVIORAL JUDGE (2026-10-10): when the build declares `ctx.behavior`
+// (cases + needs), the page is ALSO judged by what it DOES, not only by what
+// it is grounded against: its script must expose the named pure factors, and
+// the declared cases run against them with the expected values settled by the
+// BOX (behavior-check.mjs wantOf — never a drawn want). Every act of that
+// judge sits on one of the 27 cube cells. A page that renders and grounds but
+// computes wrong is refused here — the widget's real judge.
+import { judgePage } from "../../behavior-check.mjs";
 
 export const PAGE_ADAPTER_SCHEMA = "PageForm@1";
 const MARKER = /⟦([^⟧]+)@(\d+)⟧/g;
@@ -78,11 +86,27 @@ export const adapter = {
     const all = sections.flatMap((s) => markersOf(s));
     const invented = g ? all.filter((m) => !g.huntBytes.has(m.abs)) : [];
     const ok = unmarked.length === 0 && invented.length === 0;
+    if (!ok) {
+      return {
+        ok: false, reason: ok ? `page grounded: ${sections.length} sections, ${all.length} markers resolved to hunt bytes`
+          : `page refused: ${unmarked.length} unmarked section${unmarked.length !== 1 ? "s" : ""}${invented.length ? `, ${invented.length} marker${invented.length !== 1 ? "s" : ""} outside the hunt` : ""}`,
+        detail: { sections: sections.length, markers: all.length, invented: invented.map((m) => m.abs) },
+      };
+    }
+    // THE WIDGET'S REAL JUDGE: declared cases against the page's own factors,
+    // the want settled by the box. Every act is cube-addressed; a refusal here
+    // is the page's behavior failing, not its prose.
+    const b = ctx?.behavior ? judgePage(html, { cases: ctx.behavior.cases || [], needs: ctx.behavior.needs || [] }) : null;
+    if (b && !b.ok) {
+      return {
+        ok: false,
+        reason: `behavior: ${b.findings.slice(0, 3).map((f) => `${f.kind}${f.detail ? " · " + f.detail : ""}`).join("; ")}`,
+        detail: { sections: sections.length, markers: all.length, behavior: b.findings, cell: b.findings[0]?.cell ?? null },
+      };
+    }
     return {
-      ok,
-      reason: ok ? `page grounded: ${sections.length} sections, ${all.length} markers resolved to hunt bytes`
-        : `page refused: ${unmarked.length} unmarked section${unmarked.length !== 1 ? "s" : ""}${invented.length ? `, ${invented.length} marker${invented.length !== 1 ? "s" : ""} outside the hunt` : ""}`,
-      detail: { sections: sections.length, markers: all.length, invented: invented.map((m) => m.abs) },
+      ok: true, reason: `page grounded: ${sections.length} sections, ${all.length} markers resolved to hunt bytes${b ? ` · behavior held: ${b.observations.length} cube-tied acts` : ""}`,
+      detail: { sections: sections.length, markers: all.length, behavior: b ? { held: true, acts: b.observations.length } : null },
     };
   },
 

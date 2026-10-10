@@ -107,17 +107,17 @@
    "op": "SEG",
    "grain": "Figure",
    "typing": "§",
-    "refs": [
-     "o/generation/adapters/code.mjs",
-     "GL-EN-09",
-     "GL-RT-02",
-     "o/snip-cite.mjs",
-     "o/verified-byte-snips.mjs",
-     "o/verified-byte-snips.test.mjs"
-    ]
-   },
-   {
-    "id": "PRB",
+   "refs": [
+    "o/generation/adapters/code.mjs",
+    "GL-EN-09",
+    "GL-RT-02",
+    "o/snip-cite.mjs",
+    "o/verified-byte-snips.mjs",
+    "o/verified-byte-snips.test.mjs"
+   ]
+  },
+  {
+   "id": "PRB",
    "name": "probe",
    "st": "■",
    "lvl": 1,
@@ -130,47 +130,61 @@
     "GL-CD-11"
    ]
   },
-   {
-    "id": "SPR",
-    "name": "spiral",
-    "st": "■",
-    "lvl": 0,
-    "op": "REC",
-    "grain": "Figure",
-    "typing": "§",
-    "refs": [
-     "o/generation/engine.mjs",
-     "GL-EN-06",
-     "GL-EN-12",
-     "o/generation/spiral-revision.mjs",
-     "o/generation/spiral-revision.test.mjs",
-     "o/generation/spiral-adversarial.test.mjs"
-    ]
-   },
-   {
-    "id": "FRM",
-    "name": "forms",
-    "st": "■",
-    "lvl": 0,
-    "op": "INS",
-    "grain": "Pattern",
-    "typing": "§",
-    "refs": [
-     "o/generation/ground.mjs",
-     "o/generation/ground.test.mjs",
-     "o/generation/adapters/markdown.mjs",
-     "o/generation/adapters/page.mjs",
-     "o/generation/adapters/data.mjs",
-     "o/generation/adapters/talk.mjs",
-     "o/generation/forms.test.mjs",
-     "o/generation/door-exec.test.mjs",
-     "FOLD/fold-mouth-webllm.mjs",
-     "FOLD/fold-mouth-webllm.test.mjs",
-     "GL-EN-23"
-    ]
-   },
-   {
-    "id": "GAP",
+  {
+   "id": "SPR",
+   "name": "spiral",
+   "st": "■",
+   "lvl": 0,
+   "op": "REC",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/generation/engine.mjs",
+    "GL-EN-06",
+    "GL-EN-12",
+    "o/generation/spiral-revision.mjs",
+    "o/generation/spiral-revision.test.mjs",
+    "o/generation/spiral-adversarial.test.mjs"
+   ]
+  },
+  {
+   "id": "FRM",
+   "name": "forms",
+   "st": "■",
+   "lvl": 0,
+   "op": "INS",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "o/generation/ground.mjs",
+    "o/generation/ground.test.mjs",
+    "o/generation/adapters/markdown.mjs",
+    "o/generation/adapters/page.mjs",
+    "o/generation/adapters/data.mjs",
+    "o/generation/adapters/talk.mjs",
+    "o/generation/adapters/widget.mjs",
+    "g/widget-build-demo.mjs",
+    "o/generation/forms.test.mjs",
+    "o/generation/door-exec.test.mjs",
+    "FOLD/fold-mouth-webllm.mjs",
+    "FOLD/fold-mouth-webllm.test.mjs",
+    "GL-EN-23",
+    "GL-EN-25",
+    "g/widget-merge-github-demo.mjs",
+    "g/merges/tip-temp-merged.html",
+    "g/merges/check-merged.test.mjs",
+    "g/merges/merge-github.log.jsonl",
+    "GL-EN-26",
+    "o/generation/multitask.mjs",
+    "g/multitask-draw.mjs",
+    "g/multitask-hard.mjs",
+    "GL-EN-28",
+    "g/spiral-door.mjs",
+    "o/generation/pass-aesthetics.mjs"
+   ]
+  },
+  {
+   "id": "GAP",
    "name": "gap",
    "st": "■",
    "lvl": 1,
@@ -276,8 +290,18 @@
    "typing": "‡",
    "refs": [
     "o/behavior-check.mjs",
+    "o/behavior-check.test.mjs",
+    "g/behavior-demo.mjs",
     "GL-OG-05",
-    "GL-BD-06"
+    "GL-BD-06",
+    "GL-EN-24",
+    "g/spiral-proof.mjs",
+    "GL-EN-27",
+    "o/read-code-by-priors.mjs",
+    "o/generation/multitask.mjs",
+    "g/multitask-draw.mjs",
+    "g/multitask-hard.mjs",
+    "g/widget-build-demo.mjs"
    ]
   },
   {
@@ -1322,40 +1346,55 @@
    "op": "EVA",
    "grain": "Pattern",
    "typing": "‡",
-    "refs": [
-     "o/generation/repair.mjs",
-     "o/generation/repair.test.mjs",
-     "g/program-wired-demo.mjs",
-     "GL-EN-21",
-     "GL-EN-20"
-    ]
-   },
-   {
-    "id": "AGY",
-    "name": "agentic",
-    "st": "■",
-    "lvl": 1,
-    "op": "SYN",
-    "grain": "Pattern",
-    "typing": "§",
-    "refs": [
-     "g/agentic-server.mjs",
-     "g/agentic.html"
-    ]
-   },
-   {
-    "id": "MJS",
-    "name": "mini-js",
-    "st": "■",
-    "lvl": 1,
-    "op": "EVA",
-    "grain": "Figure",
-    "typing": "§",
-    "refs": [
-     "g/mini-js-ast.mjs",
-     "g/mini-js-demo.mjs",
-     "g/mini-js-diff.mjs"
-    ]
-   }
-  ]
+   "refs": [
+    "o/generation/repair.mjs",
+    "o/generation/repair.test.mjs",
+    "g/program-wired-demo.mjs",
+    "GL-EN-21",
+    "GL-EN-20"
+   ]
+  },
+  {
+   "id": "AGY",
+   "name": "agentic",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "§",
+   "refs": [
+    "g/agentic-server.mjs",
+    "g/agentic.html"
+   ]
+  },
+  {
+   "id": "MJS",
+   "name": "mini-js",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "g/mini-js-ast.mjs",
+    "g/mini-js-demo.mjs",
+    "g/mini-js-diff.mjs"
+   ]
+  },
+  {
+   "id": "WPH",
+   "name": "white-paper",
+   "st": "■",
+   "lvl": 3,
+   "op": "SIG",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/generation/adapters/prose.mjs",
+    "GL-WP-03",
+    "GL-WP-05"
+   ],
+   "ctl": "definition received, never re-extracted"
+  }
+ ]
 }
