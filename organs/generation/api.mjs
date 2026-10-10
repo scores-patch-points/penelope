@@ -33,7 +33,7 @@ export function generationKinds() {
   return [...adapters.keys()].sort();
 }
 
-async function loadBuiltins() {
+export async function loadBuiltins() {
   // Load the sibling reader only when this medium is requested. Code generation
   // must remain usable in a standalone Penelope checkout.
   if (!adapters.has("overview")) registerGenerationAdapter("overview", {
@@ -53,6 +53,16 @@ async function loadBuiltins() {
   if (!adapters.has("text")) registerGenerationAdapter("text", (await import("./adapters/prose.mjs")).default);
   // "prose" remains an internal compatibility alias; the public artifact kind is text.
   if (!adapters.has("prose")) registerGenerationAdapter("prose", generationAdapter("text"));
+  // THE BROWSER-SHAPED FORMS (2026-10-10): markdown, page, data and talk are the
+  // remaining artifact forms named by the resolver's modalities, each drawing
+  // the Ground a khora read supplies (context.read) and verifying its quotes
+  // against the hunt's own byte addresses. data is box-first (the record IS
+  // the Ground); markdown/page/talk phrase the residue and are sealed by the
+  // seal organs, never by themselves.
+  if (!adapters.has("markdown")) registerGenerationAdapter("markdown", (await import("./adapters/markdown.mjs")).default);
+  if (!adapters.has("page")) registerGenerationAdapter("page", (await import("./adapters/page.mjs")).default);
+  if (!adapters.has("data")) registerGenerationAdapter("data", (await import("./adapters/data.mjs")).default);
+  if (!adapters.has("talk")) registerGenerationAdapter("talk", (await import("./adapters/talk.mjs")).default);
   return adapters;
 }
 

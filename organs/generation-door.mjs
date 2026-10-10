@@ -75,7 +75,7 @@ async function boxStance({ text = "", holon = null, level = "whole" } = {}) {
  *  direct draws do (per-request floor, aligned with the server's keep_alive).
  *  `shape` ("stance") asks the box for a mechanical read instead of a model
  *  draw; `text`/`holon`/`level` are the stance shape's own inputs. */
-export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole" } = {}) {
+export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole", exec = null } = {}) {
   const ask = String(prompt ?? "").trim();
   if (!ask && shape !== "stance") return { ok: false, error: "a prompt is required — an empty draw is a named gap, never a draw" };
   const k = KINDS.has(String(kind ?? "").toLowerCase()) ? String(kind).toLowerCase() : "chat";
@@ -134,6 +134,21 @@ export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, ma
     } catch (e) {
       console.error(`[generation-door] voice unavailable, drawing residue: ${e.message}`);
     }
+  }
+  // THE EXECUTOR SEAM (2026-10-10): a caller may hand in its OWN draw
+  // executor — e.g. a WebLLM mouth in a browser surface — so the mouth is
+  // whichever the caller's surface actually runs, while the box still answers
+  // FIRST and the record still lands on the swatch with the model named.
+  // Default (exec absent) = the heimdall channel, exactly as before.
+  if (typeof exec === "function") {
+    const e = await exec({ prompt: ask, maxTokens, temperature, model: m, kind: k, priority }).catch((err) => ({ ok: false, error: String(err?.message ?? err) }));
+    const eText = typeof e?.text === "string" ? e.text.trim() : "";
+    if (e?.ok && eText) {
+      swatch({ weave: `exec:${k}`, class: "draw", engine: "box→exec (caller mouth)", model: e?.model ?? m, mouthCalls: 1, mouthBytes: eText.length, corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: "mouth", evidence: "2026-10-10 executor seam" });
+      return { ok: true, text: eText, winner: "mouth(exec)", model: e?.model ?? m, kind: k, ms: Date.now() - t0, box, exec: true };
+    }
+    swatch({ weave: `exec:${k}`, class: "draw", engine: "box→exec (caller mouth)", model: m, mouthCalls: 1, mouthBytes: 0, corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: "refused", error: String(e?.error ?? "executor returned no text"), evidence: "2026-10-10 executor seam" });
+    return { ok: false, error: `the caller's draw executor refused (${e?.error ?? "no text"})`, kind: k, box };
   }
   for (let a = 0; a < MAX_DEFER; a += 1) {
     const r = await fetch(`${MOUTH}/api/generate`, {

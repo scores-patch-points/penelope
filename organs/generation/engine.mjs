@@ -62,7 +62,7 @@ export function parseArgs(argv) {
 
 // ── THE MOUTH: one small, framed ask; retried; never steered (small-model
 // law — the prompt is a completion anchor, the test decides) ──
-export async function draw(prompt, { maxTokens = 240, retries = 4, model = null, kind = "build", priority = "batch", noModel = false } = {}) {
+export async function draw(prompt, { maxTokens = 240, retries = 4, model = null, kind = "build", priority = "batch", noModel = false, exec = null } = {}) {
   // NO-MODEL TRIPWIRE: a weave run with noModel:true must never reach the door.
   // fillUnits stops a unit at the mouth stage before calling here; this throw
   // is the second wall, so no future caller can draw by accident.
@@ -72,7 +72,7 @@ export async function draw(prompt, { maxTokens = 240, retries = 4, model = null,
   const { runDrawDoor } = await import("../generation-door.mjs");
   let last = "";
   for (let a = 0; a < retries; a += 1) {
-    const r = await runDrawDoor({ prompt, model: model ?? MODEL, kind, priority, maxTokens });
+    const r = await runDrawDoor({ prompt, model: model ?? MODEL, kind, priority, maxTokens, ...(exec && typeof exec === "function" ? { exec } : {}) });
     if (r.ok) return r.text;
     last = r.error ?? "draw failed";
     await new Promise((res) => setTimeout(res, 3000 * (a + 1)));
@@ -156,6 +156,7 @@ async function fillUnits(units, adapter, ctx = {}) {
         noModel: ctx.noModel === true,
         kind: ["code", "application"].includes(ctx.artifact ?? adapter.kind) ? "build" : ["prose", "document", "text"].includes(ctx.artifact ?? adapter.kind) ? "chat" : "other",
         priority: "batch",
+        exec: ctx.mouth ?? null,
       });
       const fn = adapter.snip(out, u.name);
       const alone = fn && !String(fn).includes("this.") ? adapter.probeUnit(fn, u, ctx) : { ok: false, detail: !fn ? "no function drawn" : "used `this`" };
