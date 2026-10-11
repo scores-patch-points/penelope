@@ -50,8 +50,13 @@ export function recordHyperlexiconEpoch(history = [], epoch = {}) {
     supersedes: epoch.supersedes ?? null,
     retainedDefeats: Number.isFinite(epoch.retainedDefeats) ? epoch.retainedDefeats : null,
   });
-  const prevId = entry.supersedes ?? (history.length ? history[history.length - 1].id : null);
-  return freeze([...(history.filter((h) => h.id !== entry.id || h.at === entry.at)), entry, ...(entry.supersedes && entry.supersedes !== prevId ? [] : [])]);
+  // APPEND-ONLY, ENFORCED (2026-10-11): an epoch id is never re-filed — no
+  // filtering, no same-id replacement; supersede it by pointer instead. A
+  // re-file attempt is a typed refusal, never a silent rewrite.
+  if (history.some((h) => h.id === entry.id)) {
+    throw new TypeError(`${entry.id} is already on the record — append-only: supersede it by pointer, never re-file it`);
+  }
+  return freeze([...history, entry]);
 }
 
 /**
