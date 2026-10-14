@@ -26,7 +26,6 @@ const freeze = Object.freeze;
 export const REFUSALS = freeze({
   NOT_THE_GIVER: "not_the_giver",
   SELF_TEST: "self_test",
-  GIVER_COLLISION: "giver_collision",
   UNKNOWN_DEFINITION: "unknown_definition",
   NO_WORDS: "no_words",
 });
@@ -37,7 +36,12 @@ export const mindWitness = (speaker, at) => `mind:${slug(speaker)}#${at}`;
 const words = (t) => String(t ?? "").trim();
 
 const standingsOf = (log) => C.standings(log);
-const defOf = (log, id) => standingsOf(log).find((s) => s.id === id) ?? null;
+/** A definition by its id. The kernel's id carries the giver; a legacy members-only id still names it when one giver holds it. */
+const defOf = (log, id) => {
+  const all = standingsOf(log);
+  return all.find((s) => s.id === id) ?? all.find((s) => s.legacy_id === id && all.filter((t) => t.legacy_id === id).length === 1) ?? null;
+};
+const sameMembers = (a, b) => a.length === b.length && a.every((m) => b.includes(m));
 
 /** The heard link note for a definition: the note whose two ends are the commitment's two members, in either order. */
 const linkNoteOf = (log, members) => {
@@ -51,12 +55,8 @@ export function defineBy(log, { speaker, concept, definiens, text = null, at, pu
   if (!words(speaker) || !words(concept) || !words(definiens)) return { log, refused: { type: REFUSALS.NO_WORDS, detail: "a definition names a speaker, a concept and a definiens" } };
   const probe = C.declare(log, { kind: KINDS.SAME_AS, members: [concept, definiens], giver: words(speaker), purpose: purpose ?? `what ${concept} is, as ${speaker} puts it`, because });
   if (probe.refused) return { log, refused: probe.refused };
-  // The kernel derives a commitment's id from its MEMBERS only. A second mind declaring the same two members would reuse the id and
-  // replace the first mind's giver: refused here, typed, the log untouched (the pointer a later mind must use is `because`).
-  const prior = defOf(log, probe.id);
-  if (prior && slug(prior.giver) !== slug(speaker)) {
-    return { log, refused: { type: REFUSALS.GIVER_COLLISION, detail: `${probe.id} is already ${prior.giver}'s; the kernel's id carries no giver, so this would replace it`, holder: prior.giver } };
-  }
+  // The kernel's id carries the giver (khora 3607ceca): a second mind declaring the same two members gets ITS OWN commitment and the
+  // first mind's is untouched, so the pre-flight that refused the takeover is gone. The shared heard link note stays shared.
   let next = probe.log;
   const heard = N.admit(next, [{ end1: concept, label: "is", end2: definiens, spans: [{ at }], polarity: "+" }], { witness: mindWitness(speaker, at) });
   next = heard.log;
@@ -100,9 +100,11 @@ export function concedeBy(log, { speaker, target, trigger, at } = {}) {
   const c = C.concede(log, target, { trigger: `${slug(speaker)} at ${at}: ${words(trigger)}` });
   if (c.refused) return { log, refused: c.refused };
   let next = c.log;
-  // the heard link note is taken back too (REC on the note: it stays on the log and the fold stops projecting it)
+  // the heard link note is taken back too (REC on the note: it stays on the log and the fold stops projecting it), but only when no
+  // OTHER mind still stands on it: the note is shared by every giver of the same two members.
   const link = linkNoteOf(log, def.members);
-  if (link) {
+  const stillHeld = standingsOf(log).some((s) => s.kind === KINDS.SAME_AS && s.id !== def.id && sameMembers(s.members, def.members) && s.standing !== STANDINGS.CONCEDED);
+  if (link && !stillHeld) {
     const n = N.concede(next, link.id, { trigger: `${slug(speaker)} at ${at}: ${words(trigger)}` });
     if (!n.refused) next = n.log;
   }
