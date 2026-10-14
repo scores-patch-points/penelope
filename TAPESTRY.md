@@ -165,6 +165,7 @@
 ║     @ o/generation/engine.mjs GL-EN-04                                     ║
 ║■MTH 0 ●◆ § mouth                                                           ║
 ║     @ o/generation/engine.mjs GL-EN-05 GL-LD-05 GL-CH-05 o/mouth.mjs       ║
+║     @ o/mouth.test.mjs                                                     ║
 ║■SNP 1 |◆ § snip                                                            ║
 ║     @ o/generation/adapters/code.mjs GL-EN-09 GL-RT-02 o/snip-cite.mjs     ║
 ║■PRB 1 ⊨◆ § probe                                                           ║

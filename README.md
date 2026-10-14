@@ -11,7 +11,9 @@ local mouth only for what none of those can say — usually nothing.
 ## Public generation API
 
 All artifact generation should enter through Penelope's artifact-neutral API.
-The current public HTTP contract is `POST /api/generation`:
+The HTTP contract is `POST /api/weave` with an `intent` (or an `artifact`), on
+either server that carries it (the gym server and the mouth server, `:11439`);
+both hand the body to `weave()` in `organs/generation/api.mjs`:
 
 ```json
 {
@@ -21,19 +23,29 @@ The current public HTTP contract is `POST /api/generation`:
   "context": {},
   "verification": {},
   "model": "gemma2:2b",
+  "noModel": false,
   "output": null
 }
 ```
 
-The response is `Weaving@1`: artifact bytes, materialization,
-verification verdict, provenance/EOT evidence, and repair scars. The built-in
-adapters currently include `code` and `prose`. Registering a new adapter adds
-a medium without creating a second orchestration engine. Unsupported media are
-returned as explicit gaps; Penelope does not guess an adapter.
+The response is `Weaving@1`: artifact bytes, materialization, verification
+verdict, provenance/EOT evidence, and repair scars. The built-in artifact kinds
+are `code`, `code-fix`, `text` (`prose` is its alias) and `overview`, each
+loaded on demand; `code-agent` is the robust coding pipeline and answers with
+its own record, `CodePipeline@1` (verdict, scars, provenance and a digest), not
+`Weaving@1`. Registering a new adapter adds a medium without creating a second
+orchestration engine. Unsupported media are returned as explicit gaps; Penelope
+does not guess an adapter.
+
+`noModel: true` walls every model door: a unit that reaches the mouth stage is
+recorded as `model-required` and left unresolved, never drawn. A kind whose
+sibling checkout (khora, janus) is absent answers with a typed gap whose `code`
+is `<repo>-absent` and whose `looked` names the path it tried.
 
 The lower-level `POST /api/generate` remains the raw draw door. It is not the
-artifact-generation API. Existing `POST /api/weave` remains the specialized
-build/classification workflow while its migration is staged.
+artifact-generation API. A `POST /api/weave` body with neither `intent` nor
+`artifact` reaches the specialized build/classification workflow (the legacy
+loom), kept for its banked classes while its migration is staged.
 
 ## The tapestry — how generation works now
 
@@ -206,6 +218,7 @@ append-only, always revisable).
 ║     @ o/generation/engine.mjs GL-EN-04                                     ║
 ║■MTH 0 ●◆ § mouth                                                           ║
 ║     @ o/generation/engine.mjs GL-EN-05 GL-LD-05 GL-CH-05 o/mouth.mjs       ║
+║     @ o/mouth.test.mjs                                                     ║
 ║■SNP 1 |◆ § snip                                                            ║
 ║     @ o/generation/adapters/code.mjs GL-EN-09 GL-RT-02 o/snip-cite.mjs     ║
 ║■PRB 1 ⊨◆ § probe                                                           ║

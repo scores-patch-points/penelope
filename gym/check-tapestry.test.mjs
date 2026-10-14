@@ -66,3 +66,22 @@ test("organs/arrangement-out/ (gitignored engine output) is not watched, and its
   // coverage never asked for the output either
   assert.ok(!coverable(files).some((f) => f.includes("arrangement-out")));
 });
+
+// ── the front page names only routes a server has ───────────────────────────
+import fsx from "node:fs";
+import pathx from "node:path";
+import { fileURLToPath as fileURLToPathX } from "node:url";
+
+const REPOX = pathx.resolve(pathx.dirname(fileURLToPathX(import.meta.url)), "..");
+const routesIn = (text) => new Set([...text.matchAll(/["'`](\/(?:api|v1)\/[A-Za-z0-9_\-/.]*)["'`]/g)].map((m) => m[1]));
+const readmeRoutes = (text) => new Set([...text.matchAll(/\b(?:GET|POST|PUT|DELETE)\s+`?(\/(?:api|v1)\/[A-Za-z0-9_\-/.]*)`?/g)].map((m) => m[1]));
+
+test("the README names only HTTP routes a server in this repo serves (was: POST /api/generation, which no server has)", () => {
+  const served = new Set([...routesIn(fsx.readFileSync(pathx.join(REPOX, "gym", "server.mjs"), "utf8")), ...routesIn(fsx.readFileSync(pathx.join(REPOX, "mouth", "server.mjs"), "utf8"))]);
+  const named = readmeRoutes(fsx.readFileSync(pathx.join(REPOX, "README.md"), "utf8"));
+  assert.ok(named.size >= 2, "the README documents the generation routes");
+  assert.deepEqual([...named].filter((r) => !served.has(r)), []);
+  // falsifying control: the invented route is caught
+  assert.ok(!served.has("/api/generation"));
+  assert.deepEqual([...readmeRoutes("POST `/api/generation` is the contract")].filter((r) => !served.has(r)), ["/api/generation"]);
+});

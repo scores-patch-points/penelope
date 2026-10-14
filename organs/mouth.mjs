@@ -17,10 +17,12 @@
 //   - the draw itself — the BRIDGE, always, never a second ollama call.
 //
 // House numbers (derived from measured Heimdall law, never invented):
-//   ration 40 draws / 15 min per identity, family cap 4 in flight (the box's
-//   measured family cap; CODE-INVENTORY.md §D cites it), 120 s SLA. The
-//   window is a budget from the null: an identity that has drawn its ration
-//   waits (429 + Retry-After), never silently drops, never hammers.
+//   ration 40 draws / 15 min per identity, 120 s SLA, 60 s backoff ceiling.
+//   The window is a budget from the null: an identity that has drawn its
+//   ration waits (429 + Retry-After), never silently drops, never hammers.
+//   The in-flight FAMILY CAP is the bridge's (khora's heimdall enforces it as
+//   a typed 429 on a full model family); it is not restated here, because a
+//   copy of a bound this server never reads is a claim with nothing under it.
 
 export const MOUTH_SCHEMA = "Mouth@1";
 // Plain model name: the bridge's ollama wire (/api/chat, /api/generate)
@@ -30,10 +32,8 @@ export const SHARED_MOUTH = "gemma2:2b";
 export const HOUSE = {
   ration: 40,
   windowMs: 15 * 60 * 1000,
-  familyCap: 4,
   slaMs: 120_000,
   retryBackoffMaxMs: 60_000,
-  retryAttempts: 3,
 };
 
 export const KIND_WIRE = {

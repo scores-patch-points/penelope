@@ -96,7 +96,8 @@
     "GL-EN-05",
     "GL-LD-05",
     "GL-CH-05",
-    "o/mouth.mjs"
+    "o/mouth.mjs",
+    "o/mouth.test.mjs"
    ]
   },
   {
