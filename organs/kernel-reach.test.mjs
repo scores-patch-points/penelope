@@ -184,9 +184,9 @@ test("resolver: env override wins; typed absence names the path it looked at; pr
   const fake = fs.mkdtempSync(path.join(os.tmpdir(), "fake-khora-"));
   fs.mkdirSync(path.join(fake, "native"), { recursive: true });
   fs.writeFileSync(path.join(fake, "native", "x.js"), "export const answer = 42;\n");
-  const saved = { KHORA_HOME: process.env.KHORA_HOME, ER7_HOME: process.env.ER7_HOME, JANUS_HOME: process.env.JANUS_HOME };
+  const saved = { KHORA_HOME: process.env.KHORA_HOME, ER7_HOME: process.env.ER7_HOME, JANUS_HOME: process.env.JANUS_HOME, PENELOPE_WORKSPACE: process.env.PENELOPE_WORKSPACE };
   try {
-    delete process.env.ER7_HOME;
+    delete process.env.ER7_HOME; delete process.env.PENELOPE_WORKSPACE;
     process.env.KHORA_HOME = fake;
     process.env.JANUS_HOME = path.join(fake, "no-such-janus");
     const R = await freshResolver();
@@ -213,9 +213,10 @@ test("resolver: env override wins; typed absence names the path it looked at; pr
 });
 
 test("resolver: default is the sibling directory; ER7_HOME is a legacy alias for khora only", async () => {
-  const saved = { KHORA_HOME: process.env.KHORA_HOME, ER7_HOME: process.env.ER7_HOME, PENELOPE_WORKSPACE: process.env.PENELOPE_WORKSPACE };
+  const names = ["KHORA_HOME", "ER7_HOME", "JANUS_HOME", "ZENODOTUS_HOME", "HEIMDALL_HOME", "PENELOPE_WORKSPACE"];
+  const saved = Object.fromEntries(names.map((k) => [k, process.env[k]]));
   try {
-    delete process.env.KHORA_HOME; delete process.env.ER7_HOME; delete process.env.PENELOPE_WORKSPACE;
+    for (const k of names) delete process.env[k];
     const R = await freshResolver();
     assert.equal(R.kernelHome("khora"), path.join(path.dirname(REPO), "khora"));
     assert.equal(R.kernelHome("zenodotus"), path.join(path.dirname(REPO), "Zenodotus"));
