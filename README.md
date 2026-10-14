@@ -100,7 +100,7 @@ append-only, always revisable).
 ║  │ ∃  │ ∅ ∩∃                │ ○ ≈∃                │ ● ∪∃                │  ║
 ║  │    │ ■GAP ■NLB ·KNL ■EVO │ ■VDF □LOK ·KOE □TGR │ ■RDU ■HNT ■MTH ■CHT │  ║
 ║  │    │                     │ ·SCR ·KIN           │ ■ADC ■ADP □CDB ·PAG │  ║
-║  │    │                     │                     │ ·VOC ■PYT ■SIX      │  ║
+║  │    │                     │                     │ ·VOC ■PYT ■SIX ■NLG │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ | ∩⊞                │ → ≈⊞                │ △ ∪⊞                │  ║
 ║  │    │ ■SNP ■DOR ·TER ■WSN │ ■FLD ■DTF ■ADM ·NET │ ■SEL ■EOT ■BLD ■ASK │  ║
@@ -115,7 +115,7 @@ append-only, always revisable).
 ║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │                     │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
-║  │    │                     │ ■WRP                │                     │  ║
+║  │    │                     │ ■WRP ■MND           │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -123,7 +123,7 @@ append-only, always revisable).
 ║  │ ∃  │ ∃∘                  │ ∃◆                  │ ∃◈                  │  ║
 ║  │    │ ■VDF ■HNT ■NLB ■SIX │ ■RDU ■MTH ■GAP ■CHT │ ■ADC ■ADP □CDB ·PAG │  ║
 ║  │    │                     │ □LOK ·KOE □TGR ·SCR │ ·KIN ·KNL           │  ║
-║  │    │                     │ ·VOC ■EVO ■PYT      │                     │  ║
+║  │    │                     │ ·VOC ■EVO ■PYT ■NLG │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ ⊞∘                  │ ⊞◆                  │ ⊞◈                  │  ║
 ║  │    │ ■DOR ■ADM ■LIB      │ ■FLD ■SNP ■EOT ■DTF │ ■SEL ■BLD ■ASK ■TAP │  ║
@@ -135,7 +135,7 @@ append-only, always revisable).
 ║  │    │ ■FRS ·RSM ·APO      │ ■STL ■PRB ■SPR ■TST │ ■CGT ■CUB ■LDR ■BOX │  ║
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
-║  │    │                     │ ■ESC                │ ·STM ■RSR ·STR ■FAP │  ║
+║  │    │                     │ ■ESC ■MND           │ ·STM ■RSR ·STR ■FAP │  ║
 ║  │    │                     │                     │ ■SLF ■HMA ■WNB ■FCL │  ║
 ║  │    │                     │                     │ ■WBL ■WRP           │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
@@ -153,13 +153,13 @@ append-only, always revisable).
 ║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
-║  │    │                     │ ■ESC                │                     │  ║
+║  │    │                     │ ■ESC ■MND           │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
 ║  │    │                     │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
-║  │    │                     │ ■POD                │ ■CCL ■OVW ■CPL ■GDC │  ║
+║  │    │                     │ ■POD ■NLG           │ ■CCL ■OVW ■CPL ■GDC │  ║
 ║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
@@ -170,11 +170,11 @@ append-only, always revisable).
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
-║ │    ■WPG△◈ ■WRP⊨◈                                                         ║
+║ │    ■WPG△◈ ■WRP⊨◈ ■MND⊨◆                                                  ║
 ║ │ 1  ■VDF○∘ ■RDU●◆ ■STL=◆ ■FLD→◆ ■HNT●∘ ■SNP|◆ ■PRB⊨◆ ■GAP∅◆ ■ADC●◈        ║
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
-║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆               ║
+║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
 ║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆                                                  ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
@@ -190,8 +190,8 @@ append-only, always revisable).
 ```text
 ╔═[ ⟨⟩ ]═════════════════════════════════════════════════════════════════════╗
 ║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/               ║
-║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/ LP/=../Zenodotus/     ║
-║  FOLD/=../the-fold/                                                        ║
+║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/                   ║
+║  LP/=../Zenodotus/ FOLD/=../the-fold/                                      ║
 ║                                                                            ║
 ║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║■VDF 1 ○∘ ‡ void                                                            ║
@@ -430,6 +430,12 @@ append-only, always revisable).
 ║■WRP 2 ⊨◈ ‡ repair                                                          ║
 ║     @ o/generation/repair.mjs o/generation/repair.test.mjs                 ║
 ║     @ g/program-wired-demo.mjs GL-EN-21 GL-EN-20                           ║
+║■NLG 1 ●◆ § notes-ledger                                                    ║
+║     @ o/notes-ledger.mjs o/notes-ledger.test.mjs g/notes-ledger-run.mjs    ║
+║     @ GL-EN-31 GL-EN-32                                                    ║
+║■MND 2 ⊨◆ ‡ minds-ledger                                                    ║
+║     @ o/minds-ledger.mjs o/minds-ledger.test.mjs GL-EN-33 GL-EN-34         ║
+║     @ o/notes-ledger.mjs                                                   ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
