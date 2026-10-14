@@ -25,28 +25,32 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "..", "..");
-const EOT = readFileSync(path.join(ROOT, "GLAUCA-EOT.md"), "utf8");
-const SPEC = JSON.parse(readFileSync(path.join(ROOT, "gym", "tapestry.spec.json"), "utf8"));
-const LEGEND = readFileSync(path.join(ROOT, "gym", "tapestry.legend.json"), "utf8");
 
-// every GL-* id the EOT declares
-const declared = new Set([...EOT.matchAll(/^### (GL-[A-Z]+-\d+)\b/gm)].map((m) => m[1]));
-// every GL-* id the tapestry threads actually cite
-const cited = new Set(SPEC.threads.flatMap((t) => t.refs.filter((r) => /^GL-/.test(r))));
+// The id grammar is check-tapestry's own (GL-<AREA>-<n> and the bare GL-<n>:
+// GL-00 and GL-01 are laws too; the narrower regex skipped them).
+const ID = "GL-[A-Z]+-\\d+|GL-\\d+";
 
-// a thread NAME the EOT asserts (a "thread" mention in a law entry) that the
-// spec's threads do not carry
-const specThreadNames = new Set(SPEC.threads.map((t) => t.name));
-const assertedThreads = [...EOT.matchAll(/\b(?:the )?([A-Z]{2,4}) thread\b/g)].map((m) => m[1]).filter((n) => n !== "EOT");
+export function audit({ root = ROOT } = {}) {
+  const EOT = readFileSync(path.join(root, "GLAUCA-EOT.md"), "utf8");
+  const SPEC = JSON.parse(readFileSync(path.join(root, "gym", "tapestry.spec.json"), "utf8"));
 
-export function audit() {
+  // every GL-* id the EOT declares
+  const declared = new Set([...EOT.matchAll(new RegExp(`^### (${ID})\\b`, "gm"))].map((m) => m[1]));
+  // every GL-* id the tapestry threads actually cite
+  const cited = new Set(SPEC.threads.flatMap((t) => t.refs.filter((r) => /^GL-/.test(r))));
+
+  // a thread the EOT asserts ("the GAT thread") that the spec never grew. The
+  // EOT writes a thread by its ID (GAT, SWT) or by its NAME; comparing only to
+  // names reported every id-named thread as a ghost.
+  const specThreads = new Set(SPEC.threads.flatMap((t) => [t.name, t.id]));
+  const assertedThreads = [...EOT.matchAll(/\b(?:the )?([A-Z]{2,4}) thread\b/g)].map((m) => m[1]).filter((n) => n !== "EOT");
   // 1. a law that cites a GL id no thread weaves — its enforcement has no
   //    seat on the cloth (the reverse of check-tapestry's REF, which is one-way)
   const uncited = [...declared].filter((id) => !cited.has(id)).sort();
   // 2. a thread the laws assert that the spec never grew
-  const ghostThreads = [...new Set(assertedThreads)].filter((n) => !specThreadNames.has(n));
+  const ghostThreads = [...new Set(assertedThreads)].filter((n) => !specThreads.has(n));
   // 3. a law whose claim has no evidence path (a hallucination marker)
-  const noPath = [...EOT.matchAll(/^### (GL-[A-Z]+-\d+)[^\n]*\n- pipeline: [^\n]*\n- status: [^\n]*\n- evidence: ([^\n]*)/gm)]
+  const noPath = [...EOT.matchAll(new RegExp(`^### (${ID})[^\\n]*\\n- pipeline: [^\\n]*\\n- status: [^\\n]*\\n- evidence: ([^\\n]*)`, "gm"))]
     .filter((m) => !/\.mjs|\.js|\.json|\.md|measured|:\d+/.test(m[2]))
     .map((m) => m[1]);
   return {
@@ -59,7 +63,7 @@ export function audit() {
     uncited,           // law entries no thread weaves
     ghostThreads,      // threads asserted but never grown
     noPath,            // law entries with no evidence path
-    ok: uncited.length === 0 && ghostThreads.length === 0,
+    ok: uncited.length === 0 && ghostThreads.length === 0 && noPath.length === 0,
     falsifying: "a grounded law reported as a hallucination, or an ungrounded law reported as sound",
   };
 }

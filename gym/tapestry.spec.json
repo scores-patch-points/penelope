@@ -498,6 +498,9 @@
     "g/check-tapestry.test.mjs",
     "g/run-checks.mjs",
     "g/run-checks.test.mjs",
+    "g/house-baseline.mjs",
+    "g/house-ratchet.mjs",
+    "g/house-ratchet.test.mjs",
     "GL-TP-02"
    ]
   },

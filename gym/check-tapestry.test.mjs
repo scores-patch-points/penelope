@@ -46,3 +46,23 @@ test("KIN names the organ where it lives now (terrain-induction), not the rename
   assert.ok(kin.refs.includes("E7/kernel/terrain-induction.js"));
   assert.ok(!kin.refs.includes("E7/kernel/kind-induction.js"));
 });
+
+// ── the stamp does not watch what the engine writes ─────────────────────────
+import { watched, driftProblems, coverable } from "./check-tapestry.mjs";
+
+test("organs/arrangement-out/ (gitignored engine output) is not watched, and its stamped entries are not 'removed'", () => {
+  const files = ["organs/mouth.mjs", "organs/arrangement-out/arrangement-1.html", "organs/arrangement-out/arrangement-1.eot.json", "gym/server.mjs"];
+  assert.deepEqual(watched(files), ["organs/mouth.mjs", "gym/server.mjs"]);
+  // the tracked stamp listed 133 of them; a fresh clone has none
+  const stamped = { "organs/mouth.mjs": "h1", "organs/arrangement-out/arrangement-1.html": "h2", "organs/arrangement-out/artifact-runner.html": "h3" };
+  assert.deepEqual(driftProblems(stamped, ["organs/mouth.mjs"], () => "h1"), []);
+  // negative control: a real watched file that went missing is still DRIFT
+  assert.deepEqual(driftProblems({ ...stamped, "organs/gone.mjs": "h4" }, ["organs/mouth.mjs"], () => "h1"), ["DRIFT: organs/gone.mjs was removed since the weave — re-weave, then --stamp"]);
+  // and a changed / added one still fires
+  assert.deepEqual(driftProblems({ "organs/mouth.mjs": "old" }, ["organs/mouth.mjs", "organs/new.mjs"], () => "new").sort(), [
+    "DRIFT: organs/mouth.mjs changed since the weave — re-weave that thread, then --stamp",
+    "DRIFT: organs/new.mjs was added since the weave — re-weave, then --stamp",
+  ]);
+  // coverage never asked for the output either
+  assert.ok(!coverable(files).some((f) => f.includes("arrangement-out")));
+});

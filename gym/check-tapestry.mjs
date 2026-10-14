@@ -9,6 +9,10 @@
 //                                          gym/tapestry.html, record the hashes
 //   node gym/check-tapestry.mjs --weave   re-weave the four generated surfaces
 //                                          from the spec WITHOUT recording hashes
+//   node gym/check-tapestry.mjs --stamp --only <file>...
+//                                          the same, but bless ONLY the named files'
+//                                          hashes (partial stamp: drift you did not
+//                                          re-weave stays visible)
 //   node gym/check-tapestry.mjs --selftest
 //
 // It fails when:
@@ -36,6 +40,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { weave, legendMd, tapestryMd, BEGIN, END, load as loadSpec } from "./weave.mjs";
 import { unweave } from "./unweave.mjs";
 import { MARK, GLYPH, OPERATORS } from "../organs/cube.mjs";
+import { readBaseline, knownRed } from "./house-baseline.mjs";
 
 export const SCHEMA = "TapestryStamp@1";
 export const GENERATED_PAGE = "gym/tapestry.html";
@@ -56,8 +61,12 @@ const sha = (root, f) => createHash("sha256").update(fs.readFileSync(path.join(r
 export const coverable = (files) => files.filter((f) =>
   /^organs\/[^/]+\.mjs$/.test(f) || /^organs\/generation\/.+\.mjs$/.test(f) ||
   (/^gym\/[^/]+\.(mjs|html)$/.test(f) && f !== GENERATED_PAGE) || /^ladder\/[^/]+$/.test(f) || f === "apps/record.json");
+// organs/arrangement-out/ is the engine's OUTPUT (gitignored, written by every
+// arrange() run): watching it made a fresh clone un-greenable (the stamp listed
+// 133 files no clone has) and made generating self-trigger the drift check.
+export const GENERATED_OUTPUT = /^organs\/arrangement-out\//;
 export const watched = (files) => files.filter((f) =>
-  (/^(organs|gym|ladder)\//.test(f) && f !== "gym/check-tapestry.mjs" && !f.endsWith(".jsonl") && f !== GENERATED_PAGE && !/^gym\/(tapestry\.(spec|legend)\.json|server\.log)$/.test(f)) || f === "apps/record.json" || f === "LOOMS.md");
+  !GENERATED_OUTPUT.test(f) && (/^(organs|gym|ladder)\//.test(f) && f !== "gym/check-tapestry.mjs" && !f.endsWith(".jsonl") && f !== GENERATED_PAGE && !/^gym\/(tapestry\.(spec|legend)\.json|server\.log)$/.test(f)) || f === "apps/record.json" || f === "LOOMS.md");
 
 // the README carries the same cloth: the art in a fence, the key behind a fold
 export const readmeBlock = ({ art, key }) => ["", "```text", ...art, "```", "", "<details><summary>⟨⟩</summary>", "", "```text", ...key, "```", "", "</details>", ""].join("\n");
@@ -120,6 +129,18 @@ export function routeProblems(spec, serverText) {
   for (const p of prefixes) if (![...declared].some((r) => r.startsWith(p))) out.push(`ROUTE: ${p}* is a route pattern in gym/server.mjs but named by no thread`);
   return out;
 }
+// DRIFT, pure: the stamped hashes against the files watched now. A stamped path
+// the CURRENT policy no longer watches (it was a generated output when stamped)
+// is not "removed since the weave"; it is simply out of scope.
+export function driftProblems(stamped, watchedNow, shaOf) {
+  const out = [], now = new Set(watchedNow);
+  for (const f of now) {
+    if (!(f in stamped)) out.push(`DRIFT: ${f} was added since the weave — re-weave, then --stamp`);
+    else if (stamped[f] !== shaOf(f)) out.push(`DRIFT: ${f} changed since the weave — re-weave that thread, then --stamp`);
+  }
+  for (const f of Object.keys(stamped)) if (!now.has(f) && watched([f]).length) out.push(`DRIFT: ${f} was removed since the weave — re-weave, then --stamp`);
+  return out;
+}
 export function coverProblems(spec, files) {
   const named = new Set(spec.threads.flatMap((t) => t.refs.map((r) => resolve(spec, r))));
   return coverable(files).filter((f) => !named.has(f)).map((f) => `COVER: ${f} is named by no thread`);
@@ -151,14 +172,7 @@ export function inspect(root) {
   problems.push(...coverProblems(spec, files));
   const stampRaw = read(root, ".tapestry-stamp.json");
   if (stampRaw === null) problems.push("DRIFT: no stamp yet (run --stamp)");
-  else {
-    const stamp = JSON.parse(stampRaw), now = new Set(watched(files));
-    for (const f of now) {
-      if (!(f in stamp.files)) problems.push(`DRIFT: ${f} was added since the weave — re-weave, then --stamp`);
-      else if (stamp.files[f] !== sha(root, f)) problems.push(`DRIFT: ${f} changed since the weave — re-weave that thread, then --stamp`);
-    }
-    for (const f of Object.keys(stamp.files)) if (!now.has(f)) problems.push(`DRIFT: ${f} was removed since the weave — re-weave, then --stamp`);
-  }
+  else problems.push(...driftProblems(JSON.parse(stampRaw).files, watched(files), (f) => sha(root, f)));
   return { problems, spec, legend, w, files };
 }
 
@@ -189,14 +203,28 @@ export function weaveFiles(root) {
   return { ok: true, problems: [], threads: spec.threads.length };
 }
 
-export function stamp(root) {
+export function stamp(root, { only = null } = {}) {
   const { spec } = loadSpec();
   const wove = weaveFiles(root);
   if (!wove.ok) return wove;
   const before = inspect(root);
-  const hard = before.problems.filter((p) => !p.startsWith("DRIFT"));
+  // A stamp is refused over red the house does not already carry. Red the
+  // baseline (gym/house-baseline.jsonl) records is a known, disclosed debt: it
+  // does not stop a re-weave from being stamped, or no change could ever be.
+  const known = knownRed(readBaseline().records);
+  const hard = before.problems.filter((p) => !p.startsWith("DRIFT") && !known.has(`tapestry:${p}`));
   if (hard.length) return { ok: false, problems: hard };
-  const files = Object.fromEntries(watched(before.files).sort().map((f) => [f, sha(root, f)]));
+  let files = Object.fromEntries(watched(before.files).sort().map((f) => [f, sha(root, f)]));
+  if (only) {
+    // PARTIAL STAMP: bless exactly the named files (the ones whose threads were
+    // just re-woven) and leave every other entry as it was, so drift the caller
+    // did not re-weave stays visible as drift instead of being blessed with it.
+    const prior = Object.fromEntries(Object.entries(JSON.parse(read(root, ".tapestry-stamp.json") ?? '{"files":{}}').files ?? {}).filter(([f]) => watched([f]).length));
+    const want = new Set(only);
+    const unknown = [...want].filter((f) => !(f in files));
+    if (unknown.length) return { ok: false, problems: unknown.map((f) => `--only names ${f}, which is not a watched file`) };
+    files = Object.fromEntries(Object.entries({ ...prior, ...Object.fromEntries([...want].map((f) => [f, files[f]])) }).sort(([a], [b]) => (a < b ? -1 : 1)));
+  }
   fs.writeFileSync(path.join(root, ".tapestry-stamp.json"), JSON.stringify({ schema: SCHEMA, woven: spec.woven, files }, null, 2) + "\n");
   return { ok: true, problems: [], stamped: Object.keys(files).length, threads: spec.threads.length };
 }
@@ -247,7 +275,9 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
     if (!r.ok) { console.error("cannot weave:\n  " + r.problems.join("\n  ")); process.exit(1); }
     console.log(`woven: ${r.threads} threads; TAPESTRY.md LEGEND.md README block gym/tapestry.html in step (no hashes recorded — run --stamp to bless)`);
   } else if (arg === "--stamp") {
-    const r = stamp(root);
+    const only = process.argv[3] === "--only" ? process.argv.slice(4) : null;
+    if (process.argv[3] === "--only" && !only.length) { console.error("--only needs the file(s) whose threads you re-woven"); process.exit(2); }
+    const r = stamp(root, { only });
     if (!r.ok) { console.error("cannot stamp:\n  " + r.problems.join("\n  ")); process.exit(1); }
     console.log(`woven and stamped: ${r.threads} threads, ${r.stamped} watched files; TAPESTRY.md LEGEND.md README block gym/tapestry.html in step`);
   } else {

@@ -29,7 +29,7 @@ const ROOT = path.resolve(HERE, "..", "..");
 // model doors that spend tokens — a fetch to any of these is a draw
 const DOORS = [/11434/, /11435/, /11436/, /11439/, /\/api\/generate/, /\/api\/chat/, /\/v1\/(ask|code|build|messages)/, /\/chat\/completions/];
 
-function filesUnder(rel) {
+function filesUnder(rel, ROOT) {
   const out = [];
   const walk = (dir) => {
     let entries = [];
@@ -48,15 +48,22 @@ function filesUnder(rel) {
 // does this source write a swatch row, OR route through the door (which
 // swatches)? A draw through runDrawDoor / the door URL is recorded there.
 const swatches = (src) => /swatch\(/.test(src) || /swatch\.jsonl/.test(src) || /appendFileSync.*swatch/.test(src) || /runDrawDoor/.test(src) || /8137\/api\/generate/.test(src) || /generation-door/.test(src);
-// does this source reach a model door?
-const reachesDoor = (src) => DOORS.some((re) => re.test(src));
+// A draw is a CALL: a file that merely NAMES a door (a route table, a regex, a
+// selftest string — check-tapestry.mjs holds "/api/chat-stream" as data) draws
+// nothing. The closed class of call forms: fetch / fetchImpl / any fetchX( , the
+// node http(s) clients, and a shelled curl or ollama. Its false-negative class
+// (stated, not hidden): a door reached through a client named otherwise.
+const CALLS = [/\bfetch\w*\s*\(/, /\bhttps?\.request\s*\(/, /\bhttps?\.get\s*\(/, /\b(?:execSync|execFileSync|spawnSync|exec|spawn)\s*\([^)]*\b(?:curl|ollama)\b/];
+const makesCalls = (src) => CALLS.some((re) => re.test(src));
+// does this source reach a model door, by a call?
+const reachesDoor = (src) => makesCalls(src) && DOORS.some((re) => re.test(src));
 
-export function audit() {
-  const files = [...filesUnder("organs"), ...filesUnder("gym")].filter((f) => !f.includes("handmaidens") && !f.includes("node_modules"));
+export function audit({ root = ROOT } = {}) {
+  const files = [...filesUnder("organs", root), ...filesUnder("gym", root)].filter((f) => !f.includes("handmaidens") && !f.includes("node_modules"));
   const unrecorded = [];
   for (const f of files) {
     let src;
-    try { src = readFileSync(path.join(ROOT, f), "utf8"); } catch { continue; }
+    try { src = readFileSync(path.join(root, f), "utf8"); } catch { continue; }
     if (!reachesDoor(src)) continue;       // not a draw path — not her business
     if (swatches(src)) continue;           // recorded — the duty is kept
     unrecorded.push(f);                    // draws and records nothing — a leak
@@ -66,7 +73,7 @@ export function audit() {
     member: "autonoe",
     duty: "keep every draw on the record",
     suitor: "forgetfulness of duties",
-    draws: files.filter((f) => { try { return reachesDoor(readFileSync(path.join(ROOT, f), "utf8")); } catch { return false; } }).length,
+    draws: files.filter((f) => { try { return reachesDoor(readFileSync(path.join(root, f), "utf8")); } catch { return false; } }).length,
     unrecorded,
     ok: unrecorded.length === 0,
     falsifying: "a recorded draw reported as a leak, or a leak reported as recorded",
