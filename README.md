@@ -241,8 +241,9 @@ append-only, always revisable).
 ║■BLD 3 △◈ ‡ build                                                           ║
 ║     @ LOOMS.md GL-BD-03 g/weave-build.mjs /api/weave GL-WV-07 GL-WV-12     ║
 ║     @ o/generation/api.mjs o/generation/provenance.mjs g/weave-nomodel.mjs ║
-║     @ g/nomodel-prose.mjs g/nomodel-summary.mjs l/NOMODEL-BOUNDARY.md      ║
-║     @ l/nomodel-borodino.json GL-WV-15 GL-WV-16 GL-WV-17                   ║
+║     @ o/generation/nomodel.test.mjs g/nomodel-prose.mjs                    ║
+║     @ g/nomodel-summary.mjs l/NOMODEL-BOUNDARY.md l/nomodel-borodino.json  ║
+║     @ GL-WV-15 GL-WV-16 GL-WV-17                                           ║
 ║■NBK 3 ⊨◈ ‡ book                                                            ║
 ║     @ g/to-notebook.mjs penelope-notebook.ipynb GL-NB-01                   ║
 ║■DOR 3 |∘ ‡ door                                                            ║
@@ -264,7 +265,7 @@ append-only, always revisable).
 ║     @ GLAUCA-EOT.md GL-TP-01                                               ║
 ║■TAP 4 △◈ ‡ loom                                                            ║
 ║     @ TAPESTRY.md g/tapestry.spec.json g/tapestry.legend.json g/weave.mjs  ║
-║     @ g/unweave.mjs g/check-tapestry.mjs GL-TP-02                          ║
+║     @ g/unweave.mjs g/check-tapestry.mjs g/check-tapestry.test.mjs GL-TP-02║
 ║■LIB 4 △∘ § library                                                         ║
 ║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
 ║     @ o/kernel-reach.test.mjs GL-01                                        ║
@@ -398,7 +399,7 @@ append-only, always revisable).
 ║■GDC 1 △◈ § grounded-composition                                            ║
 ║     @ o/grounded-composition.mjs g/essay-composed.mjs                      ║
 ║■GDR 1 →◆ § generation-door                                                 ║
-║     @ o/generation-door.mjs GL-WV-05                                       ║
+║     @ o/generation-door.mjs o/generation-door.test.mjs GL-WV-05            ║
 ║■PYT 1 ●◆ § pythia                                                          ║
 ║     @ o/pythia.mjs                                                         ║
 ║■SLF 1 ↬◈ § self                                                            ║
@@ -406,7 +407,7 @@ append-only, always revisable).
 ║■STG 1 △◆ § stigmergy                                                       ║
 ║     @ o/stigmergy.mjs                                                      ║
 ║■VRF 1 ⊨◆ § void-refine                                                     ║
-║     @ o/void-refine.mjs                                                    ║
+║     @ o/void-refine.mjs o/generation/engine.test.mjs                       ║
 ║■SIX 1 ●∘ § source-index                                                    ║
 ║     @ o/source-index.mjs                                                   ║
 ║■HMA 1 =◈ § handmaidens                                                     ║

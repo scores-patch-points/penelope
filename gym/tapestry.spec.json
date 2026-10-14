@@ -345,6 +345,7 @@
     "o/generation/api.mjs",
     "o/generation/provenance.mjs",
     "g/weave-nomodel.mjs",
+    "o/generation/nomodel.test.mjs",
     "g/nomodel-prose.mjs",
     "g/nomodel-summary.mjs",
     "l/NOMODEL-BOUNDARY.md",
@@ -494,6 +495,7 @@
     "g/weave.mjs",
     "g/unweave.mjs",
     "g/check-tapestry.mjs",
+    "g/check-tapestry.test.mjs",
     "GL-TP-02"
    ]
   },
@@ -1112,6 +1114,7 @@
    "typing": "§",
    "refs": [
     "o/generation-door.mjs",
+    "o/generation-door.test.mjs",
     "GL-WV-05"
    ]
   },
@@ -1161,7 +1164,8 @@
    "grain": "Figure",
    "typing": "§",
    "refs": [
-    "o/void-refine.mjs"
+    "o/void-refine.mjs",
+    "o/generation/engine.test.mjs"
    ]
   },
   {

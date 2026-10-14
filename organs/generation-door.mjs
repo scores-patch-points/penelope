@@ -23,7 +23,8 @@ import { fileURLToPath } from "node:url";
 import { kernelImport } from "./kernel-reach.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const SWATCH = path.join(HERE, "..", "gym", "swatch.jsonl");
+// PENELOPE_SWATCH relocates the record (a hermetic test must not append to the house swatch).
+const SWATCH = process.env.PENELOPE_SWATCH ?? path.join(HERE, "..", "gym", "swatch.jsonl");
 // The mouth (PENELOPE_MOUTH_URL) is THE draw entry: the door checks the box,
 // then draws the residue THROUGH THE MOUTH, which admits and forwards to
 // Heimdall's channel (the bridge). The door never draws past her.
@@ -141,19 +142,30 @@ export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, ma
       console.error(`[generation-door] voice unavailable, drawing residue: ${e.message}`);
     }
   }
+  let unreachable = null;
   for (let a = 0; a < MAX_DEFER; a += 1) {
-    const r = await fetch(`${MOUTH}/api/generate`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        ...ID,
-        "x-er7-priority": priority === "interactive" ? "interactive" : "batch",
-        "x-er7-kind": k,
-        ...(Number.isFinite(Number(hop)) && Number(hop) >= 1 ? { "x-heimdall-hop": String(hop) } : {}),
-      },
-      body: JSON.stringify({ model: m, prompt: ask, stream: false, options: { num_predict: Math.max(1, Number(maxTokens) || 260), temperature: Number(temperature) || 0 }, ...(Number(keepAliveS) > 0 ? { keep_alive: `${Math.round(keepAliveS)}s` } : {}) }),
-      signal: AbortSignal.timeout(240000),
-    });
+    // THE FETCH IS TYPED (GL-RT-03: refusal is typed, never a wedge). A refused
+    // connection, a reset or a timeout used to escape as a bare TypeError with
+    // no swatch row; it is a door-unreachable refusal now, on the record.
+    let r;
+    try {
+      r = await fetch(`${MOUTH}/api/generate`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          ...ID,
+          "x-er7-priority": priority === "interactive" ? "interactive" : "batch",
+          "x-er7-kind": k,
+          ...(Number.isFinite(Number(hop)) && Number(hop) >= 1 ? { "x-heimdall-hop": String(hop) } : {}),
+        },
+        body: JSON.stringify({ model: m, prompt: ask, stream: false, options: { num_predict: Math.max(1, Number(maxTokens) || 260), temperature: Number(temperature) || 0 }, ...(Number(keepAliveS) > 0 ? { keep_alive: `${Math.round(keepAliveS)}s` } : {}) }),
+        signal: AbortSignal.timeout(240000),
+      });
+    } catch (e) {
+      unreachable = String(e?.cause?.code ?? e?.code ?? e?.name ?? "error") + ": " + String(e?.cause?.message ?? e?.message ?? e).slice(0, 120);
+      last = `unreachable (${unreachable})`;
+      break;
+    }
     if (r.status === 429 || r.status === 503) {
       last = r.status;
       const wait = Math.min(120000, (Number(r.headers.get("retry-after")) || 20) * 1000);
@@ -172,8 +184,14 @@ export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, ma
       box,
     };
   }
+  // An unreachable door made no call: the row says so (mouthCalls 0) and the
+  // refusal is typed apart from a refusal the mouth itself returned.
+  if (unreachable) {
+    swatch({ weave: `draw:${k}`, class: "draw", engine: "box→mouth (heimdall channel)", model: m, mouthCalls: 0, mouthBytes: 0, corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: "unreachable", error: String(last), evidence: "2026-10-01 door, GL-WV-05, GL-RT-03" });
+    return { ok: false, code: "door-unreachable", error: `the mouth is unreachable (${unreachable}) — a named gap, retry when it is up`, kind: k, box };
+  }
   swatch({ weave: `draw:${k}`, class: "draw", engine: "box→mouth (heimdall channel)", model: m, mouthCalls: 1, mouthBytes: 0, corpusBytes: 0, huntBytes: 0, boxBytes: 0, verdict: "refused", error: String(last ?? "no draw"), evidence: "2026-10-01 door, GL-WV-05" });
-  return { ok: false, error: `heimdall refused the draw (${last}) after bounded defer — Thea says pace, retry later`, kind: k, box };
+  return { ok: false, code: "door-refused", error: `heimdall refused the draw (${last}) after bounded defer — Thea says pace, retry later`, kind: k, box };
 }
 
 if (import.meta.url === `file://${path.resolve(process.argv[1] ?? "")}`) {

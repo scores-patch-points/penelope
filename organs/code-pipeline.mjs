@@ -40,6 +40,8 @@ import { createRequire } from "node:module";
 import codeAdapter from "./generation/adapters/code.mjs";
 import { draw, withRunScope } from "./generation/engine.mjs";
 import { kernelImport } from "./kernel-reach.mjs";
+import { createHash } from "node:crypto";
+import { ProvenanceLedger, byteRange } from "./generation/provenance.mjs";
 
 // Sibling checkouts, resolved by organs/kernel-reach.mjs (typed-absent when missing).
 const { lintGfp } = await kernelImport("janus", "native/organs/reasoning-lint.js");
@@ -123,13 +125,13 @@ export async function fillUnit(unit, adapter, ctx = {}) {
     const fn = adapter.snip(String(out ?? ""), unit.name);
     const alone = fn && !String(fn).includes("this.") ? adapter.probeUnit(fn, unit, ctx) : { ok: false, detail: !fn ? "no function drawn" : "used `this`" };
     if (fn && alone.ok) {
-      return { unit: unit.name, agent: "mouth", code: fn, address: null, source: "draw", attempts: attempts.length + 1, model: ctx.model ?? null };
+      return { unit: unit.name, agent: "mouth", code: fn, address: null, source: "draw", attempts: attempts.length + 1, scars: attempts, model: ctx.model ?? null };
     }
     const why = String(alone?.detail ?? "gated").slice(0, 160);
     attempts.push({ attempt: n + 1, why });
     atom = adapter.sharpen ? adapter.sharpen(unit, atom, why, ctx) : atom;
   }
-  return { unit: unit.name, agent: "mouth", walled: true, attempts, source: "draw", model: ctx.model ?? null };
+  return { unit: unit.name, agent: "mouth", walled: true, attempts, scars: attempts, source: "draw", model: ctx.model ?? null };
 }
 
 /** Run a bounded pool of concurrent fill sub-agents (one per unit). */
@@ -328,6 +330,76 @@ export function unitsFromPrior(prior, task) {
   return [...names].map((name) => ({ name, spec: `apply this change to the existing function: ${String(task ?? "")}` }));
 }
 
+/** THE DISSENT (GL-BD-04: the seal ships the dissent, not just the cloth). One
+ *  scar per refused draw, per unit left to a model that was not allowed, per
+ *  escalation that failed or was refused, per behavioral wall. Pure. The
+ *  count is the failures that happened: nothing is summed away. */
+export function scarsOf({ filled = [], escalated = [], behavioral = null } = {}) {
+  const scars = [];
+  for (const f of filled) {
+    if (f.required) scars.push({ unit: f.unit, attempt: 0, why: "model-required (noModel:true)", stage: "mouth" });
+    for (const a of f.scars ?? f.attempts ?? []) if (a && typeof a === "object") scars.push({ unit: f.unit, attempt: a.attempt ?? null, why: String(a.why ?? "gated").slice(0, 200), stage: "mouth" });
+    if (f.behavioralWall) scars.push({ unit: f.unit, attempt: null, why: "behavioral test failed: " + String(f.behavioralWall).slice(0, 160), stage: "test" });
+  }
+  for (const e of escalated) {
+    if (e.refused) scars.push({ unit: e.unit, attempt: null, why: "frontier refused: " + String(e.why ?? "").slice(0, 160), stage: "escalation" });
+    else if (e.walled) scars.push({ unit: e.unit, attempt: null, why: "frontier draw failed the gate: " + String(e.why ?? "").slice(0, 160), stage: "escalation" });
+  }
+  if (behavioral && behavioral.ok === false) scars.push({ unit: null, attempt: null, why: "behavioral test did not pass: " + String(behavioral.output ?? "").slice(0, 160), stage: "test" });
+  return scars;
+}
+
+const sha256 = (v) => createHash("sha256").update(typeof v === "string" ? v : JSON.stringify(v)).digest("hex");
+
+/** The ledger of the making (GL-00: no cloth without the ledger of its
+ *  making): intent -> unit -> contribution with a byte range over the join of
+ *  contributions (the same address space the engine's ledger uses), the
+ *  dispositions that gave nothing, the verdict. Provenance@2, same class. */
+export function provenanceOf({ task, artifact = "code", units = [], filled = [], escalated = [], verdict = null, noModel = false } = {}) {
+  const ledger = new ProvenanceLedger({ artifact });
+  const intent = ledger.source({ kind: "intent", locator: { task, artifact } });
+  ledger.event({ stage: "intent", source_id: intent, transform: "request→task" });
+  const drawn = [];
+  const contribute = (u, stage, code, source, parent, transform, detail = null) => {
+    const text = String(code ?? "");
+    const offset = drawn.length ? Buffer.byteLength(drawn.join("\n\n")) + 2 : 0;
+    if (text) drawn.push(text);
+    ledger.event({ stage, source_id: source, unit: u, parent, range: byteRange(offset, offset + Buffer.byteLength(text)), transform, detail });
+  };
+  const byName = new Map(units.map((u) => [u.name, u]));
+  const replaced = new Set(escalated.filter((e) => e.code).map((e) => e.unit));
+  for (const u of units) {
+    const unitSource = ledger.source({ kind: "unit", locator: { artifact, name: u.name, spec: u.spec } });
+    ledger.event({ stage: "arrange", source_id: unitSource, unit: u.name, parent: intent, transform: "unit-spec" });
+    const f = filled.find((x) => x.unit === u.name);
+    if (!f) continue;
+    if (f.required) {
+      ledger.event({ stage: "model-required", source_id: unitSource, parent: unitSource, unit: u.name, transform: "field+hunt-unsatisfied→mouth-stage", detail: { reason: "noModel:true — the unit reached the mouth stage and was left unresolved" } });
+      continue;
+    }
+    for (const a of f.scars ?? []) {
+      const s = ledger.source({ kind: "draw", locator: { adapter: "code", unit: u.name, attempt: a.attempt } });
+      ledger.event({ stage: "repair", source_id: s, parent: unitSource, unit: u.name, transform: "failed-draw→sharpened-prior", detail: { attempt: a.attempt, why: a.why } });
+    }
+    if (!f.code || (f.walled && replaced.has(u.name))) continue;
+    const kind = f.agent === "field" ? "corpus" : f.agent === "hunt" ? "hunt" : "draw";
+    const loc = f.agent === "mouth" ? { adapter: "code", unit: u.name, attempt: f.attempts ?? 1 } : (f.address ?? `${f.agent}:unknown`);
+    const source = ledger.source({ kind, locator: loc, anchor: f.address ?? null });
+    contribute(u.name, f.agent === "mouth" ? "draw" : "ground", f.code, source, unitSource, f.agent === "field" ? "autofill-frame" : f.agent === "hunt" ? "hunt-snip" : "draw→snip");
+  }
+  for (const e of escalated) {
+    if (!e.code) continue;
+    const unitSource = ledger.source({ kind: "unit", locator: { artifact, name: e.unit, spec: byName.get(e.unit)?.spec ?? null } });
+    const source = ledger.source({ kind: "draw", locator: { adapter: "code", unit: e.unit, escalation: e.model ?? "frontier" } });
+    contribute(e.unit, "draw", e.code, source, unitSource, "escalation→snip", { model: e.model ?? null });
+  }
+  if (verdict) {
+    const v = ledger.source({ kind: "verification", locator: { adapter: "code", verdict: verdict.reason ?? null } });
+    ledger.event({ stage: "verify", source_id: v, transform: "artifact→verification", detail: { ...verdict, noModel: noModel === true } });
+  }
+  return ledger.eot();
+}
+
 /** THE ROBUST CODING PIPELINE. Returns the agentic record in full: the swarm
  *  reading, every sub-agent's disposition (field | hunt | mouth |
  *  mouth-frontier), the escalation events, the gate verdict, the scars. */
@@ -442,7 +514,11 @@ async function composeCodePipelineRun({
   // empty reading is a read nobody was allowed to make: the artifact is NOT
   // verified, whatever a vacuous gate over zero units says.
   const unresolvedNoModel = noModel === true && (filled.some((f) => f.required) || !units.length);
-  const gateOk = verdict.ok === true && lintResult.ok && !unresolvedNoModel;
+  // An artifact with no contribution is not an artifact: a gate over zero
+  // bytes passes vacuously, and "verified" over nothing is a fabricated pass.
+  const contributed = [...filled, ...escalated].some((f) => f.code && String(f.code).trim());
+  const emptyArtifact = !units.length || !contributed;
+  const gateOk = verdict.ok === true && lintResult.ok && !unresolvedNoModel && !emptyArtifact;
 
   const outcomes = [
     ...filled.map((f) => ({ unit: f.unit, stage: f.agent, walled: !!f.walled, by: f.source, model: f.model ?? null, behavioralWall: f.behavioralWall ?? null })),
@@ -450,10 +526,16 @@ async function composeCodePipelineRun({
   ];
 
   const escalationAttempted = escalated.length > 0;
+  const scars = scarsOf({ filled, escalated, behavioral: String(verification?.test ?? "").trim() ? realTest : null });
+  const provenance = provenanceOf({ task, artifact, units, filled, escalated, verdict, noModel });
+  // The digest binds the cloth to its dissent and its making: any of the three
+  // changing changes the record's own hash.
+  const digest = { algorithm: "sha256", artifact: sha256(code), scars: sha256(scars), provenance: sha256(provenance) };
+  digest.record = sha256([digest.artifact, digest.scars, digest.provenance].join(":"));
   return {
     schema: "CodePipeline@1",
     ok: gateOk,
-    status: gateOk ? "verified" : unresolvedNoModel ? "unverified" : "gate_unmet",
+    status: gateOk ? "verified" : (unresolvedNoModel || emptyArtifact) ? "unverified" : "gate_unmet",
     intent: task,
     model: noModel === true ? null : model,
     noModel: noModel === true,
@@ -463,7 +545,12 @@ async function composeCodePipelineRun({
     units: units.map((u) => ({ name: u.name, spec: u.spec })),
     readGap,
     subAgents: { dispositions: dispositions(), walled: walledUnits.length, escalated: escalationAttempted },
-    evidence: { outcomes, verdict, scars: [] },
+    ...(emptyArtifact ? { gap: { kind: "empty-artifact", reason: units.length ? "no unit contributed any code — nothing was drawn, held or hunted that passed" : (readGap ?? "no units were read") } } : {}),
+    // The dissent and the ledger of the making ride with the cloth (GL-BD-04, GL-00).
+    evidence: { outcomes, verdict, scars, provenance, digest },
+    repair: { scars, converged: scars.length === 0 && gateOk },
+    digest,
+    provenance,
     verification: { ok: gateOk, verdict, lint: lintResult, behavioralTest: String(verification?.test ?? "").trim() ? { attempted: true, ok: realTest.ok, output: realTest.output.slice(0, 200) } : { attempted: false } },
     ms: Date.now() - t0,
   };

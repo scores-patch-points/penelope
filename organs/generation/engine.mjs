@@ -96,6 +96,9 @@ export async function draw(prompt, { maxTokens = 240, retries = 4, model = null,
     const r = await runDrawDoor({ prompt, model: model ?? MODEL, kind, priority, maxTokens });
     if (r.ok) return r.text;
     last = r.error ?? "draw failed";
+    // An unreachable door will not be there in 3 seconds because we slept: the
+    // typed refusal is on the swatch; the caller's own spiral decides.
+    if (r.code === "door-unreachable") break;
     await new Promise((res) => setTimeout(res, 3000 * (a + 1)));
   }
   return last ? "" : "";
