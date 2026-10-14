@@ -345,7 +345,7 @@ append-only, always revisable).
 ║     @ o/generation/engine.mjs                                              ║
 ║     ∑swatch ≠ ∑{≡ ↻ ●} ⇒✗                                                  ║
 ║·KIN 1 ○◈ ‡ kind                                                            ║
-║     @ E7/kernel/kind-induction.js                                          ║
+║     @ E7/kernel/terrain-induction.js                                       ║
 ║     induced ¬beat null ⇒✗                                                  ║
 ║·KNL 4 ∅◈ ‡ null                                                            ║
 ║     @ E7/kernel/entity-kind-induction.js GL-LD-07                          ║

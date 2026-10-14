@@ -861,7 +861,7 @@
    "grain": "Pattern",
    "typing": "‡",
    "refs": [
-    "E7/kernel/kind-induction.js"
+    "E7/kernel/terrain-induction.js"
    ],
    "ctl": "induced ¬beat null"
   },
