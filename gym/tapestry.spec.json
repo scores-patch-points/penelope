@@ -80,7 +80,8 @@
    "typing": "§",
    "refs": [
     "o/generation/engine.mjs",
-    "GL-EN-04"
+    "GL-EN-04",
+    "GL-EN-23"
    ]
   },
   {
@@ -97,7 +98,8 @@
     "GL-LD-05",
     "GL-CH-05",
     "o/mouth.mjs",
-    "o/mouth.test.mjs"
+    "o/mouth.test.mjs",
+    "GL-RT-06"
    ]
   },
   {
@@ -180,7 +182,8 @@
    "typing": "‡",
    "refs": [
     "GL-BD-01",
-    "GL-BD-04"
+    "GL-BD-04",
+    "GL-BD-22"
    ]
   },
   {
@@ -310,7 +313,8 @@
     "l/nomouth-rows.txt",
     "GL-LD-02",
     "GL-LD-06",
-    "GL-LD-07"
+    "GL-LD-07",
+    "GL-LD-09"
    ]
   },
   {
@@ -353,7 +357,8 @@
     "l/nomodel-borodino.json",
     "GL-WV-15",
     "GL-WV-16",
-    "GL-WV-17"
+    "GL-WV-17",
+    "GL-WV-20"
    ]
   },
   {
@@ -465,7 +470,8 @@
     "README.md",
     "GL-00",
     "GL-01",
-    "GL-EN-02"
+    "GL-EN-02",
+    "GL-02"
    ]
   },
   {
@@ -502,7 +508,9 @@
     "g/house-baseline.mjs",
     "g/house-ratchet.mjs",
     "g/house-ratchet.test.mjs",
-    "GL-TP-02"
+    "GL-TP-02",
+    "GL-QA-06",
+    "GL-TP-05"
    ]
   },
   {
@@ -518,7 +526,8 @@
     "o/GENERATION-INVENTORY.md",
     "o/kernel-reach.mjs",
     "o/kernel-reach.test.mjs",
-    "GL-01"
+    "GL-01",
+    "GL-KR-01"
    ]
   },
   {
@@ -1069,7 +1078,8 @@
    "refs": [
     "o/code-pipeline.mjs",
     "o/code-pipeline.test.mjs",
-    "GL-CD-13"
+    "GL-CD-13",
+    "GL-EN-24"
    ]
   },
   {
@@ -1121,7 +1131,8 @@
    "refs": [
     "o/generation-door.mjs",
     "o/generation-door.test.mjs",
-    "GL-WV-05"
+    "GL-WV-05",
+    "GL-RT-05"
    ]
   },
   {
@@ -1171,7 +1182,8 @@
    "typing": "§",
    "refs": [
     "o/void-refine.mjs",
-    "o/generation/engine.test.mjs"
+    "o/generation/engine.test.mjs",
+    "GL-EN-25"
    ]
   },
   {
@@ -1195,7 +1207,8 @@
    "grain": "Pattern",
    "typing": "§",
    "refs": [
-    "g/handmaidens.mjs"
+    "g/handmaidens.mjs",
+    "GL-HM-03"
    ]
   },
   {

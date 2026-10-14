@@ -215,10 +215,10 @@ append-only, always revisable).
 ║■FLD 1 →◆ ‡ field                                                           ║
 ║     @ o/generation/engine.mjs GL-EN-02 GL-EN-03                            ║
 ║■HNT 1 ●∘ § hunt                                                            ║
-║     @ o/generation/engine.mjs GL-EN-04                                     ║
+║     @ o/generation/engine.mjs GL-EN-04 GL-EN-23                            ║
 ║■MTH 0 ●◆ § mouth                                                           ║
 ║     @ o/generation/engine.mjs GL-EN-05 GL-LD-05 GL-CH-05 o/mouth.mjs       ║
-║     @ o/mouth.test.mjs                                                     ║
+║     @ o/mouth.test.mjs GL-RT-06                                            ║
 ║■SNP 1 |◆ § snip                                                            ║
 ║     @ o/generation/adapters/code.mjs GL-EN-09 GL-RT-02 o/snip-cite.mjs     ║
 ║■PRB 1 ⊨◆ § probe                                                           ║
@@ -230,7 +230,7 @@ append-only, always revisable).
 ║■TST 2 ⊨◆ § test                                                            ║
 ║     @ o/generation/engine.mjs GL-BD-01 GL-CD-06                            ║
 ║■SEL 2 △◈ ‡ seal                                                            ║
-║     @ GL-BD-01 GL-BD-04                                                    ║
+║     @ GL-BD-01 GL-BD-04 GL-BD-22                                           ║
 ║■EOT 2 △◆ § record                                                          ║
 ║     @ o/generation/engine.mjs GL-00 GL-BD-07                               ║
 ║■CGT 2 ⊨◈ ‡ gate                                                            ║
@@ -249,6 +249,7 @@ append-only, always revisable).
 ║     @ l/r1-r8.json l/r9-r13.json GL-LD-01 GL-LD-03 l/r9-r13-record.json    ║
 ║■BOX 4 ↬◈ § box                                                             ║
 ║     @ l/mouth-last.json l/nomouth-rows.txt GL-LD-02 GL-LD-06 GL-LD-07      ║
+║     @ GL-LD-09                                                             ║
 ║■CHT 3 ●◆ ‡ chat                                                            ║
 ║     @ g/server.mjs g/chat.html GL-CH-01 GL-CH-02                           ║
 ║■BLD 3 △◈ ‡ build                                                           ║
@@ -256,7 +257,7 @@ append-only, always revisable).
 ║     @ o/generation/api.mjs o/generation/provenance.mjs g/weave-nomodel.mjs ║
 ║     @ o/generation/nomodel.test.mjs g/nomodel-prose.mjs                    ║
 ║     @ g/nomodel-summary.mjs l/NOMODEL-BOUNDARY.md l/nomodel-borodino.json  ║
-║     @ GL-WV-15 GL-WV-16 GL-WV-17                                           ║
+║     @ GL-WV-15 GL-WV-16 GL-WV-17 GL-WV-20                                  ║
 ║■NBK 3 ⊨◈ ‡ book                                                            ║
 ║     @ g/to-notebook.mjs penelope-notebook.ipynb GL-NB-01                   ║
 ║■DOR 3 |∘ ‡ door                                                            ║
@@ -273,17 +274,18 @@ append-only, always revisable).
 ║■ADP 1 ●◈ ‡ prose                                                           ║
 ║     @ o/generation/adapters/prose.mjs GL-EN-11 GL-EN-13 GL-EN-14           ║
 ║■LAW 4 =◈ ‡ law                                                             ║
-║     @ README.md GL-00 GL-01 GL-EN-02                                       ║
+║     @ README.md GL-00 GL-01 GL-EN-02 GL-02                                 ║
 ║■GLA 4 =◈ § owl                                                             ║
 ║     @ GLAUCA-EOT.md GL-TP-01                                               ║
 ║■TAP 4 △◈ ‡ loom                                                            ║
 ║     @ TAPESTRY.md g/tapestry.spec.json g/tapestry.legend.json g/weave.mjs  ║
 ║     @ g/unweave.mjs g/check-tapestry.mjs g/check-tapestry.test.mjs         ║
 ║     @ g/run-checks.mjs g/run-checks.test.mjs g/house-baseline.mjs          ║
-║     @ g/house-ratchet.mjs g/house-ratchet.test.mjs GL-TP-02                ║
+║     @ g/house-ratchet.mjs g/house-ratchet.test.mjs GL-TP-02 GL-QA-06       ║
+║     @ GL-TP-05                                                             ║
 ║■LIB 4 △∘ § library                                                         ║
 ║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
-║     @ o/kernel-reach.test.mjs GL-01                                        ║
+║     @ o/kernel-reach.test.mjs GL-01 GL-KR-01                               ║
 ║                                                                            ║
 ║□ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║□CDB 2 ●◈ ‡ fan                                                             ║
@@ -406,7 +408,7 @@ append-only, always revisable).
 ║     @ o/code-fix.mjs o/code-fix.test.mjs o/generation/adapters/code-fix.mjs║
 ║     @ o/generation/adapters/code-fix.test.mjs                              ║
 ║■CPL 1 △◈ ‡ code-pipeline                                                   ║
-║     @ o/code-pipeline.mjs o/code-pipeline.test.mjs GL-CD-13                ║
+║     @ o/code-pipeline.mjs o/code-pipeline.test.mjs GL-CD-13 GL-EN-24       ║
 ║■EVO 1 ∅◆ § essay-void                                                      ║
 ║     @ o/essay-void.mjs g/essay-void-build.mjs                              ║
 ║■FAP 1 =◈ § fold-at-point                                                   ║
@@ -414,7 +416,7 @@ append-only, always revisable).
 ║■GDC 1 △◈ § grounded-composition                                            ║
 ║     @ o/grounded-composition.mjs g/essay-composed.mjs                      ║
 ║■GDR 1 →◆ § generation-door                                                 ║
-║     @ o/generation-door.mjs o/generation-door.test.mjs GL-WV-05            ║
+║     @ o/generation-door.mjs o/generation-door.test.mjs GL-WV-05 GL-RT-05   ║
 ║■PYT 1 ●◆ § pythia                                                          ║
 ║     @ o/pythia.mjs                                                         ║
 ║■SLF 1 ↬◈ § self                                                            ║
@@ -422,11 +424,11 @@ append-only, always revisable).
 ║■STG 1 △◆ § stigmergy                                                       ║
 ║     @ o/stigmergy.mjs                                                      ║
 ║■VRF 1 ⊨◆ § void-refine                                                     ║
-║     @ o/void-refine.mjs o/generation/engine.test.mjs                       ║
+║     @ o/void-refine.mjs o/generation/engine.test.mjs GL-EN-25              ║
 ║■SIX 1 ●∘ § source-index                                                    ║
 ║     @ o/source-index.mjs                                                   ║
 ║■HMA 1 =◈ § handmaidens                                                     ║
-║     @ g/handmaidens.mjs                                                    ║
+║     @ g/handmaidens.mjs GL-HM-03                                           ║
 ║■ESS 1 △◆ § essay-drivers                                                   ║
 ║     @ g/essay-write.mjs g/essay-grounded.mjs g/essay-dolphins.mjs          ║
 ║■POD 1 △◆ § podcast                                                         ║
