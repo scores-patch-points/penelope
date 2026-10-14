@@ -8,9 +8,14 @@
 // bytes 120-188 of this source" and a later read dereferences it, in any repo, with no copy.
 //
 // foldAtPoint itself is NOT changed (its shape is FoldAtPoint@1 for every existing caller); this is a pure projection of its result.
-import { claimAt, pointerOf, holonOfSource } from "../../khora/native/the-fold/fold-record.js";
+import { kernelImport } from "./kernel-reach.mjs";
 
-export { appendClaims, claimsAt, projectRecord, spokenFrom } from "../../khora/native/the-fold/fold-record.js";
+// The FoldRecord@1 store lives in khora; resolved by organs/kernel-reach.mjs
+// (typed khora-absent when the sibling is not there).
+const foldRecord = await kernelImport("khora", "native/the-fold/fold-record.js");
+const { claimAt, pointerOf, holonOfSource } = foldRecord;
+
+export const { appendClaims, claimsAt, projectRecord, spokenFrom } = foldRecord;
 
 /** `fold` = a foldAtPoint(...) result. `unit` = the number this artifact's fold is filed under. Returns { claims, pointer }; an `ok:false` fold has no claims. */
 export function foldClaims(fold, unit) {

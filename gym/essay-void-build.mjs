@@ -15,9 +15,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { kernelHome } from "../organs/kernel-reach.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const ER7 = path.resolve(HERE, "..", "..", "eoreader7");
+const ER7 = kernelHome("khora"); // organs/kernel-reach.mjs resolves the khora checkout
 const { liveWeb } = await import(path.join(ER7, "native/the-fold/surf.js"));
 const { engineRelationsFor } = await import(path.join(ER7, "native/the-fold/reader-bundle.js"));
 

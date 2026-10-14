@@ -18,6 +18,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { kernelHome, kernelUrl } from "../organs/kernel-reach.mjs";
 
 export const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.dirname(HERE);
@@ -292,7 +293,7 @@ export async function imagePageRun({ image }) {
   // vision model (ffmpeg + tesseract), and htmlOf regenerates the page from that
   // model. This is the structure the OCR-only path below cannot see. Falls back
   // to OCR only when the image is not a screen (the gate's own number named).
-  const ER7 = process.env.ER7_HOME || path.resolve(HERE, "..", "..", "eoreader7");
+  const ER7 = kernelHome("khora");
   let notScreen = null;
   try {
     const { lookAtScreen } = await import(pathToFileURL(path.join(ER7, "native/organs/look-screen.js")).href);
@@ -312,9 +313,8 @@ export async function imagePageRun({ image }) {
     notScreen = `screen pipeline unavailable: ${String(e.message).slice(0, 100)}`;
   }
   // FALLBACK: not a measured screen — OCR text only, the reason named, never silent.
-  const LOOK = process.env.ER7_HOME ? `${process.env.ER7_HOME}/native/organs/look.js` : decodeURIComponent(new URL("../../khora/native/organs/look.js", import.meta.url).pathname);
   let look = null;
-  try { look = await import(LOOK); } catch (e) { return { ok: false, error: `look.js not loadable: ${String(e.message).slice(0, 120)}` }; }
+  try { look = await import(kernelUrl("khora", "native/organs/look.js")); } catch (e) { return { ok: false, error: `look.js not loadable: ${String(e.message).slice(0, 120)}` }; }
   let text;
   try { text = look.ocrFullImage(image); } catch (e) { return { ok: false, error: `OCR failed (${String(e.message).slice(0, 120)})` }; }
   const paras = String(text ?? "").split(/\n{2,}/).map((p) => p.replace(/\s+/g, " ").trim()).filter(Boolean);

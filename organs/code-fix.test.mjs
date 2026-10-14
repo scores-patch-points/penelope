@@ -3,14 +3,21 @@
 // lintGfp + the khora's code-goal-lint, and only the DRAW is faked (the mouth
 // lane is injected the way engine tests inject a lane).
 
-import test from "node:test";
+import _nodeTest from "node:test";
 import assert from "node:assert/strict";
 import { writeFile, mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { loadOrSkip } from "./kernel-reach.mjs";
 
-import { buildFixPrompt, extractModule, fixCode, reasonLint, evaluateWithGateScript } from "./code-fix.mjs";
+// This subject needs a sibling checkout (organs/kernel-reach.mjs). Absent, its
+// tests SKIP with the typed reason named, rather than crash the file.
+const { mod: _subject, skip: _skip } = await loadOrSkip(() => import("./code-fix.mjs"));
+const { buildFixPrompt, extractModule, fixCode, reasonLint, evaluateWithGateScript } = _subject ?? {};
+const test = (name, fn) => _nodeTest(name, { skip: _skip }, fn);
+
+
 
 const ADDER = [{ name: "add", spec: "add(a, b) returns the sum a + b" }];
 

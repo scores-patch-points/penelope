@@ -20,6 +20,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { kernelImport } from "./kernel-reach.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SWATCH = path.join(HERE, "..", "gym", "swatch.jsonl");
@@ -53,7 +54,7 @@ export { swatch, SWATCH };
 // is untouched — this shape is the box's, every other shape is the mouth's.
 async function boxStance({ text = "", holon = null, level = "whole" } = {}) {
   try {
-    const { readStance, carriesStrain } = await import("../../khora/native/organs/stance.js");
+    const { readStance, carriesStrain } = await kernelImport("khora", "native/organs/stance.js");
     const t = String(text ?? "").trim();
     if (!t || !holon) return { answered: false, why: "a stance draw needs both the candidate text and the holon it is read against — a named gap, never a guess" };
     const r = readStance(t, holon, { level });

@@ -225,7 +225,8 @@
 ║     @ TAPESTRY.md g/tapestry.spec.json g/tapestry.legend.json g/weave.mjs  ║
 ║     @ g/unweave.mjs g/check-tapestry.mjs GL-TP-02                          ║
 ║■LIB 4 △∘ § library                                                         ║
-║     @ LP/derived-priors o/GENERATION-INVENTORY.md GL-01                    ║
+║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
+║     @ o/kernel-reach.test.mjs GL-01                                        ║
 ║                                                                            ║
 ║□ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║□CDB 2 ●◈ ‡ fan                                                             ║

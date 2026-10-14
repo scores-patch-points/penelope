@@ -31,9 +31,13 @@ import { fileURLToPath } from "node:url";
 
 import { draw } from "./generation/engine.mjs";
 import codeAdapter from "./generation/adapters/code.mjs";
-import { lintGfp, lintReport } from "../../janus/native/organs/reasoning-lint.js";
-import { lintCodeGoal, atomClause } from "../../khora/native/organs/code-goal-lint.js";
-import { claimFromTriple } from "../../khora/native/kernel/gfp-claim.js";
+import { kernelImport } from "./kernel-reach.mjs";
+
+// The judge (janus) and the claim organs (khora) are sibling checkouts: resolved
+// by organs/kernel-reach.mjs, typed-absent (janus-absent / khora-absent) if not there.
+const { lintGfp, lintReport } = await kernelImport("janus", "native/organs/reasoning-lint.js");
+const { lintCodeGoal, atomClause } = await kernelImport("khora", "native/organs/code-goal-lint.js");
+const { claimFromTriple } = await kernelImport("khora", "native/kernel/gfp-claim.js");
 
 const execFileP = promisify(execFile);
 

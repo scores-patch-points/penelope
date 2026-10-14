@@ -508,6 +508,8 @@
    "refs": [
     "LP/derived-priors",
     "o/GENERATION-INVENTORY.md",
+    "o/kernel-reach.mjs",
+    "o/kernel-reach.test.mjs",
     "GL-01"
    ]
   },

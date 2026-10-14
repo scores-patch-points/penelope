@@ -4,9 +4,16 @@
 // agentic record shape. The mouth is scripted; the gate is the real code
 // adapter (node --check + spec-conformance).
 
-import { test } from "node:test";
+import { test as _nodeTest } from "node:test";
 import assert from "node:assert";
-import { composeCodePipeline, fillUnit, fillParallel, escalateWalled, swarmTask, drawFrontier, deidentify, reidentify, unitsFromPrior } from "./code-pipeline.mjs";
+import { loadOrSkip } from "./kernel-reach.mjs";
+
+// This subject needs a sibling checkout (organs/kernel-reach.mjs). Absent, its
+// tests SKIP with the typed reason named, rather than crash the file.
+const { mod: _subject, skip: _skip } = await loadOrSkip(() => import("./code-pipeline.mjs"));
+const { composeCodePipeline, fillUnit, fillParallel, escalateWalled, swarmTask, drawFrontier, deidentify, reidentify, unitsFromPrior } = _subject ?? {};
+const test = (name, fn) => _nodeTest(name, { skip: _skip }, fn);
+
 
 // ── scripted adapter: field holds `held`, hunt snips `snip`, mouth draws the
 // rest. Every draw is recorded so the composition's order is provable.

@@ -254,7 +254,7 @@ async function main(argv) {
   const cacheDir = path.join(out, "cache");
   fs.mkdirSync(cacheDir, { recursive: true });
   const huntMode = String(a.hunt ?? "shim");
-  process.env.ER7_HOME = process.env.ER7_HOME ?? a.er7 ?? "/home/user/eoreader7";
+  if (a.er7 && a.er7 !== true) process.env.KHORA_HOME = a.er7; // organs/kernel-reach.mjs resolves the checkout
 
   const prose = await import("./nomodel-prose.mjs");
   const shim = huntMode === "shim" ? await prose.startSearchShim({ cacheDir }) : null;

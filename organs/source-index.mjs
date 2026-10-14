@@ -10,6 +10,7 @@
 //
 // PURE (node builtins). Selftest:
 //   node --input-type=module -e "import('./organs/source-index.mjs').then(m=>m.selftest())"
+import { kernelPath } from "./kernel-reach.mjs";
 import fs from "node:fs";
 
 export const SRC_SCHEMA = "SourceIndex@1";
@@ -66,7 +67,7 @@ export function findClean(index, phrase) {
 
 export function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
-  const REP = "/Users/mlacy/Documents/3.0/Zenodotus/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = kernelPath("zenodotus", "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt");
   const idx = indexSource(REP);
   t("the Republic indexes clean sentences with byte addresses", idx.ok && idx.sentences.length > 50 && idx.sentences.some((s) => s.abs > 0));
   t("the waxen-tablet sentence is a clean sentence, byte-addressed", idx.sentences.some((s) => s.text.includes("waxen tablet of the memory") && s.clean));

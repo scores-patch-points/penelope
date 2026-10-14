@@ -25,9 +25,10 @@ import path from "node:path";
 import readline from "node:readline";
 import { fileURLToPath } from "node:url";
 import { stackDigest } from "./stack-digest.mjs";
-import { verifyQuotes } from "../../khora/native/organs/quotes.js";
+import { kernelImport, WORKSPACE_ROOT } from "./kernel-reach.mjs";
+const { verifyQuotes } = await kernelImport("khora", "native/organs/quotes.js");
 
-const ROOT = "/Users/mlacy/Documents/3.0";
+const ROOT = WORKSPACE_ROOT;
 const MANIFEST_DIR = path.join(ROOT, "eo-teachings/manifest");
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SYNO_DIR = path.join(HERE, "synod");

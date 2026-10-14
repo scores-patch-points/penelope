@@ -29,13 +29,15 @@
 // THE LAW: pathos never gates and never grades; the record names the
 // routed archons, the response carries no name; logos is untouched.
 import { loadManifest, loadVoice, loadRole, askOllama } from "./pythia.mjs";
-import { verifyQuotes } from "../../khora/native/organs/quotes.js";
+import { kernelImport, WORKSPACE_ROOT } from "./kernel-reach.mjs";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+const { verifyQuotes } = await kernelImport("khora", "native/organs/quotes.js");
+
 const MODEL = process.env.PYTHIA_MODEL ?? "gemma2:2b";
 const TEMP = Number(process.env.PYTHIA_TEMP ?? 0.6);
-const ROOT = "/Users/mlacy/Documents/3.0";
+const ROOT = WORKSPACE_ROOT;
 
 // the mixture-of-experts convention, disclosed: the routed expert set is
 // the top-k of the strong (shadow) lane

@@ -23,8 +23,9 @@ import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import crypto from "node:crypto";
+import { kernelHome } from "../organs/kernel-reach.mjs";
 
-const ER7 = () => process.env.ER7_HOME ?? "/home/user/eoreader7";
+const ER7 = () => kernelHome("khora");
 const words = (s) => String(s ?? "").split(/\s+/).filter(Boolean).length;
 
 let organs = null;

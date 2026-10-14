@@ -39,10 +39,13 @@ import { createRequire } from "node:module";
 
 import codeAdapter from "./generation/adapters/code.mjs";
 import { draw } from "./generation/engine.mjs";
-import { lintGfp } from "../../janus/native/organs/reasoning-lint.js";
-import { lintCodeGoal } from "../../khora/native/organs/code-goal-lint.js";
-import { claimFromTriple } from "../../khora/native/kernel/gfp-claim.js";
-import { parseDeclarations } from "../../khora/native/adapters/text/code-structure.js";
+import { kernelImport } from "./kernel-reach.mjs";
+
+// Sibling checkouts, resolved by organs/kernel-reach.mjs (typed-absent when missing).
+const { lintGfp } = await kernelImport("janus", "native/organs/reasoning-lint.js");
+const { lintCodeGoal } = await kernelImport("khora", "native/organs/code-goal-lint.js");
+const { claimFromTriple } = await kernelImport("khora", "native/kernel/gfp-claim.js");
+const { parseDeclarations } = await kernelImport("khora", "native/adapters/text/code-structure.js");
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);

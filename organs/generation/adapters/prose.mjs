@@ -21,26 +21,29 @@
 // completion anchor), and falsify-or-die are the ENGINE's, inherited here.
 import { createRequire } from "node:module";
 import { draw } from "../engine.mjs";
+import { kernelImport, kernelHome } from "../../kernel-reach.mjs";
 
 const require = createRequire(import.meta.url);
-// eoreader7 is a sibling checkout (../eoreader7); ER7_HOME overrides it.
-const ER7 = process.env.ER7_HOME ?? decodeURIComponent(new URL("../../../../khora", import.meta.url).pathname);
+// khora is a sibling checkout, resolved by organs/kernel-reach.mjs (KHORA_HOME,
+// legacy ER7_HOME, else ../khora). Absent -> a typed khora-absent error that the
+// two guards below catch; the adapter then reports reason "organs", never throws.
+const ER7 = kernelHome("khora");
 let organs = null;
 let composedReader = null;
 try {
-  const ledger = await import(`${ER7}/native/the-fold/document-ledger.js`);
-  const fold = await import(`${ER7}/native/the-fold/essay-fold.js`);
-  const proxy = await import(`${ER7}/proxy-runner.mjs`);
+  const ledger = await kernelImport("khora", "native/the-fold/document-ledger.js");
+  const fold = await kernelImport("khora", "native/the-fold/essay-fold.js");
+  const proxy = await kernelImport("khora", "proxy-runner.mjs");
   organs = { ...ledger, ...fold, ...proxy };
 } catch (e) { organs = null; console.error(`[prose] organs not loaded: ${e.message}`); }
 // THE MODEL-FREE READER (composed: positional clause connector where it
 // settles, recurrence arrangement elsewhere). Loaded lazily; a prose unit the
 // BOX can settle from the material needs NO parser and NO mouth.
 try {
-  const composed = await import(`${ER7}/native/adapters/text/gfp-relations-composed.js`);
-  const spans = await import(`${ER7}/native/adapters/text/spans.js`);
-  const wordclass = await import(`${ER7}/native/adapters/text/wordclass.js`);
-  const referents = await import(`${ER7}/native/the-fold/referents.js`);
+  const composed = await kernelImport("khora", "native/adapters/text/gfp-relations-composed.js");
+  const spans = await kernelImport("khora", "native/adapters/text/spans.js");
+  const wordclass = await kernelImport("khora", "native/adapters/text/wordclass.js");
+  const referents = await kernelImport("khora", "native/the-fold/referents.js");
   composedReader = { composedRelations: composed.composedRelations, splitSentences: spans.splitSentences, classifyWord: wordclass.classifyWord, dominantClass: wordclass.dominantClass, buildReferents: referents.buildReferents };
 } catch (e) { composedReader = null; console.error(`[prose] composed reader not loaded: ${e.message}`); }
 
@@ -194,9 +197,9 @@ let _dmdCache = new Map();
 async function dmdUniverse(register, text, { rank = 8 } = {}) {
   const key = `${register}:${String(text ?? "").length}:${String(text ?? "").slice(0, 40).replace(/\s+/g, "")}`;
   if (_dmdCache.has(key)) return _dmdCache.get(key);
-  const { splitSentences } = await import(`${ER7}/native/adapters/text/spans.js`);
-  const { buildReferents } = await import(`${ER7}/native/the-fold/referents.js`);
-  const { symmetricEigen } = await import(`${ER7}/native/kernel/dmd.js`);
+  const { splitSentences } = await kernelImport("khora", "native/adapters/text/spans.js");
+  const { buildReferents } = await kernelImport("khora", "native/the-fold/referents.js");
+  const { symmetricEigen } = await kernelImport("khora", "native/kernel/dmd.js");
   const R = buildReferents(text);
   const sentences = splitSentences(text).map((s) => String(s.text ?? s)).filter((t) => (t.match(/[A-Za-z]{2,}/g) || []).length >= 3).slice(0, 400);
   // SULLIVAN: each sentence's state = the set of the register's OWN beings it
@@ -217,7 +220,7 @@ async function dmdUniverse(register, text, { rank = 8 } = {}) {
  *  CHOMSKY: its ends resolve to the register's own beings (the universal
  *  arrangement); SULLIVAN: those beings must be individuated by the register. */
 export async function inUniverse(candidate, register, text) {
-  const { buildReferents } = await import(`${ER7}/native/the-fold/referents.js`);
+  const { buildReferents } = await kernelImport("khora", "native/the-fold/referents.js");
   const R = buildReferents(text);
   const uni = await dmdUniverse(register, text);
   const ids = new Set(R.resolveText(String(candidate ?? "")));
@@ -259,7 +262,7 @@ export async function readVoid(task, ctx = {}) {
   const satisfy = "void cells {op,grain,question} that the subject's own material supports";
   let url = null, text = null;
   try {
-    if (!web) web = (await import("../../../../khora/native/the-fold/surf.js")).liveWeb();
+    if (!web) web = (await kernelImport("khora", "native/the-fold/surf.js")).liveWeb();
     const s = await web.search(task);
     for (const hit of (s.results ?? []).slice(0, 3)) {
       const f = await web.fetch(hit.url);
@@ -318,7 +321,7 @@ export function autofill(unit, ctx) {
 let web = null;
 export async function hunt(unit, ctx) {
   try {
-    if (!web) web = (await import("../../../../khora/native/the-fold/surf.js")).liveWeb();
+    if (!web) web = (await kernelImport("khora", "native/the-fold/surf.js")).liveWeb();
     const s = await web.search(unit.spec);
     const results = (s.results ?? []).slice(0, 3);
     if (!results.length) return null;

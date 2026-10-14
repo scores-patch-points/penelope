@@ -7,6 +7,8 @@
 //                                          or the legend: weave TAPESTRY.md and
 //                                          LEGEND.md, sync the README block and
 //                                          gym/tapestry.html, record the hashes
+//   node gym/check-tapestry.mjs --weave   re-weave the four generated surfaces
+//                                          from the spec WITHOUT recording hashes
 //   node gym/check-tapestry.mjs --selftest
 //
 // It fails when:
@@ -170,7 +172,11 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 `;
 };
 
-export function stamp(root) {
+// Weave the cloth from the spec and write the four generated surfaces in step
+// (TAPESTRY.md, LEGEND.md, the README block, gym/tapestry.html). It records NO
+// hashes: `--weave` is the re-weave on its own, so a process change can put its
+// thread on the cloth without also blessing every other file's drift.
+export function weaveFiles(root) {
   const { spec, legend } = loadSpec();
   const w = weave(spec, legend);
   fs.writeFileSync(path.join(root, "TAPESTRY.md"), tapestryMd(w));
@@ -180,6 +186,13 @@ export function stamp(root) {
   readme = readme.slice(0, readme.indexOf(BEGIN) + BEGIN.length) + readmeBlock(w) + readme.slice(readme.indexOf(END));
   fs.writeFileSync(path.join(root, "README.md"), readme);
   fs.writeFileSync(path.join(root, GENERATED_PAGE), pageOf(w));
+  return { ok: true, problems: [], threads: spec.threads.length };
+}
+
+export function stamp(root) {
+  const { spec } = loadSpec();
+  const wove = weaveFiles(root);
+  if (!wove.ok) return wove;
   const before = inspect(root);
   const hard = before.problems.filter((p) => !p.startsWith("DRIFT"));
   if (hard.length) return { ok: false, problems: hard };
@@ -229,7 +242,11 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) {
   const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
   const arg = process.argv[2];
   if (arg === "--selftest") console.log(JSON.stringify(selftest()));
-  else if (arg === "--stamp") {
+  else if (arg === "--weave") {
+    const r = weaveFiles(root);
+    if (!r.ok) { console.error("cannot weave:\n  " + r.problems.join("\n  ")); process.exit(1); }
+    console.log(`woven: ${r.threads} threads; TAPESTRY.md LEGEND.md README block gym/tapestry.html in step (no hashes recorded — run --stamp to bless)`);
+  } else if (arg === "--stamp") {
     const r = stamp(root);
     if (!r.ok) { console.error("cannot stamp:\n  " + r.problems.join("\n  ")); process.exit(1); }
     console.log(`woven and stamped: ${r.threads} threads, ${r.stamped} watched files; TAPESTRY.md LEGEND.md README block gym/tapestry.html in step`);

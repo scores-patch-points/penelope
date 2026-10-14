@@ -15,7 +15,8 @@
 // "wired but unreached".
 import fs from "node:fs";
 import { execFileSync } from "node:child_process";
-import { makeGary } from "../../../khora/native/organs/gary.js";
+import { kernelImport } from "../kernel-reach.mjs";
+const { makeGary } = await kernelImport("khora", "native/organs/gary.js");
 import { snip } from "./adapters/code.mjs";
 
 const gary = makeGary();

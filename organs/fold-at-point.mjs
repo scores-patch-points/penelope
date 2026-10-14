@@ -27,6 +27,7 @@
 // PURE (node builtins + injected organs). Selftest:
 //   node --input-type=module -e "import('./organs/fold-at-point.mjs').then(m=>m.selftest())"
 
+import { kernelPath, kernelImport } from "./kernel-reach.mjs";
 export const FOLD_SCHEMA = "FoldAtPoint@1";
 
 const STOP = new Set(["the", "and", "that", "with", "this", "from", "have", "been", "which", "what", "there", "for", "in", "of", "to", "a", "an", "is", "are", "it", "as", "on", "at", "by", "who", "whose", "one", "must", "will", "about", "into", "its", "their", "your", "not", "but", "so", "how", "why", "what", "does"]);
@@ -87,7 +88,7 @@ export function foldAtPoint({ forWhom = "", indices = {}, sections = [], per = 2
 export async function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
   const { indexSource } = await import("./source-index.mjs");
-  const REP = "/Users/mlacy/Documents/3.0/Zenodotus/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = kernelPath("zenodotus", "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt");
   const WM = "/tmp/wm-research.txt";
   const indices = { republic: indexSource(REP), research: indexSource(WM) };
   const holder = foldAtPoint({ forWhom: "the one who keeps a memory in a box and must learn to let it go", indices, sections: [{ name: "the classical image", aspect: "how the wax hardens and crowds with a long life" }] });
@@ -102,11 +103,11 @@ export async function selftest() {
   // STANCE INJECTED: the fold carries each claim's verdict when the caller
   // supplies readStance (the emergent stance organ). Omitted, byte-identical.
   try {
-    const { readStance } = await import("../../khora/native/organs/stance.js");
+    const { readStance } = await kernelImport("khora", "native/organs/stance.js");
     const withStance = foldAtPoint({ forWhom: "the one who keeps a memory in a box and must learn to let it go", indices, sections: [{ name: "s", aspect: "how memory works" }], organs: { readStance } });
     const claim0 = withStance.folds[0].claims[0];
     t("the fold carries a stance verdict per selected claim when injected", !!claim0 && !!claim0.stance && ["in_terms", "against", "off_being", "unnamed"].includes(claim0.stance.reading));
     const without = foldAtPoint({ forWhom: "the one who keeps a memory in a box and must learn to let it go", indices, sections: [{ name: "s", aspect: "how memory works" }] });
     t("omitted, the fold is byte-identical (no stance field)", without.folds[0].claims.every((c) => !("stance" in c)));
-  } catch (e) { t("stance injection loads from eoreader7", false); }
+  } catch (e) { t("stance injection loads from khora", false); }
 }

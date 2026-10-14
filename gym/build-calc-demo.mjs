@@ -21,6 +21,7 @@ import { execSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { snip, probeUnit, assemble, mouthFragment } from "../organs/generation/adapters/code.mjs";
 import { draw } from "../organs/generation/engine.mjs";
+import { kernelPath, workspacePath } from "../organs/kernel-reach.mjs";
 import { runBuild, project } from "../organs/generation/build-log.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
@@ -92,7 +93,7 @@ const field = (u) => {
   return { code: ensureExport(c), address: `${FIELD_ADDR}#${i}` };
 };
 // the HUNT: search the machine's own codebase (rg) for a real implementation.
-const huntRoots = [path.join(ROOT, "organs"), path.join(ROOT, "..", "khora", "native"), path.join(ROOT, "..", "ai-code-harness")];
+const huntRoots = [path.join(ROOT, "organs"), kernelPath("khora", "native"), workspacePath("ai-code-harness")];
 const hunt = (u) => {
   for (const rootDir of huntRoots) {
     if (!fs.existsSync(rootDir)) continue;

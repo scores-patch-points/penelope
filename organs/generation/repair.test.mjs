@@ -1,11 +1,18 @@
 // organs/generation/repair.test.mjs — the wired repair path, shown.
-import { test } from "node:test";
+import { test as _nodeTest } from "node:test";
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { snipFunction, garyPrompt, classifyIntent, huntCommitted, wired } from "./repair.mjs";
+import { loadOrSkip } from "../kernel-reach.mjs";
+
+// This subject needs a sibling checkout (organs/kernel-reach.mjs). Absent, its
+// tests SKIP with the typed reason named, rather than crash the file.
+const { mod: _subject, skip: _skip } = await loadOrSkip(() => import("./repair.mjs"));
+const { snipFunction, garyPrompt, classifyIntent, huntCommitted, wired } = _subject ?? {};
+const test = (name, fn) => _nodeTest(name, { skip: _skip }, fn);
+
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "repair-"));
 

@@ -17,6 +17,7 @@
 //
 // PURE (node builtins only). Selftest:
 //   node --input-type=module -e "import('./organs/snip-cite.mjs').then(m=>m.selftest())"
+import { kernelPath } from "./kernel-reach.mjs";
 import fs from "node:fs";
 
 export const SNIP_SCHEMA = "SnipCite@1";
@@ -156,7 +157,7 @@ export function groundOutput(text, sources, { minWords = 8 } = {}) {
 
 export function selftest() {
   const t = (n, c) => { if (!c) { console.error("FAIL", n); process.exitCode = 1; } else console.log("ok", n); };
-  const REP = "/Users/mlacy/Documents/3.0/Zenodotus/01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt";
+  const REP = kernelPath("zenodotus", "01-literature-books/gutenberg/pg55201_The_Republic_by_Plato.txt");
   // a real byte address: the waxen-tablet sentence's own bytes
   const src = fs.readFileSync(REP, "utf8");
   const start = src.indexOf("The waxen tablet of the memory");

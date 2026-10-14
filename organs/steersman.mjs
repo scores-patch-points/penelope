@@ -39,10 +39,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { loadRole } from "./pythia.mjs";
+import { kernelPath, WORKSPACE_ROOT } from "./kernel-reach.mjs";
 
-const ROOT = "/Users/mlacy/Documents/3.0";
+const ROOT = WORKSPACE_ROOT;
 const MANIFEST_DIR = path.join(ROOT, "eo-teachings/manifest");
-const SHADOW_DIR = path.join(ROOT, "Zenodotus/derived-priors/concern-priors/concern-fields");
+const SHADOW_DIR = kernelPath("zenodotus", "derived-priors/concern-priors/concern-fields");
 
 // ── the elenctic moves, closed vocabulary (the socrates-priors table,
 // retyped for the English asker's surface — signatures declared, never

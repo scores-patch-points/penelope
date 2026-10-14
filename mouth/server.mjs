@@ -26,6 +26,7 @@
 // one place in line, never anonymous.
 
 import http from "node:http";
+import { kernelUrl } from "../organs/kernel-reach.mjs";
 import { admit, route, modelForWire, MOUTH_SCHEMA, HOUSE, KIND_WIRE } from "../organs/mouth.mjs";
 
 export const MOUTH_PORT = Number(process.env.PENELOPE_MOUTH_PORT ?? 11439);
@@ -190,7 +191,7 @@ async function handleWire(req, res, path) {
 // HEIMDALL_PEERS is a comma list of peer /heimdall/peers URLs (empty = no peers, the floor alone).
 async function loadHeimdall(port) {
   try {
-    const href = process.env.HEIMDALL_EMBED ?? new URL("../../heimdall/src/embed.js", import.meta.url).href;
+    const href = process.env.HEIMDALL_EMBED ?? kernelUrl("heimdall", "src/embed.js");
     const { mountHeimdall } = await import(href);
     const peerUrls = String(process.env.HEIMDALL_PEERS ?? "").split(",").map((u) => u.trim()).filter(Boolean);
     return mountHeimdall({ name: "penelope-mouth", selfUrl: `http://127.0.0.1:${port}/heimdall/peers`, peerUrls });

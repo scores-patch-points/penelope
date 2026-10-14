@@ -1,8 +1,9 @@
 // Overview is a new medium of the existing Penelope lifecycle, never a second engine.
 import { materializeOverview, verifyMaterialization } from '../overview.mjs';
-import { ethosClear, requireClearance } from '../../../../khora/native/organs/ethos.js';
-import { logos } from '../../../../khora/native/organs/logos.js';
-import { pathosOf, reGroundCondition } from '../../../../khora/native/organs/pathos.js';
+import { kernelImport } from '../../kernel-reach.mjs';
+const { ethosClear, requireClearance } = await kernelImport('khora', 'native/organs/ethos.js');
+const { logos } = await kernelImport('khora', 'native/organs/logos.js');
+const { pathosOf, reGroundCondition } = await kernelImport('khora', 'native/organs/pathos.js');
 export async function readUnits(task, ctx) {
   const clearance = ethosClear(task);
   requireClearance(clearance);

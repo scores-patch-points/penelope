@@ -16,8 +16,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { computeSelf } from "./self.mjs";
+import { WORKSPACE_ROOT } from "./kernel-reach.mjs";
 
-const ROOT = "/Users/mlacy/Documents/3.0";
+const ROOT = WORKSPACE_ROOT;
 const HOLOCRACY = path.join(ROOT, "archon-holocracy");
 
 function readJson(p, fallback) {
