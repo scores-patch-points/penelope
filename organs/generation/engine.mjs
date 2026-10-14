@@ -236,7 +236,9 @@ export async function arrange({ task, args = {}, adapter, context = {} }) {
   // surface (`export { a, b, c }`) so a strict importer can use the module; the
   // probe/tests then judge the ASSEMBLED artifact, never the loose join.
   const code = adapter.assemble ? adapter.assemble(drawnCode, units, context) : drawnCode;
-  const verdict = adapter.testUnits(code, units, context);
+  // `let`: a converging refinement re-judges the refined bytes and replaces the
+  // verdict (a `const` here made every converging refinement a TypeError).
+  let verdict = adapter.testUnits(code, units, context);
   // THE REFINEMENT (the universal step, GL-CD-08): a failing test is refined
   // under the judge itself, in the cube's operator order — the adapter's own
   // transforms move the artifact, illegal moves refused. Domain-agnostic (code
@@ -300,7 +302,8 @@ export async function arrange({ task, args = {}, adapter, context = {} }) {
   if (scars.length) { console.log(`
   scars (the dissent, disclosed):`); for (const s of scars) console.log(`    ${s.unit}: ${s.why}`); }
   return {
-    slug, html, code, eot, verdict, scars, outcomes, units, provenance: finalProvenance,
+    // `code` is what shipped: the refined bytes when a refinement converged.
+    slug, html, code: finalCode, eot, verdict, refinement, scars, outcomes, units, provenance: finalProvenance,
     void: voidHunt ? { kind: "hunt-defined", reason: voidHunt.reason, satisfy: voidHunt.satisfy, source: voidHunt.source ?? null, material: voidHunt.material ?? null }
       : voidGap ? { kind: "reading-void", reason: voidGap.reason ?? "empty reading", satisfy: voidGap.satisfy ?? null, hunted: voidGap.hunted ?? null }
       : null,
