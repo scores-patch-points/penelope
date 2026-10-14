@@ -1302,6 +1302,38 @@
     "GL-EN-21",
     "GL-EN-20"
    ]
+  },
+  {
+   "id": "NLG",
+   "name": "notes-ledger",
+   "st": "■",
+   "lvl": 1,
+   "op": "INS",
+   "grain": "Figure",
+   "typing": "§",
+   "refs": [
+    "o/notes-ledger.mjs",
+    "o/notes-ledger.test.mjs",
+    "g/notes-ledger-run.mjs",
+    "GL-EN-31",
+    "GL-EN-32"
+   ]
+  },
+  {
+   "id": "MND",
+   "name": "minds-ledger",
+   "st": "■",
+   "lvl": 2,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/minds-ledger.mjs",
+    "o/minds-ledger.test.mjs",
+    "GL-EN-33",
+    "GL-EN-34",
+    "o/notes-ledger.mjs"
+   ]
   }
  ]
 }
