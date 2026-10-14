@@ -38,7 +38,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { createRequire } from "node:module";
 
 import codeAdapter from "./generation/adapters/code.mjs";
-import { draw } from "./generation/engine.mjs";
+import { draw, withRunScope } from "./generation/engine.mjs";
 import { kernelImport } from "./kernel-reach.mjs";
 
 // Sibling checkouts, resolved by organs/kernel-reach.mjs (typed-absent when missing).
@@ -103,6 +103,12 @@ export async function fillUnit(unit, adapter, ctx = {}) {
       return { unit: unit.name, agent: "hunt", code: hunted.code, address: hunted.url ?? null, source: "hunt-snip" };
     }
   }
+  // THE MOUTH STAGE. Under noModel the unit stops HERE, as a typed, countable
+  // disposition (the engine's own `model-required`): field and hunt had their
+  // chance, nothing further is asked of any model, and it is never escalated.
+  if (ctx.noModel === true) {
+    return { unit: unit.name, agent: "model-required", required: true, code: null, address: null, source: "noModel", attempts: [], model: null };
+  }
   let atom = unit.spec;
   const attempts = [];
   for (let n = 0; n < LOCAL_ATTEMPTS; n += 1) {
@@ -112,6 +118,7 @@ export async function fillUnit(unit, adapter, ctx = {}) {
       model: ctx.model ?? null,
       kind: "build",
       priority: "batch",
+      noModel: ctx.noModel === true,
     });
     const fn = adapter.snip(String(out ?? ""), unit.name);
     const alone = fn && !String(fn).includes("this.") ? adapter.probeUnit(fn, unit, ctx) : { ok: false, detail: !fn ? "no function drawn" : "used `this`" };
@@ -324,8 +331,15 @@ export function unitsFromPrior(prior, task) {
 /** THE ROBUST CODING PIPELINE. Returns the agentic record in full: the swarm
  *  reading, every sub-agent's disposition (field | hunt | mouth |
  *  mouth-frontier), the escalation events, the gate verdict, the scars. */
-export async function composeCodePipeline({
+export async function composeCodePipeline(opts = {}) {
+  // The run's wall: every draw inside (read, fill, sub-agents, adapter hooks)
+  // sees noModel from the scope, not from whichever argument a caller remembered.
+  return withRunScope({ noModel: opts?.noModel === true }, () => composeCodePipelineRun(opts));
+}
+
+async function composeCodePipelineRun({
   intent,
+  noModel = false,
   model = "qwen2.5-coder:1.5b",
   artifact = "code",
   constraints = {},
@@ -356,7 +370,11 @@ export async function composeCodePipeline({
 
   // 1. SWARM THE TASK — model-free framing, disclosed. It never gates the
   //    pipeline; an unreachable swarm is a named gap, not a stop.
-  const swarmReading = await swarm(task).catch((e) => ({ routed: false, gap: String(e?.message ?? e).slice(0, 160) }));
+  //    Under noModel the swarm is NOT asked: it sits behind the model proxy, and
+  //    noModel walls every door; the reading is a disclosed gap, not a request.
+  const swarmReading = noModel === true
+    ? { routed: false, gap: "noModel:true — the swarm door is walled; not asked" }
+    : await swarm(task).catch((e) => ({ routed: false, gap: String(e?.message ?? e).slice(0, 160) }));
 
   // 2. THE FIELD READS — one draw names the units and each unit's own spec.
   //    ITERATION: the units come from the PRIOR ARTIFACT's own declarations
@@ -366,12 +384,12 @@ export async function composeCodePipeline({
   let readGap = null;
   if (prior && !units.length) readGap = "the prior artifact declares no function to change";
   if (!units.length) {
-    units = await iterAdapter.readUnits(task, { model, artifact, prior, ...context }).catch(() => []);
-    readGap = readGap || (!units.length ? "the field read no units from this task" : null);
+    units = await iterAdapter.readUnits(task, { model, artifact, prior, ...context, noModel: noModel === true }).catch(() => []);
+    readGap = readGap || (!units.length ? (noModel === true ? "noModel:true — naming the units from the ask is a mouth draw; no model is permitted" : "the field read no units from this task") : null);
   }
 
   // 3. SUB-AGENT FILL — field → hunt → mouth, concurrently, mouth-last.
-  const ctx = { model, artifact, prior, ...context, constraints, verification };
+  const ctx = { model, artifact, prior, ...context, constraints, verification, noModel: noModel === true };
   let filled = await fill(units, iterAdapter, ctx, parallelism);
   const dispositions = () => filled.map((f) => ({ unit: f.unit, agent: f.agent, walled: !!f.walled, address: f.address ?? null, bytes: f.code ? Buffer.byteLength(f.code) : 0, model: f.model ?? null }));
   let walledUnits = filled.filter((f) => f.walled);
@@ -402,7 +420,7 @@ export async function composeCodePipeline({
     // the ones to escalate (the field and hunt bodies are held pieces). The
     // test's own output is the atom — never a fabricated reason.
     const localMouth = filled.filter((f) => f.agent === "mouth" && !f.walled);
-    if (localMouth.length && FRONTIER_READY) {
+    if (localMouth.length && FRONTIER_READY && noModel !== true) {
       const walledForEscalation = localMouth.map((f) => ({ ...f, walled: true, attempts: [{ attempt: 1, why: "behavioral test failed: " + realTest.output.slice(0, 160) }] }));
       const esc = await escalate(walledForEscalation, iterAdapter, ctx, { model: frontierModel, units, channel });
       escalated = esc.outcomes ?? [];
@@ -420,7 +438,11 @@ export async function composeCodePipeline({
   const verdict = realTest.ok ? iterAdapter.testUnits(code, units, ctx) : { ok: false, reason: "behavioral-test", detail: realTest.output.slice(0, 200) };
   const pass = { end1: "module", label: "returns", end2: (units[0]?.name ?? "artifact") };
   const lintResult = lint({ goals: [], pass });
-  const gateOk = verdict.ok === true && lintResult.ok;
+  // Under noModel a unit that reached the mouth stage is `model-required`, and an
+  // empty reading is a read nobody was allowed to make: the artifact is NOT
+  // verified, whatever a vacuous gate over zero units says.
+  const unresolvedNoModel = noModel === true && (filled.some((f) => f.required) || !units.length);
+  const gateOk = verdict.ok === true && lintResult.ok && !unresolvedNoModel;
 
   const outcomes = [
     ...filled.map((f) => ({ unit: f.unit, stage: f.agent, walled: !!f.walled, by: f.source, model: f.model ?? null, behavioralWall: f.behavioralWall ?? null })),
@@ -431,9 +453,10 @@ export async function composeCodePipeline({
   return {
     schema: "CodePipeline@1",
     ok: gateOk,
-    status: gateOk ? "verified" : "gate_unmet",
+    status: gateOk ? "verified" : unresolvedNoModel ? "unverified" : "gate_unmet",
     intent: task,
-    model,
+    model: noModel === true ? null : model,
+    noModel: noModel === true,
     frontier: { model: escalationAttempted ? (escalated[0]?.model ?? frontierModel) : null, attempted: escalationAttempted },
     artifact: { kind: artifact, value: code },
     swarm: swarmReading,

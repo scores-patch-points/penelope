@@ -45,10 +45,14 @@ export function parseUnits(raw) {
   return units;
 }
 export async function readUnits(task, ctx = {}) {
+  // Naming the units from the ask is a MOUTH draw. Under noModel the read is
+  // walled like every other mouth stage: an empty reading (the engine then
+  // names the void and says a model was required), never a draw.
+  if (ctx.noModel === true) return [];
   const { draw } = await import("../engine.mjs");
   const raw = await draw(
     `Return a JSON array of objects, each {name, spec} for one JAVASCRIPT function this task asks to write. Only JSON, JavaScript functions only. Task: ${task}`,
-    { maxTokens: 500, model: ctx.model ?? null, kind: "build", priority: "batch" },
+    { maxTokens: 500, model: ctx.model ?? null, kind: "build", priority: "batch", noModel: ctx.noModel === true },
   );
   return parseUnits(raw);
 }
@@ -62,6 +66,12 @@ export async function readUnits(task, ctx = {}) {
 export async function readVoid(task, ctx = {}) {
   const reason = "the first reading drew no units — this ask is not a function-shaped spec, so the field had nothing to enumerate";
   const satisfy = `a set of {name, spec} units that ${task} needs — each a real function named from evidence`;
+  // Under noModel the void cannot be defined: units are defined FROM the hunted
+  // material by a mouth draw, so hunting would only fetch what nothing may read.
+  // Named, typed, and no request of any kind is made.
+  if (ctx.noModel === true) {
+    return { units: [], gap: { kind: "reading-void", reason: "noModel:true — reading the ask into units is a mouth draw, and no model is permitted; the void is named, not defined", satisfy, hunted: null, needs: "model" } };
+  }
   let material = null, url = null;
   try {
     const q = `${task} javascript source`;
@@ -90,7 +100,7 @@ export async function readVoid(task, ctx = {}) {
     const { draw } = await import("../engine.mjs");
     const raw = await draw(
       `Return a JSON array of objects, each {name, spec} for ONE function this task needs. Read the reference source and name real functions FROM it — never invent a name absent from the source. Task: ${task}\nReference source:\n${material}\nOnly JSON.`,
-      { maxTokens: 600, model: ctx.model ?? null, kind: "build", priority: "batch" },
+      { maxTokens: 600, model: ctx.model ?? null, kind: "build", priority: "batch", noModel: ctx.noModel === true },
     );
     const units = parseUnits(raw);
     if (units.length) return { units, reason, satisfy, source: url, material: material.length };

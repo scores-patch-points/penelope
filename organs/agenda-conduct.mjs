@@ -82,10 +82,10 @@ export async function defaultRun(purpose = {}) {
   const intent = intentOf(purpose);
   if (artifactOf(purpose) === "prose") {
     const { weave } = await import("./generation/api.mjs");
-    return weave({ intent, artifact: "prose" });
+    return weave({ intent, artifact: "prose", noModel: purpose?.noModel === true });
   }
   const { composeCodePipeline } = await import("./code-pipeline.mjs");
-  return composeCodePipeline({ intent });
+  return composeCodePipeline({ intent, noModel: purpose?.noModel === true });
 }
 
 /** MATERIALIZATION — the seam the live run found missing: a pipeline that

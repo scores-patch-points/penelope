@@ -76,8 +76,13 @@ async function boxStance({ text = "", holon = null, level = "whole" } = {}) {
  *  direct draws do (per-request floor, aligned with the server's keep_alive).
  *  `shape` ("stance") asks the box for a mechanical read instead of a model
  *  draw; `text`/`holon`/`level` are the stance shape's own inputs. */
-export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole" } = {}) {
+export async function runDrawDoor({ prompt, model = "gemma2:2b", kind = null, maxTokens = 260, temperature = 0, priority = "interactive", hop = 0, keepAliveS = 0, shape = null, text = null, holon = null, level = "whole", noModel = false } = {}) {
   const ask = String(prompt ?? "").trim();
+  // noModel:true is a wall, not a hint: a raw draw that says so is refused, typed,
+  // before any request leaves (the stance shape below is the box's, never a model).
+  if (noModel === true && shape !== "stance") {
+    return { ok: false, error: "noModel:true — this draw needs the mouth and no model is permitted; refused, no request made", code: "model-refused", kind: String(kind ?? "chat") };
+  }
   if (!ask && shape !== "stance") return { ok: false, error: "a prompt is required — an empty draw is a named gap, never a draw" };
   const k = KINDS.has(String(kind ?? "").toLowerCase()) ? String(kind).toLowerCase() : "chat";
   const m = bare(model);

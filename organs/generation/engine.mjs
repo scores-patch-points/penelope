@@ -39,6 +39,7 @@ import path from "node:path";
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { AsyncLocalStorage } from "node:async_hooks";
 import { ProvenanceLedger, byteRange } from "./provenance.mjs";
 // THE UNIVERSAL REFINEMENT (organs/void-refine.mjs): when the test fails, the
 // void is refined under the REAL judge, in the cube's operator order — a
@@ -60,13 +61,33 @@ export function parseArgs(argv) {
   return out;
 }
 
+// THE NO-MODEL WALL, AT THE FLOOR. A weave run that says noModel:true must not
+// reach a model door by ANY route: the fill stage, the read stage (an adapter's
+// readUnits / readVoid draw to name the units), an adapter hook, a sub-agent.
+// The flag used to travel only as an argument, so every caller that forgot to
+// pass it (the code adapter's read, measured) walked past the tripwire. The
+// scope is the run's, not the call's: draw() asks the scope, so a caller cannot
+// forget. arrange() opens it; nothing inside can close it.
+const runScope = new AsyncLocalStorage();
+
+/** Typed refusal: a model was required and noModel forbids it. */
+export class ModelRefusedError extends Error {
+  constructor(message = "draw() called with noModel:true — the mouth stage must stop a unit as model-required, never draw") {
+    super(message);
+    this.name = "ModelRefusedError";
+    this.code = "model-refused";
+  }
+}
+
 // ── THE MOUTH: one small, framed ask; retried; never steered (small-model
 // law — the prompt is a completion anchor, the test decides) ──
 export async function draw(prompt, { maxTokens = 240, retries = 4, model = null, kind = "build", priority = "batch", noModel = false } = {}) {
   // NO-MODEL TRIPWIRE: a weave run with noModel:true must never reach the door.
   // fillUnits stops a unit at the mouth stage before calling here; this throw
-  // is the second wall, so no future caller can draw by accident.
-  if (noModel) throw new Error("draw() called with noModel:true — the mouth stage must stop a unit as model-required, never draw");
+  // is the second wall, so no future caller can draw by accident. The run's
+  // own scope (arrange) counts as the flag: a caller that did not pass it is
+  // still inside the walled run.
+  if (noModel === true || runScope.getStore()?.noModel === true) throw new ModelRefusedError();
   // Every model draw enters Penelope's draw door. The engine remains the
   // orchestrator; admission/routing belongs to the door, not this engine.
   const { runDrawDoor } = await import("../generation-door.mjs");
@@ -186,7 +207,17 @@ async function fillUnits(units, adapter, ctx = {}) {
 }
 
 // ── THE PIPELINE ────────────────────────────────────────────────────────────
-export async function arrange({ task, args = {}, adapter, context = {} }) {
+export async function arrange(opts = {}) {
+  return withRunScope({ noModel: opts?.context?.noModel === true }, () => arrangeRun(opts));
+}
+
+/** Run `fn` inside a walled (or open) run scope. arrange() uses it; so does any
+ *  other orchestrator that must hold the same wall (the code pipeline). */
+export function withRunScope({ noModel = false } = {}, fn) {
+  return runScope.run({ noModel: noModel === true }, fn);
+}
+
+async function arrangeRun({ task, args = {}, adapter, context = {} }) {
   const outDir = path.resolve(args.out || path.join(HERE, "..", "arrangement-out"));
   fs.mkdirSync(outDir, { recursive: true });
 

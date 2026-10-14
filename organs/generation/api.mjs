@@ -116,8 +116,8 @@ export async function weave({
       if (e?.name === "KernelAbsentError") return absentGap("code-agent", e, task);
       throw e;
     }
-    const r = await composeCodePipeline({ intent: task, model, constraints, verification, context, output }).catch((e) => ({
-      schema: "CodePipeline@1", ok: false, status: "error", error: String(e?.message ?? e).slice(0, 500), intent: task,
+    const r = await composeCodePipeline({ intent: task, model: noModel === true ? null : model, constraints, verification, context, output, noModel: noModel === true }).catch((e) => ({
+      schema: "CodePipeline@1", ok: false, status: e?.code === "model-refused" ? "gap" : "error", ...(e?.code ? { code: e.code } : {}), error: String(e?.message ?? e).slice(0, 500), intent: task,
     }));
     return r;
   }
@@ -174,6 +174,8 @@ export async function weave({
     });
   } catch (e) {
     if (e?.name === "KernelAbsentError") return absentGap(kind ?? adapter.kind, e, task);
+    // A model was required and noModel forbids it: the typed refusal, not a throw.
+    if (e?.code === "model-refused") return { schema: "Weaving@1", ok: false, status: "gap", intent: task, error: String(e.message), code: "model-refused", artifactKind: kind ?? adapter.kind, noModel: true, model: null };
     throw e;
   }
 

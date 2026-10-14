@@ -232,6 +232,7 @@ const server = http.createServer(async (req, res) => {
           context: j.context,
           verification: j.verification,
           model: j.model,
+          noModel: j.noModel === true,
           output: j.output,
         }).catch((e) => ({ schema: "GenerationResult@1", ok: false, status: "error", error: String(e?.message ?? e).slice(0, 500) }));
         res.writeHead(result.ok ? 200 : 422, { "content-type": "application/json" });
