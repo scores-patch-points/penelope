@@ -1,10 +1,18 @@
-import test from "node:test";
+import _nodeTest from "node:test";
 import assert from "node:assert/strict";
-import { openLedger, terrainsOf } from "./notes-ledger.mjs";
-import { defineBy, testBy, concedeBy, assertBy, runDialogue, mindsOf, mindWitness, REFUSALS } from "./minds-ledger.mjs";
-import { sourceOfWitness } from "../../khora/native/kernel/notes.js";
-import { makeNotes } from "../../khora/native/kernel/notes.js";
-import { idOf } from "../../khora/native/kernel/commitments.js";
+import { loadOrSkip, kernelImport } from "./kernel-reach.mjs";
+
+// This subject needs a sibling checkout (organs/kernel-reach.mjs). Absent, its
+// tests SKIP with the typed reason named, rather than crash the file.
+const { mod: _subject, skip: _skip } = await loadOrSkip(async () => ({
+  ...(await import("./notes-ledger.mjs")),
+  ...(await import("./minds-ledger.mjs")),
+  sourceOfWitness: (await kernelImport("khora", "native/kernel/notes.js")).sourceOfWitness,
+  makeNotes: (await kernelImport("khora", "native/kernel/notes.js")).makeNotes,
+  idOf: (await kernelImport("khora", "native/kernel/commitments.js")).idOf,
+}));
+const { openLedger, terrainsOf, defineBy, testBy, concedeBy, assertBy, runDialogue, mindsOf, mindWitness, REFUSALS, sourceOfWitness, makeNotes, idOf } = _subject ?? {};
+const test = (name, fn) => _nodeTest(name, { skip: _skip }, fn);
 
 // THE POSITIVE CONTROL (GL-EN-33 law 6): a planted elenchus the loop must reproduce BEFORE any Republic run means anything.
 // Book I's shape, as a fixture: a definition falls to a counterexample, its giver concedes, a new definition follows; another
@@ -14,7 +22,7 @@ const D2 = ["justice", "giving each what is owed"];
 const D3 = ["justice", "the advantage of the stronger"];
 const D4 = ["justice", "knowledge"];
 const N_FOLD = (log) => makeNotes().fold(log);
-const id = (m, giver) => idOf({ kind: "same-as", members: m, giver });
+const id = (m, giver) => (idOf ? idOf({ kind: "same-as", members: m, giver }) : null); // null only when the subject skipped (no sibling)
 
 const TURNS = [
   { speaker: "Cephalus", act: "define", concept: D1[0], definiens: D1[1], at: "pg#b100-160" },

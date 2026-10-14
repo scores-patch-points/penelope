@@ -15,9 +15,12 @@
 //   assertBy(log, { speaker, subj, pred, obj, polarity, text, at })   a mind's own claim, heard under its witness
 //   runDialogue(log, turns)                                           episodes, each bounded by measured-loop
 //   mindsOf(log)                                                      the standing of each mind's commitments
-import { makeNotes, noteId } from "../../khora/native/kernel/notes.js";
-import { makeCommitments, KINDS, STANDINGS } from "../../khora/native/kernel/commitments.js";
-import { makeMeasuredLoop } from "../../khora/native/kernel/measured-loop.js";
+import { kernelImport } from "./kernel-reach.mjs";
+
+// The kernel is reached through organs/kernel-reach.mjs (typed khora-absent when the sibling is not there).
+const { makeNotes, noteId } = await kernelImport("khora", "native/kernel/notes.js");
+const { makeCommitments, KINDS, STANDINGS } = await kernelImport("khora", "native/kernel/commitments.js");
+const { makeMeasuredLoop } = await kernelImport("khora", "native/kernel/measured-loop.js");
 
 const N = makeNotes();
 const C = makeCommitments();

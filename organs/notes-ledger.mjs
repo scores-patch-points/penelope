@@ -21,12 +21,15 @@
 //   - EVA IS A NULL, NEVER AN OPINION. A commitment is tested against a redealt commitment of the same shape; one that does not beat
 //     every draw is REFUSED and the loop itself concedes it (REC). The ledger never marks anything earned: that is janus's bow.
 //   - AN UNASKABLE SLOT IS TYPED. The kernel's void needs a known first end and a label; "who …?" has neither, so it is a gap, named.
-import { makeNotes, noteId, sourceOfWitness, CUT_PREFIX } from "../../khora/native/kernel/notes.js";
-import { makeCommitments, KINDS } from "../../khora/native/kernel/commitments.js";
-import { makeMeasuredLoop } from "../../khora/native/kernel/measured-loop.js";
-import { TERRAIN_BY_DOMAIN } from "../../khora/native/kernel/cube.js";
-import { userTurnOperation } from "../../khora/native/adapters/chat/user-turns.js";
-import { FIRST_PERSON, NEGATION_WORDS, ANAPHORIC_PRONOUNS, INTERROGATIVE_PRONOUNS } from "../../khora/native/adapters/text/priors.js";
+import { kernelImport } from "./kernel-reach.mjs";
+
+// The kernel is reached through organs/kernel-reach.mjs (typed khora-absent when the sibling is not there).
+const { makeNotes, noteId, sourceOfWitness, CUT_PREFIX } = await kernelImport("khora", "native/kernel/notes.js");
+const { makeCommitments, KINDS } = await kernelImport("khora", "native/kernel/commitments.js");
+const { makeMeasuredLoop } = await kernelImport("khora", "native/kernel/measured-loop.js");
+const { TERRAIN_BY_DOMAIN } = await kernelImport("khora", "native/kernel/cube.js");
+const { userTurnOperation } = await kernelImport("khora", "native/adapters/chat/user-turns.js");
+const { FIRST_PERSON, NEGATION_WORDS, ANAPHORIC_PRONOUNS, INTERROGATIVE_PRONOUNS } = await kernelImport("khora", "native/adapters/text/priors.js");
 
 export const LEDGER_RECORD_SCHEMA = "EONotesLedgerRecord@1";
 export const GIVER = "the person at the door";

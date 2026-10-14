@@ -1,6 +1,12 @@
-import test from "node:test";
+import _nodeTest from "node:test";
 import assert from "node:assert/strict";
-import { openLedger, landContent, landTurns, runLoop, evaluateAsk, terrainsOf, recordTerrains, TERRAINS, GIVER } from "./notes-ledger.mjs";
+import { loadOrSkip } from "./kernel-reach.mjs";
+
+// This subject needs a sibling checkout (organs/kernel-reach.mjs). Absent, its
+// tests SKIP with the typed reason named, rather than crash the file.
+const { mod: _subject, skip: _skip } = await loadOrSkip(() => import("./notes-ledger.mjs"));
+const { openLedger, landContent, landTurns, runLoop, evaluateAsk, terrainsOf, recordTerrains, TERRAINS, GIVER } = _subject ?? {};
+const test = (name, fn) => _nodeTest(name, { skip: _skip }, fn);
 
 let n = 0;
 const sp = (src, [subj, pred, obj, polarity = "+", activation = 1], text = null) => {
