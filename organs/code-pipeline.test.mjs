@@ -123,16 +123,16 @@ test("drawFrontier always carries the sealed-external privacy label", async () =
 });
 
 test("deidentify scrubs real identities for the off-system send and reidentify restores", async () => {
-  const real = "the project /Users/mlacy/code/countdown, author mlacy, email michaeltlacy@gmail.com, key sk-ant-api03-abcdef123456789";
+  const real = "the project /Users/mlacy/code/countdown, author mlacy, email person@example.invalid, key sk-ant-api03-abcdef123456789";
   const { text, map } = deidentify(real);
   assert.ok(!text.includes("mlacy"));
-  assert.ok(!text.includes("michaeltlacy@gmail.com"));
+  assert.ok(!text.includes("person@example.invalid"));
   assert.ok(!text.includes("sk-ant-api03-abcdef123456789"));
   assert.ok(text.includes("anon"));
   assert.ok(map.length >= 3);
   const back = reidentify(text, map);
   assert.ok(back.includes("/Users/mlacy/code/countdown"));
-  assert.ok(back.includes("michaeltlacy@gmail.com"));
+  assert.ok(back.includes("person@example.invalid"));
   assert.ok(back.includes("sk-ant-api03-abcdef123456789"));
 });
 
