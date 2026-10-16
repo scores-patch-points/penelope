@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dolphin-zone</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep: #072035;
+    --deep2: #0C2E4A;
+    --panel: #0F3A5C;
+    --line: rgba(255,255,255,0.09);
+    --foam: #F2EEE1;
+    --foam-dim: #C9D6DC;
+    --teal: #2FD9C4;
+    --teal-dim: #1B7A6E;
+    --coral: #FF7A63;
+    --sun: #FFC857;
+    --text-soft: #A9BCC7;
+    --radius: 14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  html,body{
+    background: radial-gradient(ellipse at top, #0E3554 0%, var(--deep) 55%, #051423 100%) fixed;
+    color: var(--foam);
+    font-family: 'Inter', sans-serif;
+    min-height:100vh;
+  }
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- ambient caustics ---------- */
+  #caustics{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    opacity:0.10; mix-blend-mode: screen;
+    background-image:
+      repeating-linear-gradient(115deg, transparent 0 40px, rgba(47,217,196,0.5) 40px 42px, transparent 42px 90px),
+      repeating-linear-gradient(65deg, transparent 0 60px, rgba(255,255,255,0.35) 60px 62px, transparent 62px 130px);
+    animation: drift 22s linear infinite;
+  }
+  @keyframes drift{
+    0%{ background-position: 0 0, 0 0; }
+    100%{ background-position: 400px 200px, -300px 260px; }
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background: rgba(7,32,53,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1180px; margin:0 auto; padding:14px 20px;
+    display:flex; align-items:center; gap:22px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+  .brand svg{ width:34px; height:34px; }
+  .brand-name{
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:22px;
+    letter-spacing:0.2px; color:var(--foam);
+  }
+  .brand-name span{ color: var(--teal); }
+  .searchbar{
+    flex:1; max-width:480px;
+    display:flex; align-items:center; gap:8px;
+    background: rgba(255,255,255,0.06); border:1px solid var(--line);
+    border-radius:999px; padding:9px 16px;
+    color: var(--text-soft); font-size:14px;
+  }
+  .searchbar svg{width:15px;height:15px; opacity:0.7; flex-shrink:0;}
+  .header-actions{ margin-left:auto; display:flex; gap:10px; align-items:center; }
+  .btn{
+    font-family:'Inter'; font-weight:600; font-size:13.5px;
+    border-radius:999px; border:1px solid transparent; cursor:pointer;
+    padding:9px 18px; transition: transform 0.12s ease, filter 0.15s ease;
+  }
+  .btn:active{ transform: scale(0.96); }
+  .btn-primary{ background: var(--teal); color:#052A29; }
+  .btn-primary:hover{ filter:brightness(1.08); }
+  .btn-ghost{ background:transparent; border-color: var(--line); color: var(--foam-dim); }
+  .btn-ghost:hover{ border-color: var(--teal-dim); color: var(--foam); }
+
+  /* ---------- layout ---------- */
+  .shell{
+    max-width:1180px; margin:0 auto; padding:24px 20px 80px;
+    display:grid; grid-template-columns: 232px minmax(0,1fr) 260px;
+    gap:22px; position:relative; z-index:1;
+  }
+  @media (max-width: 980px){
+    .shell{ grid-template-columns: 1fr; }
+    .side-left, .side-right{ display:none; }
+  }
+
+  /* ---------- left sidebar : pods ---------- */
+  .card{
+    background: rgba(255,255,255,0.035);
+    border:1px solid var(--line);
+    border-radius: var(--radius);
+    padding:16px;
+  }
+  .side-left .card{ position:sticky; top:82px; }
+  .side-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:1.4px;
+    color: var(--text-soft); font-weight:700; margin: 0 0 10px 4px;
+  }
+  .pod-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; }
+  .pod-item{
+    display:flex; align-items:center; gap:10px;
+    padding:8px 10px; border-radius:9px; cursor:pointer;
+    font-size:13.5px; color: var(--foam-dim); font-weight:500;
+    transition: background 0.12s ease, color 0.12s ease;
+  }
+  .pod-item:hover{ background: rgba(255,255,255,0.05); color:var(--foam); }
+  .pod-item.active{ background: rgba(47,217,196,0.14); color: var(--teal); }
+  .pod-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .pod-count{ margin-left:auto; font-family:'JetBrains Mono'; font-size:11px; color:var(--text-soft); }
+  .divider{ height:1px; background:var(--line); margin:14px 0; }
+  .pledge{ font-size:12px; color:var(--text-soft); line-height:1.6; padding:4px; }
+
+  /* ---------- sort tabs ---------- */
+  .sort-row{
+    display:flex; align-items:center; gap:6px; margin-bottom:16px;
+    background: rgba(255,255,255,0.03); border:1px solid var(--line);
+    border-radius:999px; padding:5px; width:fit-content;
+  }
+  .sort-tab{
+    padding:7px 16px; border-radius:999px; font-size:13px; font-weight:600;
+    color: var(--text-soft); cursor:pointer; display:flex; align-items:center; gap:6px;
+  }
+  .sort-tab.active{ background: var(--teal); color:#052A29; }
+  .feed-heading{
+    font-family:'Baloo 2'; font-size:26px; font-weight:700; margin:2px 0 4px;
+  }
+  .feed-sub{ color:var(--text-soft); font-size:13.5px; margin-bottom:18px; }
+
+  /* ---------- post card ---------- */
+  .post{
+    display:flex; gap:0; margin-bottom:12px;
+    border-radius: var(--radius); overflow:hidden;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,0.035);
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+  .post:hover{ border-color: rgba(47,217,196,0.35); }
+  .vote-col{
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    padding:14px 10px; background: rgba(0,0,0,0.16); min-width:52px;
+  }
+  .vote-btn{
+    background:none; border:none; cursor:pointer; color: var(--text-soft);
+    padding:4px; border-radius:6px; display:flex; transition: color 0.12s, transform 0.12s;
+  }
+  .vote-btn:hover{ color: var(--teal); transform: scale(1.15); }
+  .vote-btn.up.active{ color: var(--coral); }
+  .vote-btn.down.active{ color: #6FA8FF; }
+  .vote-count{ font-family:'JetBrains Mono'; font-weight:600; font-size:13.5px; }
+  .post-body{ flex:1; padding:14px 16px; min-width:0; }
+  .post-meta{
+    display:flex; align-items:center; gap:7px; font-size:12px; color:var(--text-soft); margin-bottom:6px; flex-wrap:wrap;
+  }
+  .pod-pill{
+    font-weight:700; color:var(--teal); background: rgba(47,217,196,0.12);
+    padding:2px 9px; border-radius:999px; font-size:11.5px;
+  }
+  .post-title{
+    font-family:'Baloo 2'; font-weight:700; font-size:17px; color:var(--foam);
+    margin:0 0 5px; cursor:pointer; line-height:1.32;
+  }
+  .post-title:hover{ color: var(--teal); }
+  .post-snippet{ font-size:13.5px; color: var(--foam-dim); line-height:1.55; margin:0 0 10px; }
+  .post-tag{
+    display:inline-block; font-size:11px; padding:2px 8px; border-radius:6px;
+    background: rgba(255,200,87,0.14); color: var(--sun); font-weight:600; margin-bottom:8px;
+  }
+  .post-footer{ display:flex; align-items:center; gap:16px; font-size:12.5px; color:var(--text-soft); }
+  .post-footer span{ display:flex; align-items:center; gap:5px; cursor:pointer; }
+  .post-footer span:hover{ color: var(--foam); }
+
+  /* ---------- right sidebar ---------- */
+  .side-right .card{ margin-bottom:16px; position:sticky; top:82px; }
+  .fact-title{
+    font-family:'Baloo 2'; font-weight:700; font-size:14.5px; color:var(--teal); margin:0 0 8px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .fact-body{ font-size:12.8px; color: var(--foam-dim); line-height:1.65; }
+  .rules-list{ margin:0; padding-left:18px; font-size:12.5px; color:var(--foam-dim); line-height:1.9; }
+
+  /* ---------- modal (post detail / new post) ---------- */
+  .overlay{
+    position:fixed; inset:0; background: rgba(2,12,20,0.72); backdrop-filter: blur(3px);
+    display:none; align-items:flex-start; justify-content:center; z-index:100;
+    padding:60px 20px; overflow-y:auto;
+  }
+  .overlay.show{ display:flex; }
+  .modal{
+    background: var(--deep2); border:1px solid var(--line); border-radius:18px;
+    max-width:640px; width:100%; padding:24px; position:relative;
+    animation: rise 0.25s ease;
+  }
+  @keyframes rise{ from{ opacity:0; transform: translateY(14px);} to{opacity:1; transform:translateY(0);} }
+  .modal-close{
+    position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.06);
+    border:none; color:var(--foam-dim); width:30px; height:30px; border-radius:50%;
+    cursor:pointer; font-size:16px; line-height:1;
+  }
+  .modal-close:hover{ color:var(--foam); background:rgba(255,255,255,0.14); }
+  .modal h2{ font-family:'Baloo 2'; font-size:21px; margin:4px 30px 12px 0; line-height:1.3; }
+  .modal .post-meta{ margin-bottom:14px; }
+  .modal-content{ font-size:14.5px; line-height:1.7; color: var(--foam-dim); margin-bottom:18px; white-space:pre-line; }
+  .comments-head{ font-size:13px; font-weight:700; color:var(--text-soft); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .comment{ padding:10px 0; border-top:1px solid var(--line); }
+  .comment:first-child{ border-top:none; }
+  .comment-meta{ font-size:12px; color:var(--text-soft); margin-bottom:3px; }
+  .comment-meta b{ color: var(--teal); font-weight:600; }
+  .comment-body{ font-size:13.5px; color:var(--foam-dim); line-height:1.55; }
+  .comment-form{ display:flex; gap:8px; margin-top:14px; }
+  .comment-form input{
+    flex:1; background: rgba(255,255,255,0.05); border:1px solid var(--line);
+    border-radius:10px; padding:10px 12px; color:var(--foam); font-family:'Inter'; font-size:13.5px;
+  }
+  .comment-form input:focus{ outline:none; border-color: var(--teal-dim); }
+
+  /* new post form */
+  .field-label{ font-size:12px; font-weight:700; color:var(--text-soft); text-transform:uppercase; letter-spacing:0.8px; margin:14px 0 6px; }
+  .field-label:first-of-type{ margin-top:0; }
+  select, .modal input[type=text], .modal textarea{
+    width:100%; background: rgba(255,255,255,0.05); border:1px solid var(--line);
+    border-radius:10px; padding:10px 12px; color:var(--foam); font-family:'Inter'; font-size:13.5px;
+  }
+  .modal textarea{ resize:vertical; min-height:90px; font-family:'Inter'; }
+  select:focus, .modal input:focus, .modal textarea:focus{ outline:none; border-color: var(--teal-dim); }
+  .modal-submit-row{ display:flex; justify-content:flex-end; margin-top:18px; gap:10px; }
+
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(20px);
+    background: var(--teal); color:#052A29; font-weight:700; font-size:13.5px;
+    padding:11px 20px; border-radius:999px; z-index:200; opacity:0;
+    transition: all 0.25s ease; pointer-events:none;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  ::-webkit-scrollbar{ width:9px; }
+  ::-webkit-scrollbar-thumb{ background: rgba(255,255,255,0.12); border-radius:10px; }
+</style>
+</head>
+<body>
+
+<div id="caustics"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <svg viewBox="0 0 48 48" fill="none">
+        <path d="M4 30C10 16 20 8 32 8C38 8 42 12 42 12C42 12 40 20 32 24C36 26 40 30 41 36C33 32 26 32 22 34C16 37 10 36 6 32C9 33 12 32 13 30C9 30 6 29 4 30Z" fill="#2FD9C4"/>
+        <circle cx="30" cy="15" r="1.6" fill="#072035"/>
+      </svg>
+      <span class="brand-name">Dolphin<span>-zone</span></span>
+    </div>
+    <div class="searchbar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span id="search-placeholder">Search pods, clicks & sightings...</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" onclick="openModal('new-post-modal')">+ New Post</button>
+      <button class="btn btn-primary">Log In</button>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="side-left">
+    <div class="card">
+      <div class="side-label">Pods</div>
+      <ul class="pod-list" id="pod-list"></ul>
+      <div class="divider"></div>
+      <div class="pledge">🐬 Every member here is echolocation-verified. Be a good pod-mate.</div>
+    </div>
+  </aside>
+
+  <!-- MAIN FEED -->
+  <main>
+    <div class="feed-heading">The Pod Feed</div>
+    <div class="feed-sub" id="feed-sub">Freshest clicks and whistles from across the pods</div>
+
+    <div class="sort-row" id="sort-row">
+      <div class="sort-tab active" data-sort="hot">🔥 Splashing</div>
+      <div class="sort-tab" data-sort="new">🌊 New</div>
+      <div class="sort-tab" data-sort="top">🏆 Top</div>
+    </div>
+
+    <div id="post-feed"></div>
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="side-right">
+    <div class="card">
+      <div class="fact-title">🧠 Fluke Fact</div>
+      <div class="fact-body" id="fluke-fact">Dolphins call each other by name — a signature whistle developed in the first year of life.</div>
+    </div>
+    <div class="card">
+      <div class="fact-title">📜 Pod Rules</div>
+      <ol class="rules-list">
+        <li>No net-fishing (spam) allowed</li>
+        <li>Keep clicks on-topic for the pod</li>
+        <li>Be kind — we're all mammals here</li>
+        <li>Credit your source sightings</li>
+        <li>No shark talk in Calf Care</li>
+      </ol>
+    </div>
+  </aside>
+</div>
+
+<!-- POST DETAIL MODAL -->
+<div class="overlay" id="detail-modal">
+  <div class="modal" id="detail-modal-content"></div>
+</div>
+
+<!-- NEW POST MODAL -->
+<div class="overlay" id="new-post-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('new-post-modal')">✕</button>
+    <h2>Send a click into the pod 🐬</h2>
+    <div class="field-label">Pod</div>
+    <select id="np-pod"></select>
+    <div class="field-label">Title</div>
+    <input type="text" id="np-title" placeholder="What did you spot / think / discover?">
+    <div class="field-label">Details</div>
+    <textarea id="np-body" placeholder="Tell the pod more..."></textarea>
+    <div class="modal-submit-row">
+      <button class="btn btn-ghost" onclick="closeModal('new-post-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitNewPost()">Post to pod</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Posted!</div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const PODS = [
+  {id:'bottlenose', name:'Bottlenose Bay', color:'#2FD9C4', desc:"General chat for the world's most common dolphin"},
+  {id:'spinner', name:'Spinner Springs', color:'#FF7A63', desc:'Aerial acrobatics & spin technique'},
+  {id:'orca-adjacent', name:'Orca-Adjacent', color:'#6FA8FF', desc:"For the biggest dolphin of all (yes, orcas are dolphins)"},
+  {id:'river', name:'Amazon River Pod', color:'#FFC857', desc:'Pink river dolphins & freshwater life'},
+  {id:'calfcare', name:'Calf Care', color:'#C792EA', desc:'Raising and protecting the next generation'},
+  {id:'echoloc', name:'Echolocation Lab', color:'#7CE0C0', desc:'The science of clicks and whistles'},
+  {id:'conservation', name:'Conservation Cove', color:'#F27EAB', desc:'Protecting pods worldwide'},
+];
+
+let posts = [
+  {id:1, pod:'bottlenose', title:'Watched a pod surf the bow wake for 20 minutes straight this morning', author:'u/finn_tastic', time:'3h', body:"Took the ferry out at dawn and a pod of maybe twelve bottlenose fell in right beside the hull. They stayed in the wake the entire crossing, peeling off one at a time to breach. Never gets old.", votes:412, tag:null, comments:[
+    {author:'u/kelpie_watcher', body:'This is the best part of any ferry ride, no contest.'},
+    {author:'u/salt_and_sonar', body:'Bow-riding is basically free energy surfing for them — they barely have to fluke at all.'}
+  ]},
+  {id:2, pod:'echoloc', title:'ELI5: why do clicks work better than whistles for hunting in murky water?', author:'u/melon_head', time:'6h', body:"I get that whistles are for identity/communication and clicks are for echolocation, but why specifically do clicks win out in low-visibility water? Is it purely a frequency thing?", votes:281, tag:'Question', comments:[
+    {author:'u/biosonar_nerd', body:"Broadly yes — clicks are broadband and short, which gives much better spatial resolution for 'imaging' an object, vs whistles which are narrowband and built for carrying identity info over distance."}
+  ]},
+  {id:3, pod:'river', title:'First confirmed pink river dolphin sighting on this stretch of the Amazon since 2019', author:'u/boto_believer', time:'9h', body:"Local conservation group confirmed the sighting yesterday after years of survey work. Water quality improvements are being credited. Photos in comments.", votes:967, tag:'Sighting', comments:[
+    {author:'u/river_ranger', body:'This is huge for the region. Botos are so sensitive to water quality that this is basically a certified good-news indicator species.'},
+    {author:'u/wetland_wendy', body:'Incredible. What changed in the water quality program?'},
+    {author:'u/boto_believer', body:'Mostly upstream sediment control + a ban on a few gold-mining runoff sources.'}
+  ]},
+  {id:4, pod:'calfcare', title:'How long do calves typically stay with their mother?', author:'u/new_to_pods', time:'11h', body:"Adopted (figuratively) a local pod I watch from shore and there's a calf that's been around for what feels like forever. When do they usually become independent?", votes:154, tag:'Question', comments:[
+    {author:'u/pod_matriarch_fan', body:'Usually 3-6 years, sometimes longer for males who stick around the maternal group even longer in some populations.'}
+  ]},
+  {id:5, pod:'spinner', title:'Slow-motion breakdown of a full spinner rotation — this species is unmatched', author:'u/aerial_analyst', time:'14h', body:"Broke down the physics of a full spinner leap frame by frame. The spin is generated almost entirely at the moment of exit from the water, not mid-air. Video linked.", votes:733, tag:'Analysis', comments:[]},
+  {id:6, pod:'conservation', title:'Bycatch reduction nets showed a 34% drop in incidental dolphin deaths this year', author:'u/net_positive', time:'1d', body:"New report out from the regional fisheries board. The excluder-device mandate that passed two years ago appears to be working. Still a long way to go but a real number to celebrate.", votes:520, tag:'News', comments:[
+    {author:'u/finn_tastic', body:'Great to see actual measured impact instead of just policy on paper.'}
+  ]},
+  {id:7, pod:'orca-adjacent', title:'Reminder: orcas are technically dolphins, and this pod welcomes them', author:'u/taxonomy_defender', time:'1d', body:"Getting some pushback in other threads about this, so — orcas (Orcinus orca) are the largest member of the oceanic dolphin family Delphinidae. They belong here as much as any bottlenose.", votes:298, tag:null, comments:[]},
+  {id:8, pod:'bottlenose', title:"My local pod has a dolphin with a distinctly bent dorsal fin, I've been tracking her for 3 years", author:'u/fin_id_project', time:'2d', body:"Named her Notch. She's become something of a local celebrity and I've built a small sighting log. Happy to share the spreadsheet if anyone wants to see patterns.", votes:891, tag:null, comments:[
+    {author:'u/kelpie_watcher', body:'Please share the spreadsheet, this sounds like exactly the kind of citizen science that matters.'},
+    {author:'u/fin_id_project', body:'Working on cleaning it up, will post a link soon!'}
+  ]},
+];
+let nextId = posts.length + 1;
+const votesState = {}; // id -> 'up' | 'down' | null
+
+const FACTS = [
+  "Dolphins call each other by name — a signature whistle developed in the first year of life.",
+  "A group of dolphins is called a pod, and pods can merge into 'superpods' of over 1,000 individuals.",
+  "Dolphins sleep with one half of their brain at a time, keeping one eye open to watch for danger.",
+  "Some dolphins use sea sponges as tools to protect their beaks while foraging on the seafloor.",
+  "Bottlenose dolphins can dive over 500 meters and hold their breath for up to 20 minutes."
+];
+document.getElementById('fluke-fact').textContent = FACTS[Math.floor(Math.random()*FACTS.length)];
+
+/* ---------------- RENDER: PODS ---------------- */
+let activePod = 'all';
+const podList = document.getElementById('pod-list');
+function renderPods(){
+  const counts = {};
+  posts.forEach(p=> counts[p.pod] = (counts[p.pod]||0)+1);
+  let html = `<li class="pod-item ${activePod==='all'?'active':''}" onclick="setPod('all')">
+      <span class="pod-dot" style="background:#F2EEE1"></span> All Pods
+      <span class="pod-count">${posts.length}</span></li>`;
+  PODS.forEach(p=>{
+    html += `<li class="pod-item ${activePod===p.id?'active':''}" onclick="setPod('${p.id}')">
+      <span class="pod-dot" style="background:${p.color}"></span> ${p.name}
+      <span class="pod-count">${counts[p.id]||0}</span></li>`;
+  });
+  podList.innerHTML = html;
+}
+function setPod(id){
+  activePod = id;
+  renderPods();
+  renderFeed();
+  const podObj = PODS.find(p=>p.id===id);
+  document.getElementById('feed-sub').textContent = id==='all'
+    ? 'Freshest clicks and whistles from across the pods'
+    : podObj.desc;
+}
+
+/* ---------------- RENDER: FEED ---------------- */
+let activeSort = 'hot';
+document.getElementById('sort-row').addEventListener('click', e=>{
+  const tab = e.target.closest('.sort-tab');
+  if(!tab) return;
+  document.querySelectorAll('.sort-tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
+  activeSort = tab.dataset.sort;
+  renderFeed();
+});
+
+function podMeta(id){ return PODS.find(p=>p.id===id); }
+
+function currentVotes(p){
+  const v = votesState[p.id];
+  return p.votes + (v==='up'?1: v==='down'?-1:0);
+}
+
+function renderFeed(){
+  let list = activePod==='all' ? posts.slice() : posts.filter(p=>p.pod===activePod);
+
+  if(activeSort==='new'){
+    list.sort((a,b)=> b.id - a.id);
+  } else if(activeSort==='top'){
+    list.sort((a,b)=> currentVotes(b) - currentVotes(a));
+  } else { // hot: blend of votes and recency (id as proxy)
+    list.sort((a,b)=> (currentVotes(b) + b.id*3) - (currentVotes(a) + a.id*3));
+  }
+
+  const feed = document.getElementById('post-feed');
+  if(list.length===0){
+    feed.innerHTML = `<div class="card" style="text-align:center; color:var(--text-soft); padding:40px 20px;">
+      No clicks here yet — be the first to break the surface. 🐬</div>`;
+    return;
+  }
+
+  feed.innerHTML = list.map(p=>{
+    const pod = podMeta(p.pod);
+    const v = votesState[p.id];
+    return `
+    <div class="post">
+      <div class="vote-col">
+        <button class="vote-btn up ${v==='up'?'active':''}" onclick="vote(${p.id},'up')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 9h-5v7H9v-7H4z"/></svg>
+        </button>
+        <span class="vote-count">${currentVotes(p)}</span>
+        <button class="vote-btn down ${v==='down'?'active':''}" onclick="vote(${p.id},'down')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20l-8-9h5V4h6v7h5z"/></svg>
+        </button>
+      </div>
+      <div class="post-body">
+        <div class="post-meta">
+          <span class="pod-pill" style="color:${pod.color}; background:${pod.color}22;">${pod.name}</span>
+          <span>Posted by ${p.author} · ${p.time} ago</span>
+        </div>
+        ${p.tag ? `<div class="post-tag">${p.tag}</div>` : ''}
+        <div class="post-title" onclick="openPost(${p.id})">${p.title}</div>
+        <div class="post-snippet">${p.body.length > 140 ? p.body.slice(0,140)+'…' : p.body}</div>
+        <div class="post-footer">
+          <span onclick="openPost(${p.id})">💬 ${p.comments.length} comments</span>
+          <span>🔁 Share</span>
+          <span>🚩 Report</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function vote(id, dir){
+  const cur = votesState[id];
+  votesState[id] = (cur===dir) ? null : dir;
+  renderFeed();
+  if(document.getElementById('detail-modal').classList.contains('show')){
+    renderDetail(id);
+  }
+}
+
+/* ---------------- POST DETAIL MODAL ---------------- */
+function openPost(id){
+  renderDetail(id);
+  openModal('detail-modal');
+}
+function renderDetail(id){
+  const p = posts.find(x=>x.id===id);
+  const pod = podMeta(p.pod);
+  const v = votesState[p.id];
+  document.getElementById('detail-modal-content').innerHTML = `
+    <button class="modal-close" onclick="closeModal('detail-modal')">✕</button>
+    <div class="post-meta">
+      <span class="pod-pill" style="color:${pod.color}; background:${pod.color}22;">${pod.name}</span>
+      <span>Posted by ${p.author} · ${p.time} ago</span>
+    </div>
+    ${p.tag ? `<div class="post-tag">${p.tag}</div>` : ''}
+    <h2>${p.title}</h2>
+    <div class="post-footer" style="margin-bottom:14px;">
+      <span onclick="vote(${p.id},'up')" style="color:${v==='up'?'var(--coral)':'inherit'}">▲ Upvote</span>
+      <span class="vote-count" style="color:var(--foam)">${currentVotes(p)}</span>
+      <span onclick="vote(${p.id},'down')" style="color:${v==='down'?'#6FA8FF':'inherit'}">▼ Downvote</span>
+    </div>
+    <div class="modal-content">${p.body}</div>
+    <div class="comments-head">${p.comments.length} Comments</div>
+    <div id="comments-list">
+      ${p.comments.length ? p.comments.map(c=>`
+        <div class="comment">
+          <div class="comment-meta"><b>${c.author}</b></div>
+          <div class="comment-body">${c.body}</div>
+        </div>`).join('') : `<div style="color:var(--text-soft); font-size:13px; padding:8px 0;">No comments yet. Break the silence!</div>`}
+    </div>
+    <div class="comment-form">
+      <input type="text" id="comment-input" placeholder="Add to the conversation...">
+      <button class="btn btn-primary" onclick="addComment(${p.id})">Reply</button>
+    </div>
+  `;
+}
+function addComment(id){
+  const input = document.getElementById('comment-input');
+  const text = input.value.trim();
+  if(!text) return;
+  const p = posts.find(x=>x.id===id);
+  p.comments.push({author:'u/you', body:text});
+  renderDetail(id);
+  renderFeed();
+  showToast('Comment added!');
+}
+
+/* ---------------- NEW POST MODAL ---------------- */
+const npPodSelect = document.getElementById('np-pod');
+npPodSelect.innerHTML = PODS.map(p=>`<option value="${p.id}">${p.name}</option>`).join('');
+
+function submitNewPost(){
+  const pod = npPodSelect.value;
+  const title = document.getElementById('np-title').value.trim();
+  const body = document.getElementById('np-body').value.trim();
+  if(!title){ document.getElementById('np-title').focus(); return; }
+  posts.unshift({
+    id: nextId++, pod, title, author:'u/you', time:'just now',
+    body: body || '(no additional details)', votes:1, tag:null, comments:[]
+  });
+  document.getElementById('np-title').value='';
+  document.getElementById('np-body').value='';
+  closeModal('new-post-modal');
+  renderPods();
+  renderFeed();
+  showToast('Posted to the pod! 🐬');
+}
+
+/* ---------------- MODAL HELPERS ---------------- */
+function openModal(id){ document.getElementById(id).classList.add('show'); }
+function closeModal(id){ document.getElementById(id).classList.remove('show'); }
+document.querySelectorAll('.overlay').forEach(ov=>{
+  ov.addEventListener('click', e=>{ if(e.target===ov) ov.classList.remove('show'); });
+});
+
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
+}
+
+/* ---------------- INIT ---------------- */
+renderPods();
+renderFeed();
+</script>
+</body>
+</html>
