@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import * as E from "./eotm.mjs";
 import { klDirichlet, makeModel } from "./surprise.mjs";
 
-const LOG = new URL("./mind.eotm", import.meta.url), buf = readFileSync(LOG), scan = E.scan(buf), dec = scan.records.map(E.decode);
+const LOG = new URL("./mind.eot", import.meta.url), buf = readFileSync(LOG), scan = E.scan(buf), dec = scan.records.map(E.decode);
 
 test("the committed log verifies and holds only differences plus the ground under them", () => {
   assert.ok(scan.ok, scan.error);

@@ -1,9 +1,9 @@
 # mind/ — the system's mind, in one binary log
 
-`mind.eotm` is the single log. It records only **differences that make a difference** (DMD, after Bateson; see `khora/native/kernel/activation.js`): a record is appended only when reading something changes a conclusion, and it carries the **Bayesian surprise** of that reading (in bits) and the surprise absorbed since the last record without changing anything.
+`mind.eot` is the system's mind: one file, one hash chain, one writer at a time (append through a PR so the chain never forks). There is no second log and no per-domain file. It records only **differences that make a difference** (DMD, after Bateson; see `khora/native/kernel/activation.js`): a record is appended only when reading something changes a conclusion, and it carries the **Bayesian surprise** of that reading (in bits) and the surprise absorbed since the last record without changing anything.
 
-    node mind/eotm-cli.mjs mind/mind.eotm          # dump
-    node mind/eotm-cli.mjs mind/mind.eotm verify   # check the hash chain
+    node mind/eotm-cli.mjs mind/mind.eot          # dump
+    node mind/eotm-cli.mjs mind/mind.eot verify   # check the hash chain
     node --test mind/eotm.test.mjs                  # format + surprise checks
 
 ## Format (EOTM v1)
