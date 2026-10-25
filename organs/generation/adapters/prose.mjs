@@ -30,6 +30,9 @@ const require = createRequire(import.meta.url);
 const ER7 = kernelHome("khora");
 let organs = null;
 let composedReader = null;
+let core = null, priorDoor = null;
+// khora's one sentence cut: spans.js with this text's abbreviations (read-core.mjs::abbreviationsFor), the cut every reader shares
+const cutOf = (split, text) => split(String(text), core ? { abbreviations: core.abbreviationsFor(String(text), { priors: core.priorsFor("eng") }).set } : {});
 try {
   const ledger = await kernelImport("khora", "native/the-fold/document-ledger.js");
   const fold = await kernelImport("khora", "native/the-fold/essay-fold.js");
@@ -44,6 +47,11 @@ try {
   const spans = await kernelImport("khora", "native/adapters/text/spans.js");
   const wordclass = await kernelImport("khora", "native/adapters/text/wordclass.js");
   const referents = await kernelImport("khora", "native/the-fold/referents.js");
+  // khora's master pipeline core (read-core.mjs) and its prior door: the priors arrive by name and the sentence cut uses the
+  // read's own abbreviation knowledge (the measured prior + the text's own). A khora checkout without them (before the one-core
+  // change) falls back to the older path, disclosed in the basis.
+  core = await kernelImport("khora", "native/the-fold/read-core.mjs").catch(() => null);
+  priorDoor = await kernelImport("khora", "native/the-fold/prior-source.mjs").catch(() => null);
   composedReader = { composedRelations: composed.composedRelations, splitSentences: spans.splitSentences, classifyWord: wordclass.classifyWord, dominantClass: wordclass.dominantClass, buildReferents: referents.buildReferents };
 } catch (e) { composedReader = null; console.error(`[prose] composed reader not loaded: ${e.message}`); }
 
@@ -62,6 +70,9 @@ try {
 let _posPrior = null, _roleConfig = null, _verbForms = null;
 async function loadPriors() {
   try {
+    // through khora's prior door (prior-source.mjs: the janus home, by name) when this khora has it; else the old path
+    if (!_posPrior && priorDoor) _posPrior = priorDoor.priorJson("pos-eng.json");
+    if (!_roleConfig && priorDoor) _roleConfig = priorDoor.priorJson("role-config-eng.json");
     if (!_posPrior) { const fs = require("node:fs"); const path = require("node:path"); const p = path.join(ER7, "native", "priors"); for (const n of ["pos-en.json", "pos-eng.json"]) if (fs.existsSync(path.join(p, n))) { _posPrior = JSON.parse(fs.readFileSync(path.join(p, n), "utf8")); break; } }
     if (!_roleConfig) { const fs = require("node:fs"); const path = require("node:path"); const rc = path.join(ER7, "native", "priors", "role-config-eng.json"); if (fs.existsSync(rc)) _roleConfig = JSON.parse(fs.readFileSync(rc, "utf8")); }
     // THE VERB-FORMS CLOSED CLASS (reader-bundle.js's own builder, reused): the
@@ -102,7 +113,7 @@ async function liveMaterial(material, ctx) {
     const split = composedReader?.splitSentences;
     const DIRTY = /\b(PMC\b|Copyright|doi|PMID|ncbi|Received|Accepted|Edited by|Reviewed by|Submitted)\b/i;
     for (const [, code] of shadow) {
-      const sents = split ? split(String(code)) : [{ text: String(code) }];
+      const sents = split ? cutOf(split, code) : [{ text: String(code) }];
       // one clean sentence per LINE — splitSentences treats a newline as a
       // boundary, so the positional clause reader fires per sentence while the
       // recurrence leg still reads the whole (the newline is not a word).
@@ -201,7 +212,7 @@ async function dmdUniverse(register, text, { rank = 8 } = {}) {
   const { buildReferents } = await kernelImport("khora", "native/the-fold/referents.js");
   const { symmetricEigen } = await kernelImport("khora", "native/kernel/dmd.js");
   const R = buildReferents(text);
-  const sentences = splitSentences(text).map((s) => String(s.text ?? s)).filter((t) => (t.match(/[A-Za-z]{2,}/g) || []).length >= 3).slice(0, 400);
+  const sentences = cutOf(splitSentences, text).map((s) => String(s.text ?? s)).filter((t) => (t.match(/[A-Za-z]{2,}/g) || []).length >= 3).slice(0, 400);
   // SULLIVAN: each sentence's state = the set of the register's OWN beings it
   // carries (resolved referent ids) — the register's cast, learned from itself.
   const dims = [...new Set(sentences.flatMap((t) => [...R.resolveText(t)]))].sort();
