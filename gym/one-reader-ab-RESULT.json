@@ -1,0 +1,1047 @@
+{
+ "material": "Zenodotus 02-encyclopedic/wikipedia, first 12 articles (20k chars each)",
+ "A_composed": {
+  "units": 48,
+  "settled": 1,
+  "verbatim": 1,
+  "notVerbatim": 0,
+  "admitted": 0
+ },
+ "B_oneReader": {
+  "units": 48,
+  "settled": 16,
+  "verbatim": 15,
+  "notVerbatim": 1,
+  "admitted": 4
+ },
+ "admittedB": [
+  {
+   "spec": "What did Buddha do?",
+   "settle": "bauddha —is \"a secondary derivative of→ buddha",
+   "sentence": "Bauddha is \"a secondary derivative of buddha, in which the vowel's lengthening indicates connection or relation."
+  },
+  {
+   "spec": "What did Buddhist do?",
+   "settle": "The Buddha —advised→ buddhist",
+   "sentence": "Teaching that dukkha arises alongside Upādānaattachment or clinging, the Buddha advised Buddhist meditationmeditation practices and Buddhist ethicsethical precepts rooted in Ahimsanon-harming."
+  },
+  {
+   "spec": "What did Dante do?",
+   "settle": "dante —broke with both by→ writing",
+   "sentence": "At a time when Latin was still the dominant language for scholarly and literary writing—and when many Italian poets drew inspiration from French or Provençal dialectProvençal traditions—Dante broke with both by writing i"
+  },
+  {
+   "spec": "What did Enlightenment do?",
+   "settle": "philosophy —produced during the→ enlightenment",
+   "sentence": " Enlightenment philosophy, the philosophy produced during the Enlightenment (late 17th and 18th centuries)"
+  }
+ ],
+ "admittedA": [],
+ "examples": {
+  "A": [
+   [
+    "What did Roman do?",
+    "Roman —convert→ Christianity",
+    true
+   ]
+  ],
+  "B": [
+   [
+    "What did Buddha do?",
+    "bauddha —is \"a secondary derivative of→ buddha",
+    true
+   ],
+   [
+    "What did Buddhist do?",
+    "The Buddha —advised→ buddhist",
+    true
+   ],
+   [
+    "What did The Buddha do?",
+    "Buddhismteachings —attributed to→ The Buddha",
+    true
+   ],
+   [
+    "What did Roman do?",
+    "dynasty —prioritised perso-→ roman",
+    true
+   ],
+   [
+    "What did Constantinople do?",
+    "Constantinople —remained the largest and wealthiest→ city",
+    true
+   ],
+   [
+    "What did West do?",
+    "West —was destabilised but the→ east",
+    true
+   ]
+  ]
+ },
+ "rows": {
+  "A": [
+   {
+    "unit": "Aristotle.txt#0",
+    "spec": "What did Aristotle's do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#1",
+    "spec": "What did Macedon do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#2",
+    "spec": "What did Macedonia do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#3",
+    "spec": "What did Lyceum do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Buddhism.txt#0",
+    "spec": "What did Buddha do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Buddhism.txt#1",
+    "spec": "What did Buddhist do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Buddhism.txt#2",
+    "spec": "What did The Buddha do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Buddhism.txt#3",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Byzantine_Empire.txt#0",
+    "spec": "What did Roman do?",
+    "sentence": ", also known as Constantine the Great, was Roman emperor from AD&nbsp;306 to 337 and the first Roman emperor to convert to Christianity.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "Roman —convert→ Christianity",
+    "basis": "box settled from live material + priors, no model (positional clause); REFUSED — resid 0.736 is outside the material's D"
+   },
+   {
+    "unit": "Byzantine_Empire.txt#1",
+    "spec": "What did Constantinople do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Byzantine_Empire.txt#2",
+    "spec": "What did Justin do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Byzantine_Empire.txt#3",
+    "spec": "What did West do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#0",
+    "spec": "What did Robert do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#1",
+    "spec": "What did Brown do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#2",
+    "spec": "What did Robert Brown do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#3",
+    "spec": "What did Anton Van Leeuwenhoek do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#0",
+    "spec": "What did CAS do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#1",
+    "spec": "What did Dictionary do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#2",
+    "spec": "What did Stick do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#3",
+    "spec": "What did Egypt do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#0",
+    "spec": "What did Christ do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#1",
+    "spec": "What did Christianity do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#2",
+    "spec": "What did Jew do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#3",
+    "spec": "What did Jesus do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cold_War.txt#0",
+    "spec": "What did Soviet do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cold_War.txt#1",
+    "spec": "What did The Soviet do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cold_War.txt#2",
+    "spec": "What did Cold do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cold_War.txt#3",
+    "spec": "What did Cold War do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#0",
+    "spec": "What did Chinese do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#1",
+    "spec": "What did Ren do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#2",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#3",
+    "spec": "What did China do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#0",
+    "spec": "What did DNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#1",
+    "spec": "What did RNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#2",
+    "spec": "What did The DNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#3",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#0",
+    "spec": "What did Dante do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#1",
+    "spec": "What did Man do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#2",
+    "spec": "What did Guelphs do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#3",
+    "spec": "What did Comedy do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#0",
+    "spec": "What did Her do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#1",
+    "spec": "What did Greek do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#2",
+    "spec": "What did Brockett do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#3",
+    "spec": "What did Hildy do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#0",
+    "spec": "What did Enlightenment do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#1",
+    "spec": "What did Age do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#2",
+    "spec": "What did Van Morrison do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#3",
+    "spec": "What did Doctor Who do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   }
+  ],
+  "B": [
+   {
+    "unit": "Aristotle.txt#0",
+    "spec": "What did Aristotle's do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#1",
+    "spec": "What did Macedon do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#2",
+    "spec": "What did Macedonia do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Aristotle.txt#3",
+    "spec": "What did Lyceum do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Buddhism.txt#0",
+    "spec": "What did Buddha do?",
+    "sentence": "Bauddha is \"a secondary derivative of buddha, in which the vowel's lengthening indicates connection or relation.",
+    "settled": true,
+    "admitted": true,
+    "verbatim": true,
+    "settle": "bauddha —is \"a secondary derivative of→ buddha",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Buddhism.txt#1",
+    "spec": "What did Buddhist do?",
+    "sentence": "Teaching that dukkha arises alongside Upādānaattachment or clinging, the Buddha advised Buddhist meditationmeditation practices and Buddhist ethicsethical precepts rooted in Ahimsanon-harming.",
+    "settled": true,
+    "admitted": true,
+    "verbatim": true,
+    "settle": "The Buddha —advised→ buddhist",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Buddhism.txt#2",
+    "spec": "What did The Buddha do?",
+    "sentence": "4428, Quote: \"Buddhism and Jainism, two religions which, together with Hinduism, constitute the three pillars of Indic religious tradition in its classical formulation.\"}} based on Pre-sectarian Buddhismteachings attribu",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "Buddhismteachings —attributed to→ The Buddha",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Buddhism.txt#3",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Byzantine_Empire.txt#0",
+    "spec": "What did Roman do?",
+    "sentence": "Constantine's dynasty prioritised Perso-Roman wars of 337–361a lengthy conflict against the comparably powerful Sasanian EmpireSasanid Persia and ended in 363 with the death of his nephew Julian (emperor)Julian.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "dynasty —prioritised perso-→ roman",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Byzantine_Empire.txt#1",
+    "spec": "What did Constantinople do?",
+    "sentence": "The empire recovered during the Komnenian restoration, and Constantinople remained the largest and wealthiest city in Europe until the 13th century, when it was overtaken by Paris.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "Constantinople —remained the largest and wealthiest→ city",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Byzantine_Empire.txt#2",
+    "spec": "What did Justin do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Byzantine_Empire.txt#3",
+    "spec": "What did West do?",
+    "sentence": "After his death, the West was destabilised but the East thrived due to the civilian administrators who continued to hold power.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "West —was destabilised but the→ east",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Cell_biology.txt#0",
+    "spec": "What did Robert do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#1",
+    "spec": "What did Brown do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#2",
+    "spec": "What did Robert Brown do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cell_biology.txt#3",
+    "spec": "What did Anton Van Leeuwenhoek do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#0",
+    "spec": "What did CAS do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#1",
+    "spec": "What did Dictionary do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#2",
+    "spec": "What did Stick do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Chemistry.txt#3",
+    "spec": "What did Egypt do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#0",
+    "spec": "What did Christ do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#1",
+    "spec": "What did Christianity do?",
+    "sentence": null,
+    "settled": true,
+    "admitted": false,
+    "verbatim": false,
+    "settle": "Roman Empire —split of→ christianity",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Christianity.txt#2",
+    "spec": "What did Jew do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Christianity.txt#3",
+    "spec": "What did Jesus do?",
+    "sentence": "Christianity is an Abrahamic monotheistic religion based on the Bible and the teachings of Jesus.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "jesus —is→ god",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Cold_War.txt#0",
+    "spec": "What did Soviet do?",
+    "sentence": "Relations between the USSR and China broke down by 1961, with the Sino-Soviet split bringing the two states to the brink of war amid Sino-Soviet border conflicta border conflict in 1969.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "soviet —split bringing the two→ states",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Cold_War.txt#1",
+    "spec": "What did The Soviet do?",
+    "sentence": "Relations between the USSR and China broke down by 1961, with the Sino-Soviet split bringing the two states to the brink of war amid Sino-Soviet border conflicta border conflict in 1969.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "soviet —split bringing the two→ states",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Cold_War.txt#2",
+    "spec": "What did Cold do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Cold_War.txt#3",
+    "spec": "What did Cold War do?",
+    "sentence": "Writer George Orwell used Cold war (term)cold war, as a general term, in his essay \"You and the Atomic Bomb\", published 19 October 1945.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "George Orwell —used→ cold war",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Confucianism.txt#0",
+    "spec": "What did Chinese do?",
+    "sentence": ", a key concept in Chinese thought, refers to the God of Heaven, the celestial polenorthern culmen of the skies and its spinning stars, earthly nature and its laws which come from Heaven, to 'Heaven and Earth' (that is, ",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "Chinese —thought, refers to the→ god",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Confucianism.txt#1",
+    "spec": "What did Ren do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#2",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Confucianism.txt#3",
+    "spec": "What did China do?",
+    "sentence": "Confucianism remains influential in China, Korea, Japan, Vietnam, and regions with significant Overseas ChineseChinese diaspora.",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "Confucianism —remains influential in→ China",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "DNA.txt#0",
+    "spec": "What did DNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#1",
+    "spec": "What did RNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#2",
+    "spec": "What did The DNA do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "DNA.txt#3",
+    "spec": "What did Here do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#0",
+    "spec": "What did Dante do?",
+    "sentence": "At a time when Latin was still the dominant language for scholarly and literary writing—and when many Italian poets drew inspiration from French or Provençal dialectProvençal traditions—Dante broke with both by writing i",
+    "settled": true,
+    "admitted": true,
+    "verbatim": true,
+    "settle": "dante —broke with both by→ writing",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Dante_Alighieri.txt#1",
+    "spec": "What did Man do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#2",
+    "spec": "What did Guelphs do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Dante_Alighieri.txt#3",
+    "spec": "What did Comedy do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#0",
+    "spec": "What did Her do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#1",
+    "spec": "What did Greek do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Drama.txt#2",
+    "spec": "What did Brockett do?",
+    "sentence": "The competition (\"agon\") for tragedies may have begun as early as 534 BC; official records (\"didaskaliai\") begin from 501 BC when the satyr play was introduced.Brockett and Hildy (2003, 13, 15) and Banham (1998, 442).",
+    "settled": true,
+    "admitted": false,
+    "verbatim": true,
+    "settle": "satyr play —was introduced.→ Brockett",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Drama.txt#3",
+    "spec": "What did Hildy do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#0",
+    "spec": "What did Enlightenment do?",
+    "sentence": " Enlightenment philosophy, the philosophy produced during the Enlightenment (late 17th and 18th centuries)",
+    "settled": true,
+    "admitted": true,
+    "verbatim": true,
+    "settle": "philosophy —produced during the→ enlightenment",
+    "basis": "box settled from live material + priors, no model (positional: THE reader (read-core readWith, eng (heard)), verbatim ve"
+   },
+   {
+    "unit": "Enlightenment.txt#1",
+    "spec": "What did Age do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#2",
+    "spec": "What did Van Morrison do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   },
+   {
+    "unit": "Enlightenment.txt#3",
+    "spec": "What did Doctor Who do?",
+    "sentence": null,
+    "settled": false,
+    "admitted": null,
+    "verbatim": null,
+    "settle": null,
+    "basis": null
+   }
+  ]
+ }
+}

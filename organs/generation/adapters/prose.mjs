@@ -124,6 +124,35 @@ async function liveMaterial(material, ctx) {
   return pieces.join("\n");
 }
 
+/** canonicalRead(text) → { relations, basis } from khora's one reader. A relation is POSITIONAL (may settle) only when its connector is
+ *  verbatim inside the sentence span it was read from; the read's language provenance rides the basis. */
+export function canonicalRead(text) {
+  const W = core.readWith(String(text), { minCharacters: 0, quality: false });
+  const lang = W.language ? `${W.language.stem} (${W.language.source})` : "unknown";
+  // a connector is a CLAUSE's only if it carries a verb, by the read's OWN language prior (pos-<stem>, the class each form is mostly
+  // spent as), never an English list: "Philip —ii of→ Macedon" is verbatim but no clause (measured, gym/one-reader-ab.mjs)
+  const prior = W.language?.stem ? core.priorsFor(W.language.stem)?.posPrior : null;
+  const isVerb = (w) => { const c = prior?.forms?.[String(w).toLowerCase()]; if (!c) return false; const t = Object.values(c).reduce((a, b) => a + b, 0); return t > 0 && ((c.VERB ?? 0) + (c.AUX ?? 0)) / t >= 0.5; };
+  const seg = new Intl.Segmenter(W.language?.stem ?? "und", { granularity: "word" });
+  const relations = (W.edges ?? []).map((e) => {
+    const span = (e.spans ?? [])[0];
+    const label = String(e.label ?? "").trim();
+    const spanLow = String(span?.text ?? "").toLowerCase();
+    // the clause is the span's own: its connector AND both its ends stand in the one sentence it was read from
+    const verbatim = !!span && label.length > 0 && spanLow.includes(label.toLowerCase()) && spanLow.includes(String(e.end1Face ?? e.end1).toLowerCase()) && spanLow.includes(String(e.end2Face ?? e.end2).toLowerCase());
+    // the connector OPENS with its verb (a clause's head), not a verb buried in a fragment ("philosophy —produced during the→ X" opens with
+    // one; ", born 1773)robert" and "'s lifetime refers to him as" do not)
+    const firstWord = [...seg.segment(label)].find((x) => x.isWordLike)?.segment ?? "";
+    const opensWithVerb = /^\p{L}/u.test(label) && isVerb(firstWord);
+    const verbed = !!prior && opensWithVerb;
+    const positional = verbatim && verbed;
+    return { end1: e.end1Face ?? e.end1, label: e.label, end2: e.end2Face ?? e.end2, cell: null,
+      basis: positional ? `positional: THE reader (read-core readWith, ${lang}), verbatim verbed connector at ${span.ref}@${span.start}-${span.end}`
+        : `THE reader (read-core readWith, ${lang}), ${!verbatim ? "connector not verbatim in its span" : prior ? "connector carries no verb by the language's own prior" : "no class prior for the language: not typed"}` };
+  });
+  return { relations, basis: `THE reader (read-core readWith, ${lang})`, language: W.language ?? null, gaps: W.gaps ?? [] };
+}
+
 /** computeSettles(units, material, ctx) — async now, because loading priors and
  *  indexing the live shadow is I/O. The engine awaits it (engine.mjs:201 awaits
  *  adapter.computeSettles when present). */
@@ -138,7 +167,18 @@ export async function computeSettles(units, material = null, ctx = {}) {
   if (refs) for (const id of (refs.index?.referents ?? [])) { const rep = refs.represent(id); if (rep && rep.length >= 3) figures.add(rep.toLowerCase()); }
   // verbForms injected so the positional clause reader can type the connector
   // (reader-bundle.js's own discipline: the received closed class arrives in).
-  const read = composedReader.composedRelations(text, { posPrior, figures: figures.size >= 3 ? figures : null, roleConfig, classifyWord: composedReader.classifyWord, dominantClass: composedReader.dominantClass, verbForms });
+  // THE ONE READER (the Isthmus, khora native/docs/THE-ISTHMUS.md; THE-READING-PIPELINE.md: "nothing assembles a second reader"): the
+  // material is read by khora's master pipeline (read-core.mjs::readWith), in the language it is declared in or heard in, never English
+  // by default. Its edges carry their byte spans, and a settle is that reader's VERBATIM connector: a relation whose label stands in its
+  // own span, the same honesty the positional-clause rule kept (a recurrence fragment is not a clause). PENELOPE_READER=composed keeps
+  // the older composed reader.
+  // MEASURED, NOT YET ADOPTED (gym/one-reader-ab.mjs, gym/one-reader-ab-RESULT.json; 12 Wikipedia articles, 48 units): the one reader
+  // settles 16 units where the composed reader settles 1, and the universe gate admits 4 against 0 — but of those 4, ONE answers its
+  // question ("Dante broke with both by writing…"); three name the asked being as the PATIENT ("bauddha is a derivative of buddha" for
+  // "What did Buddha do?"). The box would assert three wrong claims the mouth now draws under its gates. The missing organ is the
+  // ask's own reading (which role the question asks for: the Isthmus decode applied to the unit's spec), not the reader. So the one
+  // reader is opt-in (PENELOPE_READER=one) until that lands and the A/B is re-run; the composed reader stays the default, disclosed.
+  const read = core?.readWith && process.env.PENELOPE_READER === "one" ? canonicalRead(text) : composedReader.composedRelations(text, { posPrior, figures: figures.size >= 3 ? figures : null, roleConfig, classifyWord: composedReader.classifyWord, dominantClass: composedReader.dominantClass, verbForms });
   for (const u of units) {
     if (u.settle) continue;
     const q = String(u.spec ?? "").toLowerCase();
