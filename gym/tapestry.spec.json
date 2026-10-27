@@ -1359,6 +1359,22 @@
     "GL-EN-34",
     "o/notes-ledger.mjs"
    ]
+  },
+  {
+   "id": "TLS",
+   "name": "telos",
+   "st": "■",
+   "lvl": 2,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/telos.mjs",
+    "o/telos.test.mjs",
+    "GL-TL-01",
+    "o/hyperlexicon-record.mjs",
+    "E7/organs/pathos.js"
+   ]
   }
  ]
 }
