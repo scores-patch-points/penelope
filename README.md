@@ -457,8 +457,8 @@ append-only, always revisable).
 ║     @ o/minds-ledger.mjs o/minds-ledger.test.mjs GL-EN-33 GL-EN-34         ║
 ║     @ o/notes-ledger.mjs                                                   ║
 ║■TLS 2 ↬◈ ‡ telos                                                           ║
-║     @ o/telos.mjs o/telos.test.mjs GL-TL-01 o/hyperlexicon-record.mjs      ║
-║     @ E7/organs/pathos.js                                                  ║
+║     @ o/telos.mjs o/telos.test.mjs GL-TL-01 GL-TL-02                       ║
+║     @ o/hyperlexicon-record.mjs E7/organs/pathos.js                        ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

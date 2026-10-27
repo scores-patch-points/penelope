@@ -169,3 +169,7 @@ Consequences for the telos, all for steps 3-5 and none applied yet:
 - `precedents` asks identity instead of comparing `forWhom` strings; a tied set returns `no_precedent`.
 - A REC that changes any frame field invalidates the old verdict; keep old and new side by side, as khora's `reGround` keeps the old ground's fingerprint.
 - **Open decision for the user:** `declareTelos` has no `asof` or `purpose` today. Adding them changes the `EOTelos@1` schema (closed) and so its hash; do it before any telos is filed for real, or version the schema.
+
+### 13.1 Applied (2026-10-27, user approved)
+
+`declareTelos` now requires `asof` and `purpose` (refusals `no_asof`, `no_purpose`; both are in the content hash). `recordTelos` accepts an `identity` verdict {verdict: same|different|undecided|refused, tied?, excluded?, plateau?, frame: {asof, purpose, whom}}; a frame with no purpose can only be `refused`; earned and missed are filed only under `same` decided in the telos' own frame; `identityStanding(history, telosId)` returns the current verdict, the invalidated ones, and old and new side by side with the changed fields. Recorded as GL-TL-02 (supersedes GL-TL-01). `organs/telos.test.mjs` 19/19; with `kernel-reach`, `minds-ledger` and `hyperlexicon-record` tests 35/35 in a clean clone. Still not built: foresee, weighTelos, precedents.

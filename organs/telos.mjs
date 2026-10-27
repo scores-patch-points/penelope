@@ -27,8 +27,14 @@
 //   · a telos is VERDICT-shaped. The set of verdicts is pinned to khora's reGroundCondition by the test, so a rating, a score or
 //     a quality word is not a smaller verdict, it is a non-verdict: refused as rating_aim. The schema is CLOSED, so no field
 //     can smuggle one in; no word list is kept here.
+//   · a telos is declared IN A FRAME: `asof` (the as-of the perceiver is read at) and `purpose` (what the sameness of the
+//     perceiver is for). An identity verdict is per frame (the identity thread, PIPELINE-LOG), so a telos with no asof or no
+//     purpose is refused, and a weighing is filed only under a verdict of `same` decided in THIS telos' frame; `different` and
+//     `undecided` leave it `unmeasured`, `refused` weighs nothing. A gap is never a hit.
 //   · append-only, superseded by pointer (the GLAUCA-EOT contract; hyperlexicon-record.mjs is the template). A weighing may
-//     not be filed before the telos it weighs, so the prediction can never be written after the result.
+//     not be filed before the telos it weighs, so the prediction can never be written after the result. A REC that changes any
+//     frame field invalidates the old verdict; the old and the new stay side by side (identityStanding), as khora's reGround
+//     keeps the old ground's fingerprint beside the new.
 import { createHash } from "node:crypto";
 import { kernelImport } from "./kernel-reach.mjs";
 
@@ -47,7 +53,7 @@ export const TELOS_RECORD_SCHEMA = "EOTelosRecord@1";
 export const VERDICTS = freeze(["ground_holds", "re_ground:stale", "re_ground:collapse", "re_ground:contested"]);
 
 /** The closed schema of a telos spec. Anything else is refused (unknown_field): there is no field to hide a rating in. */
-const SPEC_FIELDS = freeze(["forWhom", "provenance", "expect", "opens", "releases", "speaksFrom", "giver", "beforeFold", "at", "thread"]);
+const SPEC_FIELDS = freeze(["forWhom", "provenance", "asof", "purpose", "expect", "opens", "releases", "speaksFrom", "giver", "beforeFold", "at", "thread"]);
 
 /** The refusal codes, typed (the minds-ledger.mjs shape). */
 export const REFUSALS = freeze({
@@ -55,11 +61,17 @@ export const REFUSALS = freeze({
   UNVERIFIED_FOR_WHOM: "unverified_for_whom",
   NO_GIVER: "no_giver",
   NO_ADDRESS: "no_address",
+  NO_ASOF: "no_asof",
+  NO_PURPOSE: "no_purpose",
   NO_EXPECT: "no_expect",
   RATING_AIM: "rating_aim",
   RELEASE_WITHOUT_OPEN: "release_without_open",
   UNKNOWN_FIELD: "unknown_field",
 });
+
+/** The identity verdicts, as the identity thread reports them (PIPELINE-LOG, "Identity detection for content moderation",
+ *  2026-10-27): not yet pinned to that thread's code, which this repo does not import. */
+export const IDENTITY_VERDICTS = freeze(["same", "different", "undecided", "refused"]);
 
 /** The standings an entry on the record can carry. `declared` is the registration, filed before the draw. */
 export const STATUSES = freeze(["declared", "earned", "missed", "unmeasured", "superseded"]);
@@ -79,6 +91,8 @@ const hashOf = (body) => createHash("sha256").update(JSON.stringify(body)).diges
  *
  *   forWhom     {who, read, revision?}  required; validated by khora's requireExperiencer (never defaulted)
  *   provenance  {source: "record", ref} required; the for-whom was read from the turn's own record, not from a label
+ *   asof        string                  required; the as-of the perceiver is read at (a declared identifier, never a clock read here)
+ *   purpose     string                  required; what the perceiver's identity is decided FOR (no purpose, no telos)
  *   expect      one of VERDICTS         required; the change is meant to leave the perceiver's ground in this verdict
  *   speaksFrom  [address, ...]          required, non-empty; the record the artifact manifests (the mouth originates nothing)
  *   giver       string                  required; who authorized the change
@@ -112,6 +126,12 @@ export function declareTelos(spec = {}) {
   if (!addressList(spec.speaksFrom) || spec.speaksFrom.length === 0) {
     return refuse(REFUSALS.NO_ADDRESS, "speaksFrom is empty: the artifact may manifest only what the ground kept, so it must name where");
   }
+  if (!isText(spec.asof)) {
+    return refuse(REFUSALS.NO_ASOF, "sameness of the perceiver is per frame: say as of when the for-whom is read");
+  }
+  if (!isText(spec.purpose)) {
+    return refuse(REFUSALS.NO_PURPOSE, "sameness of the perceiver is per frame: say what the identity is decided for. No purpose means no telos (and an identity verdict without one is refused)");
+  }
   if (spec.expect == null) {
     return refuse(REFUSALS.NO_EXPECT, "a telos names the verdict it aims at");
   }
@@ -134,6 +154,8 @@ export function declareTelos(spec = {}) {
 
   const body = {
     forWhom: { who: forWhom.who, read: forWhom.read, revision: forWhom.revision },
+    asof: spec.asof,
+    purpose: spec.purpose,
     expect: spec.expect,
     opens: [...opens],
     releases: [...releases],
@@ -148,6 +170,9 @@ export function declareTelos(spec = {}) {
     hash,
     forWhom,
     provenance: freeze({ source: "record", ref: p.ref }),
+    asof: spec.asof,
+    purpose: spec.purpose,
+    frame: freeze({ asof: spec.asof, purpose: spec.purpose, whom: forWhom }),
     expect: spec.expect,
     opens,
     releases,
@@ -158,9 +183,83 @@ export function declareTelos(spec = {}) {
   });
 }
 
+const sameWhom = (a, b) => a?.who === b?.who && a?.read === b?.read && (a?.revision ?? null) === (b?.revision ?? null);
+
+/** Validate an identity verdict and its frame against the telos it is filed under. Returns it frozen, or null when absent. */
+function checkIdentity(identity, telos, status) {
+  const weighs = status === "earned" || status === "missed";
+  if (identity == null) {
+    if (weighs) throw new TypeError(`a ${status} entry is a weighing: it needs an identity verdict of "same" for the perceiver, decided in this telos' frame`);
+    return null;
+  }
+  if (typeof identity !== "object" || !IDENTITY_VERDICTS.includes(identity.verdict)) {
+    throw new TypeError(`identity.verdict must be one of ${IDENTITY_VERDICTS.join(", ")}`);
+  }
+  const f = identity.frame;
+  if (!f || typeof f !== "object" || !f.whom || !isText(f.whom.who) || !isText(f.whom.read) || !isText(f.asof)) {
+    throw new TypeError("an identity verdict carries its frame: { asof, purpose, whom: {who, read} } — sameness is per frame");
+  }
+  if (!isText(f.purpose) && identity.verdict !== "refused") {
+    throw new TypeError("a frame with no purpose can only be refused: an identity verdict without a purpose is not a verdict");
+  }
+  if (weighs) {
+    if (identity.verdict !== "same") {
+      throw new TypeError(`a ${status} entry needs verdict "same"; "${identity.verdict}" leaves the telos unmeasured (a gap is never a hit)`);
+    }
+    if (f.asof !== telos.frame.asof || f.purpose !== telos.frame.purpose || !sameWhom(f.whom, telos.frame.whom)) {
+      throw new TypeError("the identity verdict was decided under a different frame than this telos' (asof, purpose, whom): it does not license this weighing");
+    }
+  }
+  return freeze({
+    verdict: identity.verdict,
+    tied: identity.tied == null ? null : freeze([...identity.tied]),
+    excluded: identity.excluded == null ? null : freeze([...identity.excluded]),
+    plateau: identity.plateau == null ? null : freeze({ ...identity.plateau }),
+    frame: freeze({ asof: f.asof, purpose: f.purpose ?? null, whom: freeze({ who: f.whom.who, read: f.whom.read, revision: f.whom.revision ?? null }) }),
+  });
+}
+
+/** The frame fields that differ between two identity frames. */
+const frameDiff = (a, b) => [
+  ...(a.asof !== b.asof ? ["asof"] : []),
+  ...((a.purpose ?? null) !== (b.purpose ?? null) ? ["purpose"] : []),
+  ...(a.whom.who !== b.whom.who ? ["whom.who"] : []),
+  ...(a.whom.read !== b.whom.read ? ["whom.read"] : []),
+  ...((a.whom.revision ?? null) !== (b.whom.revision ?? null) ? ["whom.revision"] : []),
+];
+
+/**
+ * identityStanding(history, telosId) -> { current, invalidated, sideBySide }
+ * A REC (an entry that supersedes another) that changes any frame field INVALIDATES the old verdict; nothing is deleted, the
+ * old and the new are returned side by side with the fields that changed. A superseding entry under the SAME frame leaves the
+ * old verdict standing (it was re-asserted, not re-framed). Pure.
+ */
+export function identityStanding(history = [], telosId) {
+  const ofTelos = history.filter((h) => h.telosId === telosId && h.identity);
+  const byId = new Map(history.map((h) => [h.id, h]));
+  const sideBySide = [];
+  const invalid = new Set();
+  for (const h of ofTelos) {
+    const old = h.supersedes ? byId.get(h.supersedes) : null;
+    if (!old?.identity) continue;
+    const changed = frameDiff(old.identity.frame, h.identity.frame);
+    if (changed.length) {
+      invalid.add(old.id);
+      sideBySide.push(freeze({ old, new: h, changed: freeze(changed) }));
+    }
+  }
+  const standing = ofTelos.filter((h) => !invalid.has(h.id));
+  return freeze({ current: standing.at(-1) ?? null, invalidated: freeze(ofTelos.filter((h) => invalid.has(h.id))), sideBySide: freeze(sideBySide) });
+}
+
 /**
  * recordTelos(history, entry) -> history with the entry appended. Pure; persistence is the caller's, append-only.
- * entry: { telos: EOTelos@1, status, evidence?, falsifyingControl?, supersedes?, id?, at? }
+ * entry: { telos: EOTelos@1, status, evidence?, identity?, falsifyingControl?, supersedes?, id?, at? }
+ *
+ * `identity` is the identity verdict for the perceiver, with the FRAME it was decided under (per frame, never stable across
+ * frames): { verdict: same|different|undecided|refused, tied?, excluded?, plateau?, frame: { asof, purpose, whom: {who, read,
+ * revision?} } }. A weighing (earned / missed) is filed only under `same` decided in THIS telos' frame. Any verdict whose frame
+ * has no purpose can only be `refused`.
  *
  * `declared` is the registration and is filed first. Every later standing (earned / missed / unmeasured / superseded) needs a
  * `declared` entry for the same telos already on the record and evidence for its claim (Iphthime: no ungrounded claim).
@@ -186,6 +285,7 @@ export function recordTelos(history = [], entry = {}) {
   if (entry.supersedes != null && !history.some((h) => h.id === entry.supersedes)) {
     throw new TypeError(`supersedes ${entry.supersedes}, which is not on the record`);
   }
+  const identity = checkIdentity(entry.identity, telos, entry.status);
 
   const at = entry.at ?? new Date().toISOString();
   const id = entry.id ?? `${telos.id}/${history.filter((h) => h.telosId === telos.id).length}`;
@@ -204,10 +304,12 @@ export function recordTelos(history = [], entry = {}) {
     giver: telos.giver,
     status: entry.status,
     evidence: entry.evidence ?? null,
+    frame: telos.frame,
+    identity,
     falsifyingControl: entry.falsifyingControl ?? "a delivered artifact whose measured perceiver verdict differs from this telos' expect, or whose aimed releases are not witnessed, concedes this entry",
     supersedes: entry.supersedes ?? null,
   });
   return freeze([...history, filed]);
 }
 
-export default { TELOS_SCHEMA, TELOS_REFUSAL_SCHEMA, TELOS_RECORD_SCHEMA, VERDICTS, REFUSALS, STATUSES, declareTelos, recordTelos };
+export default { TELOS_SCHEMA, TELOS_REFUSAL_SCHEMA, TELOS_RECORD_SCHEMA, VERDICTS, IDENTITY_VERDICTS, REFUSALS, STATUSES, declareTelos, recordTelos, identityStanding };
