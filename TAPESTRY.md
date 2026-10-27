@@ -72,7 +72,7 @@
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
-║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL      │  ║
+║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL ■TLS │  ║
 ║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │                     │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
@@ -98,7 +98,7 @@
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND           │ ·STM ■RSR ·STR ■FAP │  ║
 ║  │    │                     │                     │ ■SLF ■HMA ■WNB ■FCL │  ║
-║  │    │                     │                     │ ■WBL ■WRP           │  ║
+║  │    │                     │                     │ ■WBL ■WRP ■TLS      │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -122,6 +122,7 @@
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
 ║  │    │                     │ ■POD ■NLG           │ ■CCL ■OVW ■CPL ■GDC │  ║
 ║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
+║  │    │                     │                     │ ■TLS                │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
 ║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
@@ -131,7 +132,7 @@
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
-║ │    ■WPG△◈ ■WRP⊨◈ ■MND⊨◆                                                  ║
+║ │    ■WPG△◈ ■WRP⊨◈ ■MND⊨◆ ■TLS↬◈                                           ║
 ║ │ 1  ■VDF○∘ ■RDU●◆ ■STL=◆ ■FLD→◆ ■HNT●∘ ■SNP|◆ ■PRB⊨◆ ■GAP∅◆ ■ADC●◈        ║
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
@@ -220,6 +221,7 @@
 ║     @ o/generation/adapters/code.mjs GL-EN-01                              ║
 ║■ADP 1 ●◈ ‡ prose                                                           ║
 ║     @ o/generation/adapters/prose.mjs GL-EN-11 GL-EN-13 GL-EN-14           ║
+║     @ g/one-reader-ab.mjs GL-UD-16                                         ║
 ║■LAW 4 =◈ ‡ law                                                             ║
 ║     @ README.md GL-00 GL-01 GL-EN-02 GL-02                                 ║
 ║■GLA 4 =◈ § owl                                                             ║
@@ -402,6 +404,9 @@
 ║■MND 2 ⊨◆ ‡ minds-ledger                                                    ║
 ║     @ o/minds-ledger.mjs o/minds-ledger.test.mjs GL-EN-33 GL-EN-34         ║
 ║     @ o/notes-ledger.mjs                                                   ║
+║■TLS 2 ↬◈ ‡ telos                                                           ║
+║     @ o/telos.mjs o/telos.test.mjs GL-TL-01 GL-TL-02                       ║
+║     @ o/hyperlexicon-record.mjs E7/organs/pathos.js                        ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
