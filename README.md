@@ -124,7 +124,7 @@ append-only, always revisable).
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
 ║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL ■TLS │  ║
-║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │                     │  ║
+║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │ ■KTL                │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND           │                     │  ║
@@ -149,7 +149,7 @@ append-only, always revisable).
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND           │ ·STM ■RSR ·STR ■FAP │  ║
 ║  │    │                     │                     │ ■SLF ■HMA ■WNB ■FCL │  ║
-║  │    │                     │                     │ ■WBL ■WRP ■TLS      │  ║
+║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -173,7 +173,7 @@ append-only, always revisable).
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
 ║  │    │                     │ ■POD ■NLG           │ ■CCL ■OVW ■CPL ■GDC │  ║
 ║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
-║  │    │                     │                     │ ■TLS                │  ║
+║  │    │                     │                     │ ■TLS ■KTL           │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
 ║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
@@ -183,7 +183,7 @@ append-only, always revisable).
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
-║ │    ■WPG△◈ ■WRP⊨◈ ■MND⊨◆ ■TLS↬◈                                           ║
+║ │    ■WPG△◈ ■WRP⊨◈ ■MND⊨◆ ■TLS↬◈ ■KTL↬◈                                    ║
 ║ │ 1  ■VDF○∘ ■RDU●◆ ■STL=◆ ■FLD→◆ ■HNT●∘ ■SNP|◆ ■PRB⊨◆ ■GAP∅◆ ■ADC●◈        ║
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
@@ -460,6 +460,11 @@ append-only, always revisable).
 ║■TLS 2 ↬◈ ‡ telos                                                           ║
 ║     @ o/telos.mjs o/telos.test.mjs GL-TL-01 GL-TL-02                       ║
 ║     @ o/hyperlexicon-record.mjs E7/organs/pathos.js                        ║
+║■KTL 2 ↬◈ ‡ kin-telling                                                     ║
+║     @ o/kin-telling.mjs o/kin-telling-check.mjs o/kin-telling.test.mjs     ║
+║     @ o/generation/adapters/kin-telling.mjs g/kin-telling-run.mjs          ║
+║     @ g/kin-telling-lib.mjs g/kin-telling-mutants.mjs GL-KT-01 GL-BD-18    ║
+║     @ o/grounded-composition.mjs                                           ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

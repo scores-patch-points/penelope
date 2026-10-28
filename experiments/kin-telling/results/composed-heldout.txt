@@ -1,0 +1,89 @@
+Q1
+The text states no parent, child, sibling, or spouse of «Пьер». Kin words in the text with an unbound end: 57.
+
+Q2
+The reading of the text has no being written «Фёдор Ростопчин».
+
+Q3
+The text states no parent, child, sibling, or spouse of «Анны Павловны». Kin words in the text with an unbound end: 57.
+
+Q4
+The text states no parent, child, sibling, or spouse of «Долохов». Kin words in the text with an unbound end: 57.
+
+Q5
+«Князь Ипполит» is also written «Ипполитом», «князь Ипполит», «Ипполит», and «Ипполиту». The aligned edition gives Hippolyte for «Князь Ипполит» (candidate). No parent, child, sibling, or spouse of «Князь Ипполит» is stated by the text. Kin words in the text with an unbound end: 57.
+
+Q6
+The text states no parent, child, sibling, or spouse of «Долохов». Kin words in the text with an unbound end: 57.
+
+Q7
+
+
+Q8
+No uncle of «Долохов» is derived. The text states no parent of «Долохов».
+
+Q9
+The reading of the text has no being written «Адам Чарторижский».
+
+Q10
+
+
+Q11
+No uncle of «Пьер» is derived. The text states no parent of «Пьер».
+
+Q12
+
+
+Q13
+
+
+Q14
+The text states no parent, child, sibling, or spouse of «князь Андрей». Kin words in the text with an unbound end: 57.
+
+Q15
+
+
+Q16
+
+
+Q17
+No uncle of «князь Андрей» is derived. The text states no parent of «князь Андрей».
+
+Q18
+The reading of the text has no being written «Алексей Аракчеев».
+
+Q19
+The text states no parent, child, sibling, or spouse of «Князь Ипполит». Kin words in the text with an unbound end: 57.
+
+Q20
+«Анны Павловны» is also written «Анна Павловна», «Шерер», and «Анны Павловны Шерер». «Анны Павловны» is female (name-parts-ru, candidate). The text states no parent, child, sibling, or spouse of «Анны Павловны». Kin words in the text with an unbound end: 57.
+
+Q21
+«Пьер» is also written «Пьера», «Пьеру», «Пьер сел», and «Пьере». The aligned edition gives Pierre for «Пьер» (candidate). No parent, child, sibling, or spouse of «Пьер» is stated by the text. Kin words in the text with an unbound end: 57.
+
+Q22
+The text states no parent, child, sibling, or spouse of «Анатоль». Kin words in the text with an unbound end: 57.
+
+Q23
+«Анатоль» is also written «Анатоля», «Анатоля Курагина», and «Анатолю». The aligned edition gives Anatole for «Анатоль» (candidate). No parent, child, sibling, or spouse of «Анатоль» is stated by the text. Kin words in the text with an unbound end: 57.
+
+Q24
+«князь Андрей» is also written «Князь Андрей», «Андрея», «князю Андрею», «Андрее», and «Андрей». The aligned edition gives Andrew for «князь Андрей» (candidate). No parent, child, sibling, or spouse of «князь Андрей» is stated by the text. Kin words in the text with an unbound end: 57.
+
+B:ref_3e9c4cb2c234588a
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьер» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьер».
+
+B:ref_af4bf20fc8d53da1
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «князь Андрей» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «князь Андрей».
+
+B:ref_f65d6aacd9daa788
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Долохов» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Долохов».
+
+B:ref_c382484da06b3598
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анатоль» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анатоль».
+
+B:ref_12940782c7dc9cd0
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Князь Ипполит» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Князь Ипполит».
+
+B:ref_1e2238f00cce71a5
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анны Павловны» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анны Павловны».
