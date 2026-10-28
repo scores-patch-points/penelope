@@ -66,14 +66,15 @@ The 6 speech questions of each window are not composed: the fold types no speech
 
 Round 1's `seamReport` check (Addendum 2) found that the count sentence was addressed only by the whole-text extent. Two further rounds, each pre-registered and hashed before its code and
 before its window was built or read, scored on chapters nobody had used (the full Russian text was already on disk): `experiments/kin-telling-round2/` (chapters IX to XIV) and
-`experiments/kin-telling-round3/` (chapters XV to XVIII).
+`experiments/kin-telling-round3/` (chapters XV to XVIII); a fourth, `experiments/kin-telling-round4/`, replicated the frozen round-3 code on the next fresh window.
 
 | window | scored | result |
 |---|---|---|
 | held-out V to VIII (round 1) | once | every bar but B4 (no kin relation in any paragraph to shuffle) |
 | IX to XIV (round 2) | once | R0, R4 to R9 pass; **R1, R2, R3, R10 FAIL**, all from one checker code: the lexicon spells «сестёр» with ё and a stress mark, the checker compared words as written (an orthography fault, not a missing giver row; first misdiagnosed, corrected in the log) |
 | XV to XVIII (round 3) | once | R0 to R3, R5 to R10 pass (54 sentences, 0 checker failures, all addressed by an `ru` or `ask` segment, `seamReport` mouthShare 0); **R4 FAILS**: the window states no kin relation, so the shuffled-witness control had nothing to shuffle |
+| XIX to XXI (round 4: the frozen round-3 code replicated) | once | R0 to R3, R5 to R10 pass (51 sentences, 0 checker failures, `seamReport` mouthShare 0); **R4 FAILS** again: none of the three registered candidate windows (XIX–XXI, XXII–XXIV, XXV–) states any kin relation, so the registered fallback scored the first, which has nothing to shuffle |
 
 What changed: the count sentence lists the fold's unbound kin words, each a copied span with its own byte range (the extent no longer counts as an address); the shuffled controls also run over the
 paragraphs of every stated kin fact; khora `seamReport` is the acceptance instrument; the checker folds Russian orthography on both sides. The round-3 code passes every bar on all three spent windows.
-R4 needs a kin relation in the fold; the plain extractor binds both ends of 2 of 37, 1 of 58, 3 of 68 and 0 of 31 statements in the four windows (the kin binder, janus PR #32, failed its own precision bar and is not used).
+R4 needs a kin relation in the fold; the plain extractor binds both ends of 2 of 37, 1 of 58 and 3 of 68 statements in chapters I to XIV and of none in the 31, 14, 52 and 63 of the four windows from XV to XXVII (the kin binder, janus PR #32, failed its own precision bar and is not used).

@@ -1,0 +1,116 @@
+Q1
+The text states no parent, child, sibling, or spouse of «Пьер». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#777-785 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q2
+The reading of the text has no being written «Фёдор Ростопчин». [q:Q2#7-22 ru#0-47652]
+
+Q3
+The text states no parent, child, sibling, or spouse of «Анною Михайловной». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#1787-1820 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q4
+«Василий» is Vasili in the aligned edition (candidate). [ru#5695-5709 parallel-names@ba95430b:val:rows/2/english parallel-names@ba95430b:val:rows/2/standing]
+The text states no parent, child, sibling, or spouse of «Василий». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#5695-5709 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q5
+The text states no parent, child, sibling, or spouse of «Безухова». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#367-383 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q6
+The text states no parent, child, sibling, or spouse of «Василий». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#5695-5709 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q7
+
+
+Q8
+No uncle of «Василий» is derived. [kin-lexicon@693f2377:key:composites/uncle ru#5695-5709 ru#0-47652]
+The text states no parent of «Василий». [kin-lexicon@693f2377:key:atoms/parent ru#5695-5709 ru#0-47652]
+
+Q9
+The reading of the text has no being written «Адам Чарторижский». [q:Q9#7-24 ru#0-47652]
+
+Q10
+
+
+Q11
+No uncle of «Пьер» is derived. [kin-lexicon@693f2377:key:composites/uncle ru#777-785 ru#0-47652]
+The text states no parent of «Пьер». [kin-lexicon@693f2377:key:atoms/parent ru#777-785 ru#0-47652]
+
+Q12
+
+
+Q13
+
+
+Q14
+The text states no parent, child, sibling, or spouse of «Анна Михайловна». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#513-542 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q15
+
+
+Q16
+
+
+Q17
+No uncle of «Анна Михайловна» is derived. [kin-lexicon@693f2377:key:composites/uncle ru#513-542 ru#0-47652]
+The text states no parent of «Анна Михайловна». [kin-lexicon@693f2377:key:atoms/parent ru#513-542 ru#0-47652]
+
+Q18
+The reading of the text has no being written «Алексей Аракчеев». [q:Q18#7-23 ru#0-47652]
+
+Q19
+The text states no parent, child, sibling, or spouse of «Безухова». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#367-383 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q20
+«Анною Михайловной» is female (name-parts-ru, candidate). [ru#1787-1820 kin-lexicon@693f2377:val:atoms/mother/sex fold:kin/facts/1/giver fold:kin/facts/1/standing]
+The text states no parent, child, sibling, or spouse of «Анною Михайловной». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#1787-1820 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q21
+«Пьер» is also written «Пьера», «Пьеру», «руки», «руки Пьера», and «Руки». [ru#777-785 ru#2041-2051 ru#7645-7655 ru#3668-3676 ru#15564-15583 ru#27527-27535]
+The aligned edition gives Pierre for «Пьер» (candidate). [parallel-names@ba95430b:val:rows/12/english ru#777-785 parallel-names@ba95430b:val:rows/12/standing]
+No parent, child, sibling, or spouse of «Пьер» is stated by the text. [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#777-785 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q22
+The text states no parent, child, sibling, or spouse of «Пьером». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#164-176 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q23
+The text states no parent, child, sibling, or spouse of «Пьером». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#164-176 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+Q24
+«Анна Михайловна» is also written «Анну Михайловну» and «Анны Михайловны». [ru#513-542 ru#3852-3881 ru#2354-2383]
+«Анна Михайловна» is female (name-parts-ru, candidate). [ru#513-542 kin-lexicon@693f2377:val:atoms/mother/sex fold:kin/facts/0/giver fold:kin/facts/0/standing]
+The text states no parent, child, sibling, or spouse of «Анна Михайловна». [kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/sibling kin-lexicon@693f2377:key:atoms/spouse ru#513-542 ru#0-47652]
+Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца». [ru#941-951 ru#3619-3629 ru#9521-9527 ru#14295-14305 ru#17188-17196 ru#30221-30229 ru#30233-30243 ru#30647-30655 ru#37377-37391 ru#46602-46610 ru#46614-46624 ru#46858-46866 ru#47029-47037 ru#47292-47300]
+
+B:ref_db4caa84b9e7953b
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьер» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#777-785 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьер». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#777-785 ru#0-47652]
+
+B:ref_65bca173a0dc7014
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анна Михайловна» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#513-542 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анна Михайловна». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#513-542 ru#0-47652]
+
+B:ref_95dcfdca85d4fa9c
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Василий» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#5695-5709 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Василий». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#5695-5709 ru#0-47652]
+
+B:ref_d9867661d35b044c
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьером» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#164-176 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьером». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#164-176 ru#0-47652]
+
+B:ref_f8d8feeaca3ad269
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Безухова» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#367-383 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Безухова». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#367-383 ru#0-47652]
+
+B:ref_7247818f7fd32d09
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анною Михайловной» is derived. [kin-lexicon@693f2377:key:composites/aunt kin-lexicon@693f2377:key:composites/daughter-in-law kin-lexicon@693f2377:key:composites/fraternal nephew kin-lexicon@693f2377:key:composites/fraternal niece kin-lexicon@693f2377:key:composites/grandchild kin-lexicon@693f2377:key:composites/granddaughter kin-lexicon@693f2377:key:composites/grandfather kin-lexicon@693f2377:key:composites/grandmother kin-lexicon@693f2377:key:composites/grandparent kin-lexicon@693f2377:key:composites/grandson kin-lexicon@693f2377:key:composites/maternal uncle kin-lexicon@693f2377:key:composites/mother-in-law kin-lexicon@693f2377:key:composites/paternal aunt kin-lexicon@693f2377:key:composites/paternal uncle kin-lexicon@693f2377:key:composites/po po kin-lexicon@693f2377:key:composites/son-in-law kin-lexicon@693f2377:key:composites/sororal nephew kin-lexicon@693f2377:key:composites/sororal niece kin-lexicon@693f2377:key:composites/uncle kin-lexicon@693f2377:key:composites/uterine nephew ru#1787-1820 ru#0-47652]
+The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анною Михайловной». [kin-lexicon@693f2377:key:atoms/father kin-lexicon@693f2377:key:atoms/mother kin-lexicon@693f2377:key:atoms/parent kin-lexicon@693f2377:key:atoms/child kin-lexicon@693f2377:key:atoms/brother kin-lexicon@693f2377:key:atoms/sister kin-lexicon@693f2377:key:atoms/husband kin-lexicon@693f2377:key:atoms/spouse ru#1787-1820 ru#0-47652]
