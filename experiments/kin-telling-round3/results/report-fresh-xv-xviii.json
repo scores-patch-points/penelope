@@ -1,0 +1,376 @@
+{
+ "schema": "KinTellingReport@1",
+ "window": "fresh-xv-xviii",
+ "ms": 1180,
+ "hashes": {
+  "text": "bd2015657c89c4b8db0535d0e7fed44f19b1a468b62f4260d1323cac4413c11b",
+  "foldSha": "b5594b73c63c72a9250ffa51ecde6859533cea5a8f86eb25388c4d54187ea927",
+  "lexicon": "693f23772d76fb5d582b76db7d5b40d88803eaa91cb47cf05a54b958a59a1737",
+  "parallel": "ba95430b4423a939ca84ef791fd14098dc761fcf1936f8dca1a0685f3ba6da86",
+  "namePartsRu": "96aae932beec3609a71d3e3e6214bcd43a3259e51f1d10a31889375992ba09c6",
+  "frames": "a5a7088bbf7a4e37d1bd503ee3630623aa0f86472555119a744f1f7aa9e3e67d"
+ },
+ "bars": {
+  "R0": {
+   "probe": {
+    "spawnTripped": true,
+    "fetchTripped": true,
+    "before": 0
+   },
+   "wire": {
+    "fired": 0,
+    "fetchModelDoor": 0,
+    "fetchCalls": 0
+   },
+   "swatchPresent": true,
+   "scan": [
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "node:crypto",
+      "./kin-telling-frames.json"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling-check.mjs",
+     "imports": [
+      "node:crypto"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "../../kin-telling.mjs"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [],
+     "banned": [],
+     "ok": true
+    }
+   ],
+   "setup": [],
+   "pass": true
+  },
+  "R1": {
+   "sentences": 54,
+   "checkerFailures": 0,
+   "withAddressedSource": 54,
+   "extentOnly": 0,
+   "askOnly": 3,
+   "selfModel": 0,
+   "seam": {
+    "mouthShare": 0,
+    "addressedShare": 0.6299847792998478,
+    "seamDensity": 0.3700152207001522,
+    "contractOk": true,
+    "violations": 0,
+    "sentencesWithoutSource": 0,
+    "notRun": false
+   },
+   "pass": true
+  },
+  "R2": {
+   "inScopeAnswerable": 6,
+   "inScopeComposed": 6,
+   "allAnswerable": 12,
+   "allAnswerableComposed": 6,
+   "notComposed": [
+    {
+     "id": "Q7",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q10",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q12",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q13",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q15",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q16",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    }
+   ],
+   "pass": true,
+   "share": 1,
+   "allShare": 0.5
+  },
+  "R3": {
+   "a": {
+    "expectedGapQuestions": 12,
+    "composedAsGap": 12,
+    "byTemplate": {
+     "T-KIN": [
+      6,
+      6
+     ],
+     "C-ABSENT": [
+      3,
+      3
+     ],
+     "C-UNCLE": [
+      3,
+      3
+     ]
+    }
+   },
+   "b": {
+    "gaps": 120,
+    "stated": 120,
+    "inexpressible": 0,
+    "share": 1,
+    "gapCells": 120,
+    "named": 120,
+    "cellShare": 1,
+    "uncovered": []
+   },
+   "pass": true,
+   "inexpressibleDocs": []
+  },
+  "R4": {
+   "S1": {
+    "name": "S1 shuffled ends",
+    "constructible": true,
+    "checkerFailures": 48,
+    "changedFactSentences": 1,
+    "rejectedFactSentences": 1,
+    "changedGapSentences": 30,
+    "rejectedGapSentences": 30,
+    "reasons": {
+     "C5_irrelevant_to_the_subject": 39,
+     "C3_SURF_forms_not_surfaces_of_one_being": 6,
+     "C3_GLOSS_no_non_colliding_parallel_names_row": 2,
+     "C3_SEX_no_sex_fact_with_that_giver_and_standing": 1
+    },
+    "pass": true,
+    "shift": 11
+   },
+   "S2": {
+    "name": "S2 shuffled witnesses",
+    "constructible": true,
+    "checkerFailures": 0,
+    "changedFactSentences": 0,
+    "rejectedFactSentences": 0,
+    "changedGapSentences": 0,
+    "rejectedGapSentences": 0,
+    "reasons": {},
+    "pass": false
+   },
+   "pass": false
+  },
+  "R5": {
+   "made": 290,
+   "killed": 290,
+   "killRate": 1,
+   "byOperator": {
+    "M1": {
+     "made": 54,
+     "killed": 54
+    },
+    "M2": {
+     "made": 51,
+     "killed": 51
+    },
+    "M3": {
+     "made": 53,
+     "killed": 53
+    },
+    "M8": {
+     "made": 54,
+     "killed": 54
+    },
+    "M9": {
+     "made": 33,
+     "killed": 33
+    },
+    "M11": {
+     "made": 12,
+     "killed": 12
+    },
+    "M12": {
+     "made": 12,
+     "killed": 12
+    },
+    "M7": {
+     "made": 21,
+     "killed": 21
+    }
+   },
+   "survivors": [],
+   "pass": true
+  },
+  "R6": {
+   "jsonEqual": true,
+   "textEqual": true,
+   "jsonSha256": "b8b62ddcb7a61b0e5960c17a08bb7895b40fff6730fae170c51a89e6e9f22b94",
+   "textSha256": "b0f53f2f2067cb64966d83004a936e8adc3554972c0e34637b0f4941855d1f2a",
+   "pass": true
+  },
+  "R7": {
+   "composer": 1,
+   "plain": 0.8518518518518519,
+   "items": 27,
+   "composerHits": 27,
+   "plainHits": 23,
+   "plainLinkedRecall": 0.15,
+   "plainLinkedItems": 20,
+   "misses": {
+    "composer": [],
+    "plain": [
+     {
+      "q": "Q4",
+      "item": "Василия"
+     },
+     {
+      "q": "Q4",
+      "item": "Василию"
+     },
+     {
+      "q": "Q21",
+      "item": "Наташей"
+     },
+     {
+      "q": "Q24",
+      "item": "Дмитриевной"
+     }
+    ]
+   },
+   "pass": true
+  },
+  "R8": {
+   "documents": 24,
+   "invariant": 24,
+   "share": 1,
+   "breaks": [],
+   "pass": true
+  },
+  "R9": {
+   "questions": 18,
+   "allFieldSettled": 18,
+   "modelRequired": 0,
+   "mouth": 0,
+   "sameText": 18,
+   "ok": 18,
+   "rows": [],
+   "pass": true
+  },
+  "R10": {
+   "paragraphsWithCount": 12,
+   "exact": 12,
+   "spansPerParagraph": 31,
+   "foldUnbound": 31,
+   "pass": true
+  }
+ },
+ "plainArm": {
+  "questions": 24,
+  "sentences": 24,
+  "addressed": 0,
+  "failures": 24,
+  "addressedShare": 0
+ },
+ "composer": {
+  "questions": 24,
+  "docs": 24,
+  "batteries": 6,
+  "factParagraphs": 0,
+  "sentences": 54,
+  "styleNotes": 1,
+  "uncomposed": [
+   {
+    "id": "Q7",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q10",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q12",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q13",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q15",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q16",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   }
+  ]
+ },
+ "failures": []
+}

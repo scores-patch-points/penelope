@@ -1,0 +1,8 @@
+R1 pass  89 sentences, checker failures 0, with an addressed ru/ask segment 89, extent-only 0; seamReport mouthShare 0, sentences without a source segment 0
+R2 pass  in-scope answerable 7/7; all answerable 7/13
+R3 pass  expected-gap 11/11; gaps 120/120; cells 120/120
+R4 pass  S1 10/10; S2 8/8
+R5 pass  mutants 510/510 (M1 89/89, M2 86/86, M3 87/87, M4 8/8, M5 8/8, M8 89/89, M6 8/8, M9 46/46, M10 26/26, M11 18/18, M12 18/18, M7 27/27)
+R7 pass  recall 23/24 vs plain 22/24
+R8 pass  30/30
+R10 pass  18/18 paragraphs list exactly the fold's 65 unbound statements

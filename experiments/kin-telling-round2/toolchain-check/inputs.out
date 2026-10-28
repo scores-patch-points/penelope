@@ -1,0 +1,10 @@
+questions: {"total":24,"answerable":12} absent drawn: Алексей Аракчеев, Адам Чарторижский, Фёдор Ростопчин | uncle controls: Пьер, князь Андрей, Долохов
+arm sizes (characters): {"A":56120,"B":43400,"C":1582,"D":56690}
+swap unmapped: ["Князь","Долохов","Анатоль","Анатоля","Курагина","Анатолю","Ипполит","Ипполитом","Ипполиту"] | shared: Анны,Анна | leaks: [["Василия",5],["Болконского",3],["Василий",2],["Павловной",1],["Павловну",1]] | shared left: [{"token":"Анны","remaining":2},{"token":"Анна","remaining":5}] | latin left: [{"word":"André","inD":2}]
+gary A: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary B: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary C: passes=true plain=[] prod=[] struck=0 apparatus=0
+gary D: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+inputs exit 0
+IDENTICAL questions.json
+IDENTICAL blocks.txt

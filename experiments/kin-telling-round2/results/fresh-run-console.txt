@@ -1,0 +1,13 @@
+window fresh-ix-xiv: 89 sentences, 24 questions, 6 batteries, 6 fact paragraphs
+R0 PASS  tripwire fired 0 (probe tripped: spawn true, fetch true); static scan kin-telling.mjs:ok kin-telling-check.mjs:ok kin-telling.mjs:ok
+R1 FAIL  89 sentences, checker failures 18, with an addressed ru/ask segment 89, extent-only 0, ask-only 3, self:model 0; seamReport mouthShare 0, contract true, sentences without a source segment 0, addressedShare(strict) 71.1%
+R2 FAIL  in-scope answerable 0/7; ALL answerable 0/13 (0.000)
+R3 FAIL  expected-gap questions 6/11; recorded gaps stated 120/120; gap cells named 120/120
+R4 PASS  S1 {"f":103,"ch":10,"rej":10}; S2 {"f":26,"ch":8,"rej":8,"constructible":true}
+R5 PASS  mutants 129/129 killed (M1 23/23, M3 23/23, M8 23/23, M9 23/23, M2 20/20, M10 8/8, M7 9/9)
+R6 PASS  json 491dadb67425 text d55fd127b2f1
+R7 PASS  recall composer 23/24 vs plain 22/24; plain linked-name recall 0.23529411764705882 over 17
+R8 PASS  30/30 documents claim-invariant across variants
+R9 PASS  6/6 field-settled, model-required 0, same text 6
+R10 FAIL  0/18 paragraphs with a count sentence list exactly the fold's 65 unbound statements
+plain arm under the same checker: 24 sentences, addressed share 0

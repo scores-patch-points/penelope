@@ -1,0 +1,26 @@
+Answered by a fixed rule reader over the window. No model was used. Each answer is built from the register's own sentences and the names written beside the subject in the sentences the cards quote; where the window holds nothing, the answer is the gap.
+
+Q1: Борис is the son of Друбецкая (stated by the text)
+Q2: not in the context
+Q3: not in the context
+Q4: Пьер: written as «Пьер», «Пьера», «Пьеру»; written beside Борис, Ростовых, Петербурге, Москву, Анне, Михайловне in the quoted sentences
+Q5: Наташа: written as «Наташа», «Наташей»; written beside Борис, Вера, Николая, Соня, Бергом in the quoted sentences
+Q6: not in the context
+Q7: the window types no speech relation; written beside графиня in its quoted sentences: Михайловной, Анной, Вера, Бориса, Кирилл, Владимирович
+Q8: not in the context
+Q9: not in the context
+Q10: the window types no speech relation; written beside Пьер in its quoted sentences: Борис, Ростовых, Петербурге, Москву, Анне, Михайловне
+Q11: not in the context
+Q12: the window types no speech relation; written beside Анна Михайловна in its quoted sentences: Василий, Ростовой, Безухова, Кирилла, Владимировича, Петербурга
+Q13: the window types no speech relation; written beside Соня in its quoted sentences: Николай, Наташа, Борис, Вера, Соня-племянница, Жюли
+Q14: not in the context
+Q15: the window types no speech relation; written beside Наташа in its quoted sentences: Борис, Вера, Николая, Соня, Бергом
+Q16: the window types no speech relation; written beside Борис in its quoted sentences: Наташей, Николая, Вера, Анна, Михайловна, Василий
+Q17: not in the context
+Q18: not in the context
+Q19: not in the context
+Q20: Соня: written as «Соня», «Соню», «Сони»; written beside Николай, Наташа, Борис, Вера, Соня-племянница, Жюли in the quoted sentences
+Q21: Борис: written as «Борис», «Бориса», «Борисом», «Борису»; written beside Наташей, Николая, Вера, Анна, Михайловна, Василий in the quoted sentences; Борис is the son of Друбецкая (stated by the text)
+Q22: not in the context
+Q23: Анна Михайловна: written as «Анна Михайловна», «Анну Михайловну», «Анне Михайловне», «Анной Михайловной»; written beside Василий, Ростовой, Безухова, Кирилла, Владимировича, Петербурга in the quoted sentences; female
+Q24: графиня: written as «графиня», «Графиня», «графини», «графини Ростовой»; written beside Михайловной, Анной, Вера, Бориса, Кирилл, Владимирович in the quoted sentences

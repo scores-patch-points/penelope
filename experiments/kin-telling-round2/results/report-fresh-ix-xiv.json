@@ -1,0 +1,522 @@
+{
+ "schema": "KinTellingReport@1",
+ "window": "fresh-ix-xiv",
+ "ms": 2397,
+ "hashes": {
+  "text": "5c3b1671f09f9eb3bd987b0c9939dbc8ae1e334b3ab5007daa19e629b610887c",
+  "foldSha": "a26f7b285e342d46f29ea6dbedba5bc4c71e4033452e55f14fda3002312f6ba8",
+  "lexicon": "693f23772d76fb5d582b76db7d5b40d88803eaa91cb47cf05a54b958a59a1737",
+  "parallel": "ba95430b4423a939ca84ef791fd14098dc761fcf1936f8dca1a0685f3ba6da86",
+  "namePartsRu": "96aae932beec3609a71d3e3e6214bcd43a3259e51f1d10a31889375992ba09c6",
+  "frames": "a5a7088bbf7a4e37d1bd503ee3630623aa0f86472555119a744f1f7aa9e3e67d"
+ },
+ "bars": {
+  "R0": {
+   "probe": {
+    "spawnTripped": true,
+    "fetchTripped": true,
+    "before": 0
+   },
+   "wire": {
+    "fired": 0,
+    "fetchModelDoor": 0,
+    "fetchCalls": 0
+   },
+   "swatchPresent": true,
+   "scan": [
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "node:crypto",
+      "./kin-telling-frames.json"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling-check.mjs",
+     "imports": [
+      "node:crypto"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "../../kin-telling.mjs"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [],
+     "banned": [],
+     "ok": true
+    }
+   ],
+   "setup": [],
+   "pass": true
+  },
+  "R1": {
+   "sentences": 89,
+   "checkerFailures": 18,
+   "withAddressedSource": 89,
+   "extentOnly": 0,
+   "askOnly": 3,
+   "selfModel": 0,
+   "seam": {
+    "mouthShare": 0,
+    "addressedShare": 0.7106076210092688,
+    "seamDensity": 0.2893923789907312,
+    "contractOk": true,
+    "violations": 0,
+    "sentencesWithoutSource": 0,
+    "notRun": false
+   },
+   "pass": false
+  },
+  "R2": {
+   "inScopeAnswerable": 7,
+   "inScopeComposed": 0,
+   "allAnswerable": 13,
+   "allAnswerableComposed": 0,
+   "notComposed": [
+    {
+     "id": "Q1",
+     "template": "T-KIN",
+     "reasons": []
+    },
+    {
+     "id": "Q4",
+     "template": "T-ID",
+     "reasons": []
+    },
+    {
+     "id": "Q5",
+     "template": "T-ID",
+     "reasons": []
+    },
+    {
+     "id": "Q7",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q10",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q12",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q13",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q15",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q16",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q20",
+     "template": "T-ID",
+     "reasons": []
+    },
+    {
+     "id": "Q21",
+     "template": "T-ID",
+     "reasons": []
+    },
+    {
+     "id": "Q23",
+     "template": "T-ID",
+     "reasons": []
+    },
+    {
+     "id": "Q24",
+     "template": "T-ID",
+     "reasons": []
+    }
+   ],
+   "pass": false,
+   "share": 0,
+   "allShare": 0
+  },
+  "R3": {
+   "a": {
+    "expectedGapQuestions": 11,
+    "composedAsGap": 6,
+    "byTemplate": {
+     "C-ABSENT": [
+      3,
+      3
+     ],
+     "T-KIN": [
+      0,
+      5
+     ],
+     "C-UNCLE": [
+      3,
+      3
+     ]
+    }
+   },
+   "b": {
+    "gaps": 120,
+    "stated": 120,
+    "inexpressible": 0,
+    "share": 1,
+    "gapCells": 120,
+    "named": 120,
+    "cellShare": 1,
+    "uncovered": []
+   },
+   "pass": false,
+   "inexpressibleDocs": []
+  },
+  "R4": {
+   "S1": {
+    "name": "S1 shuffled ends",
+    "constructible": true,
+    "checkerFailures": 103,
+    "changedFactSentences": 10,
+    "rejectedFactSentences": 10,
+    "changedGapSentences": 43,
+    "rejectedGapSentences": 43,
+    "reasons": {
+     "C3_REL_no_fact_licenses_the_relation": 8,
+     "C5_irrelevant_to_the_subject": 60,
+     "C3_WIT_witness_of_a_fact_the_paragraph_does_not_state": 8,
+     "C3_UNB_a_listed_span_is_not_a_kin_word": 18,
+     "C3_SURF_forms_not_surfaces_of_one_being": 6,
+     "C3_GLOSS_no_non_colliding_parallel_names_row": 1,
+     "C3_SEX_no_sex_fact_with_that_giver_and_standing": 2
+    },
+    "pass": true,
+    "shift": 49
+   },
+   "S2": {
+    "name": "S2 shuffled witnesses",
+    "constructible": true,
+    "checkerFailures": 26,
+    "changedFactSentences": 8,
+    "rejectedFactSentences": 8,
+    "changedGapSentences": 0,
+    "rejectedGapSentences": 0,
+    "reasons": {
+     "C3_WIT_witness_of_a_fact_the_paragraph_does_not_state": 8,
+     "C3_UNB_a_listed_span_is_not_a_kin_word": 18
+    },
+    "pass": true
+   },
+   "pass": true
+  },
+  "R5": {
+   "made": 129,
+   "killed": 129,
+   "killRate": 1,
+   "byOperator": {
+    "M1": {
+     "made": 23,
+     "killed": 23
+    },
+    "M3": {
+     "made": 23,
+     "killed": 23
+    },
+    "M8": {
+     "made": 23,
+     "killed": 23
+    },
+    "M9": {
+     "made": 23,
+     "killed": 23
+    },
+    "M2": {
+     "made": 20,
+     "killed": 20
+    },
+    "M10": {
+     "made": 8,
+     "killed": 8
+    },
+    "M7": {
+     "made": 9,
+     "killed": 9
+    }
+   },
+   "survivors": [],
+   "pass": true
+  },
+  "R6": {
+   "jsonEqual": true,
+   "textEqual": true,
+   "jsonSha256": "491dadb6742564888be60b18f525a629f9bd55715d8eede0677f94e3bb32374a",
+   "textSha256": "d55fd127b2f1c7e96f3fefc1356f9187246f8bc4671efa420a60e625b90abb2e",
+   "pass": true
+  },
+  "R7": {
+   "composer": 0.9583333333333334,
+   "plain": 0.9166666666666666,
+   "items": 24,
+   "composerHits": 23,
+   "plainHits": 22,
+   "plainLinkedRecall": 0.23529411764705882,
+   "plainLinkedItems": 17,
+   "misses": {
+    "composer": [
+     {
+      "q": "Q21",
+      "item": {
+       "kind": "fact",
+       "f": "Борис is the son of Друбецкая. giver: the text. standing: said. In the text: «Борис, сын княгини Анны Михайлоны Друбецкой»"
+      }
+     }
+    ],
+    "plain": [
+     {
+      "q": "Q1",
+      "item": "Друбецкая"
+     },
+     {
+      "q": "Q23",
+      "item": "Анны Михайловны"
+     }
+    ]
+   },
+   "pass": true
+  },
+  "R8": {
+   "documents": 30,
+   "invariant": 30,
+   "share": 1,
+   "breaks": [],
+   "pass": true
+  },
+  "R9": {
+   "questions": 6,
+   "allFieldSettled": 6,
+   "modelRequired": 0,
+   "mouth": 0,
+   "sameText": 6,
+   "ok": 6,
+   "rows": [],
+   "pass": true
+  },
+  "R10": {
+   "paragraphsWithCount": 18,
+   "exact": 0,
+   "spansPerParagraph": 65,
+   "foldUnbound": 65,
+   "pass": false
+  }
+ },
+ "plainArm": {
+  "questions": 24,
+  "sentences": 24,
+  "addressed": 0,
+  "failures": 24,
+  "addressedShare": 0
+ },
+ "composer": {
+  "questions": 24,
+  "docs": 24,
+  "batteries": 6,
+  "factParagraphs": 6,
+  "sentences": 89,
+  "styleNotes": 2,
+  "uncomposed": [
+   {
+    "id": "Q7",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q10",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q12",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q13",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q15",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q16",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   }
+  ]
+ },
+ "failures": [
+  {
+   "doc": "Q1",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 4
+  },
+  {
+   "doc": "Q3",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 1
+  },
+  {
+   "doc": "Q4",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 3
+  },
+  {
+   "doc": "Q5",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 2
+  },
+  {
+   "doc": "Q6",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 1
+  },
+  {
+   "doc": "Q14",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 1
+  },
+  {
+   "doc": "Q19",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 1
+  },
+  {
+   "doc": "Q20",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 2
+  },
+  {
+   "doc": "Q21",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 6
+  },
+  {
+   "doc": "Q22",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 1
+  },
+  {
+   "doc": "Q23",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 3
+  },
+  {
+   "doc": "Q24",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 2
+  },
+  {
+   "doc": "F:ref_23f8961a1fe6650e",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 3
+  },
+  {
+   "doc": "F:ref_5a0a465b28e576db",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 3
+  },
+  {
+   "doc": "F:ref_887641e93ec5ff16",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 3
+  },
+  {
+   "doc": "F:ref_8b1abdc162751989",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 4
+  },
+  {
+   "doc": "F:ref_cd9fcf0d1e4867cd",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 4
+  },
+  {
+   "doc": "F:ref_ec201877de41598a",
+   "code": "C3_UNB_a_listed_span_is_not_a_kin_word",
+   "detail": null,
+   "sentence": 4
+  }
+ ]
+}
