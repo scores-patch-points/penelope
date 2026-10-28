@@ -1,0 +1,12 @@
+fold.json: 56 beings; six: Наташа (36), Марья Дмитриевна (28), князь Василий (25), Пьер (24), Соня (20), Николай (14)
+kin: 31 statements ({"N":25,"H":2,"P":4}), 41 specs -> 7 facts, 0 refused, 31 unbound, 41 patronymic mentions
+questions: {"total":24,"answerable":12} absent drawn: Алексей Аракчеев, Адам Чарторижский, Фёдор Ростопчин | uncle controls: Наташа, Марья Дмитриевна, князь Василий
+arm sizes (characters): {"A":56224,"B":42274,"C":1576,"D":56374}
+swap unmapped: ["Наташа","Наташу","Наташи","Наташе","Наташей","Марья","Дмитриевна","Марьи","Дмитриевны","Марьей","Дмитриевной","Марье","Дмитриевне","Князь","Соня","Сони","Николай","Николаем","Николая","Николаю"] | shared:  | leaks: [["Пьером",1]] | shared left: [] | latin left: []
+gary A: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary B: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary C: passes=true plain=[] prod=[] struck=0 apparatus=0
+gary D: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+build exit 0
+wrote /Users/mlacy/Downloads/workspace/g1-3-composer-v2/window-xv-on/plain-reply.txt: 24 answers, 12 gaps
+plain exit 0

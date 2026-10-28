@@ -1,0 +1,12 @@
+fold.json: 25 beings; six: Пьер (82), Анна Михайловна (47), Василий (13), Пьером (4), Безухова (4), Анною Михайловной (4)
+kin: 14 statements ({"N":14}), 52 specs -> 3 facts, 0 refused, 14 unbound, 55 patronymic mentions
+questions: {"total":24,"answerable":12} absent drawn: Алексей Аракчеев, Адам Чарторижский, Фёдор Ростопчин | uncle controls: Пьер, Анна Михайловна, Василий
+arm sizes (characters): {"A":44346,"B":28870,"C":1588,"D":44836}
+swap unmapped: ["Руки","Михайловна","Михайловну","Михайловны","Безухова","Анною","Михайловной"] | shared: Василий | leaks: [["Васильем",4],["Василья",3],["Василия",2]] | shared left: [{"token":"Василий","remaining":0}] | latin left: []
+gary A: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary B: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+gary C: passes=true plain=[] prod=[] struck=0 apparatus=0
+gary D: passes=true plain=[] prod=["flag:nothing-twice"] struck=0 apparatus=0
+build exit 0
+wrote /Users/mlacy/Downloads/workspace/g1-3-composer-v2/window-r4a/plain-reply.txt: 24 answers, 12 gaps
+plain exit 0

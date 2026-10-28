@@ -6,6 +6,7 @@
 //   M1 remove an address        M2 change a byte of a Russian segment    M3 a frame word outside the set     M4 reverse the relation term (REL)
 //   M5 swap the two names (REL) M6 a quoted witness of an unstated fact  M7 add a sentence stating an absent fact   M8 retype a segment self:model
 //   M9 delete the extent        M10 move a gap sentence to a being that holds the fact (MISS)
+//   M11 drop one entry of the count sentence's list    M12 put into it a Russian span that is not an unbound statement
 import { norm } from "../organs/kin-telling.mjs";
 
 const render = (g) => (g.k === "ru" || g.k === "ask" ? `«${g.t}»` : g.t);
@@ -89,6 +90,17 @@ export function makeMutator({ fold, textBuf, lexicon, lexiconSha }) {
         const ri = s.segs.findIndex((g) => g.k === "ru");
         if (loc && ri >= 0 && loc.t !== s.segs[ri].t) { const m = clone(s); m.segs[ri] = { k: "ru", t: loc.t, a: loc.a }; out.push({ op: "M10", sentence: rebuild(m, m.segs) }); }
       }
+    }
+    // M11 / M12 (round 2): the count sentence lists the fold's unbound kin words; drop one, or put in a span that is not an unbound statement
+    if (s.claim === "UNB") {
+      const items = s.segs.filter((g) => g.k === "ru");
+      const build = (its) => { const segs = [{ k: "f", t: "Kin words in the text with an unbound end: " }]; its.forEach((it, i) => { if (i > 0) segs.push({ k: "f", t: its.length === 2 ? " and " : i === its.length - 1 ? ", and " : ", " }); segs.push(it); }); segs.push({ k: "f", t: "." }); return rebuild(s, segs); };
+      if (items.length > 1) out.push({ op: "M11", sentence: build(items.slice(1)) });
+      const unb = new Set((fold.kin.unbound ?? []).map((u) => `ru#${u.byteSpan?.[0]}-${u.byteSpan?.[1]}`));
+      const other = (fold.kin.statements ?? []).map((st) => `ru#${st.byteSpan?.[0]}-${st.byteSpan?.[1]}`).find((a) => !unb.has(a) && /^ru#\d+-\d+$/.test(a));
+      const fallback = (() => { const m = /^ru#(\d+)-(\d+)$/.exec(items[0]?.a ?? ""); return m ? `ru#${+m[2] + 1}-${+m[2] + 9}` : null; })();
+      const addr = other ?? fallback;
+      if (addr && items.length) { const m2 = /^ru#(\d+)-(\d+)$/.exec(addr); const t = norm(textBuf.subarray(+m2[1], +m2[2]).toString("utf8")); if (t && !unb.has(addr)) out.push({ op: "M12", sentence: build([{ k: "ru", t, a: addr }, ...items.slice(1)]) }); }
     }
     return out.filter((x) => x.sentence.text !== s.text || x.op === "M1" || x.op === "M8" || x.op === "M9");
   }

@@ -3,6 +3,7 @@
 // controls, evaluate the pre-registered bars (gym/kin-telling/PREREG-G1-3-COMPOSER.md) and print the composed English beside the plain baseline.
 //
 //   node gym/kin-telling-run.mjs --window dev|heldout --out <dir> [--janus <janus checkout>] [--root <workspace root>] [--frames-sha <hex>] [--no-weave]
+//   node gym/kin-telling-run.mjs --window <name> --dir <folder with fold.json, questions.json> --plain <plain reply file> --out <dir> ...   (round 2: a fresh window)
 //
 // Zero model calls: a tripwire is armed over fetch, http/https, net and child_process for the whole run (and is shown firing once on a probe).
 // Nothing here edits an existing file or changes a default; the composer, the checker and the adapter are new files.
@@ -22,6 +23,7 @@ import { makeKinContext, composeWindow, composeQuestion, render, renderTagged, n
 import { makeChecker, typeProse } from "../organs/kin-telling-check.mjs";
 import { makeMutator } from "./kin-telling-mutants.mjs";
 import { installTripwire } from "./weave-nomodel.mjs";
+import { kernelImport } from "../organs/kernel-reach.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FACT_KINDS = new Set(["REL", "REL-D", "SEX", "WIT"]);
@@ -86,16 +88,27 @@ export async function runWindow(S, { noWeave = false, registeredFramesSha = null
   const outC2 = composeWindow(mk(), S.questions, { policy: "chosen" });
   const outFirst = composeWindow(mk(), S.questions, { policy: "first" });
   const outSecond = composeWindow(mk(), S.questions, { policy: "second" });
-  const allDocs = (o) => [...o.docs, ...o.batteries];
+  const allDocs = (o) => [...o.docs, ...o.batteries, ...(o.facts ?? [])]; // round 2: + the fact paragraphs
   const verdict = (doc) => chk.checkDoc(doc, qById[doc.id] ?? null);
   const V = new Map(allDocs(outC).map((d) => [d.id, verdict(d)]));
 
-  // B1
+  // R1 (round 2): (a) checker failures 0; (b) every sentence has an addressed SEGMENT of kind ru or ask (the extent does not count); (c) khora seamReport, strict typing
   const sentences = allDocs(outC).flatMap((d) => d.sentences.map((s) => ({ d, s })));
   const failures = [...V].flatMap(([id, v]) => v.failures.map((f) => ({ doc: id, ...f })));
-  const addressed = sentences.filter(({ s }) => s.segs.some((g) => g.k === "ru") || s.extent).length;
+  const hasSource = (s) => s.segs.some((g) => (g.k === "ru" || g.k === "ask") && g.a);
+  const withSource = sentences.filter(({ s }) => hasSource(s)).length;
+  const extentOnly = sentences.filter(({ s }) => !hasSource(s) && s.extent).length;
+  const askOnly = sentences.filter(({ s }) => hasSource(s) && !s.segs.some((g) => g.k === "ru")).length;
   const selfModel = sentences.filter(({ s }) => s.segs.some((g) => String(g.k).startsWith("self:model"))).length;
-  const B1 = { sentences: sentences.length, checkerFailures: failures.length, addressedShare: share(addressed, sentences.length), selfModel, pass: failures.length === 0 && addressed === sentences.length && selfModel === 0 };
+  let seam = { notRun: true, reason: "khora seam-ledger not reachable" };
+  try {
+    const { seamReport } = await kernelImport("khora", "native/organs/seam-ledger.js");
+    const strict = (g) => { const t = g.k === "ru" || g.k === "ask" ? `«${g.t}»` : g.t; return g.k === "f" ? { kind: "frame", t } : g.k === "ru" || g.k === "ask" ? { kind: "source", t, address: g.a } : { kind: "value", t }; };
+    const rep = seamReport(sentences.map(({ s }) => ({ segs: s.segs.map(strict) })));
+    seam = { mouthShare: rep.mouthShare, addressedShare: rep.addressedShare, seamDensity: rep.seamDensity, contractOk: rep.contract.ok, violations: rep.contract.violations.length, sentencesWithoutSource: sentences.filter(({ s }) => !hasSource(s)).length, notRun: false };
+  } catch (e) { seam = { notRun: true, reason: String(e.message).slice(0, 160) }; }
+  const B1 = { sentences: sentences.length, checkerFailures: failures.length, withAddressedSource: withSource, extentOnly, askOnly, selfModel, seam,
+    pass: failures.length === 0 && withSource === sentences.length && extentOnly === 0 && selfModel === 0 && seam.notRun === false && seam.mouthShare === 0 && seam.contractOk === true && seam.sentencesWithoutSource === 0 };
 
   // B2 / B3a
   const composedOk = (d) => d.sentences.length > 0 && d.uncomposed.length === 0 && V.get(d.id).ok;
@@ -227,7 +240,7 @@ export async function runWindow(S, { noWeave = false, registeredFramesSha = null
           p = line.includes(m[1]) && new RegExp(`\\b${m[2]}\\b`).test(line);
         }
       } else if (it.kind === "spelling") {
-        const forms = new Set(cl.flatMap((x) => [x.bind.A?.t, ...(x.bind.L ?? []).map((g) => g.t)]).filter(Boolean));
+        const forms = new Set(d.sentences.flatMap((s) => s.segs.filter((g) => g.k === "ru").map((g) => g.t)));
         c = forms.has(it.sp); p = line.includes(`«${it.sp}»`);
       }
       recall.composer[1]++; recall.plain[1]++; if (c) recall.composer[0]++; else recallMisses.composer.push({ q: q.id, item: it }); if (p) recall.plain[0]++; else recallMisses.plain.push({ q: q.id, item: it.kind === "kin" ? it.k.who : it.f ?? it.sp });
@@ -272,6 +285,11 @@ export async function runWindow(S, { noWeave = false, registeredFramesSha = null
     } catch (e) { B9 = { skipped: true, reason: `weave unavailable: ${String(e.message).slice(0, 200)}`, code: e.code ?? null }; }
   }
 
+  // ── R10 the count sentence lists exactly the fold's unbound statements (the checker derives it; here the tally)
+  const unbDocs = allDocs(outC).filter((d) => d.sentences.some((x) => x.claim === "UNB"));
+  const unbOk = unbDocs.filter((d) => { const v = V.get(d.id); return v.ok || !v.sentences.some((sv) => sv.claim === "UNB" && !sv.ok); }).length;
+  const R10 = { paragraphsWithCount: unbDocs.length, exact: unbOk, spansPerParagraph: unbDocs.length ? unbDocs[0].sentences.find((x) => x.claim === "UNB").segs.filter((g) => g.k === "ru").length : 0, foldUnbound: S.fold.kin.unbound.length, pass: unbOk === unbDocs.length };
+
   // ── B0
   const wireCounts = wire.count();
   const swatch = path.join(HERE, "swatch.jsonl");
@@ -287,9 +305,9 @@ export async function runWindow(S, { noWeave = false, registeredFramesSha = null
   const report = {
     schema: "KinTellingReport@1", window: S.name, ms: Date.now() - T0,
     hashes: { text: sha256(S.textBuf), foldSha: sha256(JSON.stringify(S.fold)), lexicon: S.lexiconSha, parallel: S.parallelSha, namePartsRu: S.namePartsSha, frames: S.framesSha },
-    bars: { B0, B1, B2, B3, B4, B5, B6, B7, B8, B9 },
+    bars: { R0: B0, R1: B1, R2: B2, R3: B3, R4: B4, R5: B5, R6: B6, R7: B7, R8: B8, R9: B9, R10 },
     plainArm,
-    composer: { questions: S.questions.length, docs: outC.docs.length, batteries: outC.batteries.length, sentences: sentences.length, styleNotes: allDocs(outC).flatMap((d) => d.style).length, uncomposed: allDocs(outC).filter((d) => d.uncomposed.length).map((d) => ({ id: d.id, reasons: d.uncomposed })) },
+    composer: { questions: S.questions.length, docs: outC.docs.length, batteries: outC.batteries.length, factParagraphs: (outC.facts ?? []).length, sentences: sentences.length, styleNotes: allDocs(outC).flatMap((d) => d.style).length, uncomposed: allDocs(outC).filter((d) => d.uncomposed.length).map((d) => ({ id: d.id, reasons: d.uncomposed })) },
     failures: failures.slice(0, 30),
   };
   return { report, outC, V, plain, qById, ctx };
@@ -328,18 +346,25 @@ export function sideBySide(S, run) {
     } else L.push(`- **composer:** not composed — ${d.uncomposed.map((u) => `${u.reason}${u.detail ? ` (${u.detail})` : ""}`).join("; ")}`);
     L.push("");
   }
+  if ((run.outC.facts ?? []).length) {
+    L.push(`## Fact paragraphs (the kin paragraph of each end of every stated kin fact; the material of the shuffled controls)\n`);
+    for (const d of run.outC.facts) L.push(`- ${d.id}: ${d.sentences.map((x) => x.text).join(" ")}`);
+    L.push("");
+  }
   return L.join("\n");
 }
 
 async function main() {
   const wins = windowPaths(arg("root") ?? undefined);
   const name = arg("window", "dev");
-  if (!wins[name]) throw new Error(`--window dev|heldout`);
-  const S = loadWindow(wins[name], { janus: arg("janus") });
+  // round 2: a window can be named by a folder (--dir holds fold.json and questions.json; --plain is the plain answerer's reply file)
+  const win = arg("dir") ? { name, dir: arg("dir"), plain: arg("plain") } : wins[name];
+  if (!win) throw new Error(`--window dev|heldout, or --window <name> --dir <folder> --plain <reply file>`);
+  const S = loadWindow(win, { janus: arg("janus") });
   const out = arg("out");
   const run = await runWindow(S, { noWeave: has("no-weave"), registeredFramesSha: arg("frames-sha") });
   const md = sideBySide(S, run);
-  if (name === "dev" && arg("janus")) run.report.bars.B10 = await runGrowth(S, arg("janus"));
+  if (name === "dev" && arg("janus")) run.report.bars.R11 = await runGrowth(S, arg("janus"));
   if (out) {
     fs.mkdirSync(out, { recursive: true });
     const compact = { ...run.outC, docs: run.outC.docs, batteries: run.outC.batteries };
@@ -351,18 +376,20 @@ async function main() {
   }
   const b = run.report.bars;
   const line = (id, ok, txt) => console.log(`${id} ${ok === true ? "PASS" : ok === false ? "FAIL" : "----"}  ${txt}`);
-  console.log(`window ${name}: ${run.report.composer.sentences} sentences, ${run.report.composer.questions} questions, ${run.report.composer.batteries} batteries`);
-  line("B0", b.B0.pass, `tripwire fired ${b.B0.wire.fired + b.B0.wire.fetchModelDoor} (probe tripped: spawn ${b.B0.probe.spawnTripped}, fetch ${b.B0.probe.fetchTripped}); static scan ${b.B0.scan.map((s) => `${s.file}:${s.ok ? "ok" : "BAD"}`).join(" ")}`);
-  line("B1", b.B1.pass, `${b.B1.sentences} sentences, checker failures ${b.B1.checkerFailures}, addressed ${b.B1.addressedShare}, self:model ${b.B1.selfModel}`);
-  line("B2", b.B2.pass, `in-scope answerable ${b.B2.inScopeComposed}/${b.B2.inScopeAnswerable}; ALL answerable ${b.B2.allAnswerableComposed}/${b.B2.allAnswerable} (${b.B2.allShare?.toFixed(3)})`);
-  line("B3", b.B3.pass, `expected-gap questions ${b.B3.a.composedAsGap}/${b.B3.a.expectedGapQuestions}; recorded gaps stated ${b.B3.b.stated}/${b.B3.b.gaps}; gap cells named ${b.B3.b.named}/${b.B3.b.gapCells}`);
-  line("B4", b.B4.pass, `S1 ${JSON.stringify({ f: b.B4.S1.checkerFailures, ch: b.B4.S1.changedFactSentences, rej: b.B4.S1.rejectedFactSentences })}; S2 ${JSON.stringify({ f: b.B4.S2.checkerFailures, ch: b.B4.S2.changedFactSentences, rej: b.B4.S2.rejectedFactSentences, constructible: b.B4.S2.constructible })}`);
-  line("B5", b.B5.pass, `mutants ${b.B5.killed}/${b.B5.made} killed (${Object.entries(b.B5.byOperator).map(([k, o]) => `${k} ${o.killed}/${o.made}`).join(", ")})`);
-  line("B6", b.B6.pass, `json ${b.B6.jsonSha256.slice(0, 12)} text ${b.B6.textSha256.slice(0, 12)}`);
-  line("B7", b.B7.pass, `recall composer ${b.B7.composerHits}/${b.B7.items} vs plain ${b.B7.plainHits}/${b.B7.items}; plain linked-name recall ${b.B7.plainLinkedRecall} over ${b.B7.plainLinkedItems}`);
-  line("B8", b.B8.pass, `${b.B8.invariant}/${b.B8.documents} documents claim-invariant across variants`);
-  line("B9", b.B9.skipped ? null : b.B9.pass, b.B9.skipped ? b.B9.reason : `${b.B9.allFieldSettled}/${b.B9.questions} field-settled, model-required ${b.B9.modelRequired}, same text ${b.B9.sameText}`);
-  if (run.report.bars.B10) line("B10", run.report.bars.B10.pass, `synthetic growth: ${run.report.bars.B10.passing}/${run.report.bars.B10.documents} documents pass, ${run.report.bars.B10.answeredCells} answered cells, ${run.report.bars.B10.gapCells} gap cells, uncomposed ${run.report.bars.B10.uncomposed.length}, inexpressible janus gaps ${run.report.bars.B10.inexpressibleGaps}`);
+  console.log(`window ${name}: ${run.report.composer.sentences} sentences, ${run.report.composer.questions} questions, ${run.report.composer.batteries} batteries, ${run.report.composer.factParagraphs} fact paragraphs`);
+  line("R0", b.R0.pass, `tripwire fired ${b.R0.wire.fired + b.R0.wire.fetchModelDoor} (probe tripped: spawn ${b.R0.probe.spawnTripped}, fetch ${b.R0.probe.fetchTripped}); static scan ${b.R0.scan.map((s) => `${s.file}:${s.ok ? "ok" : "BAD"}`).join(" ")}`);
+  const sm = b.R1.seam;
+  line("R1", b.R1.pass, `${b.R1.sentences} sentences, checker failures ${b.R1.checkerFailures}, with an addressed ru/ask segment ${b.R1.withAddressedSource}, extent-only ${b.R1.extentOnly}, ask-only ${b.R1.askOnly}, self:model ${b.R1.selfModel}; seamReport ${sm.notRun ? `NOT RUN (${sm.reason})` : `mouthShare ${sm.mouthShare}, contract ${sm.contractOk}, sentences without a source segment ${sm.sentencesWithoutSource}, addressedShare(strict) ${(100 * sm.addressedShare).toFixed(1)}%`}`);
+  line("R2", b.R2.pass, `in-scope answerable ${b.R2.inScopeComposed}/${b.R2.inScopeAnswerable}; ALL answerable ${b.R2.allAnswerableComposed}/${b.R2.allAnswerable} (${b.R2.allShare?.toFixed(3)})`);
+  line("R3", b.R3.pass, `expected-gap questions ${b.R3.a.composedAsGap}/${b.R3.a.expectedGapQuestions}; recorded gaps stated ${b.R3.b.stated}/${b.R3.b.gaps}; gap cells named ${b.R3.b.named}/${b.R3.b.gapCells}`);
+  line("R4", b.R4.pass, `S1 ${JSON.stringify({ f: b.R4.S1.checkerFailures, ch: b.R4.S1.changedFactSentences, rej: b.R4.S1.rejectedFactSentences })}; S2 ${JSON.stringify({ f: b.R4.S2.checkerFailures, ch: b.R4.S2.changedFactSentences, rej: b.R4.S2.rejectedFactSentences, constructible: b.R4.S2.constructible })}`);
+  line("R5", b.R5.pass, `mutants ${b.R5.killed}/${b.R5.made} killed (${Object.entries(b.R5.byOperator).map(([k, o]) => `${k} ${o.killed}/${o.made}`).join(", ")})`);
+  line("R6", b.R6.pass, `json ${b.R6.jsonSha256.slice(0, 12)} text ${b.R6.textSha256.slice(0, 12)}`);
+  line("R7", b.R7.pass, `recall composer ${b.R7.composerHits}/${b.R7.items} vs plain ${b.R7.plainHits}/${b.R7.items}; plain linked-name recall ${b.R7.plainLinkedRecall} over ${b.R7.plainLinkedItems}`);
+  line("R8", b.R8.pass, `${b.R8.invariant}/${b.R8.documents} documents claim-invariant across variants`);
+  line("R9", b.R9.skipped ? null : b.R9.pass, b.R9.skipped ? b.R9.reason : `${b.R9.allFieldSettled}/${b.R9.questions} field-settled, model-required ${b.R9.modelRequired}, same text ${b.R9.sameText}`);
+  line("R10", b.R10.pass, `${b.R10.exact}/${b.R10.paragraphsWithCount} paragraphs with a count sentence list exactly the fold's ${b.R10.foldUnbound} unbound statements`);
+  if (b.R11) line("R11", b.R11.pass, `synthetic growth: ${b.R11.passing}/${b.R11.documents} documents pass, ${b.R11.answeredCells} answered cells, ${b.R11.gapCells} gap cells, uncomposed ${b.R11.uncomposed.length}, inexpressible janus gaps ${b.R11.inexpressibleGaps}`);
   console.log(`plain arm under the same checker: ${run.report.plainArm.sentences} sentences, addressed share ${run.report.plainArm.addressedShare}`);
   if (!out) console.log("\n" + md);
 }

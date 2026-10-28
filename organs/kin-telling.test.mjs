@@ -46,6 +46,8 @@ const referents = [
   { id: "r_anna", display: "Анна Павловна", standing: "referent", surfaces: surf([["Анна Павловна", 1], ["Анна Павловна Шерер", 1], ["Анны Павловны", 1]]) },
   { id: "r_pet", display: "Пётр", standing: "referent", surfaces: surf([["Пётр", 0]]) },
 ];
+// round 2: an unbound statement is a kin word with its own byte span (here two kin words that stand for the extractor's unbound ones)
+const unb = (word, inLine) => { const a = Buffer.byteLength(TEXT.slice(0, TEXT.indexOf(inLine) + inLine.indexOf(word))); return { why: "both_ends_unbound", byteSpan: [a, a + Buffer.byteLength(word)], text: word, cat: "N" }; };
 const w1 = span("Ипполит, сын князя Василия"), w2 = span("Элен, дочь князя Василия"), w3 = span("Анна Павловна Шерер");
 const fold = {
   referents, six: ["r_vas"],
@@ -53,7 +55,7 @@ const fold = {
     { rel: "parent_of", a: "r_vas", b: "r_ipp", giver: "text:ru", standing: "given", witnesses: [w1] }, { rel: "sex", a: "r_ipp", b: null, value: "male", giver: "text:ru", standing: "given", witnesses: [w1] },
     { rel: "parent_of", a: "r_vas", b: "r_elen", giver: "text:ru", standing: "given", witnesses: [w2] }, { rel: "sex", a: "r_elen", b: null, value: "female", giver: "text:ru", standing: "given", witnesses: [w2] },
     { rel: "sex", a: "r_anna", b: null, value: "female", giver: "name-parts-ru", standing: "candidate", witnesses: [w3] },
-  ], unbound: [{ why: "both_ends_unbound" }, { why: "both_ends_unbound" }] },
+  ], unbound: [unb("сын", "Ипполит, сын князя Василия"), unb("дочь", "Элен, дочь князя Василия")] },
   derivation: { battery: ["uncle", "grandfather"], byReferent: { r_vas: {
     uncle: { state: "gap", items: [], gaps: [{ kind: "no_parent_fact", slot: { rel: "parent_of", a: "?", b: "r_vas" } }], ruleNotes: [] },
     grandfather: { state: "gap", items: [], gaps: [{ kind: "no_parent_fact", slot: { rel: "parent_of", a: "?", b: "r_vas" } }], ruleNotes: [] },
@@ -90,7 +92,7 @@ test("a stated kin fact is composed with its quotation, and the checker re-deriv
     "The text states «Элен, дочь князя Василия».",
     "Neither male nor female is stated for «князь Василий» by the text.",
     "The text states no child, sibling, or spouse of «Элен».",
-    "Kin words in the text with an unbound end: 2.",
+    "Kin words in the text with an unbound end: «сын» and «дочь».",
   ]);
   const v = chk.checkDoc(d, byId.Q1);
   assert.equal(v.ok, true, JSON.stringify(v.failures));
@@ -239,6 +241,68 @@ test("default behaviour is untouched: the adapter is not a built-in kind, and we
   assert.equal(r.ok, false); assert.equal(r.status, "gap");
 });
 
+test("round 2: the count sentence is addressed to the unbound statements it lists, and the checker derives that the spans are the fold's", () => {
+  const ctx = mkCtx(), chk = mkChk();
+  const d = composeQuestion(ctx, byId.Q2);
+  const unb = d.sentences.find((s) => s.claim === "UNB");
+  assert.ok(unb && !unb.extent, "no extent on a count sentence");
+  assert.deepEqual(unb.segs.filter((g) => g.k === "ru").map((g) => g.a), fold.kin.unbound.map((u) => `ru#${u.byteSpan[0]}-${u.byteSpan[1]}`));
+  assert.equal(chk.checkDoc(d, byId.Q2).ok, true);
+  // drop an entry, or list a span that is not an unbound statement: the checker rejects (the mutants M11, M12)
+  const mut = makeMutator({ fold, textBuf, lexicon, lexiconSha: lexSha });
+  const ops = mut.mutantsOf(unb, d).map((m) => m.op);
+  assert.ok(ops.includes("M11") && ops.includes("M12"), ops.join(","));
+  for (const { sentence } of mut.mutantsOf(unb, d)) assert.equal(chk.checkDoc({ ...d, sentences: d.sentences.map((x) => (x === unb ? sentence : x)) }, byId.Q2).ok, false);
+});
+
+test("round 2: an unbound entry without a byte span makes the count sentence uncomposable, never a guess", () => {
+  const f2 = { ...fold, kin: { ...fold.kin, unbound: [{ why: "both_ends_unbound" }] } };
+  const d = composeQuestion(makeKinContext({ fold: f2, textBuf, lexicon, lexiconSha: lexSha, parallel, parallelSha: parSha }), byId.Q2);
+  assert.equal(d.sentences.length, 0);
+  assert.equal(d.uncomposed[0].reason, "unbound_without_byte_span");
+});
+
+test("round 2: every sentence of the fixture has an addressed ru or ask segment (the extent is not an address)", () => {
+  const out = composeWindow(mkCtx(), questions);
+  for (const d of [...out.docs, ...out.batteries, ...out.facts]) for (const s of d.sentences) assert.ok(s.segs.some((g) => (g.k === "ru" || g.k === "ask") && g.a), `${d.id}: ${s.text}`);
+});
+
+test("round 2: the fact paragraphs give the shuffled controls material, and both controls fail the checker on them", () => {
+  const ctx = mkCtx(), chk = mkChk();
+  const out = composeWindow(ctx, questions);
+  assert.deepEqual(out.facts.map((d) => d.id), ["F:r_elen", "F:r_ipp", "F:r_vas"]);
+  for (const d of out.facts) assert.equal(chk.checkDoc(d, null).ok, true, d.id);
+  const ids = referents.map((r) => r.id).sort();
+  const sigma = new Map(ids.map((id, i) => [id, ids[(i + 1) % ids.length]]));
+  const base = new Set(out.facts.flatMap((d) => d.sentences.map((s) => s.text)));
+  const wits = [...new Set(fold.kin.facts.flatMap((f) => f.witnesses))].sort((p, q) => Number(p.split("#")[1].split("-")[0]) - Number(q.split("#")[1].split("-")[0]));
+  const tau = new Map(wits.map((w, i) => [w, wits[(i + 1) % wits.length]])); // the runner's rule: a cyclic shift by one over the distinct witnesses
+  const s2 = composeWindow(mkCtx(), questions, { control: { wit: (w) => tau.get(w) ?? w } });
+  const s1 = composeWindow(mkCtx(), questions, { control: { id: (x) => sigma.get(x) ?? x } });
+  for (const [name, o] of [["S1", s1], ["S2", s2]]) {
+    let changed = 0, rejected = 0;
+    for (const d of o.facts) { const v = chk.checkDoc(d, null); d.sentences.forEach((s, i) => { if (["REL", "REL-D", "SEX", "WIT"].includes(s.claim) && !base.has(s.text)) { changed++; if (v.sentences[i].failures.length) rejected++; } }); }
+    assert.ok(changed > 0, `${name}: nothing to shuffle`);
+    assert.equal(rejected, changed, `${name}: ${rejected} of ${changed}`);
+  }
+});
+
+test("round 3: the checker finds a kin word by its orthographic fold (the lexicon spells it with ё and a stress mark; the text does not)", () => {
+  const line = "Сестрам, сестер.";
+  const text2 = TEXT + line + "\n";
+  const buf2 = Buffer.from(text2, "utf8");
+  const spanOf = (word) => { const a = Buffer.byteLength(text2.slice(0, text2.indexOf(word))); return [a, a + Buffer.byteLength(word)]; };
+  const lex2 = { ...lexicon, russian: { ...lexicon.russian, сестра: { en: "sister", kind: "atom" } }, russian_forms: { ...lexicon.russian_forms, "сёстрам": "сестра", "сестёр": "сестра" } };
+  assert.ok(!("сестер" in lex2.russian_forms) && !("сестрам" in lex2.russian_forms), "the plain spellings are not in the table");
+  const fold2 = { ...fold, kin: { ...fold.kin, unbound: [{ ...unb("сын", "Ипполит, сын князя Василия") }, { why: "both_ends_unbound", byteSpan: spanOf("Сестрам"), text: "Сестрам", cat: "N" }, { why: "both_ends_unbound", byteSpan: spanOf("сестер"), text: "сестер", cat: "N" }] } };
+  const ctx = makeKinContext({ fold: fold2, textBuf: buf2, lexicon: lex2, lexiconSha: lexSha, parallel, parallelSha: parSha });
+  const chk = makeChecker({ fold: fold2, textBuf: buf2, lexicon: lex2, lexiconSha: lexSha, parallel, parallelSha: parSha, namePartsRu: nameParts, frames });
+  const d = composeQuestion(ctx, byId.Q2);
+  assert.match(d.sentences.find((x) => x.claim === "UNB").text, /«Сестрам», and «сестер»\.$/);
+  const v = chk.checkDoc(d, byId.Q2);
+  assert.equal(v.ok, true, JSON.stringify(v.failures));
+});
+
 // ── tests that need siblings or the workspace: typed SKIPs
 const janusHome = (() => { try { const p = kernelPath("janus", "native/organs/kinship.js"); return fs.existsSync(p) && fs.existsSync(kernelPath("janus", "priors/kin-lexicon.json")) ? p : null; } catch { return null; } })();
 test("growth: more facts, answered by the real janus deriveKin, flow through the unchanged composer and the checker", { skip: janusHome ? false : "janus-absent: native/organs/kinship.js" }, async () => {
@@ -263,5 +327,8 @@ test("the development window: every registered bar that is mechanical passes", {
   const S = loadWindow(wins.dev, {});
   const run = await runWindow(S, { noWeave: true });
   const b = run.report.bars;
-  for (const k of ["B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8"]) assert.equal(b[k].pass, true, `${k}: ${JSON.stringify(b[k]).slice(0, 300)}`);
+  for (const k of ["R0", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R10"]) assert.equal(b[k].pass, true, `${k}: ${JSON.stringify(b[k]).slice(0, 300)}`);
+  // R1: the khora seam instrument is reached only when a khora checkout is beside this one; the rest of R1 does not need it
+  assert.equal(b.R1.checkerFailures, 0); assert.equal(b.R1.extentOnly, 0); assert.equal(b.R1.withAddressedSource, b.R1.sentences);
+  if (!b.R1.seam.notRun) { assert.equal(b.R1.seam.mouthShare, 0); assert.equal(b.R1.seam.sentencesWithoutSource, 0); assert.equal(b.R1.pass, true); }
 });

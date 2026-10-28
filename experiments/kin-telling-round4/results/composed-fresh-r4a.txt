@@ -1,0 +1,89 @@
+Q1
+The text states no parent, child, sibling, or spouse of «Пьер». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q2
+The reading of the text has no being written «Фёдор Ростопчин».
+
+Q3
+The text states no parent, child, sibling, or spouse of «Анною Михайловной». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q4
+«Василий» is Vasili in the aligned edition (candidate). The text states no parent, child, sibling, or spouse of «Василий». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q5
+The text states no parent, child, sibling, or spouse of «Безухова». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q6
+The text states no parent, child, sibling, or spouse of «Василий». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q7
+
+
+Q8
+No uncle of «Василий» is derived. The text states no parent of «Василий».
+
+Q9
+The reading of the text has no being written «Адам Чарторижский».
+
+Q10
+
+
+Q11
+No uncle of «Пьер» is derived. The text states no parent of «Пьер».
+
+Q12
+
+
+Q13
+
+
+Q14
+The text states no parent, child, sibling, or spouse of «Анна Михайловна». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q15
+
+
+Q16
+
+
+Q17
+No uncle of «Анна Михайловна» is derived. The text states no parent of «Анна Михайловна».
+
+Q18
+The reading of the text has no being written «Алексей Аракчеев».
+
+Q19
+The text states no parent, child, sibling, or spouse of «Безухова». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q20
+«Анною Михайловной» is female (name-parts-ru, candidate). The text states no parent, child, sibling, or spouse of «Анною Михайловной». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q21
+«Пьер» is also written «Пьера», «Пьеру», «руки», «руки Пьера», and «Руки». The aligned edition gives Pierre for «Пьер» (candidate). No parent, child, sibling, or spouse of «Пьер» is stated by the text. Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q22
+The text states no parent, child, sibling, or spouse of «Пьером». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q23
+The text states no parent, child, sibling, or spouse of «Пьером». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+Q24
+«Анна Михайловна» is also written «Анну Михайловну» and «Анны Михайловны». «Анна Михайловна» is female (name-parts-ru, candidate). The text states no parent, child, sibling, or spouse of «Анна Михайловна». Kin words in the text with an unbound end: «отцом», «сыном», «сын», «отцом», «отца», «отца», «сыном», «отец», «дядюшки», «отца», «сыном», «отец», «сыну», and «отца».
+
+B:ref_db4caa84b9e7953b
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьер» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьер».
+
+B:ref_65bca173a0dc7014
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анна Михайловна» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анна Михайловна».
+
+B:ref_95dcfdca85d4fa9c
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Василий» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Василий».
+
+B:ref_d9867661d35b044c
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьером» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьером».
+
+B:ref_f8d8feeaca3ad269
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Безухова» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Безухова».
+
+B:ref_7247818f7fd32d09
+No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анною Михайловной» is derived. The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анною Михайловной».

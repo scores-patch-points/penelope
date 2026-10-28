@@ -35,10 +35,10 @@ export const SKELETONS = Object.freeze({
   MISS: ["The text states no {terms|or} of {ru}.", "No {terms|or} of {ru} is stated by the text."],
   "MISS-SEX": ["The text states neither {sex} nor {sex} for {ru}.", "Neither {sex} nor {sex} is stated for {ru} by the text."],
   "MISS-OPEN": ["No {term} of {ru} is stated to be {sex}; absence is not asserted."],
-  UNB: ["Kin words in the text with an unbound end: {val}."],
+  UNB: ["Kin words in the text with an unbound end: {forms|and}."],
   ABS: ["The reading of the text has no being written {ask}.", "No being written {ask} is in the reading of the text."],
 });
-const EXTENT_KINDS = new Set(["NONE", "MISS", "MISS-SEX", "MISS-OPEN", "UNB", "ABS"]);
+const EXTENT_KINDS = new Set(["NONE", "MISS", "MISS-SEX", "MISS-OPEN", "ABS"]); // UNB (round 2) is addressed by the spans it lists, not by the extent
 
 // skeleton string -> parts: { f: frame text } | { s: slot, join?: "or"|"and" } | { opt: [parts] }
 function parseSkeleton(str) {
@@ -137,6 +137,7 @@ export function makeKinContext({ fold, textBuf, lexicon, lexiconSha, parallel = 
   return {
     window, fold, text, N, textSha: sha(textBuf), ref, facts, sexFacts, atoms, lexicon, parallel, locate, lexAddr, parAddr,
     unbound: (fold.kin?.unbound ?? []).length,
+    unboundEntries: fold.kin?.unbound ?? [],
     battery: fold.derivation?.battery ?? [],
     byReferent: fold.derivation?.byReferent ?? {},
     extent: `ru#0-${N}`,
@@ -305,13 +306,22 @@ function missClaims(ctx, gaps, control, notes = []) {
 }
 const GAP_KIND_SET = new Set(Object.values(GAP_KIND));
 
+// ROUND 2 (C1): the kin words the extractor found and bound to no being at an end, each a copied Russian span with its own byteSpan, in the fold's order
+function unboundSegs(ctx) {
+  return ctx.unboundEntries.map((u, i) => {
+    const bs = u?.byteSpan;
+    if (!Array.isArray(bs) || bs.length !== 2 || !(bs[0] >= 0 && bs[1] > bs[0] && bs[1] <= ctx.N)) throw new Refusal("unbound_without_byte_span", String(i));
+    return RU(ctx.slice(bs[0], bs[1]), `ru#${bs[0]}-${bs[1]}`);
+  });
+}
+
 function kinOfClaims(ctx, rec, control) {
   const { claims, wits } = relClaims(ctx, rec, control);
   const out = [...claims, ...witClaims(ctx, wits, control)];
   const gapRecs = [...rec.pendingSex.map((z) => ({ kind: "no_sex_fact", slot: { rel: "sex", a: z, value: "?" } })), ...rec.gaps];
   const miss = missClaims(ctx, gapRecs, control);
   out.push(...miss.filter((c) => c.kind === "MISS-SEX"), ...miss.filter((c) => c.kind === "MISS"));
-  if (miss.some((c) => c.kind === "MISS") && ctx.unbound > 0) out.push(claim("UNB", { val: [VAL(String(ctx.unbound), "val:count(kin/unbound)")] }));
+  if (miss.some((c) => c.kind === "MISS") && ctx.unbound > 0) out.push(claim("UNB", { forms: unboundSegs(ctx) }));
   return out;
 }
 
@@ -453,11 +463,18 @@ export function composeBattery(ctx, refId, { policy = "chosen", control = null }
   return doc;
 }
 
+/** ROUND 2 (C2): the kin_of paragraph of each end of every stated kin fact (parent, sibling, spouse), once per being: the material the shuffled controls need. Not questions. */
+export function composeFactParagraphs(ctx, { policy = "chosen", control = null } = {}) {
+  const ids = [...new Set(ctx.facts.filter((f) => f.rel === "parent_of" || f.rel === "sibling_of" || f.rel === "spouse_of").flatMap((f) => [f.a, f.b]))].sort();
+  return ids.map((id) => composeQuestion(ctx, { id: `F:${id}`, n: 0, template: "T-KIN", text: "(a stated kin fact: the paragraph of one of its ends)", subject: "", referent: id }, { policy, control }));
+}
+
 export function composeWindow(ctx, questions, { policy = "chosen", control = null, battery = true } = {}) {
   const docs = questions.map((q) => composeQuestion(ctx, q, { policy, control }));
   const six = battery ? (ctx.fold.six ?? Object.keys(ctx.byReferent)) : [];
   const batteries = six.map((id) => composeBattery(ctx, id, { policy, control }));
-  return { schema: KIN_TELLING_SCHEMA, window: ctx.window, textSha256: ctx.textSha, extent: ctx.extent, docs, batteries };
+  const facts = composeFactParagraphs(ctx, { policy, control });
+  return { schema: KIN_TELLING_SCHEMA, window: ctx.window, textSha256: ctx.textSha, extent: ctx.extent, docs, batteries, facts };
 }
 
 export const render = (doc) => doc.sentences.map((s) => s.text).join(" ");

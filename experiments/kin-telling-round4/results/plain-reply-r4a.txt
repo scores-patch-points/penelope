@@ -1,0 +1,26 @@
+Answered by a fixed rule reader over the window. No model was used. Each answer is built from the register's own sentences and the names written beside the subject in the sentences the cards quote; where the window holds nothing, the answer is the gap.
+
+Q1: not in the context
+Q2: not in the context
+Q3: not in the context
+Q4: Василий: written beside Пьер, Михайловной, Анною, Лоррену, Васильем, Божией in the quoted sentences
+Q5: Безухова: written beside Пьером, Анной, Михайловной, Ростовым, Лоррен in the quoted sentences
+Q6: not in the context
+Q7: the window types no speech relation; written beside Анна Михайловна in its quoted sentences: Пьером, Василья, Безухова, Катишь, Лоррена
+Q8: not in the context
+Q9: not in the context
+Q10: the window types no speech relation; written beside Василий in its quoted sentences: Пьер, Михайловной, Анною, Лоррену, Васильем, Божией
+Q11: not in the context
+Q12: the window types no speech relation; written beside Пьером in its quoted sentences: Михайловной, Анной, Безухова, Ростовым
+Q13: the window types no speech relation; written beside Анною Михайловной in its quoted sentences: Пьер, Васильем, Василий
+Q14: not in the context
+Q15: the window types no speech relation; written beside Безухова in its quoted sentences: Пьером, Анной, Михайловной, Ростовым, Лоррен
+Q16: the window types no speech relation; written beside Пьер in its quoted sentences: Михайловна, Анна, Васильем, Василий, Екатерины
+Q17: not in the context
+Q18: not in the context
+Q19: not in the context
+Q20: Анною Михайловной: written beside Пьер, Васильем, Василий in the quoted sentences; female; female
+Q21: Пьер: written as «Пьер», «Пьера», «Пьеру», «руки»; written beside Михайловна, Анна, Васильем, Василий, Екатерины in the quoted sentences
+Q22: not in the context
+Q23: Пьером: written beside Михайловной, Анной, Безухова, Ростовым in the quoted sentences
+Q24: Анна Михайловна: written as «Анна Михайловна», «Анну Михайловну», «Анны Михайловны»; written beside Пьером, Василья, Безухова, Катишь, Лоррена in the quoted sentences; female; female

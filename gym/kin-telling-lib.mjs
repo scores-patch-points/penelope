@@ -86,6 +86,6 @@ export function growthFixture(K, lexicon) {
     { id: R.alexey, display: "Алексей", standing: "referent", surfaces: surf([["Алексей", 1], ["Алексея", 1]]) },
   ];
   const facts = base.facts.map((f) => ({ id: f.id, rel: f.rel, a: f.a, b: f.b, value: f.value, term: f.term, giver: f.giver, standing: f.standing, witnesses: f.witnesses }));
-  const fold = { schema: "FoldcodeAnswerFold@1", referents, six: Object.values(R), kin: { facts, unbound: [{ why: "both_ends_unbound" }], statements: [] }, derivation: { battery, byReferent } };
+  const fold = { schema: "FoldcodeAnswerFold@1", referents, six: Object.values(R), kin: { facts, unbound: [(() => { const a = Buffer.byteLength(text.slice(0, text.indexOf("дед"))); return { why: "both_ends_unbound", byteSpan: [a, a + Buffer.byteLength("дед")], text: "дед", term: "grandfather", cat: "N" }; })()], statements: [] }, derivation: { battery, byReferent } };
   return { fold, textBuf, refs: R, questions: [{ id: "G1", n: 1, template: "C-UNCLE", referent: R.alexey, text: "Who is the uncle of Алексей in this text?", subject: "Алексей", answerable: true, expected: "answer" }, { id: "G2", n: 2, template: "C-UNCLE", referent: R.alexey, text: "Who is the grandfather of Алексей in this text?", subject: "Алексей", answerable: true, expected: "answer" }, { id: "G3", n: 3, template: "T-KIN", referent: R.petr, text: "Which people in this text are Пётр's kin, and how?", subject: "Пётр", answerable: true, expected: "answer" }] };
 }
