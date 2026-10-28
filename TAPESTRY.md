@@ -410,8 +410,8 @@
 ║■KTL 2 ↬◈ ‡ kin-telling                                                     ║
 ║     @ o/kin-telling.mjs o/kin-telling-check.mjs o/kin-telling.test.mjs     ║
 ║     @ o/generation/adapters/kin-telling.mjs g/kin-telling-run.mjs          ║
-║     @ g/kin-telling-lib.mjs g/kin-telling-mutants.mjs GL-KT-01 GL-BD-18    ║
-║     @ o/grounded-composition.mjs                                           ║
+║     @ g/kin-telling-lib.mjs g/kin-telling-mutants.mjs GL-KT-01 GL-KT-02    ║
+║     @ GL-BD-18 o/grounded-composition.mjs                                  ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
