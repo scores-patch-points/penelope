@@ -1,0 +1,400 @@
+{
+ "schema": "KinTellingReport@1",
+ "window": "dev",
+ "ms": 780,
+ "hashes": {
+  "text": "1b298906182db57b9c9435beff1882442e992786ac926cf70d3163461b7ec3f1",
+  "foldSha": "a08e2508e9a176d9cf61dde069cc77b7d9578c1d1a84b87b763e719a9a453d4c",
+  "lexicon": "693f23772d76fb5d582b76db7d5b40d88803eaa91cb47cf05a54b958a59a1737",
+  "parallel": "ba95430b4423a939ca84ef791fd14098dc761fcf1936f8dca1a0685f3ba6da86",
+  "namePartsRu": "96aae932beec3609a71d3e3e6214bcd43a3259e51f1d10a31889375992ba09c6",
+  "frames": "a5a7088bbf7a4e37d1bd503ee3630623aa0f86472555119a744f1f7aa9e3e67d"
+ },
+ "bars": {
+  "B0": {
+   "probe": {
+    "spawnTripped": true,
+    "fetchTripped": true,
+    "before": 0
+   },
+   "wire": {
+    "fired": 0,
+    "fetchModelDoor": 0,
+    "fetchCalls": 0
+   },
+   "swatchPresent": false,
+   "scan": [
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "node:crypto",
+      "./kin-telling-frames.json"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling-check.mjs",
+     "imports": [
+      "node:crypto"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [
+      "node:crypto"
+     ],
+     "banned": [],
+     "ok": true
+    },
+    {
+     "file": "kin-telling.mjs",
+     "imports": [
+      "../../kin-telling.mjs"
+     ],
+     "nonNodeNonLocalImports": [],
+     "nodeImports": [],
+     "banned": [],
+     "ok": true
+    }
+   ],
+   "setup": [],
+   "pass": true
+  },
+  "B1": {
+   "sentences": 75,
+   "checkerFailures": 0,
+   "addressedShare": 1,
+   "selfModel": 0,
+   "pass": true
+  },
+  "B2": {
+   "inScopeAnswerable": 8,
+   "inScopeComposed": 8,
+   "allAnswerable": 14,
+   "allAnswerableComposed": 8,
+   "notComposed": [
+    {
+     "id": "Q7",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q10",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q12",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q13",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q15",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    },
+    {
+     "id": "Q16",
+     "template": "T-SPEECH",
+     "reasons": [
+      "no_record_for_question_kind"
+     ]
+    }
+   ],
+   "pass": true,
+   "share": 1,
+   "allShare": 0.5714285714285714
+  },
+  "B3": {
+   "a": {
+    "expectedGapQuestions": 10,
+    "composedAsGap": 10,
+    "byTemplate": {
+     "T-KIN": [
+      4,
+      4
+     ],
+     "C-ABSENT": [
+      3,
+      3
+     ],
+     "C-UNCLE": [
+      3,
+      3
+     ]
+    }
+   },
+   "b": {
+    "gaps": 125,
+    "stated": 125,
+    "inexpressible": 0,
+    "share": 1,
+    "gapCells": 120,
+    "named": 120,
+    "cellShare": 1,
+    "uncovered": []
+   },
+   "pass": true,
+   "inexpressibleDocs": []
+  },
+  "B4": {
+   "S1": {
+    "name": "S1 shuffled ends",
+    "constructible": true,
+    "checkerFailures": 77,
+    "changedFactSentences": 8,
+    "rejectedFactSentences": 8,
+    "changedGapSentences": 37,
+    "rejectedGapSentences": 37,
+    "reasons": {
+     "C5_irrelevant_to_the_subject": 54,
+     "C3_REL_no_fact_licenses_the_relation": 6,
+     "C3_WIT_witness_of_a_fact_the_paragraph_does_not_state": 6,
+     "C3_SURF_forms_not_surfaces_of_one_being": 5,
+     "C3_GLOSS_no_non_colliding_parallel_names_row": 4,
+     "C3_SEX_no_sex_fact_with_that_giver_and_standing": 2
+    },
+    "pass": true,
+    "shift": 74
+   },
+   "S2": {
+    "name": "S2 shuffled witnesses",
+    "constructible": true,
+    "checkerFailures": 6,
+    "changedFactSentences": 6,
+    "rejectedFactSentences": 6,
+    "changedGapSentences": 0,
+    "rejectedGapSentences": 0,
+    "reasons": {
+     "C3_WIT_witness_of_a_fact_the_paragraph_does_not_state": 6
+    },
+    "pass": true
+   },
+   "pass": true
+  },
+  "B5": {
+   "made": 395,
+   "killed": 395,
+   "killRate": 1,
+   "byOperator": {
+    "M1": {
+     "made": 75,
+     "killed": 75
+    },
+    "M2": {
+     "made": 60,
+     "killed": 60
+    },
+    "M3": {
+     "made": 73,
+     "killed": 73
+    },
+    "M8": {
+     "made": 75,
+     "killed": 75
+    },
+    "M9": {
+     "made": 52,
+     "killed": 52
+    },
+    "M10": {
+     "made": 21,
+     "killed": 21
+    },
+    "M7": {
+     "made": 21,
+     "killed": 21
+    },
+    "M4": {
+     "made": 6,
+     "killed": 6
+    },
+    "M5": {
+     "made": 6,
+     "killed": 6
+    },
+    "M6": {
+     "made": 6,
+     "killed": 6
+    }
+   },
+   "survivors": [],
+   "pass": true
+  },
+  "B6": {
+   "jsonEqual": true,
+   "textEqual": true,
+   "jsonSha256": "8bb278c440055ee424372e3fd900e9071e9d5b2c3f88a0a41d8c64620902213b",
+   "textSha256": "d8d67b6c6b3a0b59d30a448faabdec1ea3c1056396b7546ed425bcb22eb47112",
+   "pass": true
+  },
+  "B7": {
+   "composer": 0.96875,
+   "plain": 0.78125,
+   "items": 32,
+   "composerHits": 31,
+   "plainHits": 25,
+   "plainLinkedRecall": 0.13636363636363635,
+   "plainLinkedItems": 22,
+   "misses": {
+    "composer": [
+     {
+      "q": "Q20",
+      "item": {
+       "kind": "fact",
+       "f": "Элен is the daughter of князь Василий. giver: the text. standing: said. In the text: «Элен, дочь князя Василия»"
+      }
+     }
+    ],
+    "plain": [
+     {
+      "q": "Q3",
+      "item": "князь Василий"
+     },
+     {
+      "q": "Q20",
+      "item": "Элен"
+     },
+     {
+      "q": "Q21",
+      "item": "Анну Павловну"
+     },
+     {
+      "q": "Q21",
+      "item": "Шерер"
+     },
+     {
+      "q": "Q23",
+      "item": "Князь Болконский"
+     },
+     {
+      "q": "Q23",
+      "item": "Андрея"
+     },
+     {
+      "q": "Q23",
+      "item": "Андрей"
+     }
+    ]
+   },
+   "pass": true
+  },
+  "B8": {
+   "documents": 24,
+   "invariant": 24,
+   "share": 1,
+   "breaks": [],
+   "pass": true
+  },
+  "B9": {
+   "questions": 18,
+   "allFieldSettled": 18,
+   "modelRequired": 0,
+   "mouth": 0,
+   "sameText": 18,
+   "ok": 18,
+   "rows": [],
+   "pass": true
+  },
+  "B10": {
+   "documents": 7,
+   "passing": 7,
+   "sentences": 50,
+   "answeredCells": 7,
+   "gapCells": 73,
+   "uncomposed": [],
+   "inexpressibleGaps": 14,
+   "failures": [],
+   "pass": true
+  }
+ },
+ "plainArm": {
+  "questions": 24,
+  "sentences": 24,
+  "addressed": 0,
+  "failures": 24,
+  "addressedShare": 0
+ },
+ "composer": {
+  "questions": 24,
+  "docs": 24,
+  "batteries": 6,
+  "sentences": 75,
+  "styleNotes": 5,
+  "uncomposed": [
+   {
+    "id": "Q7",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q10",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q12",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q13",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q15",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   },
+   {
+    "id": "Q16",
+    "reasons": [
+     {
+      "reason": "no_record_for_question_kind",
+      "detail": "T-SPEECH"
+     }
+    ]
+   }
+  ]
+ },
+ "failures": []
+}

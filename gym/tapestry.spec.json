@@ -1378,6 +1378,27 @@
     "o/hyperlexicon-record.mjs",
     "E7/organs/pathos.js"
    ]
+  },
+  {
+   "id": "KTL",
+   "name": "kin-telling",
+   "st": "■",
+   "lvl": 2,
+   "op": "REC",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/kin-telling.mjs",
+    "o/kin-telling-check.mjs",
+    "o/kin-telling.test.mjs",
+    "o/generation/adapters/kin-telling.mjs",
+    "g/kin-telling-run.mjs",
+    "g/kin-telling-lib.mjs",
+    "g/kin-telling-mutants.mjs",
+    "GL-KT-01",
+    "GL-BD-18",
+    "o/grounded-composition.mjs"
+   ]
   }
  ]
 }

@@ -35,6 +35,7 @@ const ROOT = path.resolve(HERE, "..", "..");
 // door wraps it, so a direct voice call is the sanctioned exception.
 const SANCTIONED = [
   "voice.e2e.mjs", "weave-nomodel.mjs", "nomodel-prose.mjs", "nomodel-summary.mjs",
+  "kin-telling-run.mjs", // G1-3: its tripwire PROBE addresses a model door on purpose to see the wire fire; the wire throws before any request leaves the process
   "voice.mjs", // the voice's own drawRouted goes direct (disclosed GL-WV-12); the door wraps it
   "box-vs-model-casual.mjs", "box-vs-model-experiment.mjs", "box-settle-vs-model.mjs", "box-settle-live-hunt.mjs", // wired through the door 2026-10-04 (box-draw.mjs)
 ];

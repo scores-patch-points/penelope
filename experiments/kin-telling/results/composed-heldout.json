@@ -1,0 +1,3758 @@
+{
+ "schema": "KinTelling@1",
+ "window": "heldout",
+ "textSha256": "55ab82f0272dcb8abb9e6c8eaec884cc690957ddb9457a362b7b8bbf603fc232",
+ "extent": "ru#0-73890",
+ "docs": [
+  {
+   "id": "Q1",
+   "template": "T-KIN",
+   "text": "Which people in this text are Пьер's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Пьер».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q2",
+   "template": "C-ABSENT",
+   "text": "Who is Фёдор Ростопчин in this text?",
+   "kind": "absent",
+   "sentences": [
+    {
+     "claim": "ABS",
+     "variant": 0,
+     "text": "The reading of the text has no being written «Фёдор Ростопчин».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The reading of the text has no being written "
+      },
+      {
+       "k": "ask",
+       "t": "Фёдор Ростопчин",
+       "a": "q:Q2#7-22"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q3",
+   "template": "T-KIN",
+   "text": "Which people in this text are Анны Павловны's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Анны Павловны».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q4",
+   "template": "T-ID",
+   "text": "Who is Долохов in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Долохов».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q5",
+   "template": "T-ID",
+   "text": "Who is Князь Ипполит in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "SURF",
+     "variant": 0,
+     "text": "«Князь Ипполит» is also written «Ипполитом», «князь Ипполит», «Ипполит», and «Ипполиту».",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": " is also written "
+      },
+      {
+       "k": "ru",
+       "t": "Ипполитом",
+       "a": "ru#2256-2274"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "князь Ипполит",
+       "a": "ru#4077-4102"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Ипполит",
+       "a": "ru#2334-2348"
+      },
+      {
+       "k": "f",
+       "t": ", and "
+      },
+      {
+       "k": "ru",
+       "t": "Ипполиту",
+       "a": "ru#6180-6196"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ]
+    },
+    {
+     "claim": "GLOSS",
+     "variant": 1,
+     "text": "The aligned edition gives Hippolyte for «Князь Ипполит» (candidate).",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The aligned edition gives "
+      },
+      {
+       "k": "row",
+       "t": "Hippolyte",
+       "a": "parallel-names@ba95430b:val:rows/7/english"
+      },
+      {
+       "k": "f",
+       "t": " for "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": " ("
+      },
+      {
+       "k": "row",
+       "t": "candidate",
+       "a": "parallel-names@ba95430b:val:rows/7/standing"
+      },
+      {
+       "k": "f",
+       "t": ")."
+      }
+     ]
+    },
+    {
+     "claim": "MISS",
+     "variant": 1,
+     "text": "No parent, child, sibling, or spouse of «Князь Ипполит» is stated by the text.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": " is stated by the text."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q6",
+   "template": "T-KIN",
+   "text": "Which people in this text are Долохов's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Долохов».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q7",
+   "template": "T-SPEECH",
+   "text": "Whom does князь Андрей speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q8",
+   "template": "C-UNCLE",
+   "text": "Who is the uncle of Долохов in this text?",
+   "kind": "term_of",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No uncle of «Долохов» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent of «Долохов».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q9",
+   "template": "C-ABSENT",
+   "text": "Who is Адам Чарторижский in this text?",
+   "kind": "absent",
+   "sentences": [
+    {
+     "claim": "ABS",
+     "variant": 0,
+     "text": "The reading of the text has no being written «Адам Чарторижский».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The reading of the text has no being written "
+      },
+      {
+       "k": "ask",
+       "t": "Адам Чарторижский",
+       "a": "q:Q9#7-24"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q10",
+   "template": "T-SPEECH",
+   "text": "Whom does Долохов speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q11",
+   "template": "C-UNCLE",
+   "text": "Who is the uncle of Пьер in this text?",
+   "kind": "term_of",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No uncle of «Пьер» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent of «Пьер».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q12",
+   "template": "T-SPEECH",
+   "text": "Whom does Анатоль speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q13",
+   "template": "T-SPEECH",
+   "text": "Whom does Анны Павловны speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q14",
+   "template": "T-KIN",
+   "text": "Which people in this text are князь Андрей's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «князь Андрей».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q15",
+   "template": "T-SPEECH",
+   "text": "Whom does Князь Ипполит speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q16",
+   "template": "T-SPEECH",
+   "text": "Whom does Пьер speak to in this text?",
+   "kind": "unsupported",
+   "sentences": [],
+   "uncomposed": [
+    {
+     "reason": "no_record_for_question_kind",
+     "detail": "T-SPEECH"
+    }
+   ],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q17",
+   "template": "C-UNCLE",
+   "text": "Who is the uncle of князь Андрей in this text?",
+   "kind": "term_of",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No uncle of «князь Андрей» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent of «князь Андрей».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q18",
+   "template": "C-ABSENT",
+   "text": "Who is Алексей Аракчеев in this text?",
+   "kind": "absent",
+   "sentences": [
+    {
+     "claim": "ABS",
+     "variant": 0,
+     "text": "The reading of the text has no being written «Алексей Аракчеев».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The reading of the text has no being written "
+      },
+      {
+       "k": "ask",
+       "t": "Алексей Аракчеев",
+       "a": "q:Q18#7-23"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q19",
+   "template": "T-KIN",
+   "text": "Which people in this text are Князь Ипполит's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Князь Ипполит».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q20",
+   "template": "T-ID",
+   "text": "Who is Анны Павловны in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "SURF",
+     "variant": 0,
+     "text": "«Анны Павловны» is also written «Анна Павловна», «Шерер», and «Анны Павловны Шерер».",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": " is also written "
+      },
+      {
+       "k": "ru",
+       "t": "Анна Павловна",
+       "a": "ru#1104-1129"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Шерер",
+       "a": "ru#7842-7852"
+      },
+      {
+       "k": "f",
+       "t": ", and "
+      },
+      {
+       "k": "ru",
+       "t": "Анны Павловны Шерер",
+       "a": "ru#59043-59079"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ]
+    },
+    {
+     "claim": "SEX",
+     "variant": 0,
+     "text": "«Анны Павловны» is female (name-parts-ru, candidate).",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": " is "
+      },
+      {
+       "k": "row",
+       "t": "female",
+       "a": "kin-lexicon@693f2377:val:atoms/mother/sex"
+      },
+      {
+       "k": "f",
+       "t": " ("
+      },
+      {
+       "k": "rec",
+       "t": "name-parts-ru",
+       "a": "fold:kin/facts/3/giver"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "rec",
+       "t": "candidate",
+       "a": "fold:kin/facts/3/standing"
+      },
+      {
+       "k": "f",
+       "t": ")."
+      }
+     ]
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Анны Павловны».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [
+    {
+     "note": "opener_repeats",
+     "kind": "SEX"
+    }
+   ],
+   "inexpressible": []
+  },
+  {
+   "id": "Q21",
+   "template": "T-ID",
+   "text": "Who is Пьер in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "SURF",
+     "variant": 0,
+     "text": "«Пьер» is also written «Пьера», «Пьеру», «Пьер сел», and «Пьере».",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": " is also written "
+      },
+      {
+       "k": "ru",
+       "t": "Пьера",
+       "a": "ru#11132-11142"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Пьеру",
+       "a": "ru#34803-34813"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер сел",
+       "a": "ru#9041-9056"
+      },
+      {
+       "k": "f",
+       "t": ", and "
+      },
+      {
+       "k": "ru",
+       "t": "Пьере",
+       "a": "ru#17063-17073"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ]
+    },
+    {
+     "claim": "GLOSS",
+     "variant": 1,
+     "text": "The aligned edition gives Pierre for «Пьер» (candidate).",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The aligned edition gives "
+      },
+      {
+       "k": "row",
+       "t": "Pierre",
+       "a": "parallel-names@ba95430b:val:rows/12/english"
+      },
+      {
+       "k": "f",
+       "t": " for "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": " ("
+      },
+      {
+       "k": "row",
+       "t": "candidate",
+       "a": "parallel-names@ba95430b:val:rows/12/standing"
+      },
+      {
+       "k": "f",
+       "t": ")."
+      }
+     ]
+    },
+    {
+     "claim": "MISS",
+     "variant": 1,
+     "text": "No parent, child, sibling, or spouse of «Пьер» is stated by the text.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": " is stated by the text."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q22",
+   "template": "T-KIN",
+   "text": "Which people in this text are Анатоль's kin, and how?",
+   "kind": "kin_of",
+   "sentences": [
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no parent, child, sibling, or spouse of «Анатоль».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q23",
+   "template": "T-ID",
+   "text": "Who is Анатоль in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "SURF",
+     "variant": 0,
+     "text": "«Анатоль» is also written «Анатоля», «Анатоля Курагина», and «Анатолю».",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": " is also written "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоля",
+       "a": "ru#31647-31661"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоля Курагина",
+       "a": "ru#32993-33024"
+      },
+      {
+       "k": "f",
+       "t": ", and "
+      },
+      {
+       "k": "ru",
+       "t": "Анатолю",
+       "a": "ru#34095-34109"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ]
+    },
+    {
+     "claim": "GLOSS",
+     "variant": 1,
+     "text": "The aligned edition gives Anatole for «Анатоль» (candidate).",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The aligned edition gives "
+      },
+      {
+       "k": "row",
+       "t": "Anatole",
+       "a": "parallel-names@ba95430b:val:rows/6/english"
+      },
+      {
+       "k": "f",
+       "t": " for "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": " ("
+      },
+      {
+       "k": "row",
+       "t": "candidate",
+       "a": "parallel-names@ba95430b:val:rows/6/standing"
+      },
+      {
+       "k": "f",
+       "t": ")."
+      }
+     ]
+    },
+    {
+     "claim": "MISS",
+     "variant": 1,
+     "text": "No parent, child, sibling, or spouse of «Анатоль» is stated by the text.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": " is stated by the text."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "Q24",
+   "template": "T-ID",
+   "text": "Who is князь Андрей in this text?",
+   "kind": "identity",
+   "sentences": [
+    {
+     "claim": "SURF",
+     "variant": 0,
+     "text": "«князь Андрей» is also written «Князь Андрей», «Андрея», «князю Андрею», «Андрее», and «Андрей».",
+     "segs": [
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": " is also written "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Андрей",
+       "a": "ru#2007-2030"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Андрея",
+       "a": "ru#5154-5166"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "князю Андрею",
+       "a": "ru#8189-8212"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "ru",
+       "t": "Андрее",
+       "a": "ru#28875-28887"
+      },
+      {
+       "k": "f",
+       "t": ", and "
+      },
+      {
+       "k": "ru",
+       "t": "Андрей",
+       "a": "ru#2018-2030"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ]
+    },
+    {
+     "claim": "GLOSS",
+     "variant": 1,
+     "text": "The aligned edition gives Andrew for «князь Андрей» (candidate).",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The aligned edition gives "
+      },
+      {
+       "k": "row",
+       "t": "Andrew",
+       "a": "parallel-names@ba95430b:val:rows/13/english"
+      },
+      {
+       "k": "f",
+       "t": " for "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": " ("
+      },
+      {
+       "k": "row",
+       "t": "candidate",
+       "a": "parallel-names@ba95430b:val:rows/13/standing"
+      },
+      {
+       "k": "f",
+       "t": ")."
+      }
+     ]
+    },
+    {
+     "claim": "MISS",
+     "variant": 1,
+     "text": "No parent, child, sibling, or spouse of «князь Андрей» is stated by the text.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sibling",
+       "a": "kin-lexicon@693f2377:key:atoms/sibling"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": " is stated by the text."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "UNB",
+     "variant": 0,
+     "text": "Kin words in the text with an unbound end: 57.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "Kin words in the text with an unbound end: "
+      },
+      {
+       "k": "val",
+       "t": "57",
+       "a": "val:count(kin/unbound)"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  }
+ ],
+ "batteries": [
+  {
+   "id": "B:ref_3e9c4cb2c234588a",
+   "template": "BATTERY",
+   "text": "battery of ref_3e9c4cb2c234588a",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Пьер» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Пьер».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Пьер",
+       "a": "ru#131-139"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "B:ref_af4bf20fc8d53da1",
+   "template": "BATTERY",
+   "text": "battery of ref_af4bf20fc8d53da1",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «князь Андрей» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «князь Андрей».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "князь Андрей",
+       "a": "ru#6124-6147"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "B:ref_f65d6aacd9daa788",
+   "template": "BATTERY",
+   "text": "battery of ref_f65d6aacd9daa788",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Долохов» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Долохов».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Долохов",
+       "a": "ru#37283-37297"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "B:ref_c382484da06b3598",
+   "template": "BATTERY",
+   "text": "battery of ref_c382484da06b3598",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анатоль» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анатоль».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анатоль",
+       "a": "ru#34992-35006"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "B:ref_12940782c7dc9cd0",
+   "template": "BATTERY",
+   "text": "battery of ref_12940782c7dc9cd0",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Князь Ипполит» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Князь Ипполит».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Князь Ипполит",
+       "a": "ru#2323-2348"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  },
+  {
+   "id": "B:ref_1e2238f00cce71a5",
+   "template": "BATTERY",
+   "text": "battery of ref_1e2238f00cce71a5",
+   "kind": "battery",
+   "sentences": [
+    {
+     "claim": "NONE",
+     "variant": 0,
+     "text": "No aunt, daughter-in-law, fraternal nephew, fraternal niece, grandchild, granddaughter, grandfather, grandmother, grandparent, grandson, maternal uncle, mother-in-law, paternal aunt, paternal uncle, po po, son-in-law, sororal nephew, sororal niece, uncle, or uterine nephew of «Анны Павловны» is derived.",
+     "segs": [
+      {
+       "k": "f",
+       "t": "No "
+      },
+      {
+       "k": "row",
+       "t": "aunt",
+       "a": "kin-lexicon@693f2377:key:composites/aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "daughter-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/daughter-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "fraternal niece",
+       "a": "kin-lexicon@693f2377:key:composites/fraternal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandchild",
+       "a": "kin-lexicon@693f2377:key:composites/grandchild"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "granddaughter",
+       "a": "kin-lexicon@693f2377:key:composites/granddaughter"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandfather",
+       "a": "kin-lexicon@693f2377:key:composites/grandfather"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandmother",
+       "a": "kin-lexicon@693f2377:key:composites/grandmother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandparent",
+       "a": "kin-lexicon@693f2377:key:composites/grandparent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "grandson",
+       "a": "kin-lexicon@693f2377:key:composites/grandson"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "maternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/maternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/mother-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal aunt",
+       "a": "kin-lexicon@693f2377:key:composites/paternal aunt"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "paternal uncle",
+       "a": "kin-lexicon@693f2377:key:composites/paternal uncle"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "po po",
+       "a": "kin-lexicon@693f2377:key:composites/po po"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "son-in-law",
+       "a": "kin-lexicon@693f2377:key:composites/son-in-law"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal nephew",
+       "a": "kin-lexicon@693f2377:key:composites/sororal nephew"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sororal niece",
+       "a": "kin-lexicon@693f2377:key:composites/sororal niece"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "uncle",
+       "a": "kin-lexicon@693f2377:key:composites/uncle"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "uterine nephew",
+       "a": "kin-lexicon@693f2377:key:composites/uterine nephew"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": " is derived."
+      }
+     ],
+     "extent": "ru#0-73890"
+    },
+    {
+     "claim": "MISS",
+     "variant": 0,
+     "text": "The text states no father, mother, parent, child, brother, sister, husband, or spouse of «Анны Павловны».",
+     "segs": [
+      {
+       "k": "f",
+       "t": "The text states no "
+      },
+      {
+       "k": "row",
+       "t": "father",
+       "a": "kin-lexicon@693f2377:key:atoms/father"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "mother",
+       "a": "kin-lexicon@693f2377:key:atoms/mother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "parent",
+       "a": "kin-lexicon@693f2377:key:atoms/parent"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "child",
+       "a": "kin-lexicon@693f2377:key:atoms/child"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "brother",
+       "a": "kin-lexicon@693f2377:key:atoms/brother"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "sister",
+       "a": "kin-lexicon@693f2377:key:atoms/sister"
+      },
+      {
+       "k": "f",
+       "t": ", "
+      },
+      {
+       "k": "row",
+       "t": "husband",
+       "a": "kin-lexicon@693f2377:key:atoms/husband"
+      },
+      {
+       "k": "f",
+       "t": ", or "
+      },
+      {
+       "k": "row",
+       "t": "spouse",
+       "a": "kin-lexicon@693f2377:key:atoms/spouse"
+      },
+      {
+       "k": "f",
+       "t": " of "
+      },
+      {
+       "k": "ru",
+       "t": "Анны Павловны",
+       "a": "ru#12497-12522"
+      },
+      {
+       "k": "f",
+       "t": "."
+      }
+     ],
+     "extent": "ru#0-73890"
+    }
+   ],
+   "uncomposed": [],
+   "style": [],
+   "inexpressible": []
+  }
+ ]
+}

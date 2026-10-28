@@ -1,0 +1,14 @@
+
+ref_1e3c588e16cf30fb: unshuffled ok=true (4 sentences)
+    «Борис» is the son of «Анна Михайловна».
+    The text states «Борис — офицер, сын княгини Анны Михайловны».
+    No parent, sibling, or spouse of «Анна Михайловна» is stated by the text.
+  S2 shuffled witnesses: 1 failures C3_WIT_witness_of_a_fact_the_paragraph_does_not_state
+  S1 shuffled ends:      4 failures C3_REL_no_fact_licenses_the_relation, C5_irrelevant_to_the_subject, C3_WIT_witness_of_a_fact_the_paragraph_does_not_state
+
+ref_b3b865650031b58a: unshuffled ok=true (5 sentences)
+    «Анна Михайловна» is the mother of «Борис» (candidate).
+    The text states «Борис — офицер, сын княгини Анны Михайловны».
+    The text states «Анны Михайловны».
+  S2 shuffled witnesses: 1 failures C3_WIT_witness_of_a_fact_the_paragraph_does_not_state
+  S1 shuffled ends:      5 failures C3_REL_no_fact_licenses_the_relation, C5_irrelevant_to_the_subject, C3_WIT_witness_of_a_fact_the_paragraph_does_not_state

@@ -1,0 +1,11 @@
+{
+  "schema": "KinTellingFrames@1",
+  "giver": "the author (session g1-3-composer, 2026-10-28), declared in gym/kin-telling/PREREG-G1-3-COMPOSER.md, Appendix A; a closed set, not a vocabulary: a word is usable only inside a declared skeleton",
+  "words": [
+    "absence", "also", "aligned", "an", "and", "as", "asserted", "be", "being", "by", "derive", "derived", "edition",
+    "end", "facts", "for", "gives", "has", "in", "is", "kin", "make", "names", "neither", "no", "nor", "not", "of", "or",
+    "reading", "reads", "stated", "states", "text", "the", "to", "unbound", "with", "words", "writes", "written"
+  ],
+  "punctuation": [".", ",", ";", "(", ")", ":"],
+  "quotes": ["«", "»"]
+}

@@ -1,0 +1,13 @@
+window dev: 75 sentences, 24 questions, 6 batteries
+B0 PASS  tripwire fired 0 (probe tripped: spawn true, fetch true); static scan kin-telling.mjs:ok kin-telling-check.mjs:ok kin-telling.mjs:ok
+B1 PASS  75 sentences, checker failures 0, addressed 1, self:model 0
+B2 PASS  in-scope answerable 8/8; ALL answerable 8/14 (0.571)
+B3 PASS  expected-gap questions 10/10; recorded gaps stated 125/125; gap cells named 120/120
+B4 PASS  S1 {"f":77,"ch":8,"rej":8}; S2 {"f":6,"ch":6,"rej":6,"constructible":true}
+B5 PASS  mutants 395/395 killed (M1 75/75, M2 60/60, M3 73/73, M8 75/75, M9 52/52, M10 21/21, M7 21/21, M4 6/6, M5 6/6, M6 6/6)
+B6 PASS  json 8bb278c44005 text d8d67b6c6b3a
+B7 PASS  recall composer 31/32 vs plain 25/32; plain linked-name recall 0.13636363636363635 over 22
+B8 PASS  24/24 documents claim-invariant across variants
+B9 PASS  18/18 field-settled, model-required 0, same text 18
+B10 PASS  synthetic growth: 7/7 documents pass, 7 answered cells, 73 gap cells, uncomposed 0, inexpressible janus gaps 14
+plain arm under the same checker: 24 sentences, addressed share 0
