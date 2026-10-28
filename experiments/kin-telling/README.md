@@ -43,7 +43,7 @@ The windows are the workspace's `foldcode-answer` and `foldcode-answer-heldout` 
 
 ## Pre-registration and results (this folder)
 
-`PREREG-G1-3-COMPOSER.md` (+ `.sha256`), `AMENDMENT-1.md`, `ADDENDUM-1.md` (the final files' hashes, written before the held-out run); `results/` holds the
+`PREREG-G1-3-COMPOSER.md` (+ `.sha256`), `AMENDMENT-1.md`, `ADDENDUM-1.md` (the final files' hashes, written before the held-out run), `ADDENDUM-2.md` (written after: the prior art borrowed, paralleled and declined; how a new claim kind is registered; the seam numbers, including that 12 count sentences per window are addressed only by the whole-text extent); `results/` holds the
 reports and `side-by-side-{dev,heldout}.md` (the composed English beside the plain baseline's reply for all 24 questions, with each sentence's addresses).
 
 | bar | development (chapters I to IV) | held-out (V to VIII, run once) |

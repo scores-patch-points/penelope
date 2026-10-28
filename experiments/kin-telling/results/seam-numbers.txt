@@ -1,0 +1,42 @@
+
+=== dev: per question (mouthShare / addressedShare strict / addressedShare wide / seamDensity wide / contract)
+Q1   mouth 0.0%  strict 22.0%  wide 40.2%  seamDensity(wide) 59.8%  contract ok
+Q2   mouth 0.0%  strict 38.7%  wide 38.7%  seamDensity(wide) 61.3%  contract ok
+Q3   mouth 0.0%  strict 41.7%  wide 52.6%  seamDensity(wide) 47.4%  contract ok
+Q4   mouth 0.0%  strict 58.5%  wide 66.0%  seamDensity(wide) 34.0%  contract ok
+Q5   mouth 0.0%  strict 40.6%  wide 51.9%  seamDensity(wide) 48.1%  contract ok
+Q6   mouth 0.0%  strict 56.9%  wide 64.3%  seamDensity(wide) 35.7%  contract ok
+Q8   mouth 0.0%  strict 51.8%  wide 61.6%  seamDensity(wide) 38.4%  contract ok
+Q9   mouth 0.0%  strict 40.3%  wide 40.3%  seamDensity(wide) 59.7%  contract ok
+Q11  mouth 0.0%  strict 51.8%  wide 61.6%  seamDensity(wide) 38.4%  contract ok
+Q14  mouth 0.0%  strict 10.4%  wide 31.3%  seamDensity(wide) 68.7%  contract ok
+Q17  mouth 0.0%  strict 30.8%  wide 44.9%  seamDensity(wide) 55.1%  contract ok
+Q18  mouth 0.0%  strict 40.3%  wide 40.3%  seamDensity(wide) 59.7%  contract ok
+Q19  mouth 0.0%  strict 17.6%  wide 36.8%  seamDensity(wide) 63.2%  contract ok
+Q20  mouth 0.0%  strict 37.6%  wide 53.9%  seamDensity(wide) 46.1%  contract ok
+Q21  mouth 0.0%  strict 57.1%  wide 70.2%  seamDensity(wide) 29.8%  contract ok
+Q22  mouth 0.0%  strict 20.8%  wide 39.2%  seamDensity(wide) 60.8%  contract ok
+Q23  mouth 0.0%  strict 54.7%  wide 64.5%  seamDensity(wide) 35.5%  contract ok
+Q24  mouth 0.0%  strict 30.2%  wide 44.9%  seamDensity(wide) 55.1%  contract ok
+ALL  dev: sentences 75; mouthShare 0.0%; addressedShare strict 31.7%, wide 62.6%; seamDensity strict 68.3%, wide 37.4%; contract ok strict true wide true; sentences with no source segment (strict): 12, (wide): 12
+
+=== heldout: per question (mouthShare / addressedShare strict / addressedShare wide / seamDensity wide / contract)
+Q1   mouth 0.0%  strict 10.4%  wide 31.3%  seamDensity(wide) 68.7%  contract ok
+Q2   mouth 0.0%  strict 41.8%  wide 41.8%  seamDensity(wide) 58.2%  contract ok
+Q3   mouth 0.0%  strict 22.0%  wide 40.2%  seamDensity(wide) 59.8%  contract ok
+Q4   mouth 0.0%  strict 14.9%  wide 34.7%  seamDensity(wide) 65.3%  contract ok
+Q5   mouth 0.0%  strict 48.1%  wide 59.6%  seamDensity(wide) 40.4%  contract ok
+Q6   mouth 0.0%  strict 14.9%  wide 34.7%  seamDensity(wide) 65.3%  contract ok
+Q8   mouth 0.0%  strict 40.0%  wide 52.2%  seamDensity(wide) 47.8%  contract ok
+Q9   mouth 0.0%  strict 44.6%  wide 44.6%  seamDensity(wide) 55.4%  contract ok
+Q11  mouth 0.0%  strict 30.8%  wide 44.9%  seamDensity(wide) 55.1%  contract ok
+Q14  mouth 0.0%  strict 20.8%  wide 39.2%  seamDensity(wide) 60.8%  contract ok
+Q17  mouth 0.0%  strict 50.0%  wide 60.2%  seamDensity(wide) 39.8%  contract ok
+Q18  mouth 0.0%  strict 43.2%  wide 43.2%  seamDensity(wide) 56.8%  contract ok
+Q19  mouth 0.0%  strict 22.0%  wide 40.2%  seamDensity(wide) 59.8%  contract ok
+Q20  mouth 0.0%  strict 50.4%  wide 65.9%  seamDensity(wide) 34.1%  contract ok
+Q21  mouth 0.0%  strict 34.2%  wide 47.9%  seamDensity(wide) 52.1%  contract ok
+Q22  mouth 0.0%  strict 14.9%  wide 34.7%  seamDensity(wide) 65.3%  contract ok
+Q23  mouth 0.0%  strict 40.2%  wide 53.1%  seamDensity(wide) 46.9%  contract ok
+Q24  mouth 0.0%  strict 49.2%  wide 59.7%  seamDensity(wide) 40.3%  contract ok
+ALL  heldout: sentences 55; mouthShare 0.0%; addressedShare strict 24.8%, wide 61.9%; seamDensity strict 75.2%, wide 38.1%; contract ok strict true wide true; sentences with no source segment (strict): 12, (wide): 12
