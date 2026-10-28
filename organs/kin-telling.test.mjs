@@ -287,6 +287,22 @@ test("round 2: the fact paragraphs give the shuffled controls material, and both
   }
 });
 
+test("round 3: the checker finds a kin word by its orthographic fold (the lexicon spells it with ё and a stress mark; the text does not)", () => {
+  const line = "Сестрам, сестер.";
+  const text2 = TEXT + line + "\n";
+  const buf2 = Buffer.from(text2, "utf8");
+  const spanOf = (word) => { const a = Buffer.byteLength(text2.slice(0, text2.indexOf(word))); return [a, a + Buffer.byteLength(word)]; };
+  const lex2 = { ...lexicon, russian: { ...lexicon.russian, сестра: { en: "sister", kind: "atom" } }, russian_forms: { ...lexicon.russian_forms, "сёстрам": "сестра", "сестёр": "сестра" } };
+  assert.ok(!("сестер" in lex2.russian_forms) && !("сестрам" in lex2.russian_forms), "the plain spellings are not in the table");
+  const fold2 = { ...fold, kin: { ...fold.kin, unbound: [{ ...unb("сын", "Ипполит, сын князя Василия") }, { why: "both_ends_unbound", byteSpan: spanOf("Сестрам"), text: "Сестрам", cat: "N" }, { why: "both_ends_unbound", byteSpan: spanOf("сестер"), text: "сестер", cat: "N" }] } };
+  const ctx = makeKinContext({ fold: fold2, textBuf: buf2, lexicon: lex2, lexiconSha: lexSha, parallel, parallelSha: parSha });
+  const chk = makeChecker({ fold: fold2, textBuf: buf2, lexicon: lex2, lexiconSha: lexSha, parallel, parallelSha: parSha, namePartsRu: nameParts, frames });
+  const d = composeQuestion(ctx, byId.Q2);
+  assert.match(d.sentences.find((x) => x.claim === "UNB").text, /«Сестрам», and «сестер»\.$/);
+  const v = chk.checkDoc(d, byId.Q2);
+  assert.equal(v.ok, true, JSON.stringify(v.failures));
+});
+
 // ── tests that need siblings or the workspace: typed SKIPs
 const janusHome = (() => { try { const p = kernelPath("janus", "native/organs/kinship.js"); return fs.existsSync(p) && fs.existsSync(kernelPath("janus", "priors/kin-lexicon.json")) ? p : null; } catch { return null; } })();
 test("growth: more facts, answered by the real janus deriveKin, flow through the unchanged composer and the checker", { skip: janusHome ? false : "janus-absent: native/organs/kinship.js" }, async () => {

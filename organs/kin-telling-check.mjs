@@ -207,14 +207,19 @@ export function makeChecker({ fold, textBuf, lexicon, lexiconSha, parallel = nul
   }
 
   // ── C4 witness support
+  // ROUND 3 (D1): the lookup is made on the ORTHOGRAPHIC FOLD of both sides (NFC, lower case, stress mark U+0301 removed, ё to е), the fold the text and the extractor compare by;
+  // the lexicon spells its forms as Wiktionary does (with ё and stress marks), the text does not.
+  const foldRu = (x) => String(x).normalize("NFC").toLowerCase().replace(/\u0301/g, "").replace(/ё/g, "е");
+  const FORMS = new Map(Object.entries(lexicon.russian_forms ?? {}).map(([w, L]) => [foldRu(w), foldRu(L)]));
+  const HEADS = new Map(Object.entries(lexicon.russian ?? {}).map(([L, v]) => [foldRu(L), v.en]));
   const kinWordAtoms = (token) => {
-    const lemma = lexicon.russian_forms?.[token.toLowerCase()] ?? (lexicon.russian?.[token.toLowerCase()] ? token.toLowerCase() : null);
-    if (!lemma) return null;
-    return lexicon.russian[lemma]?.en ?? null;
+    const f = foldRu(token);
+    const lemma = FORMS.get(f) ?? (HEADS.has(f) ? f : null);
+    return lemma ? (HEADS.get(lemma) ?? null) : null;
   };
   const holdsSurface = (quote, id) => [...surfacesOf.get(id)].some((s) => quote.toLowerCase().includes(s.toLowerCase()));
   function supports(quote, f) {
-    const tokens = quote.match(/[\p{L}-]+/gu) ?? [];
+    const tokens = quote.match(/[\p{L}\p{M}-]+/gu) ?? [];
     const ens = tokens.map(kinWordAtoms).filter(Boolean);
     if (f.rel === "sex") {
       if (!holdsSurface(quote, f.a)) return "end_not_in_quote";
@@ -335,7 +340,7 @@ export function makeChecker({ fold, textBuf, lexicon, lexiconSha, parallel = nul
         if (want.some((w) => w === null)) return fail("fold_unbound_without_byte_span");
         const got = b.L.map((g) => g.a);
         if (got.length !== want.length || [...got].sort().join("|") !== [...want].sort().join("|")) return fail("spans_differ_from_the_folds_unbound_statements");
-        for (const g of b.L) if (!(g.t.match(/[\p{L}-]+/gu) ?? []).some((t) => kinWordAtoms(t))) return fail("a_listed_span_is_not_a_kin_word");
+        for (const g of b.L) if (!(g.t.match(/[\p{L}\p{M}-]+/gu) ?? []).some((t) => kinWordAtoms(t))) return fail("a_listed_span_is_not_a_kin_word");
         return { ok: true };
       }
       case "ABS": {
