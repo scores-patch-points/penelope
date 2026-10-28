@@ -14,14 +14,6 @@ Files changed against main (`git diff --name-status origin/main`), the new ones 
 
 ```
 M	GLAUCA-EOT.md
-M	experiments/kin-telling/README.md
-M	gym/kin-telling-lib.mjs
-M	gym/kin-telling-mutants.mjs
-M	gym/kin-telling-run.mjs
-M	organs/kin-telling-check.mjs
-M	organs/kin-telling.mjs
-M	organs/kin-telling.test.mjs
-M	GLAUCA-EOT.md
 M	README.md
 M	TAPESTRY.md
 M	experiments/kin-telling/README.md
