@@ -25,7 +25,7 @@ const norm = (s) => String(s).replace(/\s+/g, " ").trim();
 const sha256 = (b) => createHash("sha256").update(b).digest("hex");
 const render = (g) => (g.k === "ru" || g.k === "ask" ? `«${g.t}»` : g.t);
 const KINDS = new Set(["f", "ru", "row", "rec", "ask", "val"]);
-const EXTENT_KINDS = new Set(["NONE", "MISS", "MISS-SEX", "MISS-OPEN", "UNB", "ABS"]);
+const EXTENT_KINDS = new Set(["NONE", "MISS", "MISS-SEX", "MISS-OPEN", "ABS"]);
 
 // ── the checker's OWN skeleton table (a second description of Appendix A; not shared with the composer).
 // tokens: a string is frame text; { m: kind, n: role } a material slot; { list: kind, n: role, join } a list slot; { opt: [tokens] } an optional clause.
@@ -52,7 +52,7 @@ const TABLE = [
   { id: "MISS-SEX", v: 0, p: ["The text states neither ", m("row", "X1"), " nor ", m("row", "X2"), " for ", m("ru", "B"), "."] },
   { id: "MISS-SEX", v: 1, p: ["Neither ", m("row", "X1"), " nor ", m("row", "X2"), " is stated for ", m("ru", "B"), " by the text."] },
   { id: "MISS-OPEN", v: 0, p: ["No ", m("row", "T"), " of ", m("ru", "B"), " is stated to be ", m("row", "X"), "; absence is not asserted."] },
-  { id: "UNB", v: 0, p: ["Kin words in the text with an unbound end: ", m("val", "V"), "."] },
+  { id: "UNB", v: 0, p: ["Kin words in the text with an unbound end: ", list("ru", "L", "and"), "."] },
   { id: "ABS", v: 0, p: ["The reading of the text has no being written ", m("ask", "Q"), "."] },
   { id: "ABS", v: 1, p: ["No being written ", m("ask", "Q"), " is in the reading of the text."] },
 ];
@@ -329,7 +329,15 @@ export function makeChecker({ fold, textBuf, lexicon, lexiconSha, parallel = nul
         }
         return { ok: true, subject: rs };
       }
-      case "UNB": return b.V.t === String(unbound.length) ? { ok: true } : fail("count_differs");
+      case "UNB": {
+        // round 2: the listed spans ARE the fold's unbound statements (the multiset of byte spans is equal), and each span's bytes are a Russian kin word of the lexicon
+        const want = unbound.map((u) => (Array.isArray(u.byteSpan) ? `ru#${u.byteSpan[0]}-${u.byteSpan[1]}` : null));
+        if (want.some((w) => w === null)) return fail("fold_unbound_without_byte_span");
+        const got = b.L.map((g) => g.a);
+        if (got.length !== want.length || [...got].sort().join("|") !== [...want].sort().join("|")) return fail("spans_differ_from_the_folds_unbound_statements");
+        for (const g of b.L) if (!(g.t.match(/[\p{L}-]+/gu) ?? []).some((t) => kinWordAtoms(t))) return fail("a_listed_span_is_not_a_kin_word");
+        return { ok: true };
+      }
       case "ABS": {
         const name = norm(b.Q.t);
         if (allSurfaces.some((s) => s.toLowerCase() === name.toLowerCase())) return fail("a_referent_has_that_surface");
@@ -428,7 +436,7 @@ export function makeChecker({ fold, textBuf, lexicon, lexiconSha, parallel = nul
   }
   function subjectOf(doc, question) {
     if (question?.referent) return question.referent;
-    const mm = /^B:(.+)$/.exec(doc.id ?? "");
+    const mm = /^[BF]:(.+)$/.exec(doc.id ?? "");
     return mm ? mm[1] : null;
   }
 
