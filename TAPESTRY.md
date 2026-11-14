@@ -76,7 +76,7 @@
 ║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │ ■KTL                │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
-║  │    │                     │ ■WRP ■MND           │                     │  ║
+║  │    │                     │ ■WRP ■MND ■EQV      │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -96,7 +96,7 @@
 ║  │    │ ■FRS ·RSM ·APO      │ ■STL ■PRB ■SPR ■TST │ ■CGT ■CUB ■LDR ■BOX │  ║
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
-║  │    │                     │ ■ESC ■MND           │ ·STM ■RSR ·STR ■FAP │  ║
+║  │    │                     │ ■ESC ■MND ■EQV      │ ·STM ■RSR ·STR ■FAP │  ║
 ║  │    │                     │                     │ ■SLF ■HMA ■WNB ■FCL │  ║
 ║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
@@ -114,7 +114,7 @@
 ║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
-║  │    │                     │ ■ESC ■MND           │                     │  ║
+║  │    │                     │ ■ESC ■MND ■EQV      │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
@@ -137,7 +137,7 @@
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘                                           ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆                                    ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -414,6 +414,9 @@
 ║     @ GL-BD-18 o/grounded-composition.mjs                                  ║
 ║■WMK 0 ○∘ ‡ weave-mark                                                      ║
 ║     @ o/weave-mark.mjs o/weave-mark.test.mjs GL-WM-01                      ║
+║■EQV 0 ⊨◆ ‡ equivalence                                                     ║
+║     @ o/equivalence.mjs o/equivalence.test.mjs g/equivalence-run.mjs       ║
+║     @ GL-EQ-01                                                             ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
