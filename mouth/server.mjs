@@ -19,6 +19,12 @@
 //                            The mouth decides draws; the weave orchestrates
 //                            generation (read units → field/hunt → mouth →
 //                            test → EOT). Both are penelope's — one server.
+//   POST /v1/weave/mark    — THE MARK DOOR (2026-11-14): an organ hands her a
+//                            mark for the shared log (pharos); she admits or
+//                            refuses it and is the only hand that writes it
+//                            (organs/weave-mark.mjs). No draw is made.
+//   POST /v1/weave/unweave — a retraction of marks that did not hold.
+//   GET  /v1/weave/status  — whether the loom is open, and why not.
 // Everything else: 404, never a silent pass.
 //
 // Identity rides headers (x-er7-user / x-er7-caller), the house rule; a
@@ -201,6 +207,8 @@ async function loadHeimdall(port) {
   }
 }
 
+let loomOpened = false; // the loom opens on the first mark-door request, so a mouth with no pharos pointer starts as before
+
 export function startMouth({ port = MOUTH_PORT } = {}) {
   let hm = { handle: async () => false, close() {} };
   loadHeimdall(port).then((m) => { if (m) hm = m; });
@@ -241,6 +249,21 @@ export function startMouth({ port = MOUTH_PORT } = {}) {
           output: j.output ?? null,
         }).catch((e) => ({ schema: "Weaving@1", ok: false, status: "error", error: String(e?.message ?? e).slice(0, 500) }));
         return json(res, result.ok ? 200 : 422, result);
+      }
+      // THE MARK DOOR: marks for the shared log. Loopback only; a mark is bylined in its body.
+      if (path.startsWith("/v1/weave/")) {
+        const from = req.socket.remoteAddress;
+        if (!["127.0.0.1", "::1", "::ffff:127.0.0.1"].includes(from)) return json(res, 403, { error: "loopback only" });
+        const W = await import("../organs/weave-mark.mjs");
+        if (!loomOpened) { loomOpened = true; await W.openLoom(); }
+        if (req.method === "GET" && path === "/v1/weave/status") return json(res, 200, W.loomStatus());
+        if (req.method === "POST" && (path === "/v1/weave/mark" || path === "/v1/weave/unweave")) {
+          let j;
+          try { j = JSON.parse((await readBody(req)).toString() || "{}"); } catch { return json(res, 400, { ok: false, reason: "bad_json" }); }
+          const r = path === "/v1/weave/mark" ? W.weaveMark(j) : W.unweave(j);
+          return json(res, r.ok ? 200 : r.status, r);
+        }
+        return json(res, 404, { error: `unknown weave route ${path} — default-deny` });
       }
       if (req.method !== "POST") return json(res, 404, { error: "default-deny" });
       if (path === "/v1/draw") return await handleDraw(req, res);

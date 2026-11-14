@@ -1,0 +1,118 @@
+// organs/weave-mark.mjs — Penelope weaves MARKS into the shared log (pharos), and unweaves them.
+// Handle: Penelope — she wove the cloth by day and unwove by night. A mark another organ wants in the
+// cloth is handed to her; she admits it or refuses it with a reason, and she is the only hand that
+// writes it. What later fails to verify she unweaves, which in pharos is a retraction entry and never
+// an erase.
+//
+// WHY ONE WEAVER. Wilson's trail deposits (khora kernel/stigmergy.js), the Fort ants' record
+// (fold-obsidian) and any later organ's marks would otherwise each open the log themselves, each with
+// its own idea of what may be written. Here the rule is in one place:
+//   - a mark is BYLINED (who asks), or it is refused;
+//   - a mark states its WITNESS (how the asker knows: what was observed or verified), or it is refused.
+//     Penelope does not re-verify the witness; she records it in the entry's basis so a reader can;
+//   - a mark's kind is DECLARED as an entry, with its cell and why, before the first mark of that kind.
+//     A kind not yet declared and sent with no declaration is refused, never guessed;
+//   - `of` may only name entries already in the log (pharos enforces this; the refusal is passed on).
+//
+// SHE KNOWS PHAROS ONLY BY A POINTER, the file the pharos door writes: { lib, sha256 }.
+//   pointer = $PENELOPE_PHAROS_JSON, else <this checkout>/pharos.json. No pointer, or a lib whose bytes
+//   do not match the pin: the loom is OFF and every mark is refused with that reason (503), so a caller
+//   keeps its mark and counts it. She never writes a mark anywhere else.
+// Writer name "penelope": one file per log, one writer. A log is named by the asker (its own holon's
+// log); the name is a plain token, never a path.
+//
+// PURE of the network (node builtins). The HTTP door is mouth/server.mjs (/v1/weave/*).
+import fs from "node:fs";
+import path from "node:path";
+import crypto from "node:crypto";
+import { fileURLToPath, pathToFileURL } from "node:url";
+
+export const MARK_SCHEMA = "WeaveMark@1";
+export const WEAVER = "penelope";
+const TOKEN = /^[A-Za-z0-9._-]+$/;
+const isObj = (x) => x !== null && typeof x === "object" && !Array.isArray(x);
+const refuse = (status, reason, detail) => ({ ok: false, schema: MARK_SCHEMA, status, reason, ...(detail ? { detail: String(detail).slice(0, 300) } : {}) });
+
+const loom = { on: false, why: "not opened", P: null, dir: null, handles: new Map(), woven: 0, unwoven: 0, refused: 0 };
+
+/** openLoom({ pointer, dir }) -> status. `dir` overrides where logs live (tests); else pharos decides. */
+export async function openLoom({ pointer = null, dir = null } = {}) {
+  Object.assign(loom, { on: false, why: "not opened", P: null, dir, handles: new Map() });
+  try {
+    const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+    const ptrPath = pointer ?? process.env.PENELOPE_PHAROS_JSON ?? path.join(root, "pharos.json");
+    if (!fs.existsSync(ptrPath)) { loom.why = `no pharos pointer at ${ptrPath}`; return loomStatus(); }
+    const ptr = JSON.parse(fs.readFileSync(ptrPath, "utf8"));
+    const lib = path.resolve(path.dirname(ptrPath), String(ptr.lib));
+    const got = crypto.createHash("sha256").update(fs.readFileSync(lib)).digest("hex");
+    if (got !== ptr.sha256) { loom.why = `pharos lib at ${lib} is not the pinned one (${got.slice(0, 12)} vs ${String(ptr.sha256).slice(0, 12)})`; return loomStatus(); }
+    loom.P = await import(pathToFileURL(lib).href);
+    Object.assign(loom, { on: true, why: "open" });
+  } catch (e) { loom.P = null; loom.why = `could not open pharos: ${e?.message ?? e}`; }
+  return loomStatus();
+}
+
+export const loomStatus = () => ({ schema: MARK_SCHEMA, on: loom.on, why: loom.why, weaver: WEAVER, logs: [...loom.handles.keys()], woven: loom.woven, unwoven: loom.unwoven, refused: loom.refused });
+
+function handleFor(log) {
+  if (loom.handles.has(log)) return loom.handles.get(log);
+  const h = loom.P.open(log, { writer: WEAVER, ...(loom.dir ? { dir: path.join(loom.dir, log) } : {}) });
+  loom.handles.set(log, h);
+  return h;
+}
+
+/** admitMark(mark) -> { ok: true } | refusal. Pure: the shape rules only, before the log is touched. */
+export function admitMark(mark) {
+  if (!isObj(mark)) return refuse(400, "not_a_mark");
+  if (typeof mark.by !== "string" || !TOKEN.test(mark.by)) return refuse(400, "unbylined", "by must name the asking organ ([A-Za-z0-9._-]+)");
+  if (typeof mark.log !== "string" || !TOKEN.test(mark.log)) return refuse(400, "no_log", "log must be a plain token naming the asker's log");
+  if (!isObj(mark.witness) || typeof mark.witness.how !== "string" || !mark.witness.how.trim()) return refuse(400, "no_witness", "witness.how must say how the asker knows what the mark says");
+  for (const k of ["kind", "cell", "addr"]) if (typeof mark[k] !== "string" || !mark[k]) return refuse(400, `no_${k}`);
+  if (!("body" in mark) || mark.body === undefined) return refuse(400, "no_body");
+  if (mark.of !== undefined && !(Array.isArray(mark.of) && mark.of.every((x) => typeof x === "string"))) return refuse(400, "bad_of");
+  if (mark.declare !== undefined && !(isObj(mark.declare) && typeof mark.declare.why === "string" && mark.declare.why.trim())) return refuse(400, "bad_declaration", "declare needs { why }");
+  return { ok: true };
+}
+
+/** weaveMark(mark) -> { ok, id, log, declared } | refusal.
+ *  mark: { by, log, kind, cell, addr, body, of?, basis?, witness: { how, ... }, declare?: { why } } */
+export function weaveMark(mark) {
+  const a = admitMark(mark);
+  if (!a.ok) { loom.refused += 1; return a; }
+  if (!loom.on) { loom.refused += 1; return refuse(503, "loom_off", loom.why); }
+  try {
+    const h = handleFor(mark.log), P = loom.P;
+    let declared = false;
+    const known = P.ground(h).kinds.find((k) => k.name === mark.kind);
+    if (!known) {
+      if (!mark.declare) { loom.refused += 1; return refuse(422, "undeclared_kind", `kind ${mark.kind} is not declared in log ${mark.log}; send declare: { why }`); }
+      P.weave(h, { cell: "DEF·Figure", kind: "kind", addr: `kind:${mark.kind}`, body: { name: mark.kind, cell: mark.cell, why: mark.declare.why, declared_by: mark.by } });
+      declared = true;
+    }
+    const e = P.weave(h, { cell: mark.cell, kind: mark.kind, addr: mark.addr, body: mark.body, of: mark.of ?? [], basis: { ...(isObj(mark.basis) ? mark.basis : {}), via: WEAVER, asked_by: mark.by, witness: mark.witness } });
+    loom.woven += 1;
+    return { ok: true, schema: MARK_SCHEMA, id: e.id, log: mark.log, declared };
+  } catch (e) { loom.refused += 1; return refuse(422, e?.code ? String(e.code).toLowerCase() : "pharos_refused", e?.message ?? e); }
+}
+
+/** unweave({ by, log, ids, why }) -> { ok, id } | refusal. A retraction entry `of` the ids; nothing is erased. */
+export function unweave(req) {
+  if (!isObj(req)) { loom.refused += 1; return refuse(400, "not_a_request"); }
+  if (typeof req.by !== "string" || !TOKEN.test(req.by)) { loom.refused += 1; return refuse(400, "unbylined"); }
+  if (typeof req.log !== "string" || !TOKEN.test(req.log)) { loom.refused += 1; return refuse(400, "no_log"); }
+  if (!(Array.isArray(req.ids) && req.ids.length && req.ids.every((x) => typeof x === "string"))) { loom.refused += 1; return refuse(400, "no_ids"); }
+  if (typeof req.why !== "string" || !req.why.trim()) { loom.refused += 1; return refuse(400, "no_why", "an unweaving states why the mark did not hold"); }
+  if (!loom.on) { loom.refused += 1; return refuse(503, "loom_off", loom.why); }
+  try {
+    const h = handleFor(req.log), ids = [...new Set(req.ids)].sort();
+    const e = loom.P.weave(h, { cell: "NUL·Figure", kind: "retract", addr: "retract:" + ids.join(","), body: { why: req.why, asked_by: req.by }, of: ids, basis: { via: WEAVER } });
+    loom.unwoven += 1;
+    return { ok: true, schema: MARK_SCHEMA, id: e.id, log: req.log, retracted: ids };
+  } catch (e) { loom.refused += 1; return refuse(422, e?.code ? String(e.code).toLowerCase() : "pharos_refused", e?.message ?? e); }
+}
+
+/** marks({ log, kind }) -> live entries of a kind (retracted ones are left out by pharos' fold). Null when off. */
+export function marks({ log, kind } = {}) {
+  if (!loom.on || typeof log !== "string" || !TOKEN.test(log)) return null;
+  return loom.P.fold(handleFor(log), kind ? { kind } : {}).entries;
+}

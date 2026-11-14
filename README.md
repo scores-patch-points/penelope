@@ -111,7 +111,7 @@ append-only, always revisable).
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∃  │ ∅ ∩∃                │ ○ ≈∃                │ ● ∪∃                │  ║
 ║  │    │ ■GAP ■NLB ·KNL ■EVO │ ■VDF □LOK ·KOE □TGR │ ■RDU ■HNT ■MTH ■CHT │  ║
-║  │    │                     │ ·SCR ·KIN           │ ■ADC ■ADP □CDB ·PAG │  ║
+║  │    │                     │ ·SCR ·KIN ■WMK      │ ■ADC ■ADP □CDB ·PAG │  ║
 ║  │    │                     │                     │ ·VOC ■PYT ■SIX ■NLG │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ | ∩⊞                │ → ≈⊞                │ △ ∪⊞                │  ║
@@ -134,7 +134,7 @@ append-only, always revisable).
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∃  │ ∃∘                  │ ∃◆                  │ ∃◈                  │  ║
 ║  │    │ ■VDF ■HNT ■NLB ■SIX │ ■RDU ■MTH ■GAP ■CHT │ ■ADC ■ADP □CDB ·PAG │  ║
-║  │    │                     │ □LOK ·KOE □TGR ·SCR │ ·KIN ·KNL           │  ║
+║  │    │ ■WMK                │ □LOK ·KOE □TGR ·SCR │ ·KIN ·KNL           │  ║
 ║  │    │                     │ ·VOC ■EVO ■PYT ■NLG │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ ⊞∘                  │ ⊞◆                  │ ⊞◈                  │  ║
@@ -161,7 +161,7 @@ append-only, always revisable).
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ≈  │ ≈∘                  │ ≈◆                  │ ≈◈                  │  ║
 ║  │    │ ■VDF ■FRS ■ADM ·APO │ ■FLD ■PRB ■TST ■DTF │ ■CGT ■LDR ■NBK □PTH │  ║
-║  │    │                     │ ■BHC □LOK ·KOE ·RUT │ ·ANS ·CRV ·KIN ·NET │  ║
+║  │    │ ■WMK                │ ■BHC □LOK ·KOE ·RUT │ ·ANS ·CRV ·KIN ·NET │  ║
 ║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
@@ -188,7 +188,7 @@ append-only, always revisable).
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆                                                  ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘                                           ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -465,6 +465,8 @@ append-only, always revisable).
 ║     @ o/generation/adapters/kin-telling.mjs g/kin-telling-run.mjs          ║
 ║     @ g/kin-telling-lib.mjs g/kin-telling-mutants.mjs GL-KT-01 GL-KT-02    ║
 ║     @ GL-BD-18 o/grounded-composition.mjs                                  ║
+║■WMK 0 ○∘ ‡ weave-mark                                                      ║
+║     @ o/weave-mark.mjs o/weave-mark.test.mjs GL-WM-01                      ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```
