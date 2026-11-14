@@ -1396,9 +1396,23 @@
     "g/kin-telling-lib.mjs",
     "g/kin-telling-mutants.mjs",
     "GL-KT-01",
-   "GL-KT-02",
+    "GL-KT-02",
     "GL-BD-18",
     "o/grounded-composition.mjs"
+   ]
+  },
+  {
+   "id": "WMK",
+   "name": "weave-mark",
+   "st": "■",
+   "lvl": 0,
+   "op": "SIG",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "o/weave-mark.mjs",
+    "o/weave-mark.test.mjs",
+    "GL-WM-01"
    ]
   }
  ]
