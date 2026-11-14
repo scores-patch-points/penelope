@@ -7,7 +7,7 @@ import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
 import http from "node:http";
-import { openLoom, admitMark, weaveMark, unweave, marks, loomStatus, WEAVER } from "./weave-mark.mjs";
+import { openLoom, admitMark, weaveMark, unweave, marks, loomStatus, WEAVER, mergeEntries, entriesOf } from "./weave-mark.mjs";
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "weave-mark-"));
 // a stub with pharos' contract as weave-mark uses it: open, ground, weave (undeclared kind and unknown `of` refused), fold (retracted left out)
@@ -124,4 +124,67 @@ test("real pharos: declare, weave, of-link, unweave, and the live fold", { skip:
   assert.equal(unweave({ by: "t", log: "khora-test", ids: [b.id], why: "did not hold" }).ok, true);
   const live = marks({ log: "khora-test", kind: "trail-deposit" });
   assert.equal(live.length, 1); assert.equal(live[0].by, WEAVER); assert.equal(live[0].basis.asked_by, "khora.hard-read");
+});
+
+// ---- merge (2026-11-14): another node's entries joined by union. Real pharos only. ----
+const MERGE_PTR = process.env.PENELOPE_PHAROS_TEST_JSON;
+const mergeNote = (log, addr, body) => ({ by: "test.node", log, kind: "note", cell: "INS·Figure", addr, body, witness: { how: "test" }, declare: { why: "a test note" } });
+const mergeReq = (log, from, entries) => ({ by: "test.surface", log, from, entries, witness: { how: "test: both logs are this test's own" } });
+
+test("merge: union by id, tampered entries refused, idempotent, disagreements kept as both", { skip: !MERGE_PTR && "PENELOPE_PHAROS_TEST_JSON not set" }, async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "weave-merge-"));
+  assert.equal((await openLoom({ pointer: MERGE_PTR, dir })).on, true);
+  for (const [log, v] of [["phone", "blue"], ["laptop", "green"]]) {
+    assert.ok(weaveMark(mergeNote(log, `note:${log}`, { text: `only on the ${log}` })).ok);
+    assert.ok(weaveMark(mergeNote(log, "note:shared", { colour: v })).ok);   // same address, different value on each node
+  }
+  const fromLaptop = entriesOf({ log: "laptop" });
+  const tampered = { ...fromLaptop.find((e) => e.addr === "note:laptop"), body: { text: "changed in transit" } };
+  const r1 = mergeEntries(mergeReq("phone", "laptop", [...fromLaptop, tampered]));
+  assert.equal(r1.ok, true, JSON.stringify(r1));
+  assert.ok(r1.added > 0);
+  assert.deepEqual(r1.refused.map((x) => x.reason), ["id_mismatch"]);
+  const notes = marks({ log: "phone", kind: "note" }).map((e) => e.addr).sort();
+  assert.deepEqual(notes, ["note:laptop", "note:phone", "note:shared", "note:shared"], "both values at the shared address are kept");
+  assert.ok(!JSON.stringify(entriesOf({ log: "phone" })).includes("changed in transit"));
+  const merged = entriesOf({ log: "phone" }).filter((e) => e.kind === "merged");
+  assert.equal(merged.length, 1); assert.equal(merged[0].cell, "SYN·Pattern"); assert.equal(merged[0].by, "penelope");
+
+  const r2 = mergeEntries(mergeReq("phone", "laptop", entriesOf({ log: "laptop" })));
+  assert.equal(r2.added, 0, "a second merge adds nothing");
+  assert.equal(entriesOf({ log: "phone" }).filter((e) => e.kind === "merged").length, 1, "and weaves no second merged entry");
+
+  assert.equal(mergeEntries({ ...mergeReq("phone", "laptop", []), witness: {} }).reason, "no_witness");
+  assert.equal(mergeEntries({ ...mergeReq("phone", "../x", []) }).reason, "no_from");
+});
+
+test("merge review (2026-11-14): forged bylines visible, SIG left out, kind redeclaration refused, dangling counted, a read never creates a log", { skip: !MERGE_PTR && "PENELOPE_PHAROS_TEST_JSON not set" }, async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "weave-merge-review-"));
+  assert.equal((await openLoom({ pointer: MERGE_PTR, dir })).on, true);
+  const P = await import(new URL(JSON.parse(fs.readFileSync(MERGE_PTR, "utf8")).lib, "file://" + MERGE_PTR).href);
+  assert.equal(entriesOf({ log: "nowhere" }), null, "reading a log that does not exist answers null");
+  assert.equal(fs.existsSync(path.join(dir, "nowhere")), false, "and creates nothing");
+
+  assert.ok(weaveMark(mergeNote("home", "note:a", { text: "a" })).ok);
+  assert.ok(weaveMark({ ...mergeNote("home", "trail:x", { n: 1 }), kind: "trail-deposit", cell: "SIG·Ground" }).ok);
+
+  // the other node: built with the lib directly, as a foreign node would be, including a forged byline
+  const other = P.open("other", { dir: path.join(dir, "other-node"), writer: "obsidian-person" });
+  P.weave(other, { cell: "DEF·Figure", kind: "kind", addr: "kind:note", body: { name: "note", cell: "INS·Figure" } });
+  P.weave(other, { cell: "DEF·Figure", kind: "kind", addr: "kind:trail-deposit", body: { name: "trail-deposit", cell: "SIG·Pattern" } });
+  const strike = P.weave(other, { cell: "INS·Figure", kind: "note", addr: "note:b", body: { text: "claims to be obsidian-person" } });
+  P.weave(other, { cell: "SIG·Pattern", kind: "trail-deposit", addr: "trail:y", body: { n: 2 } });
+  const offer = P.entries(other);
+  const orphan = offer.find((e) => e.id === strike.id);   // offered without its ancestors
+  const r = mergeEntries(mergeReq("home", "other", [...offer.filter((e) => e.kind !== "frame"), orphan]));
+  assert.equal(r.ok, true, JSON.stringify(r));
+  assert.ok(r.addedBy.includes("obsidian-person"), "a foreign byline is listed, not vouched for");
+  assert.deepEqual(r.refused.map((x) => x.reason), ["kind_redeclared"], JSON.stringify(r.refused));
+  assert.deepEqual(r.leftOut.map((x) => x.reason), ["left_out_sig"]);
+  assert.ok(r.dangling > 0, "the omitted frame leaves seen pointing at nothing, and that is counted");
+  const m = entriesOf({ log: "home" }).find((e) => e.kind === "merged");
+  assert.equal(m.body.authorship, "rests on the asker's witness alone");
+  assert.equal(m.body.addedIds.length, r.added);
+  assert.equal(m.body.addedIdsSha256, crypto.createHash("sha256").update([...m.body.addedIds].sort().join("\n")).digest("hex"));
+  assert.ok(!entriesOf({ log: "home" }).some((e) => e.addr === "trail:y"), "no foreign trail crossed");
 });
