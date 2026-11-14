@@ -25,6 +25,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import os from "node:os";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 export const MARK_SCHEMA = "WeaveMark@1";
@@ -115,4 +116,108 @@ export function unweave(req) {
 export function marks({ log, kind } = {}) {
   if (!loom.on || typeof log !== "string" || !TOKEN.test(log)) return null;
   return loom.P.fold(handleFor(log), kind ? { kind } : {}).entries;
+}
+
+// ---- MERGE: another node's entries, woven in whole ------------------------------------------------
+// Two pharos nodes (a person's phone and laptop) approach each other by union. The entries are already
+// woven, each with its own id, by, seen and at, so they are COPIED verbatim, never re-woven: pharos'
+// own merge appends them to her file. She is still the only hand that writes it.
+//
+// AUTHORSHIP OF MERGED ENTRIES RESTS ON THE ASKER'S WITNESS ALONE. An id is a hash of content, not a
+// signature: any caller can build an entry bylined as anyone with a valid id. A mark cannot do that (she
+// writes it as herself and records asked_by); a merge can. So she makes what came in visible instead of
+// vouching for it: the `merged` entry and the result list every distinct `by` that came in, and the
+// added set is recoverable (a sha256 over the sorted added ids, and the ids themselves when few).
+// Who may merge is decided by the asker (the pharos surface checks Matrix cross-signing) and stated in
+// its witness; she cannot check it.
+//
+// What she checks or leaves out, each reported, never silent:
+//   - not_an_entry / not_json / id_mismatch   refused (the rest go in)
+//   - kind_redeclared  a `kind` entry naming a kind this log (or an earlier incoming entry) declares at
+//                      another cell; weave refuses KIND_REDECLARED and pharos merge would not
+//   - left_out_sig     entries at a SIG cell: a trail is local traffic, kept apart so it can be dropped
+//                      whole (ruling 2026-11-14), so it never crosses a merge
+//   - dangling         `of`/`seen` ids pointing at neither this log nor the offer (counted, not refused:
+//                      the merge's version of an incomplete pass)
+// Nothing is resolved: entries that disagree stay as both, and the fold reports them.
+export const MERGE_SCHEMA = "WeaveMerge@1";
+const MERGED_KIND = { name: "merged", cell: "SYN·Pattern", why: "another node's entries were joined into this log by union; nothing was overruled" };
+// The `merged` body lists the added ids themselves up to this many; beyond it only their hash, so one
+// merge of a whole log cannot make one entry the size of the log.
+const ADDED_IDS_LISTED_UP_TO = 256;
+const isSig = (cell) => typeof cell === "string" && cell.startsWith("SIG·");
+
+// GAP (DEF x VOID, ruled 2026-11-14, not built): a node that has not applied a void will offer the voided
+// payload again, and its id still verifies. Once tombstones exist, an incoming id with a local tombstone
+// must be refused here as `voided`. Until then this always answers false.
+const tombstoned = (_h, _id) => false;
+
+export function mergeEntries(req) {
+  const bad = (status, reason, detail) => { loom.refused += 1; return { ...refuse(status, reason, detail), schema: MERGE_SCHEMA }; };
+  if (!isObj(req)) return bad(400, "not_a_request");
+  if (typeof req.by !== "string" || !TOKEN.test(req.by)) return bad(400, "unbylined");
+  if (typeof req.log !== "string" || !TOKEN.test(req.log)) return bad(400, "no_log");
+  if (typeof req.from !== "string" || !TOKEN.test(req.from)) return bad(400, "no_from", "from must name the other node with a plain token");
+  if (!isObj(req.witness) || typeof req.witness.how !== "string" || !req.witness.how.trim()) return bad(400, "no_witness");
+  if (!Array.isArray(req.entries)) return bad(400, "no_entries");
+  if (!loom.on) return bad(503, "loom_off", loom.why);
+  const P = loom.P;
+  if (typeof P.merge !== "function" || typeof P.entryId !== "function") return bad(501, "pharos_has_no_merge");
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "penelope-merge-"));
+  try {
+    const h = handleFor(req.log);
+    const local = P.entries(h), before = new Set(local.map((e) => e.id));
+    const declared = new Map(P.ground(h).kinds.map((k) => [k.name, k.cell]));
+    const refused = [], leftOut = [], ok = [];
+    for (const e of req.entries) {
+      if (!isObj(e) || typeof e.id !== "string") { refused.push({ id: null, reason: "not_an_entry" }); continue; }
+      let id; try { id = P.entryId(e); } catch { refused.push({ id: e.id, reason: "not_json" }); continue; }
+      if (id !== e.id) { refused.push({ id: e.id, reason: "id_mismatch" }); continue; }
+      if (tombstoned(h, e.id)) { refused.push({ id: e.id, reason: "voided" }); continue; }
+      if (isSig(e.cell)) { leftOut.push({ id: e.id, reason: "left_out_sig" }); continue; }
+      if (e.kind === "kind" && isObj(e.body) && typeof e.body.name === "string") {
+        const have = declared.get(e.body.name);
+        if (have && have !== e.body.cell) { refused.push({ id: e.id, reason: "kind_redeclared", detail: `${e.body.name} is ${have} here, ${e.body.cell} in the offer` }); continue; }
+        if (!have) declared.set(e.body.name, e.body.cell);
+      }
+      ok.push(e);
+    }
+    const known = new Set([...before, ...ok.map((e) => e.id)]);
+    let dangling = 0;
+    for (const e of ok) for (const x of [...(e.of || []), ...(e.seen || [])]) if (!known.has(x)) dangling++;
+
+    fs.writeFileSync(path.join(tmp, "incoming.jsonl"), ok.map((e) => P.canonical(e)).join("\n") + (ok.length ? "\n" : ""));
+    const hb = P.open("incoming", { dir: tmp, writer: "incoming", frame: false });
+    const { added } = P.merge(h, hb);
+    const addedIds = [...new Set(ok.map((e) => e.id))].filter((x) => !before.has(x)).sort();
+    const addedBy = [...new Set(ok.filter((e) => !before.has(e.id)).map((e) => e.by))].sort();
+    const addedIdsSha256 = crypto.createHash("sha256").update(addedIds.join("\n")).digest("hex");
+    let id = null;
+    if (added) {
+      if (!P.ground(h).kinds.find((k) => k.name === MERGED_KIND.name)) P.weave(h, { cell: "DEF·Figure", kind: "kind", addr: `kind:${MERGED_KIND.name}`, body: { name: MERGED_KIND.name, cell: MERGED_KIND.cell, why: MERGED_KIND.why, declared_by: WEAVER } });
+      const referenced = new Set(ok.flatMap((e) => [...(e.seen || []), ...(e.of || [])]));
+      const heads = addedIds.filter((x) => !referenced.has(x));
+      const body = {
+        from: req.from, offered: req.entries.length, added, refused: refused.length, leftOutSig: leftOut.length, dangling,
+        addedBy, addedIdsSha256, ...(addedIds.length <= ADDED_IDS_LISTED_UP_TO ? { addedIds } : {}),
+        authorship: "rests on the asker's witness alone",
+      };
+      const m = P.weave(h, { cell: MERGED_KIND.cell, kind: MERGED_KIND.name, addr: `merge:${req.from}`, body, of: heads, basis: { via: WEAVER, asked_by: req.by, witness: req.witness } });
+      id = m.id;
+    }
+    loom.woven += added;
+    return { ok: true, schema: MERGE_SCHEMA, log: req.log, offered: req.entries.length, added, refused, leftOut, dangling, addedBy, addedIdsSha256, id };
+  } catch (e) { return bad(422, e?.code ? String(e.code).toLowerCase() : "pharos_refused", e?.message ?? e); }
+  finally { fs.rmSync(tmp, { recursive: true, force: true }); }
+}
+
+/** entriesOf({ log }) -> every entry of a log (declarations and retractions included), for a merge on the
+ *  other side. A read never writes: a log with no frame yet is not created, and the answer is null. */
+export function entriesOf({ log } = {}) {
+  if (!loom.on || typeof log !== "string" || !TOKEN.test(log)) return null;
+  const dir = loom.dir ? path.join(loom.dir, log) : null;
+  if (dir && !loom.handles.has(log) && !fs.existsSync(dir)) return null;
+  const h = loom.handles.get(log) ?? loom.P.open(log, { writer: WEAVER, frame: false, ...(dir ? { dir } : {}) });
+  const all = loom.P.entries(h);
+  return all.some((e) => e.kind === "frame") ? all : null;
 }

@@ -24,6 +24,7 @@
 //                            refuses it and is the only hand that writes it
 //                            (organs/weave-mark.mjs). No draw is made.
 //   POST /v1/weave/unweave — a retraction of marks that did not hold.
+//   POST /v1/weave/merge   — another node's entries joined by union (pharos merge); ids checked, nothing resolved.
 //   GET  /v1/weave/status  — whether the loom is open, and why not.
 // Everything else: 404, never a silent pass.
 //
@@ -61,10 +62,13 @@ function json(res, status, obj, extra = {}) {
   res.end(JSON.stringify(obj));
 }
 
-function readBody(req) {
+// A merge posts a whole log. Bound what one request may hold in memory; a larger log is merged in parts.
+const MERGE_BODY_LIMIT_BYTES = 64 * 1024 * 1024;
+function readBody(req, limit = Infinity) {
   return new Promise((resolve, reject) => {
     const chunks = [];
-    req.on("data", (c) => chunks.push(c));
+    let n = 0;
+    req.on("data", (c) => { n += c.length; if (n > limit) { req.destroy(); reject(Object.assign(new Error("body too large"), { status: 413, code: "body_too_large" })); } else chunks.push(c); });
     req.on("end", () => resolve(Buffer.concat(chunks)));
     req.on("error", reject);
   });
@@ -261,6 +265,13 @@ export function startMouth({ port = MOUTH_PORT } = {}) {
           let j;
           try { j = JSON.parse((await readBody(req)).toString() || "{}"); } catch { return json(res, 400, { ok: false, reason: "bad_json" }); }
           const r = path === "/v1/weave/mark" ? W.weaveMark(j) : W.unweave(j);
+          return json(res, r.ok ? 200 : r.status, r);
+        }
+        if (req.method === "POST" && path === "/v1/weave/merge") {
+          let j;
+          try { j = JSON.parse((await readBody(req, MERGE_BODY_LIMIT_BYTES)).toString() || "{}"); }
+          catch (e) { return json(res, e.status === 413 ? 413 : 400, { ok: false, reason: e.status === 413 ? "body_too_large" : "bad_json" }); }
+          const r = W.mergeEntries(j);
           return json(res, r.ok ? 200 : r.status, r);
         }
         return json(res, 404, { error: `unknown weave route ${path} — default-deny` });
