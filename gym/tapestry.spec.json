@@ -1414,6 +1414,21 @@
     "o/weave-mark.test.mjs",
     "GL-WM-01"
    ]
+  },
+  {
+   "id": "EQV",
+   "name": "equivalence",
+   "st": "■",
+   "lvl": 0,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/equivalence.mjs",
+    "o/equivalence.test.mjs",
+    "g/equivalence-run.mjs",
+    "GL-EQ-01"
+   ]
   }
  ]
 }

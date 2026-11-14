@@ -1,0 +1,3108 @@
+{
+ "schema": "EquivalenceRun@1",
+ "ladder": {
+  "rungs": [
+   "casual",
+   "strict"
+  ],
+  "by": "ants session (Wilson's ants role in fold)",
+  "why": "from the grounds' own descriptions: strict is an auditor's baseline; drafts, not ratified",
+  "ratified": false
+ },
+ "inputs": {
+  "casual": {
+   "file": "ledgers/finder-text/dev/information.casual.jsonl",
+   "sha256": "8e8ab7cd94a6f1a23cc86b00e94cd8ae2ddbaa1e9d195ccb1a19ee2624874ee9"
+  },
+  "strict": {
+   "file": "ledgers/finder-text/dev/information.strict.jsonl",
+   "sha256": "f545c3c386a804cccba2bab2a7a971d15abb5df71dfca7a02ae4ab6713268432"
+  },
+  "pairs": {
+   "file": "ledgers/finder-text/dev/pairs.json",
+   "sha256": "ed1dc62bf56378ce5594b19a29babaa5bde04b42a5177c46a0a785f927726b32"
+  }
+ },
+ "pairs": 56,
+ "decidedAtBoth": 21,
+ "undecided": {
+  "casual": 13,
+  "strict": 32
+ },
+ "classesByLabel": {
+  "undecided>different": {
+   "OTHER": 3
+  },
+  "same>undecided": {
+   "SAME": 6,
+   "OTHER": 14
+  },
+  "same>different": {
+   "OTHER": 1
+  },
+  "same>same": {
+   "SAME": 13,
+   "OTHER": 3
+  },
+  "undecided>undecided": {
+   "OTHER": 4,
+   "SAME": 2,
+   "CONTRADICTS": 4
+  },
+  "different>different": {
+   "CONTRADICTS": 4
+  },
+  "different>undecided": {
+   "CONTRADICTS": 2
+  }
+ },
+ "classesByType": {
+  "undecided>different": {
+   "N": 3
+  },
+  "same>undecided": {
+   "P": 6,
+   "D": 3,
+   "N": 11
+  },
+  "same>different": {
+   "D": 1
+  },
+  "same>same": {
+   "P": 13,
+   "N": 3
+  },
+  "undecided>undecided": {
+   "D": 3,
+   "P": 2,
+   "N": 2,
+   "C": 3
+  },
+  "different>different": {
+   "C": 4
+  },
+  "different>undecided": {
+   "D": 1,
+   "C": 1
+  }
+ },
+ "P1": {
+  "claim": "no pair is same at the strict rung and different at the loose one",
+  "violations": [],
+  "pass": true
+ },
+ "P2": {
+  "claim": "every CONTRADICTS pair decided at both rungs is different at both",
+  "n": 4,
+  "notDifferentAtBoth": [],
+  "pass": true
+ },
+ "P3": {
+  "claim": "among pairs same at loose and different at strict, the share labelled SAME is at most the set's share",
+  "flips": 1,
+  "flipsLabelledSame": 0,
+  "share": 0,
+  "setShare": 0.375,
+  "tooFew": true,
+  "byLabel": {
+   "OTHER": 1
+  },
+  "byType": {
+   "D": 1
+  },
+  "pass": null
+ },
+ "P4": {
+  "casual": {
+   "same_with_surviving": 0,
+   "different_with_none": 0
+  },
+  "strict": {
+   "same_with_surviving": 0,
+   "different_with_none": 0
+  }
+ },
+ "P5": {
+  "decidedAtBoth": 21,
+  "casualSubsetOfStrict": 17
+ },
+ "against": {
+  "pairsWithAFirstDifference": 1
+ },
+ "judgements": [
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW001",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 4,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 4,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "undecided",
+     "becomes": "different"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "strict",
+    "why": "holds from strict to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "strict",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "strict"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW005",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW006",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 1,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "different"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "strict",
+    "why": "holds from strict to strict"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": "strict",
+   "frameDependent": true,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW008",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW010",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW011",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 2,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW013",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "a branch the ground requires could not be said",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "a branch the ground requires could not be said"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW014",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW015",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW016",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 2,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 2,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "undecided",
+     "becomes": "different"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "strict",
+    "why": "holds from strict to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "strict",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "strict"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW017",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW018",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW001",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW003",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW004",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW006",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW007",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW008",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW013",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW014",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW015",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW016",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW018",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 2,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "a branch the ground requires could not be said",
+     "surviving": 2,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "a branch the ground requires could not be said"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW021",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 3,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 3,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW023",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW026",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW027",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW028",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW029",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "a branch the ground requires could not be said",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "a branch the ground requires could not be said"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW033",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW034",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW035",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW037",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW038",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW039",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW040",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW041",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW043",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "a branch the ground requires could not be said",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "a branch the ground requires could not be said"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW044",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW048",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 1,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "undecided",
+     "becomes": "different"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "strict",
+    "why": "holds from strict to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "strict",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "strict"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW051",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW056",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "same",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": "strict",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": true
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW058",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW061",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW062",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW064",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "same",
+     "why": "is",
+     "surviving": 0,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "same",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": "casual",
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW003",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 11,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 5,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": false
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW004",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 10,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 7,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW009",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 7,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 4,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "the searches disagree or say nothing (both)"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW012",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 11,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 5,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": false
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "AW020",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 14,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 6,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": false
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW002",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 6,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 3,
+     "accumulationAgrees": true
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "different",
+    "from": "casual",
+    "why": "holds from casual to strict"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual",
+     "strict"
+    ],
+    "incompleteOver": []
+   },
+   "accumulates": false
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW005",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 1,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "no stop at this rung",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "different",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "no stop at this rung"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW009",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 10,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "no stop at this rung",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "no stop at this rung"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW010",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "different",
+     "why": "is-not",
+     "surviving": 15,
+     "accumulationAgrees": true
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "no stop at this rung",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [
+    {
+     "from": "casual",
+     "to": "strict",
+     "was": "different",
+     "becomes": "undecided"
+    }
+   ],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": "casual",
+   "frameDependent": false,
+   "range": {
+    "covered": [
+     "casual"
+    ],
+    "incompleteOver": [
+     {
+      "rung": "strict",
+      "why": "no stop at this rung"
+     }
+    ]
+   },
+   "accumulates": null
+  },
+  {
+   "schema": "Equivalence@1",
+   "ok": true,
+   "pid": "BW011",
+   "ladder": {
+    "rungs": [
+     "casual",
+     "strict"
+    ],
+    "by": "ants session (Wilson's ants role in fold)",
+    "ratified": false
+   },
+   "rungs": [
+    {
+     "rung": "casual",
+     "verdict": "undecided",
+     "why": "the searches disagree or say nothing (both)",
+     "surviving": 1,
+     "accumulationAgrees": null
+    },
+    {
+     "rung": "strict",
+     "verdict": "undecided",
+     "why": "no stop at this rung",
+     "surviving": 0,
+     "accumulationAgrees": null
+    }
+   ],
+   "steps": [],
+   "monotone": true,
+   "limit": {
+    "verdict": "undecided",
+    "from": null,
+    "why": "the strictest rung is not decided"
+   },
+   "sameUpTo": null,
+   "differentFrom": null,
+   "frameDependent": false,
+   "range": {
+    "covered": [],
+    "incompleteOver": [
+     {
+      "rung": "casual",
+      "why": "the searches disagree or say nothing (both)"
+     },
+     {
+      "rung": "strict",
+      "why": "no stop at this rung"
+     }
+    ]
+   },
+   "accumulates": null
+  }
+ ]
+}
