@@ -1,0 +1,11 @@
+{
+  "note": "DRAFT pair bound, unratified. The numbers and rules are the paraphrase seam contract's (2026-11-15), which carries the development constants of ledgers/paraphrase-100 (composite/composite.mjs: the diff bound and the p95 of 50 nulls, the three-wording witness). Written by an agent so the runner can be exercised; the person ratifies or replaces it, and the harness's caller puts their own byline on the bound it declares.",
+  "name": "paraphrase-100-dev",
+  "by": "claude-draft",
+  "why": "the bound the composite of ledgers/paraphrase-100 used on its development pairs (diff share bound fixed before the run, word licence at the 0.95 quantile of 50 nulls, three wordings unanimous per direction); carried over as a draft, not ratified",
+  "ratified": false,
+  "share": 0.5032467532467533,
+  "wordQuantile": 0.95,
+  "quantileRule": "sorted[min(n-1, ceil(q*n)-1)], count must be strictly greater",
+  "witness": "three wordings, unanimous per direction"
+}
