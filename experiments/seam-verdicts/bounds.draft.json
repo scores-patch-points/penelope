@@ -1,0 +1,6 @@
+{
+  "note": "DRAFT bounds, unratified. Written by an agent so the runner can be exercised; the person ratifies or replaces each one. Nothing here is derived from data.",
+  "word": { "quantile": 0.95, "by": "claude-draft", "why": "the quantile used in ledgers/paraphrase-100/PREREG.md step 1, where it was fixed before the run; carried over as a draft, not ratified", "ratified": false },
+  "run": { "maxErrorFindings": 0, "by": "claude-draft", "why": "the reading khora's reason.mjs applied itself until 2026-11-15 (ok = no error findings); carried over as a draft, not ratified", "ratified": false },
+  "standing": { "rungs": ["restated", "grounded", "independent"], "floor": 2, "grounded": ["cited", "event"], "by": "claude-draft", "why": "the floor of two and the grounded verdicts khora's read-time fold used (standingOf, GROUNDED_VERDICTS), made a declared ladder with instruments as the last rung; a draft, not ratified", "ratified": false }
+}

@@ -1429,6 +1429,21 @@
     "g/equivalence-run.mjs",
     "GL-EQ-01"
    ]
+  },
+  {
+   "id": "SMV",
+   "name": "seam-verdicts",
+   "st": "■",
+   "lvl": 0,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/seam-verdicts.mjs",
+    "o/seam-verdicts.test.mjs",
+    "g/seam-verdicts-run.mjs",
+    "GL-SV-01"
+   ]
   }
  ]
 }
