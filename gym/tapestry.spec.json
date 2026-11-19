@@ -1479,8 +1479,11 @@
     "o/vantage-verdicts.test.mjs",
     "o/perspective-eva.mjs",
     "o/perspective-eva.test.mjs",
+    "g/perspective-run.mjs",
+    "g/perspective-run.test.mjs",
     "GL-FV-01",
-    "GL-PE-01"
+    "GL-PE-01",
+    "GL-PE-02"
    ]
   },
   {

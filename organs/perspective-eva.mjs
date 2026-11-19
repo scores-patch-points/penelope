@@ -45,7 +45,85 @@ export function judgeEquivalence({ perspective, a = {}, b = {} } = {}) {
   if (agreements.length) return { verdict: "equivalent", for: perspective.name, differences, agreements, silent, powerless, why: `${agreements.length} probe(s) with power could have found a difference and did not` };
   return { verdict: "gap", for: perspective.name, differences, agreements, silent, powerless, why: silent.length === probes.length ? "every probe is silent" : "the only answered probes have no measured power" };
 }
-export const KINDS = Object.freeze({
-  "equivalence-verdict": { cell: "EVA·Figure", why: "equivalent / different / gap for a declared perspective: no difference that makes a difference among the perspective's own probes; silent and powerless probes are listed, never counted as agreement" },
-  "perspective": { cell: "DEF·Ground", why: "a declared perspective: its probes and their measured power, bylined and fixed before either side is read" },
+// ---- DEF: a perspective declared, bylined, with the measured power of every probe ---------------------------------------------------------------
+// The wiring contract (gym/perspective-run.mjs, Penelope's door). She reads by KIND, never by author: `probe-answer` entries (a reading's answer to a declared
+// probe, written by whoever read: khora, janus, a script) and her own `perspective` entries; she writes `equivalence-verdict` entries. She reads no text and
+// calls no other organ. Nothing is defaulted: every number a perspective uses (a probe's power, a tolerance) is declared, bylined, and cites where it was measured.
+export const PERSPECTIVE_SCHEMA = "Perspective@1";
+const isObj = (x) => x !== null && typeof x === "object" && !Array.isArray(x);
+const str = (x) => typeof x === "string" && x.trim().length > 0;
+const refuse = (reason, detail) => ({ schema: PERSPECTIVE_SCHEMA, ok: false, verdict: "refused", reason, ...(detail ? { detail } : {}) });
+/** Rules a probe may name for "these two answers are the same", by their declared text. Each is a computation, not a hidden tolerance: a tolerance is the probe's own `tol`. */
+export const KNOWN_SAME_RULES = Object.freeze({
+  "strict equality": { needsTol: false, same: (x, y) => x === y },
+  "relative difference at most tol": { needsTol: true, same: (x, y, tol) => typeof x === "number" && typeof y === "number" && Math.abs(x - y) / Math.max(Math.abs(x), Math.abs(y), 1e-9) <= tol },
 });
+/** declarePerspective({ name, by, why, terrain, frame, probes: [{ name, lands, power, powerFrom, rule, tol? }], ratified }) -> the perspective or a refusal. */
+export function declarePerspective(spec = {}) {
+  if (!isObj(spec)) return refuse("no_perspective");
+  if (!str(spec.by)) return refuse("unbylined_perspective", "a perspective is declared by someone");
+  if (!str(spec.why)) return refuse("no_why", "a perspective says why it is this perspective");
+  if (typeof spec.name !== "string" || !/^[A-Za-z0-9._-]+$/.test(spec.name)) return refuse("no_name", "a perspective has a name, a plain token, for its address perspective:<name>");
+  if (!INTERPRETATION.includes(spec.terrain)) return refuse("terrain_not_interpretation", `a perspective lives at ${INTERPRETATION.join(", ")}; got ${spec.terrain ?? "none"}`);
+  if (!str(spec.frame)) return refuse("no_frame", "the standard of meaning (the frame) is declared");
+  if (!Array.isArray(spec.probes) || !spec.probes.length) return refuse("no_probes", "nothing could make a difference");
+  const probes = [];
+  for (const p of spec.probes) {
+    if (!isObj(p) || typeof p.name !== "string" || !/^[A-Za-z0-9._-]+$/.test(p.name)) return refuse("bad_probe", "a probe has a plain-token name");
+    if (!TERRAINS.includes(p.lands)) return refuse("probe_lands_nowhere", `probe ${p.name} lands on a terrain: ${TERRAINS.join(", ")}`);
+    if (typeof p.power !== "number" || !Number.isFinite(p.power) || p.power < 0 || p.power > 1) return refuse("no_power", `probe ${p.name}: power is declared, a number from 0 to 1 (0 = never seen to separate non-equivalent things)`);
+    if (!str(p.powerFrom)) return refuse("power_unsourced", `probe ${p.name}: say where its power was measured (a ledger row, a stamp)`);
+    const R = KNOWN_SAME_RULES[p.rule];
+    if (!R) return refuse("unknown_same_rule", `this organ computes only: ${Object.keys(KNOWN_SAME_RULES).join(" | ")}`);
+    if (R.needsTol && !(typeof p.tol === "number" && p.tol > 0 && p.tol < 1)) return refuse("no_tol", `probe ${p.name}: the rule "${p.rule}" needs its tol declared, a number strictly between 0 and 1`);
+    probes.push({ name: p.name, lands: p.lands, power: p.power, powerFrom: p.powerFrom, rule: p.rule, ...(R.needsTol ? { tol: p.tol } : {}) });
+  }
+  if (new Set(probes.map((p) => p.name)).size !== probes.length) return refuse("duplicate_probe", "probe names are unique");
+  return { schema: PERSPECTIVE_SCHEMA, ok: true, name: spec.name, by: spec.by, why: spec.why, ratified: spec.ratified === true, terrain: spec.terrain, frame: spec.frame, probes };
+}
+/** the runnable form for judgeEquivalence: each probe's declared rule becomes its `same` */
+export const runnable = (p) => ({ name: p.name, terrain: p.terrain, frame: p.frame, probes: p.probes.map((q) => ({ name: q.name, lands: q.lands, power: q.power, same: (x, y) => KNOWN_SAME_RULES[q.rule].same(x, y, q.tol) })) });
+/** perspectiveFromEntry(entry) -> the perspective a `perspective` log entry declares (its name is its address) */
+export function perspectiveFromEntry(entry) {
+  const addr = typeof entry?.addr === "string" ? entry.addr : "";
+  if (!addr.startsWith("perspective:") || !isObj(entry.body)) return refuse("not_a_perspective");
+  return declarePerspective({ ...entry.body, name: addr.slice("perspective:".length) });
+}
+export const perspectiveBody = (p) => ({ addr: `perspective:${p.name}`, body: { by: p.by, why: p.why, ratified: p.ratified, terrain: p.terrain, frame: p.frame, probes: p.probes } });
+
+// ---- EVA over the log's answers -----------------------------------------------------------------------------------------------------------------
+/** answersOf(entries) -> { [pair]: { a: { probe: { value, addr } }, b: {...}, ids: [entry ids] } }, the latest entry at each address winning (fold order). Read by kind, never by author. */
+export function answersOf(entries = []) {
+  const latest = new Map();
+  for (const e of entries) if (e?.kind === "probe-answer" && isObj(e.body) && typeof e.body.pair === "string" && (e.body.side === "a" || e.body.side === "b") && typeof e.body.probe === "string") latest.set(e.addr, e);
+  const out = {};
+  for (const e of latest.values()) {
+    const g = (out[e.body.pair] ||= { a: {}, b: {}, ids: [] });
+    g[e.body.side][e.body.probe] = { value: e.body.value ?? null, addr: e.body.addr ?? e.addr };
+    g.ids.push(e.id);
+  }
+  return out;
+}
+/** judgeFromAnswers(perspective, group) -> the judgement: the perspective's own probes read from the pair's answers; answers to probes it never declared are ignored */
+export const judgeFromAnswers = (perspective, group) => judgeEquivalence({ perspective: runnable(perspective), a: group.a, b: group.b });
+const shaOfPair = (pair) => (typeof pair === "string" && pair.startsWith("pair:") ? pair.slice(5) : null);
+export const equivalenceBody = (pair, perspective, j) => ({ addr: `equivalence:${shaOfPair(pair)}:${perspective.name}`, body: { pair, for: perspective.name, terrain: perspective.terrain, frame: perspective.frame, verdict: j.verdict, why: j.why, differences: j.differences, agreements: j.agreements, silent: j.silent, powerless: j.powerless } });
+export const KINDS = Object.freeze({
+  "equivalence-verdict": { cell: "EVA·Figure", why: "equivalent / different / gap for a declared perspective: no difference that makes a difference among the perspective's own probes; silent and powerless probes are listed, never counted as agreement; a hole is an entry" },
+  "perspective": { cell: "DEF·Ground", why: "a declared perspective at an Interpretation terrain: its frame, its probes with their measured power, the terrain each lands on; bylined and fixed before either side is read" },
+  "probe-answer": { cell: "INS·Figure", why: "the answer one reading gave to one declared probe of one pair, with the address it was read from; written by whoever read, read by Penelope by kind" },
+});
+/** marksFor({ perspective, pair, judgement, perspectiveId, answerIds, log, by }) -> WeaveMark@1 marks for organs/weave-mark.mjs */
+export function marksFor({ perspective = null, pair = null, judgement = null, perspectiveId = null, answerIds = [], supersedes = null, log, by = "penelope.perspective" } = {}) {
+  const out = [];
+  if (perspective?.ok && !judgement) {
+    const { addr, body } = perspectiveBody(perspective);
+    out.push({ by, log, kind: "perspective", cell: KINDS.perspective.cell, addr, body, of: supersedes ? [supersedes] : [], witness: { how: "declared by its byline; not derived from any data" }, declare: { why: KINDS.perspective.why } });
+  }
+  if (perspective?.ok && judgement && shaOfPair(pair)) {
+    const { addr, body } = equivalenceBody(pair, perspective, judgement);
+    out.push({ by, log, kind: "equivalence-verdict", cell: KINDS["equivalence-verdict"].cell, addr, body, of: [perspectiveId, ...answerIds].filter(Boolean),
+      basis: { schema: PERSPECTIVE_SCHEMA }, witness: { how: "computed from the perspective and the probe-answer entries named in `of`, read from the log by kind; no text read, no model called" }, declare: { why: KINDS["equivalence-verdict"].why } });
+  }
+  return out;
+}
