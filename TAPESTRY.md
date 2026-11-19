@@ -62,6 +62,7 @@
 ║  │    │ ■GAP ■NLB ·KNL ■EVO │ ■VDF □LOK ·KOE □TGR │ ■RDU ■HNT ■MTH ■CHT │  ║
 ║  │    │                     │ ·SCR ·KIN ■WMK      │ ■ADC ■ADP □CDB ·PAG │  ║
 ║  │    │                     │                     │ ·VOC ■PYT ■SIX ■NLG │  ║
+║  │    │                     │                     │ ■SBF                │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ | ∩⊞                │ → ≈⊞                │ △ ∪⊞                │  ║
 ║  │    │ ■SNP ■DOR ·TER ■WSN │ ■FLD ■DTF ■ADM ·NET │ ■SEL ■EOT ■BLD ■ASK │  ║
@@ -90,7 +91,7 @@
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∃  │ ∃∘                  │ ∃◆                  │ ∃◈                  │  ║
 ║  │    │ ■VDF ■HNT ■NLB ■SIX │ ■RDU ■MTH ■GAP ■CHT │ ■ADC ■ADP □CDB ·PAG │  ║
-║  │    │ ■WMK                │ □LOK ·KOE □TGR ·SCR │ ·KIN ·KNL           │  ║
+║  │    │ ■WMK ■SBF           │ □LOK ·KOE □TGR ·SCR │ ·KIN ·KNL           │  ║
 ║  │    │                     │ ·VOC ■EVO ■PYT ■NLG │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ⊞  │ ⊞∘                  │ ⊞◆                  │ ⊞◈                  │  ║
@@ -133,7 +134,7 @@
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
-║  │    │                     │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
+║  │    │ ■SBF                │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
 ║  │    │                     │ ■POD ■NLG ■WRT ■MJS │ ■CCL ■OVW ■CPL ■GDC │  ║
 ║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
@@ -145,7 +146,7 @@
 ║ │    □LIM⊨◈ □LLD⊨◈ □LMO⊨◈ □LOG⊨◈ □LPS⊨◈ □LQA⊨◈ □LRR⊨◈ □LRS⊨◈ □LTP⊨◈        ║
 ║ │    □LWK⊨◈ □LWP⊨◈ □LWV⊨◈                                                  ║
 ║ │ 3  ■CHT●◆ ■BLD△◈ ■NBK⊨◈ ■DOR|∘ ■ASK△◈ ■ADM→∘ ·PAG●◈ ·LFL△◈ ·TER|◈        ║
-║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■AGS⊨◆                                           ║
+║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■AGS⊨◆ ■SBF●∘                                    ║
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
@@ -507,7 +508,10 @@
 ║■MJS 1 △◆ ‡ mini-js                                                         ║
 ║     @ g/mini-js-ast.mjs g/mini-js-demo.mjs g/mini-js-diff.mjs GL-HS-01     ║
 ║■LDG 1 ⊨◈ ‡ ledger-check                                                    ║
-║     @ g/ledger-check.mjs g/ledger-check.test.mjs GL-LG-01                  ║
+║     @ g/ledger-check.mjs g/ledger-check.test.mjs GL-LG-01 GL-LG-02         ║
+║■SBF 3 ●∘ ‡ session-brief                                                   ║
+║     @ g/session-brief.mjs g/session-brief.test.mjs g/session-brief-hook.sh ║
+║     @ GL-SB-01                                                             ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

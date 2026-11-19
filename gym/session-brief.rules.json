@@ -1,0 +1,14 @@
+{
+ "about": "The standing rules a session must meet before it works on the Fold/EO research. Each has a source. Edit here; BRIEF.md is generated from this and from experiments/zero-overlap/LEDGER.md (node gym/session-brief.mjs --write); a test fails when BRIEF.md differs from what this would generate.",
+ "rules": [
+  { "rule": "Default is Other. Sameness is earned by a test an impostor cannot pass; silence is a hole, never a vote.", "source": "GL-FV-01, GL-PV-01 (GLAUCA-EOT.md)" },
+  { "rule": "No model judges whether two texts say the same. A giver nominates; usage licenses against a seeded null.", "source": "the owner's ruling of 2026-11-16; GL-PV-01" },
+  { "rule": "Stamp the protocol (sha of the PREREG file) BEFORE scoring. A change after seeing data goes in an erratum. A held-out or fresh set is read ONCE; a second scoring is REUSED. Checked by `node gym/ledger-check.mjs`.", "source": "GL-LG-01, GL-LG-02" },
+  { "rule": "Quote every number with its split label (DEV, FRESH, HELD-OUT, REUSED, EXPLORATORY) and its stamp. A measure that changed is a new ledger row or a recorded pin, never the same number under the same name.", "source": "experiments/zero-overlap/LEDGER.md, measures.jsonl" },
+  { "rule": "Relations, containers and anchors are about referents, not strings. Relationships must be computable from the reading itself; structured data (Wikidata) may score or ratify, never be required at run time.", "source": "khora CLAUDE.md (the referent rule); the owner, 2026-11-18/19" },
+  { "rule": "Read through ONE door: khora native/reading.js readDocument or native/the-fold/read-process.mjs readToWeft. Both refuse a read with no priors unless allowDegraded or KHORA_ALLOW_DEGRADED=1; native/eval drivers are control arms, not the reader. Priors: KHORA_PRIORS_DIR or ~/Documents/janus/priors. Pharos beside khora, or PHAROS_HOME.", "source": "khora native/tests/one-door.test.mjs, native/the-fold/read-process.mjs assertPrimed" },
+  { "rule": "Start from origin/main, not a stale branch: `git fetch`, and say which commit you read. A session that began on the cast-identity branch reported 'no pronoun coref' for a gap main had already closed.", "source": "the regression diagnosis, 2026-11-18" },
+  { "rule": "Do not push, merge or change user-level configuration without the owner's yes. Commit only paths you can name. The active gh account cannot open pull requests on the org repos; `git push` works.", "source": "penelope CLAUDE.md (concurrent writers); the session record" },
+  { "rule": "A negative result is a finding: record it, with its falsifier. Do not redo what is listed under TRIED AND REFUSED without a new idea.", "source": "experiments/zero-overlap/LEDGER.md" }
+ ]
+}

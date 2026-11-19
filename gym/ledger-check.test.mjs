@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseLedger, checkLedger, checkFiles } from "./ledger-check.mjs";
+import { parseLedger, checkLedger, checkFiles, parsePins, pinsToWrite, latestPin } from "./ledger-check.mjs";
 
 const SPLITS = { a: { what: "x", regenerate: "r" }, b: { what: "y", regenerate: "r" } };
 const row = (n, label, splits, { result = "a number", stamp = "0123456789abcdef", repro = "`python3 s.py`" } = {}) => `| ${n} | claim | ${result} | ${label} | ${splits} | ${stamp} | ${repro} |`;
@@ -45,4 +45,25 @@ test("a malformed row is flagged, never skipped", () => {
 test("the real zero-overlap ledger's labels hold", () => {
   const dir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "experiments", "zero-overlap");
   assert.deepEqual(checkFiles(dir), []);
+});
+
+const pin = (row, file, sha, why = "initial", at = "2026-11-18") => ({ schema: "MeasurePin@1", row, file, sha256: sha, at, why });
+const withPins = (pins, sha) => checkLedger({ rows: parseLedger([row(1, "DEV", "a:dev, b:dev", { repro: "`python3 s.py`" })].join("\n")), splits: SPLITS, exists: () => true, pins, shaOf: () => sha });
+test("a measure that is not pinned is flagged; a pinned one whose bytes are unchanged passes", () => {
+  assert.match(withPins([], "aaa")[0], /s\.py is not pinned/);
+  assert.deepEqual(withPins([pin(1, "s.py", "aaa")], "aaa"), []);
+});
+test("a measure CHANGED under its name is flagged with its pin and reason, until the change is recorded", () => {
+  const p = withPins([pin(1, "s.py", "aaa", "first")], "bbb");
+  assert.equal(p.length, 1); assert.match(p[0], /the measure s\.py changed since its pin of 2026-11-18 \(first\)/);
+  assert.deepEqual(withPins([pin(1, "s.py", "aaa", "first"), pin(1, "s.py", "bbb", "the null was redrawn; numbers re-run in row 18")], "bbb"), []);
+});
+test("pinsToWrite appends only the missing or changed pins, with the reason", () => {
+  const rows = parseLedger([row(1, "DEV", "a:dev", { repro: "`python3 s.py` `python3 t.py`" })].join("\n"));
+  const out = pinsToWrite({ rows, pins: [pin(1, "s.py", "aaa")], shaOf: (f) => (f === "s.py" ? "aaa" : "ccc"), exists: () => true, why: "new script", at: "2026-11-19" });
+  assert.deepEqual(out.map((x) => [x.file, x.sha256, x.why]), [["t.py", "ccc", "new script"]]);
+});
+test("a malformed pin line is reported, never skipped", () => {
+  const parsed = parsePins(JSON.stringify(pin(1, "s.py", "aaa")) + "\nnot json\n" + JSON.stringify({ schema: "MeasurePin@1", row: 1 }));
+  assert.equal(parsed.filter((x) => x.bad).length, 2); assert.equal(latestPin(parsed.filter((x) => !x.bad), 1, "s.py").sha256, "aaa");
 });

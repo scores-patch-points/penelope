@@ -1863,7 +1863,23 @@
    "refs": [
     "g/ledger-check.mjs",
     "g/ledger-check.test.mjs",
-    "GL-LG-01"
+    "GL-LG-01",
+    "GL-LG-02"
+   ]
+  },
+  {
+   "id": "SBF",
+   "name": "session-brief",
+   "st": "■",
+   "lvl": 3,
+   "op": "INS",
+   "grain": "Ground",
+   "typing": "‡",
+   "refs": [
+    "g/session-brief.mjs",
+    "g/session-brief.test.mjs",
+    "g/session-brief-hook.sh",
+    "GL-SB-01"
    ]
   }
  ]
