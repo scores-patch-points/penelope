@@ -9,6 +9,7 @@
  */
 
 const fs = require('fs');
+const { swatch } = require('./swatch-row');
 const { SessionLog, EntryType, LONG_THRESHOLD } = require('./session-log');
 
 const OLLAMA = "http://localhost:11434";
@@ -49,6 +50,7 @@ async function llm(session, model, messages, purpose, maxTokens = 900, temperatu
     }),
     signal: AbortSignal.timeout(300000),
   });
+  swatch(__filename, model.id || model, res.ok);
   if (!res.ok) throw new Error(`Ollama ${model.id || model} ${res.status}`);
   const content = (await res.json()).message?.content || "";
 

@@ -64,7 +64,9 @@ export const coverable = (files) => files.filter((f) =>
 // organs/arrangement-out/ is the engine's OUTPUT (gitignored, written by every
 // arrange() run): watching it made a fresh clone un-greenable (the stamp listed
 // 133 files no clone has) and made generating self-trigger the drift check.
-export const GENERATED_OUTPUT = /^organs\/arrangement-out\//;
+// gym/composed/ is the composer's OUTPUT in the same sense (essays and pages written by the gym writers): 26 tracked files that no thread
+// can own and that every composing run adds to.
+export const GENERATED_OUTPUT = /^(organs\/arrangement-out|gym\/composed)\//;
 export const watched = (files) => files.filter((f) =>
   !GENERATED_OUTPUT.test(f) && (/^(organs|gym|ladder)\//.test(f) && f !== "gym/check-tapestry.mjs" && !f.endsWith(".jsonl") && f !== GENERATED_PAGE && !/^gym\/(tapestry\.(spec|legend)\.json|server\.log)$/.test(f)) || f === "apps/record.json" || f === "LOOMS.md");
 

@@ -5,6 +5,7 @@
  */
 
 const fs = require('fs');
+const { swatch } = require('./swatch-row');
 
 const MODEL = "gemma2:2b";
 const OLLAMA_URL = "http://localhost:11434";
@@ -21,6 +22,7 @@ async function callModel(messages, maxTokens = 900) {
     }),
     signal: AbortSignal.timeout(300000),
   });
+  swatch(__filename, MODEL, res.ok);
   if (!res.ok) throw new Error(`Ollama error ${res.status}: ${await res.text()}`);
   const data = await res.json();
   return data.message?.content || "";

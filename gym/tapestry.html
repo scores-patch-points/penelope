@@ -66,7 +66,8 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║  │    │                     │ ■WND ■AGD ■AGC ■GDR │ ■TAP ■LIB □TKB □BPG │  ║
 ║  │    │                     │                     │ ·HOR ·LFL ·SWT ■CCL │  ║
 ║  │    │                     │                     │ ■OVW ■CPL ■GDC ■STG │  ║
-║  │    │                     │                     │ ■ESS ■POD ■WPG      │  ║
+║  │    │                     │                     │ ■ESS ■POD ■WPG ■FLN │  ║
+║  │    │                     │                     │ ■WRT ■MJS           │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
@@ -75,7 +76,12 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND ■EQV ■SMV │                     │  ║
-║  │    │                     │ ■PVD                │                     │  ║
+║  │    │                     │ ■PVD ■FRV □UDL □LAG │                     │  ║
+║  │    │                     │ □LBD □LCB □LCD □LEN │                     │  ║
+║  │    │                     │ □LHM □LIM □LLD □LMO │                     │  ║
+║  │    │                     │ □LOG □LPS □LQA □LRR │                     │  ║
+║  │    │                     │ □LRS □LTP □LWK □LWP │                     │  ║
+║  │    │                     │ □LWV ■AGS           │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -89,15 +95,21 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║  │    │ ■DOR ■ADM ■LIB      │ ■FLD ■SNP ■EOT ■DTF │ ■SEL ■BLD ■ASK ■TAP │  ║
 ║  │    │                     │ □TKB ·HOR ·SWT ■WND │ □BPG ·LFL ·TER ·NET │  ║
 ║  │    │                     │ ■AGD ■WSN ■AGC ■GDR │ ■CCL ■OVW ■CPL ■GDC │  ║
-║  │    │                     │ ■STG ■ESS ■POD      │ ■WPG                │  ║
+║  │    │                     │ ■STG ■ESS ■POD ■WRT │ ■WPG ■FLN           │  ║
+║  │    │                     │ ■MJS                │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∀  │ ∀∘                  │ ∀◆                  │ ∀◈                  │  ║
 ║  │    │ ■FRS ·RSM ·APO      │ ■STL ■PRB ■SPR ■TST │ ■CGT ■CUB ■LDR ■BOX │  ║
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ ·STM ■RSR ·STR ■FAP │  ║
-║  │    │                     │ ■PVD                │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │ ■PVD ■FRV ■AGS      │ ■SLF ■HMA ■WNB ■FCL │  ║
 ║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
+║  │    │                     │                     │ □UDL □LAG □LBD □LCB │  ║
+║  │    │                     │                     │ □LCD □LEN □LHM □LIM │  ║
+║  │    │                     │                     │ □LLD □LMO □LOG □LPS │  ║
+║  │    │                     │                     │ □LQA □LRR □LRS □LTP │  ║
+║  │    │                     │                     │ □LWK □LWP □LWV      │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -110,25 +122,28 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║  │ ≈  │ ≈∘                  │ ≈◆                  │ ≈◈                  │  ║
 ║  │    │ ■VDF ■FRS ■ADM ·APO │ ■FLD ■PRB ■TST ■DTF │ ■CGT ■LDR ■NBK □PTH │  ║
 ║  │    │ ■WMK                │ ■BHC □LOK ·KOE ·RUT │ ·ANS ·CRV ·KIN ·NET │  ║
-║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP           │  ║
-║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
-║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
-║  │    │                     │ ■ESC ■MND ■EQV ■SMV │                     │  ║
-║  │    │                     │ ■PVD                │                     │  ║
+║  │    │                     │ □GAR □TGR ·MAR ·VIS │ ■WNB ■WRP □UDL □LAG │  ║
+║  │    │                     │ ·SCR ·POL ■WND ■AGD │ □LBD □LCB □LCD □LEN │  ║
+║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │ □LHM □LIM □LLD □LMO │  ║
+║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ □LOG □LPS □LQA □LRR │  ║
+║  │    │                     │ ■PVD ■FRV ■AGS      │ □LRS □LTP □LWK □LWP │  ║
+║  │    │                     │                     │ □LWV                │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
 ║  │    │                     │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
-║  │    │                     │ ■POD ■NLG           │ ■CCL ■OVW ■CPL ■GDC │  ║
+║  │    │                     │ ■POD ■NLG ■WRT ■MJS │ ■CCL ■OVW ■CPL ■GDC │  ║
 ║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
-║  │    │                     │                     │ ■TLS ■KTL           │  ║
+║  │    │                     │                     │ ■TLS ■KTL ■FLN      │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
 ║ ↑ 4  ■NLB∅∘ ■CUB=◈ ■LDR⊨◈ ■BOX↬◈ ■LAW=◈ ■GLA=◈ ■TAP△◈ ■LIB△∘ ·DEM↬◈        ║
-║ │    ·KNL∅◈ ·STM=◈                                                         ║
+║ │    ·KNL∅◈ ·STM=◈ □UDL⊨◈ □LAG⊨◈ □LBD⊨◈ □LCB⊨◈ □LCD⊨◈ □LEN⊨◈ □LHM⊨◈        ║
+║ │    □LIM⊨◈ □LLD⊨◈ □LMO⊨◈ □LOG⊨◈ □LPS⊨◈ □LQA⊨◈ □LRR⊨◈ □LRS⊨◈ □LTP⊨◈        ║
+║ │    □LWK⊨◈ □LWP⊨◈ □LWV⊨◈                                                  ║
 ║ │ 3  ■CHT●◆ ■BLD△◈ ■NBK⊨◈ ■DOR|∘ ■ASK△◈ ■ADM→∘ ·PAG●◈ ·LFL△◈ ·TER|◈        ║
-║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘                                                  ║
+║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■AGS⊨◆                                           ║
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
@@ -137,7 +152,8 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆                      ║
+║ │    ■WRT△◆ ■MJS△◆                                                         ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆ ■FLN△◈        ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -402,7 +418,8 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║     @ o/notes-ledger.mjs                                                   ║
 ║■TLS 2 ↬◈ ‡ telos                                                           ║
 ║     @ o/telos.mjs o/telos.test.mjs GL-TL-01 GL-TL-02                       ║
-║     @ o/hyperlexicon-record.mjs E7/organs/pathos.js                        ║
+║     @ o/hyperlexicon-record.mjs o/hyperlexicon-record.test.mjs             ║
+║     @ E7/organs/pathos.js                                                  ║
 ║■KTL 2 ↬◈ ‡ kin-telling                                                     ║
 ║     @ o/kin-telling.mjs o/kin-telling-check.mjs o/kin-telling.test.mjs     ║
 ║     @ o/generation/adapters/kin-telling.mjs g/kin-telling-run.mjs          ║
@@ -419,5 +436,69 @@ pre{margin:0;overflow-x:auto;font-size:clamp(9px,1.9vw,15px);line-height:1.45}</
 ║■PVD 0 ⊨◆ ‡ pair-verdicts                                                   ║
 ║     @ o/pair-verdicts.mjs o/pair-verdicts.test.mjs g/pair-verdicts-run.mjs ║
 ║     @ g/pair-verdicts-run.test.mjs GL-PV-01                                ║
+║■FRV 0 ⊨◆ ‡ frame-verdicts                                                  ║
+║     @ o/frame-verdicts.mjs o/frame-verdicts.test.mjs o/relation-fold.mjs   ║
+║     @ o/relation-fold.test.mjs o/vantage-verdicts.mjs                      ║
+║     @ o/vantage-verdicts.test.mjs GL-FV-01                                 ║
+║■FLN 0 △◈ ‡ fold-note                                                       ║
+║     @ o/fold-note.mjs o/fold-note.test.mjs GL-FN-01                        ║
+║■WRT 1 △◆ ‡ essay-writers                                                   ║
+║     @ g/write-essay.js g/write-cited-essay.js g/write-eot-cited.js         ║
+║     @ g/write-predictive-essay.js g/write-table-essay.js                   ║
+║     @ g/write-contested-real.js g/write-contested-test.js                  ║
+║     @ g/write-witness-pipeline.js g/swatch-row.js o/swatch-row.mjs         ║
+║     @ o/swatch-row.test.mjs GL-WR-01                                       ║
+║                                                                            ║
+║□ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║□UDL 4 ⊨◈ ‡ udhr-learnings                                                  ║
+║     @ GL-UD-01 GL-UD-02 GL-UD-03 GL-UD-04 GL-UD-05 GL-UD-06 GL-UD-07       ║
+║     @ GL-UD-08 GL-UD-09 GL-UD-10 GL-UD-11 GL-UD-12 GL-UD-13 GL-UD-14       ║
+║     @ GL-UD-15                                                             ║
+║□LAG 4 ⊨◈ ‡ laws-agentic                                                    ║
+║     @ GL-AG-02 GL-AG-03                                                    ║
+║□LBD 4 ⊨◈ ‡ laws-build                                                      ║
+║     @ GL-BD-09 GL-BD-10 GL-BD-11 GL-BD-12 GL-BD-14 GL-BD-15 GL-BD-16       ║
+║     @ GL-BD-17 GL-BD-19 GL-BD-20 GL-BD-21                                  ║
+║□LCB 4 ⊨◈ ‡ laws-cube-helix                                                 ║
+║     @ GL-CB-02                                                             ║
+║□LCD 4 ⊨◈ ‡ laws-code-gates                                                 ║
+║     @ GL-CD-01 GL-CD-02 GL-CD-03 GL-CD-04 GL-CD-08 GL-CD-09 GL-CD-10       ║
+║     @ GL-CD-12 GL-CD-14 GL-CD-15 GL-CD-16                                  ║
+║□LEN 4 ⊨◈ ‡ laws-engine                                                     ║
+║     @ GL-EN-17 GL-EN-22                                                    ║
+║□LHM 4 ⊨◈ ‡ laws-handmaidens                                                ║
+║     @ GL-HM-01 GL-HM-02                                                    ║
+║□LIM 4 ⊨◈ ‡ laws-image                                                      ║
+║     @ GL-IM-02 GL-IM-04 GL-IM-05                                           ║
+║□LLD 4 ⊨◈ ‡ laws-lighthouse-zero-mouth                                      ║
+║     @ GL-LD-04 GL-LD-08                                                    ║
+║□LMO 4 ⊨◈ ‡ laws-models                                                     ║
+║     @ GL-MO-01 GL-MO-02 GL-MO-03 GL-MO-04 GL-MO-05 GL-MO-06 GL-MO-07       ║
+║     @ GL-MO-08                                                             ║
+║□LOG 4 ⊨◈ ‡ laws-organs                                                     ║
+║     @ GL-OG-01 GL-OG-07                                                    ║
+║□LPS 4 ⊨◈ ‡ laws-perspective                                                ║
+║     @ GL-PS-02 GL-PS-03 GL-PS-04 GL-PS-07 GL-PS-10                         ║
+║□LQA 4 ⊨◈ ‡ laws-quality                                                    ║
+║     @ GL-QA-01 GL-QA-02 GL-QA-03 GL-QA-04 GL-QA-05                         ║
+║□LRR 4 ⊨◈ ‡ laws-round-robin-doors                                          ║
+║     @ GL-RR-01 GL-RR-02 GL-RR-03 GL-RR-04 GL-RR-05 GL-RR-06 GL-RR-07       ║
+║     @ GL-RR-08 GL-RR-09 GL-RR-10                                           ║
+║□LRS 4 ⊨◈ ‡ laws-run-holograph                                              ║
+║     @ GL-RS-02 GL-RS-03                                                    ║
+║□LTP 4 ⊨◈ ‡ laws-tapestry                                                   ║
+║     @ GL-TP-03 GL-TP-04                                                    ║
+║□LWK 4 ⊨◈ ‡ laws-writers                                                    ║
+║     @ GL-WK-01                                                             ║
+║□LWP 4 ⊨◈ ‡ laws-white-paper                                                ║
+║     @ GL-WP-01 GL-WP-02 GL-WP-03 GL-WP-04 GL-WP-05 GL-WP-07                ║
+║□LWV 4 ⊨◈ ‡ laws-weave-keeper                                               ║
+║     @ GL-WV-04 GL-WV-06 GL-WV-08 GL-WV-09 GL-WV-10 GL-WV-18 GL-WV-19       ║
+║                                                                            ║
+║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
+║■AGS 3 ⊨◆ ‡ agentic-surface                                                 ║
+║     @ g/agentic-server.mjs g/agentic.html GL-HS-01                         ║
+║■MJS 1 △◆ ‡ mini-js                                                         ║
+║     @ g/mini-js-ast.mjs g/mini-js-demo.mjs g/mini-js-diff.mjs GL-HS-01     ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝</pre>

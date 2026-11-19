@@ -1376,6 +1376,7 @@
     "GL-TL-01",
     "GL-TL-02",
     "o/hyperlexicon-record.mjs",
+    "o/hyperlexicon-record.test.mjs",
     "E7/organs/pathos.js"
    ]
   },
@@ -1477,6 +1478,378 @@
     "o/vantage-verdicts.mjs",
     "o/vantage-verdicts.test.mjs",
     "GL-FV-01"
+   ]
+  },
+  {
+   "id": "FLN",
+   "name": "fold-note",
+   "st": "■",
+   "lvl": 0,
+   "op": "SYN",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "o/fold-note.mjs",
+    "o/fold-note.test.mjs",
+    "GL-FN-01"
+   ]
+  },
+  {
+   "id": "WRT",
+   "name": "essay-writers",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "g/write-essay.js",
+    "g/write-cited-essay.js",
+    "g/write-eot-cited.js",
+    "g/write-predictive-essay.js",
+    "g/write-table-essay.js",
+    "g/write-contested-real.js",
+    "g/write-contested-test.js",
+    "g/write-witness-pipeline.js",
+    "g/swatch-row.js",
+    "o/swatch-row.mjs",
+    "o/swatch-row.test.mjs",
+    "GL-WR-01"
+   ]
+  },
+  {
+   "id": "UDL",
+   "name": "udhr-learnings",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-UD-01",
+    "GL-UD-02",
+    "GL-UD-03",
+    "GL-UD-04",
+    "GL-UD-05",
+    "GL-UD-06",
+    "GL-UD-07",
+    "GL-UD-08",
+    "GL-UD-09",
+    "GL-UD-10",
+    "GL-UD-11",
+    "GL-UD-12",
+    "GL-UD-13",
+    "GL-UD-14",
+    "GL-UD-15"
+   ]
+  },
+  {
+   "id": "LAG",
+   "name": "laws-agentic",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-AG-02",
+    "GL-AG-03"
+   ]
+  },
+  {
+   "id": "LBD",
+   "name": "laws-build",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-BD-09",
+    "GL-BD-10",
+    "GL-BD-11",
+    "GL-BD-12",
+    "GL-BD-14",
+    "GL-BD-15",
+    "GL-BD-16",
+    "GL-BD-17",
+    "GL-BD-19",
+    "GL-BD-20",
+    "GL-BD-21"
+   ]
+  },
+  {
+   "id": "LCB",
+   "name": "laws-cube-helix",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-CB-02"
+   ]
+  },
+  {
+   "id": "LCD",
+   "name": "laws-code-gates",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-CD-01",
+    "GL-CD-02",
+    "GL-CD-03",
+    "GL-CD-04",
+    "GL-CD-08",
+    "GL-CD-09",
+    "GL-CD-10",
+    "GL-CD-12",
+    "GL-CD-14",
+    "GL-CD-15",
+    "GL-CD-16"
+   ]
+  },
+  {
+   "id": "LEN",
+   "name": "laws-engine",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-EN-17",
+    "GL-EN-22"
+   ]
+  },
+  {
+   "id": "LHM",
+   "name": "laws-handmaidens",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-HM-01",
+    "GL-HM-02"
+   ]
+  },
+  {
+   "id": "LIM",
+   "name": "laws-image",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-IM-02",
+    "GL-IM-04",
+    "GL-IM-05"
+   ]
+  },
+  {
+   "id": "LLD",
+   "name": "laws-lighthouse-zero-mouth",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-LD-04",
+    "GL-LD-08"
+   ]
+  },
+  {
+   "id": "LMO",
+   "name": "laws-models",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-MO-01",
+    "GL-MO-02",
+    "GL-MO-03",
+    "GL-MO-04",
+    "GL-MO-05",
+    "GL-MO-06",
+    "GL-MO-07",
+    "GL-MO-08"
+   ]
+  },
+  {
+   "id": "LOG",
+   "name": "laws-organs",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-OG-01",
+    "GL-OG-07"
+   ]
+  },
+  {
+   "id": "LPS",
+   "name": "laws-perspective",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-PS-02",
+    "GL-PS-03",
+    "GL-PS-04",
+    "GL-PS-07",
+    "GL-PS-10"
+   ]
+  },
+  {
+   "id": "LQA",
+   "name": "laws-quality",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-QA-01",
+    "GL-QA-02",
+    "GL-QA-03",
+    "GL-QA-04",
+    "GL-QA-05"
+   ]
+  },
+  {
+   "id": "LRR",
+   "name": "laws-round-robin-doors",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-RR-01",
+    "GL-RR-02",
+    "GL-RR-03",
+    "GL-RR-04",
+    "GL-RR-05",
+    "GL-RR-06",
+    "GL-RR-07",
+    "GL-RR-08",
+    "GL-RR-09",
+    "GL-RR-10"
+   ]
+  },
+  {
+   "id": "LRS",
+   "name": "laws-run-holograph",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-RS-02",
+    "GL-RS-03"
+   ]
+  },
+  {
+   "id": "LTP",
+   "name": "laws-tapestry",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-TP-03",
+    "GL-TP-04"
+   ]
+  },
+  {
+   "id": "LWK",
+   "name": "laws-writers",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-WK-01"
+   ]
+  },
+  {
+   "id": "LWP",
+   "name": "laws-white-paper",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-WP-01",
+    "GL-WP-02",
+    "GL-WP-03",
+    "GL-WP-04",
+    "GL-WP-05",
+    "GL-WP-07"
+   ]
+  },
+  {
+   "id": "LWV",
+   "name": "laws-weave-keeper",
+   "st": "□",
+   "lvl": 4,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "GL-WV-04",
+    "GL-WV-06",
+    "GL-WV-08",
+    "GL-WV-09",
+    "GL-WV-10",
+    "GL-WV-18",
+    "GL-WV-19"
+   ]
+  },
+  {
+   "id": "AGS",
+   "name": "agentic-surface",
+   "st": "■",
+   "lvl": 3,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "g/agentic-server.mjs",
+    "g/agentic.html",
+    "GL-HS-01"
+   ]
+  },
+  {
+   "id": "MJS",
+   "name": "mini-js",
+   "st": "■",
+   "lvl": 1,
+   "op": "SYN",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "g/mini-js-ast.mjs",
+    "g/mini-js-demo.mjs",
+    "g/mini-js-diff.mjs",
+    "GL-HS-01"
    ]
   }
  ]

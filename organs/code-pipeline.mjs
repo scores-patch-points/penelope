@@ -32,6 +32,7 @@
 // small models never handed tools, a frontier model is disclosed on every
 // line it served.
 
+import { swatch } from "./swatch-row.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -173,6 +174,8 @@ export async function drawFrontier(prompt, model, { channel = HEIMDALL_CHANNEL, 
     }),
     signal: AbortSignal.timeout(180000),
   });
+  // a real frontier draw lands on the swatch (attempt first); a test double passes its own fetchImpl and writes nothing
+  if (fetchImpl === fetch) swatch({ weave: "draw:frontier", engine: "heimdall sealed-external channel", model, ok: r.ok, evidence: "organs/code-pipeline.mjs drawFrontier; GL-HS-01" });
   if (!r.ok) {
     let msg = "frontier " + r.status;
     try { msg = (await r.json())?.error?.message || (await r.json())?.error || msg; } catch {}
