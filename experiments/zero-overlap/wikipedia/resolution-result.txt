@@ -1,0 +1,30 @@
+pairs {'fr': 240, 'de': 276} unique en titles 293
+items resolved 293 of 293
+wikidata entities cached 573
+== fr: 240 pairs
+   TRUE-PAIR disputes stated-both      n=2: {'NO-ITEM-DATA': 1, 'RESOLUTION-EXPLAINED:P36': 1}  RESOLUTION-EXPLAINED 1/1 = 1.000 Wilson95 [0.207, 1.000]
+   IMPOSTOR disputes  stated-both      n=104: {'NO-ITEM-DATA': 61, 'CONFLICT-REAL (both match their own item)': 40, 'UNEXPLAINED': 3}  RESOLUTION-EXPLAINED 0/43 = 0.000 Wilson95 [0.000, 0.082]
+   TRUE-PAIR disputes untimed-involved n=3: {'UNEXPLAINED': 3}  RESOLUTION-EXPLAINED 0/3 = 0.000 Wilson95 [0.000, 0.562]
+   IMPOSTOR disputes  untimed-involved n=177: {'CONFLICT-REAL (both match their own item)': 145, 'UNEXPLAINED': 18, 'NO-ITEM-DATA': 14}  RESOLUTION-EXPLAINED 0/163 = 0.000 Wilson95 [0.000, 0.023]
+      TRUE-PAIR ('Limburg (Netherlands)', {'value': 120837.0, 'at': 2022}, {'value': 1138000.0, 'at': 2026}, False, 'NO-ITEM-DATA', None)
+      TRUE-PAIR ('Nagaland', {'value': 1980602.0, 'at': 2011}, {'value': 14000.0, 'at': None}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Osaka Prefecture', {'value': 4600.0, 'at': None}, {'value': 8778035.0, 'at': 2022}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ("Provence-Alpes-Côte d'Azur", {'value': 1900000.0, 'at': None}, {'value': 5218960.0, 'at': 2023}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Zeeland', {'value': 54589.0, 'at': 2019}, {'value': 395000.0, 'at': 2026}, False, 'RESOLUTION-EXPLAINED', 'P36')
+== de: 276 pairs
+   TRUE-PAIR disputes stated-both      n=5: {'UNEXPLAINED': 2, 'NO-ITEM-DATA': 1, 'RESOLUTION-EXPLAINED:P36': 2}  RESOLUTION-EXPLAINED 2/4 = 0.500 Wilson95 [0.150, 0.850]
+   IMPOSTOR disputes  stated-both      n=744: {'NO-ITEM-DATA': 225, 'CONFLICT-REAL (both match their own item)': 440, 'UNEXPLAINED': 71, 'RESOLUTION-EXPLAINED': 8}  RESOLUTION-EXPLAINED 8/519 = 0.015 Wilson95 [0.008, 0.030]
+   TRUE-PAIR disputes untimed-involved n=7: {'UNEXPLAINED': 4, 'RESOLUTION-EXPLAINED:P36': 3}  RESOLUTION-EXPLAINED 3/7 = 0.429 Wilson95 [0.158, 0.750]
+   IMPOSTOR disputes  untimed-involved n=1968: {'CONFLICT-REAL (both match their own item)': 914, 'NO-ITEM-DATA': 888, 'UNEXPLAINED': 106, 'RESOLUTION-EXPLAINED': 60}  RESOLUTION-EXPLAINED 60/1080 = 0.056 Wilson95 [0.043, 0.071]
+      TRUE-PAIR ('Delhi', {'value': 11000000.0, 'at': 2011}, {'value': 16800000.0, 'at': 2011}, False, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Drenthe', {'value': 502000.0, 'at': 2023}, {'value': 70765.0, 'at': 2026}, False, 'NO-ITEM-DATA', None)
+      TRUE-PAIR ('Hamburg', {'value': 5100000.0, 'at': None}, {'value': 1870000.0, 'at': None}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Meghalaya', {'value': 3211474.0, 'at': 2014}, {'value': 143000.0, 'at': 2011}, False, 'RESOLUTION-EXPLAINED', 'P36')
+      TRUE-PAIR ('Nagaland', {'value': 1980602.0, 'at': 2011}, {'value': 16527.0, 'at': 2011}, False, 'UNEXPLAINED', None)
+      TRUE-PAIR ("Provence-Alpes-Côte d'Azur", {'value': 1900000.0, 'at': None}, {'value': 5218960.0, 'at': 2023}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Province of Nuoro', {'value': 32718.0, 'at': None}, {'value': 194081.0, 'at': 2025}, True, 'RESOLUTION-EXPLAINED', 'P36')
+      TRUE-PAIR ('Rajasthan', {'value': 132139.0, 'at': None}, {'value': 68500000.0, 'at': 2011}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Santa Fe Province', {'value': 1193605.0, 'at': None}, {'value': 400000.0, 'at': None}, True, 'RESOLUTION-EXPLAINED', 'P36')
+      TRUE-PAIR ('Saxony', {'value': 4000000.0, 'at': None}, {'value': 18450.0, 'at': None}, True, 'UNEXPLAINED', None)
+      TRUE-PAIR ('Tripura', {'value': 3670000.0, 'at': None}, {'value': 600000.0, 'at': None}, True, 'RESOLUTION-EXPLAINED', 'P36')
+      TRUE-PAIR ('Zeeland', {'value': 54589.0, 'at': 2019}, {'value': 394514.0, 'at': 2026}, False, 'RESOLUTION-EXPLAINED', 'P36')
