@@ -1,0 +1,213 @@
+{
+ "schema": "CodecInvariance@1",
+ "name": "referent-retrieval/codec-invariances",
+ "status": "draft: authored, not ratified",
+ "says": "For each material a referent can be mentioned in: how a region is addressed, what its codec decodes it into, what the codec treats as accidental (not followed), what it drops, how each bound is to be measured, what evidence the material supplies, and how it can be forged. A bound is never a number typed here: it is a recipe and a state, and an unmeasured bound means equality is exact-hash only. Companion to the janus Ground@1 drafts (statement-equivalence strict and casual), whose `dependency` event is the text invariance below.",
+ "relatesTo": [
+  "khora native/docs/THE-ISTHMUS.md (codec, five clauses)",
+  "janus native/organs/identity/grounds/statement-equivalence.{strict,casual}.json",
+  "penelope experiments/zero-overlap/referent/THEORY-IDENTITY.md sections 11-12"
+ ],
+ "events": [
+  {
+   "id": "codec:text/wikipedia-prose@0",
+   "decides": "codec",
+   "material": "text (a language; the source here is English Wikipedia wikitext reduced to prose)",
+   "by": "Claude (Sonnet 5.5), a draft for the project owner to ratify or replace",
+   "at": "2026-11-19",
+   "says": "A region is a byte span of the decoded plain text, with the sha256 of exactly those bytes and of the whole text. The decode into EOT is khora's reader for the declared language (readDocument, the one door), never a code default; the language is read from the source's declared language and recorded on the entry. Letter case, spacing and compatibility forms of a character (a ligature, a full-width digit) are accidental and are not followed. Every other token is followed, marks included: a currency sign, a minus sign, a negation. A stated time or tense is a statement like any other. What the wikitext-to-prose step drops is part of this codec's disclosed loss and is counted, never hidden.",
+   "body": {
+    "address": {
+     "kind": "byte-span",
+     "of": "the decoded plain text (UTF-8)",
+     "hash": "sha256 of the span bytes and of the whole text",
+     "reopen": "refuses on drift of either"
+    },
+    "decode": {
+     "piece": "khora native/reading.js readDocument (priors from janus; lexicon off unless the hyperlexicon door answers)",
+     "language": "declared by the source, recorded on the entry; no default; a language with no codec is the typed gap no_grammar",
+     "claims": "kernel/gfp-claim.js (ground, roles ARG0/ARG1, relation, polarity, force)",
+     "time": "kernel/temporal-reference.js, narrative-time.js (tense as anaphora; a time is a referent)"
+    },
+    "accidental": {
+     "case": true,
+     "spacing": true,
+     "forms": true,
+     "note": "case is accidental for tokens (janus dependency event) but janus's identity event keeps letter case for names in both the strict and the casual ground: an unresolved tension, see owner-decisions[0]"
+    },
+    "followed": [
+     "every other token",
+     "marks: sign, unit, currency, negation",
+     "stated time and tense",
+     "numerals with their sign and unit; a scale written as a word is NOT compared by the number parser and is left to a declared reader"
+    ],
+    "mechanical": {
+     "negation": [
+      "en"
+     ],
+     "order": []
+    },
+    "loss": {
+     "source-reduction": "wikitext to prose drops: templates, tables, reference tags, files and categories, headings, and every line starting with a list, indent or table mark; links inside dropped material are lost",
+     "counted": "links in prose and links dropped as unplaceable are reported with every run (row 30: 9,228 and 0)",
+     "reader": "only names are reliably referents; noun-phrase referents come from the opt-in descriptor lane, not run by us; 10% of clauses hold two named referents (row 29)"
+    },
+    "bounds": {
+     "state": "none numeric",
+     "gaps": []
+    },
+    "evidence": [
+     "claims with polarity, role, ground and time",
+     "numerals",
+     "attribution frames (who is speaking)",
+     "the source's declared register"
+    ],
+    "forgeable": {
+     "surface-facts": "an informed impostor writes the same facts and is judged equivalent (rows 26-27); a verdict resting only on them carries that rate and caps at Hold",
+     "cap": "Hold"
+    },
+    "falsifier": "a pair equal within the declared invariances whose decodes differ in a claim that matters to the asker; or a wikitext-to-prose drop that removes a claim the asker's concern needs and is not counted",
+    "adoptedBy": null
+   }
+  },
+  {
+   "id": "codec:image/region@0",
+   "decides": "codec",
+   "material": "an image or a screen",
+   "by": "Claude (Sonnet 5.5), a draft for the project owner to ratify or replace",
+   "at": "2026-11-19",
+   "says": "A region is a box in an image with the sha256 of the DECODED PIXELS inside the box (not of the file), and of the whole decoded image. The decode into EOT carries only what a named provider reads out of the region as a claim: text inside the box (OCR), a class label with its provider named, a caption, alt text and provenance with its basis. Look itself is not a claim: a nearest neighbour in an embedding is a nominator and never decodes into EOT. Until each accidental transform has a measured bound, equality of two regions is exact pixel hash only; a resized, recompressed or cropped copy is a NOMINATION, never an equal.",
+   "body": {
+    "address": {
+     "kind": "box",
+     "of": "the decoded image",
+     "hash": "sha256 of the decoded pixels in the box, and of the whole decoded image",
+     "reopen": "re-decodes the file and refuses if either hash differs",
+     "duplicates": "exact duplicates by hash, never by embedding"
+    },
+    "decode": {
+     "pieces": [
+      "khora adapters/image/screen-read.js (pixels + Tesseract)",
+      "Slate sidecars: tesseract on-screen text, Apple Vision classes and faces, keyframes"
+     ],
+     "claims": "text-in-region, provider-named class labels with confidence, caption, alt text, provenance with basis",
+     "nominator": "an image embedder (none installed; a download needs the owner's explicit yes naming file, source and size)"
+    },
+    "accidental-classes": [
+     "uniform resize",
+     "recompression and format change",
+     "colour-profile and gamma handling",
+     "container metadata",
+     "a crop that keeps the whole region of interest"
+    ],
+    "followed": [
+     "text and numbers inside the region (OCR)",
+     "logo or wordmark letters",
+     "orientation and mirroring (a flip changes text)",
+     "counts and positions of marked items",
+     "any difference an asker's concern depends on"
+    ],
+    "bounds": {
+     "state": "UNMEASURED: bound_unmeasured for every accidental class",
+     "recipe": "per transform class, the largest change at which a region's nearest-neighbour agreement with its original stays above the agreement of that region with random other regions (a seeded null built the house way: the same population, leave-one-out, max over seeded draws, intersection of two seeds with the dissent kept)",
+     "until-then": "equality is exact pixel hash only"
+    },
+    "loss": {
+     "not-run": "a provider that did not run is reported not run, never zero (Slate: faces null)",
+     "text": "OCR text only where tesseract ran; small or stylised text may be missed",
+     "look": "appearance beyond the provider's labels is not in the reading"
+    },
+    "evidence": [
+     "OCR text in the region",
+     "caption and alt text",
+     "the adjacent paragraph's mentions",
+     "source and provenance (a basis such as 'inferred from filename' is a lead, not a record)"
+    ],
+    "forgeable": {
+     "look": "a look-alike logo or a re-cut image passes a similarity; an informed impostor can pass any single visual channel",
+     "cap": "Hold with a hunger list: caption, OCR text, source"
+    },
+    "people": "similarity is nominate-only and any verdict needs a text tie (a caption or a named mention); no identification of private individuals from appearance. OWNER TO CONFIRM.",
+    "falsifier": "a region declared equal within an accidental class whose OCR text or labelled claims differ in a way that matters; or an image-only verdict above Hold that an informed look-alike passes",
+    "adoptedBy": null
+   }
+  },
+  {
+   "id": "codec:audio/range@0",
+   "decides": "codec",
+   "material": "audio, and the audio track of video",
+   "by": "Claude (Sonnet 5.5), a draft for the project owner to ratify or replace",
+   "at": "2026-11-19",
+   "says": "A region is a time range with the sha256 of the DECODED samples in the range at a declared sample rate and channel layout, and of the whole decoded stream. The decode into EOT carries only what a named provider reads out as a claim: a transcript segment (machine-made; segments over music or noise are moved to suppressed, never deleted), a sound class with its provider named, a tempo or key only where it beats a shuffled null (otherwise 'not above chance', unpitched or ambiguous), on-screen text for the picture, and provenance with its basis. A cut or an address boundary lands only on a real silence; a boundary that cannot be snapped is not safe. Until each accidental transform has a measured bound, equality of two ranges is exact sample hash only.",
+   "body": {
+    "address": {
+     "kind": "time-range",
+     "of": "the decoded stream",
+     "hash": "sha256 of the decoded samples in the range and of the whole stream",
+     "reopen": "re-decodes and refuses if either hash differs",
+     "boundaries": "snapped to silence (slate snap); snapped:false means do not cut"
+    },
+    "decode": {
+     "pieces": [
+      "Slate sidecars: whisper.cpp transcript, SoundAnalysis classes, keyframes, on-screen text, tempo and key against a shuffled null",
+      "khora adapters/{audio,video}"
+     ],
+     "claims": "transcript segment, class label with provider, tempo or key with its chance level, provenance with basis"
+    },
+    "accidental-classes": [
+     "gain and level",
+     "resampling",
+     "container, codec and bitrate",
+     "leading and trailing silence",
+     "channel layout"
+    ],
+    "followed": [
+     "the words said (confirm any quote or number with slate window before use)",
+     "who is speaking where the speaker is attested",
+     "tempo and key only where above chance",
+     "any difference an asker's concern depends on"
+    ],
+    "bounds": {
+     "state": "UNMEASURED: bound_unmeasured for every accidental class; the time tolerance of a range address is an OWNER DECISION",
+     "recipe": "per transform class, the largest change at which a transcript's word timings and a range's neighbour agreement stay above their seeded nulls, measured leave-one-out; recogniser word times drift, so a range edge is never trusted without a snap",
+     "until-then": "equality is exact sample hash only"
+    },
+    "loss": {
+     "suppressed": "segments over music or noise are suppressed, not deleted",
+     "not-run": "a provider that did not run is reported not run, never zero",
+     "heuristic": "sound labels from the heuristic provider (modulated, sustained, silence) are relative to the file and do not name sounds",
+     "sync": "a lip-sync lag is a lead to confirm, never a verdict (the pre-registered validation missed its bars)"
+    },
+    "evidence": [
+     "the transcript (witness, machine-made)",
+     "on-screen text over the same range",
+     "provenance with its basis",
+     "the adjacent text mentions"
+    ],
+    "forgeable": {
+     "audio": "a re-cut or re-recorded range passes a similarity; a voice or a mouth rhythm is not an identity",
+     "cap": "Hold with a hunger list: transcript, on-screen text, provenance"
+    },
+    "falsifier": "a range declared equal within an accidental class whose transcript or class claims differ in a way that matters; or a cut accepted at an unsnapped point",
+    "adoptedBy": null
+   }
+  }
+ ],
+ "ratification": {
+  "owner-decisions": [
+   "text: the janus drafts (strict AND casual) disagree with themselves on case: the dependency event says letter case is accidental and not followed, the identity event says a name is the same name when spelled the same with letter case KEPT. Which holds for names in referent retrieval (case kept, or folded under the codec's accidental set)?",
+   "text: is the wikitext-to-prose reduction an accepted decode for Wikipedia sources, with dropped links counted on every run?",
+   "text: the language of each read is declared by the source and recorded; confirm that code defaults such as language eng are to be removed from the experiment scripts",
+   "image: accept exact decoded-pixel hash as the only equality until the bounds are measured?",
+   "image: may an embedder be downloaded as a nominator (file, source and size to be named by me first), and which provider labels may be used as claims?",
+   "image: confirm the people policy (nominate-only, a text tie required, no identification of private individuals)",
+   "audio: the time tolerance of a range address, and whether machine transcript claims may serve as witnesses",
+   "who bylines and adopts each codec (adoptedBy is null until a named reader adopts it)"
+  ],
+  "not-decided-here": [
+   "every numeric bound",
+   "any encoder (only language has one)",
+   "the cross-codec alignment recipe (janus correspond.mjs is the existing piece)"
+  ]
+ }
+}
