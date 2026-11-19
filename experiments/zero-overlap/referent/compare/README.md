@@ -17,3 +17,6 @@ Rules it keeps: a Resolution never convicts (Same at the coarse grain, Hold at t
 - **Replay.** `Log.fromJSONL` reloads and verifies every id; a drifted entry is refused.
 **Tests:** `compare.test.mjs` 13 and `log.test.mjs` 9, 22 of 22 pass. Mutation check: five deliberate breakages of the log (revisions applying without a gate, an Other changing without a retracted witness, a drifted entry loading, an unwitnessed merge recorded, a held component still merging) are all caught; the last was NOT caught by the first suite and needed a direct test of the component hold.
 **Not done:** a real foresight measure; stability under append on real documents (N4, pre-registered); the reader's oblique roles and coreference (the smoke result above stands: on real pairs every verdict is still Hold); transfer across documents.
+
+## The foresight gate (foresight.mjs, built 2026-11-19; THEORY-IDENTITY.md section 18)
+`makeForesight(log, eventIndex, docs)` returns the gate `reconsider` takes: the surprise an identity event removes from the mentions AFTER the cut (khora's round-8 reader and constants), against a null of random merges, admitted only above median + 1.4826 x MAD; typed gaps (no later material, an underpowered null, a cannot-link) admit nothing. 6 tests, mutation-checked five ways. Synthetic documents only: no result about real text yet.
