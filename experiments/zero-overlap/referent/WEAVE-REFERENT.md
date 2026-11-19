@@ -50,3 +50,19 @@ One query (document D, referent b, standpoint P declared). Nominate with the emb
 | Non-text event streams | khora `organs/event-arrangements.js`: recurrence-gated arrangements `{end1, label, end2}`, label DECLARED by the caller, spans in the stream's own coordinates, self-verified | span re-read must BE the pair | corroboration as an ordinary note in the hyperlexicon | BUILT (floor 2) |
 | Projected files | Proteus: virtual mp4 from placements, `vfile` recipe + `vfile-check` evidence entries, nothing stored until a range is read | recipe + hash | pharos entries only | BUILT (separate repo) |
 | Images (look-alike referents) | none installed: no embedding provider | box + hash of decoded pixels | caption, alt text, OCR in the region, adjacent mention, source | GAP; see THEORY-IDENTITY section 11 |
+
+## Codec table (added 2026-11-19; from khora THE-ISTHMUS.md, theory section 12)
+| Material | Decode into EOT | Declared invariances (accidental) | Disclosed loss | Encode out | Independent evidence it supplies | Status |
+|---|---|---|---|---|---|---|
+| A language | `adapters/text/ud-tokenizer.js` + `ud-parser.js` -> `kernel/eot-rich.js::toEot` (78 codecs committed, 17 pointed at by sha256) | case, spacing, compatibility forms (janus ground draft, not ratified) | pragmatics, anything outside the parse; names only reliably referents | `kernel/eot-realize.js`, `UDGrammar@1` | claims with polarity, role, ground; tense as anaphora | BUILT; English fullest |
+| Clause and telling grain | `question-grammar.{en,es}.js` | as above | | `telling-grammar.{en,es}.js`, `organs/claim-realize.js` | | BUILT en, es |
+| Numerals and notation | the mechanical lane (digits, operators are their own codec in any language's text) | script digits, separators (parsers refuse rather than guess) | scale words ("5 million") not compared | none | values and units | BUILT (thin) |
+| Image or screen | `adapters/image/screen-read.js` (pixels + Tesseract); Slate: Apple Vision, tesseract | UNDECLARED (resize, recompress, crop bounds) | faces `null` = not run | none yet | OCR text in the region, captions | BUILT thin; no embedder |
+| Audio and video | `adapters/{audio,video}`; Slate: whisper.cpp, SoundAnalysis, keyframes, tempo and key against a shuffled null | UNDECLARED (gain, resample, container) | suppressed segments over music or noise | none yet | transcript, on-screen text, provenance with a `basis` | BUILT; installed here |
+| Code | `adapters/code/*` (`CodeLexPrior@1`, declaration frames) | whitespace; identifiers case-sensitive by declaration | | none yet | | BUILT |
+| MIDI and math | `adapters/{midi,math}` | | | none yet | | BUILT |
+| Event streams | `organs/event-arrangements.js` (label declared by the caller) | the caller's | | none | corroboration in the hyperlexicon | BUILT floor 2 |
+| Structured data (links, tables, Wikidata) | the schema is the codec | | | | SCORER ONLY, never required at run time (rule 5) | in use as gold |
+| Projected files | Proteus `vfile` recipe + `vfile-check` | the recipe | | | evidence entries | BUILT (separate repo) |
+| Pharos entries | canonical JSON -> sha256 id | key order, whitespace | | | the log itself | BUILT |
+| No codec | typed gap (`no_grammar`, `tokenizer_absent`, `parser_absent`, `grammar_absent`, `no_marker`, `no_correspondence`, `form_unattested`) | | | | | BUILT |
