@@ -124,3 +124,23 @@ wide_space.contract.ops = NUL, DEF, REC
 wide_space.contract.terrains = Entity, Lens
 wide_space.contract.stances = Dissecting
 !EVA wide_space
+
+# ── property constraints: a BOND may not depend on a rule declared later in the helix (found building property-constraints.eot, first form) ──
+bond_reads_rule : room
+# expect: dependency
+bond_reads_rule.contract.ops = CON, DEF
+bond_reads_rule.contract.terrains = Link, Paradigm
+bond_reads_rule.contract.stances = Binding, Unraveling
+!DEF(Paradigm, Unraveling) rule_kind reads names
+!CON(Link, Binding) bond reads world, rule_kind
+!EVA bond_reads_rule
+# ── property constraints: a definition may not read the verdict of its own check without the helix wrapping (first form of `differences`) ──
+def_reads_verdict : room
+# expect: dependency
+def_reads_verdict.contract.ops = DEF, EVA
+def_reads_verdict.contract.terrains = Lens
+def_reads_verdict.contract.stances = Dissecting, Binding
+!DEF(Lens, Dissecting) rule reads names
+!EVA(Lens, Binding) verdict reads rule
+!DEF(Lens, Dissecting) candidate reads verdict
+!EVA def_reads_verdict

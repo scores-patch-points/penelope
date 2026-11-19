@@ -1,0 +1,123 @@
+# property-constraints.eot -- Wikidata-style PROPERTY CONSTRAINTS (and the asker's declare: functional / symmetric / acyclic / containers) built from the nine operators.
+# Draft 1, 2026-11-19. A construction to be refuted. UNVERIFIED against a live Wikidata property page: the constraint list below is from memory
+# (typed gap: constraints_not_fetched). The names are descriptive, not Wikidata Q-ids.
+# Same surface subset as primitives.eot (see check_eot.mjs). Helix: NUL SIG INS SEG CON SYN DEF EVA REC; cube.mjs wins.
+#
+# THE CUBE READING. A constraint is a DECLARED nature of a relation, so it is DEF; its grain says what it is about:
+#   DEF Ground (Atmosphere, Clearing)  WHERE the relation may live        subject type, value type, allowed entity types, property scope
+#   DEF Figure (Lens, Dissecting)      what ONE statement's value must be  single value, format, range, one of, label language, qualifiers, difference within range, citation
+#   DEF Pattern (Paradigm, Unraveling) how the relation stands to OTHER relations and statements  symmetric, inverse, distinct values, multi-value, conflicts with, item/value requires, contemporary
+# Its CHECK is an EVA at the same grain, preceded by the operator act the constraint names (SEG a partition, CON a bond, SYN a mirrored whole); a failed check is a
+# difference candidate (Conflict / Silence / Resolution / Accidental, THEORY-IDENTITY section 16); an exception to a constraint is a REC, logged, never an erasure.
+
+# ── floor: what is assumed ─────────────────────────────────────────
+giver_output : assumed       # what a giver hands over: a property page's constraint statements, or the asker's declare (a giver of declarations)
+facts : assumed              # the claims being checked: the claim assembly of primitives.eot
+names : assumed
+floor : room
+floor.contract.ops = NUL
+floor.contract.terrains = Void
+floor.contract.stances = Clearing
+!NUL(Void, Clearing) delivered reads giver_output
+!EVA floor
+
+# ── 1: the constraint statement, held ──────────────────────────────
+source : room
+source.contract.ops = NUL
+source.contract.terrains = Entity
+source.contract.stances = Dissecting
+!NUL(Entity, Dissecting) constraint_stmt reads delivered    # one constraint statement, held; nothing marked
+!EVA source
+
+# ── 2: the relation a constraint is about ──────────────────────────
+relation : room
+relation.contract.ops = DEF
+relation.contract.terrains = Paradigm
+relation.contract.stances = Unraveling
+!DEF(Paradigm, Unraveling) relation_kind reads constraint_stmt, names        # the property: a relation kind (the `relation` of a claim)
+!DEF(Paradigm, Unraveling) other_relation_kind reads constraint_stmt, names  # a second relation a constraint may name (inverse, conflicts with, requires)
+!EVA relation
+
+# ── 3: DEF at Ground: where the relation may live ──────────────────
+ground_rules : room
+ground_rules.contract.ops = DEF
+ground_rules.contract.terrains = Atmosphere
+ground_rules.contract.stances = Clearing
+!DEF(Atmosphere, Clearing) subject_type reads relation_kind        # what kinds of thing may be the subject (a container order: Resolution)
+!DEF(Atmosphere, Clearing) value_type reads relation_kind          # what kinds of thing may be the value
+!DEF(Atmosphere, Clearing) entity_types reads relation_kind        # item, property, lexeme, ...
+!DEF(Atmosphere, Clearing) property_scope reads relation_kind      # as main statement, as qualifier, as reference
+!EVA ground_rules
+
+# ── 4: DEF at Figure: what one statement's value must be ───────────
+figure_rules : room
+figure_rules.contract.ops = DEF
+figure_rules.contract.terrains = Lens
+figure_rules.contract.stances = Dissecting
+!DEF(Lens, Dissecting) single_value reads relation_kind            # at most one value per subject: our `functional`
+!DEF(Lens, Dissecting) format reads relation_kind                  # the written form (accidental differences live here)
+!DEF(Lens, Dissecting) range reads relation_kind                   # numeric or date bounds
+!DEF(Lens, Dissecting) one_of reads relation_kind                  # a closed list of values
+!DEF(Lens, Dissecting) label_language reads relation_kind          # the item must carry a label in a language
+!DEF(Lens, Dissecting) required_qualifier reads relation_kind
+!DEF(Lens, Dissecting) allowed_qualifiers reads relation_kind
+!DEF(Lens, Dissecting) difference_within_range reads relation_kind
+!DEF(Lens, Dissecting) citation_required reads relation_kind
+!EVA figure_rules
+
+# ── 5: DEF at Pattern: how the relation stands to others ───────────
+pattern_rules : room
+pattern_rules.contract.ops = DEF
+pattern_rules.contract.terrains = Paradigm
+pattern_rules.contract.stances = Unraveling
+!DEF(Paradigm, Unraveling) symmetric reads relation_kind                         # if a R b then b R a: our `symmetric`
+!DEF(Paradigm, Unraveling) inverse reads relation_kind, other_relation_kind      # if a R b then b S a
+!DEF(Paradigm, Unraveling) distinct_values reads relation_kind                   # a value belongs to at most one subject (inverse-functional)
+!DEF(Paradigm, Unraveling) multi_value reads relation_kind                       # more than one value expected: silence if only one
+!DEF(Paradigm, Unraveling) conflicts_with reads relation_kind, other_relation_kind
+!DEF(Paradigm, Unraveling) item_requires reads relation_kind, other_relation_kind    # a subject with R must also carry S: the missing S is SILENCE
+!DEF(Paradigm, Unraveling) value_requires reads relation_kind, other_relation_kind
+!DEF(Paradigm, Unraveling) contemporary reads relation_kind                      # subject and value must overlap in time
+!EVA pattern_rules
+
+# ── 6: the checks, one per grain ───────────────────────────────────
+check_ground : room
+check_ground.contract.ops = SEG, EVA
+check_ground.contract.terrains = Field, Atmosphere
+check_ground.contract.stances = Clearing, Tending
+!SEG(Field, Clearing) region_of_values reads facts                 # where each fact sits: its ground
+!EVA(Atmosphere, Tending) ground_checked reads region_of_values, subject_type, value_type, entity_types, property_scope
+!EVA check_ground
+
+check_figure : room
+check_figure.contract.ops = SEG, EVA
+check_figure.contract.terrains = Link, Lens
+check_figure.contract.stances = Dissecting, Binding
+!SEG(Link, Dissecting) by_subject reads facts                      # facts cut apart by subject: single value, required qualifier
+!SEG(Link, Dissecting) by_value reads facts                        # facts cut apart by value: distinct values
+!EVA(Lens, Binding) figure_checked reads by_subject, by_value, single_value, format, range, one_of, label_language, required_qualifier, allowed_qualifiers, difference_within_range, citation_required
+!EVA check_figure
+
+check_pattern : room
+check_pattern.contract.ops = CON, SYN, EVA
+check_pattern.contract.terrains = Link, Network, Paradigm
+check_pattern.contract.stances = Binding, Composing, Tracing
+!CON(Link, Binding) forward reads facts, names                     # the bonds a R b, as the facts have them (no rule applied yet: a bond cannot depend on a declaration made later in the helix)
+!CON(Link, Binding) converse reads facts, forward                   # the same bonds read from the other end: b is the subject, a the value
+!SYN(Network, Composing) mirrored reads forward, converse          # the two read together as one whole
+!EVA(Paradigm, Tracing) pattern_checked reads mirrored, symmetric, inverse, distinct_values, multi_value, conflicts_with, item_requires, value_requires, contemporary
+!EVA check_pattern
+
+# ── 7: what a failed check becomes, and the exception ──────────────
+differences : room
+differences.contract.ops = NUL, DEF, EVA, REC
+differences.contract.terrains = Entity, Lens
+differences.contract.stances = Dissecting, Binding, Making
+!NUL(Entity, Dissecting) failed_check reads names returns figure_checked, pattern_checked, ground_checked   # the helix wraps: what an EVA found re-enters as an encounter, then is defined
+!DEF(Lens, Dissecting) conflict_candidate reads failed_check     # two values where one is allowed: both strong and tied is a Conflict
+!DEF(Lens, Dissecting) silence_candidate reads failed_check     # the required or mirrored statement is absent: Silence, a hole, never a vote
+!DEF(Lens, Dissecting) resolution_candidate reads failed_check   # one value contains the other in a container order: Resolution, narrows, never convicts
+!DEF(Lens, Dissecting) accidental_candidate reads failed_check   # a difference inside the format or codec invariances
+!EVA(Lens, Binding) difference_checked reads conflict_candidate, silence_candidate, resolution_candidate, accidental_candidate
+!REC(Lens, Making) constraint_exception reads difference_checked   # an exception to a constraint is a new logged frame, never an erasure
+!EVA differences
