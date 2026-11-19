@@ -1,0 +1,32 @@
+{
+ "true": {
+  "Same": 0,
+  "Other": 0,
+  "Hold": 41,
+  "refused": 0,
+  "bothAbout": 0,
+  "aboutA": 5,
+  "aboutB": 3,
+  "satA": 1,
+  "satB": 0,
+  "kinds": {
+   "SILENCE": 8
+  },
+  "ex": []
+ },
+ "imp": {
+  "Same": 0,
+  "Other": 0,
+  "Hold": 41,
+  "refused": 0,
+  "bothAbout": 0,
+  "aboutA": 5,
+  "aboutB": 1,
+  "satA": 1,
+  "satB": 1,
+  "kinds": {
+   "SILENCE": 6
+  },
+  "ex": []
+ }
+}
