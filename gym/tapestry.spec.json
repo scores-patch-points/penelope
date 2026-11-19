@@ -1475,6 +1475,8 @@
     "o/frame-verdicts.test.mjs",
     "o/relation-fold.mjs",
     "o/relation-fold.test.mjs",
+    "o/asker-dmd.mjs",
+    "o/asker-dmd.test.mjs",
     "o/vantage-verdicts.mjs",
     "o/vantage-verdicts.test.mjs",
     "o/perspective-eva.mjs",

@@ -82,6 +82,8 @@
     "organs/agenda-conduct.mjs": "85c226fa04cc71b82b1051b6defb54c899906cab0f81951d56840cc1d2af6bd3",
     "organs/agenda-conduct.test.mjs": "2dffd1797834e7c3deca3b01540df270023121407b37db854d5621d659bfb8b6",
     "organs/agenda-shape.mjs": "9783bce5c21f1a06309af80fab2328b099f4a4bf154acb8d07a6ffd8e8a21f68",
+    "organs/asker-dmd.mjs": "61e304b73e0e77327abef8d9f6d720f9a8df23d856af8ae9a357e2510359d242",
+    "organs/asker-dmd.test.mjs": "f411aa07ccd77ef0e3de806f09fd97012b24927106fe4b85376e6de5ef2e5ecd",
     "organs/behavior-check.mjs": "721c44786655667ac9cfc68215e9d05c1cf5e519de81f30c5236274d624e7958",
     "organs/code-fix.mjs": "d6708bd7001aaa4e8fa08761660236236931f62e465d4a8523113cc236d363f0",
     "organs/code-fix.test.mjs": "4e036ec1f949755321f9bc4725e675c1f519326aa8862e1f22972895489a3a30",
