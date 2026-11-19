@@ -48,6 +48,10 @@
   "f6": {
    "what": "fresh set 6: divisions (Mongolia, Kazakhstan, Uruguay, Dominican Republic, Burkina Faso, Ethiopia, Uganda, Sri Lanka, Bhutan, Liberia, Albania, Uzbekistan), fr/de leads; lead wikitext for the link targets via wikipedia/fetch_wt6.py",
    "regenerate": "wikipedia/fetch_fresh6.py then wikipedia/fetch_wt6.py"
+  },
+  "f7": {
+   "what": "fresh set 7: persons (Nobel laureates in Chemistry, Physiology or Medicine and Literature; Fields Medalists; Turing Award laureates) and places (Islands of Greece, Counties of Sweden, Provinces of Papua New Guinea, Counties of Estonia, Regions of Slovakia and Portugal, Cantons of Luxembourg, States of Malaysia), fr/de leads, never read before the single scoring of row 26",
+   "regenerate": "wikipedia/fetch_fresh7.py"
   }
  }
 }
