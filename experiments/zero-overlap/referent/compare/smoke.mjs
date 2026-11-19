@@ -3,7 +3,7 @@ import fs from "node:fs"; import path from "node:path"; import { fileURLToPath }
 import { compareStatements } from "./compare.mjs";
 const HERE = path.dirname(fileURLToPath(import.meta.url)), DATA = path.join(HERE, "..", "data", "dev");
 const P = JSON.parse(fs.readFileSync(path.join(HERE, "smoke-pairs.json"), "utf8"));
-const declare = { language: "eng", by: "smoke-asker", at: "tag:smoke", acyclic: ["defeat", "beat", "kill", "succeed", "replace", "found", "command", "appoint", "capture", "invade", "precede", "follow"], functional: [], containers: {}, grain: "fine" };
+const declare = { language: "eng", scope: process.env.SCOPE ?? "paragraph", by: "smoke-asker", at: "tag:smoke", acyclic: ["defeat", "beat", "kill", "succeed", "replace", "found", "command", "appoint", "capture", "invade", "precede", "follow"], functional: [], containers: {}, grain: "fine" };
 const docs = new Map(); const get = (f) => { if (!docs.has(f)) { const d = JSON.parse(fs.readFileSync(path.join(DATA, f), "utf8")); docs.set(f, { id: d.title, text: d.text }); } return docs.get(f); };
 const R = {};
 for (const kind of ["true", "imp"]) {

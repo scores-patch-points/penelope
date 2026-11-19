@@ -37,6 +37,9 @@ export function reopen(text, addr) {
 const gap = (g, detail) => ({ gap: g, detail });
 const refuse = (reason, gaps) => ({ verdict: "refused", reason, gaps });
 
+const READS = new Map();       // a read is a function of (text, language): keep it for the process, derived and deletable
+const readOnce = (text, language) => { const k = `${language}\u0000${text}`; if (!READS.has(k)) READS.set(k, readDocument(text, { language, lexicon: false, referents: true, castIdentity: true, minCharacters: 0 })); return READS.get(k); };
+
 /** UNWRAP + BIND + REDUCE one statement. S = { doc: {id, text}, span: [c0, c1] }. */
 async function unwrap(S, declare) {
   const text = S.doc.text, [c0, c1] = S.span, gaps = [];
@@ -47,7 +50,9 @@ async function unwrap(S, declare) {
   if (c1 - offs[k] > para.length) gaps.push(gap("statement_crosses_paragraph", "the paragraph holding the start is read; the rest is not"));
   const heard = languageContextFor(para, {}).language ?? "none";
   if (heard !== declare.language) return { refused: refuse("language_mismatch", [gap("language_mismatch", `declared ${declare.language}, heard ${heard} (${S.doc.id})`)]) };
-  const e = await readDocument(para, { language: declare.language, lexicon: false, referents: true, castIdentity: true, minCharacters: 0 });
+  // SCOPE: "paragraph" (the default) reads the statement's paragraph alone, so a pronoun whose antecedent is in an earlier paragraph stays unbound; "document" reads the whole document once (cached) so khora's coreference reaches across paragraphs.
+  const wholeDoc = declare.scope === "document", src = wholeDoc ? text : para, s0 = wholeDoc ? c0 : sc0, s1 = wholeDoc ? c1 : sc1;
+  const e = await readOnce(src, declare.language);
   const spans = new Map((e.referents?.spans ?? []).map((s) => [s.id, s])), ments = [];
   for (const r of e.referents?.referents ?? []) for (const id of r.mentions ?? []) { const s = spans.get(id); if (s) ments.push({ a: s.at[0], b: s.at[1], face: r.face }); }
   const fill = (arg, ci, role) => {
@@ -58,9 +63,9 @@ async function unwrap(S, declare) {
   const claims = [];
   (e.clauses ?? []).forEach((c, ci) => {
     if (!c.subject || !c.predicate?.lemma || !c.own) return;
-    if (Math.min(c.own.end, sc1) - Math.max(c.own.start, sc0) <= 0) return;                         // the clause is not inside the statement
+    if (Math.min(c.own.end, s1) - Math.max(c.own.start, s0) <= 0) return;                         // the clause is not inside the statement
     const A0 = fill(c.subject, ci, "0"), A1 = fill(c.object, ci, "1");
-    claims.push({ rel: c.predicate.lemma.toLowerCase(), ARG0: A0, ARG1: A1, polarity: c.polarity === "-" ? "-" : "+", saturated: !!A0 && !!A1 && !A0.startsWith("u:") && !A1.startsWith("u:"), text: para.slice(c.own.start, c.own.end), clause: ci });
+    claims.push({ rel: c.predicate.lemma.toLowerCase(), ARG0: A0, ARG1: A1, polarity: c.polarity === "-" ? "-" : "+", saturated: !!A0 && !!A1 && !A0.startsWith("u:") && !A1.startsWith("u:"), text: src.slice(c.own.start, c.own.end), clause: ci });
   });
   gaps.push(gap("attribution_not_run", "who is speaking (reported speech, hypotheticals) is not read; every statement is taken as asserted by its document"), gap("time_not_wired", "tense as anaphora is built in khora but not wired into claims; only years written in the text are noted"));
   return { doc: S.doc.id, para: k, ground: `/${S.doc.id}/p${k}`, statement: text.slice(c0, c1), claims, years: [...text.slice(c0, c1).matchAll(/(?<!\d)(1[0-9]{3}|20[0-9]{2})(?!\d)/g)].map((m) => m[0]), address: address(text, c0, c1), gaps };
@@ -149,3 +154,4 @@ export async function compareStatements({ A, B, question, declare }) {
   entry.id = sha(canon(entry));
   return { verdict, differences: mine, outsideConcerns: other, hunger, trail, entry, coverage: { claimsA: ua.claims.length, claimsB: ub.claims.length, aboutA: ca.length, aboutB: cb.length, saturatedA: ca.filter((c) => c.saturated).length, saturatedB: cb.filter((c) => c.saturated).length }, gaps: [...ua.gaps, ...ub.gaps], years: { A: ua.years, B: ub.years } };
 }
+export { unwrap as unwrapStatement };
