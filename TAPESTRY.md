@@ -451,7 +451,7 @@
 ║     @ o/vantage-verdicts.mjs o/vantage-verdicts.test.mjs                   ║
 ║     @ o/perspective-eva.mjs o/perspective-eva.test.mjs                     ║
 ║     @ g/perspective-run.mjs g/perspective-run.test.mjs GL-FV-01 GL-PE-01   ║
-║     @ GL-PE-02                                                             ║
+║     @ GL-PE-02 GL-PE-03                                                    ║
 ║■FLN 0 △◈ ‡ fold-note                                                       ║
 ║     @ o/fold-note.mjs o/fold-note.test.mjs GL-FN-01                        ║
 ║■WRT 1 △◆ ‡ essay-writers                                                   ║

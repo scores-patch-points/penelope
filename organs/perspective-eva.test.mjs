@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { judgeEquivalence, comparable } from "./perspective-eva.mjs";
+import { judgeEquivalence, comparable, KNOWN_SAME_RULES, numericLiteral } from "./perspective-eva.mjs";
 
 const near = (x, y) => Math.abs(x - y) / Math.max(x, y) <= 0.1;
 const geographer = { name: "geographer", terrain: "Lens", frame: "place", probes: [{ name: "area", lands: "Entity", power: 0.85, same: near }, { name: "region", lands: "Link", power: 0.4 }] };
@@ -54,4 +54,27 @@ test("referent answers are per document: equal ids are NOT agreement; only a lic
   assert.equal(judgeEquivalence({ perspective: pers, a: { under: { value: "ref_1", referent: true } }, b: { under: { value: "ref_2", referent: true } }, bridge: () => true }).verdict, "equivalent"); // different ids, licensed bridge
   assert.equal(judgeEquivalence({ perspective: pers, a, b, bridge: () => false }).verdict, "different");
   assert.equal(judgeEquivalence({ perspective: pers, a, b, bridge: () => null }).verdict, "gap");        // a bridge that cannot say is silence
+});
+
+// the real pipeline writes literals as STRINGS ("30"); a tolerance rule that cannot read its inputs is silent, never "different" (found by a proof run through a real pharos log, 2026-11-19)
+const tolP = (tol = 0.05) => ({ name: "tol", terrain: "Lens", frame: "f", probes: [{ name: "age", lands: "Entity", power: 0.5, same: (x, y) => KNOWN_SAME_RULES["relative difference at most tol"].same(x, y, tol) }] });
+const judgeAge = (x, y, tol) => judgeEquivalence({ perspective: tolP(tol), a: { age: { value: x } }, b: { age: { value: y } } });
+test("a tolerance rule reads numeric STRINGS as numbers: '30' and '30' agree, '30' and '40' differ, numbers still work", () => {
+  assert.equal(judgeAge("30", "30").verdict, "equivalent"); assert.equal(judgeAge("30", "31").verdict, "equivalent", "1/31 is inside 0.05");
+  assert.equal(judgeAge("30", "40").verdict, "different"); assert.equal(judgeAge(30, 30).verdict, "equivalent"); assert.equal(judgeAge("30.0", "30").verdict, "equivalent"); assert.equal(judgeAge("-3", "-3").verdict, "equivalent");
+});
+test("values the rule cannot read are SILENT, never a difference: 'thirty', '30abc', '1e3', '0x10', '', '.5', '5.', two points", () => {
+  for (const bad of ["thirty", "30abc", "1e3", "0x10", "", ".5", "5.", "1.2.3", "--3", "3-", " ", "+3"]) {
+    const r = judgeAge(bad, "30"); assert.notEqual(r.verdict, "different", `"${bad}" must not make a difference`); assert.equal(r.verdict, "gap", `"${bad}"`); assert.ok(r.silent.some((s) => /cannot read/.test(s.why)));
+  }
+  assert.equal(judgeAge("30", "30abc").verdict, "gap");
+});
+test("numericLiteral is exact: only an optional minus, digits and one inner point are numbers", () => {
+  assert.equal(numericLiteral("30"), 30); assert.equal(numericLiteral(" 30 "), 30); assert.equal(numericLiteral("-3.25"), -3.25); assert.equal(numericLiteral(7), 7);
+  for (const v of ["", "-", ".", "3.", ".3", "3e2", "Infinity", "NaN", "1,000", "٣٠", null, undefined, {}, [], true, NaN, Infinity]) assert.equal(numericLiteral(v), null, String(v));
+});
+test("strict equality is unchanged, and an undecidable probe next to a decided one does not hide the decision", () => {
+  const p = { name: "two", terrain: "Lens", frame: "f", probes: [{ name: "id", lands: "Entity", power: 0.5 }, { name: "age", lands: "Entity", power: 0.5, same: (x, y) => KNOWN_SAME_RULES["relative difference at most tol"].same(x, y, 0.05) }] };
+  assert.equal(judgeEquivalence({ perspective: p, a: { id: { value: "7" }, age: { value: "thirty" } }, b: { id: { value: "8" }, age: { value: "30" } } }).verdict, "different", "the id differs; the unreadable age is silent");
+  assert.equal(judgeEquivalence({ perspective: p, a: { id: { value: "7" }, age: { value: "thirty" } }, b: { id: { value: "7" }, age: { value: "30" } } }).verdict, "equivalent", "the id agrees with power; the unreadable age is listed as silent");
 });

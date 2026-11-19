@@ -1487,7 +1487,8 @@
     "g/perspective-run.test.mjs",
     "GL-FV-01",
     "GL-PE-01",
-    "GL-PE-02"
+    "GL-PE-02",
+    "GL-PE-03"
    ]
   },
   {

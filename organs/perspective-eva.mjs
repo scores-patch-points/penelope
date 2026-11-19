@@ -45,6 +45,7 @@ export function judgeEquivalence({ perspective, a = {}, b = {}, bridge = null } 
       if (bx !== true && bx !== false) { silent.push({ probe: p.name, side: "both", why: "referent ids are per document; no licensed bridge says whether they are the same referent" }); continue; }
       same = bx;
     } else same = typeof p.same === "function" ? p.same(x, y) : x === y;
+    if (same === null) { silent.push({ probe: p.name, side: "both", why: "the probe's same-rule cannot read these values (they are not numbers it can compare): undecidable, not a difference and not agreement" }); continue; }
     const row = { probe: p.name, a: x, b: y, addr: { a: a[p.name]?.addr ?? null, b: b[p.name]?.addr ?? null }, power: p.power ?? 0 };
     if (!same) { differences.push(row); continue; }
     if (!(p.power > 0)) { powerless.push(row); continue; }
@@ -63,9 +64,19 @@ const isObj = (x) => x !== null && typeof x === "object" && !Array.isArray(x);
 const str = (x) => typeof x === "string" && x.trim().length > 0;
 const refuse = (reason, detail) => ({ schema: PERSPECTIVE_SCHEMA, ok: false, verdict: "refused", reason, ...(detail ? { detail } : {}) });
 /** Rules a probe may name for "these two answers are the same", by their declared text. Each is a computation, not a hidden tolerance: a tolerance is the probe's own `tol`. */
+/** a numeric literal read STRUCTURALLY (no pattern matching): a finite number, or a string that is an optional minus, digits and at most one point with a digit around it, nothing else; anything else is not a number (null). The pipeline writes literals as strings ("30"). */
+export const numericLiteral = (v) => {
+  if (typeof v === "number") return Number.isFinite(v) ? v : null;
+  if (typeof v !== "string") return null;
+  const s = v.trim(); let i = 0, digits = 0, points = 0;
+  if (s[0] === "-") i = 1;
+  for (; i < s.length; i++) { const c = s[i]; if (c >= "0" && c <= "9") digits++; else if (c === "." && points === 0 && digits > 0) points++; else return null; }
+  return digits > 0 && s[s.length - 1] !== "." ? Number(s) : null;
+};
+/** same(x, y) answers true, false, or NULL = the rule cannot read these values (undecidable: silent, never a difference) */
 export const KNOWN_SAME_RULES = Object.freeze({
   "strict equality": { needsTol: false, same: (x, y) => x === y },
-  "relative difference at most tol": { needsTol: true, same: (x, y, tol) => typeof x === "number" && typeof y === "number" && Math.abs(x - y) / Math.max(Math.abs(x), Math.abs(y), 1e-9) <= tol },
+  "relative difference at most tol": { needsTol: true, same: (x, y, tol) => { const a = numericLiteral(x), b = numericLiteral(y); return a === null || b === null ? null : Math.abs(a - b) / Math.max(Math.abs(a), Math.abs(b), 1e-9) <= tol; } },
 });
 /** declarePerspective({ name, by, why, terrain, frame, probes: [{ name, lands, power, powerFrom, rule, tol? }], ratified }) -> the perspective or a refusal. */
 export function declarePerspective(spec = {}) {
