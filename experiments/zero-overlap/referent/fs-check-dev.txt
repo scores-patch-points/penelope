@@ -1,0 +1,10 @@
+(1) score variants on name-free EMBED-N top-30 nominations (DEV): 127 gold, 11357 non-gold
+   S0 old             AUC gold vs non-gold 0.585; true fold beats another target's fold for gold nominations 52.5/97 = 0.541
+   S1 FS agree-only   AUC gold vs non-gold 0.588; true fold beats another target's fold for gold nominations 53.5/97 = 0.552
+   S2 FS full         AUC gold vs non-gold 0.655; true fold beats another target's fold for gold nominations 66/97 = 0.680
+   S3 max             AUC gold vs non-gold 0.561; true fold beats another target's fold for gold nominations 52.0/97 = 0.536
+   S4 top3            AUC gold vs non-gold 0.584; true fold beats another target's fold for gold nominations 55.0/97 = 0.567
+   S5 stem-dedup      AUC gold vs non-gold 0.588; true fold beats another target's fold for gold nominations 53.5/97 = 0.552
+(2) guarded closure over 300 random synthetic graphs (10 beings, 9 must-links, 4 cannot-links), 12 arrival orders each:
+   sequential guard gave different partitions for different orders in 235/300 graphs (0.783)
+   component-hold (hold any must-link component that contains a cannot-link pair) depends only on the link sets: order-dependent in 0 by construction

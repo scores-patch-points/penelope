@@ -1,0 +1,57 @@
+{
+ "articles": 30,
+ "artWithErr": 2,
+ "artKinds": {
+  "polarity_contradiction": 2
+ },
+ "artHEAD": 4,
+ "paras": 427,
+ "parWithErr": 1,
+ "claimsTotal": 8759,
+ "trials": 392,
+ "noClaimTrials": 35,
+ "V": {
+  "NEG": {
+   "n": 392,
+   "catchable": 200,
+   "caught": 200,
+   "caughtAll": 277
+  },
+  "SWAP": {
+   "n": 73,
+   "catchable": 27,
+   "caught": 0,
+   "caughtAll": 0,
+   "decl": 2,
+   "declCatchable": 2,
+   "declCaught": 0
+  },
+  "DUP": {
+   "n": 392,
+   "flagged": 0
+  },
+  "YEAR": {
+   "n": 79
+  }
+ },
+ "examples": [
+  {
+   "title": "Ben Affleck",
+   "f": [
+    {
+     "kind": "polarity_contradiction",
+     "msg": ""
+    }
+   ]
+  },
+  {
+   "title": "Daisy Bacon",
+   "f": [
+    {
+     "kind": "polarity_contradiction",
+     "msg": ""
+    }
+   ]
+  }
+ ]
+}

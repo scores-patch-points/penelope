@@ -113,3 +113,37 @@ Two attacks: a read-only hostile review of this file, and three runs on the 30 D
 - **sameAs studies**: estimated 2.8% to 20% of `owl:sameAs` links are wrong, and transitive closure over them collapses distinct beings. That is the failure Definition 8's guarded closure addresses; test it.
 - **OntoClean**: identity criteria are carried per sortal and rigid properties hold through an instance's life: our birth against standing, and a hint that the tolerance ladder may need one per sortal (person, organisation, passage).
 - Reading order proposed: Fellegi-Sunter and Winkler, Raad and Beek on contextual identity and closure, Yao on three-way decisions, Guarino and Welty on per-kind criteria.
+
+## 10. Weave and falsification attempt 2 (2026-11-19; DEV, EXPLORATORY; ledger rows 32-34)
+The pieces we already own are mapped stage by stage in WEAVE-REFERENT.md. This section records what that mapping changes in the theory and the second round of attacks. Everything below is DEV; nothing is claimed.
+
+**Results**
+1. **Fellegi-Sunter weight (row 32, `fs_check.py`).** On 127 gold among 11,484 name-free EMBED-N nominations (top 30), AUC: old strength 0.585; FS agree-only 0.588; FS with disagreement terms 0.655; max single weight 0.561; top-3 0.584; stem-deduplicated 0.588. The true fold beat another target's fold for gold nominations 0.541 / 0.552 / 0.680 / 0.536 / 0.567 / 0.552. Only the two-sided weight helped; the independence correction did not, so correlated tokens are not the main cause here. Still weak and small.
+2. **Guarded closure (row 32).** The sequential "merge unless it joins a cannot-link pair" gave different partitions for different arrival orders in 235 of 300 random synthetic graphs (dense in conflicts, so inflated). The component-hold rule (hold any must-link component containing a cannot-link pair) is a function of the set of links, order-independent by construction (not measured on real merges).
+3. **The lint with the tie (row 33, `lint_redo.mjs`, PREREG-LINT-REDO.md).** Claims built from the reader's clauses (rel = lemma, ARG0/ARG1 = referent faces, polarity from the clause, ground = paragraph holon), `lintGfp` from khora. Planted negation: caught in 200 of 200 catchable variants (catchable 200 of 392 = 0.510; flagged 277 of 392 = 0.707 of all). Duplicate control: flagged 0 of 392. Planted name swap: catchable 27 of 73, caught 0 of 27; only 2 variants were of declared-asymmetric relations, so the swap test is UNJUDGEABLE, not negative. Year change: 79 plants, unreachable (the reader emits no value claim). Compared with row 31 A1 (the embedder keeps the contradiction as nearest neighbour 1,717 of 1,718) the lint separates them where a claim exists, but the claim exists for only about half of the sampled clauses.
+4. **False alarms on natural text (row 33).** ERROR findings in 2 of 30 whole articles (0.067; pre-registered bar 5%: R1 HIT at article level) and 1 of 427 paragraphs (0.002; bar 2%: not hit). Both article hits are the tie failing on an UNSATURATED figure: "Affleck campaigned for Obama" against "Affleck did not actively campaign for Obama's reelection in 2012" (figure keeps ARG0 only, the object and the year are dropped); "the final installment did not arrive in time" against "the installment, which finally arrived" (time missing). A string-identity arm (head words) gave 4 of 30.
+5. **Stability under refresh (row 34, `stability.mjs`).** 9 articles, 850 referents with at least 2 mentions in the first two thirds of the text: the same id after reading the whole text, 0 of 850. Every fresh read has a new source id (9 of 9) and re-births every being. Face lost: 26 of 850; prefix faces merged into another referent: 5.
+
+**Laws added or changed**
+| # | Law | Status | Falsifier |
+|---|---|---|---|
+| L2 (restated) | Birth, not spelling holds in the append-only LOG (the id given at admission and kept, reassignment and merge as recorded entries), not in a stateless read | The log claim: ESTABLISHED in khora (4 oscillating beings and 25 stale addresses under founder naming, 0 and 1 under birth naming). A fresh read re-births everything: 0 of 850 ids survive (row 34). So the theory's birth id must be minted and kept by the record, never recomputed from the read | an id that changes between two appends to the same log |
+| L13 | A veto witness must be a SATURATED claim: every role of the relation filled and no time or manner adjunct dropped. An unsaturated claim may support a hole, never convict | NEW; motivated by 4 above; untested | a convicted contradiction between claims whose dropped adjuncts differ, or a saturated-claim veto that fires on a true text pair at more than the declared rate |
+| L14 | A verdict is a STANDING: the join of per-standpoint predications (is / is-not / cannot-be-said), each naming who decided; unresolved disagreement is reported as both; a search that did not run says nothing | ESTABLISHED as janus design (`standing.mjs`); not yet measured for passages | a verdict returned as a boolean, or a missing search read as agreement |
+| L15 | A null is derived the house way: the text's own population at the same frequency, leave-one-out, max over seeded draws, intersection of two seeds with the dissent kept; a permutation null was tried and refused | ESTABLISHED as house idiom (Zenodotus concern-priors); the strength license of row 31 did not use it | a license whose null was not drawn from the ground's own distribution |
+| L16 | Claims meet only at overlapping grounds; roles, not word order, make a difference; a relation's one-valued, symmetric or acyclic nature is DECLARED by a giver | ESTABLISHED as khora design; row 33: planted negation caught 200 of 200 catchable; swap test unjudgeable (2 declared-asymmetric variants) | a declared-acyclic swap not caught, or a sibling-ground contradiction reported |
+| L5, L9 | unchanged | | |
+
+**Open items, by what blocks the claim**
+1. Coverage: about half of sampled clauses give a catchable claim; year and any value are unreachable (no value claim).
+2. Saturation (L13) and time (Partee's reference time is built but not wired into claims).
+3. A derived null for the strength (L15) and Fellegi-Sunter weights with it.
+4. Hyperlexicon and descriptor lane not in the nominator; the hyperlexicon door was down.
+5. A ratified ground for referent retrieval (the janus grounds are drafts by one author).
+6. Order-independent merge on real merges; stability of VERDICTS (not only ids) across appends.
+
+**Next falsifiers, pre-written (for a NEW never-read set)**
+- N1: with L13 (saturated claims only), natural false alarms below 0.05 of articles AND planted-negation catch among catchable at least 0.80; coverage reported beside.
+- N2: the lint-vetoed set, applied to row-30-style nominations, removes planted contradictions the embedder alone keeps (planted into the nominations' paragraphs) at a stated rate, with the duplicate control flagging 0.
+- N3: a two-sided Fellegi-Sunter weight with a house-idiom null beats 0.655 AUC with the control separation above 0.75 on at least 300 gold nominations.
+- N4: verdict stability: appending a paragraph changes no earlier Other (a witnessed discernment is never revoked by a later true fact) and moves no birth id minted in the log.
