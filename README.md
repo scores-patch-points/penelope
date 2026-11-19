@@ -134,7 +134,7 @@ append-only, always revisable).
 ║  │    │                     │ □LHM □LIM □LLD □LMO │                     │  ║
 ║  │    │                     │ □LOG □LPS □LQA □LRR │                     │  ║
 ║  │    │                     │ □LRS □LTP □LWK □LWP │                     │  ║
-║  │    │                     │ □LWV ■AGS           │                     │  ║
+║  │    │                     │ □LWV ■AGS ■LDG      │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -162,7 +162,7 @@ append-only, always revisable).
 ║  │    │                     │                     │ □LCD □LEN □LHM □LIM │  ║
 ║  │    │                     │                     │ □LLD □LMO □LOG □LPS │  ║
 ║  │    │                     │                     │ □LQA □LRR □LRS □LTP │  ║
-║  │    │                     │                     │ □LWK □LWP □LWV      │  ║
+║  │    │                     │                     │ □LWK □LWP □LWV ■LDG │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -180,7 +180,7 @@ append-only, always revisable).
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │ □LHM □LIM □LLD □LMO │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ □LOG □LPS □LQA □LRR │  ║
 ║  │    │                     │ ■PVD ■FRV ■AGS      │ □LRS □LTP □LWK □LWP │  ║
-║  │    │                     │                     │ □LWV                │  ║
+║  │    │                     │                     │ □LWV ■LDG           │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
@@ -205,7 +205,7 @@ append-only, always revisable).
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
-║ │    ■WRT△◆ ■MJS△◆                                                         ║
+║ │    ■WRT△◆ ■MJS△◆ ■LDG⊨◈                                                  ║
 ║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆ ■FLN△◈        ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
@@ -559,6 +559,8 @@ append-only, always revisable).
 ║     @ g/agentic-server.mjs g/agentic.html GL-HS-01                         ║
 ║■MJS 1 △◆ ‡ mini-js                                                         ║
 ║     @ g/mini-js-ast.mjs g/mini-js-demo.mjs g/mini-js-diff.mjs GL-HS-01     ║
+║■LDG 1 ⊨◈ ‡ ledger-check                                                    ║
+║     @ g/ledger-check.mjs g/ledger-check.test.mjs GL-LG-01                  ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

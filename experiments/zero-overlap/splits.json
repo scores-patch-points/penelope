@@ -1,0 +1,45 @@
+{
+ "about": "Registry of the data splits behind the ledger rows. A split's first scoring may be held/fresh; every later use is dev, reused or explore. Data is not committed; `regenerate` says how to rebuild it.",
+ "splits": {
+  "henryiv-fr": {
+   "what": "Henry IV Part 1, English (Gutenberg) vs Guizot French, speeches aligned per scene, held out by act",
+   "regenerate": "bilingual/align.py"
+  },
+  "henryiv-de": {
+   "what": "Henry IV Part 1, English vs Wieland German, aligned per act, held out by act",
+   "regenerate": "bilingual/align_de.py"
+  },
+  "wiki-latin-dev": {
+   "what": "English/French and English/German Wikipedia lead pairs (countries, rivers, mountains, physicists, elements...), acts <= 3",
+   "regenerate": "wikipedia/fetch.py then wikipedia/make_pairs.py fr|de"
+  },
+  "wiki-latin-held": {
+   "what": "the same pairs, acts >= 4",
+   "regenerate": "wikipedia/fetch.py then wikipedia/make_pairs.py fr|de"
+  },
+  "mrpc-dev": {
+   "what": "last third of GLUE MRPC train (by idx)",
+   "regenerate": "MRPC parquet from the GLUE dataset, see mrpc/mrpc.py"
+  },
+  "mrpc-test": {
+   "what": "GLUE MRPC test",
+   "regenerate": "MRPC parquet from the GLUE dataset, see mrpc/mrpc.py"
+  },
+  "f1": {
+   "what": "fresh set 1: capitals by continent and US states, fr/de leads",
+   "regenerate": "wikipedia/fetch_fresh.py"
+  },
+  "f2": {
+   "what": "fresh set 2: administrative divisions (Italy, Japan, Switzerland, India, France, Argentina, Germany, Netherlands)",
+   "regenerate": "wikipedia/fetch_fresh2.py"
+  },
+  "f3": {
+   "what": "fresh set 3: divisions (Thailand, Turkey, Greece, Romania, Iran, Italy regions, Vietnam, Egypt, Croatia, Hungary, Chile)",
+   "regenerate": "wikipedia/fetch_fresh3.py"
+  },
+  "f4": {
+   "what": "fresh set 4: divisions (Philippines, Kenya, Afghanistan, Indonesia, Colombia, Mexico, Peru, Ukraine, Ghana, Senegal, Norway, Cuba)",
+   "regenerate": "wikipedia/fetch_fresh4.py"
+  }
+ }
+}

@@ -1851,6 +1851,20 @@
     "g/mini-js-diff.mjs",
     "GL-HS-01"
    ]
+  },
+  {
+   "id": "LDG",
+   "name": "ledger-check",
+   "st": "■",
+   "lvl": 1,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "g/ledger-check.mjs",
+    "g/ledger-check.test.mjs",
+    "GL-LG-01"
+   ]
   }
  ]
 }
