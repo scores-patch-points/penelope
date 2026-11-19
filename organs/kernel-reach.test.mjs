@@ -229,3 +229,13 @@ test("resolver: default is the sibling directory; ER7_HOME is a legacy alias for
     for (const [k, v] of Object.entries(saved)) { if (v === undefined) delete process.env[k]; else process.env[k] = v; }
   }
 });
+
+test("pharos is reached through the same door: PHAROS_HOME wins, absence is typed pharos-absent and names the path", async () => {
+  const fake = fs.mkdtempSync(path.join(os.tmpdir(), "fake-pharos-")); fs.mkdirSync(path.join(fake, "lib"), { recursive: true }); fs.writeFileSync(path.join(fake, "lib", "sig.mjs"), "export const answer = 7;\n");
+  const saved = process.env.PHAROS_HOME;
+  try {
+    process.env.PHAROS_HOME = fake; let R = await freshResolver(); assert.equal((await R.kernelImport("pharos", "lib/sig.mjs")).answer, 7);
+    process.env.PHAROS_HOME = path.join(fake, "no-such-pharos"); R = await freshResolver();
+    await assert.rejects(() => R.kernelImport("pharos", "lib/sig.mjs"), (e) => e.code === "pharos-absent" && e.reason === "home-missing" && e.looked === path.join(fake, "no-such-pharos"));
+  } finally { if (saved === undefined) delete process.env.PHAROS_HOME; else process.env.PHAROS_HOME = saved; }
+});

@@ -308,7 +308,7 @@ append-only, always revisable).
 ║     @ GL-TP-05                                                             ║
 ║■LIB 4 △∘ § library                                                         ║
 ║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
-║     @ o/kernel-reach.test.mjs GL-01 GL-KR-01                               ║
+║     @ o/kernel-reach.test.mjs GL-01 GL-KR-01 GL-KR-02                      ║
 ║                                                                            ║
 ║□ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║□CDB 2 ●◈ ‡ fan                                                             ║

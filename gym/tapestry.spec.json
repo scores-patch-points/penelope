@@ -530,7 +530,8 @@
     "o/kernel-reach.mjs",
     "o/kernel-reach.test.mjs",
     "GL-01",
-    "GL-KR-01"
+    "GL-KR-01",
+    "GL-KR-02"
    ]
   },
   {

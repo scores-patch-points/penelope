@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { compareStatements, address } from "./compare.mjs";
 import { Log, addVerdict, identityEvent, reconsider, standingAt } from "./log.mjs";
-import { surpriseBits, symbolizer, streamOf, makeForesight, robustUnit, effect } from "./foresight.mjs";
+import { surpriseBits, symbolizer, streamOf, makeForesight, effect, admission, decideEvent, SEEDS, DRAWS } from "./foresight.mjs";
 
 const ctx = { by: "logger", at: "tag" }, base = { language: "eng", by: "asker", at: "t", acyclic: ["defeat"], functional: [], containers: {}, grain: "fine" }, Q = { about: "Marshall Bell", concerns: ["defeat"] };
 const SA = "Marshall Bell defeated Arthur Greene at the siege in 1912.", SB = "Black Jack defeated Arthur Greene at the siege in 1912.", SC = "Marshall Bell, known as Black Jack, led the brigade.";
@@ -13,7 +13,7 @@ const mkDoc = (id, alias) => {
   const early = [], late = []; let k = 0;
   for (let i = 0; i < 16; i++) early.push(`${others[k++ % others.length]} met ${others[(k * 3 + 1) % others.length]} near the river.`);
   early.push(`${SB}`);
-  for (let i = 0; i < 12; i++) late.push(`${i % 2 ? alias : "Marshall Bell"} wrote to ${others[(i * 5 + 2) % others.length]} about the siege.`);
+  for (let i = 0; i < 36; i++) late.push(`${i % 2 ? alias : "Marshall Bell"} wrote to the committee about the siege.`);   // a long strict alternation: the clear true alias the stricter gate must still admit
   return { id, text: `Notes.\n${early.join(" ")}\n${late.join(" ")}` };
 };
 const dEarlyCut = (d) => d.text.indexOf(SB) + SB.length;
@@ -56,4 +56,10 @@ test("a cannot-link has no foresight measure yet: typed, and nothing is admitted
   identityEvent(log, { kind: "apart", a: "Black Jack", b: "Marshall Bell", witnesses: witness(), ...ctx });
   const g = await makeForesight(log, 1, [dA, dB, dC])({ body: { of: v0.id } }); assert.equal(g.gap, "foresight_defined_for_merge_only");
 });
-test("the robust unit is 1.4826 times the median absolute deviation", () => { assert.equal(robustUnit([1, 1, 1, 1]), 0); assert.ok(Math.abs(robustUnit([1, 2, 3, 4, 100]) - 1.4826 * 1) < 1e-9); });
+test("admission: above zero and above BOTH seeds' maxima; beating only one is a dissent, not an admission", () => {
+  assert.deepEqual(admission(5, [3, 4]), { admitted: true, dissent: false });
+  assert.deepEqual(admission(3.5, [3, 4]), { admitted: false, dissent: true });
+  assert.deepEqual(admission(2, [3, 4]), { admitted: false, dissent: false });
+  assert.deepEqual(admission(-1, [-5, -6]), { admitted: false, dissent: false }, "never admitted at or below zero, even above a negative null");
+  assert.equal(SEEDS.length, 2); assert.equal(DRAWS, 39);
+});

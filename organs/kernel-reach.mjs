@@ -46,6 +46,7 @@ export const KERNELS = Object.freeze({
   janus: Object.freeze({ env: ["JANUS_HOME"], dir: "janus" }),
   zenodotus: Object.freeze({ env: ["ZENODOTUS_HOME"], dir: "Zenodotus" }),
   heimdall: Object.freeze({ env: ["HEIMDALL_HOME"], dir: "heimdall" }),
+  pharos: Object.freeze({ env: ["PHAROS_HOME"], dir: "pharos" }),
 });
 
 export class KernelAbsentError extends Error {
