@@ -69,3 +69,12 @@ test("hook: behind the default branch it says how far", () => {
 test("hook: a repo whose remote is not the nexus, in a folder that is not a Fold/EO folder, gets nothing", () => {
   const d = repoWith("https://github.com/someone-else/proj.git", "jobsearch"); assert.equal(run(d), "");
 });
+
+test("hook: a stale local origin/HEAD that points at a feature branch does not become the default; the kit's own Default-branch line wins", () => {
+  const d = repoWith("https://github.com/scores-patch-points/zzrepo.git"); git(d, "checkout", "-q", "-b", "attention-binder");
+  const sha = git(d, "rev-parse", "HEAD").stdout.trim(); git(d, "update-ref", "refs/remotes/origin/attention-binder", sha);
+  git(d, "symbolic-ref", "refs/remotes/origin/HEAD", "refs/remotes/origin/attention-binder");
+  assert.match(run(d), /behind origin\/main/); assert.doesNotMatch(run(d), /origin\/attention-binder/);
+  fs.writeFileSync(path.join(d, "CLAUDE.md"), "# x\nLevel `L2`. Default branch `fold`.\n- Gate (run it before you finish): `npm test`\n");
+  assert.match(run(d), /behind origin\/fold/, "the kit's line names the default");
+});

@@ -20,7 +20,14 @@ fi
 if [ -n "$repo" ]; then
   branch=$(git symbolic-ref --short -q HEAD || echo detached)
   commit=$(git rev-parse --short HEAD 2>/dev/null)
-  def=$(git symbolic-ref --short -q refs/remotes/origin/HEAD 2>/dev/null); def=${def#origin/}; [ -n "$def" ] || def=main
+  # the default branch: the kit's own line in CLAUDE.md ("Default branch `x`"), else origin/main if it exists, else what origin/HEAD says
+  # (a local origin/HEAD can be stale and point at some feature branch), else main
+  def=$(grep -m1 -o 'Default branch `[^`]*`' CLAUDE.md 2>/dev/null | sed 's/Default branch `//; s/`$//')
+  if [ -z "$def" ]; then
+    if git rev-parse --verify -q refs/remotes/origin/main >/dev/null 2>&1; then def=main
+    else def=$(git symbolic-ref --short -q refs/remotes/origin/HEAD 2>/dev/null); def=${def#origin/}; fi
+  fi
+  [ -n "$def" ] || def=main
   behind=$(git rev-list --count "HEAD..origin/$def" 2>/dev/null || echo "?")
   dirty=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
   echo "NEXUS: repo $repo · branch $branch @ $commit · $behind commit(s) behind origin/$def (as of the last fetch) · $dirty uncommitted file(s)"
