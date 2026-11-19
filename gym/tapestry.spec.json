@@ -1491,6 +1491,23 @@
    ]
   },
   {
+   "id": "ANC",
+   "name": "anaphor-commit",
+   "st": "■",
+   "lvl": 0,
+   "op": "DEF",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/anaphor-commit.mjs",
+    "o/anaphor-commit.test.mjs",
+    "g/anaphor-run.mjs",
+    "g/anaphor-run.test.mjs",
+    "g/anaphor-mutants.mjs",
+    "GL-AC-01"
+   ]
+  },
+  {
    "id": "FLN",
    "name": "fold-note",
    "st": "■",

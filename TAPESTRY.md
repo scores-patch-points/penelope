@@ -75,7 +75,7 @@
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
 ║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL ■TLS │  ║
-║  │    │ ■FAP ■HMA           │ □GAR □PTH ·MAR ·VIS │ ■KTL                │  ║
+║  │    │ ■FAP ■HMA ■ANC      │ □GAR □PTH ·MAR ·VIS │ ■KTL                │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND ■EQV ■SMV │                     │  ║
@@ -106,7 +106,7 @@
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ ·STM ■RSR ·STR ■FAP │  ║
-║  │    │                     │ ■PVD ■FRV ■AGS      │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │ ■PVD ■FRV ■ANC ■AGS │ ■SLF ■HMA ■WNB ■FCL │  ║
 ║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  │    │                     │                     │ □UDL □LAG □LBD □LCB │  ║
 ║  │    │                     │                     │ □LCD □LEN □LHM □LIM │  ║
@@ -120,7 +120,7 @@
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∩  │ ∩∘                  │ ∩◆                  │ ∩◈                  │  ║
 ║  │    │ ■NLB ■DOR           │ ■STL ■SNP ■GAP ■WSN │ ■CUB ■LAW ■GLA ·GAT │  ║
-║  │    │                     │ ■EVO                │ ·TER ·KNL ·STM ■RSR │  ║
+║  │    │                     │ ■EVO ■ANC           │ ·TER ·KNL ·STM ■RSR │  ║
 ║  │    │                     │                     │ ·STR ■FAP ■HMA      │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ≈  │ ≈∘                  │ ≈◆                  │ ≈◈                  │  ║
@@ -157,7 +157,8 @@
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
 ║ │    ■WRT△◆ ■MJS△◆ ■LDG⊨◈                                                  ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆ ■FLN△◈        ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆ ■ANC=◆        ║
+║ │    ■FLN△◈                                                                ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -452,6 +453,9 @@
 ║     @ o/perspective-eva.mjs o/perspective-eva.test.mjs                     ║
 ║     @ g/perspective-run.mjs g/perspective-run.test.mjs GL-FV-01 GL-PE-01   ║
 ║     @ GL-PE-02                                                             ║
+║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
+║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
+║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
 ║■FLN 0 △◈ ‡ fold-note                                                       ║
 ║     @ o/fold-note.mjs o/fold-note.test.mjs GL-FN-01                        ║
 ║■WRT 1 △◆ ‡ essay-writers                                                   ║
