@@ -40,6 +40,14 @@
   "f4": {
    "what": "fresh set 4: divisions (Philippines, Kenya, Afghanistan, Indonesia, Colombia, Mexico, Peru, Ukraine, Ghana, Senegal, Norway, Cuba)",
    "regenerate": "wikipedia/fetch_fresh4.py"
+  },
+  "f5": {
+   "what": "fresh set 5: divisions (Nigeria, Tanzania, Bulgaria, Ecuador, Madagascar, DR Congo, Papua New Guinea, Sweden, China, Iraq, Portugal, Estonia, Czech Republic, Laos, Honduras, Namibia), fr/de leads",
+   "regenerate": "wikipedia/fetch_fresh5.py"
+  },
+  "f6": {
+   "what": "fresh set 6: divisions (Mongolia, Kazakhstan, Uruguay, Dominican Republic, Burkina Faso, Ethiopia, Uganda, Sri Lanka, Bhutan, Liberia, Albania, Uzbekistan), fr/de leads; lead wikitext for the link targets via wikipedia/fetch_wt6.py",
+   "regenerate": "wikipedia/fetch_fresh6.py then wikipedia/fetch_wt6.py"
   }
  }
 }

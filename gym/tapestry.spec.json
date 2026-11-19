@@ -1477,7 +1477,10 @@
     "o/relation-fold.test.mjs",
     "o/vantage-verdicts.mjs",
     "o/vantage-verdicts.test.mjs",
-    "GL-FV-01"
+    "o/perspective-eva.mjs",
+    "o/perspective-eva.test.mjs",
+    "GL-FV-01",
+    "GL-PE-01"
    ]
   },
   {

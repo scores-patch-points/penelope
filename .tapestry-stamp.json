@@ -144,6 +144,8 @@
     "organs/notes-ledger.test.mjs": "134b7387bbe13cb9d222ada9bd1c88628a543497396ac608d77de927f119d72c",
     "organs/pair-verdicts.mjs": "048aa2e06fd90ca3579f9862def1f69b632c0846e0f12771452dfae9d12c2ee2",
     "organs/pair-verdicts.test.mjs": "68ff2444d52da119bdbe8c29f9b0eee3afe5e9890a4aa851fdf733e6194c12f6",
+    "organs/perspective-eva.mjs": "c853f4d003c2d4da1335dd418fa5f067d9f45fae8b0f97c6277ed33437735978",
+    "organs/perspective-eva.test.mjs": "d3dfb10a4cb857567f185b6176091d963e14bbc03577ce5dc3113cd667ff32f1",
     "organs/pythia.mjs": "45bd450725fe6bb3c65b227d76e50e3d1579ce31044dc2fc67825b2d6537fc65",
     "organs/relation-fold.mjs": "bad1c8f84062bc5c794c31418bf79f29f9f53f8c464429a4e09c9ca5f7b5f970",
     "organs/relation-fold.test.mjs": "17d3b3a050e79afafc61b06ec6d54253bb6234e83b7ce6d0ebea670745a97cb9",

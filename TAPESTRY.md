@@ -446,7 +446,8 @@
 ║■FRV 0 ⊨◆ ‡ frame-verdicts                                                  ║
 ║     @ o/frame-verdicts.mjs o/frame-verdicts.test.mjs o/relation-fold.mjs   ║
 ║     @ o/relation-fold.test.mjs o/vantage-verdicts.mjs                      ║
-║     @ o/vantage-verdicts.test.mjs GL-FV-01                                 ║
+║     @ o/vantage-verdicts.test.mjs o/perspective-eva.mjs                    ║
+║     @ o/perspective-eva.test.mjs GL-FV-01 GL-PE-01                         ║
 ║■FLN 0 △◈ ‡ fold-note                                                       ║
 ║     @ o/fold-note.mjs o/fold-note.test.mjs GL-FN-01                        ║
 ║■WRT 1 △◆ ‡ essay-writers                                                   ║
