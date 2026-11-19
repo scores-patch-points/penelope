@@ -15,7 +15,8 @@
 //
 //   judgeEquivalence({ perspective, a, b }) -> { verdict, for, differences, agreements, silent, powerless, why }
 //   perspective  { name, terrain: Lens|Paradigm|Atmosphere, frame, probes: [{ name, lands: <terrain>, power, same?(x, y) }] }       probes are the DECLARED questions; `same` defaults to strict equality
-//   a, b         { probeName: { value, addr? } | null }                  the answers each side's reading gave (null or missing = silent)
+//   a, b         { probeName: { value, addr?, referent? } | null }   referent: true = the value is a per-document referent id (compared only through `bridge`)
+//   bridge       (probeName, x, y) -> true | false | null   a licensed bridge between two documents' referents; absent or null = silent                  the answers each side's reading gave (null or missing = silent)
 // WHERE A PERSPECTIVE LIVES (the cube, native/kernel/cube.js). A perspective is a thing of the third domain (Interpretation: what things mean), so it declares
 // which of its three terrains it is at, by grain: "Lens" (a specific standpoint reading, a verdict), "Paradigm" (a standing system of what counts as a
 // difference; changed only by REC) or "Atmosphere" (the ambient standard of meaning that makes some readings obvious: the FRAME). Its probes land on terrains
@@ -25,7 +26,7 @@
 export const TERRAINS = Object.freeze(["Void", "Entity", "Kind", "Field", "Link", "Network", "Atmosphere", "Lens", "Paradigm"]);
 export const INTERPRETATION = Object.freeze(["Atmosphere", "Lens", "Paradigm"]);
 export const comparable = (p, q) => !!p?.terrain && p.terrain === q?.terrain && (p.frame ?? null) === (q.frame ?? null);
-export function judgeEquivalence({ perspective, a = {}, b = {} } = {}) {
+export function judgeEquivalence({ perspective, a = {}, b = {}, bridge = null } = {}) {
   const probes = perspective?.probes;
   if (perspective && !INTERPRETATION.includes(perspective.terrain)) return { verdict: "gap", for: perspective?.name ?? null, why: `a perspective must declare an Interpretation terrain (${INTERPRETATION.join(", ")}); got ${perspective.terrain ?? "none"}`, differences: [], agreements: [], silent: [], powerless: [] };
   const bad = (probes ?? []).find((p) => p.lands && !TERRAINS.includes(p.lands));
@@ -35,7 +36,15 @@ export function judgeEquivalence({ perspective, a = {}, b = {} } = {}) {
   for (const p of probes) {
     const x = a[p.name]?.value, y = b[p.name]?.value;
     if (x == null || y == null) { silent.push({ probe: p.name, side: x == null && y == null ? "both" : x == null ? "a" : "b" }); continue; }
-    const same = typeof p.same === "function" ? p.same(x, y) : x === y;
+    // REFERENTS ARE PER DOCUMENT (khora's cast ids are never shared between two readings): an answer flagged `referent: true` is compared only through a bridge the
+    // caller supplies (licensed by usage), never by id equality; with no bridge, or a bridge that cannot say, the probe is SILENT, not agreement and not a difference.
+    const isRef = a[p.name]?.referent === true || b[p.name]?.referent === true;
+    let same;
+    if (isRef) {
+      const bx = typeof bridge === "function" ? bridge(p.name, x, y) : null;
+      if (bx !== true && bx !== false) { silent.push({ probe: p.name, side: "both", why: "referent ids are per document; no licensed bridge says whether they are the same referent" }); continue; }
+      same = bx;
+    } else same = typeof p.same === "function" ? p.same(x, y) : x === y;
     const row = { probe: p.name, a: x, b: y, addr: { a: a[p.name]?.addr ?? null, b: b[p.name]?.addr ?? null }, power: p.power ?? 0 };
     if (!same) { differences.push(row); continue; }
     if (!(p.power > 0)) { powerless.push(row); continue; }
@@ -99,7 +108,7 @@ export function answersOf(entries = []) {
   const out = {};
   for (const e of latest.values()) {
     const g = (out[e.body.pair] ||= { a: {}, b: {}, ids: [] });
-    g[e.body.side][e.body.probe] = { value: e.body.value ?? null, addr: e.body.addr ?? e.addr };
+    g[e.body.side][e.body.probe] = { value: e.body.value ?? null, addr: e.body.addr ?? e.addr, ...(e.body.referent === true ? { referent: true } : {}) };
     g.ids.push(e.id);
   }
   return out;

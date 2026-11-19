@@ -124,3 +124,12 @@ test("a revision is admitted only if accuracy rises, false accepts do not and in
   r = w.run(); assert.equal(r.code, 0, r.err); assert.ok(r.json.verdicts >= 3);                  // re-judged under the new entry
   assert.equal(by(w, "aaaaaaaaaaaaaaaa", "geographer").body.verdict, "different");              // the new population probe finds the 340000 vs 90000 difference
 });
+
+test("a probe-answer flagged as a referent id is not compared by id equality: the runner weaves a gap that says why", () => {
+  const w = world(); w.put("khora", { kind: "kind", addr: "kind:probe-answer", body: { name: "probe-answer", cell: "INS·Figure", why: "t" } });
+  const geo = { ...GEO, name: "container", probes: [{ name: "under", lands: "Link", power: 0.5, powerFrom: "t", rule: "strict equality" }] };
+  w.run("--declare", file(w, "c.json", geo));
+  for (const side of ["a", "b"]) w.put("khora", { kind: "probe-answer", cell: "INS·Figure", addr: `answer:dddddddddddddddd:${side}:under`, body: { pair: "pair:dddddddddddddddd", side, probe: "under", value: "ref_77", referent: true } });
+  const r = w.run(); assert.equal(r.code, 0, r.err);
+  const v = by(w, "dddddddddddddddd", "container"); assert.equal(v.body.verdict, "gap"); assert.match(v.body.silent[0].why, /per document/);
+});

@@ -44,3 +44,14 @@ test("perspectives compare only at the same terrain and under the same frame (a 
   assert.equal(comparable(geographer, demographer), false);                       // different frame
   assert.equal(comparable(geographer, { ...geographer, terrain: "Paradigm" }), false); // different terrain
 });
+
+test("referent answers are per document: equal ids are NOT agreement; only a licensed bridge decides, otherwise the probe is silent", () => {
+  const pers = { name: "container", terrain: "Lens", frame: "place", probes: [{ name: "under", lands: "Link", power: 0.5 }] };
+  const a = { under: { value: "ref_1", referent: true } }, b = { under: { value: "ref_1", referent: true } };
+  const none = judgeEquivalence({ perspective: pers, a, b });
+  assert.equal(none.verdict, "gap"); assert.match(none.silent[0].why, /per document/);                  // same id string, still no verdict
+  assert.equal(judgeEquivalence({ perspective: pers, a, b, bridge: () => true }).verdict, "equivalent");
+  assert.equal(judgeEquivalence({ perspective: pers, a: { under: { value: "ref_1", referent: true } }, b: { under: { value: "ref_2", referent: true } }, bridge: () => true }).verdict, "equivalent"); // different ids, licensed bridge
+  assert.equal(judgeEquivalence({ perspective: pers, a, b, bridge: () => false }).verdict, "different");
+  assert.equal(judgeEquivalence({ perspective: pers, a, b, bridge: () => null }).verdict, "gap");        // a bridge that cannot say is silence
+});
