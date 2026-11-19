@@ -64,6 +64,10 @@
   "referent-fresh": {
    "what": "60 English Featured articles (positions p mod 50 = 23, chosen by member count only), never read before the single scoring of row 30; the control_embed.py read afterwards is exploratory",
    "regenerate": "referent/fetch_docs.py fresh"
+  },
+  "cube-geometry": {
+   "what": "the 27 cells of penelope organs/cube.mjs (operators, terrains, stances); no data and no text",
+   "regenerate": "referent/eot/region_closure.mjs"
   }
  }
 }
