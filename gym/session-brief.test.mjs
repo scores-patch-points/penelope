@@ -42,3 +42,30 @@ test("the hook prints nothing in an unrelated project, a plain notice with no br
   assert.match(hook(khora, home, "file://" + path.join(ROOT, "BRIEF.md")), /^# SESSION BRIEF/, "fetched");
   assert.match(hook(khora, home, "file:///nonexistent"), /^# SESSION BRIEF/, "the cache answers when the source is gone");
 });
+
+// the hook's status line: found by the git remote, a warning off the default branch or behind it, the gate read from CLAUDE.md, nothing elsewhere
+const git = (cwd, ...a) => spawnSync("git", ["-c", "user.name=t", "-c", "user.email=t@t", ...a], { cwd, encoding: "utf8" });
+const repoWith = (remote, name = "khora") => {
+  const d = path.join(fs.mkdtempSync(path.join(os.tmpdir(), "nx-")), name); fs.mkdirSync(d); git(d, "init", "-q", "-b", "main");
+  fs.writeFileSync(path.join(d, "CLAUDE.md"), "# x\n- Gate (run it before you finish): `npm test`\n"); git(d, "add", "."); git(d, "commit", "-q", "-m", "one");
+  git(d, "remote", "add", "origin", remote); const sha = git(d, "rev-parse", "HEAD").stdout.trim();
+  git(d, "update-ref", "refs/remotes/origin/main", sha); git(d, "symbolic-ref", "refs/remotes/origin/HEAD", "refs/remotes/origin/main"); return d;
+};
+const run = (cwd) => hook(cwd, fs.mkdtempSync(path.join(os.tmpdir(), "hh-")), "file://" + path.join(ROOT, "BRIEF.md"));
+test("hook: in a nexus repo (found by its remote, whatever the folder is called) it prints repo, branch, commit, the gate, and no warning when up to date on the default branch", () => {
+  const d = repoWith("https://github.com/scores-patch-points/zzrepo.git", "folder-with-another-name"), out = run(d);
+  assert.match(out, /^NEXUS: repo zzrepo · branch main @ [0-9a-f]{7} · 0 commit\(s\) behind origin\/main/);
+  assert.match(out, /NEXUS: gate: `npm test`/); assert.doesNotMatch(out, /WARNING/); assert.match(out, /# SESSION BRIEF/);
+});
+test("hook: off the default branch it warns (the stale-branch trap), and an ssh remote is found too", () => {
+  const d = repoWith("git@github.com:scores-patch-points/zzrepo.git"); git(d, "checkout", "-q", "-b", "cast-identity");
+  assert.match(run(d), /NEXUS WARNING: you are on 'cast-identity', not 'main'/);
+});
+test("hook: behind the default branch it says how far", () => {
+  const d = repoWith("https://github.com/scores-patch-points/zzrepo.git"); git(d, "checkout", "-q", "-b", "ahead"); fs.writeFileSync(path.join(d, "f"), "1"); git(d, "add", "."); git(d, "commit", "-q", "-m", "two");
+  const ahead = git(d, "rev-parse", "HEAD").stdout.trim(); git(d, "update-ref", "refs/remotes/origin/main", ahead); git(d, "checkout", "-q", "main");
+  const out = run(d); assert.match(out, /1 commit\(s\) behind origin\/main/); assert.match(out, /NEXUS WARNING: this checkout is 1 commit\(s\) behind/);
+});
+test("hook: a repo whose remote is not the nexus, in a folder that is not a Fold/EO folder, gets nothing", () => {
+  const d = repoWith("https://github.com/someone-else/proj.git", "jobsearch"); assert.equal(run(d), "");
+});
