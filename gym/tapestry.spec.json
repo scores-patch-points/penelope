@@ -1460,6 +1460,24 @@
     "g/pair-verdicts-run.test.mjs",
     "GL-PV-01"
    ]
+  },
+  {
+   "id": "FRV",
+   "name": "frame-verdicts",
+   "st": "■",
+   "lvl": 0,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/frame-verdicts.mjs",
+    "o/frame-verdicts.test.mjs",
+    "o/relation-fold.mjs",
+    "o/relation-fold.test.mjs",
+    "o/vantage-verdicts.mjs",
+    "o/vantage-verdicts.test.mjs",
+    "GL-FV-01"
+   ]
   }
  ]
 }

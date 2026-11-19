@@ -1,0 +1,6 @@
+# Are the frames independent? (falsifier written before the measurement; dev data only, no held-out touched)
+Claim under test (mine, from the DEF/EVA/REC explanation): an impostor's chance of surviving k admitted frames shrinks like (false-accept rate)^k. That holds only if the frames' false accepts are independent.
+Measurement: on each language's dev split (act 3), for every claimant and every suitor (same-category article) record which of three frames pass it against that claimant's seeded 50-null threshold: A = plain token overlap, B = usage lexicon (T_all), C = numerals (T_root). Suitor false-accept marginals P(A), P(B), P(C) and joints P(AB), P(AC), P(BC), P(ABC) are pooled over claimants. Lift = P(joint) / product of marginals. Independence predicts lift = 1.
+Falsifier, no hand threshold: resample claimants with replacement 500 times (seed 20261118); independence is rejected for a pair of frames if the 95% interval of its lift excludes 1. Effective number of independent frames k_eff = ln P(ABC) / ln(geometric mean of the three marginals); independence predicts k_eff = 3, full dependence predicts k_eff = 1.
+Also reported: the same lift on TRUE pairs (do the frames pass the same real pairs?).
+Limits: three frames, all fed by the same two texts; the ground frame (shared neighbours) is not in yet; same-category suitors only; dev split only.

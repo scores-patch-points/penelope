@@ -160,3 +160,39 @@ test("marks: a request of [diff, bound]; a verdict of [diff, bound, witness]; bo
   assert.equal(marksFor({ judgement: { ok: false }, diff, log: "pair-test" }).length, 0);
   for (const m of [vm, dm]) for (const k of ["same", "true", "ok"]) assert.equal(k in m.body, false);
 });
+
+// ---- model-free bound: licence rules and the witness-free rule (prototype, unratified) -------------------------------
+import { KNOWN_LICENCE_RULES, NO_WITNESS } from "./pair-verdicts.mjs";
+const MFB = { name: "mf", by: "test", why: "t", share: 0.5, wordQuantile: 0.95, witness: NO_WITNESS,
+  quantileRule: "sorted[min(n-1, ceil(q*n)-1)], count must be strictly greater",
+  licences: ["same word when letter case, u/v and i/j are ignored"] };
+const msub = (a, b) => ({ i: 0, j: 0, a, b, contentA: true, evidence: { ab: { shared: 0, empty: true, nulls: [], n: 0 }, ba: { shared: 0, empty: true, nulls: [], n: 0 } } });
+const mfDiff = (subs, over = {}) => ({ share: 0.9, lcs: 5, nA: 6, nB: 6, anchors: [[1, 1, true], [2, 2, true]], substitutions: subs, orphans: [], ...over });
+test("licence rule: u/v and i/j are one word; evidence is not needed", () => {
+  const b = declarePairBound(MFB);
+  assert.equal(b.ok, true);
+  assert.equal(licensed(msub("Leaues", "leaves"), b), true);
+  assert.equal(licensed(msub("Iohn", "John"), b), true);
+  assert.equal(licensed(msub("Southerne", "southern"), b), false, "a final e is not licensed by the first rule");
+  assert.equal(licensed(msub("Sunne", "sun"), b), false);
+});
+test("a bound may name only licence rules this organ computes", () => {
+  assert.equal(declarePairBound({ ...MFB, licences: ["any word the author likes"] }).ok, false);
+  assert.equal(declarePairBound({ ...MFB, licences: ["same word when also a doubled letter is one and a final e is dropped"] }).ok, true);
+  const two = declarePairBound({ ...MFB, licences: Object.keys(KNOWN_LICENCE_RULES) });
+  assert.equal(licensed(msub("Southerne", "southern"), two), true);
+  assert.equal(licensed(msub("Steele", "steel"), two), true);
+  assert.equal(licensed(msub("Fortels", "Foretells"), two), false);
+});
+test("witness-free bound: same / other / undecided, no model", () => {
+  const b = declarePairBound(MFB);
+  assert.equal(judge(mfDiff([msub("Leaues", "leaves")]), null, b).verdict, "same");
+  assert.equal(judge(mfDiff([msub("Leaues", "leaves")]), null, b).by, "diff");
+  assert.equal(judge(mfDiff([msub("Sunne", "sun")]), null, b).verdict, "other");
+  assert.equal(judge(mfDiff([msub("Leaues", "leaves")], { orphans: [{}] }), null, b).verdict, "other");
+  assert.equal(judge(mfDiff([], { share: 0.1 }), null, b).verdict, "undecided");
+});
+test("a bound with no licences is the old bound: the body does not change", () => {
+  const b = declarePairBound({ ...MFB, witness: "three wordings, unanimous per direction", licences: undefined });
+  assert.equal("licences" in boundBody(b).body, false);
+});

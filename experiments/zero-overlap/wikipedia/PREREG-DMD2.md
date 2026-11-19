@@ -1,0 +1,4 @@
+# PREREG-DMD2 (filed after frame D failed falsifier 1; before D2 was scored). DEV ONLY, exploratory: it is a revision chosen after seeing dev results, so no admission and no claim beyond the dev arm.
+Change: D2(p, q) = the absolute count of meaningful items on the CANDIDATE side with no counterpart on the claimant side (same DMD, same counterpart rule). No ratio, so agreement cannot dilute a difference. PASS iff D2 < the minimum D2 over the claimant's 50 length-matched null candidates (seed 20261118) AND D2 is at most the count of the claimant-side meaningful items that have a counterpart on the candidate side (the candidate's own differences may not outweigh its agreements).
+Same arms and budgets as PREREG-DMD, same two falsifiers (D2 FA_adv > 0.10 at k=10, mix, shortest mate; TP < 0.20).
+Honest limits: tuned after seeing dev; a short candidate has little of its own content to leave unmatched, so the shortest-mate arm is the one that matters.

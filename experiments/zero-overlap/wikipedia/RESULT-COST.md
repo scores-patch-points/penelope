@@ -1,0 +1,6 @@
+# RESULT-COST: forging cost per frame, fr and de dev (PREREG-COST sha 2611b9e97f2b751d). DEV ONLY. cost.py; cost-fr.log, cost-de.log.
+Median tokens to forge a pass (fr/de): numerals 1, overlap 2, R_set 2, R 2, usage 5. Forgeable within 10 tokens: overlap 1.00/0.99, R_set 1.00/1.00, R 0.97/0.97, usage 0.85/0.82, numerals 0.81/0.79 (the rest unforgeable: the claimant had too few numerals).
+Accuracy beside it: overlap TP 0.93/0.94 and R_set 0.93/0.94 are the most accurate AND among the cheapest to forge; usage is the most expensive to forge but TP only 0.37/0.41.
+Ladders: OR-ladder (any of overlap/usage/numerals) forged within 3 tokens for 98% of claimants; TP 0.96, natural FA 0.19. AND-ladder (all three) forged within 10 tokens for 53% (fr) / 45% (de); TP 0.17/0.19, natural FA 0.00/0.005.
+All three pre-written falsifiers HIT (fr; de 2 of 3, 0.45 vs the 0.5 line): (1) accuracy and forging cost trade off; (2) AND-ladder forgeable within 10 for 53% in fr; (3) AND-ladder TP 0.17/0.19 < 0.20: robustness is bought by losing the true pairs.
+Reading: among these surface frames, accuracy and forging cost run in opposite directions. The fix is not a better combination of them; it is a frame whose cost to forge is high for a reason (see PREREG-DMD).

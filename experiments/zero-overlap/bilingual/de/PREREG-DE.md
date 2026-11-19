@@ -1,0 +1,3 @@
+# German replication (stamped before scoring)
+Same protocol as ../PREREG.md (sha dd6adb4e754eeb30) and ../ERRATUM-1.md, nothing tuned: modern English vs Wieland's German (Zenodotus first-folio), speeches aligned by length-DP PER ACT (Wieland has 26 scenes against 19, so scenes do not match; suitors = other speeches of the same ENGLISH scene), induction/dev = acts 1-3 (induce 1-2, choose on 3), held-out = acts 4-5 run once. Only change: tokenizer also keeps ä ö ü ß. Rungs T_all, T_rare, T_rare2, T_mid, T_mid2; the rung is chosen on dev by the admission rule; the held-out is run once. No pooling with French.
+Gold: length-DP, 4 pairs checked by eye (all correct). Pairs: 393 (acts 1-3: 249, acts 4-5: 144).

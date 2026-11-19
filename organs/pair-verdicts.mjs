@@ -39,8 +39,21 @@ export const KNOWN_QUANTILE_RULES = Object.freeze({
     clears: (shared, cut) => shared > cut,
   },
 });
+export const NO_WITNESS = "none: the diff settles, no witness is asked";
 export const KNOWN_WITNESS_RULES = Object.freeze({
   "three wordings, unanimous per direction": { wordings: 3 },
+  // No model, no testimony. Under this rule the diff alone can say "same" (addressed, every substitution licensed,
+  // no orphan, order kept), "other" (addressed with a reason) or leave the pair "undecided" (not addressed).
+  [NO_WITNESS]: { wordings: 0 },
+});
+
+// Licence rules: when two words that a diff pairs as a substitution are the same word. Declared by a bound, bylined,
+// each a computation over the two words and nothing else (no corpus, no model). A form-axis rule, never a tolerance.
+const ORTH1 = (w) => String(w).toLowerCase().replace(/u/g, "v").replace(/j/g, "i");
+const ORTH2 = (w) => ORTH1(w).replace(/(.)\1+/g, "$1").replace(/e$/, "");
+export const KNOWN_LICENCE_RULES = Object.freeze({
+  "same word when letter case, u/v and i/j are ignored": { same: (a, b) => ORTH1(a) === ORTH1(b) },
+  "same word when also a doubled letter is one and a final e is dropped": { same: (a, b) => ORTH2(a) === ORTH2(b) },
 });
 
 // ---- DEF -----------------------------------------------------------------------------------------------
@@ -58,8 +71,12 @@ export function declarePairBound(spec = {}) {
   if (!KNOWN_QUANTILE_RULES[spec.quantileRule]) return refuse("unknown_quantile_rule", `this organ computes only: ${Object.keys(KNOWN_QUANTILE_RULES).join(" | ")}`);
   if (!str(spec.witness)) return refuse("no_witness_rule", "how the witness's answers are read is declared");
   if (!KNOWN_WITNESS_RULES[spec.witness]) return refuse("unknown_witness_rule", `this organ computes only: ${Object.keys(KNOWN_WITNESS_RULES).join(" | ")}`);
+  const licences = spec.licences === undefined ? [] : spec.licences;
+  if (!Array.isArray(licences) || licences.some((r) => typeof r !== "string")) return refuse("bad_licences", "licences is a list of declared licence rules");
+  const unknown = licences.find((r) => !KNOWN_LICENCE_RULES[r]);
+  if (unknown) return refuse("unknown_licence_rule", `this organ computes only: ${Object.keys(KNOWN_LICENCE_RULES).join(" | ")}`);
   return { schema: PAIR_SCHEMA, ok: true, bound: "pair", name: spec.name, by: spec.by, why: spec.why, ratified: spec.ratified === true,
-    share: spec.share, wordQuantile: q, quantileRule: spec.quantileRule, witness: spec.witness };
+    share: spec.share, wordQuantile: q, quantileRule: spec.quantileRule, witness: spec.witness, licences: [...licences] };
 }
 
 /** boundFromEntry(entry) -> the bound declared by a pair-bound log entry (its name is its address). */
@@ -91,6 +108,7 @@ const clearsNull = (ev, bound) => {
 /** licensed(substitution, bound) -> true | false; null when its evidence is malformed. */
 export function licensed(sub, bound) {
   if (!isBound(bound)) return null;
+  if (bound.licences?.some((r) => KNOWN_LICENCE_RULES[r].same(sub?.a, sub?.b))) return true;
   const ab = direction(sub?.evidence?.ab), ba = direction(sub?.evidence?.ba);
   if (!ab || !ba) return null;
   return clearsNull(ab, bound) && clearsNull(ba, bound);
@@ -148,6 +166,10 @@ export function judge(d, w, bound) {
   const at = `share ${d.share} ${addressed ? ">=" : "<"} ${bound.share}`;
   const base = { schema: PAIR_SCHEMA, ok: true, reasons, addressed, share: d.share, bound: { name: bound.name, by: bound.by, ratified: bound.ratified } };
   if (addressed && reasons.length) return { ...base, verdict: "other", by: "diff", why: `addressed (${at}) and the diff shows ${reasons.join(", ")}` };
+  if (bound.witness === NO_WITNESS) {
+    if (addressed) return { ...base, verdict: "same", by: "diff", why: `addressed (${at}), every substitution licensed${bound.licences.length ? ` (${bound.licences.length} declared licence rule${bound.licences.length === 1 ? "" : "s"})` : ""}, no orphan, order kept; the bound asks no witness` };
+    return { ...base, verdict: "undecided", by: "diff", why: `not addressed (${at}): the diff does not cover the pair, and the bound asks no witness, so the pair stays undecided` };
+  }
   const unsettled = addressed ? `addressed (${at}) but the diff shows no difference, and a diff alone does not say same` : `not addressed (${at}): the diff does not cover the pair`;
   if (w === null || w === undefined) return { ...base, verdict: "need-witness", by: null, why: unsettled };
   if (!isObj(w) || !isObj(w.answers)) return refuse("not_a_witness", "a witness body carries answers { ab, ba }");
@@ -169,7 +191,7 @@ export const KINDS = Object.freeze({
 const shaOf = (diffAddr) => (typeof diffAddr === "string" && diffAddr.startsWith("diff:") ? diffAddr.slice(5) : null);
 
 /** the contract's entry bodies (address and body), no log needed */
-export const boundBody = (b) => ({ addr: `pair-bound:${b.name}`, body: { by: b.by, why: b.why, ratified: b.ratified, share: b.share, wordQuantile: b.wordQuantile, quantileRule: b.quantileRule, witness: b.witness } });
+export const boundBody = (b) => ({ addr: `pair-bound:${b.name}`, body: { by: b.by, why: b.why, ratified: b.ratified, share: b.share, wordQuantile: b.wordQuantile, quantileRule: b.quantileRule, witness: b.witness, ...(b.licences?.length ? { licences: b.licences } : {}) } });
 export const requestBody = (diffAddr, j) => ({ addr: `witness-request:${shaOf(diffAddr)}`, body: { pair: `pair:${shaOf(diffAddr)}`, why: j.why } });
 export const verdictBody = (diffAddr, j) => ({ addr: `verdict:${shaOf(diffAddr)}`, body: { verdict: j.verdict, by: j.by, why: j.why, reasons: j.reasons } });
 

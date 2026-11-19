@@ -1,0 +1,8 @@
+held induced on 2474 same-pairs; licensed 16372 test 1725
+  ALL  R0 n_same=1147 n_notsame= 578  TP 0.930  FA_hard 0.872  FA_rand 0.005  BA 0.529
+  ALL  R1 n_same=1147 n_notsame= 578  TP 0.181  FA_hard 0.157  FA_rand 0.010  BA 0.512
+  ALL  R2 n_same=1147 n_notsame= 578  TP 0.951  FA_hard 0.841  FA_rand 0.009  BA 0.555
+  LOW  R0 n_same=  32 n_notsame= 106  TP 0.875  FA_hard 0.689  FA_rand 0.000  BA 0.593
+  LOW  R1 n_same=  32 n_notsame= 106  TP 0.125  FA_hard 0.104  FA_rand 0.003  BA 0.511
+  LOW  R2 n_same=  32 n_notsame= 106  TP 0.688  FA_hard 0.623  FA_rand 0.009  BA 0.532
+chosen on dev: {'rung': 'R0'}

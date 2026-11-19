@@ -77,7 +77,7 @@
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND ■EQV ■SMV │                     │  ║
-║  │    │                     │ ■PVD                │                     │  ║
+║  │    │                     │ ■PVD ■FRV           │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -98,7 +98,7 @@
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ ·STM ■RSR ·STR ■FAP │  ║
-║  │    │                     │ ■PVD                │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │ ■PVD ■FRV           │ ■SLF ■HMA ■WNB ■FCL │  ║
 ║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
@@ -116,7 +116,7 @@
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │                     │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │                     │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │                     │  ║
-║  │    │                     │ ■PVD                │                     │  ║
+║  │    │                     │ ■PVD ■FRV           │                     │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
@@ -139,7 +139,7 @@
 ║ │    ■ADP●◈ □TKB△◆ □LOK○◆ ·HOR△◆ ·KOE○◆ ·MAR⊨◆ ·SCR○◆ ·POL⊨◆ ·KIN○◈        ║
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆                      ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆               ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -425,6 +425,10 @@
 ║■PVD 0 ⊨◆ ‡ pair-verdicts                                                   ║
 ║     @ o/pair-verdicts.mjs o/pair-verdicts.test.mjs g/pair-verdicts-run.mjs ║
 ║     @ g/pair-verdicts-run.test.mjs GL-PV-01                                ║
+║■FRV 0 ⊨◆ ‡ frame-verdicts                                                  ║
+║     @ o/frame-verdicts.mjs o/frame-verdicts.test.mjs o/relation-fold.mjs   ║
+║     @ o/relation-fold.test.mjs o/vantage-verdicts.mjs                      ║
+║     @ o/vantage-verdicts.test.mjs GL-FV-01                                 ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

@@ -1,0 +1,5 @@
+# Erratum 1 (filed after dev scoring, before held-out; PREREG sha dd6adb4e754eeb30)
+Dev showed T_rare and T_rare2 score 0 for every pair: "rare" was df <= median over ALL induction types, which is 1, and a type seen once can never reach co-occurrence 2, so the tier is empty by construction. This is a flaw in the stamped rung, not a result.
+Added rung T_mid, defined before it was scored: probes = licensed English types with df <= the median df over LICENSED types (and T_mid2 = same, score >= 2). Admission rule unchanged. T_rare/T_rare2 stay reported as refused. Held-out is run once, after this.
+Other disclosures: gold is length-DP alignment (no lexicon), 4 pairs checked by eye in dev, 30 not checked; only speeches with >= 8 words on both sides are kept (541 pairs); French and English proper names share surface forms but sit among the 50 most frequent types or the 5-char prefixes and were not removed beyond the stop list.
+Erratum note: stop-list ties were hash-order dependent (6403 vs 6448 licensed pairs across two dev runs); fixed by sorted tie-break before held-out.
