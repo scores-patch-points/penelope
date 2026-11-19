@@ -8,94 +8,128 @@
 //        sense that it only ever moves toward identity. Monotone BY CONSTRUCTION: what is empirical is how pairs spread over the levels.
 //
 // WHAT MAKES A DIFFERENCE (the destroy test with the arrow of time). A node is a claim {id, dim, value, at, dependsOn, strength, tied}.
-// A difference at node X makes a difference to the asker only if X is in the UPSTREAM closure of one of the asker's concerns: destroying X
-// would destroy the concern. The arrow of time orders the closure: a node can only feed a concern if it is not LATER than it (an untimed node
-// is an invariant and is earlier than everything). A dependency that points forward in time is a malformed holograph and is refused.
-// A difference downstream of the concerns, or beside them, makes no difference to this asker however large it is.
+// A difference at node X makes a difference to the asker only if X is in the UPSTREAM closure of one of the asker's concerns on EITHER side:
+// destroying X would destroy the concern. The closure is the union over both sides, so a side cannot hide a node by omitting an edge (an
+// edge the two sides disagree on is recorded in `notes`). The arrow of time: a dependency {n dependsOn p} needs p to be earlier than or at the
+// time of n; an untimed node is an invariant, earlier than everything, so an invariant cannot depend on a timed node. Every edge on each side
+// is checked, reachable or not; a forward edge, a cycle, a duplicate id or a malformed node refuses the whole comparison.
 //
-// HOW A DIFFERENCE IS WEIGHED. Per dimension, absolute or relative, with the time gap allowed for in fluents (drift x years apart).
+// HOW A DIFFERENCE IS WEIGHED. Per dimension, absolute or relative; a fluent allows drift: rate x the time gap, with the gap CAPPED at the
+// dimension's declared maxGap (so a huge gap cannot absorb any difference).
 //   agree    within tolerance
-//   differ   beyond tolerance, AND the node is strong, tied to its subject, and (for a fluent) stated in time; otherwise it is a HOLE
-//   hole     one-side, untied or untimed: blocked, never a vote. Weak nodes can only support, never veto.
-// Verdict: other (a strong, tied difference that makes a difference), equivalent (at least one strong agreement, no such difference), gap
-// (nothing strong and comparable that makes a difference to this asker: the caller defaults to Other).
+//   differ   beyond tolerance, AND strong, tied to its subject, and consistently timed (both timed or both untimed); otherwise a HOLE
+//   hole     one-side, untied, weak, mixed timing, dimension mismatch, no declared tolerance: blocked, never a vote
+// Verdict: other (a strong, tied difference that makes a difference); equivalent (at least one strong agreement, no such difference, and NO
+// concern is a hole: the asker cared about it); gap (otherwise: the caller defaults to Other). `coverage` and `holes` say how much was seen.
 //
-// Not here: forging. A tolerance on a forgeable dimension is forgeable (experiments/zero-overlap: rows 7, 8, 23); the caller must report the
-// informed-adversary rate beside this verdict. Not here: how nodes and the dependency order are read from text (the reader's job).
+// Not here: forging. A tolerance on a forgeable dimension is forgeable (experiments/zero-overlap rows 7, 8, 23). strong and tied are the
+// CALLER's assertions: the organ cannot see provenance. So the verdict carries `adversary`: the informed-adversary rate the caller measured
+// for these dimensions, or null with a caveat. Not here: how nodes and the dependency order are read from text (the reader's job).
 
 export const ASKER_SCHEMA = "AskerVerdict@1";
 const isObj = (x) => x !== null && typeof x === "object" && !Array.isArray(x);
 const str = (x) => typeof x === "string" && x.trim().length > 0;
+const num = (x) => typeof x === "number" && Number.isFinite(x);
+const TOKEN = /^[A-Za-z0-9][A-Za-z0-9_.-]*$/;
 const refuse = (reason, detail) => ({ schema: ASKER_SCHEMA, ok: false, verdict: "refused", reason, ...(detail ? { detail } : {}) });
+const DECLARED = new WeakSet(); // only askers made by declareAsker are trusted: a hand-built {ok:true} is refused
 
-/** declareAsker({ name, by, why, concerns: [nodeId], tolerance: { dim: { kind: "abs"|"rel", tol, rate? } }, ladder? }) -> the DEF, or a refusal. */
+export const KINDS = Object.freeze({
+  "asker-verdict": { cell: "EVA·Pattern", why: "equivalent / other / gap for one asker: the differences that make a difference to them against their tolerance, with the holes and the coverage" },
+  "asker-declaration": { cell: "DEF·Ground", why: "an asker's concerns, tolerances and ladder, bylined and fixed before the two folds are read" },
+});
+export const verdictBody = (pairSha, v) => ({ addr: `asker:${pairSha}`, body: { verdict: v.verdict, residual: v.residual, meaningful: v.meaningful, holes: v.holes, coverage: v.coverage, adversary: v.adversary } });
+
+/** declareAsker({ name, by, why, concerns: [nodeId], tolerance: { dim: { kind: "abs"|"rel", tol, rate?, maxGap? } }, ladder?, ratified? }) -> the DEF, or a refusal. */
 export function declareAsker(spec = {}) {
   if (!isObj(spec)) return refuse("no_asker");
-  const { name, by, why, concerns, tolerance, ladder = [10, 5, 2, 1, 0.5, 0.2, 0.1] } = spec;
-  if (!str(name) || !str(by) || !str(why)) return refuse("asker_unbylined", "name, by and why are required: the tolerance is someone's, not the organ's");
+  const { name, by, why, concerns, tolerance, ladder = [10, 5, 2, 1, 0.5, 0.2, 0.1], ratified = false } = spec;
+  if (!str(name) || !TOKEN.test(name) || !str(by) || !str(why)) return refuse("asker_unbylined", "name (a plain token), by and why are required: the tolerance is someone's, not the organ's");
   if (!Array.isArray(concerns) || !concerns.length || !concerns.every(str)) return refuse("no_concerns", "an asker cares about something");
   if (!isObj(tolerance) || !Object.keys(tolerance).length) return refuse("no_tolerance");
-  for (const [dim, t] of Object.entries(tolerance)) if (!isObj(t) || !["abs", "rel"].includes(t.kind) || !(t.tol >= 0)) return refuse("bad_tolerance", dim);
-  if (!Array.isArray(ladder) || !ladder.length || !ladder.every((f) => f > 0) || ladder.some((f, i) => i && f >= ladder[i - 1])) return refuse("bad_ladder", "strictly descending positive factors");
-  return { schema: ASKER_SCHEMA, ok: true, name, by, why, concerns: [...concerns], tolerance: { ...tolerance }, ladder: [...ladder] };
-}
-
-const byId = (nodes) => new Map((nodes ?? []).map((n) => [n.id, n]));
-
-/** The nodes that make a difference to the asker: the upstream closure of the concerns, ordered by the arrow of time. Refuses a forward dependency. */
-export function meaningfulNodes(asker, nodes) {
-  const g = byId(nodes), seen = new Set(), out = [];
-  const queue = asker.concerns.filter((c) => g.has(c));
-  for (const id of queue) {
-    if (seen.has(id)) continue; seen.add(id); out.push(id);
-    const n = g.get(id);
-    for (const d of n.dependsOn ?? []) {
-      const p = g.get(d);
-      if (!p) continue;
-      if (n.at != null && p.at != null && p.at > n.at) return { ok: false, reason: "arrow_of_time_violated", detail: `${id} (at ${n.at}) depends on ${d} (at ${p.at})` };
-      queue.push(d);
-    }
+  const tol = {};
+  for (const [dim, t] of Object.entries(tolerance)) {
+    if (!isObj(t) || !["abs", "rel"].includes(t.kind) || !num(t.tol) || t.tol < 0 || (t.kind === "rel" && t.tol > 1)) return refuse("bad_tolerance", dim);
+    const rate = t.rate ?? 0;
+    if (!num(rate) || rate < 0) return refuse("bad_rate", dim);
+    if (rate > 0 && !(num(t.maxGap) && t.maxGap > 0)) return refuse("drift_needs_maxGap", `${dim}: a drift rate needs a declared cap on the time gap`);
+    tol[dim] = Object.freeze({ kind: t.kind, tol: t.tol, rate, maxGap: rate > 0 ? t.maxGap : 0 });
   }
-  return { ok: true, ids: out };
+  if (!Array.isArray(ladder) || !ladder.length || !ladder.every((f) => num(f) && f > 0) || ladder.some((f, i) => i && f >= ladder[i - 1])) return refuse("bad_ladder", "strictly descending finite positive factors");
+  const asker = Object.freeze({ schema: ASKER_SCHEMA, ok: true, name, by, why, ratified: ratified === true, concerns: Object.freeze([...concerns]), tolerance: Object.freeze(tol), ladder: Object.freeze([...ladder]) });
+  DECLARED.add(asker);
+  return asker;
 }
 
-const sameTimeKind = (n) => n.at == null; // an untimed node is an invariant
-function weigh(tol, a, b, scale) {
-  const base = tol.kind === "rel" ? Math.abs(a.value - b.value) / Math.max(Math.abs(a.value), Math.abs(b.value), 1e-9) : Math.abs(a.value - b.value);
-  const gap = !sameTimeKind(a) && !sameTimeKind(b) ? Math.abs(a.at - b.at) : 0;
-  const d = Math.max(0, base - (tol.rate ?? 0) * gap), allowed = tol.tol * scale;
-  return { d, allowed, ratio: allowed > 0 ? d / allowed : d > 0 ? Infinity : 0 };
-}
-
-/** judgeAsker({ asker, a, b, scale = 1 }) -> AskerVerdict. a and b are the two folds' nodes (same ids name the same node on both sides). */
-export function judgeAsker({ asker, a, b, scale = 1 } = {}) {
-  if (!asker?.ok) return refuse("no_declared_asker");
-  const all = [...(a ?? []), ...(b ?? [])];
-  const m = meaningfulNodes(asker, all.length ? [...byId(all).values()] : []);
-  if (!m.ok) return refuse(m.reason, m.detail);
-  const A = byId(a), B = byId(b), trail = [], holes = [];
-  let strongAgree = 0, strongDiffer = 0, residual = 0;
-  for (const id of m.ids) {
-    const x = A.get(id), y = B.get(id), dim = (x ?? y)?.dim;
-    if (!x || !y) { holes.push({ id, why: "one-side" }); continue; }
-    const tol = asker.tolerance[dim];
-    if (!tol) { holes.push({ id, why: "asker_declared_no_tolerance_for_dimension" }); continue; }
-    const w = weigh(tol, x, y, scale), strong = x.strength === "strong" && y.strength === "strong", tied = x.tied === true && y.tied === true;
-    const timed = (sameTimeKind(x) && sameTimeKind(y)) || (!sameTimeKind(x) && !sameTimeKind(y));
-    if (w.ratio <= 1) { trail.push({ id, outcome: strong ? "agree" : "support", d: w.d, allowed: w.allowed }); if (strong) strongAgree++; residual = Math.max(residual, w.ratio); continue; }
-    if (strong && tied && timed) { trail.push({ id, outcome: "differ", d: w.d, allowed: w.allowed }); strongDiffer++; residual = Math.max(residual, w.ratio); continue; }
-    holes.push({ id, why: !strong ? "weak_cannot_veto" : !tied ? "untied" : "untimed" });
+function readSide(nodes) {
+  if (!Array.isArray(nodes)) return refuse("bad_nodes", "a fold is an array of nodes");
+  const map = new Map();
+  for (const n of nodes) {
+    if (!isObj(n) || !str(n.id) || !str(n.dim)) return refuse("bad_node", "id and dim are required strings");
+    if (!num(n.value)) return refuse("bad_value", `${n.id}: value must be a finite number`);
+    if (!(n.at === null || n.at === undefined || num(n.at))) return refuse("bad_time", `${n.id}: at must be a finite number or absent`);
+    if (n.strength !== "strong" && n.strength !== "weak") return refuse("bad_strength", n.id);
+    if (typeof n.tied !== "boolean") return refuse("bad_tied", n.id);
+    if (n.dependsOn !== undefined && !(Array.isArray(n.dependsOn) && n.dependsOn.every(str))) return refuse("bad_dependsOn", n.id);
+    if (map.has(n.id)) return refuse("duplicate_id", n.id);
+    map.set(n.id, { ...n, at: n.at ?? null, dependsOn: [...(n.dependsOn ?? [])] });
   }
-  const verdict = strongDiffer ? "other" : strongAgree ? "equivalent" : "gap";
-  return { schema: ASKER_SCHEMA, ok: true, verdict, residual, meaningful: m.ids, trail, holes, scale, why: verdict === "other" ? "a strong, tied difference makes a difference to this asker" : verdict === "equivalent" ? "every difference that makes a difference to this asker is within its tolerance" : "nothing strong and comparable makes a difference to this asker: a hole, default Other" };
+  for (const n of map.values()) for (const d of n.dependsOn) { // the arrow of time on EVERY edge, reachable or not
+    const p = map.get(d); if (!p) continue;
+    if (p.at !== null && (n.at === null || p.at > n.at)) return refuse("arrow_of_time_violated", `${n.id} (at ${n.at}) depends on ${d} (at ${p.at})`);
+  }
+  const state = new Map(); // cycle check
+  const visit = (id) => { if (state.get(id) === 2) return false; if (state.get(id) === 1) return true; state.set(id, 1); for (const d of map.get(id).dependsOn) if (map.has(d) && visit(d)) return true; state.set(id, 2); return false; };
+  for (const id of map.keys()) if (visit(id)) return refuse("dependency_cycle", id);
+  return { ok: true, map };
 }
 
-/** approach({ asker, a, b }) -> the verdict at every ladder level (loose to tight) and the finest level at which the pair still stands. */
-export function approach({ asker, a, b } = {}) {
-  if (!asker?.ok) return refuse("no_declared_asker");
-  const levels = asker.ladder.map((scale) => ({ scale, verdict: judgeAsker({ asker, a, b, scale }) }));
-  if (levels.some((l) => !l.verdict.ok)) return levels.find((l) => !l.verdict.ok).verdict;
+function closure(concerns, map) {
+  const seen = new Set(), queue = concerns.filter((c) => map.has(c));
+  for (let i = 0; i < queue.length; i++) { const id = queue[i]; if (seen.has(id)) continue; seen.add(id); for (const d of map.get(id).dependsOn) if (map.has(d)) queue.push(d); }
+  return seen;
+}
+
+function weigh(tol, x, y, scale) {
+  const base = tol.kind === "rel" ? Math.abs(x.value - y.value) / Math.max(Math.abs(x.value), Math.abs(y.value), 1e-9) : Math.abs(x.value - y.value);
+  const gap = x.at !== null && y.at !== null ? Math.min(Math.abs(x.at - y.at), tol.maxGap) : 0;
+  const d = Math.max(0, base - tol.rate * gap), allowed = tol.tol * scale;
+  return { d, allowed, ratio: allowed > 0 ? d / allowed : d > 0 ? 1e9 : 0 };
+}
+
+/** judgeAsker({ asker, a, b, scale = 1, informedRate = null }) -> AskerVerdict. a and b are the two folds' nodes (the same id names the same node). */
+export function judgeAsker({ asker, a, b, scale = 1, informedRate = null } = {}) {
+  if (!asker || !DECLARED.has(asker)) return refuse("no_declared_asker", "use declareAsker; a hand-built asker is not trusted");
+  if (!num(scale) || scale <= 0) return refuse("bad_scale", "scale must be a finite positive number");
+  if (informedRate !== null && !(num(informedRate) && informedRate >= 0 && informedRate <= 1)) return refuse("bad_informedRate");
+  const A = readSide(a); if (!A.ok) return A;
+  const B = readSide(b); if (!B.ok) return B;
+  const ids = new Set([...closure(asker.concerns, A.map), ...closure(asker.concerns, B.map)]);
+  const trail = [], holes = [], notes = [], compared = new Map(); let strongAgree = 0, strongDiffer = 0, residual = 0;
+  const hole = (id, why) => { holes.push({ id, why }); compared.set(id, "hole"); };
+  for (const id of ids) {
+    const x = A.map.get(id), y = B.map.get(id);
+    if (!x || !y) { hole(id, "one-side"); continue; }
+    if (x.dim !== y.dim) { hole(id, "dimension_mismatch"); continue; }
+    if ([...x.dependsOn].sort().join("\u0000") !== [...y.dependsOn].sort().join("\u0000")) notes.push({ id, note: "edges_disagree" });
+    const tol = asker.tolerance[x.dim];
+    if (!tol) { hole(id, "asker_declared_no_tolerance_for_dimension"); continue; }
+    const w = weigh(tol, x, y, scale), strong = x.strength === "strong" && y.strength === "strong", tied = x.tied && y.tied, mixed = (x.at === null) !== (y.at === null);
+    if (w.ratio <= 1) { trail.push({ id, outcome: strong ? "agree" : "support", d: w.d, allowed: w.allowed, ...(mixed ? { note: "mixed_timing: no drift allowed" } : {}) }); compared.set(id, strong ? "agree" : "support"); if (strong) strongAgree++; residual = Math.max(residual, w.ratio); continue; }
+    if (strong && tied && !mixed) { trail.push({ id, outcome: "differ", d: w.d, allowed: w.allowed }); compared.set(id, "differ"); strongDiffer++; residual = Math.max(residual, w.ratio); continue; }
+    hole(id, !strong ? "weak_cannot_veto" : !tied ? "untied" : "mixed_timing");
+  }
+  const concernHoles = asker.concerns.filter((c) => !ids.has(c) || compared.get(c) === "hole" || compared.get(c) === "support");
+  const verdict = strongDiffer ? "other" : strongAgree && !concernHoles.length ? "equivalent" : "gap";
+  return { schema: ASKER_SCHEMA, ok: true, verdict, residual, meaningful: [...ids], trail, holes, notes, concernHoles, coverage: { concerns: asker.concerns.length, concernsAnswered: asker.concerns.length - concernHoles.length, nodesCompared: trail.length, holes: holes.length }, adversary: { informedRate, caveat: informedRate === null ? "informed-adversary rate not supplied: strong and tied are the caller's assertions" : undefined }, scale, why: verdict === "other" ? "a strong, tied difference makes a difference to this asker" : verdict === "equivalent" ? "every difference that makes a difference to this asker is within its tolerance, and every concern was answered" : strongAgree ? "something agrees, but a concern is a hole: not established, default Other" : "nothing strong and comparable makes a difference to this asker: a hole, default Other" };
+}
+
+/** approach({ asker, a, b, informedRate }) -> the verdict at every ladder level (loose to tight) and the finest level at which the pair still stands. */
+export function approach({ asker, a, b, informedRate = null } = {}) {
+  if (!asker || !DECLARED.has(asker)) return refuse("no_declared_asker", "use declareAsker; a hand-built asker is not trusted");
+  const levels = asker.ladder.map((scale) => ({ scale, v: judgeAsker({ asker, a, b, scale, informedRate }) }));
+  const bad = levels.find((l) => !l.v.ok); if (bad) return bad.v;
   let finest = null;
-  for (const l of levels) { if (l.verdict.verdict === "equivalent") finest = l.scale; else break; }
-  return { schema: ASKER_SCHEMA, ok: true, levels: levels.map((l) => ({ scale: l.scale, verdict: l.verdict.verdict, residual: l.verdict.residual })), finest, stands: finest !== null, tightest: asker.ladder[asker.ladder.length - 1] };
+  for (const l of levels) { if (l.v.verdict === "equivalent") finest = l.scale; else break; }
+  return { schema: ASKER_SCHEMA, ok: true, levels: levels.map((l) => ({ scale: l.scale, verdict: l.v.verdict, residual: l.v.residual })), finest, stands: finest !== null, tightest: asker.ladder[asker.ladder.length - 1], coverage: levels[levels.length - 1].v.coverage, adversary: levels[0].v.adversary };
 }
