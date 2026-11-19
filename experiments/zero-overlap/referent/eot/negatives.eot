@@ -1,0 +1,126 @@
+# negatives.eot -- the checker must REFUSE each assembly below for the stated code.
+# Several are the hypotheses as first stated (marked H:), written literally. A refusal is a finding about the hypothesis.
+bytes : assumed
+sha256 : assumed
+names : assumed
+world : assumed
+
+# ── base: clean, so the later assemblies have things to read ──
+base : room
+base.contract.ops = NUL, DEF
+base.contract.terrains = Entity, Lens
+base.contract.stances = Dissecting
+!NUL(Entity, Dissecting) held reads world
+!DEF(Lens, Dissecting) kind_decl reads names
+!DEF(Lens, Dissecting) f_at reads names
+!EVA base
+
+# ── H: id = INS, reading the DEF-declared kind and tag it hashes ──
+h_id_is_ins : room
+# expect: dependency
+h_id_is_ins.contract.ops = INS
+h_id_is_ins.contract.terrains = Entity
+h_id_is_ins.contract.stances = Making
+!INS(Entity, Making) id reads kind_decl, f_at, sha256
+!EVA h_id_is_ins
+
+# ── H: addr = SIG, then a DEF (the stored field) reads the pointer ──
+h_addr_is_sig : room
+# expect: sig-law
+h_addr_is_sig.contract.ops = SIG, DEF
+h_addr_is_sig.contract.terrains = Entity, Lens
+h_addr_is_sig.contract.stances = Binding, Dissecting
+!SIG(Entity, Binding) ptr points held
+!DEF(Lens, Dissecting) addr_field reads ptr
+!EVA h_addr_is_sig
+
+# ── H: a license is a CON gated by an EVA: the bond reads the gate ──
+h_license : room
+# expect: dependency
+h_license.contract.ops = EVA, CON
+h_license.contract.terrains = Lens, Link
+h_license.contract.stances = Binding
+!EVA(Lens, Binding) gate reads kind_decl
+!CON(Link, Binding) licensed_tie reads held, gate
+!EVA h_license
+
+# ── H: a standing is a SYN of mentions and claims ──
+h_standing : room
+# expect: dependency
+h_standing.contract.ops = SYN
+h_standing.contract.terrains = Network
+h_standing.contract.stances = Composing
+!SYN(Network, Composing) standing reads held, kind_decl
+!EVA h_standing
+
+# ── H: append-only change is REC (an ordinary append, no evaluation before it) ──
+h_append_is_rec : room
+# expect: prerequisite
+h_append_is_rec.contract.ops = REC
+h_append_is_rec.contract.terrains = Lens
+h_append_is_rec.contract.stances = Making
+!REC(Lens, Making) append reads kind_decl
+!EVA h_append_is_rec
+
+# ── a verdict entering the log with no wrap: INS reads an EVA-born thing ──
+verdict_no_wrap : room
+# expect: dependency
+verdict_no_wrap.contract.ops = EVA, INS
+verdict_no_wrap.contract.terrains = Lens, Entity
+verdict_no_wrap.contract.stances = Binding, Making
+!EVA(Lens, Binding) v reads kind_decl
+!INS(Entity, Making) v_entry reads v
+!EVA verdict_no_wrap
+
+# ── grain-mixed ──
+mixed : room
+# expect: grain-mixed
+mixed.contract.ops = INS
+mixed.contract.terrains = Void
+mixed.contract.stances = Making
+!INS(Void, Making) x reads held
+!EVA mixed
+
+# ── the desert cell, event and contract ──
+desert : room
+# expect: desert-cell
+desert.contract.ops = SYN
+desert.contract.terrains = Field
+desert.contract.stances = Cultivating
+!SYN(Field, Cultivating) x reads held, kind_decl
+!EVA desert
+
+# ── an event outside its contract ──
+outside : room
+# expect: contract-violation
+outside.contract.ops = NUL
+outside.contract.terrains = Entity
+outside.contract.stances = Dissecting
+!DEF(Lens, Dissecting) y reads kind_decl
+!EVA outside
+
+# ── no closing checkpoint (Tempus) ──
+tempus : room
+# expect: unassembled
+tempus.contract.ops = NUL
+tempus.contract.terrains = Entity
+tempus.contract.stances = Dissecting
+!NUL(Entity, Dissecting) z reads world
+
+# ── a space whose contract is narrower than a part ──
+narrow_space : space
+# expect: narrowing-violation
+narrow_space.parts = base
+narrow_space.contract.ops = NUL
+narrow_space.contract.terrains = Entity
+narrow_space.contract.stances = Dissecting
+!EVA narrow_space
+
+# ── a space claiming more than its parts have ──
+wide_space : space
+# expect: width-violation
+wide_space.parts = base
+wide_space.contract.ops = NUL, DEF, REC
+wide_space.contract.terrains = Entity, Lens
+wide_space.contract.stances = Dissecting
+!EVA wide_space

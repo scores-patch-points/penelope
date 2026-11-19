@@ -1,0 +1,221 @@
+# primitives.eot -- the primitives of the identity/retrieval theory, built from the nine operators.
+# Draft 1, 2026-11-19. A construction to be refuted, not a ratified canon.
+# Surface subset (see check_eot.mjs): the skill's `x : type`, `x.contract.* =`, `!EVA x` checkpoint,
+# plus ONE EXTENSION of mine, not in the skill: `!OP(Site, Stance) subject reads .. points .. returns ..`
+# (the skill has `!OP target` and `OP(Site, Stance)` separately; I join them so each event names its cell).
+#   reads    = dependency. The thing read must already exist and be born by an operator at or before this one in the helix.
+#   points   = SIG only. A pointer, no value, no dependency (SIG-ANSWER: a pointer with no value).
+#   returns  = NUL only. The helix wraps: what Interpretation made (DEF/EVA/REC) re-enters the next turn as an encounter.
+# Helix: NUL SIG INS SEG CON SYN DEF EVA REC. cube.mjs wins over the skill's examples (DEF is Dissecting, EVA is Binding at Lens).
+
+# ── assembly 1: floor ─────────────────────────────────────────────
+# What is ASSUMED. Nothing below this assembly is assumed; everything else is built.
+bytes : assumed
+sha256 : assumed
+grid : assumed
+canon_form : assumed
+names : assumed
+store : assumed
+world : assumed
+region_decode : assumed
+codec_program : assumed
+nominator_program : assumed
+protocol_kinds : assumed
+floor : room
+floor.contract.ops = NUL
+floor.contract.terrains = Void
+floor.contract.stances = Clearing
+!NUL(Void, Clearing) delivered reads world       # the world hands over bytes: the Void, the hub
+!EVA floor
+
+# ── assembly 2: encounter ─────────────────────────────────────────
+encounter : room
+encounter.contract.ops = NUL
+encounter.contract.terrains = Entity
+encounter.contract.stances = Dissecting
+!NUL(Entity, Dissecting) source reads delivered, bytes     # one specific source, held; nothing marked
+!EVA encounter
+
+# ── assembly 3: address ───────────────────────────────────────────
+# addr as stored is a DEFINITION (region + hash of its decoded bytes). SIG only LOCATES (ephemeral, read by nothing).
+address : room
+address.contract.ops = SEG, SIG, DEF, EVA
+address.contract.terrains = Link, Entity, Lens
+address.contract.stances = Dissecting, Binding
+!SEG(Link, Dissecting) region reads source                 # a region of a medium: a cut
+!SEG(Link, Dissecting) region_b reads source               # a second cut
+!SIG(Entity, Binding) locator points region                # a pointer with no value
+!DEF(Lens, Dissecting) seal reads region, region_decode, sha256   # what holds: these decoded bytes hash to h
+!DEF(Lens, Dissecting) addr_value reads source, region, seal      # the address: (source, region, sha)
+!EVA(Lens, Binding) reopen reads addr_value, source, region_decode, sha256   # re-opens, or refuses on drift
+!EVA address
+
+# ── assembly 4: codec ─────────────────────────────────────────────
+# A codec is declared (DEF), its invariances are an ambient set (DEF at Ground), widening is REC after an EVA.
+codec : room
+codec.contract.ops = DEF, EVA, REC
+codec.contract.terrains = Lens, Atmosphere
+codec.contract.stances = Dissecting, Clearing, Binding, Making
+!DEF(Lens, Dissecting) codec_decl reads codec_program, region, names   # C = (material, decode, encode?, giver)
+!DEF(Atmosphere, Clearing) invariances reads names         # what C treats as accidental: DEF at Ground (an EMPTY cell in khora)
+!DEF(Lens, Dissecting) loss reads codec_decl               # what decode drops, disclosed
+!EVA(Lens, Binding) codec_check reads codec_decl, invariances, loss   # round trip / invariance respected (L26, proposed)
+!REC(Lens, Making) codec_widen reads codec_check, invariances         # a widening is a new, logged frame
+!EVA codec
+
+# ── assembly 5: weft ──────────────────────────────────────────────
+# One turn of the helix = one entry. Fields are fixed by NUL/SIG/SEG/DEF/EVA; the id is minted by INS AFTER them,
+# because the id hashes the fields (content addressing). So INS comes at the wrap, through an encounter.
+weft : room
+weft.contract.ops = NUL, SIG, SEG, DEF, EVA, INS
+weft.contract.terrains = Void, Entity, Network, Lens
+weft.contract.stances = Clearing, Dissecting, Tending, Unraveling, Binding, Making
+!NUL(Void, Clearing) ground_view reads store returns r_checked   # the record as it stands: pharos ground(h), the Void
+!NUL(Entity, Dissecting) payload reads world, bytes returns verdict, discernment, merge, reassignment, tightening, retract_notice, codec_widen   # body = what NUL held
+!SIG(Void, Tending) look points ground_view                # the writer's attention: ephemeral, read by nothing
+!SEG(Network, Unraveling) frontier reads ground_view       # the causal frontier: entries nothing descends from
+!DEF(Lens, Dissecting) kind_decl reads names, protocol_kinds   # a kind is declared
+!DEF(Lens, Dissecting) f_cell reads grid                   # cell: the cube coordinate of this very act
+!DEF(Lens, Dissecting) f_kind reads kind_decl
+!DEF(Lens, Dissecting) f_addr reads addr_value
+!DEF(Lens, Dissecting) f_body reads payload
+!DEF(Lens, Dissecting) f_of reads ground_view              # the earlier entries this one answers
+!DEF(Lens, Dissecting) f_basis reads names
+!DEF(Lens, Dissecting) f_seen reads frontier               # the frontier, frozen
+!DEF(Lens, Dissecting) f_by reads names                    # origin: a declared name (pharos does not sign it)
+!DEF(Lens, Dissecting) f_at reads names                    # a declared tag, never the engine's clock
+!DEF(Lens, Dissecting) draft reads f_cell, f_kind, f_addr, f_body, f_of, f_basis, f_seen, f_by, f_at
+!EVA(Lens, Binding) draft_checked reads draft, kind_decl, ground_view, grid   # cell known, kind declared
+!NUL(Entity, Dissecting) candidate returns draft_checked   # the finished draft arrives as an encounter
+!INS(Entity, Making) entry reads candidate, sha256, canon_form   # id = sha256(canon(entry)): an enduring instance
+!EVA weft
+
+# ── assembly 6: record ────────────────────────────────────────────
+record : room
+record.contract.ops = SEG, CON, SYN, EVA
+record.contract.terrains = Link, Network, Lens
+record.contract.stances = Dissecting, Binding, Composing
+!SEG(Link, Dissecting) cut_entry reads entry               # an entry cut apart as one unit
+!CON(Link, Binding) bond_of reads cut_entry, ground_view   # the edge to earlier entries (`of`)
+!CON(Link, Binding) bond_seen reads cut_entry, frontier    # the edge to the frontier (`seen`)
+!SYN(Network, Composing) r reads cut_entry, bond_of, bond_seen, ground_view   # R: the whole
+!EVA(Lens, Binding) r_checked reads r, draft, ground_view, sha256, canon_form, grid   # ids match content, cells known, prior kept
+!EVA record
+
+# ── assembly 7: being ─────────────────────────────────────────────
+# A being is the id of its birth entry, kept. A mention is a bond from a region to a being.
+being : room
+being.contract.ops = NUL, INS, CON
+being.contract.terrains = Entity, Link
+being.contract.stances = Dissecting, Making, Binding
+!NUL(Entity, Dissecting) first_seen returns entry          # a first admission, held
+!INS(Entity, Making) being reads first_seen                # birth: kept, never recomputed
+!NUL(Entity, Dissecting) second_seen returns entry
+!INS(Entity, Making) being_other reads second_seen
+!CON(Link, Binding) mention_a reads region, being
+!CON(Link, Binding) mention_b reads region_b, being_other
+!EVA being
+
+# ── assembly 8: claim ─────────────────────────────────────────────
+claim : room
+claim.contract.ops = SEG, CON, DEF
+claim.contract.terrains = Field, Link, Lens, Paradigm
+claim.contract.stances = Clearing, Binding, Dissecting, Unraveling
+!SEG(Field, Clearing) holon_ground reads source            # Ground: where claims may meet
+!CON(Link, Binding) arg0 reads mention_a, holon_ground     # Figure: role ARG0
+!CON(Link, Binding) arg1 reads mention_b, holon_ground     # Figure: role ARG1
+!DEF(Paradigm, Unraveling) relation reads codec_decl, region   # Pattern: relation with polarity, from the codec
+!DEF(Lens, Dissecting) claim reads holon_ground, arg0, arg1, relation   # the claim: a lens
+!EVA claim
+
+# ── assembly 9: standing ──────────────────────────────────────────
+# Mentions fold by SYN (Structure). Claims cannot enter a SYN (they are DEF, later in the helix), so standing is a DEF over the fold.
+standing : room
+standing.contract.ops = SEG, SYN, DEF
+standing.contract.terrains = Network, Lens
+standing.contract.stances = Unraveling, Composing, Dissecting
+!SEG(Network, Unraveling) as_of reads ground_view          # time is a causal cut of R, not a clock
+!SYN(Network, Composing) mention_net reads being, mention_a, as_of
+!DEF(Lens, Dissecting) standing reads mention_net, claim
+!EVA standing
+
+# ── assembly 10: standpoint ───────────────────────────────────────
+standpoint : room
+standpoint.contract.ops = DEF
+standpoint.contract.terrains = Lens, Atmosphere
+standpoint.contract.stances = Dissecting, Clearing
+!DEF(Lens, Dissecting) concerns reads grid                 # the cells the asker attends, declared before reading
+!DEF(Lens, Dissecting) tolerance reads names               # the ladder; its values are the asker's, not ours
+!DEF(Atmosphere, Clearing) scope_ground reads holon_ground # the ground in force: DEF at Ground (an EMPTY cell in khora)
+!DEF(Lens, Dissecting) standpoint reads concerns, tolerance, scope_ground, as_of
+asker : filter
+asker.contract.ops = DEF, EVA, CON
+asker.contract.terrains = Lens, Link
+asker.contract.stances = Dissecting, Binding
+asker.within = theory
+!EVA standpoint
+
+# ── assembly 11: nomination ───────────────────────────────────────
+nomination : room
+nomination.contract.ops = SIG, NUL
+nomination.contract.terrains = Entity
+nomination.contract.stances = Binding, Dissecting
+!SIG(Entity, Binding) nominee reads nominator_program points region_b   # a pointer: look here. No mark, no sameness.
+!NUL(Entity, Dissecting) candidate_held reads source returns nominee    # the look: an encounter, no mark
+!EVA nomination
+
+# ── assembly 12: discernment ──────────────────────────────────────
+discernment : room
+discernment.contract.ops = SIG, DEF, EVA
+discernment.contract.terrains = Entity, Lens
+discernment.contract.stances = Binding, Dissecting
+!SIG(Entity, Binding) notice points claim, ground_view     # attention to a possible difference: ephemeral
+!DEF(Lens, Dissecting) difference reads claim, ground_view, standpoint   # witnessed: the ids of both claims
+!EVA(Lens, Binding) discernment reads difference, tolerance, concerns, grid   # above tau, inside the concerns, upstream
+!EVA discernment
+
+# ── assembly 13: verdict ──────────────────────────────────────────
+verdict : room
+verdict.contract.ops = CON, DEF, SIG, EVA
+verdict.contract.terrains = Link, Lens, Atmosphere, Void
+verdict.contract.stances = Binding, Dissecting, Clearing, Tending
+!CON(Link, Binding) tie reads mention_a, mention_b         # a CANDIDATE tie: no standing yet
+!DEF(Atmosphere, Clearing) null reads ground_view          # the null a strength is read against: DEF at Ground
+!EVA(Lens, Binding) license reads tie, null, standpoint    # the gate (EVA), after the candidate bond
+!DEF(Lens, Dissecting) holes reads concerns, claim         # concerns no claim fills
+!SIG(Void, Tending) wanted points holes                    # what would settle it: pointers, no values
+!DEF(Lens, Dissecting) hunger_list reads holes, concerns   # the list as recorded in a Hold
+!EVA(Lens, Binding) verdict reads license, discernment, hunger_list, standpoint   # Other / Same / Hold
+!EVA verdict
+
+# ── assembly 14: judgment ─────────────────────────────────────────
+judgment : space
+judgment.parts = nomination, discernment, verdict
+judgment.contract.ops = SIG, NUL, DEF, EVA, CON
+judgment.contract.terrains = Entity, Lens, Link, Atmosphere, Void
+judgment.contract.stances = Binding, Dissecting, Clearing, Tending
+!EVA judgment
+
+# ── assembly 15: change ───────────────────────────────────────────
+change : room
+change.contract.ops = NUL, CON, SYN, DEF, EVA, REC
+change.contract.terrains = Entity, Link, Network, Lens
+change.contract.stances = Dissecting, Binding, Composing, Making
+!NUL(Entity, Dissecting) accepted returns verdict          # a Same verdict re-enters as an encounter
+!CON(Link, Binding) same_bond reads accepted, being, being_other   # the tie, now established
+!SYN(Network, Composing) closure reads same_bond, mention_net      # transitive closure of ties
+!EVA(Lens, Binding) closure_ok reads closure, discernment, standpoint   # does the closure contradict a discernment
+!REC(Lens, Making) merge reads closure_ok, same_bond       # apply: a new standing, by REC after EVA
+!REC(Lens, Making) reassignment reads discernment, mention_a, being_other
+!REC(Lens, Making) tightening reads verdict, tolerance     # a finer rung of the ladder
+!NUL(Entity, Dissecting) retraction returns entry          # pharos: retract is the cell NUL at Figure
+!DEF(Lens, Dissecting) retract_notice reads retraction
+!EVA change
+
+# ── assembly 16: theory ───────────────────────────────────────────
+theory : space
+theory.parts = floor, encounter, address, codec, weft, record, being, claim, standing, standpoint, judgment, change
+theory.contract.ops = NUL, SIG, INS, SEG, CON, SYN, DEF, EVA, REC
+theory.contract.terrains = Void, Entity, Link, Network, Lens, Atmosphere, Field, Paradigm
+theory.contract.stances = Clearing, Dissecting, Tending, Unraveling, Binding, Making, Composing
+!EVA theory
