@@ -52,6 +52,10 @@
   "f7": {
    "what": "fresh set 7: persons (Nobel laureates in Chemistry, Physiology or Medicine and Literature; Fields Medalists; Turing Award laureates) and places (Islands of Greece, Counties of Sweden, Provinces of Papua New Guinea, Counties of Estonia, Regions of Slovakia and Portugal, Cantons of Luxembourg, States of Malaysia), fr/de leads, never read before the single scoring of row 26",
    "regenerate": "wikipedia/fetch_fresh7.py"
+  },
+  "khora-div": {
+   "what": "321 English Wikipedia leads (14 article groups, up to 40 per group, seed 20261118, from articles.json) read through khora, plus the English clause run run_2026-03-19_144302 of the eo-lexical-analysis-2.0 repo (3,590 clauses with Claude three-question labels)",
+   "regenerate": "wikipedia/fetch.py (articles.json), then khora-run/dump-triples.mjs; the clause corpus from github.com/clovenbradshaw-ctrl/eo-lexical-analysis-2.0"
   }
  }
 }
