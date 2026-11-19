@@ -1,0 +1,13 @@
+A1 planted contradictions (the embedder's view; the rule-based catch is by construction):
+   negation  contradiction is the nearest neighbour of its original 724/724 = 1.000; mean cosine 0.952, min 0.662
+   year      contradiction is the nearest neighbour of its original 302/302 = 1.000; mean cosine 0.948, min 0.772
+   swap      contradiction is the nearest neighbour of its original 691/692 = 0.999; mean cosine 0.976, min 0.787
+A2 naive structural discernment on TRUE same-referent pairs vs random pairs (a theory-faithful check must call these HOLES, not Other):
+   true same-referent  n 147: year conflict 16/24 = 0.667 of pairs with years on both sides; polarity differs 0.129
+   random              n 147: year conflict 15/16 = 0.938 of pairs with years on both sides; polarity differs 0.163
+A3 license by coincidence strength on EMBED-N nominations without the name (leave-document-out rarity and prior):
+   nominations 3850, gold among them 96 (precision 0.025)
+   licensed 2757 (0.716 of nominations), gold among them 76 (precision 0.028); gold kept 76/96 = 0.792
+   ZERO-stratum gold nominated 10, licensed 7
+   control (other target's fold): licensed rate 1991/3100 = 0.642
+   AUC of strength, gold vs non-gold nominations: 0.630 over 824 pairs
