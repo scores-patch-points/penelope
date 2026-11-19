@@ -25,12 +25,12 @@
     },
     "decode": {
      "piece": "khora native/reading.js readDocument (priors from janus; lexicon off unless the hyperlexicon door answers)",
-     "language": "declared by the source, recorded on the entry; no default; a language with no codec is the typed gap no_grammar",
+     "language": "declared by the source, recorded on the entry, AND heard by khora's language context; a read whose declared and heard languages disagree is refused (E3: a French sentence read as eng returns no gap, so the reader will not catch it)",
      "claims": "kernel/gfp-claim.js (ground, roles ARG0/ARG1, relation, polarity, force)",
      "time": "kernel/temporal-reference.js, narrative-time.js (tense as anaphora; a time is a referent)"
     },
     "accidental": {
-     "case": true,
+     "case": "accidental for NOMINATING only; kept when deciding that two names are the same name (row 35 E1: folding adds 235 hits at 0.396 gold)",
      "spacing": true,
      "forms": true,
      "note": "case is accidental for tokens (janus dependency event) but janus's identity event keeps letter case for names in both the strict and the casual ground: an unresolved tension, see owner-decisions[0]"
@@ -50,7 +50,17 @@
     "loss": {
      "source-reduction": "wikitext to prose drops: templates, tables, reference tags, files and categories, headings, and every line starting with a list, indent or table mark; links inside dropped material are lost",
      "counted": "links in prose and links dropped as unplaceable are reported with every run (row 30: 9,228 and 0)",
-     "reader": "only names are reliably referents; noun-phrase referents come from the opt-in descriptor lane, not run by us; 10% of clauses hold two named referents (row 29)"
+     "reader": "only names are reliably referents; noun-phrase referents come from the opt-in descriptor lane, not run by us; 10% of clauses hold two named referents (row 29)",
+     "source-reduction-measured": {
+      "raw links": 8035,
+      "kept in prose lines": "4885 (0.608)",
+      "templates": "1232 (0.153)",
+      "reference tags": "756 (0.094)",
+      "files and captions": "657 (0.082)",
+      "list, heading, indent lines": "265 (0.033)",
+      "tables": "238 (0.030)",
+      "note": "DEV, 30 articles; captions are the material of the image-caption codec, templates are structured data (scorer only), citations are their own material"
+     }
     },
     "bounds": {
      "state": "none numeric",
@@ -81,8 +91,8 @@
     "address": {
      "kind": "box",
      "of": "the decoded image",
-     "hash": "sha256 of the decoded pixels in the box, and of the whole decoded image",
-     "reopen": "re-decodes the file and refuses if either hash differs",
+     "hash": "PINNED DECODE: sha256 of the file, decoder name, version and settings, the box, and sha256 of the decoded pixels in the box",
+     "reopen": "re-decodes with the pinned decoder and refuses if the pin or either hash differs; lossless formats preferred (row 35 E4: one JPEG gave 5 distinct decoded-pixel hashes across decoders, one PNG gave 1)",
      "duplicates": "exact duplicates by hash, never by embedding"
     },
     "decode": {
@@ -127,7 +137,7 @@
      "look": "a look-alike logo or a re-cut image passes a similarity; an informed impostor can pass any single visual channel",
      "cap": "Hold with a hunger list: caption, OCR text, source"
     },
-    "people": "similarity is nominate-only and any verdict needs a text tie (a caption or a named mention); no identification of private individuals from appearance. OWNER TO CONFIRM.",
+    "people": "no similarity search over face regions to identify a natural person; a verdict needs a text tie. OWNER TO CONFIRM (my reading, not legal advice)",
     "falsifier": "a region declared equal within an accidental class whose OCR text or labelled claims differ in a way that matters; or an image-only verdict above Hold that an informed look-alike passes",
     "adoptedBy": null
    }
@@ -176,7 +186,9 @@
      "suppressed": "segments over music or noise are suppressed, not deleted",
      "not-run": "a provider that did not run is reported not run, never zero",
      "heuristic": "sound labels from the heuristic provider (modulated, sustained, silence) are relative to the file and do not name sounds",
-     "sync": "a lip-sync lag is a lead to confirm, never a verdict (the pre-registered validation missed its bars)"
+     "sync": "a lip-sync lag is a lead to confirm, never a verdict (the pre-registered validation missed its bars)",
+     "non-speech": "base.en invented 1 word over 5 non-speech controls (digital silence); a segment with no speech evidence is suppressed, not trusted",
+     "numerals": "the decode writes spoken numbers as digits ('nineteen twelve' -> 1912): numerals need their own codec step"
     },
     "evidence": [
      "the transcript (witness, machine-made)",
@@ -189,7 +201,24 @@
      "cap": "Hold with a hunger list: transcript, on-screen text, provenance"
     },
     "falsifier": "a range declared equal within an accidental class whose transcript or class claims differ in a way that matters; or a cut accepted at an unsnapped point",
-    "adoptedBy": null
+    "adoptedBy": null,
+    "accidental-attested-at-claim-level": {
+     "state": "LEAD (one synthesised utterance, one voice, whisper base.en, one run each; row 35 E5)",
+     "unchanged transcript": [
+      "gain -12 dB",
+      "gain +6 dB",
+      "loudness normalisation -23 LUFS",
+      "resample 8 kHz and back",
+      "mp3 64 kbit",
+      "mp3 128 kbit",
+      "2 s padding",
+      "white noise at 10 dB SNR"
+     ],
+     "one word changed": [
+      "white noise at 0 dB SNR"
+     ],
+     "note": "decoded samples differ in every case, so region equality stays exact-sample-hash while the transcript claim is invariant"
+    }
    }
   }
  ],
@@ -208,6 +237,7 @@
    "every numeric bound",
    "any encoder (only language has one)",
    "the cross-codec alignment recipe (janus correspond.mjs is the existing piece)"
-  ]
+  ],
+  "status-after-row-35": "each of the eight decisions now has a giver and a falsification attempt in THEORY-IDENTITY.md section 13; none is ratified"
  }
 }

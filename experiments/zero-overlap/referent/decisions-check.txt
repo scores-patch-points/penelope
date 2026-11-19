@@ -1,0 +1,49 @@
+== DECISIONS CHECK (exploratory; 30 DEV articles; tmp /private/tmp/claude-501/-Users-mlacy-Documents-khora-cast-penelope/8ddd2f24-9628-42a5-b097-99d2fe1a0811/scratchpad/dc)
+E1 case: NAME hits against the link gold (DEV)
+   cased         hits   1455 gold hits   662 precision 0.455 recall of all gold 0.591
+   folded        hits   1690 gold hits   755 precision 0.447 recall of all gold 0.674
+   first-letter  hits   1455 gold hits   662 precision 0.455 recall of all gold 0.591
+   hits that folding adds over case-kept: 235, of which gold 93 (0.396)
+E2 wikitext reduction: links in the raw wikitext of the DEV articles 8035; where they go:
+   in refs                                       756 (0.094)
+   in gallery/math/etc                             2 (0.000)
+   in templates (infobox, convert, lang...)     1232 (0.153)
+   in tables                                     238 (0.030)
+   in files and captions                         657 (0.082)
+   on list/heading/indent lines                  265 (0.033)
+   KEPT in prose lines                          4885 (0.608)
+E4 image: is the hash of DECODED pixels stable?
+   JPEG decoded by ffmpeg default             hash 736d1ae89a35 230400 bytes max |diff| 0, pixels differing 0.0000
+   JPEG decoded by ffmpeg -idct simple        hash 4e7888d0ecd6 230400 bytes max |diff| 2, pixels differing 0.0001
+   JPEG decoded by ffmpeg -idct int           hash fca3e6624d0f 230400 bytes max |diff| 3, pixels differing 0.0206
+   JPEG decoded by ffmpeg -flags +bitexact    hash 736d1ae89a35 230400 bytes max |diff| 0, pixels differing 0.0000
+   JPEG decoded by Pillow (libjpeg)           hash 7b17e117bcf4 230400 bytes max |diff| 3, pixels differing 0.0204
+   JPEG decoded by macOS ImageIO (sips)       hash 37bda41e02b6 230400 bytes max |diff| 3, pixels differing 0.0204
+   distinct decoded-pixel hashes across decoders for ONE jpeg file: 5
+   PNG (lossless) decoded by ffmpeg 075b5edf182f, Pillow 075b5edf182f | distinct: 1
+   accidental change 'resize 50% then back': decoded hash 56ae3923cdd2 vs original 736d1ae89a35 -> DIFFERENT
+   accidental change 'jpeg re-encode q=2': decoded hash 789090557918 vs original 736d1ae89a35 -> DIFFERENT
+   accidental change 'jpeg re-encode q=10': decoded hash 03429f3caa7e vs original 736d1ae89a35 -> DIFFERENT
+E5 audio: accidental changes and non-speech, through whisper.cpp (base.en)
+   reference transcript of the spoken sentence: «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disbanded in 1950 after five brief activations.»  (WER against the true text 0.160)
+   gain -12 dB                            WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   gain +6 dB                             WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   loudnorm -23 LUFS (EBU R128 style)     WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   resample 8 kHz and back                WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   mp3 64 kbit                            WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   mp3 128 kbit                           WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   2 s silence lead and trail             WER vs reference 0.000  «The first provisional marine brigade was formed in 1912 for duty in Cuba, and it was disba»
+   white noise at 10 dB SNR               WER vs reference 0.000  «The first Provisional Marine Brigade was formed in 1912 for duty in Cuba, and it was disba»
+   white noise at 0 dB SNR                WER vs reference 0.043  «The first provisional marine brigade was formed in 1912 per duty in Cuba, and it was disba»
+   non-speech controls (any words returned are hallucination):
+      10 s digital silence     -> 1 words «you»
+      10 s white noise         -> 0 words «»
+      10 s brown noise         -> 0 words «»
+      10 s 440 Hz tone         -> 0 words «»
+      10 s chord (3 sines)     -> 0 words «»
+   total words invented over the five non-speech controls: 1
+tmp files left in /private/tmp/claude-501/-Users-mlacy-Documents-khora-cast-penelope/8ddd2f24-9628-42a5-b097-99d2fe1a0811/scratchpad/dc
+E3 language: whole articles heard as {"eng":30} of 30 | paragraphs (>=150 chars) heard as {"eng":1118} of 1118
+examples heard as non-English: []
+French sentence read with language=eng: gaps = none | referents Premier Brigade; Marines; Cuba
+French sentence read with language=fra: gaps = no_morphology, no_dotted_prior, edge_ends_unbound | referents Premier Brigade; Marines; Cuba
