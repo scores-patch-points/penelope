@@ -1,0 +1,367 @@
+{
+ "fetched": "live Wikidata wbgetentities, properties page claims P2302, 2026-11-19",
+ "properties": {
+  "P36": {
+   "label": "capital",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "inverse constraint",
+    "property scope constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P131": {
+   "label": "located in the administrative territorial entity",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "item-requires-statement constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P17": {
+   "label": "country",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P31": {
+   "label": "instance of",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "none-of constraint",
+    "one-of constraint",
+    "property scope constraint",
+    "value-requires-statement constraint"
+   ]
+  },
+  "P279": {
+   "label": "subclass of",
+   "constraints": [
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "value-requires-statement constraint"
+   ]
+  },
+  "P361": {
+   "label": "part of",
+   "constraints": [
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "none-of constraint",
+    "property scope constraint"
+   ]
+  },
+  "P527": {
+   "label": "has part(s)",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "none-of constraint",
+    "property scope constraint"
+   ]
+  },
+  "P150": {
+   "label": "contains the administrative territorial entity",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P47": {
+   "label": "shares border with",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "symmetric constraint",
+    "value-type constraint"
+   ]
+  },
+  "P26": {
+   "label": "spouse",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "citation-needed constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "symmetric constraint"
+   ]
+  },
+  "P40": {
+   "label": "child",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P22": {
+   "label": "father",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "inverse constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P25": {
+   "label": "mother",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "inverse constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P3373": {
+   "label": "sibling",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "symmetric constraint",
+    "value-type constraint"
+   ]
+  },
+  "P19": {
+   "label": "place of birth",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "citation-needed constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "item-requires-statement constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P20": {
+   "label": "place of death",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "citation-needed constraint",
+    "contemporary constraint",
+    "item-requires-statement constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P569": {
+   "label": "date of birth",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "citation-needed constraint",
+    "conflicts-with constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "range constraint",
+    "single-best-value constraint",
+    "subject type constraint"
+   ]
+  },
+  "P570": {
+   "label": "date of death",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "citation-needed constraint",
+    "conflicts-with constraint",
+    "difference-within-range constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "range constraint",
+    "single-best-value constraint",
+    "subject type constraint"
+   ]
+  },
+  "P21": {
+   "label": "sex or gender",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "none-of constraint",
+    "one-of constraint",
+    "property scope constraint",
+    "subject type constraint"
+   ]
+  },
+  "P106": {
+   "label": "occupation",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "item-requires-statement constraint",
+    "none-of constraint",
+    "one-of constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P27": {
+   "label": "country of citizenship",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "none-of constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P108": {
+   "label": "employer",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P69": {
+   "label": "educated at",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "conflicts-with constraint",
+    "contemporary constraint",
+    "property scope constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P1696": {
+   "label": "inverse property",
+   "constraints": [
+    "allowed-entity-types constraint",
+    "distinct-values constraint",
+    "item-requires-statement constraint",
+    "property scope constraint",
+    "single-value constraint",
+    "subject type constraint",
+    "value-type constraint"
+   ]
+  },
+  "P35": {
+   "label": "head of state",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "property scope constraint",
+    "required qualifier constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  },
+  "P6": {
+   "label": "head of government",
+   "constraints": [
+    "allowed qualifiers constraint",
+    "allowed-entity-types constraint",
+    "contemporary constraint",
+    "property scope constraint",
+    "required qualifier constraint",
+    "single-best-value constraint",
+    "subject type constraint",
+    "value-requires-statement constraint",
+    "value-type constraint"
+   ]
+  }
+ },
+ "constraint_types": {
+  "allowed-entity-types constraint": 26,
+  "property scope constraint": 26,
+  "allowed qualifiers constraint": 23,
+  "subject type constraint": 20,
+  "value-type constraint": 18,
+  "contemporary constraint": 17,
+  "conflicts-with constraint": 17,
+  "none-of constraint": 13,
+  "item-requires-statement constraint": 11,
+  "single-best-value constraint": 9,
+  "value-requires-statement constraint": 9,
+  "citation-needed constraint": 5,
+  "inverse constraint": 3,
+  "one-of constraint": 3,
+  "symmetric constraint": 3,
+  "range constraint": 2,
+  "required qualifier constraint": 2,
+  "difference-within-range constraint": 1,
+  "single-value constraint": 1,
+  "distinct-values constraint": 1
+ }
+}
