@@ -84,7 +84,7 @@
 ║  │    │                     │ □LHM □LIM □LLD □LMO │                     │  ║
 ║  │    │                     │ □LOG □LPS □LQA □LRR │                     │  ║
 ║  │    │                     │ □LRS □LTP □LWK □LWP │                     │  ║
-║  │    │                     │ □LWV ■AGS ■LDG      │                     │  ║
+║  │    │                     │ □LWV ■AGS ■LDG ■RRT │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -113,6 +113,7 @@
 ║  │    │                     │                     │ □LLD □LMO □LOG □LPS │  ║
 ║  │    │                     │                     │ □LQA □LRR □LRS □LTP │  ║
 ║  │    │                     │                     │ □LWK □LWP □LWV ■LDG │  ║
+║  │    │                     │                     │ ■RRT                │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▶  │          ∘          │          ◆          │          ◈          │  ║
@@ -130,7 +131,7 @@
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │ □LHM □LIM □LLD □LMO │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ □LOG □LPS □LQA □LRR │  ║
 ║  │    │                     │ ■PVD ■FRV ■AGS      │ □LRS □LTP □LWK □LWP │  ║
-║  │    │                     │                     │ □LWV ■LDG           │  ║
+║  │    │                     │                     │ □LWV ■LDG ■RRT      │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
@@ -146,7 +147,7 @@
 ║ │    □LIM⊨◈ □LLD⊨◈ □LMO⊨◈ □LOG⊨◈ □LPS⊨◈ □LQA⊨◈ □LRR⊨◈ □LRS⊨◈ □LTP⊨◈        ║
 ║ │    □LWK⊨◈ □LWP⊨◈ □LWV⊨◈                                                  ║
 ║ │ 3  ■CHT●◆ ■BLD△◈ ■NBK⊨◈ ■DOR|∘ ■ASK△◈ ■ADM→∘ ·PAG●◈ ·LFL△◈ ·TER|◈        ║
-║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■AGS⊨◆ ■SBF●∘                                    ║
+║ │    □TGR○◆ □PTH⊨◈ ·APO⊨∘ ■AGS⊨◆ ■SBF●∘ ■RRT⊨◈                             ║
 ║ │ 2  ■TST⊨◆ ■SEL△◈ ■EOT△◆ ■CGT⊨◈ ■DTF→◆ ■BHC⊨◆ ■FRS⊨∘ □CDB●◈ □BPG△◈        ║
 ║ │    ·RSM↬∘ ·GAT=◈ ·RUT⊨◆ ·VIS⊨◆ ·ANS⊨◈ ·CRV⊨◈ ·SWT△◆ ■WND→◆ ■AGD→◆        ║
 ║ │    ■CCL△◈ ■WSN|◆ ■RSR=◈ ·STR=◈ ·VOC●◆ ■OVW△◈ ■WNB⊨◈ ■FCL↬◈ ■WBL↬◈        ║
@@ -171,6 +172,7 @@
 ║  o/=organs/ g/=gym/ l/=ladder/ a/=apps/ E7/=../khora/native/               ║
 ║  SP/=../khora-screenshot-pipeline/native/ ER7/=../khora/                   ║
 ║  LP/=../Zenodotus/ FOLD/=../the-fold/                                      ║
+║  X/=experiments/zero-overlap/referent/                                     ║
 ║                                                                            ║
 ║■ ░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒░▒▓▒      ║
 ║■VDF 1 ○∘ ‡ void                                                            ║
@@ -515,6 +517,9 @@
 ║■SBF 3 ●∘ ‡ session-brief                                                   ║
 ║     @ g/session-brief.mjs g/session-brief.test.mjs g/session-brief-hook.sh ║
 ║     @ GL-SB-01                                                             ║
+║■RRT 3 ⊨◈ ‡ referent-retrieval                                              ║
+║     @ X/lib.py X/senses.py X/score.py X/fetch_docs.py X/khora_read.mjs     ║
+║     @ X/test_lib.py X/PREREG-REFERENT-RETRIEVAL.md                         ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ```

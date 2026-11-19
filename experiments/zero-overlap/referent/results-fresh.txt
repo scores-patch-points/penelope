@@ -1,0 +1,92 @@
+== FRESH set=fresh docs=60 queries=956 gold=2094
+-- stratum ALL: gold passages 2094; random-10 null recall 0.061
+   NAME        recall@10 0.629
+   STEM        recall@10 0.889  minus NAME +0.260 [+0.229,+0.293]
+   CHAIN       recall@10 0.744  minus NAME +0.115 [+0.092,+0.142]
+   KHORA       recall@10 0.667  minus NAME +0.038 [-0.002,+0.078]
+   EMBED-N     recall@10 0.765  minus NAME +0.136 [+0.095,+0.177]
+   EMBED-C     recall@10 0.071  minus NAME -0.558 [-0.607,-0.506]
+   UNION-MECH  recall@10 0.896  minus NAME +0.267 [+0.236,+0.301]
+   UNION-ALL   recall@10 0.896  minus NAME +0.267 [+0.234,+0.304]
+   UNION-MECH-M recall@10 0.906  minus NAME +0.277 [+0.246,+0.312]
+   UNION-ALL-M recall@10 0.950  minus NAME +0.321 [+0.290,+0.354]
+-- stratum SAME: gold passages 1380; random-10 null recall 0.061
+   NAME        recall@10 0.939
+   STEM        recall@10 0.975  minus NAME +0.036 [+0.017,+0.055]
+   CHAIN       recall@10 0.943  minus NAME +0.004 [+0.001,+0.008]
+   KHORA       recall@10 0.829  minus NAME -0.110 [-0.151,-0.078]
+   EMBED-N     recall@10 0.824  minus NAME -0.115 [-0.156,-0.077]
+   EMBED-C     recall@10 0.020  minus NAME -0.920 [-0.945,-0.892]
+   UNION-MECH  recall@10 0.985  minus NAME +0.046 [+0.031,+0.062]
+   UNION-ALL   recall@10 0.963  minus NAME +0.024 [+0.004,+0.046]
+   UNION-MECH-M recall@10 0.986  minus NAME +0.047 [+0.032,+0.064]
+   UNION-ALL-M recall@10 0.992  minus NAME +0.053 [+0.036,+0.072]
+-- stratum PARTIAL: gold passages 450; random-10 null recall 0.061
+   NAME        recall@10 0.022
+   STEM        recall@10 0.849  minus NAME +0.827 [+0.771,+0.876]
+   CHAIN       recall@10 0.504  minus NAME +0.482 [+0.400,+0.570]
+   KHORA       recall@10 0.513  minus NAME +0.491 [+0.416,+0.567]
+   EMBED-N     recall@10 0.722  minus NAME +0.700 [+0.642,+0.758]
+   EMBED-C     recall@10 0.182  minus NAME +0.160 [+0.105,+0.220]
+   UNION-MECH  recall@10 0.844  minus NAME +0.822 [+0.760,+0.883]
+   UNION-ALL   recall@10 0.858  minus NAME +0.836 [+0.777,+0.892]
+   UNION-MECH-M recall@10 0.880  minus NAME +0.858 [+0.801,+0.906]
+   UNION-ALL-M recall@10 0.960  minus NAME +0.938 [+0.909,+0.963]
+-- stratum DIFFERENT: gold passages 264; random-10 null recall 0.061
+   NAME        recall@10 0.042
+   STEM        recall@10 0.511  minus NAME +0.470 [+0.386,+0.549]
+   CHAIN       recall@10 0.106  minus NAME +0.064 [+0.033,+0.100]
+   KHORA       recall@10 0.080  minus NAME +0.038 [-0.004,+0.085]
+   EMBED-N     recall@10 0.530  minus NAME +0.489 [+0.406,+0.569]
+   EMBED-C     recall@10 0.152  minus NAME +0.110 [+0.051,+0.167]
+   UNION-MECH  recall@10 0.519  minus NAME +0.477 [+0.398,+0.559]
+   UNION-ALL   recall@10 0.614  minus NAME +0.572 [+0.490,+0.665]
+   UNION-MECH-M recall@10 0.534  minus NAME +0.492 [+0.413,+0.568]
+   UNION-ALL-M recall@10 0.712  minus NAME +0.670 [+0.606,+0.734]
+-- stratum ZERO: gold passages 105; random-10 null recall 0.064
+   NAME        recall@10 0.000
+   STEM        recall@10 0.000  minus NAME +0.000 [+0.000,+0.000]
+   CHAIN       recall@10 0.010  minus NAME +0.010 [+0.000,+0.034]
+   KHORA       recall@10 0.010  minus NAME +0.010 [+0.000,+0.033]
+   EMBED-N     recall@10 0.276  minus NAME +0.276 [+0.189,+0.367]
+   EMBED-C     recall@10 0.152  minus NAME +0.152 [+0.071,+0.233]
+   UNION-MECH  recall@10 0.010  minus NAME +0.010 [+0.000,+0.034]
+   UNION-ALL   recall@10 0.305  minus NAME +0.305 [+0.208,+0.413]
+   UNION-MECH-M recall@10 0.010  minus NAME +0.010 [+0.000,+0.035]
+   UNION-ALL-M recall@10 0.390  minus NAME +0.390 [+0.303,+0.482]
+-- stratum NAMEFREE: gold passages 764; random-10 null recall 0.061
+   NAME        recall@10 0.000
+   STEM        recall@10 0.734  minus NAME +0.734 [+0.689,+0.779]
+   CHAIN       recall@10 0.314  minus NAME +0.314 [+0.254,+0.382]
+   KHORA       recall@10 0.325  minus NAME +0.325 [+0.267,+0.392]
+   EMBED-N     recall@10 0.656  minus NAME +0.656 [+0.608,+0.707]
+   EMBED-C     recall@10 0.195  minus NAME +0.195 [+0.150,+0.234]
+   UNION-MECH  recall@10 0.734  minus NAME +0.734 [+0.687,+0.784]
+   UNION-ALL   recall@10 0.780  minus NAME +0.780 [+0.736,+0.825]
+   UNION-MECH-M recall@10 0.760  minus NAME +0.760 [+0.717,+0.805]
+   UNION-ALL-M recall@10 0.877  minus NAME +0.877 [+0.849,+0.903]
+-- precision@10 (lower bound; gold is first-mention-biased) and returned set sizes, uncapped recall where the sense is a set
+   NAME        precision@10 0.545 (returned 2416); uncapped recall ALL 0.635 DIFFERENT 0.045, mean set size 3.3
+   STEM        precision@10 0.268 (returned 6947); uncapped recall ALL 0.945 DIFFERENT 0.610, mean set size 20.5
+   CHAIN       precision@10 0.260 (returned 5982); uncapped recall ALL 0.774 DIFFERENT 0.148, mean set size 14.3
+   KHORA       precision@10 0.303 (returned 4607); uncapped recall ALL 0.724 DIFFERENT 0.098, mean set size 10.3
+   EMBED-N     precision@10 0.168 (returned 9560); uncapped recall ALL nan DIFFERENT nan, mean set size 0.0
+   EMBED-C     precision@10 0.021 (returned 7250); uncapped recall ALL nan DIFFERENT nan, mean set size 0.0
+   UNION-MECH  precision@10 0.249 (returned 7525); uncapped recall ALL nan DIFFERENT nan, mean set size 0.0
+   UNION-ALL   precision@10 0.196 (returned 9560); uncapped recall ALL nan DIFFERENT nan, mean set size 0.0
+   UNION-MECH-M precision@10 0.216 (returned 8773); uncapped recall ALL 0.949 DIFFERENT 0.629, mean set size 24.5
+   UNION-ALL-M precision@10 0.101 (returned 19601); uncapped recall ALL nan DIFFERENT nan, mean set size 0.0
+-- macro recall@10 (mean over queries of per-query recall; gold-size effect removed)
+   NAME         0.631 over 956 queries
+   STEM         0.896 over 956 queries
+   CHAIN        0.749 over 956 queries
+   KHORA        0.677 over 956 queries
+   EMBED-N      0.780 over 956 queries
+   EMBED-C      0.069 over 956 queries
+   UNION-MECH   0.905 over 956 queries
+   UNION-ALL    0.910 over 956 queries
+   UNION-MECH-M 0.913 over 956 queries
+   UNION-ALL-M  0.953 over 956 queries
+-- khora read coverage (documents): {'ok': 60}; links in prose 9228, dropped as unplaceable 0
+-- verbatim span-only drift refused: 180/180
+-- verbatim: 82221/82221 returned passages re-open to their exact text; drift refused 180/180

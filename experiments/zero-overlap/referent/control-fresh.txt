@@ -1,0 +1,4 @@
+ALL        gold  2094  EMBED-N real 0.765  other-target-name control 0.100
+DIFFERENT  gold   264  EMBED-N real 0.530  other-target-name control 0.057
+ZERO       gold   105  EMBED-N real 0.276  other-target-name control 0.038
+NAMEFREE   gold   764  EMBED-N real 0.656  other-target-name control 0.094

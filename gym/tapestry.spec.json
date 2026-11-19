@@ -11,7 +11,8 @@
   "SP/": "../khora-screenshot-pipeline/native/",
   "ER7/": "../khora/",
   "LP/": "../Zenodotus/",
-  "FOLD/": "../the-fold/"
+  "FOLD/": "../the-fold/",
+  "X/": "experiments/zero-overlap/referent/"
  },
  "spine": "VDF › RDU › STL › ( FLD ∨ HNT ∨ MTH ) › SNP › PRB ↺ SPR › TST › SEL › EOT",
  "threads": [
@@ -1888,6 +1889,24 @@
     "g/session-brief.test.mjs",
     "g/session-brief-hook.sh",
     "GL-SB-01"
+   ]
+  },
+  {
+   "id": "RRT",
+   "name": "referent-retrieval",
+   "st": "■",
+   "lvl": 3,
+   "op": "EVA",
+   "grain": "Pattern",
+   "typing": "‡",
+   "refs": [
+    "X/lib.py",
+    "X/senses.py",
+    "X/score.py",
+    "X/fetch_docs.py",
+    "X/khora_read.mjs",
+    "X/test_lib.py",
+    "X/PREREG-REFERENT-RETRIEVAL.md"
    ]
   }
  ]
