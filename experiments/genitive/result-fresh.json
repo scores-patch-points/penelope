@@ -1,0 +1,37 @@
+{
+ "prereg": "89bc861dc6130419",
+ "stamp": "FRESH",
+ "total": 25,
+ "planted": 13,
+ "noise": 12,
+ "trainSentences": 1600,
+ "heldSentences": 401,
+ "typesClustered": 551,
+ "nominalClusters": 18,
+ "rules": {
+  "emergent-left": {
+   "balancedAccuracy": 0.5769,
+   "nullMax": 0.5769,
+   "holds": false,
+   "tpr": 0.154,
+   "fpr": 0,
+   "lr": 2.8,
+   "lr95": [
+    0.76,
+    6.15
+   ]
+  },
+  "emergent-both": {
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 0.93,
+   "lr95": [
+    0.53,
+    1.9
+   ]
+  }
+ }
+}
