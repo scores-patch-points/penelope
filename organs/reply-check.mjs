@@ -29,3 +29,31 @@ export function checkReply({ replyClaims, ...basis }) {
   const bad = claims.filter((x) => ["contradicted", "unsupported", "negation_from_silence"].includes(x.status));
   return { verdict: !claims.length ? "unread" : bad.length ? "fabricated" : "grounded", claims, fabricated: bad.map((x) => x.claim), unchecked: claims.filter((x) => x.status === "pair_supported").length };
 }
+
+// ---- V3 (2026-11-20, addendum 3): what V2 got wrong on the first runs, fixed at the source ----
+// (1) a reply is full of talk ABOUT the discourse ("the machine checked the question", "contradiction in information"): those are not claims about the world and cannot be untrue in the way a fabrication is. A claim is WORLD only if each end is a being the material mentions, a proper name (the parser's own tag, claim.aUpos / bUpos), or a literal.
+// (2) a reply that QUOTES a statement ("The statement 'Maria lives in Ely' ...") MENTIONS it, it does not assert it: quoted spans are cut out by the quote tokens' offsets before the reply is read.
+// (3) a terse answer ("Leeds.") has no verb and so no claim: it is the FILLER of the question's hole. The claim is the question's pattern with the filler in the hole: (Hugo, live, Leeds). A reply that asserts nothing about the world (a decline, "unknown") cannot be untrue: its verdict is no_assertion, reported separately, correct for an unanswerable question and not an answer to an answerable one.
+const QUOTES = new Set(['"', "“", "”"]);   // closed set of quotation characters: data, not words
+/** the reply text with every quoted span removed (spans from the quote tokens' offsets, paired in order) */
+export function unquoted(text, rows) {
+  const qs = rows.filter((r) => r.upos === "PUNCT" && QUOTES.has(r.form) && r.at != null), cuts = [];
+  for (let i = 0; i + 1 < qs.length; i += 2) cuts.push([qs[i].at, qs[i + 1].end]);
+  let out = "", at = 0; for (const [a, b] of cuts) { out += text.slice(at, a) + " "; at = b; } return out + text.slice(at);
+}
+export const isWorld = (c, beings) => { const known = (x) => beings.has(x), name = (u) => u === "PROPN"; return (known(c.a) || name(c.aUpos)) && (known(c.b) || c.object === "literal" || name(c.bUpos)); };
+/** the question's pattern (question-from-rows) with the reply's fillers in the hole */
+export function fillHole(pattern, fillers) {
+  if (!pattern || pattern.gap || !fillers.length) return [];
+  if (pattern.kind === "hole-b") return fillers.map((b) => ({ a: pattern.a, rel: pattern.lemma, b, polarity: "+", aUpos: "PROPN", bUpos: "PROPN" }));
+  if (pattern.kind === "hole-a") return fillers.map((a) => ({ a, rel: pattern.rel, b: pattern.b, polarity: "+", aUpos: "PROPN", bUpos: "PROPN" }));
+  return [];
+}
+/** checkAnswer({ text, readRows, claimsOf, pattern, marks, derived, proposals, functional }) -> checkReply's result plus { verdict: "no_assertion" } and { ignored, filled, mentions } */
+export function checkAnswer({ text, readRows, claimsOf, pattern = null, marks = [], derived = [], proposals = [], functional = [] }) {
+  const rows = readRows(text), bare = unquoted(text, rows), beings = new Set([...marks, ...derived].flatMap((m) => [m.a, m.b])), all = claimsOf(bare) ?? [], world = all.filter((c) => isWorld(c, beings));
+  let claims = world, filled = false;
+  if (!claims.length) { const inRows = readRows(bare).filter((r) => r.upos === "PROPN").map((r) => r.form), f = fillHole(pattern, [...new Set(inRows)]); if (f.length) { claims = f; filled = true; } }
+  const r = checkReply({ replyClaims: claims, marks, derived, proposals, functional });
+  return { ...r, verdict: r.verdict === "unread" ? "no_assertion" : r.verdict, ignored: all.length - world.length, filled, mentions: rows.length - readRows(bare).length > 0 };
+}
