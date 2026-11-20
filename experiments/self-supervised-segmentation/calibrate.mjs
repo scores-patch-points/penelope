@@ -1,0 +1,45 @@
+// EXPLORATORY run for PREREG-CALIBRATION.md (sha256 first 16: f6e44c4e3e4b1ff5). Conditions A (noise), B (planted function words), C (planted rare suffix), over the first four batches of the informal training text; EVERY candidate evaluated; no regex, no word list. Evaluation code duplicates mind.mjs (evalRoute/nullFor) on purpose, so the harness under test is the one that ran.
+import fs from "node:fs"; import { execFileSync } from "node:child_process";
+const KW = "/Users/mlacy/Documents/khora-pharos-reading/native", Z = "/Users/mlacy/Documents/khora-cast/Zenodotus";
+const { grammarFor } = await import(`${KW}/the-fold/pharos-reading.mjs`), { tagWithMargins } = await import(`${KW}/adapters/text/ud-parser.js`), { sentences, tokenize } = await import(`${KW}/adapters/text/ud-tokenizer.js`), { applyMind } = await import(`${KW}/adapters/text/mind-cuts.js`);
+const CTX = process.env.CTX === "1", g = await grammarFor("eng"), SEED = 20261120, NB = 8, USE = 4, SAMPLE = 40, NULLDRAWS = 30, OUT = process.env.OUT ?? "calibration-result.json";
+const git = (...a) => execFileSync("git", ["-C", Z, "-c", "gc.auto=0", ...a], { encoding: "utf8", maxBuffer: 1 << 28 }), ls = (p) => git("ls-tree", "-r", "HEAD", "--name-only").split("\n").filter((f) => f.startsWith(p) && f.endsWith(".txt")).sort();
+const body = (p) => { const t = git("show", `HEAD:${p}`), i = t.startsWith("---") ? t.indexOf("\n---", 3) : -1; return i < 0 ? t : t.slice(t.indexOf("\n", i + 1) + 1); };
+const files = [...ls("19-organic-community/cosem/"), ...ls("19-organic-community/nus-sms/en/")].filter((_, i) => i % 10 !== 0), train = [];
+for (const f of files) for (const s of sentences(body(f), "und", g.tokenizer)) { const t = tokenize(s, g.tokenizer); if (t.length) train.push(t); }
+const total = train.reduce((a, s) => a + s.length, 0), per = Math.ceil(total / NB); let batches = []; { let cur = [], k = 0; for (const s of train) { cur.push(s); k += s.length; if (k >= per && batches.length < NB - 1) { batches.push(cur); cur = []; k = 0; } } batches.push(cur); }
+batches = batches.slice(0, USE); console.log(`batches ${batches.length}, tokens ${batches.map((b) => b.reduce((a, s) => a + s.length, 0)).join(",")}`);
+let seed = SEED; const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }, mean = (xs) => xs.reduce((a, b) => a + b, 0) / xs.length;
+const margin = (ws) => { const m = tagWithMargins(g.parser.tagger, ws, g.parser.lex, g.parser.clusters).margins.filter(Number.isFinite); return m.length ? mean(m) : 0; };
+
+// CTX mode (ADDENDUM-1): the change of a cut measured on the CONTEXT tokens only (the cut token and its two new pieces are excluded; the same tokens exist in both versions)
+const marginsOf = (ws) => tagWithMargins(g.parser.tagger, ws, g.parser.lex, g.parser.clusters).margins;
+function ctxDelta(s, cutIdx, L) {
+  const after = [], map = []; for (let i = 0; i < s.length; i++) { if (cutIdx.has(i)) { const cs = [...s[i]]; map.push(-1); after.push(cs.slice(0, cs.length - L).join(""), cs.slice(cs.length - L).join("")); } else { map.push(after.length); after.push(s[i]); } }
+  const m0 = marginsOf(s), m1 = marginsOf(after), ds = []; for (let i = 0; i < s.length; i++) if (map[i] >= 0 && Number.isFinite(m0[i]) && Number.isFinite(m1[map[i]])) ds.push(m1[map[i]] - m0[i]);
+  return ds.length ? mean(ds) : null;
+}
+const nullFor = (cache, L, sents) => { if (cache.has(L)) return cache.get(L); const cand = sents.filter((s) => s.some((w) => [...w].length > L)), draws = []; for (let d = 0; d < NULLDRAWS; d++) { const ds = []; for (let i = 0; i < SAMPLE; i++) { const s = cand[Math.floor(rnd() * cand.length)], idx = s.map((_, j) => j).filter((j) => [...s[j]].length > L), j = idx[Math.floor(rnd() * idx.length)], cs = [...s[j]], sp = [...s.slice(0, j), cs.slice(0, cs.length - L).join(""), cs.slice(cs.length - L).join(""), ...s.slice(j + 1)]; if (CTX) { const dd = ctxDelta(s, new Set([j]), L); if (dd !== null) ds.push(dd); } else ds.push(margin(sp) - margin(s)); } draws.push(ds.length ? mean(ds) : 0); } cache.set(L, draws); return draws; };
+function evalRoute(sents, suf, cache) { const L = [...suf].length, aff = sents.filter((s) => s.some((w) => [...w].length > L && w.endsWith(suf))); if (aff.length < 5) return null; const pick = []; for (let i = 0; i < Math.min(SAMPLE, aff.length); i++) pick.push(aff[Math.floor(rnd() * aff.length)]); const delta = CTX ? (() => { const dd = pick.map((s) => ctxDelta(s, new Set(s.map((w, i) => i).filter((i) => [...s[i]].length > L && s[i].endsWith(suf))), L)).filter((x) => x !== null); return dd.length ? mean(dd) : 0; })() : mean(pick.map((s) => margin(applyMind(s, { cuts: [{ suffix: suf }] })) - margin(s))); return { delta, good: delta > 0 && delta > Math.max(...nullFor(cache, L, sents)) }; }
+const candidates = (sents) => { const types = new Set(); for (const s of sents) for (const w of s) types.add(w); const by = new Map(); for (const w of types) { const cs = [...w]; for (let L = 1; L <= Math.min(4, cs.length - 1); L++) { const b = cs.slice(cs.length - L).join(""); by.set(b, (by.get(b) ?? 0) + 1); } } return [...by].filter(([, n]) => n >= 2).map(([b]) => b); };
+const shuf = (w) => { const cs = [...w]; for (let i = cs.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [cs[i], cs[j]] = [cs[j], cs[i]]; } return cs.join(""); };
+// planted function words: the five most frequent purely alphabetic lowercase tokens of three letters in the first batch (derived)
+const alpha = (w) => [...w].every((c) => c >= "a" && c <= "z"), freq = new Map(); for (const s of batches[0]) for (const w of s) if ([...w].length === 3 && alpha(w)) freq.set(w, (freq.get(w) ?? 0) + 1);
+const PLANT = [...freq].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, 5).map(([w]) => w); console.log("planted function words (derived):", PLANT.join(" "));
+const glue = (sents, words) => sents.map((s) => { const out = []; for (const w of s) { if (words.includes(w) && out.length && alpha(out.at(-1)) && rnd() < 0.5) out[out.length - 1] += w; else out.push(w); } return out; });
+const plantRare = (sents) => { const out = sents.map((s) => [...s]); let n = 0; for (let i = 0; i < out.length && n < 8; i++) { const j = out[i].findIndex((w) => alpha(w) && [...w].length >= 3); if (j >= 0 && rnd() < 0.05) { out[i][j] += "zq"; n++; } } if (n < 8) for (let i = out.length - 1; i >= 0 && n < 8; i--) { const j = out[i].findIndex((w) => alpha(w) && [...w].length >= 3 && !w.endsWith("zq")); if (j >= 0) { out[i][j] += "zq"; n++; } } return out; };
+const conditions = { A: batches.map((b) => b.map((s) => s.map(shuf))), B: batches.map((b) => glue(b, PLANT)), C: batches.map((b, i) => (i === 0 ? plantRare(b) : b)) };
+const out = { prereg: "f6e44c4e3e4b1ff5", addendum1: "84c4e3f27e501c04", ctx: CTX, seed: SEED, planted: PLANT, conditions: {} };
+for (const [name, bs] of Object.entries(conditions)) {
+  const goodSets = [], stats = []; for (let i = 0; i < bs.length; i++) {
+    const cache = new Map(), cands = candidates(bs[i]), good = new Set(), t0 = Date.now(); let evaluable = 0;
+    for (const suf of cands) { const r = evalRoute(bs[i], suf, cache); if (!r) continue; evaluable++; if (r.good) good.add(suf); }
+    goodSets.push(good); stats.push({ batch: i + 1, candidates: cands.length, evaluable, good: good.size, rate: good.size / evaluable }); console.log(`${name} batch ${i + 1}: candidates ${cands.length}, evaluable ${evaluable}, good ${good.size} (${(100 * good.size / evaluable).toFixed(2)}%; theory at most ${(100 / 31).toFixed(2)}%)  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+  }
+  const count = new Map(); for (const s of goodSets) for (const x of s) count.set(x, (count.get(x) ?? 0) + 1); const replicated = [...count].filter(([, n]) => n >= 2).map(([x]) => x), once = [...count].filter(([, n]) => n === 1).map(([x]) => x);
+  const evaluableAvg = mean(stats.map((s) => s.evaluable)), res = { stats, goodOnce: once.length, replicated: replicated.length, replicatedShare: replicated.length / evaluableAvg, replicatedList: replicated.slice(0, 40) };
+  if (name === "B") { res.plantedGoodBatches = Object.fromEntries(PLANT.map((w) => [w, goodSets.filter((s) => s.has(w)).length])); res.nonPlantedReplicated = replicated.filter((x) => !PLANT.includes(x)).length; res.nonPlantedOnce = once.filter((x) => !PLANT.includes(x)).length; }
+  if (name === "C") { res.zqGoodBatches = goodSets.filter((s) => s.has("zq")).length; res.zqReplicated = replicated.includes("zq"); }
+  out.conditions[name] = res; console.log(`${name}: good in exactly one batch ${once.length}, REPLICATED (>= 2 batches) ${replicated.length} (${(100 * res.replicatedShare).toFixed(3)}% of evaluable; theory at most ${(100 / 961).toFixed(3)}%)`, name === "B" ? `| planted good in n batches ${JSON.stringify(res.plantedGoodBatches)} | non-planted replicated ${res.nonPlantedReplicated}, non-planted in one batch only ${res.nonPlantedOnce}` : "", name === "C" ? `| zq good in ${res.zqGoodBatches} batch(es), replicated ${res.zqReplicated}` : "");
+  fs.writeFileSync(OUT, JSON.stringify(out, null, 1));
+}

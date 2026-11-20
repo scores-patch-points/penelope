@@ -1,0 +1,184 @@
+{
+ "prereg": "f6e44c4e3e4b1ff5",
+ "addendum1": "84c4e3f27e501c04",
+ "ctx": true,
+ "seed": 20261120,
+ "planted": [
+  "the",
+  "can",
+  "you",
+  "for",
+  "and"
+ ],
+ "conditions": {
+  "A": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1961,
+     "evaluable": 654,
+     "good": 33,
+     "rate": 0.05045871559633028
+    },
+    {
+     "batch": 2,
+     "candidates": 1572,
+     "evaluable": 546,
+     "good": 22,
+     "rate": 0.040293040293040296
+    },
+    {
+     "batch": 3,
+     "candidates": 1518,
+     "evaluable": 533,
+     "good": 27,
+     "rate": 0.05065666041275797
+    },
+    {
+     "batch": 4,
+     "candidates": 1483,
+     "evaluable": 508,
+     "good": 30,
+     "rate": 0.05905511811023622
+    }
+   ],
+   "goodOnce": 102,
+   "replicated": 5,
+   "replicatedShare": 0.00892458723784025,
+   "replicatedList": [
+    "O",
+    "HAAA",
+    "Ye",
+    "Hha",
+    "Wa"
+   ]
+  },
+  "B": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1056,
+     "evaluable": 600,
+     "good": 29,
+     "rate": 0.04833333333333333
+    },
+    {
+     "batch": 2,
+     "candidates": 1052,
+     "evaluable": 584,
+     "good": 35,
+     "rate": 0.059931506849315065
+    },
+    {
+     "batch": 3,
+     "candidates": 1085,
+     "evaluable": 570,
+     "good": 42,
+     "rate": 0.07368421052631578
+    },
+    {
+     "batch": 4,
+     "candidates": 946,
+     "evaluable": 526,
+     "good": 46,
+     "rate": 0.08745247148288973
+    }
+   ],
+   "goodOnce": 112,
+   "replicated": 18,
+   "replicatedShare": 0.031578947368421054,
+   "replicatedList": [
+    "S",
+    "O",
+    "G",
+    "n't",
+    "U",
+    "N",
+    "ò",
+    "kay",
+    "anks",
+    "the",
+    "4",
+    "pe",
+    "RE",
+    "ea",
+    "AT",
+    "UT",
+    "wn",
+    "fe"
+   ],
+   "plantedGoodBatches": {
+    "the": 2,
+    "can": 1,
+    "you": 0,
+    "for": 1,
+    "and": 0
+   },
+   "nonPlantedReplicated": 17,
+   "nonPlantedOnce": 110
+  },
+  "C": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1018,
+     "evaluable": 592,
+     "good": 43,
+     "rate": 0.07263513513513513
+    },
+    {
+     "batch": 2,
+     "candidates": 1025,
+     "evaluable": 572,
+     "good": 53,
+     "rate": 0.09265734265734266
+    },
+    {
+     "batch": 3,
+     "candidates": 1064,
+     "evaluable": 561,
+     "good": 46,
+     "rate": 0.08199643493761141
+    },
+    {
+     "batch": 4,
+     "candidates": 924,
+     "evaluable": 519,
+     "good": 33,
+     "rate": 0.06358381502890173
+    }
+   ],
+   "goodOnce": 124,
+   "replicated": 24,
+   "replicatedShare": 0.0427807486631016,
+   "replicatedList": [
+    "ng",
+    "n't",
+    "w",
+    "urs",
+    "tive",
+    "U",
+    "ER",
+    "rry",
+    "ater",
+    "tter",
+    "not",
+    "kay",
+    "nks",
+    "anks",
+    "pm",
+    "ian",
+    "TS",
+    "LY",
+    "RE",
+    "ea",
+    "AT",
+    "nt",
+    "HE",
+    "ding"
+   ],
+   "zqGoodBatches": 0,
+   "zqReplicated": false
+  }
+ }
+}

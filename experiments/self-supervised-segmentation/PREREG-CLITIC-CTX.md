@@ -1,0 +1,10 @@
+# PREREG-CLITIC-CTX (EXPLORATORY): does "all seven clitics beyond the random-cut null" survive removing the piece-identity artifact?
+Written 2026-11-20 BEFORE running clitic-ctx.mjs, after the calibration (PREREG-CALIBRATION, ADDENDUM-1) showed that the all-token confidence change is confounded by what the new PIECES are (a lone capital letter is a confidently tagged token; pure noise passed the bar 16 to 29% of the time). The earlier clitic result (README.md, run.mjs, result.json, protocol 544fcb4594e5f70f) used that all-token measure: n't +4.52, 'm +3.65, 're +2.32, 'll +1.95, 've +1.92, 's +1.86, 'd +1.06, each with 0 of 100 null draws reaching it, and plural -s below the null. A confidently tagged piece such as 's or n't could produce that effect alone.
+## Test
+The same informal text as run.mjs (Zenodotus nus-sms/en, cosem, ubuntu-irc English channels, first 360,474 tokens, equalized as there), the same 200-sentence cap per form, the same 100 null draws per form: but the change of a cut is measured on the CONTEXT tokens only (the cut token and its new pieces excluded; the same tokens are in both versions), for the candidate and for the null alike. Forms: 's n't 'll 'm 've 're 'd and the plural-s control `s`.
+## Predictions and falsifiers
+P1 (the clitics survive): at least five of the seven clitics keep 0 null draws reaching them under the context-only measure. F1: fewer than five do (then the earlier claim was largely the piece artifact and is withdrawn for those forms).
+P2 (plural -s stays below the null): F2: it rises above its null (the context measure cannot separate clitics from morphology).
+P3 (the ordering by effect is not an artifact of the piece): the Spearman correlation between the context-only effects and the codec session's preliminary treebank effects (n't +5.8, 'm +3.3, 've +2.9, 's +2.7, 're +1.9, 'd 0.0, 'll -1.0) is at least as large as the 0.61 the all-token ordering had. F3: smaller (post-hoc comparison as before; n = 7, weak).
+## Not claimed
+A clitic that survives the context-only test improves the tagger's confidence on the REST of the sentence; it is not shown to be linguistically right by this alone.

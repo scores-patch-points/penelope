@@ -1,0 +1,255 @@
+{
+ "prereg": "f6e44c4e3e4b1ff5",
+ "seed": 20261120,
+ "planted": [
+  "the",
+  "can",
+  "you",
+  "for",
+  "and"
+ ],
+ "conditions": {
+  "A": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1961,
+     "evaluable": 654,
+     "good": 188,
+     "rate": 0.2874617737003058
+    },
+    {
+     "batch": 2,
+     "candidates": 1572,
+     "evaluable": 546,
+     "good": 87,
+     "rate": 0.15934065934065933
+    },
+    {
+     "batch": 3,
+     "candidates": 1518,
+     "evaluable": 533,
+     "good": 130,
+     "rate": 0.24390243902439024
+    },
+    {
+     "batch": 4,
+     "candidates": 1483,
+     "evaluable": 508,
+     "good": 110,
+     "rate": 0.21653543307086615
+    }
+   ],
+   "goodOnce": 217,
+   "replicated": 113,
+   "replicatedShare": 0.20169567157518964,
+   "replicatedList": [
+    "A",
+    "R",
+    "O",
+    "E",
+    "H",
+    "L",
+    "EL",
+    "D",
+    "HH",
+    "AHH",
+    "AAHH",
+    "Y",
+    "S",
+    "N",
+    "ol",
+    "T",
+    "M",
+    "AH",
+    "HAH",
+    "AHAH",
+    "HAAA",
+    "is",
+    "tu",
+    "'",
+    "F",
+    "p",
+    "HAA",
+    "W",
+    "HHH",
+    "AHHH",
+    "lp",
+    "wa",
+    "or",
+    "on",
+    "it",
+    "aa",
+    "HA",
+    "HHA",
+    "of",
+    "at"
+   ]
+  },
+  "B": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1056,
+     "evaluable": 600,
+     "good": 92,
+     "rate": 0.15333333333333332
+    },
+    {
+     "batch": 2,
+     "candidates": 1052,
+     "evaluable": 584,
+     "good": 126,
+     "rate": 0.21575342465753425
+    },
+    {
+     "batch": 3,
+     "candidates": 1085,
+     "evaluable": 570,
+     "good": 136,
+     "rate": 0.23859649122807017
+    },
+    {
+     "batch": 4,
+     "candidates": 946,
+     "evaluable": 526,
+     "good": 106,
+     "rate": 0.20152091254752852
+    }
+   ],
+   "goodOnce": 150,
+   "replicated": 104,
+   "replicatedShare": 0.1824561403508772,
+   "replicatedList": [
+    "S",
+    "D",
+    "T",
+    "E",
+    "EE",
+    "O",
+    "H",
+    "HA",
+    "AHA",
+    "HAHA",
+    "G",
+    "Y",
+    "'ll",
+    "'s",
+    "n't",
+    "on't",
+    "and",
+    "the",
+    "R",
+    "ps",
+    "na",
+    "at's",
+    "for",
+    "each",
+    "can",
+    "/23",
+    "you",
+    "P",
+    "OT",
+    "U",
+    "21",
+    "N",
+    "HE",
+    "K",
+    "'re",
+    "ated",
+    "ER",
+    "C",
+    "re's",
+    "tter"
+   ],
+   "plantedGoodBatches": {
+    "the": 4,
+    "can": 4,
+    "you": 4,
+    "for": 3,
+    "and": 4
+   },
+   "nonPlantedReplicated": 99,
+   "nonPlantedOnce": 150
+  },
+  "C": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 1017,
+     "evaluable": 592,
+     "good": 81,
+     "rate": 0.13682432432432431
+    },
+    {
+     "batch": 2,
+     "candidates": 1025,
+     "evaluable": 572,
+     "good": 106,
+     "rate": 0.1853146853146853
+    },
+    {
+     "batch": 3,
+     "candidates": 1064,
+     "evaluable": 561,
+     "good": 117,
+     "rate": 0.20855614973262032
+    },
+    {
+     "batch": 4,
+     "candidates": 924,
+     "evaluable": 519,
+     "good": 92,
+     "rate": 0.17726396917148363
+    }
+   ],
+   "goodOnce": 132,
+   "replicated": 90,
+   "replicatedShare": 0.16042780748663102,
+   "replicatedList": [
+    "S",
+    "D",
+    "T",
+    "E",
+    "EE",
+    "O",
+    "H",
+    "HA",
+    "AHA",
+    "HAHA",
+    "Y",
+    "'ll",
+    "'s",
+    "n't",
+    "or",
+    "ps",
+    "each",
+    "P",
+    "OT",
+    "U",
+    "21",
+    "N",
+    "HE",
+    "'re",
+    "ated",
+    "ER",
+    "C",
+    "rry",
+    "ater",
+    "re's",
+    "L",
+    "OL",
+    "pm",
+    "'m",
+    "not",
+    "AY",
+    "nnot",
+    "NG",
+    "LL",
+    "HAA"
+   ],
+   "zqGoodBatches": 0,
+   "zqReplicated": false
+  }
+ }
+}
