@@ -1,0 +1,33 @@
+== CONTEXT NOMINATION, fresh4 [FRESH] stamp 60432a15020910ad | documents 60 | queries 830 | skipped (no name sentence) 169 | fold mean class size 126.4
+gold passages by stratum: {'ZERO-CLEAN': 41, 'ZERO': 51, 'DIFFERENT': 131, 'NAMEFREE': 275, 'ALL': 1771} | UNJUDGEABLE (<30): []
+recall@10  ZERO-CLEAN        ZERO   DIFFERENT    NAMEFREE         ALL   precision@10
+N0              0.122       0.157       0.450       0.567       0.801   0.171
+N0x             0.146       0.196       0.443       0.622       0.097   0.021
+N1              0.317       0.294       0.389       0.476       0.074   0.016
+N2              0.171       0.157       0.237       0.338       0.053   0.011
+N2w1            0.146       0.196       0.443       0.622       0.097   0.021
+N2w5            0.195       0.176       0.206       0.269       0.042   0.009
+N3              0.366       0.294       0.336       0.345       0.054   0.011
+SWAP-N1         0.049       0.059       0.069       0.098       0.015   0.003
+SWAP-N3         0.073       0.059       0.061       0.102       0.016   0.003
+SHUF            0.073       0.059       0.092       0.113       0.018   0.004
+M1              0.220       0.235       0.214       0.280       0.043   0.009
+SWAP-M1         0.220       0.216       0.153       0.193       0.030   0.006
+U1-N1           0.293       0.294       0.389       0.436       0.068   0.014
+U1-N2           0.268       0.294       0.298       0.382       0.059   0.013
+U1-N3           0.293       0.294       0.328       0.349       0.054   0.012
+random-10       0.048       0.045       0.050       0.049       0.056
+
+FALSIFIERS on ZERO-CLEAN (judgeable), baseline = the better of N0 and N0x = N0x
+F1 context buys nothing: best of N1,N2,N3 = N3 0.366 vs N0x 0.146, diff +0.220 [+0.017, +0.423] -> not hit
+F2 topical not referent-tied (N1): swap 0.049 vs true 0.317 (ratio 0.15) -> not hit
+F2 topical not referent-tied (N3): swap 0.073 vs true 0.366 (ratio 0.20) -> not hit
+F2 topical not referent-tied (M1): swap 0.220 vs true 0.220 (ratio 1.00) -> HIT
+F3 fold finds nothing: M1 0.220 vs random-10 0.048, diff +0.171 -> not hit;   swap-M1 0.220
+F4 union (U1-N1): 0.293 vs best member 0.317, diff -0.024 -> HIT
+F4 union (U1-N2): 0.268 vs best member 0.220, diff +0.049 -> HIT
+F4 union (U1-N3): 0.293 vs best member 0.366, diff -0.073 -> HIT
+F5 length not meaning: SHUF 0.073 vs N1 0.317 (ratio 0.23) -> not hit
+F6 cost without gain (LITERAL, against N0 which keeps the name-bearing sentences, themselves gold SAME): precision@10 of N3 0.011 vs N0 0.171 -> HIT
+F6 like-for-like (against N0x, the same removal of name-bearing sentences): precision@10 of N3 0.011 vs N0x 0.021 -> not hit
+NOTE: the ALL stratum and precision@10 are not comparable between N0 (name-bearing sentences kept) and the other arms (removed); the strata ZERO-CLEAN, ZERO, DIFFERENT and NAMEFREE are the ones compared. See ADDENDUM-1.

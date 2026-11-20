@@ -68,6 +68,10 @@
   "cube-geometry": {
    "what": "the 27 cells of penelope organs/cube.mjs (operators, terrains, stances); no data and no text",
    "regenerate": "referent/eot/region_closure.mjs"
+  },
+  "context-fresh4": {
+   "what": "60 English Featured articles (positions p mod 50 = 11, chosen by member count only, declared in referent/PREREG-CONTEXT-NOMINATION-SET.md before the fetch), never read before the single scoring of row 39",
+   "regenerate": "referent/fetch_docs.py fresh4"
   }
  }
 }
