@@ -1,0 +1,21 @@
+# PREREG — smell each of Dionysius Thrax's eight parts of speech (written 2026-11-20 BEFORE the run)
+
+Owner's direction (2026-11-20): "develop our ability to smell all parts of speech." Reading: turn the NOMINAL-vs-OTHER sniff (GL-SN-01/02) into a SMELL FOR EACH of Thrax's eight classes — a cheap, revisable, per-token pressure, calibrated as a ledger layer with planted truth, judged by OUR OWN tokens (no trained tagger). The categories are not imposed: a class is smelled by the emergent cluster a token falls into, and the cluster is named by its dominant Thrax class on the train split only. Gold tags are a scorer only, never a judge and never the input to clustering.
+
+Data: `en_ewt-ud-dev.conllu` (UniversalDependencies/UD_English-EWT, commit 491be069d36e378f67c29f183699eea88308ea42, sha256 first 16 ebd876f586758249, ~1.8 MB, CC BY-SA 4.0), fetched with the owner's yes. This file is FRESH for the per-class smell (it was read once for the genitive fresh-set GL-GN-02; the QUESTION here is new and the tokens are the same set, so the split is FRESH-for-question and the file is REUSED only in the sense that GL-GN-02 read its sentences first — declared, not hidden). 2001 sentences, split by index: mod 10 in {0,1} = HELD-OUT (scored once), the rest TRAIN (clustering).
+
+The giver's classes (THRAX_MAP, copied verbatim from khora `native/legacy-ported/packages/engine/perceiver/text/wordclass.js` at commit fd76adae9a5a13feb3f47a6956b4bf3bf8f315d8, because khora is absent from this checkout; the copy is frozen below, provenance named): noun (NOUN/PROPN), verb (VERB/AUX), pronoun (PRON), article (DET), preposition (ADP), conjunction (CCONJ/SCONJ), adverb (ADV), interjection (INTJ). OUT OF SCOPE, named as a gap (ADJ/PART/NUM/PUNCT/SYM/X): Thrax classed adjectives under noun by shared inflection, and THRAX_MAP keeps ADJ out rather than force it; the participle has no UD tag.
+
+Method (declared, fixed before the run; not tuned on the held-out split):
+- Clustering exactly as experiments/emergent-pos/run.mjs (stage 1): train types with count >= 5; context features = the 200 most frequent train words as LEFT and RIGHT neighbour (400 dims); positive PMI, context smoothing 0.75; L2-normalised; spherical k-means, k-means++ seeding, 10 restarts, lowest cost; k = 64 (fixed, the stage-1 grid cap, not tuned). Seed 20261120.
+- Naming a cluster (train gold only): the cluster's dominant Thrax class by TRAIN TOKEN COUNT (the most-used class among its member types, weighted by how often each type occurs in train); a cluster with no in-scope member is UNNAMED. This naming is a scorer, not a judge: it happens after clustering, on the train split.
+- Smell of a held-out token: the token's lower-cased form is looked up in the train vocabulary; if it was not clustered (never seen, or count < 5), the smell is ABSENT (no evidence is not a vote, as in the sniff). Otherwise the token smells as its cluster's named class.
+
+Claims, each with its falsifier, for EACH of the eight classes X separately:
+- **S-X (per class).** The smell-for-X balanced accuracy on the held-out tokens (mean of the fire rate on X-planted and the non-fire rate on X-noise) exceeds the MAXIMUM over 200 shuffles of the planted/noise labels. Falsified otherwise: our own tokens do not smell class X.
+- **S-SUM (reported, not claimed).** The multi-class accuracy (the share of held-out tokens, in-scope only, whose smelled class equals their gold class) and its label-shuffle maximum; the per-class precision, recall and F1.
+- **S-CARD (reported, not claimed).** For each class, the calibration card (Laplace tpr/fpr/likelihood ratio with a 95% bootstrap interval, 1000 resamples) for the ledger layer `pos-smell-<class>`, planted = held-out gold tokens of X, noise = held-out gold tokens of other in-scope classes.
+
+Named gaps: ADJ/PART/NUM/PUNCT/SYM/X (out of scope); the participle (no UD tag); "of"-genitives and case (relation-level, separate); any language but English; a fully unsupervised cluster-naming (this run names clusters by train gold — the emergent-class version GL-GN-02 already showed naming-by-gold is weak, so a negative per-class result here is expected and is still a finding).
+
+Seed 20261120. Nothing here changes after the run except in an ERRATUM section below.

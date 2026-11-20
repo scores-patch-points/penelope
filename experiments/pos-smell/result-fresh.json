@@ -1,0 +1,186 @@
+{
+ "prereg": "d3d76418a01fffbe",
+ "stamp": "FRESH",
+ "totalTokensHeld": 4961,
+ "inScopeHeld": 3746,
+ "trainSentences": 1600,
+ "heldSentences": 401,
+ "typesClustered": 551,
+ "namedClusters": 62,
+ "classes": {
+  "noun": {
+   "planted": 1216,
+   "noise": 2530,
+   "balancedAccuracy": 0.6087,
+   "nullMax": 0.5168,
+   "holds": true,
+   "tpr": 0.247,
+   "fpr": 0.029,
+   "lr": 8.34,
+   "lr95": [
+    6.63,
+    10.99
+   ]
+  },
+  "verb": {
+   "planted": 820,
+   "noise": 2926,
+   "balancedAccuracy": 0.7771,
+   "nullMax": 0.5187,
+   "holds": true,
+   "tpr": 0.577,
+   "fpr": 0.023,
+   "lr": 25.2,
+   "lr95": [
+    20.2,
+    32.62
+   ]
+  },
+  "pronoun": {
+   "planted": 441,
+   "noise": 3305,
+   "balancedAccuracy": 0.858,
+   "nullMax": 0.5226,
+   "holds": true,
+   "tpr": 0.726,
+   "fpr": 0.01,
+   "lr": 72.61,
+   "lr95": [
+    53.35,
+    110.41
+   ]
+  },
+  "article": {
+   "planted": 352,
+   "noise": 3394,
+   "balancedAccuracy": 0.9441,
+   "nullMax": 0.5286,
+   "holds": true,
+   "tpr": 0.918,
+   "fpr": 0.029,
+   "lr": 30.77,
+   "lr95": [
+    25.45,
+    37.6
+   ]
+  },
+  "preposition": {
+   "planted": 406,
+   "noise": 3340,
+   "balancedAccuracy": 0.8779,
+   "nullMax": 0.5257,
+   "holds": true,
+   "tpr": 0.85,
+   "fpr": 0.094,
+   "lr": 9,
+   "lr95": [
+    8.08,
+    10.2
+   ]
+  },
+  "conjunction": {
+   "planted": 232,
+   "noise": 3514,
+   "balancedAccuracy": 0.5338,
+   "nullMax": 0.5085,
+   "holds": true,
+   "tpr": 0.069,
+   "fpr": 0.001,
+   "lr": 42.57,
+   "lr95": [
+    19.13,
+    122.43
+   ]
+  },
+  "adverb": {
+   "planted": 249,
+   "noise": 3497,
+   "balancedAccuracy": 0.6284,
+   "nullMax": 0.5144,
+   "holds": true,
+   "tpr": 0.265,
+   "fpr": 0.008,
+   "lr": 31.13,
+   "lr95": [
+    21.07,
+    48.78
+   ]
+  },
+  "interjection": {
+   "planted": 30,
+   "noise": 3716,
+   "balancedAccuracy": 0.6281,
+   "nullMax": 0.5273,
+   "holds": true,
+   "tpr": 0.267,
+   "fpr": 0.01,
+   "lr": 26.14,
+   "lr95": [
+    12.86,
+    44.42
+   ]
+  }
+ },
+ "summary": {
+  "multiClassAccuracy": 0.4941,
+  "nullMax": 0.1169,
+  "perClass": {
+   "noun": {
+    "tp": 300,
+    "fp": 74,
+    "fn": 916,
+    "P": 0.8021390374331551,
+    "R": 0.24671052631578946
+   },
+   "verb": {
+    "tp": 473,
+    "fp": 66,
+    "fn": 347,
+    "P": 0.8775510204081632,
+    "R": 0.5768292682926829
+   },
+   "pronoun": {
+    "tp": 320,
+    "fp": 32,
+    "fn": 121,
+    "P": 0.9090909090909091,
+    "R": 0.7256235827664399
+   },
+   "article": {
+    "tp": 323,
+    "fp": 100,
+    "fn": 29,
+    "P": 0.7635933806146572,
+    "R": 0.9176136363636364
+   },
+   "preposition": {
+    "tp": 345,
+    "fp": 314,
+    "fn": 61,
+    "P": 0.5235204855842185,
+    "R": 0.8497536945812808
+   },
+   "conjunction": {
+    "tp": 16,
+    "fp": 5,
+    "fn": 216,
+    "P": 0.7619047619047619,
+    "R": 0.06896551724137931
+   },
+   "adverb": {
+    "tp": 66,
+    "fp": 29,
+    "fn": 183,
+    "P": 0.6947368421052632,
+    "R": 0.26506024096385544
+   },
+   "interjection": {
+    "tp": 8,
+    "fp": 39,
+    "fn": 22,
+    "P": 0.1702127659574468,
+    "R": 0.26666666666666666
+   }
+  }
+ }
+}
