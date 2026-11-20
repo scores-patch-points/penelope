@@ -1531,7 +1531,13 @@
     "GL-SM-04",
     "o/clitic-slice.mjs",
     "o/clitic-slice.test.mjs",
-    "GL-CL-01"
+    "GL-CL-01",
+    "o/emergent-smell.mjs",
+    "o/emergent-smell.test.mjs",
+    "o/data/emergent-smell-eng.json",
+    "o/data/emergent-smell-grc.json",
+    "o/data/emergent-smell-zh.json",
+    "o/data/emergent-smell-sa.json"
    ]
   },
   {
