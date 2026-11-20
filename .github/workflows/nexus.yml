@@ -17,7 +17,7 @@ jobs:
           curl -fsS --retry 3 -o "$RUNNER_TEMP/block.md" https://raw.githubusercontent.com/scores-patch-points/scores-patch-points/main/nexus/blocks/penelope.md
           sed -n '/<!-- nexus:begin/,/<!-- nexus:end -->/p' CLAUDE.md > "$RUNNER_TEMP/have.md"
           diff -u "$RUNNER_TEMP/block.md" "$RUNNER_TEMP/have.md"
-      - name: language is read by the reader, not a pattern (nexus rule 8: the text-regex ratchet)
+      - name: language is read by the reader, not a pattern (nexus rule 8, the text-regex ratchet)
         run: |
           curl -fsS --retry 3 -o .nexus-text-regex-ratchet.mjs https://raw.githubusercontent.com/scores-patch-points/scores-patch-points/main/nexus/guards/text-regex-ratchet.mjs
           if [ -f gym/text-regex-baseline.jsonl ] || [ -f text-regex-baseline.jsonl ]; then node .nexus-text-regex-ratchet.mjs; else
