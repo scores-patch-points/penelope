@@ -1495,9 +1495,12 @@
     "g/identity-run.mjs",
     "g/identity-run.test.mjs",
     "o/identity-def.mjs",
+    "o/question-reason.mjs",
+    "o/question-reason.test.mjs",
     "GL-PE-02",
     "GL-PE-03",
-    "GL-ID-01"
+    "GL-ID-01",
+    "GL-QR-01"
    ]
   },
   {
