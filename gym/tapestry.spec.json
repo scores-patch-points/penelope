@@ -513,10 +513,12 @@
     "g/house-ratchet.test.mjs",
     "g/text-regex-ratchet.mjs",
     "g/text-regex-ratchet.test.mjs",
+    "g/hook-no-text-regex.mjs",
     "GL-TP-02",
     "GL-QA-06",
     "GL-TP-05",
-    "GL-TP-06"
+    "GL-TP-06",
+    "GL-TP-07"
    ]
   },
   {
