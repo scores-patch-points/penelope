@@ -1,0 +1,1 @@
+{"all":4759,"n":577,"F1":{"sniff":0.8562,"tagger":0.8821,"B":200,"sniffWins":16,"ties":2},"F2":true,"F3":{"byTaggerMarginThird":[{"n":192,"sniff":0.771,"tagger":0.755},{"n":192,"sniff":0.839,"tagger":0.896},{"n":193,"sniff":0.959,"tagger":0.995}],"hybridLowMarginUsesSniff":0.8873,"sniffWrongAlsoTaggerWrong":0.3012}}

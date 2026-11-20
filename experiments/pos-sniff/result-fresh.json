@@ -1,0 +1,76 @@
+{
+ "prereg2": "035f3f8dbcbdec86",
+ "stamp": "FRESH",
+ "file": {
+  "sha256_16": "5b5df91ca2367734",
+  "sentences": 2077
+ },
+ "allOccurrences": 4759,
+ "unknownToTagger": 577,
+ "nominal": 358,
+ "F1": {
+  "sniff": 0.8562,
+  "tagger": 0.8821,
+  "B": 200,
+  "sniffWins": 16,
+  "ties": 2
+ },
+ "F2_powered": true,
+ "F3": {
+  "byTaggerMarginThird": [
+   {
+    "n": 192,
+    "sniff": 0.771,
+    "tagger": 0.755
+   },
+   {
+    "n": 192,
+    "sniff": 0.839,
+    "tagger": 0.896
+   },
+   {
+    "n": 193,
+    "sniff": 0.959,
+    "tagger": 0.995
+   }
+  ],
+  "hybridLowMarginUsesSniff": 0.8873,
+  "sniffWrongAlsoTaggerWrong": 0.3012
+ },
+ "F4": {
+  "sniffCard": {
+   "schema": "EvidenceLedger@1",
+   "layer": "pos-sniff-nominal",
+   "group": "nomic-embed+ud-ewt",
+   "planted": {
+    "n": 358,
+    "hit": 306
+   },
+   "noise": {
+    "n": 219,
+    "hit": 31
+   },
+   "tpr": 0.8527777777777777,
+   "fpr": 0.14479638009049775,
+   "lrGood": 5.889496527777777,
+   "provenance": "frozen sniff-eng2 on EWT test unknown-to-tagger, FRESH"
+  },
+  "taggerCard": {
+   "schema": "EvidenceLedger@1",
+   "layer": "khora-tagger-nominal",
+   "group": "khora-tagger",
+   "planted": {
+    "n": 358,
+    "hit": 326
+   },
+   "noise": {
+    "n": 219,
+    "hit": 36
+   },
+   "tpr": 0.9083333333333333,
+   "fpr": 0.167420814479638,
+   "lrGood": 5.425450450450451,
+   "provenance": null
+  }
+ }
+}
