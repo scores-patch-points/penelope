@@ -24,6 +24,17 @@ The three feature levers are each real but small (+2.0 morphology, +0.4 char, +0
 
 What it IS likely explained by (unmeasured, next): the tagger's predicted UPOS on sandhi/rich-morphology forms (the parser trains on predicted tags), and the transition parser's fundamental ceiling on free word order. Sanskrit sentences are SHORTER (7.6 vs 12.1 tokens) with CLOSER heads (2.3 vs 3.2) — the data is not intrinsically harder; the architecture and the tag features are.
 
+
+## Graph-parser rework (first cut, 2026-11-20)
+
+Built `native/adapters/text/graph-parser.mjs` in the khora: a non-projective arc-factored parser whose decoder is SHARED (Chu-Liu-Edmonds MST) and whose arc-feature CODEX is per language, folded on demand — `eng` folds word-order features (forms/adjacency), `san` folds morphology (case/number/gender/lemma). The "no shared codec assumptions" rule is now literal in the code.
+
+First-cut result (10 iterations, bare arc-factored perceptron):
+- Sanskrit UAS 57.9 (transition parser: 66.2)
+- English UAS 63.3 (transition parser: 84.5)
+
+So the graph parser UNDER-performs on both, because the first cut is a bare local perceptron with ~10 features — it lacks the transition parser's Zhang & Nivre feature set, dynamic oracle, and structured training. The architecture is right (shared decoder, per-language codec); the implementation is not yet competitive. Next: port the rich features into the arc codec and add structured training before the architecture question (does morphology-primary graph decoding beat word-order transition decoding on free word order) is answerable.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
