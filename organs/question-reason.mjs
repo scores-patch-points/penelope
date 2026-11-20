@@ -26,7 +26,7 @@ export function testProposal(c, marks, { functional = [] } = {}) {
   return { status: "silent", why: "the marks neither say nor deny it" };
 }
 const promptFor = (node, lines) => ({
-  system: "You think about ONE sub-question, using only the notes. Reason briefly. Then give at most one short sentence saying what the notes support or let you infer about it. If nothing follows from the notes, say that nothing follows. Do not answer anything else.",
+  system: "You think about ONE sub-question, using only the notes. Reason in at most three short sentences. Then give at most one short sentence saying what the notes support or let you infer about it. If nothing follows from the notes, say that nothing follows. Do not answer anything else.",
   user: `Notes:\n${lines.length ? lines.join("\n") : "(no marks about this)"}\n\nSub-question: ${node.text}\nThe machine could not settle it because: ${node.note ?? node.finding ?? "no mechanical answer"}`,
 });
 /** reasonOver(nodes, { marks, namesOf, claimsOf, model, functional, by }) -> the nodes, each goal left hole/gap now carrying { thought, proposals } and, if a silent proposal helps, standing `candidate`.
@@ -35,7 +35,9 @@ export async function reasonOver(nodes, { marks, namesOf, claimsOf, model, funct
   const out = [];
   for (const n of nodes) {
     if (!n.text || !["hole", "gap"].includes(n.standing) || !model) { out.push(n); continue; }   // the machine settled it, or it is not the model's to think about
-    const lines = sliceFor(namesOf(n.text), marks).map((m) => `[turn ${turnOf(m)}] ${m.a} ${m.rel.split("_").join(" ")} ${m.b}`), r = await model.think(promptFor(n, lines));
+    const lines = sliceFor(namesOf(n.text), marks).map((m) => `[turn ${turnOf(m)}] ${m.a} ${m.rel.split("_").join(" ")} ${m.b}`);
+    if (!lines.length) { const done = { ...n, standing: "hole", note: `outside_material: no mark bears on any being this sub-question names (${n.note ?? n.finding ?? "no mechanical answer"}); the model was not asked`, outside: true }; out.push(done); if (onNode) await onNode(done); continue; }   // nothing the model could reason over: it costs a thought and can only invent
+    const r = await model.think(promptFor(n, lines));
     const proposals = (claimsOf(r.content ?? "") ?? []).map((c) => ({ claim: { a: c.a, rel: c.rel, b: c.b }, ...testProposal(c, marks, { functional }) }));
     const helps = proposals.filter((p) => p.status === "silent");
     const done = { ...n, thought: { by, text: r.thinking ?? "", said: r.content ?? "", read: lines }, proposals, ...(helps.length ? { standing: "candidate", finding: `PROPOSED by the model, not on record: ${helps.map((p) => `${p.claim.a} ${p.claim.rel.split("_").join(" ")} ${p.claim.b}`).join("; ")}`, basis: { material: [], priors: [], proposals: helps.map((p) => p.claim) } } : {}) }; out.push(done); if (onNode) await onNode(done);

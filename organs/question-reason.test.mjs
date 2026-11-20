@@ -18,7 +18,7 @@ test("the slice a sub-question may read is bounded, by the beings it names plus 
 });
 const node = (id, standing, text = "does Anna still work at Zebra", note = "not_on_record") => ({ id, standing, text, note, kind: "polar" });
 const model = (content, thinking = "hmm") => ({ calls: [], async think(p) { this.calls.push(p); return { thinking, content }; } });
-const ctx = (m, claimsOf) => ({ marks, namesOf: () => ["Anna"], claimsOf, model: m, ...F });
+const ctx = (m, claimsOf, names = ["Anna"]) => ({ marks, namesOf: () => names, claimsOf, model: m, ...F });
 test("only a hole or a gap goes to the model; a goal the machine settled, or a judgement, never does", async () => {
   const m = model("x"), out = await reasonOver([node("g1", "stands"), node("g2", "judgement"), node("g3", "contradicted"), node("g4", "hole")], ctx(m, () => []));
   assert.equal(m.calls.length, 1); assert.ok(out[3].thought && !out[0].thought && !out[1].thought && !out[2].thought);
@@ -43,4 +43,9 @@ test("weave: the thought is an Existence entry by the model citing the goal; the
   const asModel = es.filter((e) => ["thought", "proposal"].includes(e.kind)).map((e) => ({ ...e, by: "penelope" }));
   assert.ok(W.audit(asModel).ok, "thought and proposal are Existence and Structure");
   assert.ok(W.audit(es.filter((e) => e.kind === "verdict").map((e) => ({ ...e, by: "janus" }))).violations.length === 1, "a verdict written by anyone but the interpreter is a violation");
+});
+
+test("a sub-question that names no being the marks mention is typed outside_material and the model is NOT asked (it can only invent)", async () => {
+  const m = model("x"), out = await reasonOver([node("g1", "hole", "how far is the moon")], ctx(m, () => [{ a: "Moon", rel: "far", b: "Earth" }], ["Moon"]));
+  assert.equal(m.calls.length, 0); assert.equal(out[0].outside, true); assert.match(out[0].note, /outside_material/); assert.equal(out[0].thought, undefined);
 });
