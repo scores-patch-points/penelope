@@ -55,8 +55,9 @@ test("a prior with a named giver is GIVEN, without a giver a CANDIDATE; asker an
 });
 test("evidence is read by kind and by pair, either order, and nothing else is cited", () => {
   const E = [{ id: "j1", kind: "merged-world", by: "janus", body: { pair: ["Bell", "Jack"] } }, { id: "j2", kind: "difference", by: "janus", body: { pair: ["Jack", "Bell"] } }, { id: "j3", kind: "difference", by: "janus", body: { pair: ["Bell", "Moore"] } },
-    { id: "j4", kind: "probe-answer", by: "janus", body: { pair: ["Bell", "Jack"] } }, { id: "j5", kind: "hole", by: "janus", body: { pair: "Bell|Jack" } }, { id: "j6", kind: "binding", by: "janus", body: { pair: ["Bell", "Jack", "He"] } }];
-  assert.deepEqual(evidenceFor(E, "Bell", "Jack").map((x) => x.id), ["j1", "j2", "j6"], "the other pair, another kind, and a malformed pair are not cited"); assert.deepEqual(EVIDENCE_KINDS.slice().sort(), ["agreement", "binding", "change", "difference", "hole", "merged-world"]);
+    { id: "j4", kind: "probe-answer", by: "janus", body: { pair: ["Bell", "Jack"] } }, { id: "j5", kind: "hole", by: "janus", body: { pair: "Bell|Jack" } }, { id: "j6", kind: "binding", by: "janus", body: { anaphor: { form: "He" }, candidates: [{ ref: { being: "Bell" } }, { ref: { being: "Jack" } }, { ref: { anaphor: { s: 0, id: 3, form: "it" } } }] } },
+    { id: "j7", kind: "binding", by: "janus", body: { anaphor: { form: "He" }, candidates: [{ ref: { being: "Bell" } }, { ref: { being: "Moore" } }] } }, { id: "j8", kind: "binding", by: "janus", body: { pair: ["Bell", "Jack"] } }];
+  assert.deepEqual(evidenceFor(E, "Bell", "Jack").map((x) => x.id), ["j1", "j2", "j6"], "the other pair, another kind, a malformed pair, and a binding with only one of the two names among its candidates are not cited; a binding is matched by its candidate beings, not by a pair field it does not have"); assert.deepEqual(EVIDENCE_KINDS.slice().sort(), ["agreement", "binding", "change", "difference", "hole", "merged-world"]);
 });
 test("a declaration needs a live prior, two different referents and a byline; it inherits the prior's standing; it is the same for the pair in either order", () => {
   const prior = { id: "P1", kind: "identity-prior", body: { standing: "given", giver: "the asker", tolerance: 0.05 } };

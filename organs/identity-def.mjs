@@ -19,9 +19,14 @@ export function declarePrior(spec = {}) {
   const giver = typeof spec.giver === "string" && spec.giver ? spec.giver : null;
   return { ok: true, addr: `identity-prior:${spec.asker}`, body: { asker: spec.asker, tolerance: spec.tolerance, giver, priors: Array.isArray(spec.priors) ? spec.priors : [], concerns: spec.concerns ?? null, standing: giver ? "given" : "candidate", declared_by: spec.by, statement: "no difference that makes a difference between two folds, for these concerns, up to the tolerance" } };
 }
-/** the evidence about a pair: live entries of the evidence kinds whose body.pair holds both names (either order), in log order */
+/** the evidence about a pair: live entries of the evidence kinds, in log order. Most carry body.pair (the two names, either order); a `binding` is one entry per anaphor with its candidates inside, so it is evidence for a pair when BOTH names are among its candidate beings (the anaphor could bind to either: the ambiguity is the evidence). */
+const beingsOfBinding = (e) => (Array.isArray(e.body?.candidates) ? e.body.candidates.map((c) => c?.ref?.being).filter((x) => typeof x === "string") : []);
 export function evidenceFor(entries, a, b) {
-  return (entries ?? []).filter((e) => EVIDENCE_KINDS.includes(e?.kind) && Array.isArray(e.body?.pair) && e.body.pair.includes(a) && e.body.pair.includes(b)).map((e) => ({ id: e.id, kind: e.kind, by: e.by }));
+  return (entries ?? []).filter((e) => {
+    if (!EVIDENCE_KINDS.includes(e?.kind)) return false;
+    if (e.kind === "binding") { const bs = beingsOfBinding(e); return bs.includes(a) && bs.includes(b); }
+    return Array.isArray(e.body?.pair) && e.body.pair.includes(a) && e.body.pair.includes(b);
+  }).map((e) => ({ id: e.id, kind: e.kind, by: e.by }));
 }
 /** declareIdentity({ prior (a live identity-prior entry), a, b, entries (the log's live entries), by }) -> { ok, addr, body, of } | { ok: false, reason } */
 export function declareIdentity({ prior, a, b, entries = [], by } = {}) {
