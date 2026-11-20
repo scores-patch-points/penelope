@@ -1,0 +1,1249 @@
+{
+ "prereg": "8cb2db9745970838",
+ "seed": 20261120,
+ "turns": 900,
+ "summary": {
+  "old": {
+   "correct": "12/30",
+   "fabricated": 0,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 4,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 0,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 1585,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 1478,
+   "routes": {
+    "window": 27,
+    "register": 3
+   }
+  },
+  "new": {
+   "correct": "20/30",
+   "fabricated": 1,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 6,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 4,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 1,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 1,
+     "fab": 1
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 114,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 20638,
+   "routes": {
+    "reasoned+model": 27,
+    "register": 3
+   }
+  },
+  "full": {
+   "correct": "14/30",
+   "fabricated": 2,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 4,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 0,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 1,
+     "fab": 2
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 4098,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 19681,
+   "routes": {
+    "full": 30
+   }
+  },
+  "thinkModel": {
+   "calls": 11,
+   "ptoks": 2466,
+   "ms": 42032.171333000064
+  }
+ },
+ "res": {
+  "old": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 20572
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 562
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 571
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Leeds.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 942
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Oxford.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 914
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 588
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Leeds.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 956
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Bath.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 969
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 513
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 500
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 499
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 530
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 581
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 570
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 584
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "Jonas",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 769
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "Anna",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 491
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "Clara and Hugo.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 1144
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 510
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 586
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 583
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 532
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "No.",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 717
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "ms": 537
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 524
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 533
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "ms": 561
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is 15:45.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 2442
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was 14:30.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 2474
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called Orbit.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 2073
+   }
+  ],
+  "new": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "The machine checked the question and found:\n\n- **Contradicted**: Nothing is contradicted.\n- **Not on record**: Nothing is not on record.\n- **Only a proposal**: ",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 14906
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "The machine found that \"Victor live in Bath\" is recorded from turn 179. Therefore, based on the findings, Victor is said to live in Bath. There is no contradict",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 11499
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "The machine found that \"Oscar live in York\" is recorded in turn 249. Therefore, based on the findings, Oscar is said to live in York now. There is no contradict",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 11234
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "According to the findings:\n\n- **Contradicted**: There is no contradiction in the record regarding where Hugo lives now.\n- **Not on record**: There is no explici",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 19422
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "According to the findings:\n\n- **Contradicted**: There is no contradiction in the record regarding where Felix lives now.\n- **Not on record**: There is no explic",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 19517
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "The machine checked the question and found:\n\n- **Contradicted**: Nothing is contradicted.\n- **Not on record**: Nothing is not on record.\n- **Only a proposal**: ",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 9054
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Based on the findings:\n\n- **Contradicted**: There is no contradiction in the record regarding where Clara lives now.\n- **Not on record**: There is no explicit i",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 24964
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "The machine checked the question and found:\n\n- **Contradicted**: There is no contradiction in the findings.\n- **Not on record**: There is no information provide",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 18723
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "The question \"Where does Felix work?\" is partially addressed by the findings, but with some limitations:\n\n- **Contradicted**: There is no contradiction in the f",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 30346
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "The question \"Where does Tom work?\" is not fully resolved based on the findings.\n\n- **Contradicted**: Nothing is directly contradicted in the findings.\n- **Not ",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 33157
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "The question \"Where does Oscar work?\" is not fully answerable based on the findings provided. Here's a breakdown:\n\n- **Contradicted**: There is no contradiction",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 34387
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "The question \"Where does Lena work?\" is not fully answerable based on the findings. Here's the breakdown:\n\n- **Contradicted**: Nothing is directly contradicted ",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 28304
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "The question \"Where did Clara live before?\" is addressed by the findings as follows:\n\n- **Contradicted**: There is no direct contradiction in the findings regar",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 30864
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "The question \"Where did Jonas live before?\" is addressed as follows based on the findings:\n\n- **Contradicted**: There is no direct contradiction in the findings",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 18578
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "The question \"Where did Anna live before?\" is addressed by the findings as follows:\n\n- **Contradicted**: There is no direct contradiction in the findings.\n- **N",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 24914
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "The question \"Who lives in Hull?\" contains a verb (\"lives\") but no specific hole or test shape that this reader is designed to recognize. As a result:\n\n- **Cont",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 21918
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "The question \"Who lives in Bath?\" contains a verb (\"lives\") but no specific hole or test shape that this reader recognizes. Therefore, the question cannot be fu",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 26325
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "The question \"Who lives in Leeds?\" is not fully supported by the findings. Here's a breakdown:\n\n- **Contradicted**: There is no information provided that direct",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 25425
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "The question \"Where does the person Lena hired live now?\" is addressed as follows based on the findings:\n\n- **Contradicted**: There is no contradiction in the f",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 20122
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "The question \"Where does the person Oscar hired live now?\" contains a contradiction based on the findings.\n\n- **Contradicted**: The phrase \"the person Oscar hir",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 28276
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "The question is answered based on the findings:\n\n- **Contradicted**: There is no contradiction in the provided information.\n- **Not on record**: There is no inf",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 16061
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "The statement \"Maria lives in Ely, right?\" is analyzed as follows:\n\n- **\"Maria lives in Ely\"** is a factual claim, but the machine could not fully process it du",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 37252
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "- **Contradicted**: \"Tom lives in Hull\" is contradicted because it was found that Tom lives in York.  \n- **Not on record**: The word \"right\" was not processed, ",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 15330
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "The statement \"Jonas lives in Ely, right?\" is analyzed as follows:\n\n- **\"Jonas lives in Ely\"** is a factual claim, but the system could not fully process it due",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 37976
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "The question \"What is Clara's favourite food?\" is **not on record**. The system did not receive any information about Clara's favourite food, and therefore cann",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "ms": 10145
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "The question \"How far is Jonas's flight from where Jonas lives?\" contains a contradiction. The phrase \"Jonas's flight\" implies a flight (such as an airplane jou",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "ms": 29585
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "The question \"In what year was Acme founded?\" is not on record. The machine checked the question and found that it was not addressed by the model, and no inform",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": true,
+    "ms": 14917
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is 15:45.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 2148
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was 14:30.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 2348
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called Orbit.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "ms": 1448
+   }
+  ],
+  "full": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Based on the information provided, **Maria's current residence is not explicitly mentioned**. However, we can infer that **Lena hired Maria** (turn 728), but th",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 74821
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Based on the information provided, **Victor hired Tom** in turn 796, and **Tom now lives in York** in turn 878. However, there is no direct information about wh",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 14578
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "Based on the information provided, there is no direct mention of where Oscar currently lives. However, there is a statement that says: **\"Oscar hired Hugo.\"** T",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 14508
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Hugo now lives in Leeds.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 1728
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Felix now lives in Oxford.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 1748
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Based on the information provided, **Lena now lives in Hull**. This is mentioned in the following turn:\n\n**[turn 885] Jonas now lives in Hull.** \n\n(Note: While ",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 14386
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Clara now lives in Leeds.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 1739
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Anna now lives in Bath.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 1545
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "Based on the information provided, **Felix now lives in Oxford**. However, the text does not explicitly state where Felix **works**. \n\nIf you're looking for inf",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 64388
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "The information provided does not specify where Tom works. It only mentions that **Tom now lives in York**. There is no mention of his workplace.",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 6400
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "Based on the information provided, there is no direct mention of where Oscar works. However, there is a statement that says: **\"Oscar hired Hugo.\"** This implie",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 17361
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "Based on the information provided, there is no direct mention of where Lena works. However, we do know that **Lena hired Maria** (turn 728). This suggests that ",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 17113
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Clara previously lived in Oxford.",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 2899
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "Before, Jonas lived in Hull.",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 2028
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Anna now lives in Bath, so she lived in a different place before. However, based on the information provided, there is no specific mention of where Anna lived *",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 11022
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "Jonas lives in Hull.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 2254
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "Anna lives in Bath.",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 1491
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "Based on the information provided:\n\n- **Clara** now lives in **Leeds**.\n- **Hugo** now lives in **Leeds**.\n\nSo, the people who live in **Leeds** are **Clara** a",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 11423
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Lena hired Maria. The information provided does not specify where Maria currently lives. Therefore, it is not possible to determine where Lena's hired person li",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 66964
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Oscar hired Hugo. According to the conversation, **Hugo now lives in Leeds**. \n\n**Answer: Hugo now lives in Leeds.**",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 6626
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "Victor hired Tom. Tom now lives in York. \n\n**Answer: York.**",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 4196
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Based on the information provided, there is no direct mention of where Maria lives. However, there is a statement that \"Lena hired Maria.\" This indicates that M",
+    "route": "full",
+    "correct": false,
+    "fab": false,
+    "ms": 73474
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "No, Tom does not live in Hull. According to the information provided, Tom now lives in York.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 65006
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "Based on the information provided, there is no direct statement confirming where Jonas lives. However, there is a mention that \"Jonas hired Lena\" and later \"Len",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 16530
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "The information provided does not mention Clara's favourite food. Therefore, I cannot determine her favourite food based on the given data.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 5852
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "The question \"How far is Jonas's flight from where Jonas lives?\" is unclear and lacks sufficient context to provide a meaningful answer. \n\nFrom the provided inf",
+    "route": "full",
+    "correct": false,
+    "fab": true,
+    "ms": 74415
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "The information provided does not mention the founding year of Acme. Therefore, I cannot determine the year Acme was founded based on the given data.",
+    "route": "full",
+    "correct": false,
+    "fab": true,
+    "ms": 5959
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is **15:45**.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 3474
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was **14:30**.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 3768
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called **Orbit**.",
+    "route": "full",
+    "correct": true,
+    "fab": false,
+    "ms": 2730
+   }
+  ]
+ }
+}

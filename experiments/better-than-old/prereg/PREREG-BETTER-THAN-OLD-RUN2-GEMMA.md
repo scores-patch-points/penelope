@@ -1,0 +1,8 @@
+# ADDENDUM to PREREG-BETTER-THAN-OLD (sha256 first 16 of the amended protocol: 8cb2db9745970838). Run 2: the same world, the same seed, the same 30 questions, with gemma2:2b in EVERY model role (stating and nominating), thinking not applicable.
+Written 2026-11-20 BEFORE run 2, and after run 1's OLD arm was seen (OLD 14/30 correct on qwen3:8b) but before run 1's NEW or FULL arms finished. Nothing in the harness is tuned after seeing run 1; the only change is the model name (and omitting the `think` option for a model that has no thinking mode).
+Why: the owner has had consistent results from Gemma in earlier iterations of the fold, and a small non-thinking model is the point of the design (the machine reasons; the model states and nominates).
+Split label: EXPLORATORY, same seed as run 1.
+## Added predictions and falsifiers (on top of F1-F6, applied separately to run 2)
+P7: the stack's advantage over OLD is at least as large with the small model as with qwen3:8b (a stack that does the reasoning before the model should lean on the model less). F7: NEW-minus-OLD correct (absolute) on gemma2:2b is SMALLER than on qwen3:8b: then the stack's gain depends on a bigger model and the claim "the machine does the reasoning" is not supported.
+F8: gemma2:2b NEW fabricates (states a value for an unanswerable question) more often than gemma2:2b OLD.
+F9: gemma2:2b NEW's reply contradicts its own findings table (e.g. states a city the table does not hold) on more than 10% of the answerable questions: the small model is a bad mouth for the table. Checked by the harness reading the reply for the gold value against the table's value, per question.

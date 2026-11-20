@@ -1,0 +1,1935 @@
+{
+ "prereg": "8cb2db9745970838",
+ "addendum2": "40ae23f3d6fe5e92",
+ "addendum3": "b1edeb7cb843c77d",
+ "addendum": "RUN2-GEMMA",
+ "model": "gemma2:2b",
+ "seed": 20261120,
+ "turns": 900,
+ "summary": {
+  "old": {
+   "V1 word-presence correct": "12/30",
+   "V1 fabricated": 0,
+   "V2 claim-level correct": "5/30",
+   "V2 fabricated": 0,
+   "V2 unread (unverified)": 28,
+   "V2 unchecked relations": 0,
+   "V3 claim-level correct": "8/30",
+   "V3 fabricated": 3,
+   "V3 no_assertion on answerable": 15,
+   "F10p V3 flags a V1-correct answerable": 3,
+   "F11p V1 fabricated but V3 not": 0,
+   "V3 correct NEAR": "5/13",
+   "V3 correct FAR": "0/14",
+   "V3 by type": {
+    "city": "2/8",
+    "firm": "0/4",
+    "previous": "0/3",
+    "inverse": "1/3",
+    "nested": "0/3",
+    "falsepremise": "0/3",
+    "unanswerable": "3/3",
+    "register": "2/3"
+   },
+   "V2 (withdrawn) fabricated": 0,
+   "F10 V2 flags a V1-correct answerable": 0,
+   "F11 V1 fabricated but V2 not": 0,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 4,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 0,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 0,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 1693,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 3822,
+   "routes": {
+    "window": 27,
+    "register": 3
+   }
+  },
+  "new": {
+   "V1 word-presence correct": "23/30",
+   "V1 fabricated": 1,
+   "V2 claim-level correct": "2/30",
+   "V2 fabricated": 27,
+   "V2 unread (unverified)": 1,
+   "V2 unchecked relations": 0,
+   "V3 claim-level correct": "15/30",
+   "V3 fabricated": 9,
+   "V3 no_assertion on answerable": 4,
+   "F10p V3 flags a V1-correct answerable": 8,
+   "F11p V1 fabricated but V3 not": 1,
+   "V3 correct NEAR": "7/13",
+   "V3 correct FAR": "5/14",
+   "V3 by type": {
+    "city": "5/8",
+    "firm": "1/4",
+    "previous": "0/3",
+    "inverse": "1/3",
+    "nested": "2/3",
+    "falsepremise": "1/3",
+    "unanswerable": "3/3",
+    "register": "2/3"
+   },
+   "V2 (withdrawn) fabricated": 27,
+   "F10 V2 flags a V1-correct answerable": 18,
+   "F11 V1 fabricated but V2 not": 0,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 6,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 4,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 1,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 2,
+     "fab": 1
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 107,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 8643,
+   "routes": {
+    "reasoned+model": 27,
+    "register": 3
+   }
+  },
+  "thinkModel": {
+   "calls": 8,
+   "ptoks": 1894,
+   "ms": 16085.233039999992
+  }
+ },
+ "res": {
+  "old": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 15325
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3463
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 4203
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Leeds",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Hugo live Leeds [contradicted]"
+    ],
+    "near": true,
+    "ms": 3153
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Oxford",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Felix live Oxford [contradicted]"
+    ],
+    "near": true,
+    "ms": 3014
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3048
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Leeds",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Clara live Leeds [supported]"
+    ],
+    "near": true,
+    "ms": 2951
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Bath",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Anna live Bath [supported]"
+    ],
+    "near": true,
+    "ms": 3360
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3705
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3089
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3073
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 3218
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Leeds",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Clara live Leeds [supported]"
+    ],
+    "near": false,
+    "ms": 3231
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "Hull",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Jonas live Hull [supported]"
+    ],
+    "near": false,
+    "ms": 3143
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Bath",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Anna live Bath [supported]"
+    ],
+    "near": false,
+    "ms": 3365
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "Jonas",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Jonas live_in Hull [supported]"
+    ],
+    "near": true,
+    "ms": 3671
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "Anna",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Anna live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 3488
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "Clara, Hugo, Jonas, and Anna.",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": true,
+    "v3claims": [
+     "Clara live_in Leeds [supported]",
+     "Hugo live_in Leeds [contradicted]",
+     "Jonas live_in Leeds [contradicted]",
+     "Anna live_in Leeds [contradicted]"
+    ],
+    "near": true,
+    "ms": 4066
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 4291
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 4068
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 3673
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 4196
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "Yes.",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 4184
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "unknown",
+    "route": "window",
+    "correct": false,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 3992
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 3365
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 4157
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "unknown",
+    "route": "window",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 3987
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is 15:45.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 15:45 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 15:45 [supported]"
+    ],
+    "near": true,
+    "ms": 2437
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was 14:30.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 14:30 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 14:30 [supported]"
+    ],
+    "near": true,
+    "ms": 2189
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called Orbit.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 1553
+   }
+  ],
+  "new": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "- Contradiction: The question asks for Maria's current residence, but the machine's findings only state where she lived in the past (Bath). \n- Not on record: There is no information about Maria's current residence.\n- Proposal: The machine's findings suggest that Maria lived in Bath (turn 130), but this is only a proposal based on the information provided.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Maria's residence [unsupported]",
+     "information about Maria's residence [unsupported]",
+     "Maria live_in Bath [supported]",
+     "based on information [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 3,
+    "v3filled": false,
+    "v3claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 7255
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "- Contradiction: The question asks for Victor's current residence, but the machine's findings only state that Victor lives in Bath (turn 179). \n- Not on record: There is no information about Victor's current residence beyond what is stated in the text.\n- Proposal: The machine's findings do not provide any information about Victor's current residence.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Victor's residence [unsupported]",
+     "Victor live_in Bath [supported]",
+     "information about Victor's residence [unsupported]",
+     "machine's findings provide information [negation_from_silence]",
+     "information about Victor's residence [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 4,
+    "v3filled": false,
+    "v3claims": [
+     "Victor live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 7199
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "- Contradiction: The question asks for Oscar's current residence, but the machine only finds information about his residence in York from turn 249. \n- Not on record: There is no information about Oscar's current residence beyond what is stated in turn 249.\n- Proposal: There is no information about Oscar's current residence that is not already stated in turn 249.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Oscar's residence [unsupported]",
+     "machine find information [unsupported]",
+     "information about residence [unsupported]",
+     "residence in York [unsupported]",
+     "residence from turn 249 [unsupported]",
+     "information about Oscar's residence [unsupported]",
+     "information about Oscar's residence [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 7,
+    "v3filled": true,
+    "v3claims": [
+     "Oscar live Oscar's [contradicted]",
+     "Oscar live York [supported]",
+     "Oscar live turn [contradicted]"
+    ],
+    "near": false,
+    "ms": 7464
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "- Contradiction: The question asks for Hugo's current residence, but the machine's findings only state where he lived in the past. \n- Not on record: There is no information about Hugo's current residence.\n- Proposal: The machine's findings suggest that Hugo lives in York (turn 395).",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Hugo's residence [unsupported]",
+     "information about Hugo's residence [unsupported]",
+     "Hugo live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [
+     "Hugo live_in York [supported]"
+    ],
+    "near": true,
+    "ms": 5261
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Here's the breakdown based on the provided information:\n\n* **Contradicted:**  The question \"Where does Felix live now?\" is contradicted by the machine's finding that \"Felix live in Derby (turn 365)\".  This implies a change in Felix's residence.\n* **Not on record:**  The machine does not have information about Felix's current residence beyond the statement \"Felix live in Derby (turn 365)\". \n* **Only a proposal:**  The machine's finding is a proposal, not a confirmed fact. It suggests a potential change in Felix's residence, but it's not a definitive answer.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown base_on provided information [unsupported]",
+     "Felix live_in Derby [supported]",
+     "This imply change [unsupported]",
+     "change in Felix's residence [unsupported]",
+     "machine have information [negation_from_silence]",
+     "information about Felix's residence [unsupported]",
+     "Felix's residence beyond statement [unsupported]",
+     "Felix live_in Derby [supported]",
+     "machine's finding is proposal [unsupported]",
+     "machine's finding is fact [unsupported]",
+     "potential change in Felix's residence [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 10,
+    "v3filled": true,
+    "v3claims": [
+     "Felix live Felix's [contradicted]"
+    ],
+    "near": true,
+    "ms": 10165
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "- Contradiction: The question asks for Lena's current residence, but the machine's findings only state where she lived in the past. \n- Not on record: There is no information about Lena's current residence.\n- Proposal: The machine's findings suggest that Lena lived in Oxford (turn 274).",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Lena's residence [unsupported]",
+     "information about Lena's residence [unsupported]",
+     "Lena live_in Oxford [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [
+     "Lena live_in Oxford [supported]"
+    ],
+    "near": false,
+    "ms": 6914
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "- Contradiction: The question asks for Clara's current residence, but the machine's findings only state that Clara lives in Leeds (turn 874). \n- Not on record: There is no information about Clara's current residence beyond what is stated in the machine's findings.\n- Proposal: The machine's findings do not provide information about Clara's current residence.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Clara's residence [unsupported]",
+     "Clara live_in Leeds [supported]",
+     "information about Clara's residence [unsupported]",
+     "machine's findings provide information [negation_from_silence]",
+     "information about Clara's residence [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 4,
+    "v3filled": false,
+    "v3claims": [
+     "Clara live_in Leeds [supported]"
+    ],
+    "near": true,
+    "ms": 9202
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "- Contradiction: The question asks for Anna's current residence, but the machine's findings only state that Anna lives in Bath (turn 888). \n- Not on record: There is no information about Anna's current residence beyond what is stated in turn 888.\n- Proposal: The machine's findings do not provide information about Anna's current residence.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Anna's residence [unsupported]",
+     "Anna live_in Bath [supported]",
+     "information about Anna's residence [unsupported]",
+     "machine's findings provide information [negation_from_silence]",
+     "information about Anna's residence [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 4,
+    "v3filled": false,
+    "v3claims": [
+     "Anna live_in Bath [supported]"
+    ],
+    "near": true,
+    "ms": 7934
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "Felix's work location is not declared single-valued. \n\nContradiction: The question asks for Felix's work location, but the marks do not provide that information. \n\nNot on record: The question does not have a specific answer. \n\nProposal: The marks indicate that Felix works at Dynamo (turn 392).",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Felix's location [unsupported]",
+     "marks provide information [negation_from_silence]",
+     "question have answer [negation_from_silence]",
+     "Felix works at Dynamo [unsupported]",
+     "Felix works turn 392 [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 5,
+    "v3filled": true,
+    "v3claims": [
+     "Felix work Felix's [unsupported]",
+     "Felix work Felix [unsupported]",
+     "Felix work Dynamo [supported]"
+    ],
+    "near": false,
+    "ms": 8854
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "Tom's work location is not declared single-valued. \n\nContradiction: The question asks for Tom's work location, but the provided information does not specify where he works. \n\nNot on record: There is no record of Tom's work location.\n\nProposal: The marks suggest Dynamo (turn 358) as a potential location.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for Tom's work location [unsupported]",
+     "record of Tom's work location [unsupported]",
+     "marks suggest Dynamo [unsupported]",
+     "marks suggest_as potential location [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 4,
+    "v3filled": true,
+    "v3claims": [
+     "Tom work Dynamo [supported]"
+    ],
+    "near": false,
+    "ms": 8923
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "Here's what we know based on the machine's analysis:\n\n* **Contradiction:**  The question \"Where does Oscar work?\" is not answered directly in the provided information. \n* **Not on Record:**  We don't have a single, specific answer to \"Where does Oscar work?\" \n* **Proposal:**  The machine found a possible answer: \"Acme\" (turn 252). This is a proposal, as it's based on the marks, but it's not a confirmed answer.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "machine find answer [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 2,
+    "v3filled": true,
+    "v3claims": [
+     "Oscar work Record [unsupported]"
+    ],
+    "near": false,
+    "ms": 10429
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "Lena's work location is not declared single-valued. \n\nContradiction: The question asks for a specific work location, but the provided information does not specify Lena's work location. \n\nNot on record: The question does not have a specific answer. \n\nProposal: The marks suggest Lena works at Ember (turn 339).",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for work location [unsupported]",
+     "information specify Lena's work location [negation_from_silence]",
+     "question have answer [negation_from_silence]",
+     "marks suggest Lena works [unsupported]",
+     "Lena works at Ember [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 5,
+    "v3filled": true,
+    "v3claims": [
+     "Lena work Lena [unsupported]",
+     "Lena work Ember [supported]"
+    ],
+    "near": false,
+    "ms": 8389
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Here's the breakdown of the answer based on the provided information:\n\n* **Contradicted:**  The question asks \"Where did Clara live before?\"  The machine's findings state she lived in Ely before Leeds. This implies a contradiction, as the question seeks a specific answer. \n* **Not on record:**  The machine's findings do not mention Clara's residence before Ely. \n* **Only a proposal:** The machine's findings suggest a possible answer based on the information provided. It's not a definitive answer, but a proposal. \n\n\n**Therefore, the answer to the question is:**  Clara lived in Ely before Leeds.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown of answer [unsupported]",
+     "This imply_at contradiction [unsupported]",
+     "question seek answer [unsupported]",
+     "machine's findings mention Clara's residence [negation_from_silence]",
+     "machine's findings mention_before Ely [negation_from_silence]",
+     "machine's findings suggest answer [unsupported]",
+     "answer to question [unsupported]",
+     "answer live_before Leeds [unsupported]",
+     "answer is lived [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 11,
+    "v3filled": true,
+    "v3claims": [
+     "Clara live Clara [contradicted]"
+    ],
+    "near": false,
+    "ms": 12945
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "Here's the breakdown of what we know based on the machine's findings:\n\n* **Contradicted:**  The question asks \"Where did Jonas live before?\"  The machine's findings state he lived in Derby before Hull.  This is a contradiction to the question. \n* **Not on record:**  There is no information on record about Jonas's life before Hull. \n* **Only a proposal:**  The machine's findings suggest a possible answer, but it's not a confirmed fact. \n\n\nLet me know if you'd like to explore other aspects of the information!",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "contradiction to question [unsupported]",
+     "information on record [unsupported]",
+     "Jonas's life before Hull [unsupported]",
+     "machine's findings suggest answer [unsupported]",
+     "aspects of information [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 6,
+    "v3filled": true,
+    "v3claims": [
+     "Jonas live Derby [supported]",
+     "Jonas live Hull [supported]",
+     "Jonas live Jonas's [contradicted]"
+    ],
+    "near": false,
+    "ms": 12939
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Here's the breakdown of what we know based on the machine's findings:\n\n* **Contradicted:**  The question asks \"Where did Anna live before?\"  The machine's findings state Anna lived in Ely before Bath. This implies a contradiction, as the question asks for a specific location before Bath. \n* **Not on record:**  The machine's findings do not mention Anna's residence after Bath. \n* **Only a proposal:**  The machine's findings only provide a potential answer based on the provided information. It does not definitively confirm Anna's residence before Bath. \n\n\nLet me know if you'd like to explore other aspects of the information!",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "machine's findings state Anna live_in Bath [unsupported]",
+     "This imply_at contradiction [unsupported]",
+     "This imply_as question asks [unsupported]",
+     "question asks for location [unsupported]",
+     "location before Bath [unsupported]",
+     "machine's findings mention Anna's residence [negation_from_silence]",
+     "machine's findings mention_after Bath [negation_from_silence]",
+     "machine's findings provide potential answer [unsupported]",
+     "potential answer base information [unsupported]",
+     "aspects of information [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 9,
+    "v3filled": false,
+    "v3claims": [
+     "machine's findings state Anna live_in Bath [unsupported]"
+    ],
+    "near": false,
+    "ms": 12073
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "- Contradicted:  The machine does not have information about who lives in Hull. \n- Not on record:  There is no information about who lives in Hull.\n- Only a proposal:  Jonas is on record as living in Hull.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "machine have information [negation_from_silence]",
+     "Jonas is record [derived]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 1,
+    "v3filled": false,
+    "v3claims": [
+     "Jonas is record [derived]"
+    ],
+    "near": true,
+    "ms": 4956
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "Here's the breakdown of who lives in Bath based on the information provided:\n\n* **Contradicted:**  There is no information contradicting who lives in Bath. \n* **Not on record:** There is no information on who lives in Bath that is not on record.\n* **Only a proposal:**  We only know of Anna, Maria, and Victor who are on record as living in Bath.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown base_on information [unsupported]",
+     "information is record [negation_from_silence]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 2,
+    "v3filled": true,
+    "v3claims": [
+     "Bath live_in Bath [unsupported]",
+     "Anna live_in Bath [supported]",
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 7451
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "- **Contradicted:**  The machine does not have information to contradict the statement. \n- **Not on record:** The machine does not have information to answer this question. \n- **Only a proposal:** The machine has found that Clara is on record as living in Leeds.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "machine have information [negation_from_silence]",
+     "machine have information [negation_from_silence]",
+     "Clara is record [derived]"
+    ],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [
+     "Clara is record [derived]"
+    ],
+    "near": true,
+    "ms": 5185
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Here's the breakdown of the answer based on the provided information:\n\n* **Contradicted:**  The question asks about Maria's current residence. The text only states that Maria lives in Bath (turn 130), but it doesn't explicitly state that this is her current residence. \n* **Not on record:**  There's no information about Maria's current residence beyond the fact that she lives in Bath.\n* **Only a proposal:**  The text only provides information about Maria's residence in Bath. It doesn't offer any information about whether this is her current residence. \n\n\n**Therefore, the answer to the question is unclear.**",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown of answer [unsupported]",
+     "question asks about Maria's residence [unsupported]",
+     "Maria live_in Bath [supported]",
+     "information about Maria's residence [unsupported]",
+     "information beyond fact [unsupported]",
+     "text provide information [unsupported]",
+     "information about Maria's residence [unsupported]",
+     "Maria's residence in Bath [unsupported]",
+     "answer to question [unsupported]",
+     "answer is unclear [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 9,
+    "v3filled": false,
+    "v3claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 13870
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Here's the breakdown of what we can say about the question:\n\n* **Contradicted:**  We don't know where the person Oscar hired lives now. There's no hire mark for Oscar, meaning we don't have information about the person's employment. \n* **Not on record:**  We have no information about the person's current residence.\n* **Only a proposal:**  The question itself is a request for information, but we don't have the information to answer it.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Oscar hire lives [unsupported]",
+     "mark for Oscar [unsupported]",
+     "information about person's employment [unsupported]",
+     "information about person's residence [unsupported]",
+     "question is request [unsupported]",
+     "question is have [unsupported]",
+     "request for information [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 7,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 13283
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "Here's the breakdown of the answer based on the provided information:\n\n* **Contradicted:**  The question asks about the person Victor hired's current residence. The information provided only states that Tom lives in York (turn 876), but it doesn't explicitly state where Victor's hired person lives now. \n* **Not on record:** There's no information about the person Victor hired's current residence.\n* **Only a proposal:** The information only states that Tom lives in York. This is a proposal, not a confirmed fact. \n \nTherefore, we cannot definitively answer the question \"Where does the person Victor hired live now?\" based on the provided information.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown of answer [unsupported]",
+     "question asks about person [unsupported]",
+     "Tom live_in York [supported]",
+     "Victor's hire person lives [unsupported]",
+     "information about person [unsupported]",
+     "Victor hiredbe residence [unsupported]",
+     "Tom live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 6,
+    "v3filled": false,
+    "v3claims": [
+     "Tom live_in York [supported]",
+     "Tom live_in York [supported]"
+    ],
+    "near": true,
+    "ms": 14973
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Here's a breakdown of the information based on the findings:\n\n**Contradicted:**  The question \"right?\" implies a confirmation or agreement, but the machine's analysis indicates the question is not a complete statement. \n\n**Not on Record:**  The machine has no information about the \"right?\" part of the question. It's not a part of the question's structure.\n\n**Only a Proposal:**  The machine has no information about what \"right?\" might mean in this context. It's a proposal, not a fact.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown of information [unsupported]",
+     "machine's analysis indicate question [unsupported]",
+     "information about right [unsupported]",
+     "part of question [unsupported]",
+     "part of question's structure [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 7,
+    "v3filled": false,
+    "v3claims": [],
+    "near": false,
+    "ms": 13463
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "- Contradiction: Tom lives in York (turn 876), not Hull.\n- Not on record:  The question \"right?\" is not a statement that can be verified. \n- Proposal: The question \"right?\" is a proposal for a response.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Tom live_in York [supported]",
+     "Tom live_in Hull [derived]",
+     "proposal for response [unsupported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 3,
+    "v3filled": false,
+    "v3claims": [
+     "Tom live_in York [supported]",
+     "Tom live_in Hull [derived]"
+    ],
+    "near": true,
+    "ms": 6949
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "Here's a breakdown of the information based on the findings:\n\n**Contradictions:**\n\n* **There is no record of Jonas's living situation.** The machine found no information about where Jonas lives. \n\n**Not on Record:**\n\n* **The question \"right?\" is not a direct statement about Jonas's living situation.** It's a question seeking confirmation. \n\n**Only a Proposal:**\n\n* **The question \"right?\" is not a direct statement about Jonas's living situation.** It's a question seeking confirmation. \n\n\nLet me know if you'd like to explore other aspects of this information!",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown of information [unsupported]",
+     "record of Jonas's [unsupported]",
+     "machine find information [unsupported]",
+     "information about where Jonas lives [unsupported]",
+     "direct statement about Jonas's [unsupported]",
+     "question seek confirmation [unsupported]",
+     "direct statement about Jonas's [unsupported]",
+     "question seek confirmation [unsupported]",
+     "aspects of information [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 11,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 14727
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "- **Contradiction:** The machine has no information about Clara's favourite food. \n- **Not on record:** There is no record of Clara's favourite food.\n- **Proposal:** The question is a proposal, but the machine has no information to answer it.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "no information about Clara's food [unsupported]",
+     "record of Clara's food [unsupported]",
+     "question is proposal [unsupported]",
+     "question is information [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 4,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 5959
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "Here's the breakdown based on the machine's findings:\n\n* **Contradicted:** The machine found no information about Jonas's flight. \n* **Not on record:** There is no mention of Jonas's flight distance.\n* **Only a proposal:** The question itself is a proposal for information that is not yet available.",
+    "route": "reasoned+model",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "breakdown base_on machine's findings [unsupported]",
+     "machine find information [unsupported]",
+     "information about Jonas's flight [unsupported]",
+     "mention of Jonas's flight distance [unsupported]",
+     "question is proposal for information [unsupported]",
+     "proposal for information is available [negation_from_silence]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 6,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 10332
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "The question \"In what year was Acme founded?\" is not answered. \n\nThe machine found:\n\n* **Contradiction:** The question asks for a specific year of founding, but the machine has no information about the founding date of Acme. \n* **Unrecorded information:** There is no record of the founding date of Acme.\n* **Proposal:** The question itself is a proposal for information that is not yet available.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": true,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "question asks for year [unsupported]",
+     "information about founding date [unsupported]",
+     "founding date of Acme [unsupported]",
+     "record of date [unsupported]",
+     "date of Acme [unsupported]",
+     "proposal for information is available [negation_from_silence]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 6,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 8142
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is 15:45.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 15:45 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 15:45 [supported]"
+    ],
+    "near": true,
+    "ms": 1338
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was 14:30.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 14:30 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 14:30 [supported]"
+    ],
+    "near": true,
+    "ms": 1525
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called Orbit.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 1188
+   }
+  ]
+ }
+}

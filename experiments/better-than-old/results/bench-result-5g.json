@@ -1,0 +1,958 @@
+{
+ "prereg": "8cb2db9745970838",
+ "addendum2": "40ae23f3d6fe5e92",
+ "addendum3": "b1edeb7cb843c77d",
+ "addendum4": "a60b56b8cd21fdb7",
+ "addendum5": "698d81c3a4e4a843",
+ "addendum": "RUN2-GEMMA",
+ "model": "gemma2:2b",
+ "seed": 20261120,
+ "turns": 900,
+ "summary": {
+  "new": {
+   "V1 word-presence correct": "23/30",
+   "V1 fabricated": 1,
+   "V2 claim-level correct": "23/30",
+   "V2 fabricated": 4,
+   "V2 unread (unverified)": 2,
+   "V2 unchecked relations": 0,
+   "V3 claim-level correct": "24/30",
+   "V3 fabricated": 1,
+   "V3 no_assertion on answerable": 2,
+   "F10p V3 flags a V1-correct answerable": 1,
+   "F11p V1 fabricated but V3 not": 1,
+   "V3 correct NEAR": "8/13",
+   "V3 correct FAR": "13/14",
+   "V3 by type": {
+    "city": "6/8",
+    "firm": "4/4",
+    "previous": "3/3",
+    "inverse": "1/3",
+    "nested": "2/3",
+    "falsepremise": "3/3",
+    "unanswerable": "3/3",
+    "register": "2/3"
+   },
+   "V2 (withdrawn) fabricated": 4,
+   "F10 V2 flags a V1-correct answerable": 1,
+   "F11 V1 fabricated but V2 not": 1,
+   "byType": {
+    "city": {
+     "n": 8,
+     "ok": 6,
+     "fab": 0
+    },
+    "firm": {
+     "n": 4,
+     "ok": 4,
+     "fab": 0
+    },
+    "previous": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "inverse": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "nested": {
+     "n": 3,
+     "ok": 2,
+     "fab": 0
+    },
+    "falsepremise": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    },
+    "unanswerable": {
+     "n": 3,
+     "ok": 0,
+     "fab": 1
+    },
+    "register": {
+     "n": 3,
+     "ok": 3,
+     "fab": 0
+    }
+   },
+   "meanPromptTokens": 61,
+   "modelCallsPerQ": 1,
+   "meanMsPerQ": 1482,
+   "routes": {
+    "mechanical-solo": 24,
+    "reasoned+model": 3,
+    "register": 3
+   }
+  },
+  "thinkModel": {
+   "calls": 6,
+   "ptoks": 1317,
+   "ms": 12110.119206999992
+  }
+ },
+ "res": {
+  "new": [
+   {
+    "type": "city",
+    "q": "Where does Maria live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Maria lives in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 1395
+   },
+   {
+    "type": "city",
+    "q": "Where does Victor live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Victor lives in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Victor live_in Bath [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Victor live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 760
+   },
+   {
+    "type": "city",
+    "q": "Where does Oscar live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "Oscar lives in York.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Oscar live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Oscar live_in York [supported]"
+    ],
+    "near": false,
+    "ms": 1065
+   },
+   {
+    "type": "city",
+    "q": "Where does Hugo live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Hugo lives in York.",
+    "route": "mechanical-solo",
+    "correct": false,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Hugo live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Hugo live_in York [supported]"
+    ],
+    "near": true,
+    "ms": 917
+   },
+   {
+    "type": "city",
+    "q": "Where does Felix live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Felix lives in Derby.",
+    "route": "mechanical-solo",
+    "correct": false,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Felix live_in Derby [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Felix live_in Derby [supported]"
+    ],
+    "near": true,
+    "ms": 912
+   },
+   {
+    "type": "city",
+    "q": "Where does Lena live now?",
+    "gold": [
+     "Oxford"
+    ],
+    "a": "Lena lives in Oxford.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Lena live_in Oxford [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Lena live_in Oxford [supported]"
+    ],
+    "near": false,
+    "ms": 830
+   },
+   {
+    "type": "city",
+    "q": "Where does Clara live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "Clara lives in Leeds.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Clara live_in Leeds [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Clara live_in Leeds [supported]"
+    ],
+    "near": true,
+    "ms": 1145
+   },
+   {
+    "type": "city",
+    "q": "Where does Anna live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Anna lives in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Anna live_in Bath [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Anna live_in Bath [supported]"
+    ],
+    "near": true,
+    "ms": 1082
+   },
+   {
+    "type": "firm",
+    "q": "Where does Felix work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "Felix works at Dynamo.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Felix work_at Dynamo [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Felix work_at Dynamo [supported]"
+    ],
+    "near": false,
+    "ms": 3293
+   },
+   {
+    "type": "firm",
+    "q": "Where does Tom work?",
+    "gold": [
+     "Dynamo"
+    ],
+    "a": "Tom works at Dynamo.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Tom work_at Dynamo [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Tom work_at Dynamo [supported]"
+    ],
+    "near": false,
+    "ms": 3352
+   },
+   {
+    "type": "firm",
+    "q": "Where does Oscar work?",
+    "gold": [
+     "Acme"
+    ],
+    "a": "Oscar works at Acme.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Oscar work_at Acme [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Oscar work_at Acme [supported]"
+    ],
+    "near": false,
+    "ms": 3273
+   },
+   {
+    "type": "firm",
+    "q": "Where does Lena work?",
+    "gold": [
+     "Ember"
+    ],
+    "a": "Lena works at Ember.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Lena work_at Ember [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Lena work_at Ember [supported]"
+    ],
+    "near": false,
+    "ms": 3159
+   },
+   {
+    "type": "previous",
+    "q": "Where did Clara live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Clara lived in Ely before moving to Leeds.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Clara live_in Ely [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Clara live_in Ely [supported]"
+    ],
+    "near": false,
+    "ms": 992
+   },
+   {
+    "type": "previous",
+    "q": "Where did Jonas live before?",
+    "gold": [
+     "Derby"
+    ],
+    "a": "Jonas lived in Derby before moving to Hull.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Jonas live_in Derby [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Jonas live_in Derby [supported]"
+    ],
+    "near": false,
+    "ms": 987
+   },
+   {
+    "type": "previous",
+    "q": "Where did Anna live before?",
+    "gold": [
+     "Ely"
+    ],
+    "a": "Anna lived in Ely before moving to Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Anna live_in Ely [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Anna live_in Ely [supported]"
+    ],
+    "near": false,
+    "ms": 1027
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Hull?",
+    "gold": [
+     "Jonas"
+    ],
+    "a": "Jonas lives in Hull.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Jonas live_in Hull [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Jonas live_in Hull [supported]"
+    ],
+    "near": true,
+    "ms": 745
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Bath?",
+    "gold": [
+     "Maria",
+     "Victor",
+     "Anna"
+    ],
+    "a": "Anna, Maria, and Victor live in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Victor live in Bath [unsupported]"
+    ],
+    "v3": "fabricated",
+    "v3correct": false,
+    "v3fab": true,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Victor live in Bath [unsupported]"
+    ],
+    "near": false,
+    "ms": 1097
+   },
+   {
+    "type": "inverse",
+    "q": "Who lives in Leeds?",
+    "gold": [
+     "Clara",
+     "Hugo"
+    ],
+    "a": "Clara lives in Leeds.",
+    "route": "mechanical-solo",
+    "correct": false,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Clara live_in Leeds [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Clara live_in Leeds [supported]"
+    ],
+    "near": true,
+    "ms": 677
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Lena hired live now?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "Lena hired Maria, who lives in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Lena hire Maria [supported]",
+     "Maria live_in Bath [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Lena hire Maria [supported]",
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 1047
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Oscar hired live now?",
+    "gold": [
+     "Leeds"
+    ],
+    "a": "There is no information on record regarding the person Oscar hired's current residence.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "information on record [unsupported]",
+     "record regard person [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 3021
+   },
+   {
+    "type": "nested",
+    "q": "Where does the person Victor hired live now?",
+    "gold": [
+     "York"
+    ],
+    "a": "Tom lives in York.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Tom live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Tom live_in York [supported]"
+    ],
+    "near": true,
+    "ms": 688
+   },
+   {
+    "type": "falsepremise",
+    "q": "Maria lives in Ely, right?",
+    "gold": [
+     "Bath"
+    ],
+    "a": "That's incorrect, Maria lives in Bath.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Maria live_in Bath [supported]"
+    ],
+    "near": false,
+    "ms": 1337
+   },
+   {
+    "type": "falsepremise",
+    "q": "Tom lives in Hull, right?",
+    "gold": [
+     "York"
+    ],
+    "a": "That's incorrect, Tom lives in York.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Tom live_in York [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Tom live_in York [supported]"
+    ],
+    "near": true,
+    "ms": 1278
+   },
+   {
+    "type": "falsepremise",
+    "q": "Jonas lives in Ely, right?",
+    "gold": [
+     "Hull"
+    ],
+    "a": "That's incorrect, Jonas lives in Hull.",
+    "route": "mechanical-solo",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "Jonas live_in Hull [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "Jonas live_in Hull [supported]"
+    ],
+    "near": true,
+    "ms": 1174
+   },
+   {
+    "type": "unanswerable",
+    "q": "What is Clara's favourite food?",
+    "gold": null,
+    "a": "The model does not have a record of Clara's favourite food.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "model have record [negation_from_silence]",
+     "record of Clara's food [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 1400
+   },
+   {
+    "type": "unanswerable",
+    "q": "How far is Jonas's flight from where Jonas lives?",
+    "gold": null,
+    "a": "The provided information doesn't state the distance of Jonas's flight.",
+    "route": "mechanical-solo",
+    "correct": false,
+    "fab": false,
+    "v2": "fabricated",
+    "v2correct": false,
+    "v2fab": true,
+    "v2unchecked": 0,
+    "v2claims": [
+     "state doesnot information [unsupported]",
+     "distance of Jonas's flight [unsupported]"
+    ],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 2,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 3656
+   },
+   {
+    "type": "unanswerable",
+    "q": "In what year was Acme founded?",
+    "gold": null,
+    "a": "Acme's founding year is not recorded.",
+    "route": "reasoned+model",
+    "correct": false,
+    "fab": true,
+    "v2": "unread",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": null,
+    "ms": 1097
+   },
+   {
+    "type": "register",
+    "q": "What is the deploy time?",
+    "gold": [
+     "15:45"
+    ],
+    "a": "The deploy time is 15:45.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 15:45 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 15:45 [supported]"
+    ],
+    "near": true,
+    "ms": 1104
+   },
+   {
+    "type": "register",
+    "q": "What was the deploy time before?",
+    "gold": [
+     "14:30"
+    ],
+    "a": "The deploy time before was 14:30.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "grounded",
+    "v2correct": true,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [
+     "time is 14:30 [supported]"
+    ],
+    "v3": "grounded",
+    "v3correct": true,
+    "v3fab": false,
+    "v3noassert": false,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [
+     "time is 14:30 [supported]"
+    ],
+    "near": true,
+    "ms": 1135
+   },
+   {
+    "type": "register",
+    "q": "What is the mascot service called?",
+    "gold": [
+     "Orbit"
+    ],
+    "a": "The mascot service is called Orbit.",
+    "route": "register",
+    "correct": true,
+    "fab": false,
+    "v2": "unread",
+    "v2correct": false,
+    "v2fab": false,
+    "v2unchecked": 0,
+    "v2claims": [],
+    "v3": "no_assertion",
+    "v3correct": false,
+    "v3fab": false,
+    "v3noassert": true,
+    "v3ignored": 0,
+    "v3filled": false,
+    "v3claims": [],
+    "near": true,
+    "ms": 801
+   }
+  ]
+ }
+}
