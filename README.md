@@ -509,8 +509,9 @@ append-only, always revisable).
 ║     @ g/identity-run.mjs g/identity-run.test.mjs o/identity-def.mjs        ║
 ║     @ o/question-reason.mjs o/question-reason.test.mjs o/reply-check.mjs   ║
 ║     @ o/reply-check.test.mjs o/tokenizer-rule-def.mjs                      ║
-║     @ o/tokenizer-rule-def.test.mjs GL-PE-02 GL-PE-03 GL-ID-01 GL-QR-01    ║
-║     @ GL-QR-02 GL-QR-03 GL-QR-04 GL-TK-01 GL-TK-02 GL-TK-03                ║
+║     @ o/tokenizer-rule-def.test.mjs o/data/giver-ud-english-clitics.json   ║
+║     @ GL-PE-02 GL-PE-03 GL-ID-01 GL-QR-01 GL-QR-02 GL-QR-03 GL-QR-04       ║
+║     @ GL-TK-01 GL-TK-02 GL-TK-03 GL-TK-04                                  ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║

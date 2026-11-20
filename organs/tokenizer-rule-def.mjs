@@ -41,19 +41,31 @@ export function judgeEffect({ fired, correct, effect, nul, wrongCuts, sentences 
   const status = expected < 0 ? "refuted" : expected > 0 && reach === 0 ? "survived" : "underexposed";
   return { status, weight: flips.weight, expected, effect, harm: wrongCuts ? wrongCuts.delta : null, rank: { nullReaching: reach, draws: nul.draws, empirical: rank, beyondNull: reach === 0 }, robust: flips.robust && nul.draws > 0, flips: { net: flips.net, n: flips.n, k: flips.k }, sentences, basis: BASIS };
 }
+/** a giver declaration (data, with provenance): a STANDARD or a person that stands behind NAMED forms. It must say who declared it, which forms it names, and the ground it rests on (pins). Anything less is refused: a giver nobody declared is not a giver. */
+export function giverFrom(decl) {
+  const bad = (why) => ({ gap: "bad_giver", why });
+  if (!decl || typeof decl.name !== "string" || !decl.name || typeof decl.kind !== "string" || !decl.kind) return bad("a giver needs a kind and a name");
+  if (!decl.declaredBy?.name) return bad("a giver declaration says WHO declared it (declaredBy.name): a standard nobody has adopted is not a giver");
+  if (!Array.isArray(decl.names) || !decl.names.length) return bad("a giver names the forms it stands behind (names): none is assumed");
+  // regex-ok: the shape of a sha256 hash (64 hex characters), not language
+  if (!Array.isArray(decl.pins) || !decl.pins.length || decl.pins.some((p) => !p.url || !/^[0-9a-f]{64}$/.test(p.sha256 ?? ""))) return bad("a giver rests on pinned grounds (url and a full sha256 each): a name without a ground is not checkable");
+  return { giver: { kind: decl.kind, name: decl.name, declaredBy: decl.declaredBy, pins: decl.pins.map((p) => ({ url: p.url, sha256: p.sha256 })) }, names: new Set(decl.names), notNamed: decl.notNamed ?? [] };
+}
 const okGiver = (g) => g && typeof g.kind === "string" && g.kind && typeof g.name === "string" && g.name;
 /** rulesAndVerdicts({ attachments, firings, language, variety, period, giver }) -> { entries, refused, gaps }. `attachments` and `firings` are the janus entries read from the log ({ id, addr, kind, cell, body }). */
 export function rulesAndVerdicts({ attachments = [], firings = [], effects = [], language, variety = null, period = null, giver }) {
   const refused = [], gaps = [], entries = [];
   if (!language) return { entries, refused, gaps: [{ gap: "no_language", why: "a rule is per language; none is guessed" }] };
   if (!okGiver(giver)) return { entries, refused, gaps: [{ gap: "no_giver", why: "a tokenizer rule is a DEF with a named giver (kind and name); a corpus alone is a candidate that nobody has stood behind: nothing is defined" }] };
+  const names = Array.isArray(giver.names) ? new Set(giver.names) : null;   // a giver that NAMES forms makes those `given`; any other form stays a candidate under the corpus as its giver
   const mine = (e, kind) => e?.kind === kind && e.cell === (kind === "clitic-attachment" ? "SEG·Pattern" : "CON·Figure") && e.body?.corpus?.language === language && (e.body.corpus.variety ?? null) === (variety ?? null);
   for (const e of [...attachments, ...firings, ...effects]) if (!mine(e, "clitic-attachment") && !mine(e, "clitic-firing") && !mine(e, "clitic-effect")) refused.push({ id: e?.id ?? e?.addr, why: `not a ${language}${variety ? "/" + variety : ""} clitic-attachment (SEG·Pattern) or clitic-firing (CON·Figure) entry` });
   const forms = [...new Set(attachments.filter((e) => mine(e, "clitic-attachment") && e.body.nSplit > 0).map((e) => e.body.form))].sort();
   for (const form of forms) {
     const att = attachments.filter((e) => mine(e, "clitic-attachment") && e.body.form === form), fire = firings.filter((e) => mine(e, "clitic-firing") && e.body.form === form), ids = [...att, ...fire].map((e) => e.id ?? e.addr);
     const addr = `tokenizer-rule:${sha16([language, variety, period, form, giver.name])}`;
-    entries.push({ cell: CELLS["tokenizer-rule"], kind: "tokenizer-rule", addr, body: { schema: SCHEMA, by: "penelope", language, variety, period, effect: "split", position: "suffix", form, giver, standing: "candidate", evidence: ids } });
+    const stands = !names || names.has(form), corpusGiver = { kind: "treebank", name: att[0]?.body?.corpus?.name, sha256: att[0]?.body?.corpus?.sha256 ?? null };
+    entries.push({ cell: CELLS["tokenizer-rule"], kind: "tokenizer-rule", addr, body: { schema: SCHEMA, by: "penelope", language, variety, period, effect: "split", position: "suffix", form, giver: names ? (stands ? { kind: giver.kind, name: giver.name, declaredBy: giver.declaredBy, pins: giver.pins } : corpusGiver) : giver, standing: names ? (stands ? "given" : "candidate") : "candidate", evidence: ids } });
     const fired = fire.reduce((a, e) => a + (e.body.fired ?? 0), 0), correct = fire.reduce((a, e) => a + (e.body.correct ?? 0), 0), eff = effects.filter((e) => mine(e, "clitic-effect") && e.body.form === form).at(-1)?.body;
     let v = eff ? judgeEffect({ fired, correct, effect: eff.effect, nul: eff.null, wrongCuts: eff.wrongCuts ?? null, sentences: eff.sentences ?? null }) : judge({ fired, correct });
     if (v.gap) { gaps.push({ ...v, form }); if (v.flips) v = v.flips; else continue; }                  // a typed gap is reported AND the verdict falls back to the balance of flips, which says it has no downstream evidence

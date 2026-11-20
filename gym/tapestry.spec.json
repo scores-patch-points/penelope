@@ -1501,6 +1501,7 @@
     "o/reply-check.test.mjs",
     "o/tokenizer-rule-def.mjs",
     "o/tokenizer-rule-def.test.mjs",
+    "o/data/giver-ud-english-clitics.json",
     "GL-PE-02",
     "GL-PE-03",
     "GL-ID-01",
@@ -1510,7 +1511,8 @@
     "GL-QR-04",
     "GL-TK-01",
     "GL-TK-02",
-    "GL-TK-03"
+    "GL-TK-03",
+    "GL-TK-04"
    ]
   },
   {

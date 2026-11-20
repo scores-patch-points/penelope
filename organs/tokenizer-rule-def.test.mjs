@@ -1,5 +1,5 @@
 import test from "node:test"; import assert from "node:assert/strict"; import fs from "node:fs"; import os from "node:os"; import path from "node:path";
-import { judge, judgeEffect, rulesAndVerdicts, weaveEntries } from "./tokenizer-rule-def.mjs";
+import { judge, judgeEffect, giverFrom, rulesAndVerdicts, weaveEntries } from "./tokenizer-rule-def.mjs";
 test("a firing is a flip: the verdict is the BALANCE of right and wrong flips; the weight is derived from the counts; no significance level exists anywhere", () => {
   const v = judge({ fired: 134, correct: 123 }); assert.equal(v.status, "survived"); assert.equal(v.net, 112); assert.ok(Math.abs(v.weight.split - 123 / 134) < 1e-12 && Math.abs(v.weight.glued - 11 / 134) < 1e-12); assert.equal(v.robust, true);
   assert.equal(judge({ fired: 30, correct: 2 }).status, "refuted", '"not" cutting "knot": the glued reading is the heavier one'); assert.equal(judge({ fired: 30, correct: 2 }).net, -26);
@@ -64,4 +64,18 @@ test("rulesAndVerdicts with effect entries: the verdict carries the expected dif
   assert.equal(by("\'s").status, "survived"); assert.ok(Math.abs(by("\'s").expected - (123 / 134 * 2.7 + 11 / 134 * -1)) < 1e-12, "123/134 right x 2.7 + 11/134 wrong x -1"); assert.equal(by("\'s").rank.nullReaching, 0); assert.equal(by("\'s").harm, -1);
   assert.equal(by("not").status, "refuted", "30 firings, 2 right: 0.067 x 3 + 0.933 x -9 < 0"); assert.equal(by("\'d").status, "underexposed", "4 firings, effect 0: no difference");
   const none = rulesAndVerdicts({ attachments, firings, language: "eng", giver }), n1 = none.entries.find((e) => e.kind === "rule-verdict").body; assert.equal(n1.downstream, "none on record"); assert.equal(n1.expected, undefined);
+});
+
+const DECL = JSON.parse(fs.readFileSync(new URL("./data/giver-ud-english-clitics.json", import.meta.url), "utf8"));
+test("the giver declaration is data with PROVENANCE: who declared it, which forms it names, the pinned grounds; anything less is refused", () => {
+  const g = giverFrom(DECL); assert.equal(g.giver.name, "Universal Dependencies English documentation"); assert.equal(g.giver.declaredBy.name, "the owner"); assert.equal(g.giver.pins.length, 3); assert.ok(g.giver.pins.every((p) => /^[0-9a-f]{64}$/.test(p.sha256)));
+  assert.ok(g.names.has("'s") && g.names.has("n't") && !g.names.has("'re"), "'re is not named by the standard: a candidate");
+  assert.equal(giverFrom({ ...DECL, declaredBy: null }).gap, "bad_giver"); assert.equal(giverFrom({ ...DECL, names: [] }).gap, "bad_giver"); assert.equal(giverFrom({ ...DECL, pins: [] }).gap, "bad_giver"); assert.equal(giverFrom({ ...DECL, pins: [{ url: "u", sha256: "abc" }] }).gap, "bad_giver", "a pin with a short hash is not a ground"); assert.equal(giverFrom({ ...DECL, name: "" }).gap, "bad_giver");
+});
+test("a form the standard NAMES becomes `given` under it; any other form stays a candidate under the corpus as its giver, never the standard", () => {
+  const g = giverFrom(DECL), at = [att("'s", 944, 47), att("'re", 40, 0), att("not", 5, 300)], fi = [fir("'s", 134, 123), fir("'re", 12, 12), fir("not", 30, 2)];
+  const r = rulesAndVerdicts({ attachments: at, firings: fi, language: "eng", giver: { ...g.giver, names: [...g.names] } }), rule = (f) => r.entries.find((e) => e.kind === "tokenizer-rule" && e.body.form === f).body;
+  assert.equal(rule("'s").standing, "given"); assert.equal(rule("'s").giver.name, "Universal Dependencies English documentation"); assert.equal(rule("'s").giver.pins.length, 3);
+  assert.equal(rule("'re").standing, "candidate"); assert.equal(rule("'re").giver.kind, "treebank"); assert.equal(rule("'re").giver.name, "UD_English-EWT"); assert.equal(rule("not").standing, "candidate", "the standard does not name 'not': a corpus count alone");
+  assert.equal(rulesAndVerdicts({ attachments: at, firings: fi, language: "eng", giver }).entries.find((e) => e.kind === "tokenizer-rule").body.standing, "candidate", "a giver that names no forms makes nothing given");
 });

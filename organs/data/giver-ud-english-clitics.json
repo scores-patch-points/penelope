@@ -1,0 +1,58 @@
+{
+ "schema": "GiverDeclaration@1",
+ "kind": "standard",
+ "name": "Universal Dependencies English documentation",
+ "language": "eng",
+ "variety": null,
+ "licence": "not stated on the pages read (no CC BY-SA text found); do not assume one",
+ "declaredBy": {
+  "kind": "owner",
+  "name": "the owner",
+  "how": "yes in chat, 2026-11-20, to: 'the UD English documentation is the named giver, with 're left a candidate'"
+ },
+ "for": "tokenizer-rule",
+ "names": [
+  "'s",
+  "'",
+  "n't",
+  "'ll",
+  "'m",
+  "'ve",
+  "'d"
+ ],
+ "notNamed": [
+  {
+   "form": "'re",
+   "why": "the page's list of clitic auxiliaries ends in an ellipsis and does not name 're: a candidate until a source names it"
+  }
+ ],
+ "caveats": [
+  "the page itself says treebanks differ: as of mid 2021 EWT, GUM and GUMReddit use multiword tokens; ParTUT partly; PUD, LinES, Pronouns and ESL do not",
+  "the standard splits both the possessive 's and the clitic auxiliary 's; only the genitive marker is the possessive",
+  "the pages write the forms with typographic apostrophes; the straight forms here are the codec's declared variants",
+  "the Penn Treebank tokenizer.sed could not be fetched (HTTP 404 at the Penn URLs) and is NOT offered as a giver"
+ ],
+ "pins": [
+  {
+   "url": "https://universaldependencies.org/en/",
+   "says": "tokenization of English clitics; separate syntactic words; treebank differences",
+   "sha256": "765c431b1ab950207ff86b301a787487ac39fc437db6a53dd23cc526f5e5d896",
+   "bytes": 12745,
+   "retrieved": "2026-11-20"
+  },
+  {
+   "url": "https://universaldependencies.org/en/dep/case.html",
+   "says": "possessive 's gets the case relation",
+   "sha256": "021f793f82636c5bf703f0ebcb825f9512615bc95af56a71b9dd28944925eddf",
+   "bytes": 9393,
+   "retrieved": "2026-11-20"
+  },
+  {
+   "url": "https://universaldependencies.org/u/overview/tokenization.html",
+   "says": "general principle: split off clitics; basic units are syntactic words",
+   "sha256": "e2f9ebf9e5de12c48d69c3499d225c64f0cfc2f396bded83e0bb2428412bc837",
+   "bytes": 9619,
+   "retrieved": "2026-11-20"
+  }
+ ]
+}
