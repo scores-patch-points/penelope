@@ -35,6 +35,7 @@ test("V3: talk about the discourse is not a claim about the world; a name, a kno
   assert.equal(isWorld({ a: "deploy time", aUpos: "NOUN", b: "15:45", object: "literal" }, beings), true);
   assert.equal(isWorld({ a: "Tom", aUpos: "PROPN", b: "weather", bUpos: "NOUN" }, beings), false, "a name joined to a common noun the material never mentions is talk, not a world claim");
   assert.equal(isWorld({ a: "answer", aUpos: "NOUN", b: "Leeds", bUpos: "PROPN" }, beings), false);
+  assert.equal(isWorld({ a: "Tom", aUpos: "PROPN", b: "Tom", bUpos: "PROPN" }, beings), false, "a being related to itself is not a relation between beings");
 });
 test("V3: a quoted statement is a mention, cut out by the quote tokens' offsets", () => {
   const text = 'The statement "Maria lives in Ely" is false.', rows = [T(1, "The", "DET", 0), T(2, "statement", "NOUN", 4), T(3, '"', "PUNCT", 14), T(4, "Maria", "PROPN", 15), T(5, '"', "PUNCT", 29), T(6, "is", "AUX", 31)];

@@ -41,7 +41,7 @@ export function unquoted(text, rows) {
   for (let i = 0; i + 1 < qs.length; i += 2) cuts.push([qs[i].at, qs[i + 1].end]);
   let out = "", at = 0; for (const [a, b] of cuts) { out += text.slice(at, a) + " "; at = b; } return out + text.slice(at);
 }
-export const isWorld = (c, beings) => { const known = (x) => beings.has(x), name = (u) => u === "PROPN"; return (known(c.a) || name(c.aUpos)) && (known(c.b) || c.object === "literal" || name(c.bUpos)); };
+export const isWorld = (c, beings) => { if (c.a === c.b) return false; const known = (x) => beings.has(x), name = (u) => u === "PROPN"; return (known(c.a) || name(c.aUpos)) && (known(c.b) || c.object === "literal" || name(c.bUpos)); };
 /** the question's pattern (question-from-rows) with the reply's fillers in the hole */
 export function fillHole(pattern, fillers) {
   if (!pattern || pattern.gap || !fillers.length) return [];
