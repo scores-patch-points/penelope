@@ -1,0 +1,31 @@
+{
+ "prereg": "f5cd88ff8fa61f5e",
+ "stamp": "FRESH",
+ "trainSentences": 1600,
+ "heldSentences": 401,
+ "typesClustered": 551,
+ "attachments": 59,
+ "named": 55,
+ "unNamedRe": 4,
+ "C1": {
+  "glueNameable": 0,
+  "hostNameable": 45,
+  "glueRate": 0,
+  "hostRate": 0.8182,
+  "holds": true
+ },
+ "C2": {
+  "n": 45,
+  "hostClassAgreement": 0.9333,
+  "nullMax": 0.5556,
+  "holds": true,
+  "meanMargin": 0.8597
+ },
+ "C3": {
+  "recall": 0.8182,
+  "proposed": 45,
+  "of": 55,
+  "falsePositivesOnHeldSingleTokens": 1,
+  "singleTokens": 4961
+ }
+}
