@@ -1,0 +1,113 @@
+{
+ "prereg": "666d063e2c482a68",
+ "seed": 20261120,
+ "mode": "calibrate",
+ "A": {
+  "candidates": 5186,
+  "goodPerFold": [
+   79,
+   23,
+   41,
+   20
+  ],
+  "ratePerFold": [
+   0.015233320478210566,
+   0.004435017354415735,
+   0.007905900501349789,
+   0.0038565368299267257
+  ],
+  "replicated": 14,
+  "replicatedShare": 0.002699575780948708,
+  "once": 131,
+  "replicatedList": [
+   "-Sf",
+   "/H/",
+   "Bu",
+   "Db",
+   "Haah",
+   "Us",
+   "W//",
+   "eUs",
+   "fo",
+   "haha",
+   "of",
+   "on",
+   "ot",
+   "to"
+  ]
+ },
+ "B": {
+  "candidates": 2319,
+  "goodPerFold": [
+   47,
+   20,
+   13,
+   15
+  ],
+  "ratePerFold": [
+   0.02026735661923243,
+   0.008624407072013798,
+   0.00560586459680897,
+   0.00646830530401035
+  ],
+  "replicated": 12,
+  "replicatedShare": 0.00517464424320828,
+  "once": 62,
+  "replicatedList": [
+   "IAO",
+   "KKK",
+   "KKKK",
+   "OMG",
+   "and",
+   "can",
+   "day",
+   "for",
+   "hehe",
+   "ing",
+   "the",
+   "you"
+  ],
+  "planted": {
+   "the": 4,
+   "can": 3,
+   "you": 4,
+   "for": 4,
+   "and": 4
+  },
+  "plantedDeltaBpc": {
+   "the": -0.01562,
+   "can": -0.00412,
+   "you": -0.01058,
+   "for": -0.00824,
+   "and": -0.00414
+  },
+  "nonPlantedReplicated": 7
+ },
+ "C": {
+  "candidates": 2265,
+  "goodPerFold": [
+   38,
+   15,
+   8,
+   8
+  ],
+  "ratePerFold": [
+   0.016777041942604858,
+   0.006622516556291391,
+   0.003532008830022075,
+   0.003532008830022075
+  ],
+  "replicated": 6,
+  "replicatedShare": 0.0026490066225165563,
+  "once": 57,
+  "replicatedList": [
+   "IAO",
+   "KKK",
+   "KKKK",
+   "OMG",
+   "hehe",
+   "ing"
+  ],
+  "zq": 0
+ }
+}

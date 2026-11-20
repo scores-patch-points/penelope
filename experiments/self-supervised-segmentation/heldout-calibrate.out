@@ -1,0 +1,4 @@
+planted (derived): the can you for and
+A: 5186 candidates; good per fold 79,23,41,20 (1.52%, 0.44%, 0.79%, 0.39%; theory at most 3.23%); REPLICATED 14 (0.270%; theory at most 0.104%); once 131  964s  
+B: 2319 candidates; good per fold 47,20,13,15 (2.03%, 0.86%, 0.56%, 0.65%; theory at most 3.23%); REPLICATED 12 (0.517%; theory at most 0.104%); once 62  222s | planted good in n folds {"the":4,"can":3,"you":4,"for":4,"and":4} | non-planted replicated 7 
+C: 2265 candidates; good per fold 38,15,8,8 (1.68%, 0.66%, 0.35%, 0.35%; theory at most 3.23%); REPLICATED 6 (0.265%; theory at most 0.104%); once 57  251s  | zq good in 0 folds
