@@ -1,0 +1,190 @@
+{
+ "prereg": "01f7fb4e063bc813",
+ "stamp": "EXPLORATORY",
+ "seed": 20261120,
+ "results": {
+  "grc": {
+   "lang": "grc",
+   "k": 64,
+   "typesClustered": 3224,
+   "closedClusters": 12,
+   "S1": {
+    "permNullMaxShare": 0.1579,
+    "pairsAboveNull": 14,
+    "families": 55,
+    "largestFamilyClusters": 7,
+    "noun": {
+     "bestSingleClusterF1": 0.145,
+     "bestFamilyF1": 0.506,
+     "randomMergeMax": 0.374,
+     "holds": true
+    },
+    "verb": {
+     "bestSingleClusterF1": 0.124,
+     "bestFamilyF1": 0.124,
+     "randomMergeMax": 0.339,
+     "holds": false
+    }
+   },
+   "S2": {
+    "preposition": {
+     "cluster": 6,
+     "criterionScore": 0.759,
+     "purityForClass": 0,
+     "rankAmongClosed": 6,
+     "ofClosed": 12,
+     "holds": false,
+     "actuallyMostly": "noun 0.85",
+     "top": "δὲ ἰησοῦς θεὸς κύριος υἱὸς ἄνθρωπος λόγος βασιλεὺς"
+    },
+    "article": {
+     "cluster": 22,
+     "criterionScore": 0.441,
+     "purityForClass": 0.333,
+     "rankAmongClosed": 1,
+     "ofClosed": 12,
+     "holds": true,
+     "actuallyMostly": "noun 0.56",
+     "top": "τοῦ τῶν τῆς τούτων πάντων τούτου ταύτης πολλῶν"
+    },
+    "conjunction": {
+     "cluster": 21,
+     "criterionScore": 0.067,
+     "purityForClass": 0.114,
+     "rankAmongClosed": 2,
+     "ofClosed": 12,
+     "holds": true,
+     "actuallyMostly": "verb 0.27",
+     "top": "ὁ τὰ ἡ μὲν οὐκ μὴ ὡς οὐ"
+    }
+   },
+   "S3_tokenShare": {
+    "closedClusters": 0.493,
+    "nominated": 0.172,
+    "largestFamily": 0.1
+   }
+  },
+  "fra": {
+   "lang": "fra",
+   "k": 64,
+   "typesClustered": 5218,
+   "closedClusters": 4,
+   "S1": {
+    "permNullMaxShare": 0.1527,
+    "pairsAboveNull": 6,
+    "families": 59,
+    "largestFamilyClusters": 4,
+    "noun": {
+     "bestSingleClusterF1": 0.118,
+     "bestFamilyF1": 0.133,
+     "randomMergeMax": 0.266,
+     "holds": false
+    },
+    "verb": {
+     "bestSingleClusterF1": 0.26,
+     "bestFamilyF1": 0.531,
+     "randomMergeMax": 0.382,
+     "holds": true
+    }
+   },
+   "S2": {
+    "preposition": {
+     "cluster": 7,
+     "criterionScore": 0.775,
+     "purityForClass": 0,
+     "rankAmongClosed": 4,
+     "ofClosed": 4,
+     "holds": false,
+     "actuallyMostly": "noun 0.78",
+     "top": "le la les l' un une des son"
+    },
+    "article": {
+     "cluster": 61,
+     "criterionScore": 0.422,
+     "purityForClass": 0.047,
+     "rankAmongClosed": 2,
+     "ofClosed": 4,
+     "holds": true,
+     "actuallyMostly": "pronoun 0.53",
+     "top": "il qui qu' « elle mais c' on"
+    },
+    "conjunction": {
+     "cluster": 46,
+     "criterionScore": 0.033,
+     "purityForClass": 0.333,
+     "rankAmongClosed": 1,
+     "ofClosed": 4,
+     "holds": true,
+     "actuallyMostly": "conjunction 0.33",
+     "top": ", . et en d' ( \" ou"
+    }
+   },
+   "S3_tokenShare": {
+    "closedClusters": 0.482,
+    "nominated": 0.345,
+    "largestFamily": 0.062
+   }
+  },
+  "eng": {
+   "lang": "eng",
+   "k": 64,
+   "typesClustered": 527,
+   "closedClusters": 22,
+   "S1": {
+    "permNullMaxShare": 0.3333,
+    "pairsAboveNull": 0,
+    "families": 64,
+    "largestFamilyClusters": 1,
+    "noun": {
+     "bestSingleClusterF1": 0.22,
+     "bestFamilyF1": 0.22,
+     "randomMergeMax": 0.22,
+     "holds": false
+    },
+    "verb": {
+     "bestSingleClusterF1": 0.268,
+     "bestFamilyF1": 0.268,
+     "randomMergeMax": 0.268,
+     "holds": false
+    }
+   },
+   "S2": {
+    "preposition": {
+     "cluster": 56,
+     "criterionScore": 0.709,
+     "purityForClass": 0,
+     "rankAmongClosed": 5,
+     "ofClosed": 22,
+     "holds": false,
+     "actuallyMostly": "verb 0.50",
+     "top": "are can just look eat 're nook friends"
+    },
+    "article": {
+     "cluster": 12,
+     "criterionScore": 0.048,
+     "purityForClass": 0.467,
+     "rankAmongClosed": 1,
+     "ofClosed": 22,
+     "holds": true,
+     "actuallyMostly": "article 0.47",
+     "top": "the a this my your an all them"
+    },
+    "conjunction": {
+     "cluster": 16,
+     "criterionScore": 0.064,
+     "purityForClass": 0,
+     "rankAmongClosed": 3,
+     "ofClosed": 22,
+     "holds": true,
+     "actuallyMostly": "verb 0.67",
+     "top": "me wait seen"
+    }
+   },
+   "S3_tokenShare": {
+    "closedClusters": 0.526,
+    "nominated": 0.104,
+    "largestFamily": 0.01
+   }
+  }
+ }
+}
