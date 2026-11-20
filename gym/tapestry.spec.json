@@ -1512,7 +1512,10 @@
     "GL-TK-01",
     "GL-TK-02",
     "GL-TK-03",
-    "GL-TK-04"
+    "GL-TK-04",
+    "o/evidence-ledger.mjs",
+    "o/evidence-ledger.test.mjs",
+    "GL-EV-01"
    ]
   },
   {

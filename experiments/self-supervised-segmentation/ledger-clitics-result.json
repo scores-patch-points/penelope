@@ -1,0 +1,194 @@
+{
+ "stamp": "EXPLORATORY",
+ "cards": {
+  "tier1-heldout-compression": {
+   "schema": "EvidenceLedger@1",
+   "layer": "tier1-heldout-compression",
+   "group": "own-tokens",
+   "planted": {
+    "n": 20,
+    "hit": 19
+   },
+   "noise": {
+    "n": 20744,
+    "hit": 163
+   },
+   "tpr": 0.9090909090909091,
+   "fpr": 0.007905138339920948,
+   "lrGood": 115,
+   "provenance": "heldout-result-calibrate.json: planted function words good per fold; noise candidates good per fold"
+  },
+  "tagger-context-confidence": {
+   "schema": "EvidenceLedger@1",
+   "layer": "tagger-context-confidence",
+   "group": "khora-tagger",
+   "planted": {
+    "n": 20,
+    "hit": 9
+   },
+   "noise": {
+    "n": 205,
+    "hit": 32
+   },
+   "tpr": 0.45454545454545453,
+   "fpr": 0.15942028985507245,
+   "lrGood": 2.8512396694214877,
+   "provenance": "calibration-result-power.json (context-only, 200 sentences)"
+  },
+  "tagger-alltoken-confidence": {
+   "schema": "EvidenceLedger@1",
+   "layer": "tagger-alltoken-confidence",
+   "group": "khora-tagger",
+   "planted": {
+    "n": 20,
+    "hit": 19
+   },
+   "noise": {
+    "n": 2241,
+    "hit": 515
+   },
+   "tpr": 0.9090909090909091,
+   "fpr": 0.23004904146232724,
+   "lrGood": 3.9517265680056375,
+   "provenance": "calibration-result-run1.json (all-token, 40 sentences)"
+  }
+ },
+ "out": {
+  "'s": {
+   "posterior": 0.021698,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tier1-heldout-compression"
+   ]
+  },
+  "n't": {
+   "posterior": 0.00055,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tagger-context-confidence"
+   ]
+  },
+  "'ll": {
+   "posterior": 0.00055,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tagger-context-confidence"
+   ]
+  },
+  "'m": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": []
+  },
+  "'ve": {
+   "posterior": 0.00055,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tagger-context-confidence"
+   ]
+  },
+  "'re": {
+   "posterior": 0.00055,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tagger-context-confidence"
+   ]
+  },
+  "'d": {
+   "posterior": 0.00055,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": [
+    "tagger-context-confidence"
+   ]
+  },
+  "s": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery"
+   ],
+   "fired": []
+  },
+  "ed": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery",
+    "measure tagger-context-confidence"
+   ],
+   "fired": []
+  },
+  "ing": {
+   "posterior": 0.021698,
+   "status": "underexposed",
+   "kEff": 1,
+   "needs": [
+    "calibrate treebank-possessive-recovery",
+    "measure tagger-context-confidence"
+   ],
+   "fired": [
+    "tier1-heldout-compression"
+   ]
+  },
+  "ly": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery",
+    "measure tagger-context-confidence"
+   ],
+   "fired": []
+  },
+  "er": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery",
+    "measure tagger-context-confidence"
+   ],
+   "fired": []
+  },
+  "ness": {
+   "posterior": 0.000193,
+   "status": "underexposed",
+   "kEff": 0,
+   "needs": [
+    "calibrate treebank-possessive-recovery",
+    "measure tagger-context-confidence"
+   ],
+   "fired": []
+  }
+ }
+}
