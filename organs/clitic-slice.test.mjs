@@ -1,5 +1,5 @@
 import test from "node:test"; import assert from "node:assert/strict";
-import { proposeCut, sliceTokens, CliticSliceGap, SCHEMA } from "./clitic-slice.mjs";
+import { proposeCut, sliceTokens, toEvidence, nominate, CliticSliceGap, SCHEMA } from "./clitic-slice.mjs";
 const MARKERS = new Set(["'s", "n't", "'re"]);
 const smell = (name, marg) => (form) => (name.has(form) ? { cls: "noun", margin: marg } : null);
 test("a glued token that is unnameable, whose host is nameable, proposes the cut at the longest named marker", () => {
@@ -24,3 +24,12 @@ test("sliceTokens walks the tokens and returns the proposals with their indices"
   assert.equal(out.length, 1); assert.equal(out[0].index, 0); assert.equal(out[0].marker, "'s");
 });
 test("schema is stable", () => assert.equal(SCHEMA, "CliticSlice@1"));
+test("toEvidence fires on a nameable host and carries the caller's card; nominate shapes the tokenizer-rule observation", () => {
+  const p = { host: "oscar", marker: "'s", hostSmell: { cls: "noun", margin: 0.7 }, wholeSmell: null };
+  const card = { lrGood: 8.3 };
+  assert.equal(toEvidence(p, card).outcome, "good");
+  assert.equal(toEvidence(p, card).layer, "clitic-slice-'s");
+  assert.equal(toEvidence({ ...p, hostSmell: null }, card).outcome, "not_good");
+  const n = nominate(p);
+  assert.equal(n.cell, "tokenizer-rule"); assert.equal(n.effect, "split"); assert.equal(n.form, "'s"); assert.equal(n.hostNameable, true); assert.equal(n.wholeNameable, false);
+});

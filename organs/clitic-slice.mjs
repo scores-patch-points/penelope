@@ -32,3 +32,8 @@ export function sliceTokens({ tokens, smell, markers }) {
   }
   return out;
 }
+
+/** toEvidence(proposal, card) -> the ledger evidence entry for a proposed cut: the layer FIRES when the host is nameable and the glued whole is not (the card is derived from a planted-truth run, supplied by the caller). Mirrors organs/pos-sniff.mjs::toEvidence. */
+export const toEvidence = (proposal, card) => ({ layer: `clitic-slice-${proposal.marker}`, group: "emergent-smell+ud", outcome: proposal.hostSmell?.cls ? "good" : "not_good", card });
+/** nominate(proposal) -> a tokenizer-rule nomination in the DEF·Pattern shape (form-level, effect split): the proponent's job is to OBSERVE the cut, the judge (organs/tokenizer-rule-def.mjs) decides standing. */
+export const nominate = (proposal) => ({ cell: "tokenizer-rule", effect: "split", position: "suffix", form: proposal.marker, hostNameable: !!proposal.hostSmell?.cls, wholeNameable: !!proposal.wholeSmell?.cls });
