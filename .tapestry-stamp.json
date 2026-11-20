@@ -106,6 +106,8 @@
     "organs/equivalence.mjs": "edb9ec5da1811186f52d14bb449fafe8c73ec6d57029d960a12aff09da69aeeb",
     "organs/equivalence.test.mjs": "64cb3a8b34085f56be747043e739c934c65c4e2022b29e6bf7b39b9560198768",
     "organs/essay-void.mjs": "e18171b4cddb72912425ce7937a17d60ba44243d342bf5442b50afae14e4993c",
+    "organs/evidence-ledger.mjs": "78e8cb299348b98e961728a04357b6d0bcb880c4e7d024bae333c9bd81df6314",
+    "organs/evidence-ledger.test.mjs": "296fcdf4e5dcb7d3d8473304e70629ea852c4e2fc2f31caf6e73217f1ff288a7",
     "organs/fold-at-point.mjs": "12f6dff68523710084f9fb23c5b2c7dcfd9bbe305c7cac996b4a583d35b8c045",
     "organs/fold-claims.mjs": "555df2d5ba15932774a95c65b3430055aee10ec32c40ba76efb70d0cf7abe59a",
     "organs/fold-claims.test.mjs": "30df33e977f824921000bd1eff2481f6ced2840eeeb888862e80386f504750a9",
