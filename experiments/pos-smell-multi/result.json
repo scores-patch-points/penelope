@@ -1,0 +1,252 @@
+{
+ "prereg": "2c2cf26d8cf77456",
+ "seed": 20261120,
+ "results": {
+  "grc": {
+   "lang": "grc",
+   "stamp": "REUSED",
+   "totalTokensHeld": 36173,
+   "inScopeHeld": 33884,
+   "trainSentences": 12012,
+   "heldSentences": 3004,
+   "typesClustered": 3224,
+   "namedClusters": 64,
+   "classes": {
+    "noun": {
+     "planted": 7500,
+     "noise": 26384,
+     "balancedAccuracy": 0.7197,
+     "nullMax": 0.508,
+     "holds": true,
+     "tpr": 0.459,
+     "fpr": 0.019,
+     "lr": 23.73,
+     "lr95": [
+      21.87,
+      26.1
+     ]
+    },
+    "verb": {
+     "planted": 7444,
+     "noise": 26440,
+     "balancedAccuracy": 0.582,
+     "nullMax": 0.5048,
+     "holds": true,
+     "tpr": 0.197,
+     "fpr": 0.033,
+     "lr": 5.98,
+     "lr95": [
+      5.51,
+      6.53
+     ]
+    },
+    "pronoun": {
+     "planted": 3789,
+     "noise": 30095,
+     "balancedAccuracy": 0.7065,
+     "nullMax": 0.5065,
+     "holds": true,
+     "tpr": 0.478,
+     "fpr": 0.066,
+     "lr": 7.3,
+     "lr95": [
+      6.88,
+      7.68
+     ]
+    },
+    "article": {
+     "planted": 5330,
+     "noise": 28554,
+     "balancedAccuracy": 0.8057,
+     "nullMax": 0.5087,
+     "holds": true,
+     "tpr": 0.709,
+     "fpr": 0.097,
+     "lr": 7.27,
+     "lr95": [
+      7,
+      7.59
+     ]
+    },
+    "preposition": {
+     "planted": 2678,
+     "noise": 31206,
+     "balancedAccuracy": 0.9466,
+     "nullMax": 0.5075,
+     "holds": true,
+     "tpr": 0.919,
+     "fpr": 0.026,
+     "lr": 35.61,
+     "lr95": [
+      33.19,
+      38.31
+     ]
+    },
+    "conjunction": {
+     "planted": 3012,
+     "noise": 30872,
+     "balancedAccuracy": 0.8973,
+     "nullMax": 0.5077,
+     "holds": true,
+     "tpr": 0.838,
+     "fpr": 0.043,
+     "lr": 19.42,
+     "lr95": [
+      18.41,
+      20.55
+     ]
+    },
+    "adverb": {
+     "planted": 4031,
+     "noise": 29853,
+     "balancedAccuracy": 0.6981,
+     "nullMax": 0.5052,
+     "holds": true,
+     "tpr": 0.426,
+     "fpr": 0.03,
+     "lr": 14.27,
+     "lr95": [
+      13.26,
+      15.44
+     ]
+    },
+    "interjection": {
+     "planted": 100,
+     "noise": 33784,
+     "balancedAccuracy": 0.5,
+     "nullMax": 0.5,
+     "holds": false,
+     "tpr": 0,
+     "fpr": 0,
+     "lr": 331.24,
+     "lr95": [
+      274.51,
+      407.29
+     ]
+    }
+   },
+   "summary": {
+    "multiClassAccuracy": 0.5075,
+    "nullMax": 0.1174
+   }
+  },
+  "zh": {
+   "lang": "zh",
+   "stamp": "FRESH",
+   "totalTokensHeld": 19677,
+   "inScopeHeld": 13682,
+   "trainSentences": 3197,
+   "heldSentences": 800,
+   "typesClustered": 2106,
+   "namedClusters": 63,
+   "classes": {
+    "noun": {
+     "planted": 7061,
+     "noise": 6621,
+     "balancedAccuracy": 0.6683,
+     "nullMax": 0.5114,
+     "holds": true,
+     "tpr": 0.457,
+     "fpr": 0.12,
+     "lr": 3.79,
+     "lr95": [
+      3.55,
+      4.09
+     ]
+    },
+    "verb": {
+     "planted": 3585,
+     "noise": 10097,
+     "balancedAccuracy": 0.692,
+     "nullMax": 0.5137,
+     "holds": true,
+     "tpr": 0.554,
+     "fpr": 0.17,
+     "lr": 3.26,
+     "lr95": [
+      3.09,
+      3.43
+     ]
+    },
+    "pronoun": {
+     "planted": 280,
+     "noise": 13402,
+     "balancedAccuracy": 0.792,
+     "nullMax": 0.5149,
+     "holds": true,
+     "tpr": 0.596,
+     "fpr": 0.012,
+     "lr": 47.53,
+     "lr95": [
+      39.77,
+      57.44
+     ]
+    },
+    "article": {
+     "planted": 221,
+     "noise": 13461,
+     "balancedAccuracy": 0.6167,
+     "nullMax": 0.5086,
+     "holds": true,
+     "tpr": 0.235,
+     "fpr": 0.002,
+     "lr": 123.07,
+     "lr95": [
+      80.57,
+      203.46
+     ]
+    },
+    "preposition": {
+     "planted": 890,
+     "noise": 12792,
+     "balancedAccuracy": 0.623,
+     "nullMax": 0.5142,
+     "holds": true,
+     "tpr": 0.271,
+     "fpr": 0.025,
+     "lr": 10.88,
+     "lr95": [
+      9.34,
+      12.66
+     ]
+    },
+    "conjunction": {
+     "planted": 1171,
+     "noise": 12511,
+     "balancedAccuracy": 0.592,
+     "nullMax": 0.5084,
+     "holds": true,
+     "tpr": 0.193,
+     "fpr": 0.009,
+     "lr": 21.24,
+     "lr95": [
+      17.25,
+      26.4
+     ]
+    },
+    "adverb": {
+     "planted": 474,
+     "noise": 13208,
+     "balancedAccuracy": 0.5292,
+     "nullMax": 0.5063,
+     "holds": true,
+     "tpr": 0.061,
+     "fpr": 0.003,
+     "lr": 22.5,
+     "lr95": [
+      13.26,
+      35.24
+     ]
+    },
+    "interjection": {
+     "gap": "no planted",
+     "n": 13682
+    }
+   },
+   "summary": {
+    "multiClassAccuracy": 0.4332,
+    "nullMax": 0.2394
+   }
+  }
+ }
+}
