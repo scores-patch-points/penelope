@@ -1487,8 +1487,12 @@
     "g/perspective-run.test.mjs",
     "GL-FV-01",
     "GL-PE-01",
+    "g/identity-run.mjs",
+    "g/identity-run.test.mjs",
+    "o/identity-def.mjs",
     "GL-PE-02",
-    "GL-PE-03"
+    "GL-PE-03",
+    "GL-ID-01"
    ]
   },
   {

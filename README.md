@@ -505,7 +505,8 @@ append-only, always revisable).
 ║     @ o/vantage-verdicts.mjs o/vantage-verdicts.test.mjs                   ║
 ║     @ o/perspective-eva.mjs o/perspective-eva.test.mjs                     ║
 ║     @ g/perspective-run.mjs g/perspective-run.test.mjs GL-FV-01 GL-PE-01   ║
-║     @ GL-PE-02 GL-PE-03                                                    ║
+║     @ g/identity-run.mjs g/identity-run.test.mjs o/identity-def.mjs        ║
+║     @ GL-PE-02 GL-PE-03 GL-ID-01                                           ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
