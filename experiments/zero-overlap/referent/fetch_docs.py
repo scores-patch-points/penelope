@@ -1,6 +1,6 @@
 """python3 fetch_docs.py dev|fresh : fetch the declared set (PREREG-REFERENT-RETRIEVAL.md), one json per article under data/<set>/.
 Saves as it goes; re-running skips what is on disk. Set rule (count only): Category:Featured articles in API order;
-dev = positions p (0-based) with p % 50 == 7, first 30; fresh = p % 50 == 23, first 60."""
+dev = positions p (0-based) with p % 50 == 7, first 30; fresh = p % 50 == 23, first 60; fresh4 = p % 50 == 11, first 60 (PREREG-CONTEXT-NOMINATION-SET.md)."""
 import sys, json, os, time, urllib.request, urllib.parse
 from lib import build_doc
 API = "https://en.wikipedia.org/w/api.php"
@@ -35,6 +35,7 @@ def members(limit_pos):
 def pick(which):
     if which == "dev": mod, n = 7, 30
     elif which == "fresh": mod, n = 23, 60
+    elif which == "fresh4": mod, n = 11, 60
     else: raise SystemExit("dev|fresh")
     titles = members(50 * n + 60)
     return [(p, titles[p]) for p in range(mod, len(titles), 50)][:n]
