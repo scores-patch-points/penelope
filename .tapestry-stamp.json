@@ -62,6 +62,8 @@
     "gym/session-brief.rules.json": "c2a385f5919377d9b5e6144f1ce7fb06135cf806e185102282d84a12d34910da",
     "gym/session-brief.test.mjs": "ddcac3ba6093380c17b1f737ecf20a12f771fde72a8aaacc3f6da7882cafbd87",
     "gym/swatch-row.js": "c3c17c74a763e9671b3726ade5be290b17917f717c38a862c79e95b35d2165bb",
+    "gym/text-regex-ratchet.mjs": "dcee6e7a76b83d5e860182798f070e9793c5f95f49407f8e0df6fd9f8f515569",
+    "gym/text-regex-ratchet.test.mjs": "cc015f3eaa5062906ef455e69e8ed83aab7aaa6ddc93829574a91ffdc4648296",
     "gym/to-notebook.mjs": "2a1acaf5b37ac008b86ed2c174bd1ccf79372a8f6c569acb87941721f6165380",
     "gym/unweave.mjs": "363b032aacb6a782f573f6703b09d843bdc7585cc0c5d8edde848dca14e7a730",
     "gym/weave-build.mjs": "009f2e13637fba167b357b5d2b4cb70c23fbb1df8181bd5a92c54b989989d02b",

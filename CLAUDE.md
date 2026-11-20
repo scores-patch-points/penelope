@@ -20,6 +20,10 @@ Rules in every repo of the nexus:
 7. A negative result is a finding: record it with its falsifier.
 <!-- nexus:end -->
 
+## Language is read by the reader, not by a pattern (standing, 2026-11-20)
+
+A sentence, a question, a name or a relation is read through the reader's rows (the parser's own tags: upos, deprel, feats, offsets) and written to the log as marks: a question too, parsed into sub-questions and nested, with the verbatim text kept as the source. Never a regex, a word list or a string match on the text. This was the rule in janus `fa3e72c` and GL-EN-10 and was lost because it was in no standing order and no gate. `npm test` now runs `node gym/text-regex-ratchet.mjs`: the count of regex applications may not grow (baseline `gym/text-regex-baseline.jsonl`, append-only). A pattern on a path, hash, id or file format is declared on its line, `// regex-ok: <why it is not language>`. A relation you must compare is a declared prior with a named giver, never a spelling you matched.
+
 Penelope is written by several hands at once (agents and people). Law: library →
 box → hunt → mouth; no hardcoded numbers; named gaps, never invented lists; red
 rungs become standing rules, never retries. See README.md.

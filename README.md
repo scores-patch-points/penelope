@@ -305,8 +305,8 @@ append-only, always revisable).
 ║     @ TAPESTRY.md g/tapestry.spec.json g/tapestry.legend.json g/weave.mjs  ║
 ║     @ g/unweave.mjs g/check-tapestry.mjs g/check-tapestry.test.mjs         ║
 ║     @ g/run-checks.mjs g/run-checks.test.mjs g/house-baseline.mjs          ║
-║     @ g/house-ratchet.mjs g/house-ratchet.test.mjs GL-TP-02 GL-QA-06       ║
-║     @ GL-TP-05                                                             ║
+║     @ g/house-ratchet.mjs g/house-ratchet.test.mjs g/text-regex-ratchet.mjs║
+║     @ g/text-regex-ratchet.test.mjs GL-TP-02 GL-QA-06 GL-TP-05 GL-TP-06    ║
 ║■LIB 4 △∘ § library                                                         ║
 ║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
 ║     @ o/kernel-reach.test.mjs GL-01 GL-KR-01 GL-KR-02                      ║
