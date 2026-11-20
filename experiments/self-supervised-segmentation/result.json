@@ -1,0 +1,340 @@
+{
+ "prereg": "544fcb4594e5f70f",
+ "zenodotusCommit": "d79ee5a",
+ "seed": 20261120,
+ "draws": 100,
+ "cap": 200,
+ "tokens": 360474,
+ "informalFiles": 145,
+ "editedFiles": [
+  "01-literature-books/gutenberg/aesop-11339_The-Fox-and-the-Grapes.txt",
+  "01-literature-books/gutenberg/pg11-alice-ch1.txt",
+  "01-literature-books/gutenberg/pg11_Alice_s_Adventures_in_Wonderland.txt",
+  "01-literature-books/gutenberg/pg12_Through_the_Looking_Glass.txt",
+  "01-literature-books/gutenberg/pg1342_Pride_and_Prejudice.txt",
+  "01-literature-books/gutenberg/pg13453_The_Divine_Comedy_by_Dante.txt"
+ ],
+ "rho": -0.5357142857142857,
+ "rows": [
+  {
+   "form": "'s",
+   "informal": 1980.077999539324,
+   "edited": null
+  },
+  {
+   "form": "n't",
+   "informal": -9502.722674819088,
+   "edited": null
+  },
+  {
+   "form": "'ll",
+   "informal": -822.633459082921,
+   "edited": null
+  },
+  {
+   "form": "'m",
+   "informal": -3873.74178336608,
+   "edited": null
+  },
+  {
+   "form": "'ve",
+   "informal": -632.1616029917059,
+   "edited": null
+  },
+  {
+   "form": "'re",
+   "informal": -1000.9392693392729,
+   "edited": null
+  },
+  {
+   "form": "'d",
+   "informal": 202.15432830233476,
+   "edited": null
+  },
+  {
+   "form": "s",
+   "informal": -10235.446527245687,
+   "edited": -30862.084241454722
+  },
+  {
+   "form": "nt",
+   "informal": -13120.774301057798,
+   "edited": -18869.644362468913
+  },
+  {
+   "form": "ll",
+   "informal": -25070.556854039954,
+   "edited": -28262.42617951281
+  },
+  {
+   "form": "m",
+   "informal": -26427.670625232975,
+   "edited": -33424.925257246156
+  },
+  {
+   "form": "ve",
+   "informal": -20733.183936603804,
+   "edited": -24290.686932923403
+  },
+  {
+   "form": "re",
+   "informal": -21558.697404761857,
+   "edited": -36555.567116219085
+  },
+  {
+   "form": "d",
+   "informal": -55535.13706066867,
+   "edited": -127483.04453982576
+  }
+ ],
+ "conf": {
+  "'s": {
+   "informal": {
+    "n": 200,
+    "observed": 1.856974491476243,
+    "nullMean": -0.506146971206058,
+    "nullMax": -0.004383711794448253,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "n't": {
+   "informal": {
+    "n": 200,
+    "observed": 4.520955163657212,
+    "nullMean": 0.13519484814122257,
+    "nullMax": 1.0261862611797599,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "'ll": {
+   "informal": {
+    "n": 200,
+    "observed": 1.9459265393738294,
+    "nullMean": -0.36550668337705305,
+    "nullMax": -0.02426065734788713,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "'m": {
+   "informal": {
+    "n": 200,
+    "observed": 3.6540306068460273,
+    "nullMean": -0.3960133555907357,
+    "nullMax": 0.3196701539066877,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "'ve": {
+   "informal": {
+    "n": 200,
+    "observed": 1.924655728040913,
+    "nullMean": -0.5021821830014929,
+    "nullMax": -0.15954566208475568,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "'re": {
+   "informal": {
+    "n": 173,
+    "observed": 2.3227313671357552,
+    "nullMean": -0.49315465227415956,
+    "nullMax": 0.036414019311588115,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "'d": {
+   "informal": {
+    "n": 109,
+    "observed": 1.0559200865269547,
+    "nullMean": -0.8712416639630978,
+    "nullMax": -0.4206556922563017,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 0,
+    "gap": "fewer than 5 sentences carry the form"
+   }
+  },
+  "s": {
+   "informal": {
+    "n": 200,
+    "observed": -2.173488931914781,
+    "nullMean": -1.4562323543944629,
+    "nullMax": -1.21714694224596,
+    "nullReaching": 100,
+    "rank": 1
+   },
+   "edited": {
+    "n": 200,
+    "observed": -3.4046709452691974,
+    "nullMean": -1.7269609184324017,
+    "nullMax": -1.5295088202738645,
+    "nullReaching": 100,
+    "rank": 1
+   }
+  },
+  "nt": {
+   "informal": {
+    "n": 200,
+    "observed": -0.2242394924723594,
+    "nullMean": -1.1272918998854613,
+    "nullMax": -0.8369108225032963,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   },
+   "edited": {
+    "n": 200,
+    "observed": -1.5781433510273635,
+    "nullMean": -1.6138964520708106,
+    "nullMax": -1.344162550577537,
+    "nullReaching": 31,
+    "rank": 0.31683168316831684
+   }
+  },
+  "ll": {
+   "informal": {
+    "n": 200,
+    "observed": -2.157112359951299,
+    "nullMean": -1.5892874073562857,
+    "nullMax": -1.289171450538762,
+    "nullReaching": 100,
+    "rank": 1
+   },
+   "edited": {
+    "n": 200,
+    "observed": -1.6343285632747802,
+    "nullMean": -1.5308213230454168,
+    "nullMax": -1.3129319022229593,
+    "nullReaching": 86,
+    "rank": 0.8613861386138614
+   }
+  },
+  "m": {
+   "informal": {
+    "n": 200,
+    "observed": -0.9623564516703665,
+    "nullMean": -1.0130689548530787,
+    "nullMax": -0.8196835184792262,
+    "nullReaching": 31,
+    "rank": 0.31683168316831684
+   },
+   "edited": {
+    "n": 200,
+    "observed": -1.053958423247783,
+    "nullMean": -1.5132580148451915,
+    "nullMax": -1.2661402511328446,
+    "nullReaching": 0,
+    "rank": 0.009900990099009901
+   }
+  },
+  "ve": {
+   "informal": {
+    "n": 200,
+    "observed": -1.4604705527736548,
+    "nullMean": -1.2681099002503529,
+    "nullMax": -0.9329710231405574,
+    "nullReaching": 95,
+    "rank": 0.9504950495049505
+   },
+   "edited": {
+    "n": 200,
+    "observed": -1.7659010123976984,
+    "nullMean": -1.726597945773824,
+    "nullMax": -1.5213505100965452,
+    "nullReaching": 66,
+    "rank": 0.6633663366336634
+   }
+  },
+  "re": {
+   "informal": {
+    "n": 200,
+    "observed": -1.8527048381286726,
+    "nullMean": -1.317815656184948,
+    "nullMax": -1.104125822359438,
+    "nullReaching": 100,
+    "rank": 1
+   },
+   "edited": {
+    "n": 200,
+    "observed": -1.7956548375635715,
+    "nullMean": -1.7061082807058319,
+    "nullMax": -1.5379925296704169,
+    "nullReaching": 86,
+    "rank": 0.8613861386138614
+   }
+  },
+  "d": {
+   "informal": {
+    "n": 200,
+    "observed": -2.1045135271369233,
+    "nullMean": -1.0984739233126481,
+    "nullMax": -0.8247867711604081,
+    "nullReaching": 100,
+    "rank": 1
+   },
+   "edited": {
+    "n": 200,
+    "observed": -4.578932932377145,
+    "nullMean": -1.7833622969881688,
+    "nullMax": -1.567153779074297,
+    "nullReaching": 100,
+    "rank": 1
+   }
+  }
+ },
+ "topEdited": [
+  "’s:5484",
+  "ness:3848",
+  "—and:2981",
+  "less:1487",
+  "—but:1099",
+  "—the:917",
+  "est:789",
+  "--i:506",
+  "that:505",
+  "but:444"
+ ],
+ "topInformal": [
+  "ing:2651",
+  "'s:1980",
+  ".i:1301",
+  "...i:1298",
+  "eee:1167",
+  "ness:1151",
+  ".pls:901",
+  "eeee:876",
+  "hhh:875",
+  "hhhh:768"
+ ]
+}

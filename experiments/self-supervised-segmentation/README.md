@@ -1,0 +1,10 @@
+# self-supervised-segmentation (EXPLORATORY)
+Does a self-supervised surprise criterion recover which clitic splits help, with no hand-written rule per form, on informal text (Zenodotus `19-organic-community`, read from git history, nothing downloaded)?
+Files: `PREREG.md` (protocol, written before the run, sha256 first 16 `544fcb4594e5f70f`), `run.mjs`, `result.json`, `ERRATUM-1.md`. A second experiment (`PREREG-MIND.md`, `mind.mjs`) tests the learned mind and is not yet run to completion.
+## Results (one run, one tagger, 360,474 tokens per side, seed 20261120)
+- Description length alone (unigram code, Morfessor-style) does NOT favour clitic splits: n't -9503 bits, 'm -3874, 're -1001, 'll -823, 've -632; only 's +1980 and 'd +202; Spearman -0.54 against the preliminary treebank effects (n = 7). Falsifiers F1 and F2 hit.
+- The same criterion proposes, with no rule or list, informal-specific cuts at the top of the informal ranking: a missing space after a full stop (".i"), character elongation ("eee", "hhh"), and on edited books the typographic "’s", "ness", "less", "est" and dash-joined words ("—and", "—but"): typography artifacts nobody listed.
+- The downstream model's own confidence (mean tagger margin, split minus glued) against a random-cut null from the same text (100 draws) puts ALL SEVEN clitics beyond the null on informal text (0 of 100 null draws reach them): n't +4.52, 'm +3.65, 're +2.32, 'll +1.95, 've +1.92, 's +1.86, 'd +1.06. The plural "-s" is WORSE than random cuts (-2.17 against a null maximum of -1.22): confidence tells clitics from morphology (F5 not hit). The apostrophe-less variant "nt" is beyond the null on informal text and not on edited (rank 0.010 against 0.317); the other variants do not show it.
+- Post-hoc (not pre-registered): the confidence ordering has Spearman 0.61 with the treebank effects (n = 7), disagreeing on 'll.
+## Limits
+One tagger, one run, two English registers, a unigram code; confidence is a proxy for surprise, not a claim a cut is linguistically right; the edited-side apostrophe columns are empty (ERRATUM-1); no creole or non-English text was used.
