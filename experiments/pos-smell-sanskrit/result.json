@@ -1,0 +1,198 @@
+{
+ "prereg": "855eba2c6bc0c51e",
+ "stamp": "FRESH",
+ "totalTokensHeld": 31755,
+ "trainSentences": 17181,
+ "heldSentences": 4296,
+ "typesClustered": 3665,
+ "namedClusters": 64,
+ "unnameableShare": 0.3057,
+ "tags": {
+  "ADJ": {
+   "planted": 2796,
+   "noise": 28959,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 10.35,
+   "lr95": [
+    9.94,
+    10.78
+   ]
+  },
+  "ADP": {
+   "planted": 188,
+   "noise": 31567,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 166.15,
+   "lr95": [
+    146.72,
+    193.84
+   ]
+  },
+  "ADV": {
+   "planted": 2147,
+   "noise": 29608,
+   "balancedAccuracy": 0.5506,
+   "nullMax": 0.5051,
+   "holds": true,
+   "tpr": 0.113,
+   "fpr": 0.012,
+   "lr": 9.73,
+   "lr95": [
+    8.31,
+    11.52
+   ]
+  },
+  "AUX": {
+   "planted": 291,
+   "noise": 31464,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 107.39,
+   "lr95": [
+    94.95,
+    119.76
+   ]
+  },
+  "CCONJ": {
+   "planted": 625,
+   "noise": 31130,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 49.65,
+   "lr95": [
+    45.98,
+    53.95
+   ]
+  },
+  "DET": {
+   "planted": 76,
+   "noise": 31679,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 406.17,
+   "lr95": [
+    333.31,
+    519.64
+   ]
+  },
+  "INTJ": {
+   "planted": 58,
+   "noise": 31697,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 528.32,
+   "lr95": [
+    416.88,
+    704.76
+   ]
+  },
+  "NOUN": {
+   "planted": 11219,
+   "noise": 20536,
+   "balancedAccuracy": 0.6369,
+   "nullMax": 0.507,
+   "holds": true,
+   "tpr": 0.475,
+   "fpr": 0.201,
+   "lr": 2.36,
+   "lr95": [
+    2.29,
+    2.44
+   ]
+  },
+  "NUM": {
+   "planted": 432,
+   "noise": 31323,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 72.18,
+   "lr95": [
+    66.14,
+    79.81
+   ]
+  },
+  "PART": {
+   "planted": 3275,
+   "noise": 28480,
+   "balancedAccuracy": 0.8051,
+   "nullMax": 0.5084,
+   "holds": true,
+   "tpr": 0.653,
+   "fpr": 0.043,
+   "lr": 15.31,
+   "lr95": [
+    14.46,
+    16.35
+   ]
+  },
+  "PRON": {
+   "planted": 4203,
+   "noise": 27552,
+   "balancedAccuracy": 0.7273,
+   "nullMax": 0.5095,
+   "holds": true,
+   "tpr": 0.586,
+   "fpr": 0.131,
+   "lr": 4.47,
+   "lr95": [
+    4.3,
+    4.67
+   ]
+  },
+  "SCONJ": {
+   "planted": 266,
+   "noise": 31489,
+   "balancedAccuracy": 0.5,
+   "nullMax": 0.5,
+   "holds": false,
+   "tpr": 0,
+   "fpr": 0,
+   "lr": 117.5,
+   "lr95": [
+    104.16,
+    134.72
+   ]
+  },
+  "VERB": {
+   "planted": 6179,
+   "noise": 25576,
+   "balancedAccuracy": 0.5673,
+   "nullMax": 0.5054,
+   "holds": true,
+   "tpr": 0.19,
+   "fpr": 0.055,
+   "lr": 3.44,
+   "lr95": [
+    3.19,
+    3.68
+   ]
+  }
+ },
+ "summary": {
+  "multiClassAccuracy": 0.3572,
+  "nullMax": 0.1625
+ }
+}
