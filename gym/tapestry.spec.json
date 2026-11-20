@@ -1515,7 +1515,11 @@
     "GL-TK-04",
     "o/evidence-ledger.mjs",
     "o/evidence-ledger.test.mjs",
-    "GL-EV-01"
+    "GL-EV-01",
+    "o/pos-sniff.mjs",
+    "o/pos-sniff.test.mjs",
+    "o/data/pos-sniff-eng2.json",
+    "GL-PS-01"
    ]
   },
   {

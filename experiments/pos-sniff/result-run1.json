@@ -1,0 +1,151 @@
+{
+ "prereg": "7a5a8b0893b9d250",
+ "stamp": "EXPLORATORY/REUSED",
+ "seed": 20261120,
+ "model": {
+  "language": "eng",
+  "corpus": "data-ud-ewt/en_ewt-ud-train.conllu word-disjoint 70% split",
+  "giver": "Universal Dependencies (CC BY-SA 4.0)",
+  "embedder": "nomic-embed-text, single-sentence deltas"
+ },
+ "sets": {
+  "naija": {
+   "files": [
+    "pcm_nsc-ud-dev_sample.conllu 0fd23687101c20ea",
+    "pcm_nsc-ud-test_sample.conllu 436a36e12494c6ee",
+    "pcm_nsc-ud-train_sample.conllu 09aefa2a6e050169"
+   ],
+   "sentences": 311,
+   "occurrences": 640,
+   "nominal": 197,
+   "P1_sniffAccuracy": 0.7312,
+   "P2_taggerAccuracy": 0.8359,
+   "P2_bootstrap": {
+    "B": 200,
+    "sniffWins": 0,
+    "ties": 0
+   },
+   "P3_byTaggerMarginThird": [
+    {
+     "n": 213,
+     "sniff": 0.61,
+     "tagger": 0.7
+    },
+    {
+     "n": 213,
+     "sniff": 0.718,
+     "tagger": 0.836
+    },
+    {
+     "n": 214,
+     "sniff": 0.864,
+     "tagger": 0.972
+    }
+   ],
+   "P3_hybridLowMarginUsesSniff": 0.8063,
+   "P4_card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "pos-sniff-nominal",
+    "group": "nomic-embed+ud-ewt",
+    "planted": {
+     "n": 197,
+     "hit": 164
+    },
+    "noise": {
+     "n": 443,
+     "hit": 139
+    },
+    "tpr": 0.8291457286432161,
+    "fpr": 0.3146067415730337,
+    "lrGood": 2.635498923187366,
+    "provenance": "frozen sniff-eng2 on naija, EXPLORATORY/REUSED"
+   },
+   "taggerCard": {
+    "schema": "EvidenceLedger@1",
+    "layer": "khora-tagger-nominal",
+    "group": "khora-tagger",
+    "planted": {
+     "n": 197,
+     "hit": 176
+    },
+    "noise": {
+     "n": 443,
+     "hit": 84
+    },
+    "tpr": 0.8894472361809045,
+    "fpr": 0.19101123595505617,
+    "lrGood": 4.656517883535324,
+    "provenance": null
+   }
+  },
+  "singlish": {
+   "files": [
+    "dev.conll 949f5d6d54771685",
+    "test.conll 56dea7a879e0765e",
+    "train_sample.conll 39c7c802d55b9216"
+   ],
+   "sentences": 448,
+   "occurrences": 1506,
+   "nominal": 589,
+   "P1_sniffAccuracy": 0.7795,
+   "P2_taggerAccuracy": 0.8459,
+   "P2_bootstrap": {
+    "B": 200,
+    "sniffWins": 0,
+    "ties": 0
+   },
+   "P3_byTaggerMarginThird": [
+    {
+     "n": 502,
+     "sniff": 0.685,
+     "tagger": 0.677
+    },
+    {
+     "n": 502,
+     "sniff": 0.763,
+     "tagger": 0.886
+    },
+    {
+     "n": 502,
+     "sniff": 0.89,
+     "tagger": 0.974
+    }
+   ],
+   "P3_hybridLowMarginUsesSniff": 0.8486,
+   "P4_card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "pos-sniff-nominal",
+    "group": "nomic-embed+ud-ewt",
+    "planted": {
+     "n": 589,
+     "hit": 445
+    },
+    "noise": {
+     "n": 917,
+     "hit": 188
+    },
+    "tpr": 0.754653130287648,
+    "fpr": 0.20565832426550598,
+    "lrGood": 3.669450935102373,
+    "provenance": "frozen sniff-eng2 on singlish, EXPLORATORY/REUSED"
+   },
+   "taggerCard": {
+    "schema": "EvidenceLedger@1",
+    "layer": "khora-tagger-nominal",
+    "group": "khora-tagger",
+    "planted": {
+     "n": 589,
+     "hit": 487
+    },
+    "noise": {
+     "n": 917,
+     "hit": 130
+    },
+    "tpr": 0.8257191201353637,
+    "fpr": 0.1425462459194777,
+    "lrGood": 5.792640239728239,
+    "provenance": null
+   }
+  }
+ }
+}
