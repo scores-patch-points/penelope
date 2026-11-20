@@ -1,0 +1,3833 @@
+{
+ "prereg": "618450e4c13a8f36",
+ "addendum1": "d0ad225f57a37a00",
+ "erratum1": "c641e143ddb28b66",
+ "seed": 20261120,
+ "reverse": false,
+ "zenodotusCommit": "d79ee5a",
+ "sample": 40,
+ "nullDraws": 30,
+ "base": {
+  "irc (unseen source, same register)": -23.233627710367514,
+  "held-out cosem+nus (same source)": -20.59738338302889,
+  "edited books (other register)": -26.016535464123674
+ },
+ "curve": [
+  {
+   "batch": 1,
+   "found": [
+    "'ll",
+    "'m",
+    "'re",
+    "'s",
+    "'t",
+    "-6",
+    "/21",
+    "/22",
+    "/23",
+    "/24",
+    "/25",
+    "0",
+    "1",
+    "2",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "3",
+    "4",
+    "?Ô?è",
+    "?üèª",
+    "?üò",
+    "A",
+    "AA",
+    "AH",
+    "AHA",
+    "AHAH",
+    "AHHA",
+    "AY",
+    "C",
+    "D",
+    "DAY",
+    "E",
+    "EE",
+    "G",
+    "H",
+    "H/21",
+    "H/22",
+    "H/23",
+    "H/24",
+    "HA",
+    "HAA",
+    "HAH",
+    "HAHA",
+    "HE",
+    "HHA",
+    "I",
+    "ING",
+    "K",
+    "L",
+    "L/25",
+    "LL",
+    "LLY",
+    "M",
+    "ME",
+    "N",
+    "NG",
+    "O",
+    "OL",
+    "OME",
+    "OT",
+    "P",
+    "R",
+    "RY",
+    "S",
+    "T",
+    "U",
+    "Y",
+    "a",
+    "ace",
+    "ady",
+    "ahah",
+    "air",
+    "amn",
+    "ams",
+    "an't",
+    "ants",
+    "aper",
+    "apt",
+    "are",
+    "ars",
+    "at's",
+    "ated",
+    "ater",
+    "ats",
+    "ays",
+    "b",
+    "be",
+    "bee",
+    "bit",
+    "c",
+    "cal",
+    "cs",
+    "ded",
+    "ding",
+    "dk",
+    "dly",
+    "dn't",
+    "e're",
+    "e's",
+    "each",
+    "eah",
+    "eat",
+    "ence",
+    "eply",
+    "ess",
+    "est",
+    "fer",
+    "got",
+    "h",
+    "hah",
+    "haha",
+    "hh",
+    "hhh",
+    "hhhh",
+    "hile",
+    "hing",
+    "i",
+    "ia",
+    "ian",
+    "iao",
+    "ic",
+    "ike",
+    "ise",
+    "ish",
+    "ite",
+    "kay",
+    "kie",
+    "lis",
+    "lus",
+    "mao",
+    "mes",
+    "mg",
+    "mm",
+    "mn",
+    "mp",
+    "n't",
+    "na",
+    "nce",
+    "ngs",
+    "nnot",
+    "not",
+    "obs",
+    "on't",
+    "ont",
+    "ool",
+    "ooo",
+    "ops",
+    "or",
+    "orry",
+    "orts",
+    "ose",
+    "ough",
+    "out",
+    "ove",
+    "p",
+    "per",
+    "ply",
+    "pm",
+    "pper",
+    "ps",
+    "re's",
+    "reat",
+    "res",
+    "rgot",
+    "rise",
+    "rom",
+    "rry",
+    "rts",
+    "ruda",
+    "sed",
+    "sing",
+    "sss",
+    "sure",
+    "t's",
+    "ta",
+    "tch",
+    "ted",
+    "ter",
+    "th",
+    "ting",
+    "tive",
+    "town",
+    "tter",
+    "ual",
+    "uch",
+    "uck",
+    "uda",
+    "uite",
+    "unds",
+    "urs",
+    "v",
+    "way",
+    "ww",
+    "x",
+    "z",
+    "ze",
+    "¢üò",
+    "§ó",
+    "§‚ù",
+    "ª",
+    "º",
+    "Å",
+    "Åüèª",
+    "Ç",
+    "ÇüòÇ",
+    "É",
+    "Ô?è",
+    "Ö",
+    "Üüèª",
+    "â",
+    "ä",
+    "å",
+    "ë",
+    "í",
+    "î",
+    "ò",
+    "ò¢üò",
+    "òÅ",
+    "ó",
+    "ôÉ",
+    "ö",
+    "ù",
+    "û",
+    "üèª",
+    "üèº",
+    "üòÇ"
+   ],
+   "evaluations": 1016,
+   "taggings": 32216,
+   "candidates": 1016,
+   "programs": 229,
+   "top": [
+    "h",
+    "a",
+    "A",
+    "p",
+    "S",
+    "E",
+    "i",
+    "'s"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -21.443196459350904,
+    "held-out cosem+nus (same source)": -19.566925818195163,
+    "edited books (other register)": -23.799449754199273
+   }
+  },
+  {
+   "batch": 2,
+   "found": [
+    "'ll",
+    "'m",
+    "'re",
+    "'s",
+    "/21",
+    "/23",
+    "04",
+    "21",
+    "5",
+    "A",
+    "AH",
+    "AHA",
+    "AHAH",
+    "AHHA",
+    "AME",
+    "AN",
+    "AT",
+    "AY",
+    "C",
+    "CE",
+    "D",
+    "E",
+    "EA",
+    "ED",
+    "EN",
+    "ER",
+    "ES",
+    "ET",
+    "G",
+    "H",
+    "H/23",
+    "HA",
+    "HAA",
+    "HAH",
+    "HAHA",
+    "HAT",
+    "HH",
+    "HHA",
+    "HHAA",
+    "I",
+    "IA",
+    "IC",
+    "IL",
+    "INE",
+    "ING",
+    "IS",
+    "K",
+    "KE",
+    "L",
+    "LE",
+    "LY",
+    "M",
+    "ME",
+    "MG",
+    "N",
+    "NE",
+    "NG",
+    "NY",
+    "O",
+    "OL",
+    "OO",
+    "ORE",
+    "OT",
+    "OW",
+    "P",
+    "R",
+    "RE",
+    "S",
+    "S/23",
+    "SE",
+    "T",
+    "TE",
+    "TER",
+    "TS",
+    "TTER",
+    "U",
+    "UT",
+    "VE",
+    "W",
+    "Y",
+    "YS",
+    "ach",
+    "ahaa",
+    "amn",
+    "an't",
+    "and",
+    "are",
+    "arly",
+    "atch",
+    "ate",
+    "ated",
+    "ater",
+    "ats",
+    "b",
+    "bee",
+    "bs",
+    "c",
+    "cal",
+    "ceee",
+    "ch",
+    "ding",
+    "dk",
+    "each",
+    "eal",
+    "ean",
+    "eap",
+    "eee",
+    "eeee",
+    "ei",
+    "en't",
+    "ence",
+    "ext",
+    "fe",
+    "fet",
+    "ght",
+    "h",
+    "hhh",
+    "hoa",
+    "ian",
+    "ich",
+    "ilo",
+    "ish",
+    "it",
+    "its",
+    "kay",
+    "lot",
+    "n't",
+    "na",
+    "nal",
+    "nals",
+    "nce",
+    "nnn",
+    "not",
+    "on't",
+    "ooo",
+    "orry",
+    "pe",
+    "pm",
+    "pp",
+    "ps",
+    "psh",
+    "re's",
+    "rom",
+    "rry",
+    "rts",
+    "sed",
+    "sic",
+    "sit",
+    "ster",
+    "t's",
+    "tes",
+    "tive",
+    "town",
+    "tted",
+    "u're",
+    "ugh",
+    "ully",
+    "unno",
+    "urs",
+    "us",
+    "usic",
+    "usy",
+    "way",
+    "z",
+    "ò"
+   ],
+   "evaluations": 1025,
+   "taggings": 18660,
+   "candidates": 1025,
+   "programs": 313,
+   "top": [
+    "h",
+    "A",
+    "S",
+    "E",
+    "'s",
+    "T",
+    "HA",
+    "Y"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -21.230312360347554,
+    "held-out cosem+nus (same source)": -19.350722533404383,
+    "edited books (other register)": -23.441901787351636
+   }
+  },
+  {
+   "batch": 3,
+   "found": [
+    "'m",
+    "'re",
+    "'s",
+    "02",
+    "03",
+    "102",
+    "2",
+    "3",
+    "4",
+    "6",
+    "A",
+    "AH",
+    "AHA",
+    "AHAH",
+    "AHHA",
+    "AI",
+    "ALLY",
+    "AME",
+    "AN",
+    "AO",
+    "AP",
+    "AT",
+    "AY",
+    "B",
+    "C",
+    "CE",
+    "CH",
+    "CK",
+    "D",
+    "E",
+    "EA",
+    "ED",
+    "EE",
+    "EH",
+    "EN",
+    "ER",
+    "ES",
+    "ET",
+    "F",
+    "G",
+    "H",
+    "HA",
+    "HAA",
+    "HAH",
+    "HAHA",
+    "HAT",
+    "HE",
+    "HEN",
+    "HH",
+    "HHA",
+    "HHAA",
+    "HHH",
+    "HY",
+    "IA",
+    "ICE",
+    "IKE",
+    "ING",
+    "IS",
+    "K",
+    "KE",
+    "L",
+    "LAO",
+    "LES",
+    "LL",
+    "LLY",
+    "LY",
+    "M",
+    "MG",
+    "N",
+    "NA",
+    "ND",
+    "NE",
+    "NG",
+    "NING",
+    "NT",
+    "NY",
+    "O",
+    "OME",
+    "OO",
+    "OR",
+    "OU",
+    "OUR",
+    "OW",
+    "P",
+    "R",
+    "RE",
+    "RT",
+    "RY",
+    "S",
+    "SE",
+    "ST",
+    "T",
+    "TE",
+    "TER",
+    "TH",
+    "U",
+    "UR",
+    "UT",
+    "VE",
+    "W",
+    "Y",
+    "YS",
+    "a",
+    "ait",
+    "an't",
+    "and",
+    "are",
+    "at's",
+    "ated",
+    "ats",
+    "b",
+    "c",
+    "cal",
+    "cles",
+    "ding",
+    "dk",
+    "eal",
+    "edia",
+    "ess",
+    "ght",
+    "hats",
+    "hhaa",
+    "hhh",
+    "hhhh",
+    "how",
+    "hr",
+    "ian",
+    "iao",
+    "ich",
+    "ide",
+    "ier",
+    "it",
+    "kay",
+    "kies",
+    "lus",
+    "man",
+    "me",
+    "mg",
+    "n't",
+    "na",
+    "nnot",
+    "not",
+    "nt",
+    "on't",
+    "ons",
+    "ooh",
+    "ooo",
+    "or",
+    "oth",
+    "oup",
+    "out",
+    "ps",
+    "rder",
+    "re's",
+    "rite",
+    "rom",
+    "rry",
+    "sing",
+    "sit",
+    "sted",
+    "ster",
+    "ter",
+    "tor",
+    "tted",
+    "vm",
+    "way",
+    "wer"
+   ],
+   "evaluations": 1064,
+   "taggings": 16298,
+   "candidates": 1064,
+   "programs": 367,
+   "top": [
+    "A",
+    "S",
+    "E",
+    "'s",
+    "T",
+    "HA",
+    "Y",
+    "c"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.777594026030258,
+    "held-out cosem+nus (same source)": -19.241338922840054,
+    "edited books (other register)": -23.020641489098246
+   }
+  },
+  {
+   "batch": 4,
+   "found": [
+    "'ll",
+    "'m",
+    "'re",
+    "'s",
+    "3",
+    "A",
+    "AH",
+    "AHA",
+    "AHAH",
+    "AHHA",
+    "AN",
+    "AT",
+    "AY",
+    "C",
+    "D",
+    "E",
+    "ED",
+    "EE",
+    "ER",
+    "ES",
+    "F",
+    "G",
+    "H",
+    "HA",
+    "HAH",
+    "HAHA",
+    "HAT",
+    "HHA",
+    "HY",
+    "IL",
+    "ING",
+    "IS",
+    "K",
+    "L",
+    "LY",
+    "M",
+    "MG",
+    "N",
+    "ND",
+    "NE",
+    "NG",
+    "O",
+    "OL",
+    "ONE",
+    "OR",
+    "OT",
+    "OU",
+    "P",
+    "R",
+    "RE",
+    "S",
+    "SS",
+    "ST",
+    "T",
+    "TE",
+    "TER",
+    "TS",
+    "U",
+    "UT",
+    "VE",
+    "W",
+    "Y",
+    "ach",
+    "am",
+    "an't",
+    "arly",
+    "ase",
+    "ated",
+    "ater",
+    "b",
+    "blic",
+    "ded",
+    "ding",
+    "dk",
+    "dn't",
+    "each",
+    "ease",
+    "eat",
+    "edia",
+    "eee",
+    "eeee",
+    "en't",
+    "ence",
+    "eply",
+    "est",
+    "ever",
+    "firm",
+    "ght",
+    "gy",
+    "h",
+    "hats",
+    "hh",
+    "hhh",
+    "hing",
+    "hr",
+    "i",
+    "ide",
+    "iend",
+    "inge",
+    "ings",
+    "irls",
+    "ise",
+    "ish",
+    "ite",
+    "ive",
+    "lic",
+    "mes",
+    "mit",
+    "n't",
+    "na",
+    "ngs",
+    "nnot",
+    "not",
+    "ooh",
+    "ope",
+    "or",
+    "orry",
+    "p",
+    "ply",
+    "pm",
+    "pp",
+    "ps",
+    "rect",
+    "rls",
+    "rly",
+    "rm",
+    "rp",
+    "rue",
+    "sed",
+    "side",
+    "sit",
+    "t's",
+    "ta",
+    "ters",
+    "tted",
+    "tter",
+    "unzi",
+    "v",
+    "ves",
+    "way",
+    "zi"
+   ],
+   "evaluations": 924,
+   "taggings": 10424,
+   "candidates": 924,
+   "programs": 395,
+   "top": [
+    "A",
+    "S",
+    "E",
+    "'s",
+    "T",
+    "HA",
+    "Y",
+    "AHA"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.704579338480944,
+    "held-out cosem+nus (same source)": -19.148967345408842,
+    "edited books (other register)": -22.923203531958226
+   }
+  },
+  {
+   "batch": 5,
+   "found": [
+    "'l",
+    "'ll",
+    "'m",
+    "'re",
+    "'s",
+    ".0",
+    "16",
+    "3",
+    "A",
+    "AHA",
+    "AHAH",
+    "AHHA",
+    "AI",
+    "AME",
+    "AN",
+    "AO",
+    "AT",
+    "AY",
+    "C",
+    "CE",
+    "CK",
+    "D",
+    "DD",
+    "DDD",
+    "E",
+    "EAN",
+    "EE",
+    "EH",
+    "ER",
+    "ERE",
+    "ES",
+    "ET",
+    "F",
+    "G",
+    "H",
+    "HA",
+    "HAH",
+    "HAHA",
+    "HAT",
+    "HE",
+    "HHA",
+    "HY",
+    "IA",
+    "ING",
+    "K",
+    "KE",
+    "L",
+    "LE",
+    "LL",
+    "LY",
+    "M",
+    "ME",
+    "MG",
+    "N",
+    "ND",
+    "NE",
+    "NG",
+    "O",
+    "OME",
+    "OO",
+    "OT",
+    "OU",
+    "OW",
+    "P",
+    "R",
+    "RY",
+    "S",
+    "SE",
+    "SS",
+    "SSS",
+    "ST",
+    "T",
+    "TE",
+    "TS",
+    "U",
+    "UT",
+    "UTE",
+    "W",
+    "Y",
+    "am",
+    "an't",
+    "atch",
+    "dn't",
+    "e's",
+    "each",
+    "eeps",
+    "eft",
+    "ence",
+    "ese",
+    "ets",
+    "go",
+    "gy",
+    "hah",
+    "hank",
+    "hats",
+    "hhhh",
+    "hi",
+    "hing",
+    "hr",
+    "ic",
+    "ich",
+    "ird",
+    "is",
+    "it",
+    "kay",
+    "kie",
+    "lr",
+    "lt",
+    "m",
+    "me",
+    "mes",
+    "n't",
+    "na",
+    "nese",
+    "nnot",
+    "not",
+    "nt",
+    "on't",
+    "ooo",
+    "ops",
+    "p",
+    "per",
+    "rate",
+    "rom",
+    "rry",
+    "rse",
+    "sit",
+    "tch",
+    "tes",
+    "town",
+    "u're",
+    "uch",
+    "way",
+    "x",
+    "z"
+   ],
+   "evaluations": 1015,
+   "taggings": 13476,
+   "candidates": 1015,
+   "programs": 419,
+   "top": [
+    "A",
+    "S",
+    "E",
+    "'s",
+    "T",
+    "HA",
+    "Y",
+    "AHA"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.556404867466984,
+    "held-out cosem+nus (same source)": -19.08304806019827,
+    "edited books (other register)": -22.679634309000836
+   }
+  },
+  {
+   "batch": 6,
+   "found": [
+    "'l",
+    "'m",
+    "'t",
+    "..i",
+    "..so",
+    ".i",
+    ".so",
+    ".u",
+    "0",
+    "0me",
+    "4",
+    ":-P",
+    "B",
+    "C",
+    "D",
+    "E",
+    "ES",
+    "G",
+    "H",
+    "I",
+    "L",
+    "L&gt",
+    "M",
+    "MS",
+    "N",
+    "O",
+    "OB",
+    "P",
+    "R",
+    "S",
+    "T",
+    "Y",
+    "aar",
+    "ahi",
+    "ait",
+    "and",
+    "anga",
+    "anu",
+    "anx",
+    "ari",
+    "ate",
+    "ates",
+    "ats",
+    "aya",
+    "aye",
+    "ays",
+    "b",
+    "ba",
+    "bile",
+    "by",
+    "cket",
+    "diot",
+    "drew",
+    "each",
+    "eply",
+    "eri",
+    "esh",
+    "ets",
+    "ext",
+    "ful",
+    "gi",
+    "hai",
+    "hal",
+    "hanx",
+    "har",
+    "hi",
+    "hing",
+    "hip",
+    "hng",
+    "hool",
+    "hr",
+    "hut",
+    "i",
+    "int",
+    "iot",
+    "ise",
+    "ish",
+    "iye",
+    "j",
+    "ja",
+    "jmer",
+    "kay",
+    "kes",
+    "kin",
+    "kka",
+    "ku",
+    "less",
+    "li",
+    "lne",
+    "lo",
+    "mer",
+    "mes",
+    "min",
+    "moro",
+    "mp",
+    "n't",
+    "nce",
+    "nga",
+    "nite",
+    "nt",
+    "nu",
+    "nx",
+    "old",
+    "opy",
+    "or",
+    "oro",
+    "ote",
+    "oy",
+    "p",
+    "ped",
+    "per",
+    "pid",
+    "ply",
+    "ppy",
+    "ps",
+    "ram",
+    "rday",
+    "rds",
+    "reat",
+    "res",
+    "rew",
+    "rite",
+    "rom",
+    "row",
+    "rrow",
+    "rry",
+    "rts",
+    "ses",
+    "sg",
+    "she",
+    "ship",
+    "sses",
+    "tact",
+    "tal",
+    "tant",
+    "tel",
+    "ten",
+    "tes",
+    "thng",
+    "tin",
+    "tle",
+    "tna",
+    "tro",
+    "ttle",
+    "ugh",
+    "unny",
+    "upid",
+    "v",
+    "way",
+    "x",
+    "yin",
+    "z"
+   ],
+   "evaluations": 1150,
+   "taggings": 7740,
+   "candidates": 1150,
+   "programs": 510,
+   "top": [
+    "S",
+    "E",
+    "T",
+    "Y",
+    "H",
+    "n't",
+    "D",
+    "G"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.47950364551969,
+    "held-out cosem+nus (same source)": -18.947389139267038,
+    "edited books (other register)": -22.37632983299706
+   }
+  },
+  {
+   "batch": 7,
+   "found": [
+    "'ll",
+    "'m",
+    "'re",
+    "'s",
+    "'ve",
+    ".i",
+    ".now",
+    ".so",
+    "0",
+    ":-P",
+    "A",
+    "ARD",
+    "CARD",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "L",
+    "L&gt",
+    "LY",
+    "M",
+    "N",
+    "O",
+    "P",
+    "R",
+    "RD",
+    "S",
+    "T",
+    "Y",
+    "aar",
+    "ach",
+    "acha",
+    "ada",
+    "ahi",
+    "an't",
+    "and",
+    "arch",
+    "are",
+    "ari",
+    "ash",
+    "ata",
+    "ated",
+    "b",
+    "ble",
+    "cha",
+    "come",
+    "dd",
+    "dir",
+    "dn't",
+    "each",
+    "est",
+    "ettu",
+    "fice",
+    "ful",
+    "gret",
+    "h",
+    "h0ne",
+    "hai",
+    "hall",
+    "hank",
+    "hesh",
+    "hne",
+    "hope",
+    "how",
+    "hr",
+    "ick",
+    "ish",
+    "j",
+    "jan",
+    "kal",
+    "kng",
+    "lani",
+    "lega",
+    "lne",
+    "man",
+    "mp",
+    "n't",
+    "nga",
+    "nsha",
+    "orry",
+    "p",
+    "pect",
+    "pls",
+    "ray",
+    "rch",
+    "rds",
+    "res",
+    "ret",
+    "ring",
+    "row",
+    "rry",
+    "san",
+    "sg",
+    "sha",
+    "t's",
+    "tar",
+    "tes",
+    "the",
+    "tle",
+    "tr",
+    "ttu",
+    "usy",
+    "v",
+    "way",
+    "will",
+    "z"
+   ],
+   "evaluations": 1144,
+   "taggings": 8938,
+   "candidates": 1144,
+   "programs": 553,
+   "top": [
+    "S",
+    "E",
+    "T",
+    "Y",
+    "H",
+    "n't",
+    "D",
+    "G"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.386841628448853,
+    "held-out cosem+nus (same source)": -18.91347961709556,
+    "edited books (other register)": -22.244953125074836
+   }
+  },
+  {
+   "batch": 8,
+   "found": [
+    "'ll",
+    "'m",
+    "'s",
+    ".gn",
+    "1",
+    "2",
+    "A",
+    "B",
+    "D",
+    "E",
+    "ER",
+    "G",
+    "HI",
+    "I",
+    "ING",
+    "L",
+    "M",
+    "N",
+    "NG",
+    "O",
+    "OD",
+    "P",
+    "R",
+    "S",
+    "T",
+    "US",
+    "W",
+    "Y",
+    "aly",
+    "and",
+    "are",
+    "ari",
+    "b",
+    "bout",
+    "cept",
+    "cha",
+    "che",
+    "dar",
+    "dnt",
+    "ems",
+    "esh",
+    "est",
+    "eve",
+    "ful",
+    "hing",
+    "hr",
+    "hut",
+    "ikku",
+    "iles",
+    "int",
+    "ires",
+    "isa",
+    "it",
+    "ite",
+    "iye",
+    "j",
+    "kar",
+    "kes",
+    "kh",
+    "kku",
+    "lls",
+    "mar",
+    "mes",
+    "mmm",
+    "mmmm",
+    "mp",
+    "n't",
+    "not",
+    "nt",
+    "nti",
+    "on't",
+    "orry",
+    "over",
+    "p",
+    "pect",
+    "ppy",
+    "rdar",
+    "res",
+    "rgnt",
+    "rte",
+    "rth",
+    "rts",
+    "sg",
+    "sibl",
+    "tant",
+    "the",
+    "thng",
+    "tic",
+    "tin",
+    "tr",
+    "tra",
+    "ughe",
+    "ull",
+    "ved",
+    "ves",
+    "ward",
+    "x"
+   ],
+   "evaluations": 1180,
+   "taggings": 6546,
+   "candidates": 1180,
+   "programs": 589,
+   "top": [
+    "S",
+    "E",
+    "T",
+    "Y",
+    "n't",
+    "D",
+    "G",
+    "N"
+   ],
+   "surprise": {
+    "irc (unseen source, same register)": -20.302936609629384,
+    "held-out cosem+nus (same source)": -18.861497573351965,
+    "edited books (other register)": -22.216160037961714
+   }
+  }
+ ],
+ "final": {
+  "irc (unseen source, same register)": 2.93069110073813,
+  "held-out cosem+nus (same source)": 1.735885809676926,
+  "edited books (other register)": 3.80037542616196
+ },
+ "rand": [
+  {
+   "irc (unseen source, same register)": 5.229231196700571,
+   "held-out cosem+nus (same source)": 3.938522639580814,
+   "edited books (other register)": 8.521641375748857
+  },
+  {
+   "irc (unseen source, same register)": 4.054219290301724,
+   "held-out cosem+nus (same source)": 3.0039350607550404,
+   "edited books (other register)": 5.760914047547949
+  },
+  {
+   "irc (unseen source, same register)": 4.525659326737571,
+   "held-out cosem+nus (same source)": 3.2169998162540026,
+   "edited books (other register)": 6.1306041135283245
+  },
+  {
+   "irc (unseen source, same register)": 3.587441485809677,
+   "held-out cosem+nus (same source)": 2.2817502113029597,
+   "edited books (other register)": 5.863856250127089
+  },
+  {
+   "irc (unseen source, same register)": 3.6567334312276216,
+   "held-out cosem+nus (same source)": 2.987173607310126,
+   "edited books (other register)": 6.311173602824589
+  },
+  {
+   "irc (unseen source, same register)": 6.438038036393664,
+   "held-out cosem+nus (same source)": 4.731379830358174,
+   "edited books (other register)": 11.149427264047755
+  },
+  {
+   "irc (unseen source, same register)": 4.838595834064481,
+   "held-out cosem+nus (same source)": 3.468448886888016,
+   "edited books (other register)": 7.599920782438581
+  },
+  {
+   "irc (unseen source, same register)": 5.088056379294617,
+   "held-out cosem+nus (same source)": 3.377208176060524,
+   "edited books (other register)": 7.653081160301319
+  },
+  {
+   "irc (unseen source, same register)": 6.4577951137348,
+   "held-out cosem+nus (same source)": 4.6024893361990085,
+   "edited books (other register)": 9.939984331611914
+  },
+  {
+   "irc (unseen source, same register)": 4.8652256179757565,
+   "held-out cosem+nus (same source)": 3.809495401543522,
+   "edited books (other register)": 8.131420241147428
+  }
+ ],
+ "exact": [
+  true,
+  true,
+  true
+ ],
+ "mindBytes": 26917,
+ "contentBytes": 442185,
+ "reset": {
+  "evaluations": 22,
+  "taggings": 1760,
+  "candidates": 1180,
+  "found": []
+ },
+ "finalMind": {
+  "cuts": [
+   {
+    "suffix": "S",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "E",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "T",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "Y",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "n't",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "D",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "G",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "N",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "R",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "L",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "O",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "M",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "P",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "'m",
+    "strength": 5.116306318769628
+   },
+   {
+    "suffix": "b",
+    "strength": 4.464867261238572
+   },
+   {
+    "suffix": "A",
+    "strength": 4.364829025694342
+   },
+   {
+    "suffix": "'s",
+    "strength": 4.364829025694342
+   },
+   {
+    "suffix": "hr",
+    "strength": 4.324054031921236
+   },
+   {
+    "suffix": "p",
+    "strength": 4.2023918135357246
+   },
+   {
+    "suffix": "H",
+    "strength": 4.116306318769628
+   },
+   {
+    "suffix": "way",
+    "strength": 4.116306318769628
+   },
+   {
+    "suffix": "'ll",
+    "strength": 3.875287366137389
+   },
+   {
+    "suffix": "each",
+    "strength": 3.626764659212675
+   },
+   {
+    "suffix": "rry",
+    "strength": 3.5515881967618688
+   },
+   {
+    "suffix": "and",
+    "strength": 3.5322696980593706
+   },
+   {
+    "suffix": "NG",
+    "strength": 3.4979511259441605
+   },
+   {
+    "suffix": "ING",
+    "strength": 3.4979511259441605
+   },
+   {
+    "suffix": "not",
+    "strength": 3.4979511259441605
+   },
+   {
+    "suffix": "I",
+    "strength": 3.41060747967386
+   },
+   {
+    "suffix": "'re",
+    "strength": 3.364829025694342
+   },
+   {
+    "suffix": "an't",
+    "strength": 3.364829025694342
+   },
+   {
+    "suffix": "hing",
+    "strength": 3.335513913785543
+   },
+   {
+    "suffix": "mes",
+    "strength": 3.335513913785543
+   },
+   {
+    "suffix": "C",
+    "strength": 3.2494284190194467
+   },
+   {
+    "suffix": "orry",
+    "strength": 3.223848308606333
+   },
+   {
+    "suffix": "are",
+    "strength": 3.148671846155527
+   },
+   {
+    "suffix": "ER",
+    "strength": 3.1300716847727177
+   },
+   {
+    "suffix": "W",
+    "strength": 3.1300716847727177
+   },
+   {
+    "suffix": "z",
+    "strength": 3.0620465372049157
+   },
+   {
+    "suffix": "LY",
+    "strength": 2.9969495845228993
+   },
+   {
+    "suffix": "mp",
+    "strength": 2.9862346339969097
+   },
+   {
+    "suffix": "res",
+    "strength": 2.9862346339969097
+   },
+   {
+    "suffix": "ish",
+    "strength": 2.975325601681619
+   },
+   {
+    "suffix": "on't",
+    "strength": 2.933233003936401
+   },
+   {
+    "suffix": "nt",
+    "strength": 2.8924580101632946
+   },
+   {
+    "suffix": "ES",
+    "strength": 2.881548977848004
+   },
+   {
+    "suffix": "est",
+    "strength": 2.799475462929383
+   },
+   {
+    "suffix": "x",
+    "strength": 2.770795791777784
+   },
+   {
+    "suffix": "ated",
+    "strength": 2.7133899681632863
+   },
+   {
+    "suffix": "tes",
+    "strength": 2.694167096033473
+   },
+   {
+    "suffix": "kay",
+    "strength": 2.684710297011687
+   },
+   {
+    "suffix": "rom",
+    "strength": 2.684710297011687
+   },
+   {
+    "suffix": "j",
+    "strength": 2.618355192825468
+   },
+   {
+    "suffix": "ari",
+    "strength": 2.618355192825468
+   },
+   {
+    "suffix": "ful",
+    "strength": 2.618355192825468
+   },
+   {
+    "suffix": "sg",
+    "strength": 2.618355192825468
+   },
+   {
+    "suffix": "ps",
+    "strength": 2.5979893614883904
+   },
+   {
+    "suffix": "F",
+    "strength": 2.5725767388459495
+   },
+   {
+    "suffix": "it",
+    "strength": 2.5653535627649586
+   },
+   {
+    "suffix": "v",
+    "strength": 2.550952756004669
+   },
+   {
+    "suffix": "rts",
+    "strength": 2.5437295799236783
+   },
+   {
+    "suffix": "HA",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "AHA",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "HAHA",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "AY",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "na",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "K",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "HAH",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "U",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "AHAH",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "AHHA",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "HHA",
+    "strength": 2.4979511259441605
+   },
+   {
+    "suffix": "dn't",
+    "strength": 2.450914520460439
+   },
+   {
+    "suffix": "B",
+    "strength": 2.2410189526322393
+   },
+   {
+    "suffix": "h",
+    "strength": 2.223848308606333
+   },
+   {
+    "suffix": "t's",
+    "strength": 2.223848308606333
+   },
+   {
+    "suffix": "or",
+    "strength": 2.1736165158114407
+   },
+   {
+    "suffix": "AN",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "NE",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "TE",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "AT",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "UT",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "sit",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "HAT",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "MG",
+    "strength": 2.1300716847727177
+   },
+   {
+    "suffix": "3",
+    "strength": 2.0735782802672102
+   },
+   {
+    "suffix": "EE",
+    "strength": 2.0735782802672102
+   },
+   {
+    "suffix": "nnot",
+    "strength": 2.0735782802672102
+   },
+   {
+    "suffix": "ats",
+    "strength": 2.0332712394806314
+   },
+   {
+    "suffix": "ence",
+    "strength": 2.0084094663872074
+   },
+   {
+    "suffix": "OT",
+    "strength": 2.0084094663872074
+   },
+   {
+    "suffix": "0",
+    "strength": 1.98623463399691
+   },
+   {
+    "suffix": "ooo",
+    "strength": 1.933233003936401
+   },
+   {
+    "suffix": "ite",
+    "strength": 1.9325975631792016
+   },
+   {
+    "suffix": "cha",
+    "strength": 1.8668778997501816
+   },
+   {
+    "suffix": "tr",
+    "strength": 1.8668778997501816
+   },
+   {
+    "suffix": "the",
+    "strength": 1.8668778997501816
+   },
+   {
+    "suffix": "pect",
+    "strength": 1.8668778997501816
+   },
+   {
+    "suffix": "2",
+    "strength": 1.8574211007283954
+   },
+   {
+    "suffix": "ach",
+    "strength": 1.8559688674348909
+   },
+   {
+    "suffix": "AH",
+    "strength": 1.8465120684131047
+   },
+   {
+    "suffix": "ding",
+    "strength": 1.8465120684131047
+   },
+   {
+    "suffix": "hhh",
+    "strength": 1.8465120684131047
+   },
+   {
+    "suffix": "dk",
+    "strength": 1.8465120684131047
+   },
+   {
+    "suffix": "per",
+    "strength": 1.770795791777784
+   },
+   {
+    "suffix": "ppy",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "int",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "tin",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "kes",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "esh",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "thng",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "hut",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "iye",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "tant",
+    "strength": 1.751477293075286
+   },
+   {
+    "suffix": "ND",
+    "strength": 1.705698839095768
+   },
+   {
+    "suffix": "ST",
+    "strength": 1.705698839095768
+   },
+   {
+    "suffix": "hats",
+    "strength": 1.705698839095768
+   },
+   {
+    "suffix": "HY",
+    "strength": 1.705698839095768
+   },
+   {
+    "suffix": "OU",
+    "strength": 1.705698839095768
+   },
+   {
+    "suffix": "i",
+    "strength": 1.6840748562544876
+   },
+   {
+    "suffix": "ise",
+    "strength": 1.6840748562544876
+   },
+   {
+    "suffix": "eply",
+    "strength": 1.6840748562544876
+   },
+   {
+    "suffix": "ply",
+    "strength": 1.6840748562544876
+   },
+   {
+    "suffix": "TS",
+    "strength": 1.6405300252157649
+   },
+   {
+    "suffix": "row",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "tle",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": ".i",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "nga",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": ".so",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": ":-P",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "rds",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "aar",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "ahi",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "lne",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "L&gt",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "hai",
+    "strength": 1.6183551928254676
+   },
+   {
+    "suffix": "4",
+    "strength": 1.6088983938036814
+   },
+   {
+    "suffix": "CE",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "SE",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "IA",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "OO",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "OW",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "AME",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "ET",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "KE",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "ich",
+    "strength": 1.5653535627649586
+   },
+   {
+    "suffix": "ves",
+    "strength": 1.5647181220077593
+   },
+   {
+    "suffix": "nce",
+    "strength": 1.5437295799236783
+   },
+   {
+    "suffix": "hank",
+    "strength": 1.5183169572812372
+   },
+   {
+    "suffix": "hhhh",
+    "strength": 1.508860158259451
+   },
+   {
+    "suffix": "LL",
+    "strength": 1.508860158259451
+   },
+   {
+    "suffix": "HE",
+    "strength": 1.508860158259451
+   },
+   {
+    "suffix": "OME",
+    "strength": 1.508860158259451
+   },
+   {
+    "suffix": "RY",
+    "strength": 1.508860158259451
+   },
+   {
+    "suffix": "ght",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "ED",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "RE",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "VE",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "TER",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "IS",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "tted",
+    "strength": 1.4786326272416623
+   },
+   {
+    "suffix": "ME",
+    "strength": 1.443691344379448
+   },
+   {
+    "suffix": "town",
+    "strength": 1.443691344379448
+   },
+   {
+    "suffix": "'l",
+    "strength": 1.4029163506063416
+   },
+   {
+    "suffix": "ets",
+    "strength": 1.4029163506063416
+   },
+   {
+    "suffix": "hi",
+    "strength": 1.4029163506063416
+   },
+   {
+    "suffix": "1",
+    "strength": 1.3678794411714423
+   },
+   {
+    "suffix": "pm",
+    "strength": 1.3569704088561516
+   },
+   {
+    "suffix": "sed",
+    "strength": 1.3569704088561516
+   },
+   {
+    "suffix": "OL",
+    "strength": 1.3569704088561516
+   },
+   {
+    "suffix": "ater",
+    "strength": 1.3569704088561516
+   },
+   {
+    "suffix": "man",
+    "strength": 1.3564195593071346
+   },
+   {
+    "suffix": "how",
+    "strength": 1.3564195593071346
+   },
+   {
+    "suffix": "usy",
+    "strength": 1.2912507454271316
+   },
+   {
+    "suffix": "c",
+    "strength": 1.2817939464053454
+   },
+   {
+    "suffix": "HAA",
+    "strength": 1.2817939464053454
+   },
+   {
+    "suffix": "ian",
+    "strength": 1.2817939464053454
+   },
+   {
+    "suffix": "cal",
+    "strength": 1.2817939464053454
+   },
+   {
+    "suffix": "re's",
+    "strength": 1.2817939464053454
+   },
+   {
+    "suffix": "ait",
+    "strength": 1.241018952632239
+   },
+   {
+    "suffix": "rite",
+    "strength": 1.241018952632239
+   },
+   {
+    "suffix": "am",
+    "strength": 1.2161571795388149
+   },
+   {
+    "suffix": "SS",
+    "strength": 1.2161571795388149
+   },
+   {
+    "suffix": "gy",
+    "strength": 1.2161571795388149
+   },
+   {
+    "suffix": "ate",
+    "strength": 1.175850138752236
+   },
+   {
+    "suffix": "ext",
+    "strength": 1.175850138752236
+   },
+   {
+    "suffix": "ugh",
+    "strength": 1.175850138752236
+   },
+   {
+    "suffix": "me",
+    "strength": 1.1409807170880086
+   },
+   {
+    "suffix": "CK",
+    "strength": 1.1409807170880086
+   },
+   {
+    "suffix": "AO",
+    "strength": 1.1409807170880086
+   },
+   {
+    "suffix": "EH",
+    "strength": 1.1409807170880086
+   },
+   {
+    "suffix": "AI",
+    "strength": 1.1409807170880086
+   },
+   {
+    "suffix": "'t",
+    "strength": 1.1193567342467283
+   },
+   {
+    "suffix": "ays",
+    "strength": 1.1193567342467283
+   },
+   {
+    "suffix": "reat",
+    "strength": 1.1193567342467283
+   },
+   {
+    "suffix": "LE",
+    "strength": 1.0758119032080056
+   },
+   {
+    "suffix": "atch",
+    "strength": 1.0758119032080056
+   },
+   {
+    "suffix": "u're",
+    "strength": 1.0758119032080056
+   },
+   {
+    "suffix": "ide",
+    "strength": 1.0542597815647123
+   },
+   {
+    "suffix": "OR",
+    "strength": 1.0542597815647123
+   },
+   {
+    "suffix": "ooh",
+    "strength": 1.0542597815647123
+   },
+   {
+    "suffix": "edia",
+    "strength": 1.0542597815647123
+   },
+   {
+    "suffix": "e's",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "ic",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "hah",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "tch",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "ops",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "uch",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "kie",
+    "strength": 1.019318498702498
+   },
+   {
+    "suffix": "over",
+    "strength": 1
+   },
+   {
+    "suffix": "tic",
+    "strength": 1
+   },
+   {
+    "suffix": "lls",
+    "strength": 1
+   },
+   {
+    "suffix": "US",
+    "strength": 1
+   },
+   {
+    "suffix": "dnt",
+    "strength": 1
+   },
+   {
+    "suffix": "bout",
+    "strength": 1
+   },
+   {
+    "suffix": "che",
+    "strength": 1
+   },
+   {
+    "suffix": "dar",
+    "strength": 1
+   },
+   {
+    "suffix": "mmm",
+    "strength": 1
+   },
+   {
+    "suffix": "nti",
+    "strength": 1
+   },
+   {
+    "suffix": "rte",
+    "strength": 1
+   },
+   {
+    "suffix": ".gn",
+    "strength": 1
+   },
+   {
+    "suffix": "kar",
+    "strength": 1
+   },
+   {
+    "suffix": "isa",
+    "strength": 1
+   },
+   {
+    "suffix": "kh",
+    "strength": 1
+   },
+   {
+    "suffix": "cept",
+    "strength": 1
+   },
+   {
+    "suffix": "iles",
+    "strength": 1
+   },
+   {
+    "suffix": "mar",
+    "strength": 1
+   },
+   {
+    "suffix": "mmmm",
+    "strength": 1
+   },
+   {
+    "suffix": "aly",
+    "strength": 1
+   },
+   {
+    "suffix": "eve",
+    "strength": 1
+   },
+   {
+    "suffix": "ires",
+    "strength": 1
+   },
+   {
+    "suffix": "rth",
+    "strength": 1
+   },
+   {
+    "suffix": "sibl",
+    "strength": 1
+   },
+   {
+    "suffix": "tra",
+    "strength": 1
+   },
+   {
+    "suffix": "ughe",
+    "strength": 1
+   },
+   {
+    "suffix": "ull",
+    "strength": 1
+   },
+   {
+    "suffix": "ved",
+    "strength": 1
+   },
+   {
+    "suffix": "HI",
+    "strength": 1
+   },
+   {
+    "suffix": "OD",
+    "strength": 1
+   },
+   {
+    "suffix": "ems",
+    "strength": 1
+   },
+   {
+    "suffix": "ikku",
+    "strength": 1
+   },
+   {
+    "suffix": "kku",
+    "strength": 1
+   },
+   {
+    "suffix": "rdar",
+    "strength": 1
+   },
+   {
+    "suffix": "rgnt",
+    "strength": 1
+   },
+   {
+    "suffix": "ward",
+    "strength": 1
+   },
+   {
+    "suffix": "eee",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "eeee",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "pp",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "IL",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "arly",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "en't",
+    "strength": 0.9890909676847093
+   },
+   {
+    "suffix": "hh",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "ded",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "eat",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "ngs",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "tter",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "ta",
+    "strength": 0.9325975631792016
+   },
+   {
+    "suffix": "HH",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "EN",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "HHAA",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "eal",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "ster",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "NY",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "YS",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "EA",
+    "strength": 0.913914505233903
+   },
+   {
+    "suffix": "ring",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ble",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "dd",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ick",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "tar",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ata",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "hesh",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "pls",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "sha",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "hall",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "jan",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "nsha",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "will",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "hne",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "hope",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "kng",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "'ve",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": ".now",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ada",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ash",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "come",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "gret",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ray",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "rch",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ret",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "acha",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "dir",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "kal",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "san",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ARD",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "CARD",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "RD",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "arch",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ettu",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "fice",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "h0ne",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "lani",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "lega",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "ttu",
+    "strength": 0.8668778997501816
+   },
+   {
+    "suffix": "a",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "ter",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "iao",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "sing",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "ess",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "at's",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "out",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "LLY",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "lus",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "mg",
+    "strength": 0.8574211007283954
+   },
+   {
+    "suffix": "ò",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "/21",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "/23",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "21",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "H/23",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "tive",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "urs",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "amn",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "bee",
+    "strength": 0.7922522868483923
+   },
+   {
+    "suffix": "lo",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "old",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ses",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "rday",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "rrow",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ttle",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "by",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ote",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ram",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": ".u",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "..i",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ku",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "..so",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "anga",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "kin",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "li",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "min",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "gi",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "hip",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ja",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ten",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "yin",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "MS",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "aya",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "har",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "mer",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "nu",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ship",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "OB",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "hng",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "nite",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "nx",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ped",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "she",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "tel",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "anx",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ates",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "cket",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "eri",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "hal",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "less",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "moro",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "opy",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "oro",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "oy",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "tal",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "0me",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "anu",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "aye",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "ba",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "bile",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "diot",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "drew",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "hanx",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "hool",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "iot",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "jmer",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "kka",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "pid",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "rew",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "sses",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "tact",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "tna",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "tro",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "unny",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "upid",
+    "strength": 0.751477293075286
+   },
+   {
+    "suffix": "m",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "is",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "rse",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "ese",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "lt",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "rate",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "DD",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "SSS",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "go",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "16",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "DDD",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "ERE",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": ".0",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "EAN",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "UTE",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "eeps",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "eft",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "ird",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "lr",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "nese",
+    "strength": 0.6514390575310556
+   },
+   {
+    "suffix": "ive",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ever",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rm",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ase",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ope",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "side",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ease",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rly",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ings",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ONE",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "mit",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rect",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "irls",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rls",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "blic",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "firm",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "iend",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "inge",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "lic",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rp",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "rue",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ters",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "unzi",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "zi",
+    "strength": 0.5647181220077593
+   },
+   {
+    "suffix": "ons",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "6",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "ier",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "NT",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "02",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "RT",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "102",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "CH",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "HHH",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "NA",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "TH",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "LES",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "NING",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "hhaa",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "sted",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "tor",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "03",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "ALLY",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "AP",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "ICE",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "IKE",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "oth",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "oup",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "rder",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "HEN",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "LAO",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "OUR",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "UR",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "cles",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "kies",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "vm",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "wer",
+    "strength": 0.4895416595569531
+   },
+   {
+    "suffix": "ch",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "5",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "us",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "pe",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "bs",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "fe",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ean",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "nnn",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "04",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ei",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "nal",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "IC",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "INE",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ORE",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ahaa",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ceee",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "eap",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "sic",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ully",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "unno",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "usic",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "S/23",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "TTER",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "fet",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "hoa",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ilo",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "its",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "lot",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "nals",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "psh",
+    "strength": 0.42437284567695
+   },
+   {
+    "suffix": "ª",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ting",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "üèª",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "th",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "/22",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "22",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "haha",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "/24",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "24",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "H/22",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "23",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "H/24",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ose",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Ç",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "H/21",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ted",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "üòÇ",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "/25",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "25",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "sss",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "?üèª",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ia",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "mm",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "º",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ä",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "üèº",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "?üò",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "AA",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ahah",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "cs",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ont",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ove",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ww",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ze",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "É",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Ö",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "â",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "å",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ë",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "í",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "î",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ù",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "û",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "-6",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ady",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ough",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "uck",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "¢üò",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "§ó",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Üüèª",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ò¢üò",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ó",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ôÉ",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "?Ô?è",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "L/25",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ace",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "air",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ants",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ars",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "be",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "dly",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "fer",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ool",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "orts",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "sure",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ual",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "unds",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Å",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Åüèª",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ÇüòÇ",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "Ô?è",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ö",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "DAY",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ams",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "aper",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "apt",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "bit",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "e're",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "eah",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "got",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "hile",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ike",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "lis",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "mao",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "mn",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "obs",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "pper",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "rgot",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "rise",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "ruda",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "uda",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "uite",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "§‚ù",
+    "strength": 0.36787944117144233
+   },
+   {
+    "suffix": "òÅ",
+    "strength": 0.36787944117144233
+   }
+  ]
+ }
+}

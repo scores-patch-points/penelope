@@ -1,0 +1,191 @@
+{
+ "prereg": "618450e4c13a8f36",
+ "seed": 20261120,
+ "reverse": false,
+ "zenodotusCommit": "d79ee5a",
+ "sample": 40,
+ "nullDraws": 30,
+ "base": {
+  "irc (unseen source, same register)": -23.233627710367514,
+  "held-out cosem+nus (same source)": -20.59738338302889,
+  "edited books (other register)": -26.016535464123674
+ },
+ "curve": [
+  {
+   "batch": 1,
+   "evaluations": 1,
+   "taggings": 2480,
+   "candidates": 1016,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 2,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1025,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 3,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1064,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 4,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 924,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 5,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1015,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 6,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1150,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 7,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1144,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  },
+  {
+   "batch": 8,
+   "evaluations": 1,
+   "taggings": 80,
+   "candidates": 1180,
+   "programs": 0,
+   "top": [],
+   "surprise": {
+    "irc (unseen source, same register)": -23.233627710367514,
+    "held-out cosem+nus (same source)": -20.59738338302889,
+    "edited books (other register)": -26.016535464123674
+   }
+  }
+ ],
+ "final": {
+  "irc (unseen source, same register)": 0,
+  "held-out cosem+nus (same source)": 0,
+  "edited books (other register)": 0
+ },
+ "rand": [
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  },
+  {
+   "irc (unseen source, same register)": 0,
+   "held-out cosem+nus (same source)": 0,
+   "edited books (other register)": 0
+  }
+ ],
+ "exact": [
+  true,
+  true,
+  true
+ ],
+ "mindBytes": 11,
+ "contentBytes": 442185,
+ "reset": {
+  "evaluations": 1,
+  "taggings": 80,
+  "candidates": 1180
+ },
+ "finalMind": {
+  "cuts": []
+ }
+}

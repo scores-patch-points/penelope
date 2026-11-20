@@ -8,3 +8,18 @@ Files: `PREREG.md` (protocol, written before the run, sha256 first 16 `544fcb459
 - Post-hoc (not pre-registered): the confidence ordering has Spearman 0.61 with the treebank effects (n = 7), disagreeing on 'll.
 ## Limits
 One tagger, one run, two English registers, a unigram code; confidence is a proxy for surprise, not a claim a cut is linguistically right; the edited-side apostrophe columns are empty (ERRATUM-1); no creole or non-English text was used.
+
+## The mind (EXPLORATORY; PREREG-MIND.md 618450e4c13a8f36, ADDENDUM-1 d0ad225f57a37a00, ERRATUM-MIND-1 c641e143ddb28b66, ERRATUM-MIND-2 dc49518ef62105cd, ADDENDUM-2 a836cd5c647b5e5b)
+Wired in: `readingRows(g, text, { mind })` (khora, adapters/text/mind-cuts.js) applies learned word-final cut programs; the pharos fold `trails` reads the ants' deposits back; khora's kernel/stigmergy.js orders the search. Runs, in the order they happened (all files kept):
+- `mind-result-a.json`: DEGENERATE (the stopping rule quit after one failed try; ERRATUM-MIND-1). No conclusion drawn.
+- `mind-result-b.json`: showed that "beats a random-cut null" is not a sufficient test: 589 programs together RAISED surprise (a program worse than leaving the word glued could still beat the null; ERRATUM-MIND-2). Run `c` was stopped unread.
+- `mind-result-b2.json` (protocol order, seed 20261120) and `mind-result-c2.json` (reversed order, seed 20261121), corrected protocol. `mind-result-b3.json` reruns b2 with the H6 bug fixed and the search-aware ceiling added; its curve is identical to b2's.
+Findings (one source mix, one tagger):
+- H1 not falsified: surprise on the unseen-source probe (ubuntu IRC) -0.615 (b2) and -0.408 (c2) against no mind; on held-out cosem+nus -0.932 and -0.907; every one of 10 random minds of the same size is worse than no mind (+0.64 to +4.9).
+- H2 FALSIFIED: learning cost per batch does not fall (b2 324 evaluations over the first three batches and 324 over the last three; c2 121 and 421).
+- H3a held (a reader given only the mind rebuilt from the trails reproduced the probe surprise exactly); H3b hit (1.34% and 1.38% of the ingested bytes, target 1%); H3c hit by the pre-registered top-5 measure (0.00; all-program Jaccard 0.365, with a shared core: 's, 'll, 're, ".i", laughter and shouting fragments).
+- H4: transfer to an unseen source is positive; the informal mind RAISES surprise on edited text (+0.19, +0.40): a mind has to be kept and applied per source.
+- H5 not falsified: the clitics 's, n't, 're, 'll (and 've in b2) are found unprompted; no plain morphology.
+- H6 (corrected, b3): finding 50% of the good programs costs 166 evaluations with the trails' order, 336 cold, 614 random (mean); finding 90% costs 1129 warm, 715 cold, 1055 random; all of them 1176, 1069, 1166. The trails speed the strong half and not the tail (F6 hit at 90%).
+- H7 (b3): the search-aware ceiling (largest positive change any candidate reaches on a token-internal character-permuted copy) is 4.825; of 63 good programs only 3 pass it (not, ER, n't); of the clitics only n't. Garbage tokens swing tagger confidence hard, so this bar may be too harsh as well as the per-program bar too weak: both are measurement problems to fix before any claim.
+- Worry kept open: about half of each mind is single uppercase letters, and c2 learned dates and accented characters (content fragments); a per-candidate bar of 1 in 31 over ~1000 candidates admits ~30 false positives a batch.
