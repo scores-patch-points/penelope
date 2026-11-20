@@ -181,6 +181,8 @@
     "organs/swatch-row.test.mjs": "83e58794942e1173fa2ba337f04d3ca43dc31712899ee015c567d3695200b110",
     "organs/telos.mjs": "567568df791ba52e60606c34f58d5ac5cfff2caa6e20874103cd4eb39521f0f0",
     "organs/telos.test.mjs": "c5dad56d767ce9db3777c15091a315b229fc2b295c278cbf18a978a2a05792bf",
+    "organs/tokenizer-rule-def.mjs": "5133fa6eb46a5bfed3c7f2af2485ed33bcbfe26dbeaa91977ef5563ba8f0a7c9",
+    "organs/tokenizer-rule-def.test.mjs": "ee4f9990e2feda501894a014e611c4b66cd5737db41102efc9268be54d631dc0",
     "organs/vantage-verdicts.mjs": "61f793a26dbd23548cfc92938b696517958e758edfd7ab1edd585ea9bdf544c0",
     "organs/vantage-verdicts.test.mjs": "21e09652beb1299c662b8fc370c8e62ced0938e4b1b65774657113ef97a4b541",
     "organs/voice.mjs": "1eaed76c493908ec27f8a777b30125d165c771642a10ab51903e1c75d6eb9e71",
