@@ -1,5 +1,5 @@
 import test from "node:test"; import assert from "node:assert/strict"; import fs from "node:fs"; import os from "node:os"; import path from "node:path";
-import { judge, rulesAndVerdicts, weaveEntries } from "./tokenizer-rule-def.mjs";
+import { judge, judgeEffect, rulesAndVerdicts, weaveEntries } from "./tokenizer-rule-def.mjs";
 test("a firing is a flip: the verdict is the BALANCE of right and wrong flips; the weight is derived from the counts; no significance level exists anywhere", () => {
   const v = judge({ fired: 134, correct: 123 }); assert.equal(v.status, "survived"); assert.equal(v.net, 112); assert.ok(Math.abs(v.weight.split - 123 / 134) < 1e-12 && Math.abs(v.weight.glued - 11 / 134) < 1e-12); assert.equal(v.robust, true);
   assert.equal(judge({ fired: 30, correct: 2 }).status, "refuted", '"not" cutting "knot": the glued reading is the heavier one'); assert.equal(judge({ fired: 30, correct: 2 }).net, -26);
@@ -41,4 +41,27 @@ test("weave: the DEF and the EVA go on the log under Penelope's writer and pass 
   const h = P.open("t", { dir: fs.mkdtempSync(path.join(os.tmpdir(), "tok-")), writer: "w" }); weaveEntries(P, h, r.entries);
   const es = P.entries(h).filter((e) => ["tokenizer-rule", "rule-verdict"].includes(e.kind)); assert.equal(es.length, r.entries.length);
   assert.ok(W.audit(es.map((e) => ({ ...e, by: "penelope" }))).ok); assert.ok(W.audit(es.filter((e) => e.kind === "rule-verdict").map((e) => ({ ...e, by: "janus" }))).violations.length > 0);
+});
+
+// doubles of the codec session's preliminary numbers (clitic-effect, CON·Figure); the SHAPE is theirs, the values are placeholders for the full run
+const eff = (form, effect, reach, draws = 100, wrongCuts = { instances: 0, tokens: 0, delta: 0 }, sentences = 500) => ({ id: `e-${form}`, kind: "clitic-effect", cell: "CON·Figure", body: { corpus, form, sentences, effect, null: { kind: "one random word cut at the form's length on the same sentences", draws, seed: 7, nullReaching: reach, mean: -4, sd: 1, min: -8, max: -1 }, wrongCuts } });
+test("the verdict by downstream difference: the expected difference of a firing is the evidence-weighted effect and harm; survived only beyond the null's own range", () => {
+  const good = judgeEffect({ fired: 100, correct: 100, effect: 2.7, nul: { draws: 100, nullReaching: 0 } }); assert.equal(good.status, "survived"); assert.equal(good.expected, 2.7); assert.equal(good.rank.beyondNull, true); assert.ok(Math.abs(good.rank.empirical - 1 / 101) < 1e-12, "the empirical rank is REPORTED: (0 + 1) / (100 + 1)");
+  const harmed = judgeEffect({ fired: 100, correct: 50, effect: 4, nul: { draws: 100, nullReaching: 0 }, wrongCuts: { instances: 50, tokens: 200, delta: -10 } }); assert.equal(harmed.expected, -3, "0.5 x 4 + 0.5 x -10"); assert.equal(harmed.status, "refuted", "a rule that harms more when wrong than it helps when right is worse than leaving the word glued");
+  assert.equal(judgeEffect({ fired: 12, correct: 12, effect: -1.0, nul: { draws: 100, nullReaching: 0 } }).status, "refuted", "a negative effect on the right firings alone is worse than glued: refuted");
+  assert.equal(judgeEffect({ fired: 4, correct: 4, effect: 0, nul: { draws: 10, nullReaching: 1 } }).status, "underexposed", "no effect: no difference");
+  assert.equal(judgeEffect({ fired: 100, correct: 100, effect: 2, nul: { draws: 100, nullReaching: 3 } }).status, "underexposed", "positive, but 3 random cuts do as well: not separable from the null");
+  assert.equal(judgeEffect({ fired: 100, correct: 100, effect: 2, nul: { draws: 100, nullReaching: 3 } }).rank.empirical, 4 / 101); assert.equal(judgeEffect({ fired: 100, correct: 100, effect: 2, nul: { draws: 100, nullReaching: 3 } }).rank.beyondNull, false);
+});
+test("typed gaps, never assumed numbers: no downstream evidence, and a wrong share with no harm measure (harm is NOT assumed zero)", () => {
+  assert.equal(judgeEffect({ fired: 10, correct: 10 }).gap, "no_effect_evidence"); assert.equal(judgeEffect({ fired: 10, correct: 10, effect: 1, nul: { draws: 0, nullReaching: 0 } }).gap, "no_effect_evidence");
+  const g = judgeEffect({ fired: 10, correct: 7, effect: 1, nul: { draws: 100, nullReaching: 0 } }); assert.equal(g.gap, "no_wrong_cut_measure"); assert.equal(g.flips.status, "survived", "the balance of flips is still there, and the verdict falls back to it");
+  assert.equal(judgeEffect({ fired: 10, correct: 10, effect: 1, nul: { draws: 100, nullReaching: 0 } }).status, "survived", "all firings right: no harm measure is needed");
+});
+test("rulesAndVerdicts with effect entries: the verdict carries the expected difference, the rank and the harm; without them it says 'downstream none on record' and reports the gap", () => {
+  const withE = rulesAndVerdicts({ attachments, firings, effects: [eff("\'s", 2.7, 0, 100, { instances: 3, tokens: 9, delta: -1 }), eff("n\'t", 5.8, 0, 100, undefined), eff("not", 3, 0, 100, { instances: 28, tokens: 80, delta: -9 }), eff("\'d", 0, 1, 10)], language: "eng", giver });
+  const by = (f) => { const rule = withE.entries.find((e) => e.kind === "tokenizer-rule" && e.body.form === f); return withE.entries.find((e) => e.kind === "rule-verdict" && e.body.rule === rule.addr).body; };
+  assert.equal(by("\'s").status, "survived"); assert.ok(Math.abs(by("\'s").expected - (123 / 134 * 2.7 + 11 / 134 * -1)) < 1e-12, "123/134 right x 2.7 + 11/134 wrong x -1"); assert.equal(by("\'s").rank.nullReaching, 0); assert.equal(by("\'s").harm, -1);
+  assert.equal(by("not").status, "refuted", "30 firings, 2 right: 0.067 x 3 + 0.933 x -9 < 0"); assert.equal(by("\'d").status, "underexposed", "4 firings, effect 0: no difference");
+  const none = rulesAndVerdicts({ attachments, firings, language: "eng", giver }), n1 = none.entries.find((e) => e.kind === "rule-verdict").body; assert.equal(n1.downstream, "none on record"); assert.equal(n1.expected, undefined);
 });
