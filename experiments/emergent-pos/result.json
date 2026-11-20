@@ -1,0 +1,1498 @@
+{
+ "prereg": "8af0f2043d787ce1",
+ "stamp": "EXPLORATORY",
+ "seed": 20261120,
+ "results": {
+  "grc": {
+   "lang": "grc",
+   "sentences": 15016,
+   "train": 12012,
+   "dev": 1502,
+   "test": 1502,
+   "vocabTrain": 26213,
+   "typesClustered": 3224,
+   "baseline": {
+    "devBits": 10.102,
+    "testBits": 10.1268
+   },
+   "grid": {
+    "4": {
+     "devGain": 0.0339,
+     "testGain": 0.0303,
+     "L": 0.205
+    },
+    "8": {
+     "devGain": 0.0401,
+     "testGain": 0.0346,
+     "L": 0.216
+    },
+    "16": {
+     "devGain": 0.0432,
+     "testGain": 0.0362,
+     "L": 0.229
+    },
+    "32": {
+     "devGain": 0.0557,
+     "testGain": 0.0482,
+     "L": 0.251
+    },
+    "64": {
+     "devGain": 0.0735,
+     "testGain": 0.0645,
+     "L": 0.291
+    }
+   },
+   "chosenK": 64,
+   "E1": {
+    "testGainBits": 0.0645,
+    "nullMax": 0.0344,
+    "nullMean": 0.0314,
+    "holds": true
+   },
+   "E2": {
+    "typesInScope": 2859,
+    "vmeasure": 0.1918,
+    "nullMax": 0.0356,
+    "holds": true
+   },
+   "E3": {
+    "adverb": {
+     "n": 165,
+     "cluster": 1,
+     "P": 0.203,
+     "R": 0.073,
+     "F": 0.107
+    },
+    "article": {
+     "n": 85,
+     "cluster": 0,
+     "P": 0.288,
+     "R": 0.176,
+     "F": 0.219
+    },
+    "conjunction": {
+     "n": 36,
+     "cluster": 20,
+     "P": 0.19,
+     "R": 0.333,
+     "F": 0.242
+    },
+    "interjection": {
+     "n": 9,
+     "cluster": 37,
+     "P": 0.045,
+     "R": 0.222,
+     "F": 0.075
+    },
+    "noun": {
+     "n": 1361,
+     "cluster": 29,
+     "P": 0.928,
+     "R": 0.076,
+     "F": 0.14
+    },
+    "preposition": {
+     "n": 65,
+     "cluster": 49,
+     "P": 0.379,
+     "R": 0.169,
+     "F": 0.234
+    },
+    "pronoun": {
+     "n": 204,
+     "cluster": 20,
+     "P": 0.397,
+     "R": 0.123,
+     "F": 0.187
+    },
+    "verb": {
+     "n": 934,
+     "cluster": 52,
+     "P": 0.969,
+     "R": 0.066,
+     "F": 0.124
+    }
+   },
+   "clusters": [
+    {
+     "c": 0,
+     "size": 62,
+     "top": "τῷ τῇ τοῖς τοῖσι ταῖς τούτῳ αὐτῇ ἐμοὶ",
+     "thrax": "noun 0.37"
+    },
+    {
+     "c": 1,
+     "size": 62,
+     "top": "οἱ τὰ τοὺς ταῦτα εἰ τοῦτο ἐγένετο τότε",
+     "thrax": "pronoun 0.25"
+    },
+    {
+     "c": 2,
+     "size": 23,
+     "top": "τίς εἷς ὅ οὗτός ποῦ αὐτός ὅς σέ",
+     "thrax": "pronoun 0.53"
+    },
+    {
+     "c": 3,
+     "size": 20,
+     "top": "τοῦ τῶν τῆς πάντων τούτου ταύτης πολλῶν σοῦ",
+     "thrax": "article 0.47"
+    },
+    {
+     "c": 4,
+     "size": 51,
+     "top": "τὸ τὸν τὰς αὐτόν αὐτήν ἀλλήλους δόξαν ἡμέραν",
+     "thrax": "noun 0.81"
+    },
+    {
+     "c": 5,
+     "size": 48,
+     "top": "πάλιν ἦλθεν ἔρχεται ἦλθον λέγειν εἶπε ἐλθὼν ἐλθεῖν",
+     "thrax": "verb 0.78"
+    },
+    {
+     "c": 6,
+     "size": 114,
+     "top": "πνεῦμα αὐτὸ ὄνομα σῶμα ὄρος ὕδωρ τέλος ἔργον",
+     "thrax": "noun 0.84"
+    },
+    {
+     "c": 7,
+     "size": 34,
+     "top": "ἑαυτοὺς ἄνθρωποι εἴκοσι δίκαιον ἐδόκεε πρῆγμα ἑωυτὸν ἐγγὺς",
+     "thrax": "verb 0.38"
+    },
+    {
+     "c": 8,
+     "size": 45,
+     "top": "εἰσὶ ἀνδρὶ ἐὸν εἶχε φωνὴν τάχιστα ἔσχε κακὸν",
+     "thrax": "verb 0.62"
+    },
+    {
+     "c": 9,
+     "size": 82,
+     "top": "πάντα πολλὰ ἄλλα αὐτὰ ἔργα ἔθνη πρήγματα χρήματα",
+     "thrax": "noun 0.68"
+    },
+    {
+     "c": 10,
+     "size": 62,
+     "top": "εἰς ἐς ἐπὶ κατὰ διὰ ὑπὸ παρὰ τοῦτον",
+     "thrax": "verb 0.73"
+    },
+    {
+     "c": 11,
+     "size": 16,
+     "top": "ἄνδρες ἀθηναῖοι πέρσαι βασιλεῦ λακεδαιμόνιοι τοιάδε πάτερ γύναι",
+     "thrax": "noun 0.77"
+    },
+    {
+     "c": 12,
+     "size": 59,
+     "top": "εἰσῆλθεν εἰσελθεῖν γενόμενος ἐκεῖθεν ὕπαγε ἀνέβη εἰσελθὼν ἐπίστευσαν",
+     "thrax": "verb 0.82"
+    },
+    {
+     "c": 13,
+     "size": 75,
+     "top": "ἐκ ἀπὸ γυνὴ πᾶσα βασιλεία πόλις χάρις μεγάλη",
+     "thrax": "noun 0.86"
+    },
+    {
+     "c": 14,
+     "size": 57,
+     "top": "αὐτούς ἐὼν διὸ ἔτεα τεσσεράκοντα μικρὸν τινὰς τυφλὸς",
+     "thrax": "verb 0.45"
+    },
+    {
+     "c": 15,
+     "size": 69,
+     "top": "πάντας ἄνδρας ἔξω δέκα πόδας πέντε λόγους ἀνθρώπους",
+     "thrax": "noun 0.74"
+    },
+    {
+     "c": 16,
+     "size": 44,
+     "top": "μήτε ἔχοντα γενομένης στρατεύεσθαι ἔπεσεν δελφοὺς ἀμήν ἐστρατεύοντο",
+     "thrax": "verb 0.85"
+    },
+    {
+     "c": 17,
+     "size": 45,
+     "top": "μὲν δὴ ἐστὶ νυν ὦ ποιέειν ἀκούσας ἔλεγε",
+     "thrax": "verb 0.71"
+    },
+    {
+     "c": 18,
+     "size": 109,
+     "top": "λόγον ἰησοῦν χρόνον θεὸν ἄνθρωπον βασιλέα ἄνδρα κύριον",
+     "thrax": "noun 0.90"
+    },
+    {
+     "c": 19,
+     "size": 99,
+     "top": "ἀνθρώπων ἑλλήνων ἀνδρῶν νεκρῶν περσέων ἰουδαίων ἐθνῶν ἁγίων",
+     "thrax": "noun 0.87"
+    },
+    {
+     "c": 20,
+     "size": 63,
+     "top": "καὶ ὅτι ὡς αὐτὸν ἵνα μου ἐστιν ἀλλὰ",
+     "thrax": "pronoun 0.40"
+    },
+    {
+     "c": 21,
+     "size": 23,
+     "top": "τὴν πόλιν γῆν ταύτην γυναῖκα πλὴν ἐξουσίαν χάριν",
+     "thrax": "noun 0.87"
+    },
+    {
+     "c": 22,
+     "size": 35,
+     "top": "οὐ οὔτε οὕτως οὐδὲν αὕτη οὐδεὶς ἀμὴν ἄρα",
+     "thrax": "noun 0.31"
+    },
+    {
+     "c": 23,
+     "size": 29,
+     "top": "ἡμέραι ποτε ἔσχον πολλὴν διδάσκων εὑρίσκω εὗρεν αἵτινες",
+     "thrax": "verb 0.74"
+    },
+    {
+     "c": 24,
+     "size": 68,
+     "top": "εὖ ἄλλοι σφίσι τά ὅπως οἵ κάρτα ταύτας",
+     "thrax": "noun 0.26"
+    },
+    {
+     "c": 25,
+     "size": 22,
+     "top": "ἐκεῖ ἔπειτα ὡσαύτως ἐλάλει ἔλεος ἔτεϊ ἔνθα ἴδμεν",
+     "thrax": "verb 0.59"
+    },
+    {
+     "c": 26,
+     "size": 102,
+     "top": "γῆς πίστεως θαλάσσης χώρης δόξης ζωῆς νυκτὸς πόλεως",
+     "thrax": "noun 0.96"
+    },
+    {
+     "c": 27,
+     "size": 28,
+     "top": "τε ἡμῖν ἔτι ὥστε δεῖ πᾶσαν ὧδε πρῶτον",
+     "thrax": "verb 0.35"
+    },
+    {
+     "c": 28,
+     "size": 15,
+     "top": "ἀθηναίους αἰεὶ γίνεσθαι ἰώνων τόδε τουτέων μοῦνος χρηστὰ",
+     "thrax": "verb 0.30"
+    },
+    {
+     "c": 29,
+     "size": 120,
+     "top": "θεοῦ κυρίου χριστοῦ ἀνθρώπου πνεύματος κόσμου θανάτου νόμου",
+     "thrax": "noun 0.93"
+    },
+    {
+     "c": 30,
+     "size": 23,
+     "top": "ἀθηναίων βασιλέος κροίσου ἀνδρὸς λακεδαιμονίων παύλου δαρείου μωϋσέως",
+     "thrax": "noun 0.90"
+    },
+    {
+     "c": 31,
+     "size": 52,
+     "top": "μὴ μόνον πολλοὶ δύναται γίνεται μέντοι πολλὸν πολλῷ",
+     "thrax": "verb 0.76"
+    },
+    {
+     "c": 32,
+     "size": 26,
+     "top": "ἦν ἐγὼ ἐὰν πάντες ἦσαν ἡμεῖς πᾶν γέγραπται",
+     "thrax": "verb 0.70"
+    },
+    {
+     "c": 33,
+     "size": 76,
+     "top": "ἡμέρᾳ πίστει καρδίᾳ ὥρᾳ μεγάλῃ ἐκκλησίᾳ φωνῇ ἀληθείᾳ",
+     "thrax": "noun 0.90"
+    },
+    {
+     "c": 34,
+     "size": 90,
+     "top": "ἰησοῦ θεῷ οὔνομα κυρίῳ πνεύματι λόγῳ ὀνόματι ἀβραὰμ",
+     "thrax": "noun 0.86"
+    },
+    {
+     "c": 35,
+     "size": 31,
+     "top": "δέ ὦν μέν γάρ καί οὐδέν ὅκως ἄν",
+     "thrax": "adverb 0.32"
+    },
+    {
+     "c": 36,
+     "size": 29,
+     "top": "αὐτοῦ αὐτῶν ὑμῶν ἡμῶν αὐτοὺς αὐτῆς οὗ ἑωυτοῦ",
+     "thrax": "pronoun 0.72"
+    },
+    {
+     "c": 37,
+     "size": 50,
+     "top": "αὐτῷ αὐτοῖς ἰδοὺ ἐστὶν εἶ ἀποκριθεὶς πᾶς ἐνθαῦτα",
+     "thrax": "verb 0.61"
+    },
+    {
+     "c": 38,
+     "size": 32,
+     "top": "ἀδελφοί πατέρα μήτηρ πατήρ υἱόν υἱός ὀνόματί γυνή",
+     "thrax": "noun 0.87"
+    },
+    {
+     "c": 39,
+     "size": 53,
+     "top": "ἐν εἶπεν λέγει λέγων σὺν εἶπαν ἔλεγον ἀπεκρίθη",
+     "thrax": "verb 0.96"
+    },
+    {
+     "c": 40,
+     "size": 16,
+     "top": "ἐξῆλθεν ὅσοι ἀπῆλθεν πρῶτοι πορεύεσθαι τοῦτ’ ἐρχόμενον ἴδητε",
+     "thrax": "verb 0.60"
+    },
+    {
+     "c": 41,
+     "size": 40,
+     "top": "δύο μᾶλλον πρότερον πῶς πρὸ τέκνα μέγα τρεῖς",
+     "thrax": "noun 0.39"
+    },
+    {
+     "c": 42,
+     "size": 29,
+     "top": "μάλιστα ποιῆσαι ἐστί εἰπεῖν μηδὲν σημεῖον ποιεῖτε ἕτερον",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 43,
+     "size": 34,
+     "top": "δώδεκα οὐρανοῖς μαθηταῖς ἔθνεσιν ἀνθρώποις ἰουδαίοις ἀδελφοῖς ἁγίοις",
+     "thrax": "noun 0.84"
+    },
+    {
+     "c": 44,
+     "size": 76,
+     "top": "σφέας ὀπίσω ὅστις ἀπίκετο αὖτις ἀπικόμενοι ἡμέας σφεας",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 45,
+     "size": 41,
+     "top": "ἡμέρας ἑπτὰ νέας χεῖρας ἁμαρτίας γυναῖκας σάρδις ἀθήνας",
+     "thrax": "noun 0.89"
+    },
+    {
+     "c": 46,
+     "size": 30,
+     "top": "ὑμῖν λέγοντες οὐχ λέγετε λέγεις γινώσκετε ποιήσω εἰδότες",
+     "thrax": "verb 0.70"
+    },
+    {
+     "c": 47,
+     "size": 32,
+     "top": "περὶ ὑπὲρ πατρὸς ἕκαστος καθ’ καρδίας ἀφ’ ἡμέραις",
+     "thrax": "noun 0.69"
+    },
+    {
+     "c": 48,
+     "size": 64,
+     "top": "πρὸς εἶναι ἐπ’ ἔχοντες ἰδόντες ἔλαβον ἰδεῖν γίνεσθε",
+     "thrax": "verb 0.87"
+    },
+    {
+     "c": 49,
+     "size": 30,
+     "top": "ἐξ δι’ κατ’ ἀπ’ μετ’ παρ’ ὑπ’ ἐνώπιον",
+     "thrax": "preposition 0.38"
+    },
+    {
+     "c": 50,
+     "size": 101,
+     "top": "ἰησοῦς θεὸς κύριος υἱὸς ἔχων λόγος βασιλεὺς παῦλος",
+     "thrax": "noun 0.85"
+    },
+    {
+     "c": 51,
+     "size": 16,
+     "top": "εἴ μή ἐάν προφήτης ἑαυτῷ ἀνήρ ῥαββεί ἵππος",
+     "thrax": "noun 0.53"
+    },
+    {
+     "c": 52,
+     "size": 67,
+     "top": "ἂν ἔχει ἔστιν εἶχον ἔχω ἐποίησεν ἔστι ἔχειν",
+     "thrax": "verb 0.97"
+    },
+    {
+     "c": 53,
+     "size": 36,
+     "top": "εἰρήνη αἰώνιον ἀναστὰς ἑξήκοντα καλέουσι ἠγέρθη ὑμέας ἄλλη",
+     "thrax": "verb 0.65"
+    },
+    {
+     "c": 54,
+     "size": 30,
+     "top": "αὐτοῖσι πέρσῃσι ἀθηναίοισι λακεδαιμονίοισι ἄλλοισι χρέωνται ἕλλησι ἐκείνης",
+     "thrax": "noun 0.63"
+    },
+    {
+     "c": 55,
+     "size": 103,
+     "top": "θάλασσαν αὐτὴν ὁδὸν ἑλλάδα χώρην βασιλείαν ἑαυτοῦ δύναμιν",
+     "thrax": "noun 0.88"
+    },
+    {
+     "c": 56,
+     "size": 59,
+     "top": "ἐγώ ἤκουσα εὗρον ἴδον ποιεῖ οἶνον μαρία πεντήκοντα",
+     "thrax": "verb 0.62"
+    },
+    {
+     "c": 57,
+     "size": 79,
+     "top": "μαθηταὶ ἀκούσαντες ἕλληνες ἰουδαῖοι φαρισαῖοι ἀρχιερεῖς γραμματεῖς ἄγγελοι",
+     "thrax": "noun 0.76"
+    },
+    {
+     "c": 58,
+     "size": 35,
+     "top": "ὅτε ἐπείτε ἐπεὰν ἐκέλευε παραλαβὼν ἀργείων προσελθόντες γίνονται",
+     "thrax": "verb 0.73"
+    },
+    {
+     "c": 59,
+     "size": 26,
+     "top": "δὲ ὁ γὰρ ἡ οὐκ αὐτὸς λέγω δ’",
+     "thrax": "adverb 0.32"
+    },
+    {
+     "c": 60,
+     "size": 35,
+     "top": "εἴη ἓν μέχρι ἐκεῖνος ᾖ ἐκεῖνοι ἔλθῃ πολλάκις",
+     "thrax": "verb 0.69"
+    },
+    {
+     "c": 61,
+     "size": 39,
+     "top": "ἕνα ἄχρι εὐθὺς μίαν ἔσονται ἐποιέετο χιλιάδες ἐξῆλθον",
+     "thrax": "verb 0.69"
+    },
+    {
+     "c": 62,
+     "size": 25,
+     "top": "εἴτε ἑαυτὸν οἵτινες πάντοτε ἀπέθανεν θέλων ἀποθάνῃ ἁμαρτίαν",
+     "thrax": "verb 0.50"
+    },
+    {
+     "c": 63,
+     "size": 38,
+     "top": "μετὰ ἐνθεῦτεν οἷα ἐπειδὴ νυνὶ παρακαλῶ ἄλλῳ πόσῳ",
+     "thrax": "verb 0.47"
+    }
+   ]
+  },
+  "fra": {
+   "lang": "fra",
+   "sentences": 14450,
+   "train": 11560,
+   "dev": 1445,
+   "test": 1445,
+   "vocabTrain": 34601,
+   "typesClustered": 5218,
+   "baseline": {
+    "devBits": 9.0692,
+    "testBits": 8.9929
+   },
+   "grid": {
+    "4": {
+     "devGain": 0.0198,
+     "testGain": 0.0181,
+     "L": 0.138
+    },
+    "8": {
+     "devGain": 0.0331,
+     "testGain": 0.0305,
+     "L": 0.166
+    },
+    "16": {
+     "devGain": 0.0914,
+     "testGain": 0.0877,
+     "L": 0.287
+    },
+    "32": {
+     "devGain": 0.1147,
+     "testGain": 0.1111,
+     "L": 0.312
+    },
+    "64": {
+     "devGain": 0.1439,
+     "testGain": 0.1388,
+     "L": 0.367
+    }
+   },
+   "chosenK": 64,
+   "E1": {
+    "testGainBits": 0.1388,
+    "nullMax": 0.0362,
+    "nullMean": 0.0307,
+    "holds": true
+   },
+   "E2": {
+    "typesInScope": 4185,
+    "vmeasure": 0.2447,
+    "nullMax": 0.0217,
+    "holds": true
+   },
+   "E3": {
+    "adverb": {
+     "n": 162,
+     "cluster": 0,
+     "P": 0.667,
+     "R": 0.272,
+     "F": 0.386
+    },
+    "article": {
+     "n": 36,
+     "cluster": 58,
+     "P": 0.424,
+     "R": 0.694,
+     "F": 0.526
+    },
+    "conjunction": {
+     "n": 18,
+     "cluster": 19,
+     "P": 0.55,
+     "R": 0.611,
+     "F": 0.579
+    },
+    "interjection": {
+     "n": 5,
+     "cluster": 38,
+     "P": 0.045,
+     "R": 0.4,
+     "F": 0.082
+    },
+    "noun": {
+     "n": 2798,
+     "cluster": 40,
+     "P": 0.982,
+     "R": 0.06,
+     "F": 0.113
+    },
+    "preposition": {
+     "n": 37,
+     "cluster": 57,
+     "P": 0.583,
+     "R": 0.757,
+     "F": 0.659
+    },
+    "pronoun": {
+     "n": 57,
+     "cluster": 14,
+     "P": 0.576,
+     "R": 0.333,
+     "F": 0.422
+    },
+    "verb": {
+     "n": 1072,
+     "cluster": 45,
+     "P": 0.992,
+     "R": 0.114,
+     "F": 0.204
+    }
+   },
+   "clusters": [
+    {
+     "c": 0,
+     "size": 72,
+     "top": "plus pas très alors ainsi tout aussi bien",
+     "thrax": "adverb 0.67"
+    },
+    {
+     "c": 1,
+     "size": 118,
+     "top": "national internationale m gauche mètres européenne york droite",
+     "thrax": "noun 0.92"
+    },
+    {
+     "c": 2,
+     "size": 87,
+     "top": "paris new charles londres travers san rome vos",
+     "thrax": "noun 0.88"
+    },
+    {
+     "c": 3,
+     "size": 122,
+     "top": "premier nom cours centre père club travail fils",
+     "thrax": "noun 0.99"
+    },
+    {
+     "c": 4,
+     "size": 92,
+     "top": "grand grande tard nombreux bon jeune long connu",
+     "thrax": "adverb 0.55"
+    },
+    {
+     "c": 5,
+     "size": 111,
+     "top": "été fait lieu ensuite eu beaucoup déjà jamais",
+     "thrax": "verb 0.83"
+    },
+    {
+     "c": 6,
+     "size": 72,
+     "top": "populaire conseiller européen célèbre doute court mondial travailler",
+     "thrax": "noun 0.57"
+    },
+    {
+     "c": 7,
+     "size": 32,
+     "top": "an aller dieu unique venir ' forte vidéo",
+     "thrax": "verb 0.76"
+    },
+    {
+     "c": 8,
+     "size": 99,
+     "top": "2009 2010 2008 2011 2007 2006 2005 2002",
+     "thrax": null
+    },
+    {
+     "c": 9,
+     "size": 88,
+     "top": "pays enfants personnes membres produits points grands espèces",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 10,
+     "size": 75,
+     "top": "anglais allemand arabe britannique italien humaine suivante double",
+     "thrax": "noun 0.70"
+    },
+    {
+     "c": 11,
+     "size": 67,
+     "top": "lors près partir afin celui celle autour membre",
+     "thrax": "verb 0.42"
+    },
+    {
+     "c": 12,
+     "size": 86,
+     "top": "français française américain nationale mondiale américaine belge générale",
+     "thrax": "noun 0.95"
+    },
+    {
+     "c": 13,
+     "size": 48,
+     "top": "fois place guerre saison ligne pierre division édition",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 14,
+     "size": 39,
+     "top": "il qui ce elle c' on ils nous",
+     "thrax": "pronoun 0.58"
+    },
+    {
+     "c": 15,
+     "size": 120,
+     "top": "première famille mort vie part qualité recherche population",
+     "thrax": "noun 0.97"
+    },
+    {
+     "c": 16,
+     "size": 48,
+     "top": "! ? saint presse rouge i responsable mont",
+     "thrax": "noun 0.74"
+    },
+    {
+     "c": 17,
+     "size": 125,
+     "top": "même ville région politique société nouvelle série deuxième",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 18,
+     "size": 40,
+     "top": "années mois jours jeunes groupes nouveaux kilomètres voix",
+     "thrax": "noun 0.95"
+    },
+    {
+     "c": 19,
+     "size": 31,
+     "top": ", . et ( qu' « \" ou",
+     "thrax": "conjunction 0.55"
+    },
+    {
+     "c": 20,
+     "size": 34,
+     "top": "moins non au quelque simplement martin as billy",
+     "thrax": "noun 0.73"
+    },
+    {
+     "c": 21,
+     "size": 99,
+     "top": "a s' ne n' y lui peut avait",
+     "thrax": "verb 0.92"
+    },
+    {
+     "c": 22,
+     "size": 70,
+     "top": "droit propre meilleur bord chemin proximité savoir permettant",
+     "thrax": "noun 0.93"
+    },
+    {
+     "c": 23,
+     "size": 138,
+     "top": "monde nord sud département président début gouvernement roi",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 24,
+     "size": 34,
+     "top": "ans % juin mars janvier juillet octobre août",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 25,
+     "size": 119,
+     "top": "nommé mise produit créé lui-même créée publié principalement",
+     "thrax": "verb 0.87"
+    },
+    {
+     "c": 26,
+     "size": 65,
+     "top": "ailleurs exemple jean louis michel john david françois",
+     "thrax": "noun 0.94"
+    },
+    {
+     "c": 27,
+     "size": 58,
+     "top": "né notamment née ni tandis sorti c'est-à-dire in",
+     "thrax": "noun 0.43"
+    },
+    {
+     "c": 28,
+     "size": 98,
+     "top": ") militaire centrale italienne ° françaises elle-même journaliste",
+     "thrax": "noun 0.78"
+    },
+    {
+     "c": 29,
+     "size": 34,
+     "top": "international ici accès dollars docteur chose -vous plat",
+     "thrax": "noun 0.74"
+    },
+    {
+     "c": 30,
+     "size": 98,
+     "top": "jeux nouvelles équipes travaux derniers armes îles problèmes",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 31,
+     "size": 91,
+     "top": "allemagne canada main 1967 belgique printemps russie 1994",
+     "thrax": "noun 0.94"
+    },
+    {
+     "c": 32,
+     "size": 76,
+     "top": "sont ont ai étaient étant peuvent avons furent",
+     "thrax": "verb 0.96"
+    },
+    {
+     "c": 33,
+     "size": 65,
+     "top": "» siècle of professionnel etc. divers espagnol chant",
+     "thrax": "noun 0.85"
+    },
+    {
+     "c": 34,
+     "size": 65,
+     "top": "/ rock pied militaires fond internationales financier ferme",
+     "thrax": "noun 0.86"
+    },
+    {
+     "c": 35,
+     "size": 83,
+     "top": "jusqu' située situé grâce face juste appartenant quant",
+     "thrax": "verb 0.77"
+    },
+    {
+     "c": 36,
+     "size": 58,
+     "top": "prix politiques plats couleurs britanniques chambres écoles pierres",
+     "thrax": "noun 0.97"
+    },
+    {
+     "c": 37,
+     "size": 27,
+     "top": "deux trois quatre cinq six sept huit dix",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 38,
+     "size": 61,
+     "top": "soir mal € super internet moi plein confiance",
+     "thrax": "noun 0.66"
+    },
+    {
+     "c": 39,
+     "size": 125,
+     "top": "états-unis nations élections sciences autorités championnats villages filles",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 40,
+     "size": 176,
+     "top": "année équipe église armée histoire origine époque île",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 41,
+     "size": 19,
+     "top": "50 100 80 40 60 36 70 33",
+     "thrax": null
+    },
+    {
+     "c": 42,
+     "size": 68,
+     "top": "particulièrement fortement totalement connus parfaitement largement appelés -ils",
+     "thrax": "verb 0.64"
+    },
+    {
+     "c": 43,
+     "size": 33,
+     "top": "en 2 3 5 4 7 20 10",
+     "thrax": "preposition 1.00"
+    },
+    {
+     "c": 44,
+     "size": 50,
+     "top": "auparavant peut-être historiques angeles passant accompagné menée blessé",
+     "thrax": "verb 0.73"
+    },
+    {
+     "c": 45,
+     "size": 123,
+     "top": "est se était fut sera devient permet aurait",
+     "thrax": "verb 0.99"
+    },
+    {
+     "c": 46,
+     "size": 96,
+     "top": "fin suite musique coupe province mer cause direction",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 47,
+     "size": 59,
+     "top": "supérieur x naturel camp classique feu vainqueur espagnole",
+     "thrax": "noun 0.84"
+    },
+    {
+     "c": 48,
+     "size": 144,
+     "top": "partie commune troisième communauté base seule terre bonne",
+     "thrax": "noun 0.99"
+    },
+    {
+     "c": 49,
+     "size": 140,
+     "top": "habitants nombreuses affaires premiers différents études services différentes",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 50,
+     "size": 145,
+     "top": "temps dernier film nouveau titre tour jour château",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 51,
+     "size": 71,
+     "top": "ii football occidental unies simple publique nature libre",
+     "thrax": "noun 0.84"
+    },
+    {
+     "c": 52,
+     "size": 54,
+     "top": "agit explique élève assurer adresse impose inscrit attendre",
+     "thrax": "verb 0.93"
+    },
+    {
+     "c": 53,
+     "size": 147,
+     "top": "droits hommes forces entreprises femmes conditions pièces moyens",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 54,
+     "size": 104,
+     "top": "être faire avoir voir prendre passer votre mieux",
+     "thrax": "verb 0.91"
+    },
+    {
+     "c": 55,
+     "size": 61,
+     "top": "finalement mis rapidement utilisé élu presque utilisée ouvert",
+     "thrax": "verb 0.78"
+    },
+    {
+     "c": 56,
+     "size": 93,
+     "top": "trouve passe mettre faisant voit rend retrouve situe",
+     "thrax": "verb 0.97"
+    },
+    {
+     "c": 57,
+     "size": 51,
+     "top": "de à d' dans pour par que sur",
+     "thrax": "preposition 0.58"
+    },
+    {
+     "c": 58,
+     "size": 61,
+     "top": "le la les l' un une des son",
+     "thrax": "noun 0.53"
+    },
+    {
+     "c": 59,
+     "size": 54,
+     "top": "autre état ensemble âge appel arrondissement auteur utilisation",
+     "thrax": "noun 0.98"
+    },
+    {
+     "c": 60,
+     "size": 87,
+     "top": "autres europe eau environ or espagne italie euros",
+     "thrax": "noun 0.90"
+    },
+    {
+     "c": 61,
+     "size": 50,
+     "top": "homme album ordre ancien accord empire espace agence",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 62,
+     "size": 171,
+     "top": "groupe peu nombre service conseil village niveau seul",
+     "thrax": "noun 0.99"
+    },
+    {
+     "c": 63,
+     "size": 91,
+     "top": "france général effet tant finale particulier scène suisse",
+     "thrax": "noun 0.91"
+    }
+   ]
+  },
+  "eng": {
+   "lang": "eng",
+   "sentences": 2077,
+   "train": 1661,
+   "dev": 208,
+   "test": 208,
+   "vocabTrain": 4325,
+   "typesClustered": 527,
+   "baseline": {
+    "devBits": 8.9638,
+    "testBits": 9.1787
+   },
+   "grid": {
+    "4": {
+     "devGain": 0.0806,
+     "testGain": 0.1045,
+     "L": 0.32
+    },
+    "8": {
+     "devGain": 0.1449,
+     "testGain": 0.164,
+     "L": 0.392
+    },
+    "16": {
+     "devGain": 0.1165,
+     "testGain": 0.153,
+     "L": 0.362
+    },
+    "32": {
+     "devGain": 0.1399,
+     "testGain": 0.1693,
+     "L": 0.391
+    },
+    "64": {
+     "devGain": 0.1562,
+     "testGain": 0.1895,
+     "L": 0.424
+    }
+   },
+   "chosenK": 64,
+   "E1": {
+    "testGainBits": 0.1895,
+    "nullMax": 0.1108,
+    "nullMean": 0.0914,
+    "holds": true
+   },
+   "E2": {
+    "typesInScope": 412,
+    "vmeasure": 0.3389,
+    "nullMax": 0.176,
+    "holds": true
+   },
+   "E3": {
+    "adverb": {
+     "n": 45,
+     "cluster": 3,
+     "P": 0.75,
+     "R": 0.133,
+     "F": 0.226
+    },
+    "article": {
+     "n": 11,
+     "cluster": 2,
+     "P": 0.455,
+     "R": 0.455,
+     "F": 0.455
+    },
+    "conjunction": {
+     "n": 10,
+     "cluster": 60,
+     "P": 1,
+     "R": 0.2,
+     "F": 0.333
+    },
+    "interjection": {
+     "n": 3,
+     "cluster": 26,
+     "P": 0.333,
+     "R": 0.333,
+     "F": 0.333
+    },
+    "noun": {
+     "n": 177,
+     "cluster": 1,
+     "P": 1,
+     "R": 0.102,
+     "F": 0.185
+    },
+    "preposition": {
+     "n": 29,
+     "cluster": 30,
+     "P": 0.769,
+     "R": 0.345,
+     "F": 0.476
+    },
+    "pronoun": {
+     "n": 30,
+     "cluster": 2,
+     "P": 0.545,
+     "R": 0.2,
+     "F": 0.293
+    },
+    "verb": {
+     "n": 107,
+     "cluster": 12,
+     "P": 0.933,
+     "R": 0.131,
+     "F": 0.23
+    }
+   },
+   "clusters": [
+    {
+     "c": 0,
+     "size": 11,
+     "top": "work group guys news site firm ] nook",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 1,
+     "size": 22,
+     "top": "best service time new way many staff quality",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 2,
+     "size": 11,
+     "top": "the a my your me an our some",
+     "thrax": "pronoun 0.55"
+    },
+    {
+     "c": 3,
+     "size": 9,
+     "top": "not no very only still always why being",
+     "thrax": "adverb 0.75"
+    },
+    {
+     "c": 4,
+     "size": 13,
+     "top": "up us war fallujah discussed working away along",
+     "thrax": "noun 0.50"
+    },
+    {
+     "c": 5,
+     "size": 8,
+     "top": "if like about than love much wanted remember",
+     "thrax": "preposition 0.38"
+    },
+    {
+     "c": 6,
+     "size": 9,
+     "top": "qaeda years days opinion weeks fine else laden",
+     "thrax": "noun 0.88"
+    },
+    {
+     "c": 7,
+     "size": 13,
+     "top": "so al risk man p 5 1 10",
+     "thrax": "noun 0.88"
+    },
+    {
+     "c": 8,
+     "size": 4,
+     "top": "though car search top",
+     "thrax": "noun 0.67"
+    },
+    {
+     "c": 9,
+     "size": 6,
+     "top": "and is are was were 're",
+     "thrax": "verb 0.83"
+    },
+    {
+     "c": 10,
+     "size": 6,
+     "top": "one any two day 2 night",
+     "thrax": "noun 0.67"
+    },
+    {
+     "c": 11,
+     "size": 10,
+     "top": "too called found pretty terrible behind among possible",
+     "thrax": "verb 0.43"
+    },
+    {
+     "c": 12,
+     "size": 15,
+     "top": "be get go now think see make find",
+     "thrax": "verb 0.93"
+    },
+    {
+     "c": 13,
+     "size": 14,
+     "top": "... said < thank space system nasa islamic",
+     "thrax": "noun 0.75"
+    },
+    {
+     "c": 14,
+     "size": 11,
+     "top": "help questions everything first camera suggestions restaurants ice",
+     "thrax": "noun 0.78"
+    },
+    {
+     "c": 15,
+     "size": 3,
+     "top": "that or hpl",
+     "thrax": "pronoun 0.33"
+    },
+    {
+     "c": 16,
+     "size": 3,
+     "top": "fast medical worst",
+     "thrax": null
+    },
+    {
+     "c": 17,
+     "size": 9,
+     "top": "all over area already extremely indian operation online",
+     "thrax": "noun 0.43"
+    },
+    {
+     "c": 18,
+     "size": 6,
+     "top": "ago came sent gas posted recommended",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 19,
+     "size": 4,
+     "top": "last later early scheduled",
+     "thrax": "adverb 0.50"
+    },
+    {
+     "c": 20,
+     "size": 15,
+     "top": "$ after enron where most february white credit",
+     "thrax": "noun 0.69"
+    },
+    {
+     "c": 21,
+     "size": 2,
+     "top": "/ 3",
+     "thrax": null
+    },
+    {
+     "c": 22,
+     "size": 6,
+     "top": "awesome joined experience doing issues cheap",
+     "thrax": "verb 0.50"
+    },
+    {
+     "c": 23,
+     "size": 8,
+     "top": "use call email let give buy told send",
+     "thrax": "verb 0.88"
+    },
+    {
+     "c": 24,
+     "size": 8,
+     "top": ": its eat using wait hidden sound september",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 25,
+     "size": 8,
+     "top": "'s s off looks sounds project play life",
+     "thrax": "verb 0.57"
+    },
+    {
+     "c": 26,
+     "size": 4,
+     "top": "n't just 'm please",
+     "thrax": "adverb 0.33"
+    },
+    {
+     "c": 27,
+     "size": 7,
+     "top": "into put come local join set read",
+     "thrax": "verb 0.83"
+    },
+    {
+     "c": 28,
+     "size": 16,
+     "top": "next dow city money market highway moon right",
+     "thrax": "noun 0.92"
+    },
+    {
+     "c": 29,
+     "size": 3,
+     "top": "times things customer",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 30,
+     "size": 13,
+     "top": "of in for with on at from by",
+     "thrax": "preposition 0.77"
+    },
+    {
+     "c": 31,
+     "size": 3,
+     "top": "done without filed",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 32,
+     "size": 6,
+     "top": "i you we they what bush",
+     "thrax": "pronoun 0.83"
+    },
+    {
+     "c": 33,
+     "size": 14,
+     "top": "food needs company below attached shop nothing key",
+     "thrax": "noun 0.64"
+    },
+    {
+     "c": 34,
+     "size": 18,
+     "top": "little job few deal look school part list",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 35,
+     "size": 3,
+     "top": "took makes wo",
+     "thrax": "verb 1.00"
+    },
+    {
+     "c": 36,
+     "size": 4,
+     "top": "would highly nt might",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 37,
+     "size": 4,
+     "top": "anything muslim probably become",
+     "thrax": "pronoun 0.33"
+    },
+    {
+     "c": 38,
+     "size": 8,
+     "top": "every iraq someone mike bin mark those elizabeth",
+     "thrax": "noun 0.63"
+    },
+    {
+     "c": 39,
+     "size": 10,
+     "top": "thanks people today free different deals fun expensive",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 40,
+     "size": 5,
+     "top": "this them her then home",
+     "thrax": "pronoun 0.40"
+    },
+    {
+     "c": 41,
+     "size": 9,
+     "top": "' phone groups american e-mail david vince fax",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 42,
+     "size": 4,
+     "top": "under course president starting",
+     "thrax": "noun 0.50"
+    },
+    {
+     "c": 43,
+     "size": 8,
+     "top": "there going back him able through enough added",
+     "thrax": "pronoun 0.29"
+    },
+    {
+     "c": 44,
+     "size": 5,
+     "top": "; !!! .... daily .?",
+     "thrax": null
+    },
+    {
+     "c": 45,
+     "size": 6,
+     "top": "know sure looking down wondering another",
+     "thrax": "verb 0.60"
+    },
+    {
+     "c": 46,
+     "size": 4,
+     "top": "do did am ca",
+     "thrax": "verb 1.00"
+    },
+    {
+     "c": 47,
+     "size": 11,
+     "top": "to will can could should does may really",
+     "thrax": "verb 0.80"
+    },
+    {
+     "c": 48,
+     "size": 13,
+     "top": "good great nice friendly amazing bad helpful professional",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 49,
+     "size": 6,
+     "top": "more how other better google something",
+     "thrax": "adverb 0.33"
+    },
+    {
+     "c": 50,
+     "size": 9,
+     "top": ", as when because say until left once",
+     "thrax": "adverb 0.25"
+    },
+    {
+     "c": 51,
+     "size": 9,
+     "top": "while chicago london high support form according fall",
+     "thrax": "noun 0.75"
+    },
+    {
+     "c": 52,
+     "size": 4,
+     "top": "here -- game seen",
+     "thrax": "adverb 0.33"
+    },
+    {
+     "c": 53,
+     "size": 13,
+     "top": "again before :) however 21 yes 20 either",
+     "thrax": "noun 0.44"
+    },
+    {
+     "c": 54,
+     "size": 8,
+     "top": ". ? ! ) but around * besides",
+     "thrax": "preposition 0.67"
+    },
+    {
+     "c": 55,
+     "size": 6,
+     "top": "been ever never got tried thought",
+     "thrax": "verb 0.67"
+    },
+    {
+     "c": 56,
+     "size": 3,
+     "top": "such rather longer",
+     "thrax": "adverb 1.00"
+    },
+    {
+     "c": 57,
+     "size": 4,
+     "top": "> excellent address tmobile",
+     "thrax": "noun 1.00"
+    },
+    {
+     "c": 58,
+     "size": 10,
+     "top": "have has had want need even 've anyone",
+     "thrax": "verb 0.80"
+    },
+    {
+     "c": 59,
+     "size": 13,
+     "top": "out end world performance government kind business issue",
+     "thrax": "noun 0.82"
+    },
+    {
+     "c": 60,
+     "size": 3,
+     "top": "- since &",
+     "thrax": "conjunction 1.00"
+    },
+    {
+     "c": 61,
+     "size": 5,
+     "top": "it he which who she",
+     "thrax": "pronoun 1.00"
+    },
+    {
+     "c": 62,
+     "size": 17,
+     "top": "place well .. year post message number web",
+     "thrax": "noun 0.93"
+    },
+    {
+     "c": 63,
+     "size": 5,
+     "top": "\" ( ** john it's",
+     "thrax": "noun 0.50"
+    }
+   ]
+  }
+ }
+}
