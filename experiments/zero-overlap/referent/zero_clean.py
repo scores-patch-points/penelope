@@ -39,4 +39,5 @@ def main():
                     else: tot["ZERO_clean"] += 1
     print(json.dumps(tot)); print("share of ZERO that is trivial:", round(tot["ZERO_trivial"] / max(1, tot["ZERO"]), 3))
     for e in ex[:12]: print(e)
-main()
+if __name__ == "__main__":
+    main()
