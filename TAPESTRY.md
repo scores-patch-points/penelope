@@ -455,7 +455,7 @@
 ║     @ g/perspective-run.mjs g/perspective-run.test.mjs GL-FV-01 GL-PE-01   ║
 ║     @ g/identity-run.mjs g/identity-run.test.mjs o/identity-def.mjs        ║
 ║     @ o/question-reason.mjs o/question-reason.test.mjs GL-PE-02 GL-PE-03   ║
-║     @ GL-ID-01 GL-QR-01                                                    ║
+║     @ GL-ID-01 GL-QR-01 GL-QR-02                                           ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
