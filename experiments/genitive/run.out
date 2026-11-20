@@ -1,0 +1,7 @@
+tagger-both    bal 0.8304 nullMax 0.61 HOLDS tpr 0.655 fpr 0.018 LR 36.03 [27.33,47.02]
+tagger-left    bal 0.9638 nullMax 0.6149 HOLDS tpr 0.931 fpr 0.036 LR 25.6 [11.52,58.65]
+tagger-right   bal 0.8105 nullMax 0.6085 HOLDS tpr 0.69 fpr 0.091 LR 7.59 [4.12,20.24]
+sniff-both     bal 0.7465 nullMax 0.5996 HOLDS tpr 0.621 fpr 0.145 LR 4.27 [2.45,9.5]
+sniff-left     bal 0.8595 nullMax 0.6208 HOLDS tpr 0.948 fpr 0.255 LR 3.73 [2.6,6.55]
+sniff-right    bal 0.6417 nullMax 0.6233 HOLDS tpr 0.655 fpr 0.382 LR 1.72 [1.21,2.6]
+{"taggerBothMissedPlanted":19,"missedRightUpos":{"ADJ":5,"VERB":2,"DET":1,"PUNCT":4,"NOUN":3,"PROPN":2,"AUX":1,"END":1},"errorOverlap":{"bothRulesWrongAndSameWay":15,"taggerWrong":19,"sniffWrong":28}}

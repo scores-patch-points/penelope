@@ -1,0 +1,201 @@
+{
+ "prereg": "afc213a35c257531",
+ "stamp": "EXPLORATORY/REUSED-file",
+ "total": 109,
+ "planted": 56,
+ "noise": 53,
+ "rules": {
+  "tagger-both": {
+   "balancedAccuracy": 0.8304,
+   "nullMax": 0.61,
+   "holds": true,
+   "tpr": 0.655,
+   "fpr": 0.018,
+   "lr": 36.03,
+   "lr95": [
+    27.33,
+    47.02
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-tagger-both",
+    "group": "khora-tagger",
+    "planted": {
+     "n": 56,
+     "hit": 37
+    },
+    "noise": {
+     "n": 53,
+     "hit": 0
+    },
+    "tpr": 0.6551724137931034,
+    "fpr": 0.01818181818181818,
+    "lrGood": 36.03448275862069,
+    "provenance": null
+   }
+  },
+  "tagger-left": {
+   "balancedAccuracy": 0.9638,
+   "nullMax": 0.6149,
+   "holds": true,
+   "tpr": 0.931,
+   "fpr": 0.036,
+   "lr": 25.6,
+   "lr95": [
+    11.52,
+    58.65
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-tagger-left",
+    "group": "khora-tagger",
+    "planted": {
+     "n": 56,
+     "hit": 53
+    },
+    "noise": {
+     "n": 53,
+     "hit": 1
+    },
+    "tpr": 0.9310344827586207,
+    "fpr": 0.03636363636363636,
+    "lrGood": 25.60344827586207,
+    "provenance": null
+   }
+  },
+  "tagger-right": {
+   "balancedAccuracy": 0.8105,
+   "nullMax": 0.6085,
+   "holds": true,
+   "tpr": 0.69,
+   "fpr": 0.091,
+   "lr": 7.59,
+   "lr95": [
+    4.12,
+    20.24
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-tagger-right",
+    "group": "khora-tagger",
+    "planted": {
+     "n": 56,
+     "hit": 39
+    },
+    "noise": {
+     "n": 53,
+     "hit": 4
+    },
+    "tpr": 0.6896551724137931,
+    "fpr": 0.09090909090909091,
+    "lrGood": 7.586206896551724,
+    "provenance": null
+   }
+  },
+  "sniff-both": {
+   "balancedAccuracy": 0.7465,
+   "nullMax": 0.5996,
+   "holds": true,
+   "tpr": 0.621,
+   "fpr": 0.145,
+   "lr": 4.27,
+   "lr95": [
+    2.45,
+    9.5
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-sniff-both",
+    "group": "nomic-embed+ud-ewt",
+    "planted": {
+     "n": 56,
+     "hit": 35
+    },
+    "noise": {
+     "n": 53,
+     "hit": 7
+    },
+    "tpr": 0.6206896551724138,
+    "fpr": 0.14545454545454545,
+    "lrGood": 4.267241379310345,
+    "provenance": null
+   }
+  },
+  "sniff-left": {
+   "balancedAccuracy": 0.8595,
+   "nullMax": 0.6208,
+   "holds": true,
+   "tpr": 0.948,
+   "fpr": 0.255,
+   "lr": 3.73,
+   "lr95": [
+    2.6,
+    6.55
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-sniff-left",
+    "group": "nomic-embed+ud-ewt",
+    "planted": {
+     "n": 56,
+     "hit": 54
+    },
+    "noise": {
+     "n": 53,
+     "hit": 13
+    },
+    "tpr": 0.9482758620689655,
+    "fpr": 0.2545454545454545,
+    "lrGood": 3.725369458128079,
+    "provenance": null
+   }
+  },
+  "sniff-right": {
+   "balancedAccuracy": 0.6417,
+   "nullMax": 0.6233,
+   "holds": true,
+   "tpr": 0.655,
+   "fpr": 0.382,
+   "lr": 1.72,
+   "lr95": [
+    1.21,
+    2.6
+   ],
+   "card": {
+    "schema": "EvidenceLedger@1",
+    "layer": "possessive-frame-sniff-right",
+    "group": "nomic-embed+ud-ewt",
+    "planted": {
+     "n": 56,
+     "hit": 37
+    },
+    "noise": {
+     "n": 53,
+     "hit": 20
+    },
+    "tpr": 0.6551724137931034,
+    "fpr": 0.38181818181818183,
+    "lrGood": 1.7159277504105088,
+    "provenance": null
+   }
+  }
+ },
+ "G3": {
+  "taggerBothMissedPlanted": 19,
+  "missedRightUpos": {
+   "ADJ": 5,
+   "VERB": 2,
+   "DET": 1,
+   "PUNCT": 4,
+   "NOUN": 3,
+   "PROPN": 2,
+   "AUX": 1,
+   "END": 1
+  },
+  "errorOverlap": {
+   "bothRulesWrongAndSameWay": 15,
+   "taggerWrong": 19,
+   "sniffWrong": 28
+  }
+ }
+}
