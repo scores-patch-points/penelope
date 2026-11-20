@@ -2,7 +2,7 @@
 import fs from "node:fs"; import { execFileSync } from "node:child_process";
 const KW = "/Users/mlacy/Documents/khora-pharos-reading/native", Z = "/Users/mlacy/Documents/khora-cast/Zenodotus";
 const { grammarFor } = await import(`${KW}/the-fold/pharos-reading.mjs`), { tagWithMargins } = await import(`${KW}/adapters/text/ud-parser.js`), { sentences, tokenize } = await import(`${KW}/adapters/text/ud-tokenizer.js`), { applyMind } = await import(`${KW}/adapters/text/mind-cuts.js`);
-const CTX = process.env.CTX === "1", g = await grammarFor("eng"), SEED = 20261120, NB = 8, USE = 4, SAMPLE = 40, NULLDRAWS = 30, OUT = process.env.OUT ?? "calibration-result.json";
+const CTX = process.env.CTX === "1", g = await grammarFor("eng"), SEED = 20261120, NB = 8, USE = 4, SAMPLE = +(process.env.SAMPLE ?? 40), POWER = process.env.POWER === "1", NULLDRAWS = 30, OUT = process.env.OUT ?? "calibration-result.json";
 const git = (...a) => execFileSync("git", ["-C", Z, "-c", "gc.auto=0", ...a], { encoding: "utf8", maxBuffer: 1 << 28 }), ls = (p) => git("ls-tree", "-r", "HEAD", "--name-only").split("\n").filter((f) => f.startsWith(p) && f.endsWith(".txt")).sort();
 const body = (p) => { const t = git("show", `HEAD:${p}`), i = t.startsWith("---") ? t.indexOf("\n---", 3) : -1; return i < 0 ? t : t.slice(t.indexOf("\n", i + 1) + 1); };
 const files = [...ls("19-organic-community/cosem/"), ...ls("19-organic-community/nus-sms/en/")].filter((_, i) => i % 10 !== 0), train = [];
@@ -29,10 +29,10 @@ const PLANT = [...freq].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).sl
 const glue = (sents, words) => sents.map((s) => { const out = []; for (const w of s) { if (words.includes(w) && out.length && alpha(out.at(-1)) && rnd() < 0.5) out[out.length - 1] += w; else out.push(w); } return out; });
 const plantRare = (sents) => { const out = sents.map((s) => [...s]); let n = 0; for (let i = 0; i < out.length && n < 8; i++) { const j = out[i].findIndex((w) => alpha(w) && [...w].length >= 3); if (j >= 0 && rnd() < 0.05) { out[i][j] += "zq"; n++; } } if (n < 8) for (let i = out.length - 1; i >= 0 && n < 8; i--) { const j = out[i].findIndex((w) => alpha(w) && [...w].length >= 3 && !w.endsWith("zq")); if (j >= 0) { out[i][j] += "zq"; n++; } } return out; };
 const conditions = { A: batches.map((b) => b.map((s) => s.map(shuf))), B: batches.map((b) => glue(b, PLANT)), C: batches.map((b, i) => (i === 0 ? plantRare(b) : b)) };
-const out = { prereg: "f6e44c4e3e4b1ff5", addendum1: "84c4e3f27e501c04", ctx: CTX, seed: SEED, planted: PLANT, conditions: {} };
+const out = { prereg: "f6e44c4e3e4b1ff5", addendum1: "84c4e3f27e501c04", addendum2: "304a80eb1cff4bf9", power: POWER, sample: SAMPLE, ctx: CTX, seed: SEED, planted: PLANT, conditions: {} };
 for (const [name, bs] of Object.entries(conditions)) {
   const goodSets = [], stats = []; for (let i = 0; i < bs.length; i++) {
-    const cache = new Map(), cands = candidates(bs[i]), good = new Set(), t0 = Date.now(); let evaluable = 0;
+    const cache = new Map(), all = candidates(bs[i]), cands = !POWER ? all : name === "B" ? PLANT : name === "A" ? (() => { const pool = [...all].sort(); const picked = []; for (let k = 0; k < 150 && pool.length; k++) picked.push(pool.splice(Math.floor(rnd() * pool.length), 1)[0]); return picked; })() : [], good = new Set(), t0 = Date.now(); let evaluable = 0;
     for (const suf of cands) { const r = evalRoute(bs[i], suf, cache); if (!r) continue; evaluable++; if (r.good) good.add(suf); }
     goodSets.push(good); stats.push({ batch: i + 1, candidates: cands.length, evaluable, good: good.size, rate: good.size / evaluable }); console.log(`${name} batch ${i + 1}: candidates ${cands.length}, evaluable ${evaluable}, good ${good.size} (${(100 * good.size / evaluable).toFixed(2)}%; theory at most ${(100 / 31).toFixed(2)}%)  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   }

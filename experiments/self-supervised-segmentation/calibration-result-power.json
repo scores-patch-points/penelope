@@ -1,0 +1,141 @@
+{
+ "prereg": "f6e44c4e3e4b1ff5",
+ "addendum1": "84c4e3f27e501c04",
+ "addendum2": "304a80eb1cff4bf9",
+ "power": true,
+ "sample": 200,
+ "ctx": true,
+ "seed": 20261120,
+ "planted": [
+  "the",
+  "can",
+  "you",
+  "for",
+  "and"
+ ],
+ "conditions": {
+  "A": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 150,
+     "evaluable": 51,
+     "good": 10,
+     "rate": 0.19607843137254902
+    },
+    {
+     "batch": 2,
+     "candidates": 150,
+     "evaluable": 53,
+     "good": 6,
+     "rate": 0.11320754716981132
+    },
+    {
+     "batch": 3,
+     "candidates": 150,
+     "evaluable": 53,
+     "good": 10,
+     "rate": 0.18867924528301888
+    },
+    {
+     "batch": 4,
+     "candidates": 150,
+     "evaluable": 48,
+     "good": 6,
+     "rate": 0.125
+    }
+   ],
+   "goodOnce": 32,
+   "replicated": 0,
+   "replicatedShare": 0,
+   "replicatedList": []
+  },
+  "B": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 5,
+     "evaluable": 5,
+     "good": 2,
+     "rate": 0.4
+    },
+    {
+     "batch": 2,
+     "candidates": 5,
+     "evaluable": 5,
+     "good": 3,
+     "rate": 0.6
+    },
+    {
+     "batch": 3,
+     "candidates": 5,
+     "evaluable": 5,
+     "good": 2,
+     "rate": 0.4
+    },
+    {
+     "batch": 4,
+     "candidates": 5,
+     "evaluable": 5,
+     "good": 2,
+     "rate": 0.4
+    }
+   ],
+   "goodOnce": 2,
+   "replicated": 3,
+   "replicatedShare": 0.6,
+   "replicatedList": [
+    "the",
+    "for",
+    "can"
+   ],
+   "plantedGoodBatches": {
+    "the": 3,
+    "can": 2,
+    "you": 1,
+    "for": 2,
+    "and": 1
+   },
+   "nonPlantedReplicated": 0,
+   "nonPlantedOnce": 0
+  },
+  "C": {
+   "stats": [
+    {
+     "batch": 1,
+     "candidates": 0,
+     "evaluable": 0,
+     "good": 0,
+     "rate": null
+    },
+    {
+     "batch": 2,
+     "candidates": 0,
+     "evaluable": 0,
+     "good": 0,
+     "rate": null
+    },
+    {
+     "batch": 3,
+     "candidates": 0,
+     "evaluable": 0,
+     "good": 0,
+     "rate": null
+    },
+    {
+     "batch": 4,
+     "candidates": 0,
+     "evaluable": 0,
+     "good": 0,
+     "rate": null
+    }
+   ],
+   "goodOnce": 0,
+   "replicated": 0,
+   "replicatedShare": null,
+   "replicatedList": [],
+   "zqGoodBatches": 0,
+   "zqReplicated": false
+  }
+ }
+}
