@@ -113,6 +113,11 @@ English (48e463b) remains the only GIVEN giver (UD English documentation, 3 pinn
 
 The khora now has ONE entry point: `native/reading-one.mjs#read(text, opts)`. It reads (slice applied) and writes to pharos in one call. No second door, no second normalisation, no piping between systems. `/v1/read` now uses it instead of `readCanonical`. `readToWeft` accepts `rowsOf` so the slice flows through the canonical door. This eliminates the "piping messed up" problem — the read and the write are in the same function.
 
+
+## Single API handles all modalities (2026-11-20)
+
+`native/reading-one.mjs#read(input, opts)` now routes by modality: text → text reader (slice applied), file path → detect from extension, route to code/notation adapters (wired), image/video/audio/midi → typed gap (adapter exists, EOT marks not yet defined). One input, one output to pharos.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
