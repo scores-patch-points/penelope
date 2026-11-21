@@ -59,6 +59,18 @@ The frozen transition parser, measured on held-out splits (competency, not a cod
 
 The DELTA (low vs high) kept as learning: the emergent smell's multi-class accuracy on these same languages was 0.45 (eng) / 0.45 (grc) / 0.40 (zh) / 0.36 (sa) — the gap between the mechanical smell and the gold is the calibration card, not an error to erase. Greek parses better than Sanskrit despite being ancient-inflected: PROIEL is well-annotated and closer to the codec's home; Vedic is the hardest (free word order + sandhi + small data).
 
+
+## Generative vs dependency — the positive half of GL-RV-01 (2026-11-20)
+
+The same static Sanskrit parser, asked TWO questions on the same Vedic test set:
+
+| tributary (the question asked) | score |
+|---|---|
+| DERIVATIONAL (Pattern): recover stem + case ending | lemma 91.1% · case 82.8% · stem+case 80.3% |
+| DEPENDENCY (Figure): recover head + relation | UAS 66.2 · LAS 56.3 |
+
+~24 points separate them. The case-carried relations the Figure parse loses (nsubj 58%, obl 59%) are the same signal the derivational parse recovers (case 82.8%). This is the positive half of GL-RV-01: the grain chooses the tributary, and the right tributary is vastly better. Sanskrit is not harder than English — it was being read down the wrong tributary.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
