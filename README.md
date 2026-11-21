@@ -517,10 +517,10 @@ append-only, always revisable).
 ║     @ GL-EP-01 GL-EP-02 GL-GN-01 GL-GN-02 GL-SM-01 GL-SM-02 GL-SM-03       ║
 ║     @ GL-SM-04 GL-CB-01 GL-TH-01 GL-TH-02 GL-TH-03 GL-TH-04 GL-TH-05       ║
 ║     @ GL-TH-06 GL-TH-07 GL-TH-08 GL-TH-09 GL-TH-10 GL-TH-11 GL-TH-12       ║
-║     @ GL-TH-13 GL-TH-14 GL-PH-01 GL-TH-15 GL-EX-01 GL-EL-01 GL-NK-01       ║
-║     @ GL-NK-02 GL-NK-03 GL-NK-04 GL-PK-01 GL-SN-03 GL-RV-02 GL-RV-03       ║
-║     @ GL-VD-01 GL-PP-01 GL-PP-02 GL-PP-03 GL-RV-04 GL-EQ-01 GL-RV-01       ║
-║     @ GL-CL-01                                                             ║
+║     @ GL-TH-13 GL-TH-14 GL-PH-01 GL-TH-15 GL-CO-01 GL-EX-01 GL-EL-01       ║
+║     @ GL-NK-01 GL-NK-02 GL-NK-03 GL-NK-04 GL-PK-01 GL-SN-03 GL-RV-02       ║
+║     @ GL-RV-03 GL-VD-01 GL-PP-01 GL-PP-02 GL-PP-03 GL-RV-04 GL-EQ-01       ║
+║     @ GL-RV-01 GL-CL-01                                                    ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
