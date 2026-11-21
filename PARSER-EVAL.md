@@ -123,6 +123,26 @@ The khora now has ONE entry point: `native/reading-one.mjs#read(text, opts)`. It
 
 `native/adapters/text/karaka-map.mjs` in the khora maps UD case tags + deprels → Panini's six kārakas (kartṛ, karman, karaṇa, sampradāna, apādāna, adhikaraṇa). Genitive and vocative are relations, not roles. Ground particles carry kārakas (把=karman, 被=karman, 以=karaṇa, 在=adhikaraṇa, etc.). Coverage: Sanskrit 58.2% (all six kārakas), English 27.0%, Mandarin 38.3%. The kāraka is the upstream of Thrax's 8 — the semantic roles that all languages instantiate, regardless of surface form. This is the "one river" principle made code: the kāraka is the same across all languages; the surface signal (case endings, word order, particles) differs.
 
+
+## Ground tributary: Classical Chinese (Tao Te Ching) — measured 2026-11-20
+
+The Ground tributary for Classical Chinese is built and tested on the Tao Te Ching (81 chapters, ~7,390 characters, Traditional Chinese, IAST not needed — the text is in characters).
+
+**Word-breaker:** UD Chinese GSD segmenter (trained, 93.7% boundary accuracy). Trained on Simplified Chinese, applied to Traditional Chinese. Errors on unseen compounds ("第1章道" should be "第1" + "章" + "道"), but the segmenter works.
+
+**Particle recognizer:** `native/adapters/text/classical-chinese-particles.js` (khora). 13 Classical Chinese particles (而, 以, 于, 且, 也, 矣, 乎, 哉, 焉, 之, 者, 所, 其) with kāraka mapping (以=karaṇa, 在=adhikaraṇa, 之=genitive, etc.).
+
+**kāraka mapper:** `native/adapters/text/karaka-map.mjs` (khora). Maps UD deprels + case feats → Panini's six kārakas. Ground particles (把, 被, 以, 在, etc.) carry kārakas directly.
+
+**Measured on the Tao Te Ching (first 10 sentences):**
+- 69 tokens, 13 particles (18.8%), 12 kāraka-carrying tokens
+- Genitive (之): 9, Instrumental (以): 2, Nominalizer (者): 1
+- The segmenter breaks unspaced text into words; particles are identified; kārakas are mapped
+
+**The Ground tributary is the recognition tributary, not the classification tributary.** The particles are surface-distinctive (like English's PART tag, which smells at 0.966). The smell doesn't need to classify them by context — it needs to RECOGNIZE them by surface form. This is a fundamentally different kind of smell from the Pattern/ Figure tributaries.
+
+**The "one river" principle holds:** all tributaries (Ground, Figure, Pattern) produce EOT marks (referents in kārakas). The words are the tributary; the referent-network is the river. The Tao Te Ching's particles (而, 以, 于, 且, 也, 矣, 乎, 哉, 焉, 之, 者, 所, 其) are the Ground tributary's kāraka carriers — the same kārakas that Sanskrit carries in case endings and English carries in word order.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
