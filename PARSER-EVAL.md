@@ -45,6 +45,20 @@ Tested whether "rich features + structured training" makes the graph parser comp
 
 So structured training OVERFITS the free-word-order language; the bare local update generalizes better. English moved slightly (63.3 → 66.9 with both changes). Conclusion: the architecture (graph decode) is necessary for free word order but NOT sufficient — a competitive graph parser needs the transition parser's full Zhang & Nivre feature set + regularization + dev-set early stopping, and it is NOT guaranteed to beat the transition parser's 66.2, because Vedic is small (21k sentences) and genuinely free-word-order. The transition parser, despite the word-order assumption, is the best Sanskrit parser we currently have: 66.2 UAS, ceiling 68.4 (gold-tag oracle: the tagger costs only ~2 pts).
 
+
+## Static-codec competency, four languages (2026-11-20)
+
+The frozen transition parser, measured on held-out splits (competency, not a codec change):
+
+| language | UPOS | UAS | LAS | held-out |
+|---|---|---|---|---|
+| English (EWT) | 93.8 | 84.5 | 81.2 | official test |
+| Ancient Greek (PROIEL) | 95.5 | 74.6 | 70.1 | internal 90/10 (of train) |
+| Mandarin (GSD) | 87.8 | 68.2 | 61.7 | internal 90/10 (of train) |
+| Vedic Sanskrit | 90.5 | 66.2 | 56.3 | official test |
+
+The DELTA (low vs high) kept as learning: the emergent smell's multi-class accuracy on these same languages was 0.45 (eng) / 0.45 (grc) / 0.40 (zh) / 0.36 (sa) — the gap between the mechanical smell and the gold is the calibration card, not an error to erase. Greek parses better than Sanskrit despite being ancient-inflected: PROIEL is well-annotated and closer to the codec's home; Vedic is the hardest (free word order + sandhi + small data).
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.

@@ -11,6 +11,13 @@ Everything else grows the COMPETENCY, never the codec: a calibration card, a giv
 
 The distinction: the codec is the substrate; the competency is the ledger. When the diagnosis says "the parser is at its ceiling," that is a measured fact to RECORD (66.2 UAS, ceiling 68.4), not a mandate to build a new parser. This is the rule that kills the re-derivation loop — the same base function was rebuilt three times because nobody froze it.
 
+
+## The three rules of growing competency (2026-11-20, the owner)
+
+1. **Low sets possibility, high sets probability.** The mechanical layer (the smell, the codec's nomination) opens POSSIBILITIES — a candidate class, a candidate cut. The higher layer (the gate, the gold, the falsifier) selects PROBABILITY — which candidate survives. Never let the high layer guess; it measures.
+2. **Higher judgments re-evaluate lower readings.** A later, better-informed judgment (gold tags, a new held-out set, a re-read) may change what an earlier mechanical reading meant. The re-evaluation is a NEW row, never an edit of the old one; the old reading stays, marked superseded.
+3. **Keep the delta as learning.** The disagreement between the lower reading and the higher re-evaluation is the DELTA, and the delta is the learning: recorded (a calibration card's tpr/fpr, a confusion, an error-overlap), never erased. A corrected reading is not "the lower was wrong and is gone"; it is "the lower said X, the higher says Y, and the X→Y delta is a measured fact that calibrates the lower."
+
 ## The loop (each step is an existing file or a one-command action)
 
 1. **Diagnose** — read the ledger's calibration cards (`organs/evidence-ledger.mjs`, the `GL-*` entries in `GLAUCA-EOT.md`). The weakest layer is the one whose LR interval includes 1, or whose class has "no voice". This is mechanical, not an opinion.
