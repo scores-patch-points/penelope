@@ -1,6 +1,9 @@
 // FRESH run of PREREG.md (sha256 first 16: f5cd88ff8fa61f5e). Usage: EWT=/tmp/ewt-dev.conllu node measure.mjs. No regex, no word list reads text.
 import fs from "node:fs";
-import { proposeCut } from "../../organs/clitic-slice.mjs";
+import { kernelPath } from "../../organs/kernel-reach.mjs";
+// clitic-slice.mjs moved to the khora (read organs live there — SYSTEM-MAP). Import via the one reach; khora-absent degrades the proponent-recall row to null, never a fabricated number.
+let proposeCut = () => null;
+try { ({ proposeCut } = await import(kernelPath("khora", "native/adapters/text/clitic-slice.mjs"))); } catch { /* khora-absent: recall row stays null */ }
 const EWT = process.env.EWT;
 const SEED = 20261120, MINC = 5, NCTX = 200, K = 64, RESTARTS = 10, SHUF = 200;
 const THRAX_MAP = Object.freeze({ NOUN: "noun", PROPN: "noun", VERB: "verb", AUX: "verb", PRON: "pronoun", DET: "article", ADP: "preposition", CCONJ: "conjunction", SCONJ: "conjunction", ADV: "adverb", INTJ: "interjection" });

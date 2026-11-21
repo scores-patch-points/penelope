@@ -513,6 +513,7 @@
     "g/house-ratchet.test.mjs",
     "g/text-regex-ratchet.mjs",
     "g/text-regex-ratchet.test.mjs",
+    "g/read-organ-guard.mjs",
     "g/hook-no-text-regex.mjs",
     "GL-TP-02",
     "GL-QA-06",
@@ -1530,15 +1531,7 @@
     "GL-SM-03",
     "GL-SM-04",
     "GL-RV-01",
-    "o/clitic-slice.mjs",
-    "o/clitic-slice.test.mjs",
-    "GL-CL-01",
-    "o/emergent-smell.mjs",
-    "o/emergent-smell.test.mjs",
-    "o/data/emergent-smell-eng.json",
-    "o/data/emergent-smell-grc.json",
-    "o/data/emergent-smell-zh.json",
-    "o/data/emergent-smell-sa.json"
+    "GL-CL-01"
    ]
   },
   {

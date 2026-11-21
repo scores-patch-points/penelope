@@ -253,8 +253,8 @@
 ║     @ g/unweave.mjs g/check-tapestry.mjs g/check-tapestry.test.mjs         ║
 ║     @ g/run-checks.mjs g/run-checks.test.mjs g/house-baseline.mjs          ║
 ║     @ g/house-ratchet.mjs g/house-ratchet.test.mjs g/text-regex-ratchet.mjs║
-║     @ g/text-regex-ratchet.test.mjs g/hook-no-text-regex.mjs GL-TP-02      ║
-║     @ GL-QA-06 GL-TP-05 GL-TP-06 GL-TP-07                                  ║
+║     @ g/text-regex-ratchet.test.mjs g/read-organ-guard.mjs                 ║
+║     @ g/hook-no-text-regex.mjs GL-TP-02 GL-QA-06 GL-TP-05 GL-TP-06 GL-TP-07║
 ║■LIB 4 △∘ § library                                                         ║
 ║     @ LP/derived-priors o/GENERATION-INVENTORY.md o/kernel-reach.mjs       ║
 ║     @ o/kernel-reach.test.mjs GL-01 GL-KR-01 GL-KR-02                      ║
@@ -462,10 +462,7 @@
 ║     @ o/evidence-ledger.test.mjs GL-EV-01 o/pos-sniff.mjs                  ║
 ║     @ o/pos-sniff.test.mjs o/data/pos-sniff-eng2.json GL-SN-01 GL-SN-02    ║
 ║     @ GL-EP-01 GL-EP-02 GL-GN-01 GL-GN-02 GL-SM-01 GL-SM-02 GL-SM-03       ║
-║     @ GL-SM-04 GL-RV-01 o/clitic-slice.mjs o/clitic-slice.test.mjs GL-CL-01║
-║     @ o/emergent-smell.mjs o/emergent-smell.test.mjs                       ║
-║     @ o/data/emergent-smell-eng.json o/data/emergent-smell-grc.json        ║
-║     @ o/data/emergent-smell-zh.json o/data/emergent-smell-sa.json          ║
+║     @ GL-SM-04 GL-RV-01 GL-CL-01                                           ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
