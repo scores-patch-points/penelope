@@ -93,6 +93,11 @@ The graph parser improved (66.9 -> 79.8) but STILL loses to the transition parse
 
 `rowsOfFor("eng")` in the khora now applies the smell-slice proponent before the parse. Verified live: "Oscar's car is parked outside." reads as "Oscar/PROPN" + "'s/PART" + "car/NOUN" — the clitic is split. End-to-end recovery: UAS 72.9 (glued) -> 82.7 (sliced), 9.7 of the 11.6-point gluing tax. The slice is a revisable pressure: unnameable wholes pass through unchanged. The read-organ guard in penelope (`gym/read-organ-guard.mjs`) ensures the slice stays in the khora and is never re-derived in penelope.
 
+
+## Wired in (2026-11-20): the clitic-slice is permanent in the khora reader
+
+`rowsOfFor` in the khora's `native/reading.js` now applies the smell-slice proponent before the parse, for any language with a smell model + markers (eng + san). Verified live: "Oscar's car is parked outside." reads as `Oscar/PROPN` + `'s/PART` + `car/NOUN`. End-to-end recovery: UAS 72.9 (glued) -> 82.7 (sliced), 9.7 of the 11.6-point gluing tax. The slice is a revisable pressure: unnameable wholes pass through unchanged. Markers declared as `native/adapters/text/data/clitic-markers-{eng,san,zh,grc}.json`. Giver declarations for all four languages in `native/adapters/text/data/giver-ud-{eng,sa,zh,grc}-clitics.json`. The read-organ guard in penelope (`gym/read-organ-guard.mjs`) ensures the slice stays in the khora and is never re-derived in penelope.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
