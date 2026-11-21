@@ -71,6 +71,23 @@ The same static Sanskrit parser, asked TWO questions on the same Vedic test set:
 
 ~24 points separate them. The case-carried relations the Figure parse loses (nsubj 58%, obl 59%) are the same signal the derivational parse recovers (case 82.8%). This is the positive half of GL-RV-01: the grain chooses the tributary, and the right tributary is vastly better. Sanskrit is not harder than English — it was being read down the wrong tributary.
 
+
+## English "more Figure" — hypothesis falsified (2026-11-20)
+
+Tested whether a GLOBAL decoder (the arc-factored MST graph parser) with rich configurational features beats the transition parser on English's non-local relations (PP attachment, coordination). Result, per-relation UAS:
+
+| relation | transition | graph (rich) | delta |
+|---|---|---|---|
+| nsubj | 90 | 85 | -5 |
+| obj | 93 | 90 | -3 |
+| obl | **77** | **62** | **-15** |
+| nmod | 79 | 74 | -5 |
+| conj | **65** | **49** | **-16** |
+| compound | 78 | 73 | -5 |
+| overall | **84.5** | 79.8 | -4.7 |
+
+The graph parser improved (66.9 -> 79.8) but STILL loses to the transition parser, and loses WORSE on exactly the non-local relations the hypothesis said it would win. Falsified: the decoder (global vs local walk) matters less than the FEATURE RICHNESS — the transition parser's Zhang & Nivre structural features (valency, children, grand-head) are what carry the Figure, and the graph codec lacks them. English's codec is already Figure-native; the remaining lever is more structural features, not a different decoder.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
