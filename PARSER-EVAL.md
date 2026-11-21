@@ -35,6 +35,16 @@ First-cut result (10 iterations, bare arc-factored perceptron):
 
 So the graph parser UNDER-performs on both, because the first cut is a bare local perceptron with ~10 features — it lacks the transition parser's Zhang & Nivre feature set, dynamic oracle, and structured training. The architecture is right (shared decoder, per-language codec); the implementation is not yet competitive. Next: port the rich features into the arc codec and add structured training before the architecture question (does morphology-primary graph decoding beat word-order transition decoding on free word order) is answerable.
 
+
+## Graph-parser isolation (2026-11-20, follow-up)
+
+Tested whether "rich features + structured training" makes the graph parser competitive. It does not, and the isolation is clean:
+- v1 (bare local perceptron, ~10 features): Sanskrit UAS 57.9.
+- v2 (structured training = update on the global CLE tree, + intervening-token case/POS features): Sanskrit UAS 56.7 — WORSE.
+- v2 minus the intervening features (structured training only): Sanskrit UAS 56.2 — worse still.
+
+So structured training OVERFITS the free-word-order language; the bare local update generalizes better. English moved slightly (63.3 → 66.9 with both changes). Conclusion: the architecture (graph decode) is necessary for free word order but NOT sufficient — a competitive graph parser needs the transition parser's full Zhang & Nivre feature set + regularization + dev-set early stopping, and it is NOT guaranteed to beat the transition parser's 66.2, because Vedic is small (21k sentences) and genuinely free-word-order. The transition parser, despite the word-order assumption, is the best Sanskrit parser we currently have: 66.2 UAS, ceiling 68.4 (gold-tag oracle: the tagger costs only ~2 pts).
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
