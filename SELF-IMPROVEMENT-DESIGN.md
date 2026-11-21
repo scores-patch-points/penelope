@@ -2,6 +2,15 @@
 
 Written 2026-11-20 after the parser measurement and the two diagnosis ants. Grounded in what already exists; names real files. The rule that governs the whole document: **a design that is not RUN is a shadow plan — the thing that has been going wrong (MEANING-PLAN is "in shadow", the 2026-10-04 99% cut orphaned the base function, and 5,121 "typed gap / not wired / absent" markers have accumulated).**
 
+
+## The governing rule (2026-11-20, the owner): static codecs, competency only
+
+The codecs are FROZEN — the transition parser (`ud-parser.js`), the emergent smell (`emergent-smell.mjs` + its pinned models), the clitic-slice proponent (`clitic-slice.mjs`), the tokenizer, and the graph-parser as a frozen experiment. A codec is never rewritten to chase a number; it is superseded by pointer only when a measured falsifier demands it, and that is rare.
+
+Everything else grows the COMPETENCY, never the codec: a calibration card, a giver declaration (Greek/Sanskrit/Mandarin clitic markers), a pinned per-language model (data), a held-out result, a ledger entry — all data and measurement, all append-only, none of it a mechanism change.
+
+The distinction: the codec is the substrate; the competency is the ledger. When the diagnosis says "the parser is at its ceiling," that is a measured fact to RECORD (66.2 UAS, ceiling 68.4), not a mandate to build a new parser. This is the rule that kills the re-derivation loop — the same base function was rebuilt three times because nobody froze it.
+
 ## The loop (each step is an existing file or a one-command action)
 
 1. **Diagnose** — read the ledger's calibration cards (`organs/evidence-ledger.mjs`, the `GL-*` entries in `GLAUCA-EOT.md`). The weakest layer is the one whose LR interval includes 1, or whose class has "no voice". This is mechanical, not an opinion.
