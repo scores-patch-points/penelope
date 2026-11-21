@@ -157,6 +157,45 @@ The kāraka is the upstream of Thrax's 8 — the semantic roles that all languag
 
 The kāraka map is a DECLARED translation (like THRAX_MAP), not a measured one. It is falsifiable: a language where the mapping fails would refute it.
 
+
+## 13. The triple helix: 27 cells, 3 intertwined axes, and the dependency chain
+
+The cube has 27 cells = 3 grains (Ground/Figure/Pattern) × 3 terrains (Existence/Structure/Interpretation) × 3 stances (Differentiate/Relate/Generate). The "triple helix" is the three axes intertwined: each axis is a helix (Ground=Void hub 0, Figure=Beings spokes n, Pattern=Fold rim 1), and the 27 cells are the intersection points.
+
+The 9 operators (NUL→SIG→INS→SEG→CON→SYN→DEF→EVA→REC) define the dependency chain through all 27 cells. Each operator is (mode, domain) and touches 3 cells (one per grain). The chain is serial (NUL must precede SIG, SIG must precede INS, etc.) but within each operator, the 3 grains are read in parallel.
+
+The "something between 1 and 2" (referent-network → kāraka) is the **terrain** (Existence/Structure/Interpretation):
+- A referent that merely exists (Existence) has no kāraka.
+- A referent that is structurally connected (Structure) has one.
+- A referent that is interpretable (Interpretation) carries it.
+
+The "something more" is the **stance** (Differentiate/Relate/Generate):
+- A referent being distinguished (Differentiate) is named.
+- A referent being bound (Relate) is linked.
+- A referent being produced (Generate) is derived.
+
+The DMD gate is grain-dependent:
+- Ground: present vs absent
+- Figure: linked vs unlinked
+- Pattern: licensed vs unlicensed
+
+The smell must read at all 27 cells, not just the grain level. GL-CB-01 showed that the smell's accuracy varies 2.9x within a single grain (Figure/Existence/Differentiate 0.906 vs Figure/Structure/Relate 0.312). The other 26 cells are unexplored.
+
+The "parallelization" is the ant-swarm: 3 ants (one per grain), each reading the material independently, converging on the EOT marks. Within each grain, the terrain and stance are also independent readings. The grain classification IS the convergence point, not a serial gate.
+
+What we haven't measured:
+1. Whether the terrain and stance improve the smell (GL-CB-01 tested this: yes, they do)
+2. Whether the kāraka assignment improves with terrain/stance knowledge (untested)
+3. Whether the DMD gate needs to be grain-dependent (untested)
+4. Whether the 27 cells are the RIGHT 27 cells (untested)
+5. Whether the helix order is the right order (untested)
+
+Next experiments:
+1. Add terrain and stance features to the smell's context vector and re-measure
+2. Test the kāraka assignment with terrain/stance knowledge
+3. Test the DMD gate with grain-dependent thresholds
+4. Test on Sanskrit and Mandarin (not just English)
+
 ## Falsifier
 
 This plan is falsified if:
