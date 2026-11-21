@@ -108,6 +108,11 @@ Three CANDIDATE givers (treebank-attested, full sha256 pins, validated by `token
 
 English (48e463b) remains the only GIVEN giver (UD English documentation, 3 pinned URLs). The three new givers are CANDIDATE status (a corpus alone is a candidate; a person or standard makes it 'given'). The markers are declared as `native/adapters/text/data/clitic-markers-{sa,zh,grc}.json` and the giver declarations as `native/adapters/text/data/giver-ud-{sa,zh,grc}-clitics.json`.
 
+
+## Single API (2026-11-20): one input, one output to pharos
+
+The khora now has ONE entry point: `native/reading-one.mjs#read(text, opts)`. It reads (slice applied) and writes to pharos in one call. No second door, no second normalisation, no piping between systems. `/v1/read` now uses it instead of `readCanonical`. `readToWeft` accepts `rowsOf` so the slice flows through the canonical door. This eliminates the "piping messed up" problem — the read and the write are in the same function.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
