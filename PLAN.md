@@ -143,6 +143,20 @@ The open questions for Ground languages:
 
 The plan: spend the next measurement cycle on Ground-heavy languages. Start with Mandarin (already fetched, already has a smell result). Build a word-breaker, re-measure the smell at character level, and see if the kāraka frame works on particle-marked roles. The delta between Ground and Pattern tributaries is the learning.
 
+
+## 12. The kāraka map: Panini's six semantic roles as the upstream
+
+`native/adapters/text/karaka-map.mjs` in the khora maps UD case tags + deprels → Panini's six kārakas (kartṛ, karman, karaṇa, sampradāna, apādāna, adhikaraṇa). Genitive and vocative are relations, not roles. Ground particles carry kārakas (把=karman, 被=karman, 以=karaṇa, 在=adhikaraṇa, etc.).
+
+Coverage on held-out test sets:
+- Sanskrit: 58.2% (all six kārakas well-represented)
+- English: 27.0% (mostly adhikaraṇa, kartṛ, karman)
+- Mandarin: 38.3% (mostly adhikaraṇa, kartṛ, karman)
+
+The kāraka is the upstream of Thrax's 8 — the semantic roles that all languages instantiate, regardless of surface form. This is the "one river" principle made code: the kāraka is the same across all languages; the surface signal (case endings, word order, particles) differs. The delta between surface signals is the learning.
+
+The kāraka map is a DECLARED translation (like THRAX_MAP), not a measured one. It is falsifiable: a language where the mapping fails would refute it.
+
 ## Falsifier
 
 This plan is falsified if:
