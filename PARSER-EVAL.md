@@ -98,6 +98,16 @@ The graph parser improved (66.9 -> 79.8) but STILL loses to the transition parse
 
 `rowsOfFor` in the khora's `native/reading.js` now applies the smell-slice proponent before the parse, for any language with a smell model + markers (eng + san). Verified live: "Oscar's car is parked outside." reads as `Oscar/PROPN` + `'s/PART` + `car/NOUN`. End-to-end recovery: UAS 72.9 (glued) -> 82.7 (sliced), 9.7 of the 11.6-point gluing tax. The slice is a revisable pressure: unnameable wholes pass through unchanged. Markers declared as `native/adapters/text/data/clitic-markers-{eng,san,zh,grc}.json`. Giver declarations for all four languages in `native/adapters/text/data/giver-ud-{eng,sa,zh,grc}-clitics.json`. The read-organ guard in penelope (`gym/read-organ-guard.mjs`) ensures the slice stays in the khora and is never re-derived in penelope.
 
+
+## Competency grown (2026-11-20): per-language clitic givers declared
+
+Three CANDIDATE givers (treebank-attested, full sha256 pins, validated by `tokenizer-rule-def::giverFrom`):
+- **Sanskrit** (sa): 20 PART forms (iti, eva, na, vai, ha, iva, hi, a, u, yathā, mā, api, tu, an, id, cit, nu, khalu, sma, vāva) — sandhi fusion IS the clitic problem for Sanskrit.
+- **Mandarin** (zh): 10 particles (的, 之, 了, 着, 吗, 呢, 吧, 啊, 嘛) — particles are separate words, no gluing; giver declared for the record.
+- **Greek** (grc): 21 enclitics (τε, δέ, μέν, γε, καί, δή, ἄν, πως, που, πω, τοι, νυ, ρα, θην, περ, σφε, σφι, σφιν, σφω, σφωι, σφωιν) — enclitics are separate words, no gluing; giver declared for the record.
+
+English (48e463b) remains the only GIVEN giver (UD English documentation, 3 pinned URLs). The three new givers are CANDIDATE status (a corpus alone is a candidate; a person or standard makes it 'given'). The markers are declared as `native/adapters/text/data/clitic-markers-{sa,zh,grc}.json` and the giver declarations as `native/adapters/text/data/giver-ud-{sa,zh,grc}-clitics.json`.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
