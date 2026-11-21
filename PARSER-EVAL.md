@@ -143,6 +143,19 @@ The Ground tributary for Classical Chinese is built and tested on the Tao Te Chi
 
 **The "one river" principle holds:** all tributaries (Ground, Figure, Pattern) produce EOT marks (referents in kārakas). The words are the tributary; the referent-network is the river. The Tao Te Ching's particles (而, 以, 于, 且, 也, 矣, 乎, 哉, 焉, 之, 者, 所, 其) are the Ground tributary's kāraka carriers — the same kārakas that Sanskrit carries in case endings and English carries in word order.
 
+
+## Ground tributary: Classical Chinese (Tao Te Ching) — wired 2026-11-20
+
+The Ground tributary for Classical Chinese is built and wired into the single read API. Verified on the Tao Te Ching (1192 sentences, 3733 EOT marks).
+
+- Word-breaker: UD Chinese GSD segmenter (93.7% boundary accuracy)
+- Particle recognizer: 13 Classical Chinese particles (而/以/于/且/也/矣/乎/哉/焉/之/者/所/其) with kāraka mapping
+- kāraka mapper: Panini's six semantic roles, carried by particles (把=karman, 被=karman, 以=karaṇa, 在=adhikaraṇa, etc.) and word order (SVO)
+- The Ground tributary is the recognition tributary: particles are surface-distinctive, not context-classified
+- Single read API: `read(text, { language: "zh" })` → EOT marks (referents in kārakas) → pharos
+
+The "one river" principle holds: all tributaries (Ground, Figure, Pattern) produce EOT marks (referents in kārakas). The words are the tributary; the referent-network is the river.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
