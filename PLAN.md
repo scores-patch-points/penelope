@@ -123,6 +123,26 @@ The loop is recursive because each iteration's measurement names the next weak p
 
 The answer to "do two paraphrases sharing no words have no meaningful difference" is: **yes, if their EOT marks align — same referents, same kārakas, same case. The words are the tributary; the referent-network is the river.** The theory is sound. The machinery for establishing that alignment at zero lexical overlap is still weak. The kāraka system (Panini) is the upstream that makes it possible.
 
+
+## 11. Ground-heavy languages: the open frontier
+
+The plan's three grains (Ground/Figure/Pattern) are not equally explored. Figure (English) and Pattern (Sanskrit, Greek) have been measured; Ground (Mandarin) has only been touched (smell: 10/16 tags hold, 0.433 multi-class accuracy, but the parser was never built for it). The Ground grain may need a fundamentally different codec, and the current pipeline's Figure-first assumptions (tokenize by whitespace, POS-tag by form, parse by adjacency) may fail on it the way they fail on Sanskrit — but for different reasons.
+
+What "Ground" means for reading:
+- **No inflection.** No case endings, no conjugation. Meaning is carried by word order and particles, not by morphological endings.
+- **No spaces.** Chinese, Thai, Lao, Khmer, Burmese — the word boundary is not written. The tokenizer must find it (dictionary-based or model-based word breaker), not split on whitespace.
+- **Particles as the grammar.** 的 (possessive/attributive), 了 (perfective), 着 (progressive), 吗 (interrogative), 呢 (topical) — these are the grammatical relations, carried by standalone particles, not by case endings or word order alone.
+- **The "clitic" problem is different.** Mandarin particles are separate words, not fused suffixes. The clitic-slice proponent (which splits glued forms) does not fire on Mandarin. The slice needs a different mechanism: sandhi-decomposition for Sanskrit, word-breaking for Mandarin.
+- **The kāraka system maps differently.** In Pattern languages, kārakas are carried by case endings (vibhakti). In Ground languages, they are carried by particles (的 marks genitive, 把 marks accusative, 被 marks passive). The KARAKA_MAP from UD to kārakas still holds, but the surface signal is different.
+
+The open questions for Ground languages:
+1. Does the parser need a word-breaker before it can read? (Yes — the khora's own docs note "a Cyrillic or CJK corpus must fold to its words and not to nothing.")
+2. Does the smell work on character-level features instead of word-level? (The current smell uses word types with count >= 5; character n-grams might be more appropriate for isolating languages.)
+3. Does the kāraka system need a different surface mapping? (Probably — particles carry roles that case endings carry in Pattern languages.)
+4. Is the "one river" principle still valid? (Yes — the EOT marks are still referents in roles. The tributary is different, but the river is the same.)
+
+The plan: spend the next measurement cycle on Ground-heavy languages. Start with Mandarin (already fetched, already has a smell result). Build a word-breaker, re-measure the smell at character level, and see if the kāraka frame works on particle-marked roles. The delta between Ground and Pattern tributaries is the learning.
+
 ## Falsifier
 
 This plan is falsified if:
