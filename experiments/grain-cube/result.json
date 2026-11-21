@@ -1,0 +1,180 @@
+{
+ "prereg": "5dcd757aa2f75563",
+ "stamp": "EXPLORATORY",
+ "total": 21998,
+ "cells": {
+  "Figure/Structure/Generate": {
+   "n": 1103,
+   "hits": 367,
+   "noVoice": 450
+  },
+  "Pattern/Existence/Relate": {
+   "n": 1193,
+   "hits": 8,
+   "noVoice": 72
+  },
+  "Ground/Interpretation/Relate": {
+   "n": 3571,
+   "hits": 654,
+   "noVoice": 2412
+  },
+  "Figure/Structure/Relate": {
+   "n": 1405,
+   "hits": 438,
+   "noVoice": 618
+  },
+  "Figure/Existence/Relate": {
+   "n": 5144,
+   "hits": 2857,
+   "noVoice": 319
+  },
+  "Figure/Interpretation/Relate": {
+   "n": 2115,
+   "hits": 1671,
+   "noVoice": 32
+  },
+  "Ground/Structure/Generate": {
+   "n": 862,
+   "hits": 168,
+   "noVoice": 585
+  },
+  "Ground/Structure/Relate": {
+   "n": 755,
+   "hits": 95,
+   "noVoice": 581
+  },
+  "Figure/Existence/Differentiate": {
+   "n": 1911,
+   "hits": 1731,
+   "noVoice": 58
+  },
+  "Pattern/Structure/Differentiate": {
+   "n": 169,
+   "hits": 57,
+   "noVoice": 81
+  },
+  "Ground/Existence/Generate": {
+   "n": 1183,
+   "hits": 86,
+   "noVoice": 957
+  },
+  "Pattern/Structure/Relate": {
+   "n": 314,
+   "hits": 77,
+   "noVoice": 162
+  },
+  "Pattern/Interpretation/Relate": {
+   "n": 72,
+   "hits": 36,
+   "noVoice": 20
+  },
+  "Pattern/Structure/Generate": {
+   "n": 230,
+   "hits": 69,
+   "noVoice": 108
+  },
+  "Pattern/Existence/Differentiate": {
+   "n": 1022,
+   "hits": 346,
+   "noVoice": 489
+  },
+  "Ground/Structure/Differentiate": {
+   "n": 158,
+   "hits": 10,
+   "noVoice": 130
+  },
+  "Figure/Structure/Differentiate": {
+   "n": 369,
+   "hits": 117,
+   "noVoice": 197
+  },
+  "Figure/Existence/Generate": {
+   "n": 148,
+   "hits": 47,
+   "noVoice": 18
+  },
+  "Ground/Existence/Differentiate": {
+   "n": 159,
+   "hits": 16,
+   "noVoice": 95
+  },
+  "Ground/Existence/Relate": {
+   "n": 94,
+   "hits": 4,
+   "noVoice": 87
+  },
+  "Pattern/Existence/Generate": {
+   "n": 21,
+   "hits": 2,
+   "noVoice": 8
+  }
+ },
+ "grainCells": {
+  "Figure": {
+   "n": 12195,
+   "hits": 7228,
+   "noVoice": 1692
+  },
+  "Pattern": {
+   "n": 3021,
+   "hits": 595,
+   "noVoice": 940
+  },
+  "Ground": {
+   "n": 6782,
+   "hits": 1033,
+   "noVoice": 4847
+  }
+ },
+ "terrainCells": {
+  "Figure/Structure": {
+   "n": 2877,
+   "hits": 922,
+   "noVoice": 1265
+  },
+  "Pattern/Existence": {
+   "n": 2236,
+   "hits": 356,
+   "noVoice": 569
+  },
+  "Ground/Interpretation": {
+   "n": 3571,
+   "hits": 654,
+   "noVoice": 2412
+  },
+  "Figure/Existence": {
+   "n": 7203,
+   "hits": 4635,
+   "noVoice": 395
+  },
+  "Figure/Interpretation": {
+   "n": 2115,
+   "hits": 1671,
+   "noVoice": 32
+  },
+  "Ground/Structure": {
+   "n": 1775,
+   "hits": 273,
+   "noVoice": 1296
+  },
+  "Pattern/Structure": {
+   "n": 713,
+   "hits": 203,
+   "noVoice": 351
+  },
+  "Ground/Existence": {
+   "n": 1436,
+   "hits": 106,
+   "noVoice": 1139
+  },
+  "Pattern/Interpretation": {
+   "n": 72,
+   "hits": 36,
+   "noVoice": 20
+  }
+ },
+ "summary": {
+  "acc": 0.4026,
+  "noVoice": 0.34
+ }
+}
