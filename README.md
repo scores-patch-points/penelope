@@ -515,8 +515,8 @@ append-only, always revisable).
 ║     @ o/evidence-ledger.test.mjs GL-EV-01 o/pos-sniff.mjs                  ║
 ║     @ o/pos-sniff.test.mjs o/data/pos-sniff-eng2.json GL-SN-01 GL-SN-02    ║
 ║     @ GL-EP-01 GL-EP-02 GL-GN-01 GL-GN-02 GL-SM-01 GL-SM-02 GL-SM-03       ║
-║     @ GL-SM-04 GL-CB-01 GL-TH-01 GL-EX-01 GL-EL-01 GL-NK-01 GL-RV-01       ║
-║     @ GL-CL-01                                                             ║
+║     @ GL-SM-04 GL-CB-01 GL-TH-01 GL-TH-02 GL-EX-01 GL-EL-01 GL-NK-01       ║
+║     @ GL-RV-01 GL-CL-01                                                    ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
