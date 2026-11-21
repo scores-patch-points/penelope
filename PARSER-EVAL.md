@@ -118,6 +118,11 @@ The khora now has ONE entry point: `native/reading-one.mjs#read(text, opts)`. It
 
 `native/reading-one.mjs#read(input, opts)` now routes by modality: text → text reader (slice applied), file path → detect from extension, route to code/notation adapters (wired), image/video/audio/midi → typed gap (adapter exists, EOT marks not yet defined). One input, one output to pharos.
 
+
+## Kāraka map (2026-11-20): Panini's six semantic roles as a declared translation
+
+`native/adapters/text/karaka-map.mjs` in the khora maps UD case tags + deprels → Panini's six kārakas (kartṛ, karman, karaṇa, sampradāna, apādāna, adhikaraṇa). Genitive and vocative are relations, not roles. Ground particles carry kārakas (把=karman, 被=karman, 以=karaṇa, 在=adhikaraṇa, etc.). Coverage: Sanskrit 58.2% (all six kārakas), English 27.0%, Mandarin 38.3%. The kāraka is the upstream of Thrax's 8 — the semantic roles that all languages instantiate, regardless of surface form. This is the "one river" principle made code: the kāraka is the same across all languages; the surface signal (case endings, word order, particles) differs.
+
 ## Falsifier / next question
 
 A graph-based parser or tagger-quality fix that lifts Sanskrit UAS toward ~80, OR a measured tagger error decomposition showing the tag errors cost the parse. If tagger UPOS on Sanskrit is the drag, fix the tagger first; if a graph parser closes the gap, the transition architecture was the cap.
