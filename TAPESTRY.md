@@ -465,7 +465,7 @@
 ║     @ GL-SM-04 GL-CB-01 GL-TH-01 GL-TH-02 GL-TH-03 GL-TH-04 GL-TH-05       ║
 ║     @ GL-EX-01 GL-EL-01 GL-NK-01 GL-NK-02 GL-NK-03 GL-NK-04 GL-PK-01       ║
 ║     @ GL-SN-03 GL-RV-02 GL-RV-03 GL-VD-01 GL-PP-01 GL-PP-02 GL-PP-03       ║
-║     @ GL-RV-04 GL-RV-01 GL-CL-01                                           ║
+║     @ GL-RV-04 GL-EQ-01 GL-RV-01 GL-CL-01                                  ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
