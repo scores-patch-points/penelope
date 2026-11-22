@@ -16,7 +16,7 @@ const key = (s) => String(s).toLowerCase();
 export async function referentGraph(text, { language = "en" } = {}) {
   const R = await kernelImportOr("khora", "native/reading-one.mjs");
   if (!R) return { gap: "khora-absent" };
-  const r = await R.read(String(text), { rows: true, allowDegraded: true, language });
+  const r = await R.read(String(text), { rows: true, allowDegraded: true, language, admitNominals: true, speakers: true });
 
   // claims: the kāraka relations — end1 = the head (the event), label = the role, end2 = the argument
   const claims = [];
@@ -35,6 +35,8 @@ export async function referentGraph(text, { language = "en" } = {}) {
     if (row.upos === "VERB" || row.upos === "NOUN" || row.upos === "PROPN") anchors[key(row.lemma ?? row.form)] = "node:" + key(row.lemma ?? row.form);
   }
   for (const c of r.cast ?? []) for (const s of [c.surface, ...(c.allSurfaces ?? [])]) anchors[key(s)] = c.ref;
+  // the speaker and addressee referents (round-30 kind admission): I/you/me fold onto them
+  for (const sb of r.speakerBindings ?? []) if (sb && typeof sb === "object" && "a" in sb && "cl" in sb) anchors[key(String(sb.surface ?? ""))] = sb.cl;
 
   // THE IDENTITY EDGES, DRAWN BY STANDING (the speaker's mental model), not the read's proxy.
   // A pronoun anchors to the referent whose standing is highest: turn (current clause) > spoken
