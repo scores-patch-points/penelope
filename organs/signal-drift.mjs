@@ -22,8 +22,15 @@ import { kernelImportOr } from "./kernel-reach.mjs";
 // are NOT declared — they are derived from the null inside deriveNull.
 const DECLARED = Object.freeze({ window: 48, shuffles: 200, seed: 7 });
 
+// the four signal dimensions: noun case (role-marking, Pattern), pronoun case (English I/me —
+// a register marker, not role-marking), adposition (particle), word order. Splitting pronoun
+// case from noun case is the honest fix: English is not "40% case", it is 40% first-person.
+const DIMS = Object.freeze(["case", "pronoun", "particle", "order"]);
+
 function signalOf(rows, row) {
-  if (/\bCase=/.test(row.feats ?? "")) return "case";
+  const hasCase = /\bCase=/.test(row.feats ?? "");
+  if (hasCase && row.upos === "PRON") return "pronoun";
+  if (hasCase) return "case";
   if (rows.some((x) => x.head === row.id && x.deprel === "case")) return "particle";
   return "order";
 }
@@ -32,7 +39,7 @@ const runningMix = (signals, w) => {
   const m = [];
   for (let i = w; i < signals.length; i++) {
     const q = signals.slice(i - w, i);
-    m.push([q.filter((x) => x === "case").length / w, q.filter((x) => x === "particle").length / w, q.filter((x) => x === "order").length / w]);
+    m.push(DIMS.map((d) => q.filter((x) => x === d).length / w));
   }
   return m;
 };
@@ -40,7 +47,7 @@ const lagDrift = (mix, K) => {
   const d = [];
   for (let i = 0; i + K < mix.length; i++) {
     let mx = 0;
-    for (let k = 0; k < 3; k++) mx = Math.max(mx, Math.abs(mix[i + K][k] - mix[i][k]));
+    for (let k = 0; k < DIMS.length; k++) mx = Math.max(mx, Math.abs(mix[i + K][k] - mix[i][k]));
     d.push(mx);
   }
   return d;
@@ -86,6 +93,6 @@ export async function signalDrift(text, { language = "en", window = DECLARED.win
   const { dmd, persistence, nullMaxRun, shuffles } = deriveNull(sentences, { window });
   const real = lagDrift(runningMix(signals, window), window);
   const boundaries = runs(real.map((d) => d > dmd)).filter((len) => len > persistence);
-  const total = { case: signals.filter((s) => s === "case").length, particle: signals.filter((s) => s === "particle").length, order: signals.filter((s) => s === "order").length };
+  const total = Object.fromEntries(DIMS.map((d) => [d, signals.filter((s) => s === d).length]));
   return { tokens: signals.length, total, dmd: +dmd.toFixed(3), persistence, nullMaxRun, shuffles, boundaryCount: boundaries.length, boundaries };
 }
