@@ -28,7 +28,7 @@ const DECLARED = Object.freeze({ window: 48, shuffles: 200, seed: 7 });
 const DIMS = Object.freeze(["case", "pronoun", "particle", "order"]);
 
 function signalOf(rows, row) {
-  const hasCase = /\bCase=/.test(row.feats ?? "");
+  const hasCase = /\bCase=/.test(row.feats ?? ""); // regex-ok: feats is the reader's structured UD attribute string, not language
   if (hasCase && row.upos === "PRON") return "pronoun";
   if (hasCase) return "case";
   if (rows.some((x) => x.head === row.id && x.deprel === "case")) return "particle";

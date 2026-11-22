@@ -52,7 +52,7 @@ export async function intentFromText(text, { language = "en", ...opts } = {}) {
   const mentions = [];
   for (const p of r.parse ?? []) for (const row of p.rows) {
     if (row.upos === "PROPN") mentions.push({ kind: "name", surface: row.form, karaka: row.karaka });
-    else if (row.upos === "PRON" && /\b(Person|Case|Gender)=/.test(row.feats ?? "")) mentions.push({ kind: "pronoun", surface: row.form, karaka: row.karaka });
+    else if (row.upos === "PRON" && /\b(Person|Case|Gender)=/.test(row.feats ?? "")) mentions.push({ kind: "pronoun", surface: row.form, karaka: row.karaka }); // regex-ok: feats is the reader's structured UD attribute string, not language
   }
   return intentBindings(mentions, opts);
 }

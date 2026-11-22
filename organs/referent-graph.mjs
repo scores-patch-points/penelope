@@ -38,35 +38,28 @@ export async function referentGraph(text, { language = "en" } = {}) {
   // the speaker and addressee referents (round-30 kind admission): I/you/me fold onto them
   for (const sb of r.speakerBindings ?? []) if (sb && typeof sb === "object" && "a" in sb && "cl" in sb) anchors[key(String(sb.surface ?? ""))] = sb.cl;
 
-  // THE IDENTITY EDGES, DRAWN BY THE INDUCED RULE, not a hand-set standing. The rule that earned
-  // 12.4% on the golden giver (vs 1.3% for the hand-set turn/spoken/memory/seen) is recency +
-  // gender + number agreement. A referent's gender/number is read off the pronouns the read
-  // already bound to it (the identity edge is drawn by the earned weighting, then folded).
-  const sentBounds = [];
-  { let o = 0; for (const s of r.sentences ?? []) { sentBounds.push([o, o + (s.text?.length ?? 0)]); o += (s.text?.length ?? 0) + 1; } }
-  const sentOf = (off) => { let si = -1; for (let i = 0; i < sentBounds.length; i++) if (sentBounds[i][0] <= off && off <= sentBounds[i][1]) { si = i; break; } return si; };
-  const castRefs = (r.cast ?? []).map((c) => ({ ref: c.ref, surfaces: [c.surface, ...(c.allSurfaces ?? [])].map(key), sents: (c.mentionSpans ?? []).map(([a]) => sentOf(a)).filter((x) => x >= 0) }));
-  // referent gender/number: from the pronouns the read bound to it (the earned weighting's signals)
-  const pronFeats = [];
-  for (const p of r.parse ?? []) for (const row of p.rows) if (row.upos === "PRON" && /\b(Gender|Number)=/.test(row.feats ?? "")) pronFeats.push({ form: key(row.form), gender: /\bGender=(\w+)/.exec(row.feats)?.[1] ?? null, number: /\bNumber=(\w+)/.exec(row.feats)?.[1] ?? null });
-  const refGender = new Map(), refNumber = new Map();
-  for (const b of [...(r.pronounsGuess ?? []), ...(r.pronounsPresence ?? [])]) if (b.ref && b.pronoun) {
-    const f = pronFeats.find((x) => x.form === key(b.pronoun));
-    if (f?.gender) refGender.set(b.ref, f.gender);
-    if (f?.number) refNumber.set(b.ref, f.number);
+  // THE IDENTITY EDGES, DRAWN BY THE READ'S OWN BINDINGS and labelled with the pro-form's
+  // agreement bundle (person · number · gender) — the label that makes an edge explicit. The read
+  // resolved each pronoun to a referent; the graph stamps the edge with that label and checks
+  // COHERENCE: a referent's attested bundle is the consensus of the labels of the pro-forms bound
+  // to it, and an edge whose label contradicts that consensus is marked contested. No regex, no
+  // re-derivation — the label comes from the reader's rows (pronounsGuess/presence .agreement).
+  const identityEdges = [];        // { pronoun, ref, agreement, contested }
+  const refAgreement = new Map();  // ref -> attested { person, number, gender } (consensus; "contested" where the labels split)
+  const bindings = [...(r.pronounsGuess ?? []), ...(r.pronounsPresence ?? [])];
+  for (const b of bindings) if (b.ref && b.agreement) {
+    const cur = refAgreement.get(b.ref) ?? {};
+    for (const [k, v] of Object.entries(b.agreement)) if (v != null && v !== "unknown") { if (!(k in cur)) cur[k] = v; else if (cur[k] !== v) cur[k] = "contested"; }
+    refAgreement.set(b.ref, cur);
   }
-  for (const p of r.parse ?? []) for (const row of p.rows) {
-    if (row.upos !== "PRON" || !/^(he|she|it|they|him|her|them)$/i.test(row.form)) continue;
-    const pg = /\bGender=(\w+)/.exec(row.feats ?? "")?.[1] ?? null, pn = /\bNumber=(\w+)/.exec(row.feats ?? "")?.[1] ?? null;
-    let best = null, bv = -Infinity;
-    for (const c of castRefs) {
-      const recency = c.sents.some((s) => s < p.order) ? 0.5 : 0;
-      const genderMatch = pg && refGender.get(c.ref) === pg ? 0.5 : 0;
-      const numberMatch = pn && refNumber.get(c.ref) === pn ? 0.5 : 0;
-      const st = recency + genderMatch + numberMatch;
-      if (st > bv) { bv = st; best = c.ref; }
-    }
-    if (best) anchors[key(row.lemma ?? row.form)] = best;
+  for (const b of bindings) {
+    if (!b.ref || !b.pronoun) continue;
+    const label = b.agreement ?? {};
+    const att = refAgreement.get(b.ref) ?? {};
+    let contested = false;
+    for (const k of ["gender", "number", "person"]) if (label[k] != null && att[k] != null && att[k] !== "contested" && label[k] !== att[k]) contested = true;
+    identityEdges.push({ pronoun: key(b.pronoun), ref: b.ref, agreement: label, contested });
+    anchors[key(b.pronoun)] = b.ref;   // a contested edge still anchors (the read resolved it); the fold reports it contested
   }
 
   const fold = foldRelations({ claims, anchors });
@@ -78,5 +71,7 @@ export async function referentGraph(text, { language = "en" } = {}) {
     edges: fold.relations,
     loose: fold.loose,
     claims: claims.length,
+    identityEdges,
+    refAgreement: Object.fromEntries([...refAgreement].map(([k, v]) => [k, v])),
   };
 }
