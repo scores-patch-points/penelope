@@ -90,3 +90,23 @@ The deeper possibility, the one worth ending on: **the same five moves that reso
 ---
 
 *The number to remember: 28.2 → 44.15, against a ceiling of ~90, on a fixed external giver, with nothing hand-tuned and nothing asserted that wasn't measured. The rest is elaboration.*
+
+---
+
+### Postscript: where this landed, concretely
+
+The essay above is the *idea*; the session also built the *thing*, and it is worth saying what is now on disk, because the two have to agree.
+
+**The organs, all committed and on `main`:** `referent-graph` (everything is a referent — beings, events, and the pronouns themselves are nodes, the kārakas are edges, coreference is an identity edge drawn by the standing), `mind-anaphora` (the standing vocabulary — turn/spoken/memory/seen), `anaphora-equilibrium` (the seed → standing → fixed-point loop), plus the earlier `thought-producer`, `signal-drift`, `anaphora`, and `intent`.
+
+**The measured number, unchanged and honest:** 28.2 recorded → 44.15 CoNLL F1 on English-LitBank dev, against a human ceiling near 90. Everything measured against the fixed external giver, nothing hand-tuned that wasn't declared and named.
+
+**The three things the last stretch found, in order:**
+
+1. *The admission gap is the shape of the problem, not a detail.* Feed the graph the common nouns and the speaker/addressee, and it goes from 78 to 116 edges — the narrator "I" and the common nouns become beings the standing can hold. More referents, more identity edges, fewer loose ends. This is "everything is a referent" made literal.
+
+2. *The standing and the resolution are a fixed point.* You cannot compute who the speaker is holding without knowing who "he" is, and you cannot know who "he" is without the standing. They settle together, from a seed. The equilibrium loop exists; the derivation of the standing weights (the last hand-set number) is what replaces the seed's guess with the giver's answer — and that derivation is the one open step, not a program.
+
+3. *The metric decides the rule.* Inducing the binding rule against exact-match found *gender*; inducing it against CoNLL F1 found *agenthood*. The two metrics reward different rules, and the hand-set agenthood was already optimal among the signals the read can compute. The lesson is the same one the whole project keeps teaching: you induce against the thing you're graded on, or you induce against a proxy and fool yourself.
+
+**The honest bottom line, restated with the thing built:** anaphora is not a lookup and not a pipeline; it is an equilibrium over a referent graph, reached from a prior, guarded by a refusal. The graph is built, the equilibrium is built, the number is measured, and the last hand-set dial — the standing weights — is one derivation away from being earned instead of declared. That is a reader, not a pronoun resolver, and it is what we have.
