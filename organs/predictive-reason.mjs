@@ -46,3 +46,43 @@ export async function cycle(vision, candidate, { language, threshold = 0.05 } = 
     REC: { toward: e.surprise < threshold ? "shape-reached" : "shape-not-yet", gap: e.gap ?? null },
   };
 }
+
+/** REC, decomposed: WHERE the surprise lives, cell by cell. The KL term p(k) log(p(k)/q(k))
+ *  is the per-cell contribution to the surprise — a large positive term means the candidate
+ *  OVER-represents that cell (relative to the vision), a large negative term means it
+ *  UNDER-represents it. This is the correction signal: to move toward the shape, bring the
+ *  over-represented cells down and the under-represented up. The gradient of the loop. */
+export async function errorSignal(vision, candidate, { language } = {}) {
+  const c = await cellsOf(candidate, { language });
+  if (c.gap) return { gap: c.gap };
+  const V = vision.cells ?? vision, C = c.cells;
+  let nv = 0, nc = 0; for (const k in V) nv += V[k]; for (const k in C) nc += C[k];
+  if (!nv || !nc) return { gap: "empty", cells: [] };
+  const terms = [];
+  for (const k of new Set([...Object.keys(V), ...Object.keys(C)])) {
+    const p = (V[k] ?? 0) / nv, q = (C[k] ?? 0) / nc;
+    if (p === 0) continue;
+    terms.push({ cell: k, vision: +p.toFixed(4), candidate: +q.toFixed(4), contribution: +(p * Math.log(p / (q || 1e-9))).toFixed(4), over: q > p });
+  }
+  terms.sort((a, b) => b.contribution - a.contribution);
+  return { gap: null, overRepresented: terms.filter(t => t.over && t.contribution > 0.01), underRepresented: terms.filter(t => !t.over && t.contribution > 0.01), terms };
+}
+
+/** Search by shape: the question is the vision; the answer is the corpus passage that
+ *  minimizes surprise against it. Read the question to its cells, read each passage to its
+ *  cells, rank by cell distance (the least surprising first). This is retrieval as the
+ *  DEF/EVA/REC loop — the question predicts, each passage is evaluated, the least surprising
+ *  one is the answer's shape. Content matching, not keyword matching: two passages with the
+ *  same shape are close even with zero shared words. */
+export async function search(question, passages, { language = "en" } = {}) {
+  const vision = await defineVision(question, { language });
+  if (vision.gap) return { gap: vision.gap };
+  const ranked = [];
+  for (const p of passages) {
+    const c = await cellsOf(p, { language });
+    if (c.gap) { ranked.push({ text: p, surprise: Infinity, gap: c.gap }); continue; }
+    ranked.push({ text: p, surprise: cellDistance(vision, c) });
+  }
+  ranked.sort((a, b) => a.surprise - b.surprise);
+  return { gap: null, ranked };
+}
