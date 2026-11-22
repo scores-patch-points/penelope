@@ -38,27 +38,32 @@ export async function referentGraph(text, { language = "en" } = {}) {
   // the speaker and addressee referents (round-30 kind admission): I/you/me fold onto them
   for (const sb of r.speakerBindings ?? []) if (sb && typeof sb === "object" && "a" in sb && "cl" in sb) anchors[key(String(sb.surface ?? ""))] = sb.cl;
 
-  // THE IDENTITY EDGES, DRAWN BY STANDING (the speaker's mental model), not the read's proxy.
-  // A pronoun anchors to the referent whose standing is highest: turn (current clause) > spoken
-  // (the agent) > memory (earlier) > seen. This closes the joint — resolution is the fold, and
-  // the fold is driven by the standing, not by pronounsGuess.
-  const STANDING = Object.freeze({ turn: 4, spoken: 3, memory: 2, seen: 1 });
+  // THE IDENTITY EDGES, DRAWN BY THE INDUCED RULE, not a hand-set standing. The rule that earned
+  // 12.4% on the golden giver (vs 1.3% for the hand-set turn/spoken/memory/seen) is recency +
+  // gender + number agreement. A referent's gender/number is read off the pronouns the read
+  // already bound to it (the identity edge is drawn by the earned weighting, then folded).
   const sentBounds = [];
   { let o = 0; for (const s of r.sentences ?? []) { sentBounds.push([o, o + (s.text?.length ?? 0)]); o += (s.text?.length ?? 0) + 1; } }
   const sentOf = (off) => { let si = -1; for (let i = 0; i < sentBounds.length; i++) if (sentBounds[i][0] <= off && off <= sentBounds[i][1]) { si = i; break; } return si; };
-  const agentForms = new Set();
-  for (const p of r.parse ?? []) for (const row of p.rows) if (row.karaka === "kartṛ" && (row.lemma || row.form)) agentForms.add(key(row.lemma ?? row.form));
   const castRefs = (r.cast ?? []).map((c) => ({ ref: c.ref, surfaces: [c.surface, ...(c.allSurfaces ?? [])].map(key), sents: (c.mentionSpans ?? []).map(([a]) => sentOf(a)).filter((x) => x >= 0) }));
+  // referent gender/number: from the pronouns the read bound to it (the earned weighting's signals)
+  const pronFeats = [];
+  for (const p of r.parse ?? []) for (const row of p.rows) if (row.upos === "PRON" && /\b(Gender|Number)=/.test(row.feats ?? "")) pronFeats.push({ form: key(row.form), gender: /\bGender=(\w+)/.exec(row.feats)?.[1] ?? null, number: /\bNumber=(\w+)/.exec(row.feats)?.[1] ?? null });
+  const refGender = new Map(), refNumber = new Map();
+  for (const b of [...(r.pronounsGuess ?? []), ...(r.pronounsPresence ?? [])]) if (b.ref && b.pronoun) {
+    const f = pronFeats.find((x) => x.form === key(b.pronoun));
+    if (f?.gender) refGender.set(b.ref, f.gender);
+    if (f?.number) refNumber.set(b.ref, f.number);
+  }
   for (const p of r.parse ?? []) for (const row of p.rows) {
     if (row.upos !== "PRON" || !/^(he|she|it|they|him|her|them)$/i.test(row.form)) continue;
-    const cur = p.order;
-    let best = null, bv = 0;
+    const pg = /\bGender=(\w+)/.exec(row.feats ?? "")?.[1] ?? null, pn = /\bNumber=(\w+)/.exec(row.feats ?? "")?.[1] ?? null;
+    let best = null, bv = -Infinity;
     for (const c of castRefs) {
-      const inTurn = c.sents.includes(cur), inMemory = c.sents.some((s) => s < cur);
-      let st = 0;
-      if (inTurn) st = STANDING.turn; else if (inMemory) st = STANDING.memory;
-      if (c.surfaces.some((s) => agentForms.has(s))) st = Math.max(st, STANDING.spoken);
-      if (c.sents.length) st = Math.max(st, STANDING.seen);
+      const recency = c.sents.some((s) => s < p.order) ? 0.5 : 0;
+      const genderMatch = pg && refGender.get(c.ref) === pg ? 0.5 : 0;
+      const numberMatch = pn && refNumber.get(c.ref) === pn ? 0.5 : 0;
+      const st = recency + genderMatch + numberMatch;
       if (st > bv) { bv = st; best = c.ref; }
     }
     if (best) anchors[key(row.lemma ?? row.form)] = best;
