@@ -35,7 +35,32 @@ export async function referentGraph(text, { language = "en" } = {}) {
     if (row.upos === "VERB" || row.upos === "NOUN" || row.upos === "PROPN") anchors[key(row.lemma ?? row.form)] = "node:" + key(row.lemma ?? row.form);
   }
   for (const c of r.cast ?? []) for (const s of [c.surface, ...(c.allSurfaces ?? [])]) anchors[key(s)] = c.ref;
-  for (const p of [...(r.pronounsGuess ?? []), ...(r.pronounsPresence ?? [])]) if (p.ref && p.surface) anchors[key(p.surface)] = p.ref;
+
+  // THE IDENTITY EDGES, DRAWN BY STANDING (the speaker's mental model), not the read's proxy.
+  // A pronoun anchors to the referent whose standing is highest: turn (current clause) > spoken
+  // (the agent) > memory (earlier) > seen. This closes the joint — resolution is the fold, and
+  // the fold is driven by the standing, not by pronounsGuess.
+  const STANDING = Object.freeze({ turn: 4, spoken: 3, memory: 2, seen: 1 });
+  const sentBounds = [];
+  { let o = 0; for (const s of r.sentences ?? []) { sentBounds.push([o, o + (s.text?.length ?? 0)]); o += (s.text?.length ?? 0) + 1; } }
+  const sentOf = (off) => { let si = -1; for (let i = 0; i < sentBounds.length; i++) if (sentBounds[i][0] <= off && off <= sentBounds[i][1]) { si = i; break; } return si; };
+  const agentForms = new Set();
+  for (const p of r.parse ?? []) for (const row of p.rows) if (row.karaka === "kartṛ" && (row.lemma || row.form)) agentForms.add(key(row.lemma ?? row.form));
+  const castRefs = (r.cast ?? []).map((c) => ({ ref: c.ref, surfaces: [c.surface, ...(c.allSurfaces ?? [])].map(key), sents: (c.mentionSpans ?? []).map(([a]) => sentOf(a)).filter((x) => x >= 0) }));
+  for (const p of r.parse ?? []) for (const row of p.rows) {
+    if (row.upos !== "PRON" || !/^(he|she|it|they|him|her|them)$/i.test(row.form)) continue;
+    const cur = p.order;
+    let best = null, bv = 0;
+    for (const c of castRefs) {
+      const inTurn = c.sents.includes(cur), inMemory = c.sents.some((s) => s < cur);
+      let st = 0;
+      if (inTurn) st = STANDING.turn; else if (inMemory) st = STANDING.memory;
+      if (c.surfaces.some((s) => agentForms.has(s))) st = Math.max(st, STANDING.spoken);
+      if (c.sents.length) st = Math.max(st, STANDING.seen);
+      if (st > bv) { bv = st; best = c.ref; }
+    }
+    if (best) anchors[key(row.lemma ?? row.form)] = best;
+  }
 
   const fold = foldRelations({ claims, anchors });
   return {
