@@ -92,6 +92,31 @@ export const KINDS = Object.freeze({
   "fold-verdict": { cell: "EVA·Pattern", why: "same / other / gap decided on the ROOT relationships of two folds; leaf relationships counted agree / dispute / one-sided, never deciding" },
 });
 
+// DMD-FOLD. Paraphrase is not identity — it is a difference that does NOT make a difference. Two folds are
+// equated when their delta on the IDENTITY-BEARING (root) roles stays BELOW the shuffled null: shuffle the
+// entities of one fold (the same structure, wrong participants) and re-measure the delta; the 95th percentile
+// is the noise floor. A delta under it is a surface difference (dative alternation, active/passive); a delta
+// over it is a real difference (who did what changed). The root roles are the ones that decide WHAT HAPPENED —
+// kartṛ (agent), karman (patient), sampradāna (recipient), apādāna (source) — and the leaves (locus, time,
+// cause, instrument, purpose) are the ones that decide HOW it is said; a leaf delta is below the noise.
+export function dmdFold(a, b, { roots = ["kartṛ", "karman", "sampradāna", "apādāna"], trials = 60, seed = 1 } = {}) {
+  const rootEdges = (f) => { const s = new Set(); for (const [, r] of (f?.relations ?? new Map())) if (roots.includes(r.label)) for (const e2 of r.ends.keys()) s.add(`${r.end1}|${r.label}|${e2}`); return s; };
+  const diff = (sa, sb) => { let d = 0; for (const e of sa) if (!sb.has(e)) d++; for (const e of sb) if (!sa.has(e)) d++; return d; };
+  const sa = rootEdges(a), sb = rootEdges(b);
+  const actual = diff(sa, sb);
+  // the null: shuffle a's entities (the same shape, wrong participants), re-measure the root delta
+  const ents = [...new Set([...sa, ...sb].flatMap((e) => e.split("|").filter((_, i) => i === 0 || i === 2)))];
+  const rng = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+  const ds = [];
+  for (let t = 0; t < trials; t++) {
+    const map = new Map(ents.map((e) => [e, ents[Math.floor(rng() * ents.length)]]));
+    const shuffled = new Set([...sa].map((e) => { const [a1, l, a2] = e.split("|"); return `${map.get(a1)}|${l}|${map.get(a2)}`; }));
+    ds.push(diff(shuffled, sb));
+  }
+  ds.sort((x, y) => x - y); const p95 = ds[Math.ceil(0.95 * ds.length) - 1];
+  return { actual, null: p95, makesDifference: actual >= p95, roots: sa.size + sb.size };
+}
+
 // HOLARCHY. Reality in a fold is not heaps of facts but wholes that are parts of wholes: a relationship either says "x is a part of y" (partOf)
 // or "x depends on y" (dependsOn: the one that depends is the whole, the one depended on is the part). The dependency ORDER is the pattern grain
 // made exact: it does not care what the holons are called.
