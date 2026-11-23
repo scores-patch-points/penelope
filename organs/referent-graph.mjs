@@ -25,13 +25,18 @@ export async function foldFromPharos({ pharosDir = null, writer = "khora", name 
   const beings = all.filter((e) => e.kind === "being");
   const karakas = all.filter((e) => e.kind === "karaka");
   const bindings = all.filter((e) => e.kind === "binding");
+  const partOf = all.filter((e) => e.kind === "part_of");
 
   const anchors = {};
   for (const b of beings) for (const s of [b.body?.surface, ...(b.body?.surfaces ?? [])]) if (s) anchors[key(s)] = b.addr;
   for (const b of bindings) if (b.body?.pronoun && b.body?.ref) anchors[key(b.body.pronoun)] = b.body.ref;
   for (const e of karakas) for (const w of [e.body?.head, e.body?.arg]) if (w && !(key(w) in anchors)) anchors[key(w)] = "node:" + key(w);
+  // a referent anchors to itself, so ref-to-ref relations (part_of) resolve to their node
+  for (const b of beings) anchors[key(b.addr)] = b.addr;
 
   const claims = karakas.filter((e) => e.body?.head && e.body?.arg).map((e) => ({ end1: key(e.body.head), label: e.body.role, end2: key(e.body.arg) }));
+  // containment: a referent inside another becomes a part_of claim between the two referents
+  for (const e of partOf) if (e.body?.child && e.body?.parent) claims.push({ end1: key(e.body.child), label: "part_of", end2: key(e.body.parent) });
   return { gap: null, claims, anchors, fold: foldRelations({ claims, anchors }), beings: beings.length, bindings: bindings.length };
 }
 
