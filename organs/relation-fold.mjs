@@ -27,6 +27,8 @@
 //   claim   { end1, label, end2, addr, frame }       anchors: { "surface form": "anchor id" } (numbers and years anchor to themselves)
 //   roles   { label: "root" | "leaf" }               (a label not listed is a leaf)
 //   inverse [labels]                                   labels whose end2 determines end1 (one maker per bed): two different end1 on the same end2 DISPUTE
+//   dmdFoldExact(a, b, { roots, inverse, budget }) -> { structure: same|other|gap, slots, trail, evidence }   sameOrOtherExact(a, b) adds polarity   (GL-DF-01)
+//     the percentile rule dmdFold / sameOrOther is kept pinned and is DEFECTIVE: read the note above dmdFold before using it.
 
 const anchorOf = (anchors, end) => (end == null ? null : anchors[end] ?? (typeof end === "number" ? end : null));
 
@@ -92,6 +94,8 @@ export const KINDS = Object.freeze({
   "fold-verdict": { cell: "EVA·Pattern", why: "same / other / gap decided on the ROOT relationships of two folds; leaf relationships counted agree / dispute / one-sided, never deciding" },
 });
 
+// KNOWN DEFECT, pinned (GL-DF-01): this percentile cut is saturated (p95 = the largest possible difference), so it says "same" for any pair
+// that shares one root edge, and "other" for folds with no root edge. Kept as it was; dmdFoldExact / sameOrOtherExact below replace it.
 // DMD-FOLD. Paraphrase is not identity — it is a difference that does NOT make a difference. Two folds are
 // equated when their delta on the IDENTITY-BEARING (root) roles stays BELOW the shuffled null: shuffle the
 // entities of one fold (the same structure, wrong participants) and re-measure the delta; the 95th percentile
@@ -133,6 +137,103 @@ export function sameOrOther(a, b, { roots, trials } = {}) {
   const pa = a?.polarity ?? {}, pb = b?.polarity ?? {};
   const polarity = (!!pa.neg !== !!pb.neg || (pa.modal ?? null) !== (pb.modal ?? null)) ? "other" : "same";
   return { structure, polarity, verdict: (structure === "other" || polarity === "other") ? "other" : "same", delta: d.actual, null: d.null };
+}
+
+// DMD-FOLD, EXACT — the measure that replaces dmdFold's percentile cut (GL-DF-01). dmdFold and sameOrOther above stay as they were, pinned:
+// a measure that changed is a new row, never the same number under the same name (rule 6), and the finding that forced the change is the
+// record. The finding (experiments/dmd-fold/RESULT.md): a shuffled-participants null almost never shares an edge with the other fold, so its
+// 95th percentile IS the largest difference possible, and "other" reduces to "the two folds share no root edge at all". An agent/patient
+// reversal that keeps the recipient, a five-edge fold with four edges changed, and every random unrelated pair that shared one edge all
+// came out "same"; two folds with no root edge (or one identical entity) came out "other", because 0 >= 0 on a null with no spread.
+// Trials and seed were not the cause (seeds 1..200 and swapping the pair change nothing): the cut sat on a saturated tail.
+//
+// This rule has no percentile, no trial count and no seed:
+//   SLOT     a root role of an event holds one filler (the kartṛ of "give" is one thing). Two folds that fill the same slot with DISJOINT
+//            fillers dispute it: a difference that makes a difference TO who-did-what, by construction, so it needs no null.
+//   HOLE     a slot filled on one side only is a silence, not a vote (sameFold's rule): counted, never deciding.
+//   AGREE    a root edge both folds carry. It is evidence of sameness only if chance cannot reproduce it somewhere else:
+//   NULL     every relabeling of the entities that agrees at least as much as the real pair, enumerated EXACTLY (no draws). Entities
+//            move only within their class (participants among participants, events among events); values (numbers) are fixed.
+//   PIN      the destroy test, on identities: the agreement counts only if every relabeling that does as well leaves the agreeing edges
+//            where they are. A relabeling that does as well while MOVING them says the agreement does not depend on those identities
+//            (a coincidence the vocabulary can produce, or a symmetry of the fold): a typed gap, never a yes. `evidence.p` reports where the
+//            real pair sits in the null (the fraction of relabelings that do at least as well); no cut is made on it, so there is no level.
+//   structure  other (a slot is disputed) | same (agreement, no dispute, pinned) | gap (nothing shared, not pinned, or the null is too big).
+//              gap is not a failure: the caller defaults to Other, as for sameFold.
+// Still DECLARED, and named so: `roots`/`inverse` (which labels are identity-bearing, and which hold one filler per event end2; default
+// the four kāraka roots, giver Pāṇini) and `budget` (how large an exact null this enumerates before it refuses: a compute guard and never a
+// verdict dial; over it the answer is the typed gap `null_too_large`, not a sample). Numeric tolerance (sameFold's `tol`) is not offered: a
+// tolerance is a hand-set threshold, and equal values are the only agreement this measure knows.
+export const KARAKA_ROOTS = Object.freeze(["kartṛ", "karman", "sampradāna", "apādāna"]);
+export const NULL_BUDGET = 362880; // 9!: the largest exact null enumerated in well under a second on a laptop; beyond it, typed gap, never a sample
+
+const slotKey = (label, at) => JSON.stringify([label, at]);
+const factorial = (n) => { let f = 1; for (let i = 2; i <= n; i++) f *= i; return f; };
+
+export function dmdFoldExact(a, b, { roots = KARAKA_ROOTS, inverse = KARAKA_ROOTS, budget = NULL_BUDGET } = {}) {
+  const edgesOf = (f) => { const out = []; for (const r of (f?.relations ?? new Map()).values()) if (roots.includes(r.label)) for (const [end2, addr] of r.ends) out.push({ end1: r.end1, label: r.label, end2, addr: addr ?? [] }); return out; };
+  const ea = edgesOf(a), eb = edgesOf(b);
+  // SLOTS: an inverse-functional label holds one filler (end1) per (label, end2); any other root label holds one filler (end2) per (end1, label)
+  const slots = new Map();
+  const put = (edges, s) => { for (const e of edges) { const inv = inverse.includes(e.label), at = inv ? e.end2 : e.end1, filler = inv ? e.end1 : e.end2, k = slotKey(e.label, at); if (!slots.has(k)) slots.set(k, { label: e.label, at, a: new Map(), b: new Map() }); slots.get(k)[s].set(filler, e.addr); } };
+  put(ea, "a"); put(eb, "b");
+  const trail = [], count = { agree: 0, dispute: 0, hole: 0 };
+  for (const [key, s] of slots) {
+    const common = [...s.a.keys()].filter((f) => s.b.has(f));
+    const verdict = !s.a.size || !s.b.size ? "hole" : common.length ? "agree" : "dispute";
+    count[verdict]++;
+    trail.push({ key, label: s.label, at: s.at, verdict, a: [...s.a.keys()], b: [...s.b.keys()], addr: { a: [...s.a.values()].flat(), b: [...s.b.values()].flat() } });
+  }
+  const out = (structure, why, extra = {}) => ({ structure, why, slots: count, trail, shared: 0, evidence: null, ...extra });
+  if (count.dispute) return out("other", `${count.dispute} root slot(s) filled with a different filler on each side`);
+
+  // number what can move (entities) and what cannot (values); classes are entities that appear in the same positions (end1 / end2)
+  const place = new Map(), values = new Set();
+  for (const e of [...ea, ...eb]) for (const [x, bit] of [[e.end1, 1], [e.end2, 2]]) { if (typeof x === "number") values.add(x); else place.set(x, (place.get(x) ?? 0) | bit); }
+  const ents = [...place.keys()], M = ents.length + values.size, id = new Map([...ents, ...values].map((x, i) => [x, i]));
+  const lab = new Map([...new Set([...ea, ...eb].map((e) => e.label))].map((l, i) => [l, i])), L = lab.size;
+  const enc = (x, l, y) => (x * L + l) * M + y;
+  const tri = (e) => [id.get(e.end1), lab.get(e.label), id.get(e.end2)];
+  const sa = ea.map(tri), sbKeys = new Set(eb.map((e) => enc(...tri(e))));
+  const S = sa.filter((t) => sbKeys.has(enc(...t))), sKeys = new Set(S.map((t) => enc(...t)));
+  if (!S.length) return out("gap", "no root slot is filled with the same filler on both sides: nothing can be tested");
+
+  const byPlace = new Map();
+  ents.forEach((e, i) => { const p = place.get(e); if (!byPlace.has(p)) byPlace.set(p, []); byPlace.get(p).push(i); });
+  const classes = [...byPlace.values()].filter((c) => c.length > 1), N = classes.reduce((n, c) => n * factorial(c.length), 1);
+  if (N > budget) return out("gap", `null_too_large: ${N} relabelings exceed the declared budget of ${budget}; a sample would be a guess, so this refuses`, { shared: S.length, evidence: { nullSize: N, budget } });
+
+  const perm = Array.from({ length: M }, (_, i) => i), swap = (p, q) => { const t = perm[p]; perm[p] = perm[q]; perm[q] = t; };
+  let atLeast = 0, movers = 0, witness = null;
+  const judge = () => {
+    let g = 0; for (const [x, l, y] of sa) if (sbKeys.has(enc(perm[x], l, perm[y]))) g++;
+    if (g < S.length) return;                                    // this relabeling agrees less than the real pair: below it
+    atLeast++;
+    for (const [x, l, y] of S) if (!sKeys.has(enc(perm[x], l, perm[y]))) { movers++; witness ??= ents.flatMap((e, i) => (perm[i] !== i ? [[e, ents[perm[i]]]] : [])); return; }
+  };
+  const walk = (ci, k) => {
+    if (ci === classes.length) return judge();
+    const c = classes[ci];
+    if (k === c.length) return walk(ci + 1, 0);
+    for (let i = k; i < c.length; i++) { swap(c[k], c[i]); walk(ci, k + 1); swap(c[k], c[i]); }
+  };
+  walk(0, 0);
+  const evidence = { nullSize: N, atLeastAsGood: atLeast, movers, p: atLeast / N, witness };
+  if (movers) return out("gap", "the agreement does not pin identity: a relabeling that moves the agreeing edges agrees as much (a coincidence this vocabulary can produce, or a symmetry of the fold)", { shared: S.length, evidence });
+  return out("same", `${S.length} root edge(s) agree, no slot is disputed, and no relabeling that moves them agrees as much`, { shared: S.length, evidence });
+}
+
+// SAME-OR-OTHER, exact: the significance triad of sameOrOther with dmdFoldExact as its EVA. Polarity is unchanged and is a declared POLICY, not
+// a measurement: a negation or modality difference is a difference that makes a difference even when every edge is identical (the re-zero).
+//   verdict  other  structure other, or polarity other (a sign flip decides even over a gap: different things are not the same thing)
+//            gap    structure gap (the caller defaults to Other)
+//            same   structure same and polarity same
+export function sameOrOtherExact(a, b, opts = {}) {
+  const d = dmdFoldExact(a?.fold, b?.fold, opts);
+  const pa = a?.polarity ?? {}, pb = b?.polarity ?? {};
+  const polarity = (!!pa.neg !== !!pb.neg || (pa.modal ?? null) !== (pb.modal ?? null)) ? "other" : "same";
+  const verdict = d.structure === "other" || polarity === "other" ? "other" : d.structure === "gap" ? "gap" : "same";
+  return { structure: d.structure, polarity, verdict, why: d.why, slots: d.slots, shared: d.shared, evidence: d.evidence, trail: d.trail };
 }
 
 // HOLARCHY. Reality in a fold is not heaps of facts but wholes that are parts of wholes: a relationship either says "x is a part of y" (partOf)

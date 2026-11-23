@@ -1,0 +1,20 @@
+KNOWN CASES (want = the answer a reader would give; the old rule has no gap, so for a want of gap either 'other' is acceptable)
+case                                                   want    OLD     NEW     NEW why
+identical 3-edge fold                                  same    same    same    3 root edge(s) agree, no slot is disputed, and no relabeling that move
+dative alternation (recipient is a leaf on one side)   same    same    same    2 root edge(s) agree, no slot is disputed, and no relabeling that move
+partial description, contradicts nothing               same    same    same    2 root edge(s) agree, no slot is disputed, and no relabeling that move
+agent/patient reversed, recipient kept                 other   same ✗  other   2 root slot(s) filled with a different filler on each side
+5 edges, 1 changed (an agent)                          other   same ✗  other   1 root slot(s) filled with a different filler on each side
+5 edges, 4 changed                                     other   same ✗  other   4 root slot(s) filled with a different filler on each side
+completely different event (no shared slot)            gap     other   gap     no root slot is filled with the same filler on both sides: nothing can
+two folds with no root edge                            gap     other   gap     no root slot is filled with the same filler on both sides: nothing can
+one identical entity                                   same    other ✗ same    1 root edge(s) agree, no slot is disputed, and no relabeling that move
+right: old 5/9, new 9/9
+old rule, seeds 1..200 and a,b swapped, 9 cases: 0 verdict flips
+
+RANDOM UNRELATED PAIRS (N=400, 3 root edges each, 8 entities, 1 event, LCG seed 12345): truth is "same" only if all 3 edges are shared
+shared edges   pairs   OLD said same   NEW same   NEW gap   NEW other
+0              289     0               0          0         289
+1              93      93              0          0         93
+2              17      17              0          0         17
+3              1       1               1          0         0
