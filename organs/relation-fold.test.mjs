@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { foldRelations, sameFold, patternOf } from "./relation-fold.mjs";
+import { foldRelations, sameFold, patternOf, dmdFold, sameOrOther } from "./relation-fold.mjs";
 
 const roles = { built_around: "root", born: "root", area: "root", population: "leaf", rooted_in: "root" };
 const anchors = { Odysseus: "H", "the husband": "H", "the beggar": "S?", "the bed": "BED", "the marriage post": "BED", "the olive": "TREE", "a living tree": "TREE", Antinous: "A" };
@@ -92,4 +92,26 @@ test("holarchy: same shape over different holons is the same pattern but not the
   assert.equal(v.verdict, "other");     // destroying the shared tree takes different wholes with it
   const flat = holarchy(foldRelations({ claims: [c("marriage", "rooted_in", "olive", 1), c("bed", "rooted_in", "olive", 2)], anchors: hAnchors }));
   assert.equal(sameHolarchy(A, flat).pattern, "other");
+});
+
+test("dmdFold + sameOrOther: paraphrase is same-structure below the null AND same-sign (the falsification fixed)", () => {
+  const foldOf = (edges) => { const R = new Map(); for (const [a, l, b] of edges) { const k = `${a}|${l}`; if (!R.has(k)) R.set(k, { end1: a, label: l, ends: new Map() }); R.get(k).ends.set(b, []); } return { relations: R }; };
+  const A = foldOf([["jonathan","kartṛ","give"],["book","karman","give"],["mina","sampradāna","give"]]);
+  const B = foldOf([["jonathan","kartṛ","give"],["book","karman","give"],["mina","adhikaraṇa","give"]]);   // dative alternation: leaf role differs
+  const E = foldOf([["dog","kartṛ","chase"],["cat","karman","chase"]]);
+  const F = foldOf([["cat","kartṛ","chase"],["dog","karman","chase"]]);                                     // role reversal: root differs
+
+  // structure: B's leaf (mina role) differs from A, but the roots agree -> below null (same)
+  const ab = sameOrOther({ fold: A, polarity: {} }, { fold: B, polarity: {} });
+  assert.equal(ab.structure, "same", "dative alternation keeps the roots");
+  // role reversal: the kartṛ disputes -> makes a difference
+  const ef = sameOrOther({ fold: E, polarity: {} }, { fold: F, polarity: {} });
+  assert.equal(ef.structure, "other", "role reversal disputes the roots");
+
+  // the falsification: identical structure, flipped sign -> OTHER (negation is a difference that makes a difference)
+  const neg = sameOrOther({ fold: A, polarity: { neg: false } }, { fold: A, polarity: { neg: true } });
+  assert.equal(neg.polarity, "other", "negation flips the sign");
+  assert.equal(neg.verdict, "other", "so a negated sentence is NOT a paraphrase of the asserted one");
+  const modal = sameOrOther({ fold: A, polarity: { modal: null } }, { fold: A, polarity: { modal: "might" } });
+  assert.equal(modal.verdict, "other", "modality is a difference that makes a difference too");
 });

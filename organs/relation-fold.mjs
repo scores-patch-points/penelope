@@ -117,6 +117,24 @@ export function dmdFold(a, b, { roots = ["kartṛ", "karman", "sampradāna", "ap
   return { actual, null: p95, makesDifference: actual >= p95, roots: sa.size + sb.size };
 }
 
+// SAME-OR-OTHER — the significance triad (Interpretation: DEF bound, EVA compare, REC re-zero), and the
+// softmax replacement. A paraphrase (and any "attend to this" decision) is not a distribution over
+// tokens; it is ONE discrete question: is this the same thing as that, or another thing?
+//   DEF the BOUND   = the shuffled null (the noise floor).
+//   EVA the COMPARE = the fold delta on the identity roles against that bound (structure: same/other),
+//                     AND the polarity (the sign: same/other — negation and modality flip the sign even
+//                     when the edges are identical).
+//   REC the RE-ZERO = the sign flip is a difference that makes a difference: the meaning re-zeroes.
+// `a` and `b` are { fold, polarity }; polarity is { neg: bool, modal: string|null } (read off the parse:
+// a "not"/"never" is negation, a modal auxiliary is modality — the EVA sign of the sentence).
+export function sameOrOther(a, b, { roots, trials } = {}) {
+  const d = dmdFold(a?.fold, b?.fold, { roots, trials });
+  const structure = d.makesDifference ? "other" : "same";
+  const pa = a?.polarity ?? {}, pb = b?.polarity ?? {};
+  const polarity = (!!pa.neg !== !!pb.neg || (pa.modal ?? null) !== (pb.modal ?? null)) ? "other" : "same";
+  return { structure, polarity, verdict: (structure === "other" || polarity === "other") ? "other" : "same", delta: d.actual, null: d.null };
+}
+
 // HOLARCHY. Reality in a fold is not heaps of facts but wholes that are parts of wholes: a relationship either says "x is a part of y" (partOf)
 // or "x depends on y" (dependsOn: the one that depends is the whole, the one depended on is the part). The dependency ORDER is the pattern grain
 // made exact: it does not care what the holons are called.
