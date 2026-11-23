@@ -14,26 +14,31 @@ import { foldRelations } from "./relation-fold.mjs";
 
 const key = (s) => String(s).toLowerCase();
 
-export async function referentGraph({ pharosDir = null, writer = "khora" } = {}) {
+// The raw fold, for the comparison / pattern / holarchy machinery (sameFold, patternOf, holarchy):
+// claims (the kāraka edges) + anchors (surfaces -> referent), plus the folded relations. A caller that
+// wants the graph STATS uses referentGraph; one that wants to COMPARE or LAYER folds uses this.
+export async function foldFromPharos({ pharosDir = null, writer = "khora", name = "khora" } = {}) {
   const P = await kernelImportOr("pharos", "lib/pharos.mjs");
   if (!P) return { gap: "pharos-absent" };
-  const h = P.open("khora", { dir: pharosDir, writer });
+  const h = P.open(name, { dir: pharosDir, writer });
   const all = P.entries(h);
   const beings = all.filter((e) => e.kind === "being");
   const karakas = all.filter((e) => e.kind === "karaka");
   const bindings = all.filter((e) => e.kind === "binding");
 
-  // anchors: every surface folds to its referent (beings) or its bound referent (pronouns)
   const anchors = {};
   for (const b of beings) for (const s of [b.body?.surface, ...(b.body?.surfaces ?? [])]) if (s) anchors[key(s)] = b.addr;
   for (const b of bindings) if (b.body?.pronoun && b.body?.ref) anchors[key(b.body.pronoun)] = b.body.ref;
-  // the endpoints of the kāraka edges are content-word nodes (a generic fold: an edge's ends are nodes)
   for (const e of karakas) for (const w of [e.body?.head, e.body?.arg]) if (w && !(key(w) in anchors)) anchors[key(w)] = "node:" + key(w);
 
-  // claims: the kāraka edges the read wrote (head <- role - arg)
   const claims = karakas.filter((e) => e.body?.head && e.body?.arg).map((e) => ({ end1: key(e.body.head), label: e.body.role, end2: key(e.body.arg) }));
+  return { gap: null, claims, anchors, fold: foldRelations({ claims, anchors }), beings: beings.length, bindings: bindings.length };
+}
 
-  const fold = foldRelations({ claims, anchors });
+export async function referentGraph({ pharosDir = null, writer = "khora" } = {}) {
+  const f = await foldFromPharos({ pharosDir, writer });
+  if (f.gap) return f;
+  const { claims, anchors, fold } = f;
   return {
     gap: null,
     nodes: new Set([...Object.values(anchors)]),
@@ -42,7 +47,7 @@ export async function referentGraph({ pharosDir = null, writer = "khora" } = {})
     edges: fold.relations,
     loose: fold.loose,
     claims: claims.length,
-    beings: beings.length,
-    bindings: bindings.length,
+    beings: f.beings,
+    bindings: f.bindings,
   };
 }
