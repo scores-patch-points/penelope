@@ -130,12 +130,13 @@ append-only, always revisable).
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND ■EQV ■SMV │                     │  ║
-║  │    │                     │ ■PVD ■FRV □UDL □LAG │                     │  ║
-║  │    │                     │ □LBD □LCB □LCD □LEN │                     │  ║
-║  │    │                     │ □LHM □LIM □LLD □LMO │                     │  ║
-║  │    │                     │ □LOG □LPS □LQA □LRR │                     │  ║
-║  │    │                     │ □LRS □LTP □LWK □LWP │                     │  ║
-║  │    │                     │ □LWV ■AGS ■LDG ■RRT │                     │  ║
+║  │    │                     │ ■PVD ■TXV ■FRV □UDL │                     │  ║
+║  │    │                     │ □LAG □LBD □LCB □LCD │                     │  ║
+║  │    │                     │ □LEN □LHM □LIM □LLD │                     │  ║
+║  │    │                     │ □LMO □LOG □LPS □LQA │                     │  ║
+║  │    │                     │ □LRR □LRS □LTP □LWK │                     │  ║
+║  │    │                     │ □LWP □LWV ■AGS ■LDG │                     │  ║
+║  │    │                     │ ■RRT                │                     │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ║  ┌────┬─────────────────────┬─────────────────────┬─────────────────────┐  ║
 ║  │ ▲  │          ∘          │          ◆          │          ◈          │  ║
@@ -157,8 +158,8 @@ append-only, always revisable).
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ ·STM ■RSR ·STR ■FAP │  ║
-║  │    │                     │ ■PVD ■FRV ■ANC ■AGS │ ■SLF ■HMA ■WNB ■FCL │  ║
-║  │    │                     │                     │ ■WBL ■WRP ■TLS ■KTL │  ║
+║  │    │                     │ ■PVD ■TXV ■FRV ■ANC │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │ ■AGS                │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  │    │                     │                     │ □UDL □LAG □LBD □LCB │  ║
 ║  │    │                     │                     │ □LCD □LEN □LHM □LIM │  ║
 ║  │    │                     │                     │ □LLD □LMO □LOG □LPS │  ║
@@ -181,7 +182,7 @@ append-only, always revisable).
 ║  │    │                     │ ·SCR ·POL ■WND ■AGD │ □LBD □LCB □LCD □LEN │  ║
 ║  │    │                     │ ■AGC ■CFX ■GDR ■VRF │ □LHM □LIM □LLD □LMO │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ □LOG □LPS □LQA □LRR │  ║
-║  │    │                     │ ■PVD ■FRV ■AGS      │ □LRS □LTP □LWK □LWP │  ║
+║  │    │                     │ ■PVD ■TXV ■FRV ■AGS │ □LRS □LTP □LWK □LWP │  ║
 ║  │    │                     │                     │ □LWV ■LDG ■RRT      │  ║
 ║  ├────┼─────────────────────┼─────────────────────┼─────────────────────┤  ║
 ║  │ ∪  │ ∪∘                  │ ∪◆                  │ ∪◈                  │  ║
@@ -208,8 +209,8 @@ append-only, always revisable).
 ║ │    ·NET→◈ ■AGC→◆ ■CFX⊨◆ ■CPL△◈ ■EVO∅◆ ■FAP=◈ ■GDC△◈ ■GDR→◆ ■PYT●◆        ║
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
 ║ │    ■WRT△◆ ■MJS△◆ ■LDG⊨◈                                                  ║
-║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■FRV⊨◆ ■ANC=◆        ║
-║ │    ■FLN△◈                                                                ║
+║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■TXV⊨◆ ■FRV⊨◆        ║
+║ │    ■ANC=◆ ■FLN△◈                                                         ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -500,6 +501,9 @@ append-only, always revisable).
 ║■PVD 0 ⊨◆ ‡ pair-verdicts                                                   ║
 ║     @ o/pair-verdicts.mjs o/pair-verdicts.test.mjs g/pair-verdicts-run.mjs ║
 ║     @ g/pair-verdicts-run.test.mjs GL-PV-01                                ║
+║■TXV 0 ⊨◆ ‡ text-verdicts                                                   ║
+║     @ o/text-verdicts.mjs o/text-verdicts.test.mjs g/text-verdicts-run.mjs ║
+║     @ g/text-verdicts-run.test.mjs GL-TV-01                                ║
 ║■FRV 0 ⊨◆ ‡ frame-verdicts                                                  ║
 ║     @ o/frame-verdicts.mjs o/frame-verdicts.test.mjs o/relation-fold.mjs   ║
 ║     @ o/relation-fold.test.mjs o/asker-dmd.mjs o/asker-dmd.test.mjs        ║
