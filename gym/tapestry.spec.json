@@ -1471,6 +1471,22 @@
    ]
   },
   {
+   "id": "TXV",
+   "name": "text-verdicts",
+   "st": "■",
+   "lvl": 0,
+   "op": "EVA",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/text-verdicts.mjs",
+    "o/text-verdicts.test.mjs",
+    "g/text-verdicts-run.mjs",
+    "g/text-verdicts-run.test.mjs",
+    "GL-TV-01"
+   ]
+  },
+  {
    "id": "FRV",
    "name": "frame-verdicts",
    "st": "■",
