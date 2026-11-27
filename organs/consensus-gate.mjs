@@ -1,6 +1,6 @@
 // consensus-gate.mjs — DMD-bounded comp-consensus gate.
 //
-// A candidate layout is a MODE in Koopman's sense (native/kernel/dmd.js):
+// A candidate layout is a MODE in Koopman's sense (native/kernel/koopman.js):
 // it has a FREQUENCY (recurrence across independent comps) and a GROWTH
 // rate (support trajectory as the harvest arrives). The gate opens only
 // when frequency clears a finite-sample bound with non-negative growth,
@@ -10,7 +10,7 @@
 //
 // Mapping, stated honestly: this is the CATEGORICAL analogue of DMD, not
 // the numeric operator — comps arrive as labels, not state vectors, so
-// dmd.js is not imported (running Jacobi rotations on 0/1 rows would be
+// koopman.js is not imported (running Jacobi rotations on 0/1 rows would be
 // numerology). Frequency ~= mode energy, growth ~= eigenvalue magnitude
 // sign, the Hoeffding bound ~= the noise floor.
 //

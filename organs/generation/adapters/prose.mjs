@@ -250,7 +250,7 @@ async function dmdUniverse(register, text, { rank = 8 } = {}) {
   if (_dmdCache.has(key)) return _dmdCache.get(key);
   const { splitSentences } = await kernelImport("khora", "native/adapters/text/spans.js");
   const { buildReferents } = await kernelImport("khora", "native/the-fold/referents.js");
-  const { symmetricEigen } = await kernelImport("khora", "native/kernel/dmd.js");
+  const { symmetricEigen } = await kernelImport("khora", "native/kernel/koopman.js");
   const R = buildReferents(text);
   const sentences = cutOf(splitSentences, text).map((s) => String(s.text ?? s)).filter((t) => (t.match(/[A-Za-z]{2,}/g) || []).length >= 3).slice(0, 400);
   // SULLIVAN: each sentence's state = the set of the register's OWN beings it
