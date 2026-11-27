@@ -1580,6 +1580,22 @@
    ]
   },
   {
+   "id": "ETR",
+   "name": "edit-decision",
+   "st": "■",
+   "lvl": 0,
+   "op": "REC",
+   "grain": "Figure",
+   "typing": "‡",
+   "refs": [
+    "o/edit-decision.mjs",
+    "o/edit-decision.test.mjs",
+    "g/edit-decision-run.mjs",
+    "g/edit-decision-run.test.mjs",
+    "GL-ED-01"
+   ]
+  },
+  {
    "id": "ANC",
    "name": "anaphor-commit",
    "st": "■",
