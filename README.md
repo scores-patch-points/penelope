@@ -126,7 +126,7 @@ append-only, always revisable).
 ║  │ ∀  │ = ∩∀                │ ⊨ ≈∀                │ ↬ ∪∀                │  ║
 ║  │    │ ■STL ■CUB ■LAW ■GLA │ ■PRB ■TST ■CGT ■BHC │ ■SPR ■BOX ·RSM ·DEM │  ║
 ║  │    │ ·GAT ·STM ■RSR ·STR │ ■FRS ■LDR ■NBK ·RUT │ ■SLF ■FCL ■WBL ■TLS │  ║
-║  │    │ ■FAP ■HMA ■ANC      │ □GAR □PTH ·MAR ·VIS │ ■KTL                │  ║
+║  │    │ ■FAP ■HMA ■ANC      │ □GAR □PTH ·MAR ·VIS │ ■KTL ■ETR           │  ║
 ║  │    │                     │ ·APO ·ANS ·POL ·CRV │                     │  ║
 ║  │    │                     │ ■CFX ■VRF ■ESC ■WNB │                     │  ║
 ║  │    │                     │ ■WRP ■MND ■EQV ■SMV │                     │  ║
@@ -158,8 +158,8 @@ append-only, always revisable).
 ║  │    │                     │ ■BHC ·RUT □GAR ·MAR │ ■NBK ■LAW ■GLA ·GAT │  ║
 ║  │    │                     │ ·VIS ·POL ■CFX ■VRF │ ·DEM □PTH ·ANS ·CRV │  ║
 ║  │    │                     │ ■ESC ■MND ■EQV ■SMV │ ·STM ■RSR ·STR ■FAP │  ║
-║  │    │                     │ ■PVD ■TXV ■FRV ■ANC │ ■SLF ■HMA ■WNB ■FCL │  ║
-║  │    │                     │ ■AGS                │ ■WBL ■WRP ■TLS ■KTL │  ║
+║  │    │                     │ ■PVD ■TXV ■FRV ■ETR │ ■SLF ■HMA ■WNB ■FCL │  ║
+║  │    │                     │ ■ANC ■AGS           │ ■WBL ■WRP ■TLS ■KTL │  ║
 ║  │    │                     │                     │ □UDL □LAG □LBD □LCB │  ║
 ║  │    │                     │                     │ □LCD □LEN □LHM □LIM │  ║
 ║  │    │                     │                     │ □LLD □LMO □LOG □LPS │  ║
@@ -189,8 +189,8 @@ append-only, always revisable).
 ║  │    │ ■HNT ■LIB ·RSM ■SIX │ ■RDU ■MTH ■SPR ■EOT │ ■SEL ■BOX ■BLD ■ASK │  ║
 ║  │    │ ■SBF                │ ■CHT □TKB ·HOR ·SWT │ ■ADC ■ADP ■TAP □CDB │  ║
 ║  │    │                     │ ·VOC ■PYT ■STG ■ESS │ □BPG ·PAG ·DEM ·LFL │  ║
-║  │    │                     │ ■POD ■NLG ■WRT ■MJS │ ■CCL ■OVW ■CPL ■GDC │  ║
-║  │    │                     │                     │ ■SLF ■FCL ■WBL ■WPG │  ║
+║  │    │                     │ ■POD ■NLG ■ETR ■WRT │ ■CCL ■OVW ■CPL ■GDC │  ║
+║  │    │                     │ ■MJS                │ ■SLF ■FCL ■WBL ■WPG │  ║
 ║  │    │                     │                     │ ■TLS ■KTL ■FLN      │  ║
 ║  └────┴─────────────────────┴─────────────────────┴─────────────────────┘  ║
 ╠═[ ↑ ↓ ]════════════════════════════════════════════════════════════════════╣
@@ -210,7 +210,7 @@ append-only, always revisable).
 ║ │    ■SLF↬◈ ■STG△◆ ■VRF⊨◆ ■SIX●∘ ■HMA=◈ ■ESS△◆ ■POD△◆ ■ESC⊨◆ ■NLG●◆        ║
 ║ │    ■WRT△◆ ■MJS△◆ ■LDG⊨◈                                                  ║
 ║ ↓ 0  ■MTH●◆ ■SPR↬◆ □GAR⊨◆ ■WMK○∘ ■EQV⊨◆ ■SMV⊨◆ ■PVD⊨◆ ■TXV⊨◆ ■FRV⊨◆        ║
-║ │    ■ANC=◆ ■FLN△◈                                                         ║
+║ │    ■ETR↬◆ ■ANC=◆ ■FLN△◈                                                  ║
 ╠═[ ▫ ■ ]════════════════════════════════════════════════════════════════════╣
 ║   ∅     ▫ ▫ ▫ ▫ ▫ ▫                                                        ║
 ║   ≡∨↻∨●  ≡ ≡ ↻ ● ✗ ▫                                                       ║
@@ -526,6 +526,9 @@ append-only, always revisable).
 ║     @ GL-MR-03 GL-EX-01 GL-EL-01 GL-NK-01 GL-NK-02 GL-NK-03 GL-NK-04       ║
 ║     @ GL-PK-01 GL-SN-03 GL-RV-02 GL-RV-03 GL-VD-01 GL-PP-01 GL-PP-02       ║
 ║     @ GL-PP-03 GL-RV-04 GL-EQ-01 GL-RV-01 GL-CL-01                         ║
+║■ETR 0 ↬◆ ‡ edit-decision                                                   ║
+║     @ o/edit-decision.mjs o/edit-decision.test.mjs g/edit-decision-run.mjs ║
+║     @ g/edit-decision-run.test.mjs GL-ED-01                                ║
 ║■ANC 0 =◆ ‡ anaphor-commit                                                  ║
 ║     @ o/anaphor-commit.mjs o/anaphor-commit.test.mjs g/anaphor-run.mjs     ║
 ║     @ g/anaphor-run.test.mjs g/anaphor-mutants.mjs GL-AC-01                ║
